@@ -37,7 +37,7 @@ extension Presenter {
         weak var generic      : GenericPresenter_Protocol?
         weak var genericView  : GenericView?
         weak var view    : SearchUser_ViewProtocol!
-        var viewModel    : VM.SearchUser? { didSet { AppLogs.DLog(code: .vmChanged); updateViewWith(viewModel!) } }
+        var viewModel    : VM.SearchUser? { didSet { AppLogs.DLog(code: .vmChanged); viewModelChanged() } }
         var router       : SearchUser_RouterProtocol!
         var useCase_1    : GitUser_UseCaseProtocol!
     }
@@ -115,7 +115,7 @@ extension P.SearchUser_Presenter : GenericPresenter_Protocol {
     func loadView()       -> Void { }
     func viewDidAppear()  -> Void { }
     func viewDidLoad()    -> Void { }
-    func viewWillAppear() -> Void { if(viewModel != nil) { updateViewWith(viewModel!) } }
+    func viewWillAppear() -> Void { if(viewModel != nil) { updateViewWith(vm: viewModel) } }
 }
 
 /**
@@ -123,7 +123,13 @@ extension P.SearchUser_Presenter : GenericPresenter_Protocol {
  */
 
 extension P.SearchUser_Presenter {
-    private func updateViewWith(_ some:VM.SearchUser) -> Void {
-        view.viewDataToScreen(some: some)
+    
+    private func viewModelChanged() -> Void {
+        updateViewWith(vm:viewModel)
+    }
+    
+    private func updateViewWith(vm:VM.SearchUser?) -> Void {
+        guard vm != nil else { AppLogs.DLog(code: .ignored); return }
+        view.viewDataToScreen(some:vm!)
     }
 }

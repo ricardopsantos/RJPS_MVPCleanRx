@@ -47,15 +47,7 @@ extension Presenter {
         var blissQuestions_UseCase : BlissQuestionsAPI_UseCaseProtocol!
         var blissGeneric_UseCase   : BlissGenericAppBussiness_UseCaseProtocol!
         var viewModel         : VM.BlissQuestionsList_ViewModel? {
-            didSet {
-                AppLogs.DLog(code: .vmChanged)
-                if let vm = viewModel {
-                    view.viewNeedsToDisplay(list: vm.questionsList)
-                }
-                else {
-                    view.viewNeedsToDisplay(list: [])
-                }
-            }
+            didSet { AppLogs.DLog(code: .vmChanged); viewModelChanged() }
         }
 
         private var _disposeBag = DisposeBag()
@@ -79,15 +71,8 @@ extension P.BlissQuestionsList_Presenter : GenericTableView_Protocol {
             let title = "\(question.question.description)"
             //someCell.set(title:title)
             someCell.rxBehaviorRelay_title.accept(title)
-            AppSimpleNetworkClient.downloadImageFrom(question.thumbURL, caching: .nsCache) { (image, _) in
-                if let image = image {
-                    //someCell.set(image:image)
-                    someCell.rxBehaviorRelay_image.accept(image)
-                }
-                else {
-                    //someCell.set(image:AppImages.notFound)
-                    someCell.rxBehaviorRelay_image.accept(AppImages.notFound)
-                }
+            downloadImage(imageURL: question.thumbURL, onFail: AppImages.notFound) { (image) -> (Void) in
+                someCell.rxBehaviorRelay_image.accept(image)
             }
         }
         else {
@@ -175,6 +160,15 @@ extension P.BlissQuestionsList_Presenter : GenericPresenter_Protocol {
 
 extension P.BlissQuestionsList_Presenter {
   
+    private func viewModelChanged() {
+        if let vm = viewModel {
+            view.viewNeedsToDisplay(list: vm.questionsList)
+        }
+        else {
+            view.viewNeedsToDisplay(list: [])
+        }
+    }
+    
     private func updateData(filter:String, offSet:Int) {
         let filter = filter.trim
         

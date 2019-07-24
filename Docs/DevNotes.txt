@@ -17,10 +17,7 @@ sudo xcode-select --switch "/Applications/Xcode_10.1.app/Contents/Developer"
 
     git push --tags
 
-    git tag -a First_screen_bind_with_questions -m "First_screen_bind_with_questions"
-    git tag -a Deep_links_support -m "Deep_links_support"
-    git tag -a Deep_links_support_finished -m "Deep_links_support_finished"
-    git tag -a added_pagination -m "added_pagination"
+    git tag -a Version_1_0 -m "Version_1.0"
 
 
 ** Test deeplink **

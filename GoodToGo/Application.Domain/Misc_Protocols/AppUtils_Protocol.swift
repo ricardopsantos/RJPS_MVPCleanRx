@@ -15,6 +15,6 @@ protocol AppUtils_Protocol : class {
     
     func assertExistsInternetConnection(sender:GenericView?, message:String, block:@escaping ()->())
     
-    func downloadRegularImage(imageURL:String, completion:@escaping (UIImage) -> (Void)) -> Void
+    func downloadImage(imageURL:String, onFail:UIImage?, completion:@escaping (UIImage?) -> (Void)) -> Void
 
 }

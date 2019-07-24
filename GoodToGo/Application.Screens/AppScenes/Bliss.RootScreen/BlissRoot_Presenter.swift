@@ -43,7 +43,7 @@ extension Presenter {
         var blissQuestions_UseCase : BlissQuestionsAPI_UseCaseProtocol!
         var blissGeneric_UseCase   : BlissGenericAppBussiness_UseCaseProtocol!
         var viewModel         : VM.BlissRoot_ViewModel? {
-            didSet { AppLogs.DLog(code: .vmChanged) }
+            didSet { AppLogs.DLog(code: .vmChanged); viewModelChanged() }
         }
         private var _disposeBag = DisposeBag()
         private var _reachabilityService = try! DefaultReachabilityService()
@@ -93,6 +93,10 @@ extension P.BlissRoot_Presenter : GenericPresenter_Protocol {
 //
 
 extension P.BlissRoot_Presenter {
+    
+    private func viewModelChanged() {
+        
+    }
     
     private func checkServerStatus() {
 
@@ -162,7 +166,7 @@ extension P.BlissRoot_Presenter {
     var rxReturnOnError : UIImage { return AppImages.notInternet }
     var rxObservableAssyncRequest : Observable<UIImage> {
         return Observable.create { observer -> Disposable in
-            AppSimpleNetworkClient.downloadImageFrom(AppConstants.Bliss.logoURL, completion: { (image, _) in
+            AppSimpleNetworkClient.downloadImageFrom(AppConstants.Bliss.logoURL, completion: { (image) in
                 if(image != nil) { observer.onNext(image!) }
                 else { observer.onError(AppFactory.Errors.with(code: .unknownError)) }
             })

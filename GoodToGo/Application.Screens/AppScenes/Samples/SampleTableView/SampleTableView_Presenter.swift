@@ -40,15 +40,7 @@ extension Presenter {
         weak var genericView  : GenericView?
         weak var view   : SampleTableView_ViewProtocol!
         var viewModel   : VM.SampleTableView_ViewModel? {
-            didSet {
-                AppLogs.DLog(code: .vmChanged)
-                if let vm = viewModel {
-                    view.viewNeedsToDisplay(list: vm.employeesList)
-                }
-                else {
-                    view.viewNeedsToDisplay(list: [])
-                }
-            }
+            didSet { AppLogs.DLog(code: .vmChanged); viewModelChanged() }
         }
         var router      : SampleTableView_RouterProtocol!
         var tableView   : GenericTableView_Protocol!
@@ -77,15 +69,8 @@ extension P.SampleTableView_Presenter : GenericTableView_Protocol {
             let title = "\(employee.employeeName) | \(employee.employeeSalary)"
             //someCell.set(title:title)
             someCell.rxBehaviorRelay_title.accept(title)
-            AppSimpleNetworkClient.downloadImageFrom(employee.profileImage, caching: .nsCache) { (image, _) in
-                if let image = image {
-                    //someCell.set(image:image)
-                    someCell.rxBehaviorRelay_image.accept(image)
-                }
-                else {
-                    //someCell.set(image:AppImages.notFound)
-                    someCell.rxBehaviorRelay_image.accept(AppImages.notFound)
-                }
+            downloadImage(imageURL: employee.profileImage, onFail: AppImages.notFound) { (image) -> (Void) in
+                someCell.rxBehaviorRelay_image.accept(image)
             }
         }
         else {
@@ -138,6 +123,20 @@ extension P.SampleTableView_Presenter : GenericPresenter_Protocol {
 //
 
 extension P.SampleTableView_Presenter {
+    
+    private func viewModelChanged() -> Void {
+        updateViewWith(vm: viewModel)
+    }
+    
+    private func updateViewWith(vm:VM.SampleTableView_ViewModel?) -> Void {
+        guard vm != nil else { AppLogs.DLog(code: .ignored); return }
+        if let vm = vm {
+            view.viewNeedsToDisplay(list: vm.employeesList)
+        }
+        else {
+            view.viewNeedsToDisplay(list: [])
+        }
+    }
     
     func setupPresenter() {
         

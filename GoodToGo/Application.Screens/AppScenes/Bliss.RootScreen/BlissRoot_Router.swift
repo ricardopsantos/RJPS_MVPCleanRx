@@ -29,9 +29,11 @@ extension Router {
             func generalDismiss() {
                 baseView?.dismiss(animated: true)
             }
+            
             rxPublishRelay_dismissView.asSignal()
                 .emit(onNext: { _ in generalDismiss() })
                 .disposed(by: disposeBag)
+            
             rxPublishRelay_ShowQuestionsList.asObservable()
                 .map { vm -> UINavigationController? in return self.controllerWith(vm: vm) }
                 .ignoreNil()

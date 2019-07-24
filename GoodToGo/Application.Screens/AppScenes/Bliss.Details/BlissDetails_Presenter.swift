@@ -48,7 +48,7 @@ extension Presenter {
         var blissQuestions_UseCase : BlissQuestionsAPI_UseCaseProtocol!
         var blissGeneric_UseCase   : BlissGenericAppBussiness_UseCaseProtocol!
         var tableView              : GenericTableView_Protocol!
-        var viewModel              : VM.BlissDetails_ViewModel? { didSet { AppLogs.DLog(code: .vmChanged); updateViewWithViewModel() } }
+        var viewModel              : VM.BlissDetails_ViewModel? { didSet { AppLogs.DLog(code: .vmChanged); viewModelChanged() } }
         private var _disposeBag = DisposeBag()
         private var _reachabilityService = try! DefaultReachabilityService()
     }
@@ -192,21 +192,15 @@ extension P.BlissDetails_Presenter {
         return "blissrecruitment://questions?question_id=\(viewModel!.question!.id)"
     }
     
-    private func updateViewWithViewModel() {
+    private func viewModelChanged() {
         guard viewModel != nil, viewModel?.question != nil else {
             AppLogs.DLogWarning(AppConstants.Dev.referenceLost + " " + "or not prepared")
             return
         }
         view.set(title: (viewModel!.question!.question.description))
         view.viewNeedsToDisplay(list: viewModel!.question!.choices)
-        AppSimpleNetworkClient.downloadImageFrom(viewModel!.question!.imageURL, caching: .none) { [weak self] (image, _) in
-            guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
-            if let image = image {
-                strongSelf.view.set(image: image)
-            }
-            else {
-                strongSelf.view.set(image: AppImages.notFound)
-            }
+        downloadImage(imageURL: viewModel!.question!.imageURL, onFail: AppImages.notFound) { [weak self] (image) -> (Void) in
+            self?.view.set(image: image!)
         }
     }
     

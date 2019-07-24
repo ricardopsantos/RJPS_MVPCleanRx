@@ -11,9 +11,9 @@ import RJPSLib
 
 extension AppUtils_Protocol {
     
-    func downloadRegularImage(imageURL:String, completion:@escaping (UIImage) -> (Void)) -> Void {
+    func downloadImage(imageURL:String, onFail:UIImage?=nil, completion:@escaping (UIImage?) -> (Void)) -> Void {
         guard !imageURL.isEmpty else { return completion(AppImages.notFound) }
-        AppSimpleNetworkClient.downloadImageFrom(imageURL, caching: .fileSystem) { (image, _) in completion(image ?? AppImages.notFound) }
+        AppSimpleNetworkClient.downloadImageFrom(imageURL, caching: .fileSystem) { (image) in completion(image ?? onFail) }
     }
     
     var existsInternetConnection : Bool {

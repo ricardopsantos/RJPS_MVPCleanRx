@@ -359,7 +359,7 @@ extension AppView.RxTesting {
     var rxObservableAssyncRequest : Observable<UIImage> {
         return Observable.create { [weak self] observer -> Disposable in
             let adress = Bool.random() ? "https://image.shutterstock.com/image-photo/white-transparent-leaf-on-mirror-260nw-1029171697.jpg" : "lalal"
-            AppSimpleNetworkClient.downloadImageFrom(adress, completion: { (image, _) in
+            AppSimpleNetworkClient.downloadImageFrom(adress, completion: { (image) in
                 if(image != nil) {
                     self?.aux_log(message: "[rxObservableAssyncRequest][onNext]", showAlert: false, appendToTable: true)
                     observer.onNext(image!)

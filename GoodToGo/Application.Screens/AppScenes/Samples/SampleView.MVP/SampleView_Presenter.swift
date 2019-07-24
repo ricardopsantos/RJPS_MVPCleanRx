@@ -41,7 +41,7 @@ extension Presenter {
         weak var generic      : GenericPresenter_Protocol?
         weak var genericView  : GenericView?
         weak var view   : SampleView_ViewProtocol!
-        var viewModel   : VM.SampleView_ViewModel? { didSet { AppLogs.DLog(code: .vmChanged) } }
+        var viewModel   : VM.SampleView_ViewModel? { didSet { AppLogs.DLog(code: .vmChanged); viewModelChanged() } }
         var router      : SampleView_RouterProtocol!
 
         var sampleA_UseCase : SampleA_UseCaseProtocol!
@@ -86,4 +86,16 @@ extension P.SampleView_Presenter : GenericPresenter_Protocol {
 
 extension P.SampleView_Presenter {
     
+    private func viewModelChanged() -> Void {
+        updateViewWith(vm: viewModel)
+    }
+    
+    private func updateViewWith(vm:VM.SampleView_ViewModel?) -> Void {
+        guard viewModel != nil else { AppLogs.DLog(code: .ignored); return }
+        //view.viewDataToScreen(some: viewModel!)
+        //downloadImage(imageURL: viewModel!.user.avatarUrl!, onFail: AppImages.notFound) { [weak self] (image) -> (Void) in
+        //    self?.view.setAvatarWith(image: image!)
+        //}
+    }
+
 }

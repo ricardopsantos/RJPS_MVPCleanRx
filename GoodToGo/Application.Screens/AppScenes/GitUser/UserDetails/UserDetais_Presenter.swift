@@ -38,7 +38,7 @@ extension Presenter {
     class UserDetais_Presenter : GenericPresenter {
         var generic     : GenericPresenter_Protocol?
         var genericView : GenericView?
-        var viewModel   : VM.UserDetais? { didSet { AppLogs.DLog(code: .vmChanged); updateViewWith(viewModel!) } }
+        var viewModel   : VM.UserDetais? { didSet { AppLogs.DLog(code: .vmChanged); viewModelChanged() } }
         weak var view   : UserDetais_ViewProtocol!
         var router      : UserDetais_RouterProtocol!
         var tableView   : GenericTableView_Protocol!
@@ -67,8 +67,8 @@ extension P.UserDetais_Presenter : GenericTableView_Protocol {
     func configure(cell: GenericTableViewCell_Protocol, indexPath: IndexPath) -> Void {
         let user = viewModel!.friends[indexPath.row]
         cell.set(title:user.name ?? "unknown")
-        AppSimpleNetworkClient.downloadImageFrom(user.avatarUrl!, caching: .none) { (avatar, _) in
-            cell.set(image:avatar ?? AppImages.notFound)
+        downloadImage(imageURL: user.avatarUrl!, onFail: AppImages.notFound) { (image) -> (Void) in
+            cell.set(image: image)
         }
     }
 }
@@ -82,7 +82,7 @@ extension P.UserDetais_Presenter : GenericPresenter_Protocol {
     func loadView()       -> Void { }
     func viewDidAppear()  -> Void { }
     func viewDidLoad()    -> Void { }
-    func viewWillAppear() -> Void { if(viewModel != nil) { updateViewWith(viewModel!) } }
+    func viewWillAppear() -> Void { if(viewModel != nil) { updateViewWith(vm: viewModel) } }
 }
 
 /**
@@ -91,14 +91,15 @@ extension P.UserDetais_Presenter : GenericPresenter_Protocol {
 
 extension P.UserDetais_Presenter {
     
-    private func updateViewWith(_ some:VM.UserDetais) -> Void {
-        view.viewDataToScreen(some: viewModel!)
-        AppSimpleNetworkClient.downloadImageFrom(viewModel!.user.avatarUrl!, caching: .none) { (image, _) in
-            self.view.setAvatarWith(image: image ?? UIImage())
+    private func updateViewWith(vm:VM.UserDetais?) -> Void {
+        guard vm != nil else { AppLogs.DLog(code: .ignored); return }
+        view.viewDataToScreen(some: vm!)
+        downloadImage(imageURL: vm!.user.avatarUrl!, onFail: AppImages.notFound) { [weak self] (image) -> (Void) in
+            self?.view.setAvatarWith(image: image!)
         }
     }
     
-    private func doStuff() -> Void {
-    
+    private func viewModelChanged() -> Void {
+        updateViewWith(vm: viewModel)
     }
 }
