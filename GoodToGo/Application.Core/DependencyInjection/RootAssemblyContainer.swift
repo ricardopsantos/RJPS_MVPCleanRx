@@ -18,7 +18,7 @@ struct RootAssemblyContainerProtocols {
     static let networkClient                    = NetworkClient_Protocol.self
     
     // Use Cases
-    static let sampleA_UseCase                  = SampleA_UseCaseProtocol.self
+    static let sample_UseCase                   = Sample_UseCaseProtocol.self
     static let sampleB_UseCase                  = SampleB_UseCaseProtocol.self
     static let blissQuestions_UseCase           = BlissQuestionsAPI_UseCaseProtocol.self
     static let blissGenericAppBussiness_UseCase = BlissGenericAppBussiness_UseCaseProtocol.self
@@ -36,8 +36,8 @@ final class RootAssemblyContainer: Assembly {
 
         container.autoregister(AppProtocols.generic_LocalStorageRepository, initializer: RL.Generic_LocalStorageRepository.init).inObjectScope(.container)
 
-        let useCase1Protocol = AppProtocols.sampleA_UseCase
-        let useCase1ProtocolImplementation = UC.SampleA_UseCase.init
+        let useCase1Protocol = AppProtocols.sample_UseCase
+        let useCase1ProtocolImplementation = UC.Sample_UseCase.init
         container.autoregister(useCase1Protocol, initializer: useCase1ProtocolImplementation).inObjectScope(.container)
         
         let useCase2Protocol = AppProtocols.sampleB_UseCase

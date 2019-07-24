@@ -24,12 +24,10 @@ protocol SampleView_PresenterProtocol : class {
     var router      : SampleView_RouterProtocol!   { get }     // Mandatory in ALL Presenters
     
     func userDidTryToLoginWith(user:String, password:String)
-    var rxPublishRelay_dismissView: PublishRelay<Void> { get } // PublishRelay model Events
-
 }
 
 protocol SampleView_ViewProtocol : class {
-
+    func updateViewWith(message:String)
 }
 
 //
@@ -44,8 +42,7 @@ extension Presenter {
         var viewModel   : VM.SampleView_ViewModel? { didSet { AppLogs.DLog(code: .vmChanged); viewModelChanged() } }
         var router      : SampleView_RouterProtocol!
 
-        var sampleA_UseCase : SampleA_UseCaseProtocol!
-        var sampleB_UseCase : SampleB_UseCaseProtocol!
+        var sample_UseCase : Sample_UseCaseProtocol!
     }
 }
 
@@ -55,15 +52,17 @@ extension Presenter {
 
 extension P.SampleView_Presenter : SampleView_PresenterProtocol {
     
-    // PublishRelay model Events
-    var rxPublishRelay_dismissView: PublishRelay<Void> {
-        let relay = PublishRelay<Void>()
-        relay.bind(to: router.rxPublishRelay_dismissView).disposed(by: disposeBag)
-        return relay
-    }
-    
     func userDidTryToLoginWith(user: String, password: String) {
-       
+        AppLogs.DLog("\(user) | \(password)")
+        genericView?.setActivityState(true)
+        sample_UseCase.operation1(canUseCache: false) { [weak self] (result) in
+            guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+            strongSelf.genericView?.setActivityState(false)
+            switch result {
+            case .success(let some): strongSelf.viewModel = VM.SampleView_ViewModel(someString: "\(some)")
+            case .failure(_)       : strongSelf.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
+            }
+        }
     }
 }
 
@@ -92,10 +91,7 @@ extension P.SampleView_Presenter {
     
     private func updateViewWith(vm:VM.SampleView_ViewModel?) -> Void {
         guard viewModel != nil else { AppLogs.DLog(code: .ignored); return }
-        //view.viewDataToScreen(some: viewModel!)
-        //downloadImage(imageURL: viewModel!.user.avatarUrl!, onFail: AppImages.notFound) { [weak self] (image) -> (Void) in
-        //    self?.view.setAvatarWith(image: image!)
-        //}
+        view.updateViewWith(message: viewModel!.someString)
     }
 
 }

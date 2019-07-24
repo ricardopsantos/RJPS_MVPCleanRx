@@ -11,16 +11,33 @@ import RxSwift
 import RxCocoa
 
 /**
- * 1 - Declare : Presenter_Protocol & View_Protocol
+ * 1 - Declare : Presenter_Protocol & View_Protocol (RX WAY)
  */
 
-protocol SearchUser_PresenterProtocol : class {
+protocol SearchUser_PresenterProtocol_Input { // From View to Presenter
+    func searchUserWith(username:String)
+}
+
+protocol SearchUser_PresenterProtocol_Output { // From Presenter to View
+    var users: Signal<[String]>! { get }
+}
+
+protocol SearchUser_ProtocolPresenter_IO: SearchUser_PresenterProtocol_Input, SearchUser_PresenterProtocol_Output {
+    var input : SearchUser_PresenterProtocol_Input  { get }
+    var output: SearchUser_PresenterProtocol_Output { get }
+}
+
+/**
+ * 1 - Declare : Presenter_Protocol & View_Protocol (IMPERATIVE WAY)
+ */
+
+protocol SearchUser_PresenterProtocol : class, SearchUser_ProtocolPresenter_IO {
     var generic     : GenericPresenter_Protocol? { get }   // Mandatory in ALL Presenters
     var genericView : GenericView? { get }                 // Mandatory in ALL Presenters
     var viewModel   : VM.SearchUser? { get set }           // Mandatory in ALL Presenters
     var router      : SearchUser_RouterProtocol! { get }   // Mandatory in ALL Presenters
 
-    func searchUser(user:String)
+    func searchUserWith(username:String)
     var rxPublishRelay_dismissView: PublishRelay<Void> { get } // PublishRelay model Events
 }
 
@@ -36,10 +53,17 @@ extension Presenter {
     class SearchUser_Presenter : GenericPresenter {
         weak var generic      : GenericPresenter_Protocol?
         weak var genericView  : GenericView?
-        weak var view    : SearchUser_ViewProtocol!
-        var viewModel    : VM.SearchUser? { didSet { AppLogs.DLog(code: .vmChanged); viewModelChanged() } }
-        var router       : SearchUser_RouterProtocol!
-        var useCase_1    : GitUser_UseCaseProtocol!
+        weak var view         : SearchUser_ViewProtocol!
+        var viewModel         : VM.SearchUser? { didSet { AppLogs.DLog(code: .vmChanged); viewModelChanged() } }
+        var router            : SearchUser_RouterProtocol!
+        var useCase_1         : GitUser_UseCaseProtocol!
+        
+        var input : SearchUser_PresenterProtocol_Input  { return self }
+        var output: SearchUser_PresenterProtocol_Output { return self }
+        var users : Signal<[String]>!
+        private var _userInfo         = PublishRelay<E.GitHubUser?>()
+        private var _userFriends     = PublishRelay<[E.GitHubUser]?>()
+        private var _userDetailsSignal: Signal<VM.UserDetais>!
     }
 }
 
@@ -48,7 +72,10 @@ extension Presenter {
  */
 
 extension P.SearchUser_Presenter : SearchUser_PresenterProtocol {
+    func searchUserWith(username:String) {
 
+    }
+    
     // PublishRelay model Events
     var rxPublishRelay_dismissView: PublishRelay<Void> {
         let relay = PublishRelay<Void>()
@@ -56,6 +83,7 @@ extension P.SearchUser_Presenter : SearchUser_PresenterProtocol {
         return relay
     }
     
+    /*
     func searchUser(user: String) {
         guard user.trim.count > 0 else {
             return
@@ -102,7 +130,7 @@ extension P.SearchUser_Presenter : SearchUser_PresenterProtocol {
                       onError  : { strongSelf.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error) }
             ).after { strongSelf.genericView?.setActivityState(false) }
         }
-    }
+    }*/
 }
 
 
@@ -131,5 +159,25 @@ extension P.SearchUser_Presenter {
     private func updateViewWith(vm:VM.SearchUser?) -> Void {
         guard vm != nil else { AppLogs.DLog(code: .ignored); return }
         view.viewDataToScreen(some:vm!)
+    }
+    
+    private func getUserInfo(for username: String) {
+        useCase_1.getInfoOfUserWith(userName: username, canUseCache: true) { [weak self] result in
+            guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+            switch result {
+            case .success(let some): strongSelf._userInfo.accept(some)
+            case .failure(_)       : strongSelf._userInfo.accept(nil)
+            }
+        }
+    }
+    
+    private func getUserFriends(for username: String) {
+        useCase_1.getFriendsOfUserWith(userName: username, canUseCache: true, completionHandler: { [weak self] result in
+            guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+            switch result {
+            case .success(let some): strongSelf._userFriends.accept(some)
+            case .failure(_)       : strongSelf._userFriends.accept(nil)
+            }
+        })
     }
 }

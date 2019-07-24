@@ -45,7 +45,7 @@ extension Presenter {
         var router      : SampleTableView_RouterProtocol!
         var tableView   : GenericTableView_Protocol!
 
-        var sampleA_UseCase : SampleA_UseCaseProtocol!
+        var sample_UseCase : Sample_UseCaseProtocol!
         var sampleB_UseCase : SampleB_UseCaseProtocol!
         
         // BehaviorRelay model a State

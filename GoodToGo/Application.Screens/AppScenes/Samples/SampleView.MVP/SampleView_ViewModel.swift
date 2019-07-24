@@ -13,6 +13,6 @@ import UIKit
 
 extension ViewModel {
     struct SampleView_ViewModel {
-        
+        var someString = ""
     }
 }

@@ -9,10 +9,10 @@ import Foundation
 import UIKit
 import RJPSLib
 
-typealias SampleA_UseCaseCompletionHandler = (_ result: Result<[E.Employee]>) -> Void
-protocol SampleA_UseCaseProtocol : class {
-    func operation1(canUseCache:Bool, completionHandler: @escaping SampleA_UseCaseCompletionHandler)
-    func operation2(param:String, completionHandler: @escaping SampleA_UseCaseCompletionHandler)
+typealias Sample_UseCaseCompletionHandler = (_ result: Result<[String]>) -> Void
+protocol Sample_UseCaseProtocol : class {
+    func operation1(canUseCache:Bool, completionHandler: @escaping Sample_UseCaseCompletionHandler)
+    func operation2(param:String, completionHandler: @escaping Sample_UseCaseCompletionHandler)
 }
 
 

@@ -37,14 +37,14 @@ extension AppView {
                 .throttle(.milliseconds(AppConstants.Rx.textFieldsDefaultThrottle), scheduler: MainScheduler.instance)
                 .subscribe(onNext: { [weak self] _ in
                     guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
-                    strongSelf.presenter.searchUser(user: some.text ?? "")
+                    strongSelf.presenter.searchUserWith(username: some.text ?? "")
                 })
                 .disposed(by: disposeBag)
             some.rx.textDidEndEditing
                 .subscribe(onNext: { [weak self] (query) in
                     guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
                     if(strongSelf._searchBar.text!.count>0) {
-                        strongSelf.presenter.searchUser(user: some.text ?? "")
+                        strongSelf.presenter.searchUserWith(username: some.text ?? "")
                     }
                 })
                 .disposed(by: self.disposeBag)

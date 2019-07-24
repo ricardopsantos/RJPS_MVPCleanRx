@@ -34,7 +34,7 @@ extension UIButton {
     
     private func layoutWith(style:UIButton.LayoutStyle) -> Void {
         let regular = {
-            self.titleLabel?.font = AppFonts.regular(size: .regularBig)
+            self.titleLabel?.font = AppFonts.regular(size: .big)
             self.backgroundColor  = AppColors.btnBackgroundColor
             self.setTextColorForAllStates(AppColors.btnTextColor)
             self.setState(enabled: true)

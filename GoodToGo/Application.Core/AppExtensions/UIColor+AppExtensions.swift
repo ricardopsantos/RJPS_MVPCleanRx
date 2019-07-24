@@ -30,6 +30,7 @@ extension UIColor {
         }
         static let appDefaultBackgroundColor : UIColor = _grey_7
         static let btnBackgroundColor        : UIColor = _grey_6
+        static let lblBackgroundColor        : UIColor = _grey_6
         static let btnTextColor              : UIColor = _grey_1
         static let lblTextColor              : UIColor = _grey_1
         
