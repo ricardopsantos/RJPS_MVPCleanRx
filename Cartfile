@@ -1,0 +1,97 @@
+# Tutorial
+# http://www.raywenderlich.com/109330/carthage-tutorial-getting-started
+
+# Edit File       : open -a Xcode Cartfile
+# Update (iPhone) : carthage update --platform iOS
+# Open compiled   : open Carthage
+
+# brew update
+# brew install carthage
+# brew upgrade carthage
+
+####################################################################
+
+# Elegant HTTP Networking in Swift
+# https://github.com/Alamofire/Alamofire
+
+## Swift 5.0.1
+#github "Alamofire/Alamofire"
+
+####################################################################
+
+# Reactive Programming in Swift
+# https://github.com/ReactiveX/RxSwift
+
+## Swift 4.2.1
+    #github "ReactiveX/RxSwift" "4.4.0"
+    #github "RxSwiftCommunity/RxGesture" ~> 1.1.1
+
+## Swift 5.0.1
+    github "ReactiveX/RxSwift"
+    github "RxSwiftCommunity/RxGesture"
+    #github "RxSwiftCommunity/RxReachability"
+
+####################################################################
+
+# A Swift Autolayout DSL for iOS & OS X http://snapkit.io
+# https://github.com/SnapKit/SnapKit
+
+## Swift 4.2.1
+    #github "SnapKit/SnapKit" ~> 4.0.0
+
+####################################################################
+
+# Dependency injection framework for Swift with iOS/macOS/Linux
+# https://github.com/Swinject/Swinject
+
+## Swift 4.2.1
+    #github "Swinject/Swinject"
+    #github "Swinject/SwinjectAutoregistration" "2.5.0"
+    #github "Swinject/SwinjectStoryboard"
+
+## Swift 5.0.1
+    github "Swinject/Swinject"
+    github "Swinject/SwinjectAutoregistration"
+    github "Swinject/SwinjectStoryboard"
+
+####################################################################
+
+## Swift 4.2.1
+    #github "ricardopsantos/RJPSLib" "v1.0.1"
+
+## Swift 5.0.1
+    github "ricardopsantos/RJPSLib" "master"
+
+####################################################################
+
+# Realm is a mobile database: a replacement for Core Data & SQLite https://realm.io
+# https://realm.io/docs/swift/latest/
+
+## Swift 4.2.1
+    #github "realm/realm-cocoa" "v3.13.0"
+
+## Swift 5.0.1
+    #github "realm/realm-cocoa"
+
+####################################################################
+####################################################################
+####################################################################
+
+# Drag from "/Carthage/Build/iOS/Alamofire.framework" to "General/Linked Frameworks and Librarys"
+
+# $(SRCROOT)/Carthage/Build/iOS/Alamofire.framework
+# $(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework
+# $(SRCROOT)/Carthage/Build/iOS/Whisper.framework
+# $(SRCROOT)/Carthage/Build/iOS/Eureka.framework
+# $(SRCROOT)/Carthage/Build/iOS/CryptoSwift.framework
+
+# *** Fetching Swinject
+# *** Fetching RxGesture
+# *** Fetching SwinjectStoryboard
+# *** Fetching RxSwift
+# *** Checking out SwinjectAutoregistration at "2.5.0"
+# *** Checking out RxSwift at "4.4.0"
+# *** Checking out SwinjectStoryboard at "2.2.0"
+# *** Checking out RxGesture at "1.2.1"
+# *** Checking out Swinject at "2.6.0"
+

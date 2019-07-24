@@ -1,0 +1,444 @@
+FORMAT: 1A
+
+# Bliss Recruitment API
+
+Bliss Recruitment API is a simple API allowing consumers to view polls and vote in them.
+
+## Health Status [/health]
+
+### Get Health Status [GET]
+
++ Response 200 (application/json)
+
+        {
+            "status": "OK"
+        }
+        
++ Response 503 (application/json)
+
+        {
+            "status": "Service Unavailable. Please try again later."
+        }
+
+
+## Questions Collection [/questions]
+
+### List All Questions [GET /questions?limit={limit}&offset={offset}&filter={filter}]
+
++ Parameters
+    + limit (required, number) ... the number of records to retrieve
+    + offset (required, number) ... 0 based starting index of the first retrieved record. If you invoked with limit=5 then you should use offset=5 to obtain the next records. If you asked for 5 but only got 4, e.g., that means there are no more records to show.
+    + filter (optional, string) ... use this field to search for the filter pattern on "question" and "choice" properties. The search will perform a "lowercase contains" strategy on those fields to retrieve results.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 1,
+                "question": "Favourite programming language?",
+                "image_url": "https://dummyimage.com/600x400/000/fff.png&text=question+1+image+(600x400)",
+                "thumb_url": "https://dummyimage.com/120x120/000/fff.png&text=question+1+image+(120x120)",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 2048
+                    }, {
+                        "choice": "Python",
+                        "votes": 1024
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 512
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 256
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "question": "Favourite programming language?",
+                "image_url": "https://dummyimage.com/600x400/000/fff.png&text=question+1+image+(600x400)",
+                "thumb_url": "https://dummyimage.com/120x120/000/fff.png&text=question+1+image+(120x120)",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 2048
+                    }, {
+                        "choice": "Python",
+                        "votes": 1024
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 512
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 256
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "question": "Favourite programming language?",
+                "image_url": "https://dummyimage.com/600x400/000/fff.png&text=question+1+image+(600x400)",
+                "thumb_url": "https://dummyimage.com/120x120/000/fff.png&text=question+1+image+(120x120)",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 2048
+                    }, {
+                        "choice": "Python",
+                        "votes": 1024
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 512
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 256
+                    }
+                ]
+            },
+            {
+                "id": 4,
+                "question": "Favourite programming language?",
+                "image_url": "https://dummyimage.com/600x400/000/fff.png&text=question+1+image+(600x400)",
+                "thumb_url": "https://dummyimage.com/120x120/000/fff.png&text=question+1+image+(120x120)",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 2048
+                    }, {
+                        "choice": "Python",
+                        "votes": 1024
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 512
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 256
+                    }
+                ]
+            },
+            {
+                "id": 5,
+                "question": "Favourite programming language?",
+                "image_url": "https://dummyimage.com/600x400/000/fff.png&text=question+1+image+(600x400)",
+                "thumb_url": "https://dummyimage.com/120x120/000/fff.png&text=question+1+image+(120x120)",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 2048
+                    }, {
+                        "choice": "Python",
+                        "votes": 1024
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 512
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 256
+                    }
+                ]
+            },
+            {
+                "id": 6,
+                "question": "Favourite programming language?",
+                "image_url": "https://dummyimage.com/600x400/000/fff.png&text=question+1+image+(600x400)",
+                "thumb_url": "https://dummyimage.com/120x120/000/fff.png&text=question+1+image+(120x120)",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 2048
+                    }, {
+                        "choice": "Python",
+                        "votes": 1024
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 512
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 256
+                    }
+                ]
+            },
+            {
+                "id": 7,
+                "question": "Favourite programming language?",
+                "image_url": "https://dummyimage.com/600x400/000/fff.png&text=question+1+image+(600x400)",
+                "thumb_url": "https://dummyimage.com/120x120/000/fff.png&text=question+1+image+(120x120)",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 2048
+                    }, {
+                        "choice": "Python",
+                        "votes": 1024
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 512
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 256
+                    }
+                ]
+            },
+            {
+                "id": 8,
+                "question": "Favourite programming language?",
+                "image_url": "https://dummyimage.com/600x400/000/fff.png&text=question+1+image+(600x400)",
+                "thumb_url": "https://dummyimage.com/120x120/000/fff.png&text=question+1+image+(120x120)",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 2048
+                    }, {
+                        "choice": "Python",
+                        "votes": 1024
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 512
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 256
+                    }
+                ]
+            },
+            {
+                "id": 9,
+                "question": "Favourite programming language?",
+                "image_url": "https://dummyimage.com/600x400/000/fff.png&text=question+1+image+(600x400)",
+                "thumb_url": "https://dummyimage.com/120x120/000/fff.png&text=question+1+image+(120x120)",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 2048
+                    }, {
+                        "choice": "Python",
+                        "votes": 1024
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 512
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 256
+                    }
+                ]
+            },
+            {
+                "id": 10,
+                "question": "Favourite programming language?",
+                "image_url": "https://dummyimage.com/600x400/000/fff.png&text=question+1+image+(600x400)",
+                "thumb_url": "https://dummyimage.com/120x120/000/fff.png&text=question+1+image+(120x120)",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 2048
+                    }, {
+                        "choice": "Python",
+                        "votes": 1024
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 512
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 256
+                    }
+                ]
+            }
+        ]
+        
+### Retieve a Question [GET /questions/{question_id}]
+
++ Parameters
+    - question_id (number) ... id of the question to retrieve
+
++ Response 200 (application/json)
+
+        {
+            "id": 1,
+            "question": "Favourite programming language?",
+            "image_url": "https://dummyimage.com/600x400/000/fff.png&text=question+1+image+(600x400)",
+            "thumb_url": "https://dummyimage.com/120x120/000/fff.png&text=question+1+image+(120x120)",
+            "published_at": "2015-08-05T08:40:51.620Z",
+            "choices": [
+                {
+                    "choice": "Swift",
+                    "votes": 2048
+                }, {
+                    "choice": "Python",
+                    "votes": 1024
+                }, {
+                    "choice": "Objective-C",
+                    "votes": 512
+                }, {
+                    "choice": "Ruby",
+                    "votes": 256
+                }
+            ]
+        }
+
+### Create a New Question [POST]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+        {
+            "question": "Favourite programming language?",
+            "image_url": "https://dummyimage.com/600x400/000/fff.png&text=question+1+image+(600x400)",
+            "thumb_url": "https://dummyimage.com/120x120/000/fff.png&text=question+1+image+(120x120)",
+            "choices": [
+                "Swift",
+                "Python",
+                "Objective-C",
+                "Ruby"
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/11
+
+    + Body
+
+            {
+                "id": 11,
+                "image_url": "https://dummyimage.com/600x400/000/fff.png&text=question+1+image+(600x400)",
+                "thumb_url": "https://dummyimage.com/120x120/000/fff.png&text=question+1+image+(120x120)",
+                "question": "Favourite programming language?",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 0
+                    }, {
+                        "choice": "Python",
+                        "votes": 0
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 0
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 0
+                    }
+                ]
+            }
+
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                "status": "Bad Request. All fields are mandatory."
+            }
+
+### Update a Question [PUT /questions/{question_id}]
+
+You may update a question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Parameters
+    + question_id (number) ... id of the question to update
+    
++ Request (application/json)
+
+        {
+            "id": 1,
+            "image_url": "https://dummyimage.com/600x400/000/fff.png&text=question+1+image+(600x400)",
+            "thumb_url": "https://dummyimage.com/120x120/000/fff.png&text=question+1+image+(120x120)",
+            "question": "Favourite programming language?",
+            "choices": [
+                {
+                    "choice": "Swift",
+                    "votes": 1
+                }, {
+                    "choice": "Python",
+                    "votes": 0
+                }, {
+                    "choice": "Objective-C",
+                    "votes": 0
+                }, {
+                    "choice": "Ruby",
+                    "votes": 0
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/11
+
+    + Body
+
+            {
+                "id": 1,
+                "image_url": "https://dummyimage.com/600x400/000/fff.png&text=question+1+image+(600x400)",
+                "thumb_url": "https://dummyimage.com/120x120/000/fff.png&text=question+1+image+(120x120)",
+                "question": "Favourite programming language?",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 1
+                    }, {
+                        "choice": "Python",
+                        "votes": 0
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 0
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 0
+                    }
+                ]
+            }
+            
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                "status": "Bad Request. All fields are mandatory."
+            }
+            
+## Share [/share]
+
+### Share [POST /share?destination_email={destination_email}&content_url={content_url}]
+
++ Parameters
+    + destination_email (required, string) ... the recipient of the email
+    + content_url (required, string) ... the URL to be sent via email
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "status": "OK"
+            }
+            
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                "status": "Bad Request. Either destination_email not valid or empty content_url"
+            }
+            
+    
+

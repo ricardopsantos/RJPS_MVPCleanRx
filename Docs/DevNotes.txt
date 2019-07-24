@@ -1,0 +1,30 @@
+
+
+** Check Swift Versions **
+
+    xcrun swift -version
+    xcode-select --print-path
+
+** Change Swift (xcodebuild) Compiler version **
+
+sudo xcode-select --switch "/Applications/Xcode_10.1.app/Contents/Developer"
+    sudo xcode-select --switch "/Applications/Xcode.app/Contents/Developer"
+
+** Check commits **
+    git log --oneline --decorate
+
+** Tags **
+
+    git push --tags
+
+    git tag -a First_screen_bind_with_questions -m "First_screen_bind_with_questions"
+    git tag -a Deep_links_support -m "Deep_links_support"
+    git tag -a Deep_links_support_finished -m "Deep_links_support_finished"
+    git tag -a added_pagination -m "added_pagination"
+
+
+** Test deeplink **
+
+    xcrun simctl openurl booted "blissrecruitment://questions?question_filter=FILTER"
+    xcrun simctl openurl booted "blissrecruitment://questions?question_id=QUESTION_ID"
+    xcrun simctl openurl booted "blissrecruitment://questions?question_id=1"

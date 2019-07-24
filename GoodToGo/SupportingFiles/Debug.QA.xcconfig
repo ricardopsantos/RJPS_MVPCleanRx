@@ -1,0 +1,16 @@
+//
+//  Debug.xcconfig
+//  GoodToGo
+//
+//  Created by Ricardo P Santos on 15/03/2019.
+//  Copyright © 2019 Ricardo P Santos. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+APP_MODE = Debug.QA
+
+IS_APP_NAME      = AppName_QA
+IS_APP_VERSION   = 0.1
+IS_APP_BUNDLE_ID = com.app.bundle.id.qa
