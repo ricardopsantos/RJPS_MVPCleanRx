@@ -23,32 +23,6 @@ extension AppView {
             return some
         }()
         
-        private lazy var _lblTitle1: UILabel = {
-            let some = UILabel()
-            self.view.addSubview(some)
-            some.backgroundColor = UIColor.lightGray.withAlphaComponent(0.9)
-            some.font = AppFonts.light(size: .regular)
-            some.textAlignment = .center
-            some.rjsALayouts.setMargin(0, on: .top)
-            some.rjsALayouts.setMargin(0, on: .left)
-            some.rjsALayouts.setWidth(AppGlobal.screenWidth/3)
-            some.rjsALayouts.setHeight(V.TopBar.defaultHeight)
-            return some
-        }()
-        
-        private lazy var _lblTitle2: UILabel = {
-            let some = UILabel()
-            self.view.addSubview(some)
-            some.backgroundColor = UIColor.lightGray.withAlphaComponent(0.9)
-            some.font = AppFonts.light(size: .regular)
-            some.textAlignment = .center
-            some.rjsALayouts.setMargin(0, on: .top)
-            some.rjsALayouts.setMargin(0, on: .right)
-            some.rjsALayouts.setWidth(AppGlobal.screenWidth/3)
-            some.rjsALayouts.setHeight(V.TopBar.defaultHeight)
-            return some
-        }()
-        
         private lazy var _searchBar: CustomSearchBar = {
             func handle(filter:String, sender:String) {
                 aux_log(message: "[_searchBar.][handle] from [\(sender)] : [\(filter)]", showAlert: true, appendToTable: true)
@@ -80,10 +54,10 @@ extension AppView {
         
         private lazy var _btnThrottle: UIButton = {
             let throttle = 5
-            let some = AppFactory.UIKit.button(baseView: self.view, title: "Throttle \(throttle) seconds", style: .regular)
+            let some = AppFactory.UIKit.button(baseView: self.view, title: "Throttle \(throttle)s", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .top, from: _searchBar)
             some.rjsALayouts.setMargin(_margin, on: .right)
-            some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (2 * _margin))
+            some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
             some.rjsALayouts.setHeight(_btnHeight)
             some.rx.tap
                 .throttle(.milliseconds(throttle*1000), scheduler: MainScheduler.instance)
@@ -98,10 +72,10 @@ extension AppView {
         
         private lazy var _btnDebounce: UIButton = {
             let debounce = 3
-            let some = AppFactory.UIKit.button(baseView: self.view, title: "Debounce \(debounce) seconds", style: .regular)
+            let some = AppFactory.UIKit.button(baseView: self.view, title: "Debounce \(debounce)s", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .top, from: _searchBar)
             some.rjsALayouts.setMargin(_margin, on: .left)
-            some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (2 * _margin))
+            some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
             some.rjsALayouts.setHeight(_btnHeight)
             some.rx.tap
                 .debounce(.milliseconds(debounce*1000), scheduler: MainScheduler.instance)
@@ -157,7 +131,7 @@ extension AppView {
                 .asDriver()
                 .do(onNext: { _ in print("_rxBehaviorRelay_a") })
                 .do(onNext: { _ in print("_rxBehaviorRelay_a") })
-                .drive(_lblTitle1.rx.text)
+                .drive(_searchBar.rx.text)
                 .disposed(by: disposeBag)
             
             _rxBehaviorRelay_b  // BehaviorRelay (to models states) connected  to other BehaviorRelay
@@ -171,13 +145,13 @@ extension AppView {
                 .do(onNext: { _ in print("_rxBehaviorRelay_c: b") })
                 .map { some -> Int in return some / 2 }
                 .do(onNext: { _ in print("_rxBehaviorRelay_c: c") })
-                .subscribe(onNext: { self._lblTitle1.text = "\($0)" })
+                .subscribe(onNext: { self._searchBar.text = "\($0)" })
                 .disposed(by: disposeBag)
             
             let some = AppFactory.UIKit.button(baseView: self.view, title: "[Publish|Behavior]", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .top, from: _btnDebounce)
             some.rjsALayouts.setMargin(_margin, on: .left)
-            some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (2 * _margin))
+            some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
             some.rjsALayouts.setHeight(_btnHeight)
             some.onTouchUpInside {
                 let someInt = (Date.utcNow().seconds)
@@ -201,19 +175,57 @@ extension AppView {
             }
             return some
         }()
-        /*
-        private lazy var _btnRxBehaviorRelay: UIButton = {
-            let some = AppFactory.UIKit.button(baseView: self.view, title: "Free", style: .regular)
-            some.rjsALayouts.setMargin(_margin, on: .top, from: _btnDebounce)
+  
+        private lazy var _btnZip: UIButton = {
+            let some = AppFactory.UIKit.button(baseView: self.view, title: "Zip", style: .regular)
+            some.rjsALayouts.setMargin(_margin, on: .top, from: _btnRxRelays)
             some.rjsALayouts.setMargin(_margin, on: .right)
-            some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (2 * _margin))
+            some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
             some.rjsALayouts.setHeight(_btnHeight)
+            
+            var _rxPublishRelayAssyncValue1 = PublishRelay<String?>()
+            var _rxPublishRelayAssyncValue2 = PublishRelay<String?>()
+            var _rxPublishRelayAssyncValue3 = PublishRelay<String?>()
+
+            let replay = 0
+            let _rxSignal1 = _rxPublishRelayAssyncValue1.share(replay: replay, scope: .forever).asSignal(onErrorJustReturn: nil)
+            let _rxSignal2 = _rxPublishRelayAssyncValue2.share(replay: replay, scope: .forever).asSignal(onErrorJustReturn: nil)
+            let _rxSignal3 = _rxPublishRelayAssyncValue3.share(replay: replay, scope: .forever).asSignal(onErrorJustReturn: nil)
+
+            // Waiting for both responses
+            Signal<String?>.zip(_rxSignal1, _rxSignal2, _rxSignal3) { [weak self] in
+                guard let strongSelf = self else { return nil }
+                strongSelf.aux_log(message: "Received signal [\($0 ?? "nil")][\($1 ?? "nil")][\($2 ?? "nil")]", showAlert: true, appendToTable: true)
+                return "\($0 ?? "nil")-\($1 ?? "nil")-\($2 ?? "nil")"
+                }
+                .filter { $0 != nil } // Assert that output of previous is not nil
+                .map { $0! }          // unwrapp
+                .emit(onNext: {
+                    self.aux_log(message: "[zip][emit] \($0)", showAlert: true, appendToTable: true)
+                })
+                .disposed(by: disposeBag)
+            
             some.onTouchUpInside {
- 
+                _rxPublishRelayAssyncValue1.accept("1")
+                _rxPublishRelayAssyncValue2.accept("2")
+                _rxPublishRelayAssyncValue3.accept("3")
+                
+                _rxPublishRelayAssyncValue1.accept("1.2")
+                _rxPublishRelayAssyncValue2.accept("2.2")
+                _rxPublishRelayAssyncValue3.accept("3.2")
+                
+                _rxPublishRelayAssyncValue3.accept("3.3")
+                _rxPublishRelayAssyncValue3.accept("3.4")
+                _rxPublishRelayAssyncValue3.accept("3.5")
+                
+                _rxPublishRelayAssyncValue3.accept("1.3")
+                _rxPublishRelayAssyncValue3.accept("2.3")
+                _rxPublishRelayAssyncValue3.accept("3.6")
+                
             }
             return some
         }()
-        */
+     
         private lazy var _btnAsyncRequest: UIButton = {
             func doRequest() {
                 rxObservableAssyncRequest
@@ -232,7 +244,7 @@ extension AppView {
             let some = AppFactory.UIKit.button(baseView: self.view, title: "Observable<T>", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .top, from: _btnDebounce)
             some.rjsALayouts.setMargin(_margin, on: .right)
-            some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (2 * _margin))
+            some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
             some.rjsALayouts.setHeight(_btnHeight)
             some.onTouchUpInside { doRequest() }
             return some
@@ -241,16 +253,17 @@ extension AppView {
         private var _rxBehaviorRelay_tableDataSource = BehaviorRelay<[String]>(value: [])
         private lazy var _tableView: UITableView = {
             let some = AppFactory.UIKit.tableView(baseView: self.view)
-            some.rjsALayouts.setMargin(_margin, on: .top, from: _btnAsyncRequest)
+            some.rjsALayouts.setMargin(_margin, on: .top, from: _btnZip)
             some.rjsALayouts.setMargin(_margin, on: .right)
             some.rjsALayouts.setMargin(_margin, on: .left)
             some.rjsALayouts.setMargin(_margin, on: .bottom)
             some.register(Sample_TableViewCell.self, forCellReuseIdentifier: Sample_TableViewCell.reuseIdentifier)
+            some.rx.setDelegate(self).disposed(by: disposeBag) // To manage heightForRowAt
             some.rx
                 .modelSelected(String.self) // The type off the object we are binding on the tableview
                 .throttle(.milliseconds(0), scheduler: MainScheduler.instance)
                 .debounce(.milliseconds(0), scheduler: MainScheduler.instance)
-                .subscribe(onNext:  { [weak self]  item in
+                .subscribe(onNext: { [weak self]  item in
                     self?.aux_log(message: "[_tableView][modelSelected] : [\(item)]", showAlert: true, appendToTable: false)
                 })
                 .disposed(by: disposeBag)
@@ -313,6 +326,9 @@ extension AppView {
             ///////////////////////////////////////////////////////////////////////
             ///////////////////////////////////////////////////////////////////////
             ///////////////////////////////////////////////////////////////////////
+            
+            // Observable as function and as var.
+            // If we need to pass parameter, use funtion
             
             func rxObservableSimpleWithParans(some: String) -> Observable<String> {
                 return Observable.create { observer -> Disposable in
@@ -393,20 +409,28 @@ extension AppView.RxTesting {
         _btnThrottle.lazyLoad()
         _btnDebounce.lazyLoad()
         _btnRxRelays.lazyLoad()
+        _btnAsyncRequest.lazyLoad()
+        _btnZip.lazyLoad()
         _tableView.lazyLoad()
-        _lblTitle1.lazyLoad()
-        _lblTitle2.lazyLoad()
     }
     
     func aux_log(message:String, showAlert:Bool, appendToTable:Bool) {
         _searchBar.resignFirstResponder()
         print("\(message)")
         if(appendToTable) {
-            let time = "\(Date.utcNow().hours):\(Date.utcNow().minutes):\(Date.utcNow().seconds)"
+            let time = "" //"\(Date.utcNow().hours):\(Date.utcNow().minutes):\(Date.utcNow().seconds)"
             _rxBehaviorRelay_tableDataSource.accept(["\(time) : \(message)"] + _rxBehaviorRelay_tableDataSource.value)
         }
         if(showAlert) {
             displayMessage(message, type: .sucess)
         }
+    }
+}
+
+//MARK: - UITableViewDelegate
+
+extension AppView.RxTesting: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return V.Sample_TableViewCell.cellSize() * 0.5
     }
 }

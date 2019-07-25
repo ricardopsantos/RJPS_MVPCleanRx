@@ -7,22 +7,22 @@
 
 import UIKit
 import RJPSLib
-import RxCocoa
 import RxSwift
+import RxCocoa
 
 /*
  * Needs to added AS.Sample_AssemblyContainer() to DependencyInjectionManager.swift
  */
 
 extension AppView {
-    class SampleView_View: GenericView {
+    class SampleRxView_View: GenericView {
         
         deinit {
             AppLogs.DLog("\(self.className) was killed")
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
-        var presenter : SampleView_PresenterProtocol!
+        var presenter : SampleRxView_PresenterProtocol!
         
         private let _margin : CGFloat = 25
         
@@ -54,6 +54,21 @@ extension AppView {
             return some
         }()
         
+        private lazy var _lblMessage: UILabel = {
+            let some = AppFactory.UIKit.label(baseView: self.view, style: .value)
+            some.font = AppFonts.regular
+            some.backgroundColor      = AppColors.lblBackgroundColor
+            some.layer.masksToBounds  = false
+            some.layer.cornerRadius   = 8
+            some.textAlignment        = .center
+            some.rjsALayouts.setMargin(_margin, on: .left)
+            some.rjsALayouts.setMargin(_margin, on: .right)
+            some.rjsALayouts.setMargin(_margin, on: .top, from: _btnLogin)
+            some.rjsALayouts.setHeight(_margin*2)
+           // presenter.rxDriver_lblMessage.drive(some.rx.text).disposed(by: disposeBag)
+            return some
+        }()
+        
         private lazy var _btnLogin: UIButton = {
             let some = AppFactory.UIKit.button(baseView: self.view, title: "Login", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .left)
@@ -66,26 +81,48 @@ extension AppView {
                 .subscribe({ [weak self] _ in
                     some.bumpAndPerformBlock {
                         guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
-                        let user = strongSelf._txtUser.text
-                        let pass = strongSelf._txtPass.text
-                        strongSelf.presenter.userDidTryToLoginWith(user: user!, password: pass!)
+                        strongSelf.presenter.userDidTryToLoginWith(user: strongSelf._txtUser.text!, password: strongSelf._txtPass.text!)
                     }
                 })
                 .disposed(by: disposeBag)
             return some
         }()
         
-        private lazy var _lblMessage: UILabel = {
-            let some = AppFactory.UIKit.label(baseView: self.view, style: .value)
-            some.font = AppFonts.regular
-            some.backgroundColor      = AppColors.lblBackgroundColor
-            some.layer.masksToBounds  = false
-            some.layer.cornerRadius   = 8
-            some.textAlignment        = .center
+        private lazy var _btnPush: UIButton = {
+            let some = AppFactory.UIKit.button(baseView: self.view, title: "Push", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .left)
-            some.rjsALayouts.setMargin(_margin, on: .right)
-            some.rjsALayouts.setMargin(_margin, on: .top, from: _btnLogin)
+            some.rjsALayouts.setWidth((AppGlobal.screenWidth / 2) - (1.5 * _margin))
+            some.rjsALayouts.setMargin(_margin*2, on: .top, from: _lblMessage)
             some.rjsALayouts.setHeight(_margin*2)
+            some.rx.tap
+                .throttle(.milliseconds(AppConstants.Rx.tappingDefaultThrottle), scheduler: MainScheduler.instance)
+                .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
+                .subscribe({ [weak self] _ in
+                    some.bumpAndPerformBlock {
+                        guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+                       // strongSelf.presenter.rxPublishRelay_showDetails.ac
+                    }
+                })
+                .disposed(by: disposeBag)
+            return some
+        }()
+        
+        private lazy var _btnDismiss: UIButton = {
+            let some = AppFactory.UIKit.button(baseView: self.view, title: "Dismiss", style: .regular)
+            some.rjsALayouts.setMargin(_margin, on: .right)
+            some.rjsALayouts.setWidth((AppGlobal.screenWidth / 2) - (1.5 * _margin))
+            some.rjsALayouts.setMargin(_margin*2, on: .top, from: _lblMessage)
+            some.rjsALayouts.setHeight(_margin*2)
+            some.rx.tap
+                .throttle(.milliseconds(AppConstants.Rx.tappingDefaultThrottle), scheduler: MainScheduler.instance)
+                .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
+                .subscribe({ [weak self] _ in
+                    some.bumpAndPerformBlock {
+                        guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+                        strongSelf.presenter.router.rxPublishRelay_dismissView.accept(())
+                    }
+                })
+                .disposed(by: disposeBag)
             return some
         }()
         
@@ -117,8 +154,11 @@ extension AppView {
             _txtUser.lazyLoad()
             _txtPass.lazyLoad()
             _btnLogin.lazyLoad()
+            _lblMessage.lazyLoad()
+            _btnPush.lazyLoad()
+            _btnDismiss.lazyLoad()
             _txtUser.text = "admin@admin.com"
-            _txtPass.text = "admin"            
+            _txtPass.text = "admin"
         }
     }
 }
@@ -126,9 +166,12 @@ extension AppView {
 
 //MARK: - View Protocol
 
-extension V.SampleView_View : SampleView_ViewProtocol {
+extension V.SampleRxView_View : SampleRxView_ViewProtocol {
     func updateViewWith(message:String) {
         _lblMessage.textAnimated = message
     }
 }
+
+
+
 

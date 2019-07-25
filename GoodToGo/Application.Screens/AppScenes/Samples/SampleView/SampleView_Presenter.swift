@@ -6,8 +6,7 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
+import RJPSLib
 
 /*
  * Needs to added AS.Sample_AssemblyContainer() to DependencyInjectionManager.swift

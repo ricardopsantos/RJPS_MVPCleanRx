@@ -16,22 +16,26 @@ extension UseCases {
      */
     class Sample_UseCase : Sample_UseCaseProtocol {
         
-        func operation1(canUseCache: Bool, completionHandler: @escaping Sample_UseCaseCompletionHandler) {
+        var generic_LocalStorageRepository : Generic_LocalStorageRepositoryProtocol!
 
+        func operation1(canUseCache: Bool, completionHandler: @escaping Sample_UseCaseCompletionHandler) {
             guard RJS_Utils.existsInternetConnection() else {
                 completionHandler(Result.failure(AppFactory.Errors.with(code: .noInternet)))
                 return
             }
-            
             DispatchQueue.executeWithDelay (delay:1) {
                 completionHandler(Result.success(["\(Date.utcNow())"]))
             }
-
         }
         
         func operation2(param: String, completionHandler: @escaping Sample_UseCaseCompletionHandler) {
-            AppLogs.DLog(code: .notImplemented)
-            completionHandler(Result.failure(AppFactory.Errors.with(code: .notImplemented)))
+            guard RJS_Utils.existsInternetConnection() else {
+                completionHandler(Result.failure(AppFactory.Errors.with(code: .noInternet)))
+                return
+            }
+            DispatchQueue.executeWithDelay (delay:3) {
+                completionHandler(Result.success(["\(Date.utcNow())"]))
+            }
         }
         
     }

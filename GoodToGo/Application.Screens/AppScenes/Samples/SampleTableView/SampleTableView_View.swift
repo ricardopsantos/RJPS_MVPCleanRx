@@ -31,7 +31,8 @@ extension AppView {
             some.rx
                 .modelSelected(E.Employee.self)
                 .throttle(.milliseconds(AppConstants.Rx.tappingDefaultThrottle), scheduler: MainScheduler.instance)
-                .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)                  .subscribe(onNext:  { [weak self]  item in
+                .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
+                .subscribe(onNext:  { [weak self]  item in
                     guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
                     AppLogs.DLog("Tapped [\(item)]")
                     strongSelf.presenter.tableView.didSelect(object:some)

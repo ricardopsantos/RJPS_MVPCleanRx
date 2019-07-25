@@ -29,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appPrepare(application: application)
         
         self.window?.rootViewController = V.TabBarController()
- //       self.window?.rootViewController = container.resolve(V.BlissRoot_View.self)
 
         return true
     }

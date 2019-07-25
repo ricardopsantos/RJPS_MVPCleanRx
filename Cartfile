@@ -60,6 +60,7 @@
     #github "ricardopsantos/RJPSLib" "v1.0.1"
 
 ## Swift 5.0.1
+    #github "ricardopsantos/RJPSLib" "V1.0.4"
     github "ricardopsantos/RJPSLib" "master"
 
 ####################################################################

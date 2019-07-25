@@ -33,22 +33,19 @@ final class RootAssemblyContainer: Assembly {
         
         container.autoregister(AppProtocols.networkClient, initializer: RJSLib.NetworkClient.init).inObjectScope(.container)
         container.autoregister(AppProtocols.bliss_NetWorkRepository, initializer: RN.Bliss.NetWorkRepository.init).inObjectScope(.container)
-
         container.autoregister(AppProtocols.generic_LocalStorageRepository, initializer: RL.Generic_LocalStorageRepository.init).inObjectScope(.container)
-
-        let useCase1Protocol = AppProtocols.sample_UseCase
-        let useCase1ProtocolImplementation = UC.Sample_UseCase.init
-        container.autoregister(useCase1Protocol, initializer: useCase1ProtocolImplementation).inObjectScope(.container)
         
-        let useCase2Protocol = AppProtocols.sampleB_UseCase
-        let useCase2ProtocolImplementation = UC.SampleB_UseCase.init
-        container.autoregister(useCase2Protocol, initializer: useCase2ProtocolImplementation).inObjectScope(.container)
-        
+        container.autoregister(AppProtocols.sampleB_UseCase, initializer: UC.SampleB_UseCase.init).inObjectScope(.container)
         container.autoregister(AppProtocols.gitUser_UseCase, initializer: UC.GitUser_UseCase.init).inObjectScope(.container)
-
         container.autoregister(AppProtocols.blissQuestions_UseCase, initializer: UC.BlissQuestionsAPI_UseCase.init).inObjectScope(.container)
         container.autoregister(AppProtocols.blissGenericAppBussiness_UseCase, initializer: UC.BlissGenericAppBussiness_UseCase.init).inObjectScope(.container)
 
+        container.register(AppProtocols.sample_UseCase) { resolver in
+            let uc               = UC.Sample_UseCase()
+            uc.generic_LocalStorageRepository = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
+            return uc
+        }
+        
         container.register(AppProtocols.blissQuestions_UseCase) { resolver in
             let uc               = UC.BlissQuestionsAPI_UseCase()
             uc.repositoryNetwork = resolver.resolve(AppProtocols.bliss_NetWorkRepository)
