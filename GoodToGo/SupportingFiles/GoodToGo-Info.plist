@@ -25,7 +25,7 @@
 			<string>GTG.GoodToGo.mvp</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>blissrecruitment</string>
+				<string>myappdeeplink</string>
 			</array>
 		</dict>
 	</array>

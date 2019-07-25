@@ -189,7 +189,7 @@ extension P.BlissDetails_Presenter : GenericPresenter_Protocol {
 extension P.BlissDetails_Presenter {
     
     private var linkToShare : String {
-        return "blissrecruitment://questions?question_id=\(viewModel!.question!.id)"
+        return "myappdeeplink://questions?question_id=\(viewModel!.question!.id)"
     }
     
     private func viewModelChanged() {
