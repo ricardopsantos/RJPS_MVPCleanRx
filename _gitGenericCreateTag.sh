@@ -1,7 +1,7 @@
 #!/bin/bash
 
 clear
-
+   
 function willRun(){
     printf '# '
     read -p "$*"
