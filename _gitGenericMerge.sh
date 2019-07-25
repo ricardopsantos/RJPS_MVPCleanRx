@@ -13,6 +13,7 @@ printf "\n# Automatic merge started at %s\n\n" "$now #"
       
 FIRST_ARGUMENT="$1"
 SECOND_ARGUMENT="$2"
+THIRD_ARGUMENT="$3"
 
 var_version="Version_Unknow"
 var_branch_A=""
@@ -30,6 +31,13 @@ then
 	var_branch_A_1="INVALID_BRANCH_A_1"
 else
     var_branch_A_1=$SECOND_ARGUMENT
+fi
+
+if [ -z "$THIRD_ARGUMENT" ]
+then
+    var_version="INVALID_VERSION"
+else
+    var_version=$THIRD_ARGUMENT
 fi
 
 printf "# Version  : %s\n" $var_version

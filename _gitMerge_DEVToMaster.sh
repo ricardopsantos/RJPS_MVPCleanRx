@@ -4,6 +4,7 @@ clear
 
 var_branch_Source="DEV"
 var_branch_Desteny="master"
+var_version="1.0.1"
 
 echo ""
 echo "Automatic merge will start..."
@@ -18,7 +19,7 @@ read -p "$*"
 
 ## Merge
 
-./_gitGenericMerge.sh $var_branch_Source $var_branch_Desteny
+./_gitGenericMerge.sh $var_branch_Source $var_branch_Desteny $var_version
 
 
 
