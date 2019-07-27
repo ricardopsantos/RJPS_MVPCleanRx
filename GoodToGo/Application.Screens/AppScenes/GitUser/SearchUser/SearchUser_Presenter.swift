@@ -163,7 +163,7 @@ extension P.SearchUser_Presenter {
     
     private func getUserInfo(for username: String) {
         useCase_1.getInfoOfUserWith(userName: username, canUseCache: true) { [weak self] result in
-            guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+            guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
             switch result {
             case .success(let some): strongSelf._userInfo.accept(some)
             case .failure(_)       : strongSelf._userInfo.accept(nil)
@@ -173,7 +173,7 @@ extension P.SearchUser_Presenter {
     
     private func getUserFriends(for username: String) {
         useCase_1.getFriendsOfUserWith(userName: username, canUseCache: true, completionHandler: { [weak self] result in
-            guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+            guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
             switch result {
             case .success(let some): strongSelf._userFriends.accept(some)
             case .failure(_)       : strongSelf._userFriends.accept(nil)

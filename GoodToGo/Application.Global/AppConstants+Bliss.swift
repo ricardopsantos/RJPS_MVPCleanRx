@@ -17,10 +17,11 @@ extension AppConstants {
 
         struct URLs {
             static var blissAPIBaseUrl : String {
+                let defaultValue = "https://private-anon-f659e751cc-blissrecruitmentapi.apiary-mock.com"
                 switch AppEnvironments.current {
-                case .dev  : return "https://private-anon-f659e751cc-blissrecruitmentapi.apiary-mock.com"
-                case .prod : return "https://private-anon-f659e751cc-blissrecruitmentapi.apiary-mock.com"
-                case .qa   : return "https://private-anon-f659e751cc-blissrecruitmentapi.apiary-mock.com"
+                case .dev  : return defaultValue
+                case .prod : return defaultValue
+                case .qa   : return defaultValue
                 }
             }
         }

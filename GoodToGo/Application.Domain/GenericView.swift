@@ -60,7 +60,7 @@ class GenericView: UIViewController {
         let tapGesture = UITapGestureRecognizer()
         some.addGestureRecognizer(tapGesture)
         tapGesture.rx.event.bind(onNext: { [weak self]  recognizer in
-            guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+            guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
             strongSelf.setTopMessageVisibityTo(state: false, message: "", type: .sucess)
         }).disposed(by: disposeBag)
         return some
@@ -98,7 +98,7 @@ class GenericView: UIViewController {
     
     func setNoConnectionViewVisibity(to: Bool, withMessage: String = AppMessages.noInternet) {
         RJS_Utils.executeInMainTread { [weak self] in
-            guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+            guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
             let value = !to
             let duration = 0.5
             strongSelf._lblReachability.text = withMessage
@@ -139,7 +139,7 @@ extension GenericView {
             _lblMessageTimmer = nil
         }
         RJS_Utils.executeInMainTread { [weak self] in
-            guard let strongSelf1 = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+            guard let strongSelf1 = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
             let value = !state
             let duration = 0.5
             if(state) {

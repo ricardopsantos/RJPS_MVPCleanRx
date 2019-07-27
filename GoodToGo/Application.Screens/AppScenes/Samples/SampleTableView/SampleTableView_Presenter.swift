@@ -143,11 +143,11 @@ extension P.SampleTableView_Presenter {
         rxObservable_GetEmployees()
             .subscribe(
                 onNext: { [weak self] employeeList in
-                    guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+                    guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
                     strongSelf.viewModel?.employeesList = employeeList
                 },
                 onError: { [weak self] error in
-                    guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+                    guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
                     strongSelf.genericView?.displayMessage(error.localizedDescription, type: .error)
                 }
             )
@@ -155,7 +155,7 @@ extension P.SampleTableView_Presenter {
         
         reachabilityService.reachability.subscribe(
             onNext: { [weak self] some in
-                guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+                guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
                 strongSelf.view.setNetworkViewVisibilityTo(some.reachable)
             }
             ).disposed(by: disposeBag)

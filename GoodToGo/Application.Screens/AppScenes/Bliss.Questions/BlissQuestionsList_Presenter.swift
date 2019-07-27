@@ -123,7 +123,7 @@ extension P.BlissQuestionsList_Presenter : BlissQuestionsList_PresenterProtocol 
                 })
             }
             else {
-                AppLogs.DLogWarning(AppConstants.Dev.referenceLost)
+                AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost)
             }
             return Disposables.create()
             }.retry(3)
@@ -185,7 +185,7 @@ extension P.BlissQuestionsList_Presenter {
             .throttle(.milliseconds(AppConstants.Rx.servicesDefaultThrottle), scheduler: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] questionsList in
-                    guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+                    guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
                     if(strongSelf._lastOffSet == 0) {
                         strongSelf.viewModel?.questionsList = questionsList
                     }
@@ -195,7 +195,7 @@ extension P.BlissQuestionsList_Presenter {
                     strongSelf.genericView?.setActivityState(false)
                 },
                 onError: { [weak self] error in
-                    guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+                    guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
                     strongSelf.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
                     strongSelf.genericView?.setActivityState(false)
                 }
@@ -235,7 +235,7 @@ extension P.BlissQuestionsList_Presenter {
         
         reachabilityService.reachability.subscribe(
             onNext: { [weak self] some in
-                guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+                guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
                 strongSelf.genericView?.setNoConnectionViewVisibity(to: !some.reachable)
             }
             ).disposed(by: disposeBag)

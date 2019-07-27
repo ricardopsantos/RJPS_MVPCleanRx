@@ -77,4 +77,3 @@ doGenerateIPA
 eval "rm "$var_output"/"$var_exportFileName".ipa.zip"
 eval "rm "$var_output"/"$var_exportFileName".xcarchive.zip"
 
-eval periphery scan --project $var_xcodeproj --schemes "CityPoints" --targets $var_target --no-retain-public

@@ -79,11 +79,17 @@ extension AppView {
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
                 .subscribe({ [weak self] _ in
                     some.bumpAndPerformBlock {
-                        guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+                        guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
                         strongSelf.presenter.userDidTryToLoginWith(user: strongSelf._txtUser.text!, password: strongSelf._txtPass.text!)
                     }
                 })
                 .disposed(by: disposeBag)
+            
+            let isPasswordValid = _txtPass.rx.text.orEmpty.map { $0.count >= 8 }.distinctUntilChanged()
+            let isEmailVaild    = _txtUser.rx.text.orEmpty.map( { $0.count >= 5 && $0.contains("@") }).distinctUntilChanged()
+            let isButtonEnabled = Observable.combineLatest(isPasswordValid, isEmailVaild) { $0 && $1 }
+            isButtonEnabled.bind(to: some.rx.isEnabled).disposed(by: disposeBag)
+            isButtonEnabled.subscribe(onNext:{ some.alpha = $0 ? 1 : 0.5 }).disposed(by: disposeBag)
             return some
         }()
         
@@ -98,10 +104,10 @@ extension AppView {
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
                 .subscribe({ [weak self] _ in
                     some.bumpAndPerformBlock {
-                        guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+                        guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
                         let someString = "[\(String(describing: strongSelf._txtUser.text))][\(String(describing: strongSelf._txtPass.text))]"
                         let vm = VM.SampleRxView_ViewModel(someString:someString )
-                        strongSelf.presenter.router.rxPublishRelay_showDetails.accept((vm))
+                        strongSelf.presenter.router.presentControllerWith(vm: vm)
                     }
                 })
                 .disposed(by: disposeBag)
@@ -119,8 +125,8 @@ extension AppView {
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
                 .subscribe({ [weak self] _ in
                     some.bumpAndPerformBlock {
-                        guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
-                        strongSelf.presenter.router.rxPublishRelay_dismissView.accept(())
+                        guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                        strongSelf.presenter.router.dismissView()
                     }
                 })
                 .disposed(by: disposeBag)
@@ -137,9 +143,6 @@ extension AppView {
         override func viewDidLoad() {
             super.viewDidLoad()
             presenter.generic?.viewDidLoad()
-            
-
-            
         }
         
         override func viewWillAppear(_ animated: Bool) {

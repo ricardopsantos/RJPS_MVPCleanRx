@@ -16,12 +16,12 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then
 	echo -n "# Tag name? "
 	read tagName
     tag="git tag -a "$tagName" -m '"$tagName"'"
+
     willRun ""$tag""
-#echo `($tag)`
-eval $tag
+    eval $tag
+
     willRun "git push --tags"
-#echo `(git push --tags)`
-eval git push --tags
+    eval git push --tags
 else
     echo 'Git tag ignored'
 fi

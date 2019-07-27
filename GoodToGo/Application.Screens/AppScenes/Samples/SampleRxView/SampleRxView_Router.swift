@@ -11,13 +11,13 @@ import RxCocoa
 import RxSwift
 
 protocol SampleRxView_RouterProtocol: class {
-    var rxPublishRelay_dismissView : PublishRelay<Void> { get } // PublishRelay model Events
-    var rxPublishRelay_showDetails : PublishRelay<VM.SampleRxView_ViewModel?> { get } // PublishRelay model Events
+    func dismissView()
+    func presentControllerWith(vm:VM.SampleRxView_ViewModel?)
 }
 
 extension Router {
     class SampleRxView_Router: GenericRouter, GenericRouter_Protocol, SampleRxView_RouterProtocol {
-
+        
         // PublishRelay model Events
         var rxPublishRelay_showDetails = PublishRelay<VM.SampleRxView_ViewModel?>()
 
@@ -31,7 +31,7 @@ extension Router {
                     // Prepare controller
                     guard let controller = AppDelegate.shared.container.resolve(V.SampleRxView_View.self) else { return nil }
                     if(data != nil) {
-                        controller.presenter.viewModel!.accept(data)
+                        controller.presenter.viewModel = data
                     }
                     let navigationController = UINavigationController(rootViewController: controller)
                     navigationController.isNavigationBarHidden = true
@@ -50,6 +50,16 @@ extension Router {
                 })
                 .disposed(by: disposeBag)
         }
+        
+        func dismissView() {
+            rxPublishRelay_dismissView.accept(())
+        }
+        
+        func presentControllerWith(vm: VM.SampleRxView_ViewModel?) {
+            rxPublishRelay_showDetails.accept(vm)
+        }
     }
 }
+
+
 

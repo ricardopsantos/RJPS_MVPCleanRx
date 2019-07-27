@@ -60,7 +60,7 @@ extension AppView {
             some.rjsALayouts.setHeight(_margin*2)
             some.onTouchUpInside { [weak self] in
                 some.bumpAndPerformBlock {
-                    guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+                    guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
                     let user = strongSelf._txtUser.text
                     let pass = strongSelf._txtPass.text
                     strongSelf.presenter.userDidTryToLoginWith(user: user!, password: pass!)
@@ -91,7 +91,7 @@ extension AppView {
             some.rjsALayouts.setHeight(_margin*2)
             some.onTouchUpInside { [weak self] in
                 some.bumpAndPerformBlock {
-                    guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+                    guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
                     strongSelf.presenter.router.presentControllerWith(vm:nil)
                 }
             }
@@ -106,7 +106,7 @@ extension AppView {
             some.rjsALayouts.setHeight(_margin*2)
             some.onTouchUpInside { [weak self] in
                 some.bumpAndPerformBlock {
-                    guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+                    guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
                     strongSelf.presenter.router.dismissView()
                 }
             }

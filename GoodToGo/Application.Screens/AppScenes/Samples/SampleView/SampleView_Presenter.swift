@@ -55,7 +55,7 @@ extension P.SampleView_Presenter : SampleView_PresenterProtocol {
         AppLogs.DLog("\(user) | \(password)")
         genericView?.setActivityState(true)
         sample_UseCase.operation1(canUseCache: false) { [weak self] (result) in
-            guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+            guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
             strongSelf.genericView?.setActivityState(false)
             switch result {
             case .success(let some): strongSelf.viewModel = VM.SampleView_ViewModel(someString: "\(some)")

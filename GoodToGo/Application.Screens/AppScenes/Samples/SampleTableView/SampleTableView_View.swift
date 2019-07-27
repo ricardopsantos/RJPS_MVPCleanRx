@@ -33,7 +33,7 @@ extension AppView {
                 .throttle(.milliseconds(AppConstants.Rx.tappingDefaultThrottle), scheduler: MainScheduler.instance)
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
                 .subscribe(onNext:  { [weak self]  item in
-                    guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+                    guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
                     AppLogs.DLog("Tapped [\(item)]")
                     strongSelf.presenter.tableView.didSelect(object:some)
                     if let index = some.indexPathForSelectedRow {
@@ -44,7 +44,7 @@ extension AppView {
             some.rx
                 .itemAccessoryButtonTapped
                 .subscribe(onNext: { [weak self] indexPath in
-                    guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+                    guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
                     AppLogs.DLog("AccessoryButtonTapped Tapped [\(indexPath)]")
                     strongSelf.presenter.tableView.didSelectRowAt(indexPath: indexPath)
                     if let index = some.indexPathForSelectedRow {
@@ -53,7 +53,7 @@ extension AppView {
                 })
                 .disposed(by: disposeBag)
             _rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
-                guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+                guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
                 var indexPath = NSIndexPath(row: row, section: 0)
                 strongSelf.presenter.tableView.configure(cell: cell , indexPath: indexPath as IndexPath)
                 }.disposed(by: disposeBag)

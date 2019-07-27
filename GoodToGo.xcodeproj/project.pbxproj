@@ -100,6 +100,7 @@
 		9FACC187223BF28E00576498 /* Debug.Prod.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 9FACC183223BF28E00576498 /* Debug.Prod.xcconfig */; };
 		9FACC18B223BFB0F00576498 /* AppDelegate+Prepare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FACC18A223BFB0F00576498 /* AppDelegate+Prepare.swift */; };
 		9FB35E0A22EC611000326092 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB35E0722EC611000326092 /* Localizable.strings */; };
+		9FB35E0C22EC8B1B00326092 /* _installPackages.sh in Resources */ = {isa = PBXBuildFile; fileRef = 9FB35E0B22EC8B1B00326092 /* _installPackages.sh */; };
 		9FB8DFCA2233E67100095420 /* Encapsulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* Encapsulate.swift */; };
 		9FB9F97322E4B8CB00D64FD2 /* BlissQuestionsAPI_UseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9F97022E4B8CB00D64FD2 /* BlissQuestionsAPI_UseCaseProtocol.swift */; };
 		9FB9F97422E4B8CB00D64FD2 /* BlissGenericAppBussiness_UseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9F97122E4B8CB00D64FD2 /* BlissGenericAppBussiness_UseCaseProtocol.swift */; };
@@ -273,6 +274,8 @@
 		9FB1947C20F8870B0098CE39 /* GitHubUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubUser.swift; sourceTree = "<group>"; };
 		9FB35E0822EC611000326092 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9FB35E0922EC611000326092 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9FB35E0B22EC8B1B00326092 /* _installPackages.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = _installPackages.sh; sourceTree = SOURCE_ROOT; };
+		9FB35E0D22EC8B2A00326092 /* _codeReview.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = _codeReview.sh; sourceTree = SOURCE_ROOT; };
 		9FB8DFC92233E67100095420 /* Encapsulate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encapsulate.swift; sourceTree = "<group>"; };
 		9FB9F97022E4B8CB00D64FD2 /* BlissQuestionsAPI_UseCaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlissQuestionsAPI_UseCaseProtocol.swift; sourceTree = "<group>"; };
 		9FB9F97122E4B8CB00D64FD2 /* BlissGenericAppBussiness_UseCaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlissGenericAppBussiness_UseCaseProtocol.swift; sourceTree = "<group>"; };
@@ -430,6 +433,8 @@
 				9F55525622E9B984009364D1 /* _iOSGenericCompile.sh */,
 				9F55525322E9A70F009364D1 /* _gitGenericCreateTag.sh */,
 				9F55525222E9A70F009364D1 /* _gitGenericMerge.sh */,
+				9FB35E0B22EC8B1B00326092 /* _installPackages.sh */,
+				9FB35E0D22EC8B2A00326092 /* _codeReview.sh */,
 				9F55525422E9A70F009364D1 /* _gitMerge_DEVToMaster.sh */,
 				9F7B2F4421B9451C001F3FFA /* DevNotes.txt */,
 				9FACC17A223BDD5B00576498 /* ToDo.swift */,
@@ -817,12 +822,11 @@
 				9FE1438F21AF2F520026BDFC /* Sources */,
 				9FE143EB21AF2F520026BDFC /* Frameworks */,
 				9FE143EC21AF2F520026BDFC /* Resources */,
-				9F47A7B22204CCE100EB6139 /* ShellScript */,
-				9F574F0E2235B473007DAA58 /* ShellScript */,
-				9F574F4B22365B69007DAA58 /* ShellScript */,
-				9F8D4A6C2237325600777976 /* ShellScript */,
 				9F69CB1922BE854B008D305D /* Embed Frameworks */,
 				9F5D1D0B22E5FE9600C0AF38 /* Embed App Extensions */,
+				9F8D4A6C2237325600777976 /* ShellScript */,
+				9F574F0E2235B473007DAA58 /* ShellScript */,
+				9F47A7B22204CCE100EB6139 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -876,6 +880,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FB9F97722E520DB00D64FD2 /* Debug.QA.xcconfig in Resources */,
+				9FB35E0C22EC8B1B00326092 /* _installPackages.sh in Resources */,
 				9F58FB4022BE5DE700042A8C /* Main.storyboard in Resources */,
 				9FACC184223BF28E00576498 /* Release.xcconfig in Resources */,
 				9FACC187223BF28E00576498 /* Debug.Prod.xcconfig in Resources */,
@@ -932,23 +937,6 @@
 			shellPath = /bin/sh;
 			shellScript = "# The carthage copy-frameworks command strips out these extra architectures. w00t!\n/usr/local/bin/carthage copy-frameworks\n";
 		};
-		9F574F4B22365B69007DAA58 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# https://stackoverflow.com/questions/24183812/swift-warning-equivalent\nif [ \"${CONFIGURATION}\" = \"Debug\" ]; then\nTAGS=\"TODO:|FIX:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}\" \\( -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"\nfi\n";
-		};
 		9F8D4A6C2237325600777976 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -964,7 +952,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    echo \"will lint? un comment!\"\n#swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if which swiftlint >/dev/null; then\n    echo \"will lint? un comment! next line\"\n#swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

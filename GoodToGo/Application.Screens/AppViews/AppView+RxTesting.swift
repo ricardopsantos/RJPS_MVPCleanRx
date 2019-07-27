@@ -180,50 +180,66 @@ extension AppView {
         }()
   
         private lazy var _btnZip: UIButton = {
-            let some = AppFactory.UIKit.button(baseView: self.view, title: "Zip", style: .regular)
+            let some = AppFactory.UIKit.button(baseView: self.view, title: "Zip|combineLatest", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .top, from: _btnRxRelays)
             some.rjsALayouts.setMargin(_margin, on: .right)
             some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
             some.rjsALayouts.setHeight(_btnHeight)
             
-            var _rxPublishRelayAssyncValue1 = PublishRelay<String?>()
-            var _rxPublishRelayAssyncValue2 = PublishRelay<String?>()
-            var _rxPublishRelayAssyncValue3 = PublishRelay<String?>()
+            var _rxPublishRelay1 = PublishRelay<String?>()
+            var _rxPublishRelay2 = PublishRelay<String?>()
+            var _rxPublishRelay3 = PublishRelay<String?>()
 
-            let replay = 0
-            let _rxSignal1 = _rxPublishRelayAssyncValue1.share(replay: replay, scope: .forever).asSignal(onErrorJustReturn: nil)
-            let _rxSignal2 = _rxPublishRelayAssyncValue2.share(replay: replay, scope: .forever).asSignal(onErrorJustReturn: nil)
-            let _rxSignal3 = _rxPublishRelayAssyncValue3.share(replay: replay, scope: .forever).asSignal(onErrorJustReturn: nil)
+            // http://adamborek.com/combinelatest-withlatestfrom-zip/
 
-            // Waiting for both responses
-            Signal<String?>.zip(_rxSignal1, _rxSignal2, _rxSignal3) { [weak self] in
-                guard let strongSelf = self else { return nil }
-                strongSelf.aux_log(message: "Received signal [\($0 ?? "nil")][\($1 ?? "nil")][\($2 ?? "nil")]", showAlert: true, appendToTable: true)
-                return "\($0 ?? "nil")-\($1 ?? "nil")-\($2 ?? "nil")"
-                }
-                .filter { $0 != nil } // Assert that output of previous is not nil
-                .map { $0! }          // unwrapp
-                .emit(onNext: {
-                    self.aux_log(message: "[zip][emit] \($0)", showAlert: true, appendToTable: true)
+            //let replay = 0
+            let _rxSignal1 = _rxPublishRelay1.share(replay: 0, scope: .forever).asSignal(onErrorJustReturn: nil)
+            let _rxSignal2 = _rxPublishRelay2.share(replay: 0, scope: .forever).asSignal(onErrorJustReturn: nil)
+            let _rxSignal3 = _rxPublishRelay3.share(replay: 0, scope: .forever).asSignal(onErrorJustReturn: nil)
+
+            // CombineLatest emits an item whenever any of the source Observables
+            // emits an item (so long as each of the source Observables has emitted at least one item)
+            
+            Observable.combineLatest(_rxPublishRelay1, _rxPublishRelay2, _rxPublishRelay3,
+                resultSelector: {
+                    return "\($0 ?? "nil")|\($1 ?? "nil")|\($2 ?? "nil")"
+            }).observeOn(MainScheduler.instance)
+                .subscribe(
+                    onNext: {
+                        self.aux_log(message: "[combineLatest][onNext] \($0)", showAlert: true, appendToTable: true)
                 })
                 .disposed(by: disposeBag)
             
+            Signal<String?>.zip(_rxSignal1, _rxSignal2, _rxSignal3) {
+                return "\($0 ?? "nil")|\($1 ?? "nil")|\($2 ?? "nil")"
+                }
+                .emit(onNext: {
+                    self.aux_log(message: "[zip][emit] \($0!)", showAlert: true, appendToTable: true)
+                })
+                .disposed(by: disposeBag)
+            
+            #warning("ver combinetLatest")
+            
             some.onTouchUpInside {
-                _rxPublishRelayAssyncValue1.accept("1")
-                _rxPublishRelayAssyncValue2.accept("2")
-                _rxPublishRelayAssyncValue3.accept("3")
+                // Waiting for both responses
+                // ZIP operator combine the emissions of multiple Observables together via a
+                // specified closure and emit single items for each combination based on the results of this closure.
+                //
+                _rxPublishRelay1.accept("1.1")
+                _rxPublishRelay2.accept("2.1")
+                _rxPublishRelay3.accept("3.1") // Zip fires
                 
-                _rxPublishRelayAssyncValue1.accept("1.2")
-                _rxPublishRelayAssyncValue2.accept("2.2")
-                _rxPublishRelayAssyncValue3.accept("3.2")
+                _rxPublishRelay1.accept("1.2")
+                _rxPublishRelay2.accept("2.2")
+                _rxPublishRelay3.accept("3.2")  // Zip fires
                 
-                _rxPublishRelayAssyncValue3.accept("3.3")
-                _rxPublishRelayAssyncValue3.accept("3.4")
-                _rxPublishRelayAssyncValue3.accept("3.5")
-                
-                _rxPublishRelayAssyncValue3.accept("1.3")
-                _rxPublishRelayAssyncValue3.accept("2.3")
-                _rxPublishRelayAssyncValue3.accept("3.6")
+                //_rxPublishRelay1.accept("1.3")
+                _rxPublishRelay2.accept("2.3")
+                _rxPublishRelay3.accept("3.3")
+
+                _rxPublishRelay1.accept("1.4")  // Zip fires
+                //_rxPublishRelay2.accept("2.4")
+                //_rxPublishRelay3.accept("3.4")
                 
             }
             return some
@@ -271,7 +287,7 @@ extension AppView {
                 })
                 .disposed(by: disposeBag)
             _rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
-                guard let _ = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+                guard let _ = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
                 cell.set(title:element)
                 }.disposed(by: disposeBag)
             return some
@@ -284,10 +300,7 @@ extension AppView {
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            
             sampleObservables()
-            
-   
         }
     }
 }

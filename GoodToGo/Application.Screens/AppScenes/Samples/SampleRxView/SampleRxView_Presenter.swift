@@ -21,7 +21,7 @@ import RxCocoa
 protocol SampleRxView_PresenterProtocol : class {
     var generic     : GenericPresenter_Protocol?   { get }     // Mandatory in ALL Presenters
     var genericView : GenericView?                 { get }     // Mandatory in ALL Presenters
-    var viewModel   : PublishRelay<VM.SampleRxView_ViewModel?>! { get set }
+    var viewModel   : VM.SampleRxView_ViewModel?   { get set }
     var router      : SampleRxView_RouterProtocol! { get }     // Mandatory in ALL Presenters
     
     func userDidTryToLoginWith(user:String, password:String)
@@ -40,7 +40,7 @@ extension Presenter {
         weak var generic      : GenericPresenter_Protocol?
         weak var genericView  : GenericView?
         weak var view   : SampleRxView_ViewProtocol!
-        var viewModel   : PublishRelay<VM.SampleRxView_ViewModel?>! = PublishRelay<VM.SampleRxView_ViewModel?>()
+        var viewModel   : VM.SampleRxView_ViewModel? { didSet { AppLogs.DLog(code: .vmChanged); viewModelChanged() } }
         var router      : SampleRxView_RouterProtocol!
 
         var sample_UseCase : Sample_UseCaseProtocol!
@@ -63,7 +63,7 @@ extension P.SampleRxView_Presenter : SampleRxView_PresenterProtocol {
             .debug("Subscription 3")
             .subscribe(
                 onNext: { [weak self] some in
-                    self?.viewModel!.accept(VM.SampleRxView_ViewModel(someString: some))
+                    self?.viewModel! = VM.SampleRxView_ViewModel(someString: some)
                 },
                 onError: { [weak self] error in
                     self?.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
@@ -84,16 +84,13 @@ extension P.SampleRxView_Presenter : SampleRxView_PresenterProtocol {
                 }
             }
             else {
-                AppLogs.DLogWarning(AppConstants.Dev.referenceLost)
+                AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost)
             }
             return Disposables.create()
             }.retry(3)
             .retryOnBecomesReachable("", reachabilityService: reachabilityService)
     }
     
-    private func doAssyncOperation1(_ param: String) {
-
-    }
 }
 
 
@@ -109,20 +106,19 @@ extension P.SampleRxView_Presenter : GenericPresenter_Protocol {
     func viewWillAppear() -> Void { }
 }
 
-extension P.SampleRxView_Presenter  {
+extension P.SampleRxView_Presenter {
+    
+    private func viewModelChanged() -> Void {
+        updateViewWith(vm: viewModel)
+    }
+    
+    private func updateViewWith(vm:VM.SampleRxView_ViewModel?) -> Void {
+        guard viewModel != nil else { AppLogs.DLog(code: .ignored); return }
+        view.updateViewWith(message: viewModel!.someString)
+    }
+    
     func setupPresenter() {
         
-        if(self.viewModel == nil) {
-            viewModel = PublishRelay<VM.SampleRxView_ViewModel?>()
-            viewModel!.accept(VM.SampleRxView_ViewModel(someString: ""))
-        }
-        
-        viewModel?.asSignal()
-            .emit(onNext: { vm in
-                if(vm != nil) {
-                    self.view!.updateViewWith(message: vm!.someString)
-                }
-            })
-            .disposed(by: disposeBag)
     }
 }
+

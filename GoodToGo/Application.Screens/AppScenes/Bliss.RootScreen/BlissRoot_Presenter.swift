@@ -57,7 +57,7 @@ extension P.BlissRoot_Presenter : BlissRoot_PresenterProtocol {
     
     func userDidReadBadServerHealthMessage() {
         DispatchQueue.executeWithDelay (delay:AppConstants.defaultAnimationsTime) { [weak self] in
-            guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+            guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
             strongSelf.checkServerStatus()
         }
     }
@@ -100,12 +100,12 @@ extension P.BlissRoot_Presenter {
         
         let delayToHaveTimeToEnjoyMainScreen : Double = 2
         DispatchQueue.executeWithDelay(delay:delayToHaveTimeToEnjoyMainScreen) { [weak self] in
-            guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+            guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
 
             let handleFail = { strongSelf.view.viewNeedsToDisplayBadServerMessage() }
             
             let handleSucess = { [weak self] in
-                guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
+                guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
                 strongSelf.router.goToList(asNavigationController: true)
             }
             strongSelf.genericView?.setActivityState(true)
