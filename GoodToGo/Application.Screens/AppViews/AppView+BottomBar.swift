@@ -25,7 +25,7 @@ extension AppView {
         private lazy var _btn1: UIButton = {
             let some = AppFactory.UIKit.button(baseView: self.view, style: .alternative)
             some.setTitleForAllStates("1")
-            some.rx.tap.bind {
+            some.rx.tap.debug("_btn1 tap").bind {
                 some.bumpAndPerformBlock {
                     self.delegate?.btnTappedWith(identifier: "1")
                 }
@@ -36,7 +36,7 @@ extension AppView {
         private lazy var _btn2: UIButton = {
             let some = AppFactory.UIKit.button(baseView: self.view, style: .alternative)
             some.setTitleForAllStates("2")
-            some.rx.tap.bind {
+            some.rx.tap.debug("_btn2 tap").bind {
                 some.bumpAndPerformBlock {
                     self.delegate?.btnTappedWith(identifier: "2")
                 }
@@ -47,7 +47,7 @@ extension AppView {
         private lazy var _btn3: UIButton = {
             let some = AppFactory.UIKit.button(baseView: self.view, style: .alternative)
             some.setTitleForAllStates("3")
-            some.rx.tap.bind {
+            some.rx.tap.debug("_btn3 tap").bind {
                 some.bumpAndPerformBlock {
                     self.delegate?.btnTappedWith(identifier: "3")
                 }
@@ -58,7 +58,7 @@ extension AppView {
         private lazy var _btn4: UIButton = {
             let some = AppFactory.UIKit.button(baseView: self.view, style: .alternative)
             some.setTitleForAllStates("4")
-            some.rx.tap.bind {
+            some.rx.tap.debug("_btn4 tap").bind {
                 some.bumpAndPerformBlock {
                     self.delegate?.btnTappedWith(identifier: "4")
                 }
@@ -69,7 +69,7 @@ extension AppView {
         private lazy var _btn5: UIButton = {
             let some = AppFactory.UIKit.button(baseView: self.view, style: .alternative)
             some.setTitleForAllStates("5")
-            some.rx.tap.bind {
+            some.rx.tap.debug("_btn5 tap").bind {
                 some.bumpAndPerformBlock {
                     self.delegate?.btnTappedWith(identifier: "5")
                 }

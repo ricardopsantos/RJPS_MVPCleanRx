@@ -26,3 +26,36 @@ extension Observable where Element: OptionalType {
         }
     }
 }
+
+extension ObservableType {
+    
+    /**
+     Filters the source observable sequence using a trigger observable sequence producing Bool values.
+     Elements only go through the filter when the trigger has not completed and its last element was true. If either source or trigger error's, then the source errors.
+     - parameter trigger: Triggering event sequence.
+     - returns: Filtered observable sequence.
+     */
+    func filter(if trigger: Observable<Bool>) -> Observable<Element> {
+        return withLatestFrom(trigger) { (myValue, triggerValue) -> (Element, Bool) in
+            return (myValue, triggerValue)
+            }
+            .filter { (myValue, triggerValue) -> Bool in
+                return triggerValue == true
+            }
+            .map { (myValue, triggerValue) -> Element in
+                return myValue
+        }
+        
+        /*
+ 
+         button.rx.tap.filter(if: enableButtons)
+         .subscribe(onNext: { /* do one thing when enableButtons emits true */ }
+         .disposed(by: bag)
+         
+         button.rx.tap.filter(if: enableButtons.map { !$0 })
+         .subscribe(onNext: { /* do other thing when enable buttons emits false*/ }
+         .disposed(by: bag)
+ 
+ */
+    }
+}

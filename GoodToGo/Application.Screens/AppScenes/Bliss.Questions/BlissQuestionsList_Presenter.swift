@@ -50,8 +50,6 @@ extension Presenter {
             didSet { AppLogs.DLog(code: .vmChanged); viewModelChanged() }
         }
 
-        private var _disposeBag = DisposeBag()
-        private var _reachabilityService = try! DefaultReachabilityService()
         private var _lastFilder : String? = nil
         private var _lastOffSet : Int? = nil
 
@@ -129,7 +127,7 @@ extension P.BlissQuestionsList_Presenter : BlissQuestionsList_PresenterProtocol 
             }
             return Disposables.create()
             }.retry(3)
-            .retryOnBecomesReachable([], reachabilityService: _reachabilityService)
+            .retryOnBecomesReachable([], reachabilityService: reachabilityService)
     }
 }
 
@@ -202,7 +200,7 @@ extension P.BlissQuestionsList_Presenter {
                     strongSelf.genericView?.setActivityState(false)
                 }
             )
-            .disposed(by: _disposeBag)
+            .disposed(by: disposeBag)
     }
     
     private func setupPresenter() {
@@ -235,12 +233,12 @@ extension P.BlissQuestionsList_Presenter {
                 let _ = checkDataToHandle()
             }).disposed(by: disposeBag)
         
-        _reachabilityService.reachability.subscribe(
+        reachabilityService.reachability.subscribe(
             onNext: { [weak self] some in
                 guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
                 strongSelf.genericView?.setNoConnectionViewVisibity(to: !some.reachable)
             }
-            ).disposed(by: _disposeBag)
+            ).disposed(by: disposeBag)
     }
     
     

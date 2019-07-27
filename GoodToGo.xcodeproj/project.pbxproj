@@ -78,7 +78,7 @@
 		9F8D4AB3223873CD00777976 /* RelatedToSamples_UseCase1Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8D4AB2223873CD00777976 /* RelatedToSamples_UseCase1Protocol.swift */; };
 		9F8D4AB7223876D700777976 /* Generic_LocalStorageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8D4AB6223876D700777976 /* Generic_LocalStorageRepository.swift */; };
 		9F8D4ABE223877D400777976 /* Employees_NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8D4ABB223877D400777976 /* Employees_NetworkRepository.swift */; };
-		9F8D4AC1223877D400777976 /* GetSampleB_APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8D4ABD223877D400777976 /* GetSampleB_APIRequest.swift */; };
+		9F8D4AC1223877D400777976 /* GetEmployees_APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8D4ABD223877D400777976 /* GetEmployees_APIRequest.swift */; };
 		9F8D4AC52238832E00777976 /* RelatedToSamples_UseCase2Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8D4AC42238832D00777976 /* RelatedToSamples_UseCase2Protocol.swift */; };
 		9F98293F223986CE00ACA6B7 /* GitUser_UseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F98293E223986CE00ACA6B7 /* GitUser_UseCaseProtocol.swift */; };
 		9F9829432239892D00ACA6B7 /* Generic_LocalStorageRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9829422239892D00ACA6B7 /* Generic_LocalStorageRepositoryProtocol.swift */; };
@@ -99,6 +99,7 @@
 		9FACC184223BF28E00576498 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 9FACC182223BF28E00576498 /* Release.xcconfig */; };
 		9FACC187223BF28E00576498 /* Debug.Prod.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 9FACC183223BF28E00576498 /* Debug.Prod.xcconfig */; };
 		9FACC18B223BFB0F00576498 /* AppDelegate+Prepare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FACC18A223BFB0F00576498 /* AppDelegate+Prepare.swift */; };
+		9FB35E0A22EC611000326092 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB35E0722EC611000326092 /* Localizable.strings */; };
 		9FB8DFCA2233E67100095420 /* Encapsulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* Encapsulate.swift */; };
 		9FB9F97322E4B8CB00D64FD2 /* BlissQuestionsAPI_UseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9F97022E4B8CB00D64FD2 /* BlissQuestionsAPI_UseCaseProtocol.swift */; };
 		9FB9F97422E4B8CB00D64FD2 /* BlissGenericAppBussiness_UseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9F97122E4B8CB00D64FD2 /* BlissGenericAppBussiness_UseCaseProtocol.swift */; };
@@ -188,6 +189,7 @@
 		9F55525322E9A70F009364D1 /* _gitGenericCreateTag.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = _gitGenericCreateTag.sh; sourceTree = SOURCE_ROOT; };
 		9F55525422E9A70F009364D1 /* _gitMerge_DEVToMaster.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = _gitMerge_DEVToMaster.sh; sourceTree = SOURCE_ROOT; };
 		9F55525522E9A73D009364D1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		9F55525622E9B984009364D1 /* _iOSGenericCompile.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = _iOSGenericCompile.sh; sourceTree = SOURCE_ROOT; };
 		9F574EFD22356CA6007DAA58 /* AppManagers+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppManagers+Factory.swift"; sourceTree = "<group>"; };
 		9F574F7B22367F97007DAA58 /* GoodToGo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoodToGo-Info.plist"; sourceTree = "<group>"; };
 		9F58FB1122BE5DE700042A8C /* AppView+TopBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppView+TopBar.swift"; sourceTree = "<group>"; };
@@ -247,7 +249,7 @@
 		9F8D4AB2223873CD00777976 /* RelatedToSamples_UseCase1Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedToSamples_UseCase1Protocol.swift; sourceTree = "<group>"; };
 		9F8D4AB6223876D700777976 /* Generic_LocalStorageRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generic_LocalStorageRepository.swift; sourceTree = "<group>"; };
 		9F8D4ABB223877D400777976 /* Employees_NetworkRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employees_NetworkRepository.swift; sourceTree = "<group>"; };
-		9F8D4ABD223877D400777976 /* GetSampleB_APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetSampleB_APIRequest.swift; sourceTree = "<group>"; };
+		9F8D4ABD223877D400777976 /* GetEmployees_APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetEmployees_APIRequest.swift; sourceTree = "<group>"; };
 		9F8D4AC42238832D00777976 /* RelatedToSamples_UseCase2Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedToSamples_UseCase2Protocol.swift; sourceTree = "<group>"; };
 		9F98293E223986CE00ACA6B7 /* GitUser_UseCaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitUser_UseCaseProtocol.swift; sourceTree = "<group>"; };
 		9F9829422239892D00ACA6B7 /* Generic_LocalStorageRepositoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generic_LocalStorageRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -269,6 +271,8 @@
 		9FACC183223BF28E00576498 /* Debug.Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.Prod.xcconfig; sourceTree = "<group>"; };
 		9FACC18A223BFB0F00576498 /* AppDelegate+Prepare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Prepare.swift"; sourceTree = "<group>"; };
 		9FB1947C20F8870B0098CE39 /* GitHubUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubUser.swift; sourceTree = "<group>"; };
+		9FB35E0822EC611000326092 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9FB35E0922EC611000326092 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9FB8DFC92233E67100095420 /* Encapsulate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encapsulate.swift; sourceTree = "<group>"; };
 		9FB9F97022E4B8CB00D64FD2 /* BlissQuestionsAPI_UseCaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlissQuestionsAPI_UseCaseProtocol.swift; sourceTree = "<group>"; };
 		9FB9F97122E4B8CB00D64FD2 /* BlissGenericAppBussiness_UseCaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlissGenericAppBussiness_UseCaseProtocol.swift; sourceTree = "<group>"; };
@@ -423,6 +427,7 @@
 			isa = PBXGroup;
 			children = (
 				9F55525522E9A73D009364D1 /* README.md */,
+				9F55525622E9B984009364D1 /* _iOSGenericCompile.sh */,
 				9F55525322E9A70F009364D1 /* _gitGenericCreateTag.sh */,
 				9F55525222E9A70F009364D1 /* _gitGenericMerge.sh */,
 				9F55525422E9A70F009364D1 /* _gitMerge_DEVToMaster.sh */,
@@ -620,7 +625,7 @@
 			isa = PBXGroup;
 			children = (
 				9F98294B22398DF700ACA6B7 /* GitUser_APIRequest.swift */,
-				9F8D4ABD223877D400777976 /* GetSampleB_APIRequest.swift */,
+				9F8D4ABD223877D400777976 /* GetEmployees_APIRequest.swift */,
 				9F6BB2BC22E3287B00829A6F /* Bliss_APIRequest.swift */,
 				9F8666F322E7D31D00A1B9A0 /* Bliss_APIRequest-BluePrint.apib */,
 			);
@@ -637,6 +642,14 @@
 				9F6BB2DA22E36C5B00829A6F /* BlissGenericAppBussiness_UseCase.swift */,
 			);
 			path = UseCases;
+			sourceTree = "<group>";
+		};
+		9FB35E0622EC611000326092 /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				9FB35E0722EC611000326092 /* Localizable.strings */,
+			);
+			path = Localizable;
 			sourceTree = "<group>";
 		};
 		9FB8DFCD2233E7B400095420 /* Application.Core */ = {
@@ -677,6 +690,7 @@
 		9FD971A420FF418A00F73FB9 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				9FB35E0622EC611000326092 /* Localizable */,
 				9FACC17E223BF26000576498 /* Debug.Dev.xcconfig */,
 				9FB9F97622E520DB00D64FD2 /* Debug.QA.xcconfig */,
 				9FACC183223BF28E00576498 /* Debug.Prod.xcconfig */,
@@ -841,6 +855,10 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
+				sp,
+				sv,
+				pt,
 			);
 			mainGroup = 9F288F1B20F8089F008A9539;
 			productRefGroup = 9F288F2520F8089F008A9539 /* Products */;
@@ -861,6 +879,7 @@
 				9F58FB4022BE5DE700042A8C /* Main.storyboard in Resources */,
 				9FACC184223BF28E00576498 /* Release.xcconfig in Resources */,
 				9FACC187223BF28E00576498 /* Debug.Prod.xcconfig in Resources */,
+				9FB35E0A22EC611000326092 /* Localizable.strings in Resources */,
 				9FACC17F223BF26000576498 /* Debug.Dev.xcconfig in Resources */,
 				9FE143ED21AF2F520026BDFC /* LaunchScreen.storyboard in Resources */,
 				9F9BED9C22E5BA550018BD4C /* Bliss_NetWorkRepository_Mock.txt in Resources */,
@@ -1012,7 +1031,7 @@
 				9FE143B821AF2F520026BDFC /* AppManagers+Environments.swift in Sources */,
 				9FFF80B722BFB68D003C4562 /* PresenterTableView_Protocol.swift in Sources */,
 				9F58FB4C22BE5DE700042A8C /* SearchUser_View.swift in Sources */,
-				9F8D4AC1223877D400777976 /* GetSampleB_APIRequest.swift in Sources */,
+				9F8D4AC1223877D400777976 /* GetEmployees_APIRequest.swift in Sources */,
 				9F6BB2EE22E3A97F00829A6F /* BlissQuestionsList_AssemblyContainer.swift in Sources */,
 				9FE0572C22E8D8F000802747 /* SampleView_ViewModel.swift in Sources */,
 				9FE0572722E8D75400802747 /* SampleRxView_ViewModel.swift in Sources */,
@@ -1085,6 +1104,15 @@
 				9F288F3420F808A2008A9539 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		9FB35E0722EC611000326092 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FB35E0822EC611000326092 /* en */,
+				9FB35E0922EC611000326092 /* pt */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -9,9 +9,9 @@ import UIKit
 import Foundation
 import RJPSLib
 
-typealias SequenceBlock       = RJS_Sequence
-typealias CustomSearchBar     = RJS_CustomSearchBar
-typealias DeviceInfo          = RJS_DeviceInfo
+typealias SequenceBlock          = RJS_Sequence
+typealias CustomSearchBar        = RJS_CustomSearchBar
+typealias DeviceInfo             = RJS_DeviceInfo
 
 typealias AppStorages            = RJS_Storages
 typealias AppInfo                = RJS_AppInfo
@@ -25,13 +25,13 @@ typealias AppUserDefaults        = RJS_UserDefaults
 typealias WebAPIRequest_Protocol = RJSLibWebAPIRequest_Protocol
 
 
-typealias AppEnvironments     = AppManagers.Environments
-typealias AppFactory          = AppManagers.Factory
-typealias AppCan              = AppManagers.AppCan
-typealias AppRessources       = AppManagers.Ressources
-typealias AppMessages         = AppManagers.Ressources.Messages
-typealias AppLayouts          = AppManagers.Layouts
-typealias AppColors           = UIColor.App
-typealias AppFonts            = UIFont.App
-typealias AppImages           = UIImage.App
-typealias AppProtocols        = RootAssemblyContainerProtocols
+typealias AppEnvironments        = AppManagers.Environments
+typealias AppFactory             = AppManagers.Factory
+typealias AppCan                 = AppManagers.AppCan
+typealias AppRessources          = AppManagers.Ressources
+typealias AppMessages            = AppManagers.Ressources.Messages
+typealias AppLayouts             = AppManagers.Layouts
+typealias AppColors              = UIColor.App
+typealias AppFonts               = UIFont.App
+typealias AppImages              = UIImage.App
+typealias AppProtocols           = RootAssemblyContainerProtocols

@@ -54,7 +54,7 @@ extension AppView {
             some.rjsALayouts.setWidth(AppGlobal.screenWidth/2 - 2*_margin)
             some.rjsALayouts.setMargin(_margin, on: .bottom)
             some.rjsALayouts.setHeight(50)
-            some.rx.tap
+            some.rx.tap.debug("_btnShare1 tap")
                 .throttle(.milliseconds(AppConstants.Rx.tappingDefaultThrottle), scheduler: MainScheduler.instance)
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)                  .subscribe({ [weak self] _ in
                     some.bumpAndPerformBlock {

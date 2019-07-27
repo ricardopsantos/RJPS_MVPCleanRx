@@ -21,7 +21,7 @@ extension Repository.Network {
                 urlRequest = URLRequest(url: url)
                 urlRequest.httpMethod = "GET"
                 responseType      = .json
-                debugRequest      = true//AppCan.Logs.requests
+                debugRequest      = AppCan.Logs.requests
                 returnOnMainTread = false
             }
             else {
@@ -41,7 +41,7 @@ extension Repository.Network {
                 urlRequest = URLRequest(url: url)
                 urlRequest.httpMethod = "GET"
                 responseType      = .json
-                debugRequest      = true//AppCan.Logs.requests
+                debugRequest      = AppCan.Logs.requests
                 returnOnMainTread = false
             }
             else {

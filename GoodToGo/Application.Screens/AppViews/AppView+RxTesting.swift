@@ -32,6 +32,9 @@ extension AppView {
             some.rjsALayouts.setMargin(0, on: .right)
             some.rjsALayouts.setMargin(0, on: .left)
             some.rjsALayouts.setHeight(50)
+            some.rx.text.subscribe(onNext:{ text in
+                print(text as Any)
+            }).disposed(by: disposeBag)
             some.rx.text
                 .orEmpty
                 .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
@@ -59,7 +62,7 @@ extension AppView {
             some.rjsALayouts.setMargin(_margin, on: .right)
             some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
             some.rjsALayouts.setHeight(_btnHeight)
-            some.rx.tap
+            some.rx.tap.debug("_btnThrottle tap")
                 .throttle(.milliseconds(throttle*1000), scheduler: MainScheduler.instance)
                 .subscribe({ [weak self] _ in
                     some.bumpAndPerformBlock {
@@ -77,7 +80,7 @@ extension AppView {
             some.rjsALayouts.setMargin(_margin, on: .left)
             some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
             some.rjsALayouts.setHeight(_btnHeight)
-            some.rx.tap
+            some.rx.tap.debug("_btnDebounce tap")
                 .debounce(.milliseconds(debounce*1000), scheduler: MainScheduler.instance)
                 .subscribe({ [weak self] _ in
                     some.bumpAndPerformBlock {
@@ -281,88 +284,11 @@ extension AppView {
         
         override func viewDidLoad() {
             super.viewDidLoad()
+            
             sampleObservables()
+            
+   
         }
-        
-        func sampleObservables() {
-
-            ///////////////////////////////////////////////////////////////////////
-            ///////////////////////////////////////////////////////////////////////
-            ///////////////////////////////////////////////////////////////////////
-            
-            // 3 ways to do same thing
-            
-            Observable<String>.of("2","3","3","5")
-                .map { return Int($0)! * 10 }
-                .filter { $0 > 25 }
-                .subscribe(
-                    onNext: { print($0) },
-                    onError: { print($0) },
-                    onCompleted: { print("completed s1") }
-                ).disposed(by: disposeBag)
-            
-            Observable<String>.of("2","3","3","5")
-                .map { return Int($0)! * 10 }
-                .filter { $0 > 25 }
-                .subscribe({
-                    switch $0 {
-                    case .next(let value): print(value)
-                    case .error(let error): print(error)
-                    case .completed: print("completed s2")
-                    }
-                }).disposed(by: disposeBag)
-            
-            Observable<String>.of("2","3","3","5")
-                .map { return Int($0)! * 10 }
-                .filter { $0 > 25 }
-                .subscribe({ event in
-                    switch event {
-                    case .next(let value): print(value)
-                    case .error(let error): print(error)
-                    case .completed: print("completed s3")
-                    }
-                }).disposed(by: disposeBag)
-            
-            ///////////////////////////////////////////////////////////////////////
-            ///////////////////////////////////////////////////////////////////////
-            ///////////////////////////////////////////////////////////////////////
-            
-            // Observable as function and as var.
-            // If we need to pass parameter, use funtion
-            
-            func rxObservableSimpleWithParans(some: String) -> Observable<String> {
-                return Observable.create { observer -> Disposable in
-                    DispatchQueue.executeWithDelay (delay:1) { observer.onNext(some) }
-                    return Disposables.create()
-                }
-            }
-            
-            var rxObservableSimpleVar : Observable<Int> {
-                return Observable.create { observer -> Disposable in
-                    DispatchQueue.executeWithDelay (delay:1) { observer.onNext(Date.utcNow().seconds) }
-                    return Disposables.create()
-                }
-            }
-            
-            rxObservableSimpleWithParans(some: "Hi")
-                .subscribe( onNext: { print("After 1s : \($0)") } )
-                .disposed(by: disposeBag)
-            
-            rxObservableSimpleVar
-                .subscribe( onNext: { print("After 1s : \($0)") } )
-                .disposed(by: disposeBag)
-
-        }
-        
-        func sampleDisposing() {
-            let scheduler = SerialDispatchQueueScheduler(qos: .default)
-            let subscription = Observable<Int>.interval(.milliseconds(300), scheduler: scheduler)
-                .subscribe { event in print(event) }
-            Thread.sleep(forTimeInterval: 2.0)
-            subscription.dispose()
-            // Will print number from 0 to 5
-        }
-
     }
 }
 
@@ -389,7 +315,7 @@ extension AppView.RxTesting {
             }
             /* If [retry]==[0], will never work; and ignore everything. If [retry]==[1], will execute ONCE and never retries. Min value : [retry]==[2]
              If we have [retry] and [retryOnBecomesReachable], will never retry, will allways return var [rxReturnOnError] by [retryOnBecomesReachable] */
-            .retry(3)
+            .retry()
         /* [retryOnBecomesReachable], will actually return [rxReturnOnError] var if we dont have internet connection
            BUT ALSO, if the requests fails on [observer.onError], the subscriber will receive [rxReturnOnError]
              on event [onNext]. If we dont have the [retryOnBecomesReachable], the subscriber will receive the error on [onError] */
@@ -433,4 +359,112 @@ extension AppView.RxTesting: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return V.Sample_TableViewCell.cellSize() * 0.5
     }
+}
+
+extension V.RxTesting {
+    func sampleObservables() {
+        
+        ///////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////
+        
+        // 3 ways to do same thing
+        
+        Observable<String>.of("2","3","3","5")
+            .map { return Int($0)! * 10 }
+            .filter { $0 > 25 }
+            .subscribe(
+                onNext: { print($0) },
+                onError: { print($0) },
+                onCompleted: { print("completed s1") }
+            ).disposed(by: disposeBag)
+        
+        Observable<String>.of("2","3","3","5")
+            .map { return Int($0)! * 10 }
+            .filter { $0 > 25 }
+            .subscribe({
+                switch $0 {
+                case .next(let value): print(value)
+                case .error(let error): print(error)
+                case .completed: print("completed s2")
+                }
+            }).disposed(by: disposeBag)
+        
+        Observable<String>.of("2","3","3","5")
+            .map { return Int($0)! * 10 }
+            .filter { $0 > 25 }
+            .subscribe({ event in
+                switch event {
+                case .next(let value): print(value)
+                case .error(let error): print(error)
+                case .completed: print("completed s3")
+                }
+            }).disposed(by: disposeBag)
+        
+        ///////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////
+        
+
+        
+        //
+        // RxSwift provides a method that creates a sequence which returns one element upon subscription.
+        // That method is called just. Let's write our own implementation of it:
+        //
+        
+        func myJust<E>(_ element: E) -> Observable<E> {
+            return Observable.create { observer in
+                observer.on(.next(element))
+                observer.on(.completed)
+                return Disposables.create()
+            }
+        }
+        
+        let _ = myJust(0).subscribe(onNext: { n in print(n) })
+        
+        func myFrom<E>(_ sequence: [E]) -> Observable<E> {
+            return Observable.create { observer in
+                for element in sequence {
+                    observer.on(.next(element))
+                }
+                observer.on(.completed)
+                return Disposables.create()
+            }
+        }
+        
+        //
+        // Lets now create an observable that returns elements from an array.
+        //
+        
+        let stringCounter = myFrom(["first", "second"])
+        
+        print("Started ----")
+        
+        // first time
+        let _ = stringCounter
+            .subscribe(onNext: { n in
+                print(n)
+            })
+        
+        print("----")
+        
+        // again
+        let _ = stringCounter
+            .subscribe(onNext: { n in
+                print(n)
+            })
+        
+        print("Ended ----")
+        
+    }
+    
+    func sampleDisposing() {
+        let scheduler = SerialDispatchQueueScheduler(qos: .default)
+        let subscription = Observable<Int>.interval(.milliseconds(300), scheduler: scheduler)
+            .subscribe { event in print(event) }
+        Thread.sleep(forTimeInterval: 2.0)
+        subscription.dispose()
+        // Will print number from 0 to 5
+    }
+    
 }

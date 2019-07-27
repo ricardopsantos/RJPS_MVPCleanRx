@@ -17,7 +17,7 @@ extension AppConstants {
 
         struct URLs {
             static var blissAPIBaseUrl : String {
-                switch AppEnvironments.current() {
+                switch AppEnvironments.current {
                 case .dev  : return "https://private-anon-f659e751cc-blissrecruitmentapi.apiary-mock.com"
                 case .prod : return "https://private-anon-f659e751cc-blissrecruitmentapi.apiary-mock.com"
                 case .qa   : return "https://private-anon-f659e751cc-blissrecruitmentapi.apiary-mock.com"
@@ -27,7 +27,7 @@ extension AppConstants {
         
         struct DeepLinks {
             static let questionsFilter = "question_filter" // DONT CHANGE VALUE
-            static let questionId      = "question_id" // DONT CHANGE VALUE
+            static let questionId      = "question_id"     // DONT CHANGE VALUE
         }
     }
    

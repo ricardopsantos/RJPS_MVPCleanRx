@@ -45,8 +45,6 @@ extension Presenter {
         var viewModel         : VM.BlissRoot_ViewModel? {
             didSet { AppLogs.DLog(code: .vmChanged); viewModelChanged() }
         }
-        private var _disposeBag = DisposeBag()
-        private var _reachabilityService = try! DefaultReachabilityService()
     }
 }
 
@@ -99,13 +97,6 @@ extension P.BlissRoot_Presenter {
     }
     
     private func checkServerStatus() {
-
-        /*
-         FREQ-01: Loading Screen
-         The front-end application must show a loading screen while the server health is checked. The server health is checked via the appropriate endpoint on the API.
-         If the server health is OK then the application should proceed to the “List Screen”.
-         If the server health is NOT OK then the application should display a “Retry Action” widget.
-         */
         
         let delayToHaveTimeToEnjoyMainScreen : Double = 2
         DispatchQueue.executeWithDelay(delay:delayToHaveTimeToEnjoyMainScreen) { [weak self] in
@@ -137,7 +128,7 @@ extension P.BlissRoot_Presenter {
     
     private func setupPresenter() {
    
-        _reachabilityService.reachability.subscribe(
+        reachabilityService.reachability.subscribe(
             onNext: { [weak self] some in
                     if(some.reachable) {
                         self?.genericView?.setNoConnectionViewVisibity(to: false)
@@ -153,7 +144,7 @@ extension P.BlissRoot_Presenter {
                         self?.view.set(image: AppImages.notInternet)
                     }
             }
-            ).disposed(by: _disposeBag)
+            ).disposed(by: disposeBag)
     }
     
 }
@@ -172,6 +163,6 @@ extension P.BlissRoot_Presenter {
             })
             return Disposables.create() }
             .retry(3)
-            .retryOnBecomesReachable(rxReturnOnError, reachabilityService: _reachabilityService)
+            .retryOnBecomesReachable(rxReturnOnError, reachabilityService: reachabilityService)
     }
 }

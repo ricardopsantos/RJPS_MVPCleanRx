@@ -65,7 +65,6 @@ extension AppView {
             some.rjsALayouts.setMargin(_margin, on: .right)
             some.rjsALayouts.setMargin(_margin, on: .top, from: _btnLogin)
             some.rjsALayouts.setHeight(_margin*2)
-           // presenter.rxDriver_lblMessage.drive(some.rx.text).disposed(by: disposeBag)
             return some
         }()
         
@@ -75,7 +74,7 @@ extension AppView {
             some.rjsALayouts.setMargin(_margin, on: .right)
             some.rjsALayouts.setMargin(_margin*2, on: .top, from: _txtPass)
             some.rjsALayouts.setHeight(_margin*2)
-            some.rx.tap
+            some.rx.tap.debug("_btnLogin tap")
                 .throttle(.milliseconds(AppConstants.Rx.tappingDefaultThrottle), scheduler: MainScheduler.instance)
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
                 .subscribe({ [weak self] _ in
@@ -100,7 +99,9 @@ extension AppView {
                 .subscribe({ [weak self] _ in
                     some.bumpAndPerformBlock {
                         guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
-                       // strongSelf.presenter.rxPublishRelay_showDetails.ac
+                        let someString = "[\(String(describing: strongSelf._txtUser.text))][\(String(describing: strongSelf._txtPass.text))]"
+                        let vm = VM.SampleRxView_ViewModel(someString:someString )
+                        strongSelf.presenter.router.rxPublishRelay_showDetails.accept((vm))
                     }
                 })
                 .disposed(by: disposeBag)
@@ -113,7 +114,7 @@ extension AppView {
             some.rjsALayouts.setWidth((AppGlobal.screenWidth / 2) - (1.5 * _margin))
             some.rjsALayouts.setMargin(_margin*2, on: .top, from: _lblMessage)
             some.rjsALayouts.setHeight(_margin*2)
-            some.rx.tap
+            some.rx.tap.debug("_btnDismiss tap")
                 .throttle(.milliseconds(AppConstants.Rx.tappingDefaultThrottle), scheduler: MainScheduler.instance)
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
                 .subscribe({ [weak self] _ in
@@ -136,6 +137,9 @@ extension AppView {
         override func viewDidLoad() {
             super.viewDidLoad()
             presenter.generic?.viewDidLoad()
+            
+
+            
         }
         
         override func viewWillAppear(_ animated: Bool) {

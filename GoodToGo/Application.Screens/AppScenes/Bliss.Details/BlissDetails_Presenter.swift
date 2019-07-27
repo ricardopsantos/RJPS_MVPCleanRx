@@ -49,8 +49,6 @@ extension Presenter {
         var blissGeneric_UseCase   : BlissGenericAppBussiness_UseCaseProtocol!
         var tableView              : GenericTableView_Protocol!
         var viewModel              : VM.BlissDetails_ViewModel? { didSet { AppLogs.DLog(code: .vmChanged); viewModelChanged() } }
-        private var _disposeBag = DisposeBag()
-        private var _reachabilityService = try! DefaultReachabilityService()
     }
 }
 
@@ -83,7 +81,7 @@ extension P.BlissDetails_Presenter : BlissDetails_PresenterProtocol {
             }
             return Disposables.create()
             }.retry(3)
-            .retryOnBecomesReachable(nil, reachabilityService: _reachabilityService)
+            .retryOnBecomesReachable(nil, reachabilityService: reachabilityService)
     }
     
     func userDidPretendToShareInApp() {
@@ -155,7 +153,7 @@ extension P.BlissDetails_Presenter : GenericTableView_Protocol {
                     strongSelf.genericView?.setActivityState(false)
                 }
             )
-            .disposed(by: _disposeBag)
+            .disposed(by: disposeBag)
         
     }
     
@@ -241,12 +239,12 @@ extension P.BlissDetails_Presenter {
                 let _ = self?.checkDataToHandle()
             }).disposed(by: disposeBag)
         
-        _reachabilityService.reachability.subscribe(
+        reachabilityService.reachability.subscribe(
             onNext: { [weak self] some in
                 guard let strongSelf = self else { AppLogs.DLogWarning(AppConstants.Dev.referenceLost); return }
                 strongSelf.genericView?.setNoConnectionViewVisibity(to: !some.reachable)
             }
-            ).disposed(by: _disposeBag)
+            ).disposed(by: disposeBag)
     }
     
 }

@@ -31,7 +31,7 @@ struct AppConstants {
     struct URLs {
         private init() {}
         static var githubAPIBaseUrl : String {
-            switch AppEnvironments.current() {
+            switch AppEnvironments.current {
             case .dev  : return "https://api.github.com"
             case .prod : return "https://api.github.com"
             case .qa   : return "https://api.github.com"

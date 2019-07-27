@@ -69,7 +69,9 @@ extension AppManagers {
             static func tableView(baseView:UIView? = nil, tag:Int=0, cellIdentifier:String=AppConstants.Dev.cellIdentifier) -> UITableView {
                 let some = UITableView()
                 some.tag = tag
-                some.register(UITableViewCell.self, forCellReuseIdentifier:cellIdentifier)
+                if(!cellIdentifier.trim.isEmpty) {
+                    some.register(UITableViewCell.self, forCellReuseIdentifier:cellIdentifier)
+                }
                 baseView?.addSubview(some)
                 return some
             }
