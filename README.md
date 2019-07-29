@@ -1,36 +1,32 @@
+iOS Architecture design patterns : MVVM
+-----
+
+- [x] 📱  iOS 10.0+
+- [x] 🔨  XCode 1.2.1, Swift 5.0
+
+The intent of this project is to show a simple implementation of the __MVP Clean__ pattern. This is my vision about it, and if you dont agree with someting, just email me, I love to hear opinions and learn from that.
+
+------
 # Index
 
-## References and notes : MVP Clean
+## Features
+ -[x] - Localizable ressources
+ -[x] - RJPSLib (logs, caching, keychain client, network client, generic extensions...)
+ -[x] - Sample App - GitUser (search users on GitHub)
+ -[x] - RxSwift & RxCocoa sample examples
+ -[x] - .xcconfig usage
+ -[x] - Dependency injection with [Swinject](https://github.com/Swinject/Swinject)
+ -[x] - Command line [script](https://github.com/ricardopsantos/RJPS_MVPCleanRx/blob/master/_iOSGenericCompile.sh) for app bild 
+ 
+ More info about the project and arquitecture [here](https://github.com/ricardopsantos/RJPS_MVPCleanRx/tree/master/Docs)
+ 
+## Install
 
-* References
-* [A dumb UI is a good UI: Using MVP in iOS with swift](http://iyadagha.com/using-mvp-ios-swift/)
+Just download code and run ```./_installPackages.sh```
 
-* Project Rules
-* The _View_ part of the MVP consists of both _UIViews_ and _UIViewController_
-* The _View_ delegates user interactions to the _Presenter_
-* The _Presenter_ contains the logic to handle user interactions
-* The _Presenter_ communicates with model layer, converts the data to UI friendly format, and updates the _View_
-* The _Presenter_ has no dependencies to UIKit
-* The _View_ is passive (dumb)
+## License
 
-* _Repository_ are called from _UseCases_
+[Unlicense](http://unlicense.org)
 
-## References/articles
-
-* [Introduction to Protocol-Oriented MVVM](https://realm.io/news/doios-natasha-murashev-protocol-oriented-mvvm/)
-* [Blending Cultures: The Best of Functional, Protocol-Oriented, and Object-Oriented Programming](https://realm.io/news/tryswift-daniel-steinberg-blending-cultures/)
-* [iOS Architecture Patterns : Demystifying MVC, MVP, MVVM and VIPER](https://medium.com/ios-os-x-development/ios-architecture-patterns-ecba4c38de52)
-
-
-* AppDomain
-- CONTAINS PROTOCOLS ONLY
-
-* Core
-- Implementations
-- Mapers : Convert one Entetie into another
-
-* Repositories
-- ALLWAYS NEED A CLIENT TO DO STUFF (get things)
-- It's the way (a container) to fetch data somewhere (networking, storage, bluetooth)
-- Are called from UseCases
-- Are not implemented in Core. They stay in Repository folder
+What is the Unlicense?
+The Unlicense is a template for disclaiming copyright monopoly interest in software you've written; in other words, it is a template for dedicating your software to the public domain. It combines a copyright waiver patterned after the very successful public domain SQLite project with the no-warranty statement from the widely-used MIT/X11 license.
