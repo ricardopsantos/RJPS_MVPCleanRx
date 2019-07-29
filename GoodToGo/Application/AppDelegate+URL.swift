@@ -1,16 +1,11 @@
 //
-//  Created by Ricardo Santos on 11/02/16.
-//  Copyright © 2016 InnoWave. All rights reserved.
-//
-
-import UIKit
-//
 //  GoodToGo
 //
 //  Created by Ricardo P Santos on 2019.
 //  Copyright © 2019 Ricardo P Santos. All rights reserved.
 //
 
+import UIKit
 import RJPSLib
 
 extension AppDelegate {

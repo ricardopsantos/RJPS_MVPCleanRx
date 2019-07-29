@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #
-# ./iOSGenericCompile.sh "City_Points.xcodeproj" "InnoPoints" "Release" "[V2.0.2]" "~/Desktop/" "exportPlist.inw.enterprise.plist"
-# ./iOSGenericCompile.sh "City_Points.xcodeproj" "InnGage.CMC.InHouse" "Debug.Qa" "[V2.0.2]" "~/Desktop/" "exportPlist.cmc.appStore"
+# ./iOSGenericCompile.sh "GoodToGo.xcodeproj" "MyAppName.AppStore"   "Release"  "[V2.0.2]" "~/Desktop/" "exportPlist.enterprise.plist"
+# ./iOSGenericCompile.sh "GoodToGo.xcodeproj" "MyAppName.Enterprise" "Debug.Qa" "[V2.0.2]" "~/Desktop/" "exportPlist.appStore"
 
 printf "\n"
 printf "\n# %s\n" "$now #"
@@ -19,12 +19,12 @@ ARGUMENT_D="$4"
 ARGUMENT_E="$5"
 ARGUMENT_F="$6"
 
-var_xcodeproj=$ARGUMENT_A     #"City_Points.xcodeproj"
-var_target=$ARGUMENT_B        #"City_Points"
+var_xcodeproj=$ARGUMENT_A     #"GoodToGo.xcodeproj"
+var_target=$ARGUMENT_B        #"GoodToGo.Debug.Dev"
 var_configuration=$ARGUMENT_C #"Release"
 var_appVersion=$ARGUMENT_D    #"[V2.0.1]"
 var_output=$ARGUMENT_E        #"~/Desktop/"
-var_plist=$ARGUMENT_F         #"exportPlist.inw.enterprise.plist"
+var_plist=$ARGUMENT_F         #"exportPlist.rjps.enterprise.plist"
 
 var_exportFileName="$var_target"_["$var_configuration"]_"$var_appVersion"
 var_archivePath=""$var_output""$var_exportFileName""
