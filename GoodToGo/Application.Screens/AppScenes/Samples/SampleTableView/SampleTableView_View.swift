@@ -88,7 +88,9 @@ extension AppView {
     }
 }
 
-//MARK: - View Protocol
+//
+// MARK: - View Protocol
+//
 
 extension V.SampleTableView_View : SampleTableView_ViewProtocol {
     func setNetworkViewVisibilityTo(_ value: Bool) {

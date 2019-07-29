@@ -5,4 +5,6 @@
 
 #warning("add debug label/screen/html report")
 
-#warning("no handle dos erros, colocar error.localizedDescriptionForView")
+#warning("adicionar image a mostrar os ecran os tipo de botoes e labels")
+
+#warning ("adicionar cache")

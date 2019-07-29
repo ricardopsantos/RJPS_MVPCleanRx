@@ -14,9 +14,11 @@ extension UseCases {
     /**
      * Brain. Where we can have business rules
      */
-    class BlissQuestionsAPI_UseCase : BlissQuestionsAPI_UseCaseProtocol {
+    class BlissQuestionsAPI_UseCase : GenericUseCase, BlissQuestionsAPI_UseCaseProtocol {
 
-        var repositoryNetwork : Bliss_NetWorkRepositoryProtocol!
+        var repositoryNetwork               : Bliss_NetWorkRepositoryProtocol!
+        var generic_CacheRepositoryProtocol : Generic_CacheRepositoryProtocol!
+        var generic_LocalStorageRepository  : Generic_LocalStorageRepositoryProtocol!
         
         private func serverIsOK(completionHandler:@escaping (Bool)->()) -> Void {
             getHealth { (some) in

@@ -8,9 +8,13 @@
 import Foundation
 import RJPSLib
 
+extension RP {
+    struct LocalStorage {
+        private init() {}
+    }
+}
 
-// O Repositorio so tem de fazer a chamada; nao vai tratar de nada! O UseCase é que vai tratar dos dados
-extension Repository.LocalStorage {
+extension RP.LocalStorage {
     
     class Generic_LocalStorageRepository: Generic_LocalStorageRepositoryProtocol {
         
@@ -43,7 +47,6 @@ extension Repository.LocalStorage {
         func deleteAll() -> Bool {
             return RJS_DataModel.deleteAll()
         }
-        
         
         @discardableResult func deleteWith(key: String) -> Bool {
             return RJS_DataModel.deleteWith(key: key)

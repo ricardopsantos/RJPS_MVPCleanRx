@@ -127,8 +127,9 @@ extension AppView {
     }
 }
 
-
-//MARK: - View Protocol
+//
+// MARK: - View Protocol
+//
 
 extension V.BlissQuestionsList_View : BlissQuestionsList_ViewProtocol {
     
@@ -143,7 +144,9 @@ extension V.BlissQuestionsList_View : BlissQuestionsList_ViewProtocol {
     }
 }
 
-//MARK: - UITableViewDelegate
+//
+// MARK: - UITableViewDelegate
+//
 
 extension V.BlissQuestionsList_View: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -151,19 +154,21 @@ extension V.BlissQuestionsList_View: UITableViewDelegate {
     }
 }
 
-//MARK: - UIScrollViewDelegate
+//
+// MARK: - UIScrollViewDelegate
+//
 
 extension V.BlissQuestionsList_View: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let contentOffset = scrollView.contentOffset.y
-        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height;
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
         
         guard !_tableViewIsLoadingMoreData else {
             // Is allready wayting for data
             return
         }
-        if (Double(maximumOffset) - Double(contentOffset) <= Double(_tableViewThreshold)) {
+        if Double(maximumOffset) - Double(contentOffset) <= Double(_tableViewThreshold) {
             // Get more data - API call
             _searchBar.resignFirstResponder()
             self._tableViewIsLoadingMoreData = true

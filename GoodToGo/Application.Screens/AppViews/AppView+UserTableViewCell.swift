@@ -8,13 +8,11 @@
 import UIKit
 
 //
-//MARK: UserTableViewCell
+// MARK: - UserTableViewCell
 //
 
 extension AppView {
     class UserTableViewCell: V.Sample_TableViewCell {
         override class func cellSize() -> CGFloat { return 40 }
     }
-    
-    
 }

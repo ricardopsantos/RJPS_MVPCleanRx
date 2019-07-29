@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 //
-//MARK: Presenter_Protocol & View_Protocol
+// MARK: - Presenter_Protocol & View_Protocol
 //
 
 protocol BlissQuestionsList_PresenterProtocol : class {
@@ -34,7 +34,7 @@ protocol BlissQuestionsList_ViewProtocol : class {
 }
 
 //
-//MARK: Presenter Declaration
+// MARK: - Presenter Declaration
 //
 
 extension Presenter {
@@ -57,7 +57,7 @@ extension Presenter {
 }
 
 //
-//MARK: GenericTableView_Protocol
+// MARK: - GenericTableView_Protocol
 //
 
 
@@ -86,11 +86,10 @@ extension P.BlissQuestionsList_Presenter : GenericTableView_Protocol {
         router.goToDetails(vm: VM.BlissDetails_ViewModel(question: question))
     }
     
-    
 }
 
 //
-//MARK: BlissQuestionsList_PresenterProtocol
+// MARK: - BlissQuestionsList_PresenterProtocol
 //
 
 extension P.BlissQuestionsList_Presenter : BlissQuestionsList_PresenterProtocol {
@@ -121,8 +120,7 @@ extension P.BlissQuestionsList_Presenter : BlissQuestionsList_PresenterProtocol 
                     case .failure(let error) : observer.onError(error); break
                     }
                 })
-            }
-            else {
+            } else {
                 AppLogs.DLog(appCode: .referenceLost)
             }
             return Disposables.create()
@@ -132,7 +130,7 @@ extension P.BlissQuestionsList_Presenter : BlissQuestionsList_PresenterProtocol 
 }
 
 //
-//MARK: GenericPresenter_Protocol
+// MARK: - GenericPresenter_Protocol
 //
 
 extension P.BlissQuestionsList_Presenter : GenericPresenter_Protocol {
@@ -153,7 +151,7 @@ extension P.BlissQuestionsList_Presenter : GenericPresenter_Protocol {
 }
 
 //
-//MARK: Presenter Private Stuff
+// MARK: - Presenter Private Stuff
 //
 
 extension P.BlissQuestionsList_Presenter {
@@ -161,8 +159,7 @@ extension P.BlissQuestionsList_Presenter {
     private func viewModelChanged() {
         if let vm = viewModel {
             view.viewNeedsToDisplay(list: vm.questionsList)
-        }
-        else {
+        } else {
             view.viewNeedsToDisplay(list: [])
         }
     }
@@ -171,7 +168,7 @@ extension P.BlissQuestionsList_Presenter {
         let filter = filter.trim
         
         // Not pretty, but very efective in avoind duplicated repeated server calls
-        if(_lastFilder != nil && _lastOffSet != nil) {
+        if _lastFilder != nil && _lastOffSet != nil {
             guard "\(_lastFilder!)|\(_lastOffSet!)" != "\(filter)|\(offSet)" else {
                 AppLogs.DLogWarning("Ignored. Same filter and offset")
                 return
@@ -186,10 +183,9 @@ extension P.BlissQuestionsList_Presenter {
             .subscribe(
                 onNext: { [weak self] questionsList in
                     guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
-                    if(strongSelf._lastOffSet == 0) {
+                    if strongSelf._lastOffSet == 0 {
                         strongSelf.viewModel?.questionsList = questionsList
-                    }
-                    else {
+                    } else {
                         strongSelf.viewModel?.questionsList.append(contentsOf: questionsList)
                     }
                     strongSelf.genericView?.setActivityState(false)

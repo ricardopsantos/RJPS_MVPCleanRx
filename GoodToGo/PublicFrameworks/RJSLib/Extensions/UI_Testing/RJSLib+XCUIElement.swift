@@ -33,21 +33,21 @@ extension RJSLibExtension where Target == XCUIElement {
         func tapElementAndWaitForKeyboardToAppear(twice:Bool=false) {
             let keyboard = XCUIApplication().keyboards.element
             while (true) {
-                if(twice) { self.target.doubleTap() }
+                if twice { self.target.doubleTap() }
                 else { self.target.tap() }
                 if keyboard.exists {
-                    break;
+                    break
                 }
                 RunLoop.current.run(until: NSDate(timeIntervalSinceNow: 0.5) as Date)
             }
         }
-        if(self.target.isHittable) {
-            if(twice) { self.target.doubleTap() }
+        if self.target.isHittable {
+            if twice { self.target.doubleTap() }
             else { self.target.tap() }
             return true
         }
         let info = "[\(self.target)]"
-        if(logFail) {
+        if logFail {
             DLog("XCUIElement [\(info)] not hitable!")
         }
         return false
@@ -56,7 +56,7 @@ extension RJSLibExtension where Target == XCUIElement {
     func clearAndEnterText(text: String, dismissKeyboardAfter:Bool=true) -> Void {
         self.tapSafe(logFail: true)
         self.clearText()
-        if(dismissKeyboardAfter) {
+        if dismissKeyboardAfter {
             self.target.typeText(text + "\n")
         }
         else {

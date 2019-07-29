@@ -32,7 +32,7 @@ extension Router {
                 
         func presentControllerWith(vm:VM.SampleView_ViewModel?) {
             guard let controller = AppDelegate.shared.container.resolve(V.SampleView_View.self) else { return }
-            if(vm != nil) {
+            if vm != nil {
                 controller.presenter.viewModel = vm
             }
             baseView?.present(controller, animated: true, completion: nil)

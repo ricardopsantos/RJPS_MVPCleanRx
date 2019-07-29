@@ -164,8 +164,7 @@ extension P.SearchUser_Presenter {
                         strongSelf.rxPublishRelay_error.accept(error)
                     }
                 })
-            }
-            else {
+            } else {
                 AppLogs.DLog(appCode: .referenceLost)
             }
             return Disposables.create()

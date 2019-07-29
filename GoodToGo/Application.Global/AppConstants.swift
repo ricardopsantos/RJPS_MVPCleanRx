@@ -43,11 +43,17 @@ struct AppConstants {
         static let getEmployees = "http://dummy.restapiexample.com/api/v1/employees"
     }
     
+    struct Cache {
+        static let serverRequestCacheLifeSpam : Int = 5 // minutes
+        static let servicesCache              : String = "servicesCache"
+    }
+    
     struct Dev {
         private init() {}
         static let tapDefaultDisableTime : Double = 2
         static let cellIdentifier      = "DefaultCell"
         static let keyCoreDataLastUser = "keyCoreDataLastUser"
+
         static let keyCoreDataSaveLang = "keyCoreDataSaveLang"
         static let numberOfLogins      = "numberOfLogins"
         static let mainStoryBoard      = "Main"

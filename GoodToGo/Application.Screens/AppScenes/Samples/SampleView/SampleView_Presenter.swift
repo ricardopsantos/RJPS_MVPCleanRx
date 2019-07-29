@@ -13,7 +13,7 @@ import RJPSLib
  */
 
 //
-//MARK: Presenter_Protocol & View_Protocol
+// MARK: - Presenter_Protocol & View_Protocol
 //
 
 protocol SampleView_PresenterProtocol : class {
@@ -30,7 +30,7 @@ protocol SampleView_ViewProtocol : class {
 }
 
 //
-//MARK: Presenter Declaration
+// MARK: - Presenter Declaration
 //
 
 extension Presenter {
@@ -46,7 +46,7 @@ extension Presenter {
 }
 
 //
-//MARK: Presenter Protocol
+// MARK: - Presenter Protocol
 //
 
 extension P.SampleView_Presenter : SampleView_PresenterProtocol {
@@ -67,7 +67,7 @@ extension P.SampleView_Presenter : SampleView_PresenterProtocol {
 
 
 //
-//MARK: GenericPresenter_Protocol
+// MARK: - GenericPresenter_Protocol
 //
 
 extension P.SampleView_Presenter : GenericPresenter_Protocol {
@@ -82,7 +82,7 @@ extension P.SampleView_Presenter : GenericPresenter_Protocol {
 }
 
 //
-//MARK: Presenter Private Stuff
+// MARK: - Presenter Private Stuff
 //
 
 extension P.SampleView_Presenter {

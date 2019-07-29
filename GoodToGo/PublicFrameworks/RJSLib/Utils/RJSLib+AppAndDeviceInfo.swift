@@ -71,7 +71,7 @@ extension RJSLib {
         public static func deviceIsInLowPower () -> Bool {
             let processInfo = ProcessInfo.processInfo
             if #available(iOS 9.0, *) {
-                if(processInfo.isLowPowerModeEnabled) {
+                if processInfo.isLowPowerModeEnabled {
                     return true
                 }
             }
@@ -80,10 +80,10 @@ extension RJSLib {
         
         public static func deviceInfo() -> [String:String] {
             var result = [String:String]()
-            result["deviceID"]          = "\(deviceID())";
-            result["model"]             = "\(UIDevice.current.model)";
-            result["systemVersion"]     = "\(UIDevice.current.systemVersion)";
-            result["OperatingSystem"]   = "\(ProcessInfo().operatingSystemVersionString)";
+            result["deviceID"]          = "\(deviceID())"
+            result["model"]             = "\(UIDevice.current.model)"
+            result["systemVersion"]     = "\(UIDevice.current.systemVersion)"
+            result["OperatingSystem"]   = "\(ProcessInfo().operatingSystemVersionString)"
             return result
         }
         

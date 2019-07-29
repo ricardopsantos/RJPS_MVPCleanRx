@@ -95,7 +95,7 @@ extension AppView {
     }
 }
 
-//MARK: - View Protocol
+// MARK: - View Protocol
 
 extension V.UserDetais_View : UserDetais_ViewProtocol {
     func setAvatarWith(image: UIImage) {
@@ -108,7 +108,7 @@ extension V.UserDetais_View : UserDetais_ViewProtocol {
     }
 }
 
-//MARK: UITableViewDelegate, UITableViewDataSource
+// MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension V.UserDetais_View : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

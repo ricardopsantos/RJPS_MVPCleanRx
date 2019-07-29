@@ -8,26 +8,20 @@
 import Foundation
 import RJPSLib
 
-extension Repository.Network {
-    struct Bliss {
-        
-    }
-}
-
-extension Repository.Network.Bliss {
+extension RP.Network.Bliss {
     struct GetHealthStatus_APIRequest : WebAPIRequest_Protocol {
         var returnOnMainTread : Bool = true
         var debugRequest      : Bool = AppCan.Logs.requests
         var urlRequest        : URLRequest
         var responseType      : NetworkClientResponseType
-        var mockedData        : String? = nil
+        var mockedData        : String?
 
         init() throws {
             if let url = URL(string: "\(AppConstants.Bliss.URLs.blissAPIBaseUrl)/health") {
                 urlRequest = URLRequest(url: url)
                 urlRequest.httpMethod = "GET"
                 responseType = .json
-                if(AppConstants.URLs.useMockedData) {
+                if AppConstants.URLs.useMockedData {
                     mockedData =
                     """
                     {
@@ -35,8 +29,7 @@ extension Repository.Network.Bliss {
                     }
                     """
                 }
-            }
-            else {
+            } else {
                 throw AppFactory.Errors.with(appCode: .invalidURL)
             }
         }
@@ -45,7 +38,7 @@ extension Repository.Network.Bliss {
     }
 }
 
-extension Repository.Network.Bliss {
+extension RP.Network.Bliss {
     struct ListQuestions_APIRequest : WebAPIRequest_Protocol {
         var returnOnMainTread : Bool = true
         var debugRequest      : Bool = AppCan.Logs.requests
@@ -59,7 +52,7 @@ extension Repository.Network.Bliss {
                 urlRequest = URLRequest(url: url)
                 urlRequest.httpMethod = "GET"
                 responseType = .json
-                if(AppConstants.URLs.useMockedData) {
+                if AppConstants.URLs.useMockedData {
                     mockedData =
                     """
                     [
@@ -109,9 +102,7 @@ extension Repository.Network.Bliss {
                     }]
                     """
                 }
-
-            }
-            else {
+            } else {
                 throw AppFactory.Errors.with(appCode: .invalidURL)
             }
         }
@@ -120,20 +111,20 @@ extension Repository.Network.Bliss {
     }
 }
 
-extension Repository.Network.Bliss {
+extension RP.Network.Bliss {
     struct QuestionById_APIRequest : WebAPIRequest_Protocol {
         var returnOnMainTread : Bool = true
         var debugRequest      : Bool = AppCan.Logs.requests
         var urlRequest        : URLRequest
         var responseType      : NetworkClientResponseType
-        var mockedData        : String? = nil
+        var mockedData        : String?
 
         init(id:Int) throws {
             if let url = URL(string: "\(AppConstants.Bliss.URLs.blissAPIBaseUrl)/questions/\(id)") {
                 urlRequest = URLRequest(url: url)
                 urlRequest.httpMethod = "GET"
                 responseType = .json
-                if(AppConstants.URLs.useMockedData) {
+                if AppConstants.URLs.useMockedData {
                     mockedData =
                     """
                     {
@@ -160,9 +151,7 @@ extension Repository.Network.Bliss {
                     }
                     """
                 }
- 
-            }
-            else {
+            } else {
                 throw AppFactory.Errors.with(appCode: .invalidURL)
             }
         }
@@ -171,7 +160,7 @@ extension Repository.Network.Bliss {
     }
 }
 
-extension Repository.Network.Bliss {
+extension RP.Network.Bliss {
     struct NewQuestion_APIRequest : WebAPIRequest_Protocol {
         var returnOnMainTread : Bool = true
         var debugRequest      : Bool = AppCan.Logs.requests
@@ -192,13 +181,12 @@ extension Repository.Network.Bliss {
                         return "\(some.choice)"
                     })
                 ]
-                if(AppCan.Logs.requests) {
+                if AppCan.Logs.requests {
                     AppLogs.DLog("\(parameters)")
                 }
                 urlRequest.httpBody = parameters.percentEscaped().data(using: .utf8)
                 responseType = .json
-            }
-            else {
+            } else {
                 throw AppFactory.Errors.with(appCode: .invalidURL)
             }
         }
@@ -207,8 +195,7 @@ extension Repository.Network.Bliss {
     }
 }
 
-
-extension Repository.Network.Bliss {
+extension RP.Network.Bliss {
     struct UpdateQuestion_APIRequest : WebAPIRequest_Protocol {
         var returnOnMainTread : Bool = true
         var debugRequest      : Bool = AppCan.Logs.requests
@@ -229,13 +216,12 @@ extension Repository.Network.Bliss {
                         return "\(some.choice)"
                     })
                 ]
-                if(AppCan.Logs.requests) {
+                if AppCan.Logs.requests {
                     AppLogs.DLog("\(parameters)")
                 }
                 urlRequest.httpBody = parameters.percentEscaped().data(using: .utf8)
                 responseType = .json
-            }
-            else {
+            } else {
                 throw AppFactory.Errors.with(appCode: .invalidURL)
             }
         }
@@ -244,13 +230,13 @@ extension Repository.Network.Bliss {
     }
 }
 
-extension Repository.Network.Bliss {
+extension RP.Network.Bliss {
     struct Share_APIRequest : WebAPIRequest_Protocol {
         var returnOnMainTread : Bool = true
         var debugRequest      : Bool = AppCan.Logs.requests
         var urlRequest        : URLRequest
         var responseType      : NetworkClientResponseType
-        var mockedData        : String? = nil
+        var mockedData        : String?
 
         init(email:String, url:String) throws {
             let escapedURL = url.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
@@ -258,8 +244,7 @@ extension Repository.Network.Bliss {
                 urlRequest = URLRequest(url: url)
                 urlRequest.httpMethod = "POST"
                 responseType = .json
-            }
-            else {
+            } else {
                 throw AppFactory.Errors.with(appCode: .invalidURL)
             }
         }

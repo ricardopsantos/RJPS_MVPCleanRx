@@ -160,7 +160,9 @@ extension AppView {
     }
 }
 
-//MARK: - View Protocol
+//
+// MARK: - View Protocol
+//
 
 extension V.BlissDetails_View : BlissDetails_ViewProtocol {
     

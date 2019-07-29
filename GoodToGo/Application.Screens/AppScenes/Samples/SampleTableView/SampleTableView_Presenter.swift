@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 //
-//MARK: Presenter_Protocol & View_Protocol
+// MARK: - Presenter_Protocol & View_Protocol
 //
 
 protocol SampleTableView_PresenterProtocol : class {
@@ -31,7 +31,7 @@ protocol SampleTableView_ViewProtocol : class {
 }
 
 //
-//MARK: Presenter Declaration
+// MARK: - Presenter Declaration
 //
 
 extension Presenter {
@@ -72,8 +72,7 @@ extension P.SampleTableView_Presenter : GenericTableView_Protocol {
             downloadImage(imageURL: employee.profileImage, onFail: AppImages.notFound) { (image) -> (Void) in
                 someCell.rxBehaviorRelay_image.accept(image)
             }
-        }
-        else {
+        } else {
             AppGlobal.assert(false, message: RJS_Constants.notPredicted + "\(cell)")
         }
     }
@@ -89,7 +88,7 @@ extension P.SampleTableView_Presenter : GenericTableView_Protocol {
 }
 
 //
-//MARK: SampleTableView_PresenterProtocol
+// MARK: - SampleTableView_PresenterProtocol
 //
 
 extension P.SampleTableView_Presenter : SampleTableView_PresenterProtocol {
@@ -103,7 +102,7 @@ extension P.SampleTableView_Presenter : SampleTableView_PresenterProtocol {
 }
 
 //
-//MARK: GenericPresenter_Protocol
+// MARK: - GenericPresenter_Protocol
 //
 
 extension P.SampleTableView_Presenter : GenericPresenter_Protocol {
@@ -119,7 +118,7 @@ extension P.SampleTableView_Presenter : GenericPresenter_Protocol {
 }
 
 //
-//MARK: Presenter Private Stuff
+// MARK: - Presenter Private Stuff
 //
 
 extension P.SampleTableView_Presenter {
@@ -132,8 +131,7 @@ extension P.SampleTableView_Presenter {
         guard vm != nil else { AppLogs.DLog(appCode: .ignored); return }
         if let vm = vm {
             view.viewNeedsToDisplay(list: vm.employeesList)
-        }
-        else {
+        } else {
             view.viewNeedsToDisplay(list: [])
         }
     }
@@ -164,7 +162,7 @@ extension P.SampleTableView_Presenter {
     func rxObservable_GetEmployees() -> Observable<[E.Employee]> {
         return Observable.create { observer -> Disposable in
             do {
-                let apiRequest: WebAPIRequest_Protocol = try RN.GetEmployees_APIRequest()
+                let apiRequest: WebAPIRequest_Protocol = try RP.Network.Employees.GetEmployees_APIRequest()
                 let apiClient : NetworkClient_Protocol = RJSLib.NetworkClient()
                 apiClient.execute(request: apiRequest, completionHandler: { (result : Result<NetworkClientResponse<[E.Employee]>>) in
                     switch result {
@@ -184,7 +182,7 @@ extension P.SampleTableView_Presenter {
                 observer.onError(error)
             }
             return Disposables.create()
-            }.retry(RN.GetEmployees_APIRequest.maxNumberOfRetrys)
+            }.retry(RP.Network.Employees.GetEmployees_APIRequest.maxNumberOfRetrys)
             .retryOnBecomesReachable([], reachabilityService: reachabilityService)
     }
 }

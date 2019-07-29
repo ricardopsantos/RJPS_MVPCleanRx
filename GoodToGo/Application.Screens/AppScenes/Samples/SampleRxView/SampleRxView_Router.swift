@@ -30,7 +30,7 @@ extension Router {
                 .map { data -> UINavigationController? in
                     // Prepare controller
                     guard let controller = AppDelegate.shared.container.resolve(V.SampleRxView_View.self) else { return nil }
-                    if(data != nil) {
+                    if data != nil {
                         controller.presenter.viewModel = data
                     }
                     let navigationController = UINavigationController(rootViewController: controller)

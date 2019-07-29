@@ -11,7 +11,9 @@ import RJPSLib
 
 extension UseCases {
     
-    class GitUser_UseCase : GitUser_UseCaseProtocol {
+    class GitUser_UseCase : GenericUseCase, GitUser_UseCaseProtocol {
+
+        var generic_CacheRepositoryProtocol : Generic_CacheRepositoryProtocol!
         
         func getInfoOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitUser_Single_UseCaseCompletionHandler) {
             
@@ -20,11 +22,24 @@ extension UseCases {
                 return
             }
             
-            RN.GitUser_NetWorkRepository().getInfoOfUserWith(userName: userName, canUseCache: true, completionHandler: { result in
+            let cacheKey      = "\(AppConstants.Cache.servicesCache).\(GitUser_UseCase.self).getInfoOfUserWith\(userName)"
+            let coreDatakey   = "\(cacheKey).lastUpdate"
+            let cacheLifeSpam = AppConstants.Cache.serverRequestCacheLifeSpam
+            
+            if(canUseCache && !cachedValueIsOld(coreDatakey:coreDatakey, maxLifeSpam:cacheLifeSpam)) {
+                if let cachedValue =  generic_CacheRepositoryProtocol.get(key: cacheKey)  {
+                    completionHandler(Result.success(cachedValue as! E.GitHubUser))
+                    return
+                }
+            }
+            
+            RP.Network.GitUser.NetWorkRepository().getInfoOfUserWith(userName: userName, canUseCache: true, completionHandler: { [weak self] result in
+                guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                 switch result {
-               case .success(let some):
+                case .success(let some):
                     let user : E.GitHubUser = some.entity
                     completionHandler(Result.success(user))
+                    strongSelf.generic_CacheRepositoryProtocol.add(object: some.entity as AnyObject, withKey: cacheKey)
                     break
                 case .failure(let error):
                     completionHandler(Result.failure(error))
@@ -40,11 +55,24 @@ extension UseCases {
                 return
             }
             
-            RN.GitUser_NetWorkRepository().getFriendsOfUserWith(userName: userName, canUseCache: true, completionHandler: { (result) in
+            let cacheKey      = "\(AppConstants.Cache.servicesCache).\(GitUser_UseCase.self).getFriendsOfUserWith\(userName)"
+            let coreDatakey   = "\(cacheKey).lastUpdate"
+            let cacheLifeSpam = AppConstants.Cache.serverRequestCacheLifeSpam
+            
+            if(canUseCache && !cachedValueIsOld(coreDatakey:coreDatakey, maxLifeSpam:cacheLifeSpam)) {
+                if let cachedValue =  generic_CacheRepositoryProtocol.get(key: cacheKey)  {
+                    completionHandler(Result.success(cachedValue as! [E.GitHubUser]))
+                    return
+                }
+            }
+            
+            RP.Network.GitUser.NetWorkRepository().getFriendsOfUserWith(userName: userName, canUseCache: true, completionHandler: { [weak self] result in
+                guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                 switch result {
                 case .success(let some):
                     let friends : [E.GitHubUser] = some.entity
                     completionHandler(Result.success(friends))
+                    strongSelf.generic_CacheRepositoryProtocol.add(object: some.entity as AnyObject, withKey: cacheKey)
                     break
                 case .failure(let error):
                     completionHandler(Result.failure(error))

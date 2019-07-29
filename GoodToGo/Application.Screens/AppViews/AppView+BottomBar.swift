@@ -109,12 +109,11 @@ extension AppView {
             let margin : CGFloat = V.BottomBar.defaultHeight()*(k/2.0)
             let btnSize = CGSize(width: dimW, height: dimH)
             btns.forEach { (some) in
-                if(some == _btn3) {
+                if some == _btn3 {
                     _btn3.backgroundColor = .red
                     some.rjsALayouts.setWidth(dimW)
                     some.rjsALayouts.setMargin(margin, on: .top)
-                }
-                else {
+                } else {
                     some.rjsALayouts.setSize(btnSize)
                 }
                 some.rjsALayouts.setMargin(margin, on: .bottom)

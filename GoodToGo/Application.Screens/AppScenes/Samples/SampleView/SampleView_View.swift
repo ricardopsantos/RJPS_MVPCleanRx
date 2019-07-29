@@ -151,7 +151,7 @@ extension AppView {
 }
 
 
-//MARK: - View Protocol
+// MARK: - View Protocol
 
 extension V.SampleView_View : SampleView_ViewProtocol {
     func updateViewWith(message:String) {

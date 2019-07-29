@@ -124,7 +124,7 @@ class GenericView: UIViewController {
 }
 
 //
-//MARK: Private stuff
+// MARK: - Private stuff
 //
 
 extension GenericView {
@@ -164,7 +164,7 @@ extension GenericView {
 }
 
 //
-//MARK: Keyboard
+// MARK: - Keyboard
 //
 
 extension GenericView {

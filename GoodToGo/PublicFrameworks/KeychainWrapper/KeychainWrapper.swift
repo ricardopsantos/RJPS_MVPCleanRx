@@ -72,7 +72,7 @@ open class KeychainWrapper {
         self.accessGroup = accessGroup
     }
 
-    // MARK:- Public Methods
+// MARK: - Public Methods
     
     /// Checks if keychain data exists for a specified key.
     ///
@@ -386,7 +386,7 @@ open class KeychainWrapper {
         deleteKeychainSecClass(kSecClassIdentity) // Identity items
     }
 
-    // MARK:- Private Methods
+// MARK: - Private Methods
     
     /// Remove all items for a given Keychain Item Class
     ///

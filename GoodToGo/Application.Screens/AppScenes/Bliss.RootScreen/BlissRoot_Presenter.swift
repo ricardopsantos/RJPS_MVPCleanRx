@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 //
-//MARK: Presenter_Protocol & View_Protocol
+// MARK: - Presenter_Protocol & View_Protocol
 //
 
 protocol BlissRoot_PresenterProtocol : class {
@@ -31,7 +31,7 @@ protocol BlissRoot_ViewProtocol : class {
 }
 
 //
-//MARK: Presenter Declaration
+// MARK: - Presenter Declaration
 //
 
 extension Presenter {
@@ -50,7 +50,7 @@ extension Presenter {
 
 
 //
-//MARK: BlissRoot_PresenterProtocol
+// MARK: - BlissRoot_PresenterProtocol
 //
 
 extension P.BlissRoot_Presenter : BlissRoot_PresenterProtocol {
@@ -71,7 +71,7 @@ extension P.BlissRoot_Presenter : BlissRoot_PresenterProtocol {
 }
 
 //
-//MARK: GenericPresenter_Protocol
+// MARK: - GenericPresenter_Protocol
 //
 
 extension P.BlissRoot_Presenter : GenericPresenter_Protocol {
@@ -87,7 +87,7 @@ extension P.BlissRoot_Presenter : GenericPresenter_Protocol {
 }
 
 //
-//MARK: Presenter Private Stuff
+// MARK: - Presenter Private Stuff
 //
 
 extension P.BlissRoot_Presenter {
@@ -115,8 +115,7 @@ extension P.BlissRoot_Presenter {
                 case .success(let some):
                     if some.isOK {
                         handleSucess()
-                    }
-                    else {
+                    } else {
                         handleFail()
                     }
                 case .failure(_):
@@ -130,7 +129,7 @@ extension P.BlissRoot_Presenter {
    
         reachabilityService.reachability.subscribe(
             onNext: { [weak self] some in
-                    if(some.reachable) {
+                    if some.reachable  {
                         self?.genericView?.setNoConnectionViewVisibity(to: false)
                         self?.rxObservableAssyncRequest
                             .subscribe(
@@ -138,8 +137,7 @@ extension P.BlissRoot_Presenter {
                                 onError: { [weak self] error in self?.view.set(image: AppImages.notFound) }
                             )
                             .disposed(by: self!.disposeBag)
-                    }
-                    else {
+                    } else {
                         self?.genericView?.setNoConnectionViewVisibity(to: true)
                         self?.view.set(image: AppImages.notInternet)
                     }
@@ -149,9 +147,8 @@ extension P.BlissRoot_Presenter {
     
 }
 
-
 //
-//MARK: RxRelated
+// MARK: - RxRelated
 //
 extension P.BlissRoot_Presenter {
     var rxReturnOnError : UIImage { return AppImages.notInternet }

@@ -33,8 +33,7 @@ extension Mappers {
                 return []
             }
             return try JSONDecoder().decode([T].self, from: jsonData)
-        }
-        catch (let error) {
+        } catch let error {
             AppLogs.DLogError(error)
         }
         return []

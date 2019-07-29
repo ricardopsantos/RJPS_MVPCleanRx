@@ -52,7 +52,7 @@
 ## Swift 5.0.1
     github "Swinject/Swinject"
     github "Swinject/SwinjectAutoregistration"
-    github "Swinject/SwinjectStoryboard"
+    #github "Swinject/SwinjectStoryboard"
 
 ####################################################################
 

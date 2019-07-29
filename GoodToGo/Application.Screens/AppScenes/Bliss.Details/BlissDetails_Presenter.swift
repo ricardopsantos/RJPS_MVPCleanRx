@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 //
-//MARK: Presenter_Protocol & View_Protocol
+// MARK: - Presenter_Protocol & View_Protocol
 //
 
 protocol BlissDetails_PresenterProtocol : class {
@@ -36,7 +36,7 @@ protocol BlissDetails_ViewProtocol : class {
 }
 
 //
-//MARK: Presenter Declaration
+// MARK: - Presenter Declaration
 //
 
 extension Presenter {
@@ -52,9 +52,8 @@ extension Presenter {
     }
 }
 
-
 //
-//MARK: BlissDetails_PresenterProtocol
+// MARK: - BlissDetails_PresenterProtocol
 //
 
 extension P.BlissDetails_Presenter : BlissDetails_PresenterProtocol {
@@ -75,8 +74,7 @@ extension P.BlissDetails_Presenter : BlissDetails_PresenterProtocol {
                     case .failure(let error): observer.onError(error); break
                     }
                 }
-            }
-            else {
+            } else {
                 AppLogs.DLog(appCode: .referenceLost)
             }
             return Disposables.create()
@@ -96,7 +94,7 @@ extension P.BlissDetails_Presenter : BlissDetails_PresenterProtocol {
             strongSelf.genericView?.setActivityState(false)
             switch result {
             case .success(let some):
-                if(some.sucess) {
+                if some.sucess {
                     strongSelf.genericView?.displayMessage(AppMessages.Bliss.sharedWithSucess, type: .sucess)
                 }
                 else {
@@ -111,7 +109,7 @@ extension P.BlissDetails_Presenter : BlissDetails_PresenterProtocol {
 }
 
 //
-//MARK: GenericTableView_Protocol
+// MARK: - GenericTableView_Protocol
 //
 
 extension P.BlissDetails_Presenter : GenericTableView_Protocol {
@@ -125,8 +123,7 @@ extension P.BlissDetails_Presenter : GenericTableView_Protocol {
             let title = "\(choice.choice) | \(choice.votes)"
             //someCell.set(title:"\(choice.choice) | \(choice.votes)")
             someCell.rxBehaviorRelay_title.accept(title)
-        }
-        else {
+        } else {
             AppGlobal.assert(false, message: RJS_Constants.notPredicted + "\(cell)")
         }
     }
@@ -160,7 +157,7 @@ extension P.BlissDetails_Presenter : GenericTableView_Protocol {
 }
 
 //
-//MARK: GenericPresenter_Protocol
+// MARK: - GenericPresenter_Protocol
 //
 
 extension P.BlissDetails_Presenter : GenericPresenter_Protocol {
@@ -181,7 +178,7 @@ extension P.BlissDetails_Presenter : GenericPresenter_Protocol {
 }
 
 //
-//MARK: Presenter Private Stuff
+// MARK: - Presenter Private Stuff
 //
 
 extension P.BlissDetails_Presenter {

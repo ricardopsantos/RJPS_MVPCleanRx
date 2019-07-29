@@ -8,7 +8,9 @@
 import Foundation
 import UIKit
 
-//MARK: Vars
+//
+// MARK: - Vars
+//
 
 extension RJSLibExtension where Target == UIColor {
         

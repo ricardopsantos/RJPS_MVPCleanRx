@@ -24,7 +24,6 @@ typealias AppUserDefaultsVars    = RJS_UserDefaultsVars
 typealias AppUserDefaults        = RJS_UserDefaults
 typealias WebAPIRequest_Protocol = RJSLibWebAPIRequest_Protocol
 
-
 typealias AppEnvironments        = AppManagers.Environments
 typealias AppFactory             = AppManagers.Factory
 typealias AppCan                 = AppManagers.AppCan

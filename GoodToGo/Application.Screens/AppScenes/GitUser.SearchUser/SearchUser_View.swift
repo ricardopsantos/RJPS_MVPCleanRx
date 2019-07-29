@@ -83,7 +83,7 @@ extension AppView {
     }
 }
 
-//MARK: - View Protocol
+// MARK: - View Protocol
 
 extension V.SearchUser_View: SearchUser_ViewProtocol {
     func viewDataToScreen(some: VM.SearchUser) {

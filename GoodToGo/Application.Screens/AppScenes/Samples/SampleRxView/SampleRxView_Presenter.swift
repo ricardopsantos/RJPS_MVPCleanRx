@@ -15,7 +15,7 @@ import RxCocoa
  */
 
 //
-//MARK: Presenter_Protocol & View_Protocol
+// MARK: - Presenter_Protocol & View_Protocol
 //
 
 protocol SampleRxView_PresenterProtocol : class {
@@ -32,7 +32,7 @@ protocol SampleRxView_ViewProtocol : class {
 }
 
 //
-//MARK: Presenter Declaration
+// MARK: - Presenter Declaration
 //
 
 extension Presenter {
@@ -49,7 +49,7 @@ extension Presenter {
 }
 
 //
-//MARK: Presenter Protocol
+// MARK: - Presenter Protocol
 //
 
 extension P.SampleRxView_Presenter : SampleRxView_PresenterProtocol {
@@ -90,12 +90,10 @@ extension P.SampleRxView_Presenter : SampleRxView_PresenterProtocol {
             }.retry(3)
             .retryOnBecomesReachable("", reachabilityService: reachabilityService)
     }
-    
 }
 
-
 //
-//MARK: GenericPresenter_Protocol
+// MARK: - GenericPresenter_Protocol
 //
 
 extension P.SampleRxView_Presenter : GenericPresenter_Protocol {

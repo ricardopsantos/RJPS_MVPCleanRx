@@ -47,7 +47,7 @@ extension RJSLib {
             
             let appState = ""
             
-            debugCounter       = debugCounter + 1
+            debugCounter       = debugCounter++
             let senderCodeId   = RJSLib.Utils.senderCodeId(function, file: file, line: line)
             let messageToPrint = message.trim
             let date           = Date.utcNow()

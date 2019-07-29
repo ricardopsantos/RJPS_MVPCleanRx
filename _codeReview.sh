@@ -4,23 +4,41 @@
 # https://github.com/peripheryapp/periphery
 #
 
-# /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-# eval brew tap peripheryapp/periphery
-# eval brew cask install periphery
-# brew cask reinstall periphery
+clear
+
+printf "\n"
+printf "\n# %s\n" "$now #"
+
+echo "###########################################"
+echo "############## periphery ##################"
+echo "###########################################"
+
+#
+# Find unused code
+# https://github.com/peripheryapp/periphery
+#
 
 periphery scan \
---project "/Users/ricardopsantos/Desktop/GitHub/RJPS_MVPCleanRx/GoodToGo.xcodeproj/" \
+--project "~/Desktop/GitHub/RJPS_MVPCleanRx/GoodToGo.xcodeproj/" \
 --schemes "GoodToGo.Debug.Dev" \
 --targets "GoodToGo" \
 --retain-public
 
 
 #
+# Tool to enforce Swift style and conventions
 # https://github.com/realm/SwiftLint
 #
 
-# brew install swiftlint
+echo "###########################################"
+echo "############## swiftlint ##################"
+echo "###########################################"
 
-swiftlint
+# swiftlint version
+# swiftlint rules
+# swiftlint generate-docs
+
+#swiftlint lint > report.swiftlint.txt
+swiftlint lint
+
 

@@ -24,7 +24,7 @@ var_target=$ARGUMENT_B        #"GoodToGo.Debug.Dev"
 var_configuration=$ARGUMENT_C #"Release"
 var_appVersion=$ARGUMENT_D    #"[V2.0.1]"
 var_output=$ARGUMENT_E        #"~/Desktop/"
-var_plist=$ARGUMENT_F         #"exportPlist.rjps.enterprise.plist"
+var_plist=$ARGUMENT_F         #"exportPlist.enterprise.plist"
 
 var_exportFileName="$var_target"_["$var_configuration"]_"$var_appVersion"
 var_archivePath=""$var_output""$var_exportFileName""
@@ -74,6 +74,12 @@ doArquive
 
 doGenerateIPA
 
-eval "rm "$var_output"/"$var_exportFileName".ipa.zip"
-eval "rm "$var_output"/"$var_exportFileName".xcarchive.zip"
+#eval "rm "$var_output"/"$var_exportFileName".ipa.zip"
+#eval "rm "$var_output"/"$var_exportFileName".xcarchive.zip"
 
+rm -rf ~/Library/Developer/Xcode/DerivedData
+rm -rf ~/Library/Developer/Xcode/Archives
+rm -rf ~/Library/Developer/Xcode/iOS\ Device\ Logs
+rm -rf ~/Library/Developer/Xcode/watchOS\ DeviceSupport
+rm -rf ~/Library/Developer/Xcode/UserData/IB\ Support
+rm -rf ~/Library/Developer/Xcode/Products

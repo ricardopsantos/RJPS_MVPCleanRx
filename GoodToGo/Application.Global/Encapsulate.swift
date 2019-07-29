@@ -37,12 +37,9 @@ struct AppView { private init() {} }
 /**
  Encapsulate all Repositories
  */
-typealias RN = Repository.Network
-typealias RL = Repository.LocalStorage
+typealias RP = Repository
 struct Repository {
     private init() {}
-    struct Network { private init() { } }
-    struct LocalStorage { private init() { } }
 }
 
 /**

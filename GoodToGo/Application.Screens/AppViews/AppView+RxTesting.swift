@@ -164,19 +164,19 @@ extension AppView {
             some.onTouchUpInside {
                 let someInt = (Date.utcNow().seconds)
                 let random = Int.random(in: 0 ... 5)
-                if(random==1) {
+                if random==1 {
                     self.aux_log(message: "[_rxBehaviorRelay_a]", showAlert: false, appendToTable: true)
                     self._rxBehaviorRelay_a.accept(self._rxBehaviorRelay_a.value + "|" + "VALUE_A_\(someInt)")
                 }
-                if(random==2) {
+                if random==2 {
                     self.aux_log(message: "[_rxBehaviorRelay_b]", showAlert: false, appendToTable: true)
                     self._rxBehaviorRelay_b.accept("\(someInt)")
                 }
-                if(random==3) {
+                if random==3 {
                     self.aux_log(message: "[_rxBehaviorRelay_c]", showAlert: false, appendToTable: true)
                     self._rxBehaviorRelay_c.accept(someInt)
                 }
-                if(random==4) {
+                if random==4 {
                     self.aux_log(message: "[_rxPublishRelay_a]", showAlert: false, appendToTable: true)
                     self._rxPublishRelay_a.accept(())
                 }
@@ -300,7 +300,7 @@ extension AppView {
 }
 
 //
-//MARK: RxRelated
+// MARK: - RxRelated
 //
 extension AppView.RxTesting {
     
@@ -309,11 +309,10 @@ extension AppView.RxTesting {
         return Observable.create { [weak self] observer -> Disposable in
             let adress = Bool.random() ? "https://image.shutterstock.com/image-photo/white-transparent-leaf-on-mirror-260nw-1029171697.jpg" : "lalal"
             AppSimpleNetworkClient.downloadImageFrom(adress, completion: { (image) in
-                if(image != nil) {
+                if image != nil {
                     self?.aux_log(message: "[rxObservableAssyncRequest][onNext]", showAlert: false, appendToTable: true)
                     observer.onNext(image!)
-                }
-                else {
+                } else {
                     self?.aux_log(message: "[rxObservableAssyncRequest][onError]", showAlert: false, appendToTable: true)
                     observer.onError(AppFactory.Errors.with(appCode: .invalidURL))
                 }
@@ -331,7 +330,7 @@ extension AppView.RxTesting {
 }
 
 //
-//MARK: Auxiliar
+// MARK: - Auxiliar
 //
 extension AppView.RxTesting {
     
@@ -350,17 +349,17 @@ extension AppView.RxTesting {
     func aux_log(message:String, showAlert:Bool, appendToTable:Bool) {
         _searchBar.resignFirstResponder()
         print("\(message)")
-        if(appendToTable) {
+        if appendToTable {
             let time = "" //"\(Date.utcNow().hours):\(Date.utcNow().minutes):\(Date.utcNow().seconds)"
             _rxBehaviorRelay_tableDataSource.accept(["\(time) : \(message)"] + _rxBehaviorRelay_tableDataSource.value)
         }
-        if(showAlert) {
+        if showAlert {
             displayMessage(message, type: .sucess)
         }
     }
 }
 
-//MARK: - UITableViewDelegate
+// MARK: - UITableViewDelegate
 
 extension AppView.RxTesting: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -377,7 +376,7 @@ extension V.RxTesting {
         ///////////////////////////////////////////////////////////////////////
         
         // 3 ways to do same thing
-        if(false) {
+        if false {
             Observable<String>.of("2","3","3","5")
                 .map { return Int($0)! * 10 }
                 .filter { $0 > 25 }
@@ -409,8 +408,7 @@ extension V.RxTesting {
                     }
                 }).disposed(by: disposeBag)
         }
- 
-        
+
         ///////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////
@@ -420,7 +418,6 @@ extension V.RxTesting {
             // RxSwift provides a method that creates a sequence which returns one element upon subscription.
             // That method is called just. Let's write our own implementation of it:
             //
-            
             func myJust<E>(_ element: E) -> Observable<E> {
                 return Observable.create { observer in
                     observer.on(.next(element))
@@ -428,7 +425,6 @@ extension V.RxTesting {
                     return Disposables.create()
                 }
             }
-            
             func myFrom<E>(_ sequence: [E]) -> Observable<E> {
                 return Observable.create { observer in
                     for element in sequence {
@@ -438,21 +434,18 @@ extension V.RxTesting {
                     return Disposables.create()
                 }
             }
-            
             //
             // Lets now create an observable that returns elements from an array.
             //
-            
             let just = myJust("## my just ##")
             let _ = just.subscribe(onNext: { n in print("just_1 : \(n)") })
             let _ = just.subscribe(onNext: { n in print("just_2 : \(n)") })
-            
+    
             let from = myFrom(["## element_1 ##", "## element_2 ##", "## element_3 ##"]).share()
             let _ = from.subscribe(onNext: { n in print("from_1 : \(n)") })
             let _ = from.subscribe(onNext: { n in print("from_2 : \(n)") })
         }
 
-        
         let intervalObservable_1 = Observable<NSInteger>
             .interval(0.1, scheduler: MainScheduler.instance)
             .take(10)

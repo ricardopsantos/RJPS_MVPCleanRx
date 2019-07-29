@@ -39,10 +39,10 @@ extension RJSLib {
                 switch (folder) {
                 case Folder.documents:
                     destenyFolder = getDocumentsDirectory() as String
-                    break;
+                    break
                 case Folder.temp:
                     destenyFolder = getTempDirectory() as String
-                    break;
+                    break
                 }
                 return destenyFolder
             }

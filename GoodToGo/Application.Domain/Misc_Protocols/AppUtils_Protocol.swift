@@ -17,4 +17,5 @@ protocol AppUtils_Protocol : class {
     
     func downloadImage(imageURL:String, onFail:UIImage?, completion:@escaping (UIImage?) -> (Void)) -> Void
 
+    func cachedValueIsOld(coreDatakey:String, maxLifeSpam:Int) -> Bool
 }

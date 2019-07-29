@@ -7,15 +7,10 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RJPSLib
+import RxCocoa
 
-
-
-//
-// MARK: - UserTableViewCell_Protocol
-//
-
-protocol UserTableViewCell_Protocol : GenericTableViewCell_Protocol {
-
+class GenericUseCase : AppUtils_Protocol {
+    
 }
-
-
