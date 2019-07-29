@@ -17,19 +17,20 @@ struct AppConstants {
         // https://medium.com/fantageek/throttle-vs-debounce-in-rxswift-86f8b303d5d4
         // Throttle : Will ignore events between the time span of xxxx miliseconds
         // Debounce : Only "fire" event, after the last happen after xxxx miliseconds.... Good to avoid double taps
-        static let tappingDefaultThrottle    = 10
+        //static let tappingDefaultThrottle    = 10
         static let tappingDefaultDebounce    = 500 
 
         static let servicesDefaultThrottle   = 10
         static let servicesDefaultDebounce   = 250
         
         static let textFieldsDefaultDebounce = 1000
-        static let textFieldsDefaultThrottle = 10
+        //static let textFieldsDefaultThrottle = 10
 
     }
 
     struct URLs {
         private init() {}
+        static let useMockedData = AppEnvironments.isDev()
         static var githubAPIBaseUrl : String {
             switch AppEnvironments.current {
             case .dev  : return "https://api.github.com"
@@ -44,6 +45,7 @@ struct AppConstants {
     
     struct Dev {
         private init() {}
+        static let tapDefaultDisableTime : Double = 2
         static let cellIdentifier      = "DefaultCell"
         static let keyCoreDataLastUser = "keyCoreDataLastUser"
         static let keyCoreDataSaveLang = "keyCoreDataSaveLang"

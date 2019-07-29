@@ -40,7 +40,7 @@ extension Presenter {
         weak var generic      : GenericPresenter_Protocol?
         weak var genericView  : GenericView?
         weak var view   : SampleRxView_ViewProtocol!
-        var viewModel   : VM.SampleRxView_ViewModel? { didSet { AppLogs.DLog(code: .vmChanged); viewModelChanged() } }
+        var viewModel   : VM.SampleRxView_ViewModel? { didSet { AppLogs.DLog(appCode: .vmChanged); viewModelChanged() } }
         var router      : SampleRxView_RouterProtocol!
 
         var sample_UseCase : Sample_UseCaseProtocol!
@@ -84,7 +84,7 @@ extension P.SampleRxView_Presenter : SampleRxView_PresenterProtocol {
                 }
             }
             else {
-                AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost)
+                AppLogs.DLog(appCode: .referenceLost)
             }
             return Disposables.create()
             }.retry(3)
@@ -113,7 +113,7 @@ extension P.SampleRxView_Presenter {
     }
     
     private func updateViewWith(vm:VM.SampleRxView_ViewModel?) -> Void {
-        guard viewModel != nil else { AppLogs.DLog(code: .ignored); return }
+        guard viewModel != nil else { AppLogs.DLog(appCode: .ignored); return }
         view.updateViewWith(message: viewModel!.someString)
     }
     

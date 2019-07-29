@@ -17,6 +17,7 @@ class GenericPresenter {
         NotificationCenter.default.removeObserver(self)
     }
     
+    var rxPublishRelay_error       = PublishRelay<Error>()
     var reachabilityService: ReachabilityService! = try! DefaultReachabilityService() // try! is only for simplicity sake
     var disposeBag : DisposeBag = DisposeBag()
    

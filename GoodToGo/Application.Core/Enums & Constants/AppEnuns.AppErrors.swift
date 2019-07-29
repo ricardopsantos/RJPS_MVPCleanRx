@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+/*
 extension AppEnuns {
     private init() {}
 
@@ -29,4 +29,4 @@ extension AppEnuns {
     
       
 }
-
+*/

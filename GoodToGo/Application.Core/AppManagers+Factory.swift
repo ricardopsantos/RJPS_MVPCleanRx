@@ -14,7 +14,15 @@ extension AppManagers {
     
         struct Errors {
             private init() {}
-            static func with(code:AppEnuns.AppCodes) -> Error { return NSError(domain:code.localizableString, code:code.rawValue, userInfo:nil) }
+            static func with(appCode:AppEnuns.AppCodes, info:String="") -> Error {
+                let domain   : String = "\(Bundle.main.bundleIdentifier!)"//appCode.localizableString
+                let code     : Int = appCode.rawValue
+                var userInfo : [String:Any] = [:]
+                userInfo[NSError.AppKeys.userInfoDevMessageKey]  = appCode.localizedMessageForDevTeam
+                userInfo[NSError.AppKeys.userInfoViewMessageKey] = appCode.localizedMessageForView
+                userInfo[NSError.AppKeys.userInfoMoreInfoKey]    = info
+                return NSError(domain:domain, code:code, userInfo:userInfo)
+            }
         }
         
         struct UIKit {

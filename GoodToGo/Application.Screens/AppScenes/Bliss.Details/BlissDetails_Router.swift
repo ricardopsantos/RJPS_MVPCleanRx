@@ -17,7 +17,7 @@ protocol BlissDetails_RouterProtocol: class {
 extension Router {
     class BlissDetails_Router: GenericRouter, GenericRouter_Protocol, BlissDetails_RouterProtocol {
         
-        fileprivate weak var baseView : V.BlissDetails_View?
+        private weak var baseView : V.BlissDetails_View?
         init(viewController: V.BlissDetails_View) {
             super.init()
             baseView = viewController

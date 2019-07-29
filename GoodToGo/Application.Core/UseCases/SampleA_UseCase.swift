@@ -20,7 +20,7 @@ extension UseCases {
 
         func operation1(canUseCache: Bool, completionHandler: @escaping Sample_UseCaseCompletionHandler) {
             guard RJS_Utils.existsInternetConnection() else {
-                completionHandler(Result.failure(AppFactory.Errors.with(code: .noInternet)))
+                completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
                 return
             }
             DispatchQueue.executeWithDelay (delay:1) {
@@ -30,7 +30,7 @@ extension UseCases {
         
         func operation2(param: String, completionHandler: @escaping Sample_UseCaseCompletionHandler) {
             guard RJS_Utils.existsInternetConnection() else {
-                completionHandler(Result.failure(AppFactory.Errors.with(code: .noInternet)))
+                completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
                 return
             }
             DispatchQueue.executeWithDelay (delay:3) {

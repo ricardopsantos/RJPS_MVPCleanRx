@@ -34,15 +34,14 @@ extension AppView {
             some.rx.text
                 .orEmpty
                 .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
-                .throttle(.milliseconds(AppConstants.Rx.textFieldsDefaultThrottle), scheduler: MainScheduler.instance)
                 .subscribe(onNext: { [weak self] _ in
-                    guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                     strongSelf.presenter.searchUserWith(username: some.text ?? "")
                 })
                 .disposed(by: disposeBag)
             some.rx.textDidEndEditing
                 .subscribe(onNext: { [weak self] (query) in
-                    guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                     if(strongSelf._searchBar.text!.count>0) {
                         strongSelf.presenter.searchUserWith(username: some.text ?? "")
                     }
@@ -66,6 +65,12 @@ extension AppView {
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             presenter.generic?.viewWillAppear()
+        }
+        
+        override func viewDidAppear(_ animated: Bool) {
+            super.viewDidAppear(animated)
+            presenter.generic?.viewDidAppear()
+            _searchBar.becomeFirstResponder()
         }
         
         override func prepareLayout() {

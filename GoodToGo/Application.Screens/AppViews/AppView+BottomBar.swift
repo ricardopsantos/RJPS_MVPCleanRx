@@ -25,55 +25,55 @@ extension AppView {
         private lazy var _btn1: UIButton = {
             let some = AppFactory.UIKit.button(baseView: self.view, style: .alternative)
             some.setTitleForAllStates("1")
-            some.rx.tap.debug("_btn1 tap").bind {
-                some.bumpAndPerformBlock {
-                    self.delegate?.btnTappedWith(identifier: "1")
-                }
-                }.disposed(by: disposeBag)
+            some.rx.tap.subscribe({ [weak self] _ in
+                some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
+                    self?.delegate?.btnTappedWith(identifier: "1")
+                })
+            }).disposed(by: disposeBag)
             return some
         }()
         
         private lazy var _btn2: UIButton = {
             let some = AppFactory.UIKit.button(baseView: self.view, style: .alternative)
             some.setTitleForAllStates("2")
-            some.rx.tap.debug("_btn2 tap").bind {
-                some.bumpAndPerformBlock {
-                    self.delegate?.btnTappedWith(identifier: "2")
-                }
-                }.disposed(by: disposeBag)
+            some.rx.tap.subscribe({ [weak self] _ in
+                some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
+                    self?.delegate?.btnTappedWith(identifier: "2")
+                })
+            }).disposed(by: disposeBag)
             return some
         }()
         
         private lazy var _btn3: UIButton = {
             let some = AppFactory.UIKit.button(baseView: self.view, style: .alternative)
             some.setTitleForAllStates("3")
-            some.rx.tap.debug("_btn3 tap").bind {
-                some.bumpAndPerformBlock {
-                    self.delegate?.btnTappedWith(identifier: "3")
-                }
-                }.disposed(by: disposeBag)
+            some.rx.tap.subscribe({ [weak self] _ in
+                some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
+                    self?.delegate?.btnTappedWith(identifier: "3")
+                })
+            }).disposed(by: disposeBag)
             return some
         }()
         
         private lazy var _btn4: UIButton = {
             let some = AppFactory.UIKit.button(baseView: self.view, style: .alternative)
             some.setTitleForAllStates("4")
-            some.rx.tap.debug("_btn4 tap").bind {
-                some.bumpAndPerformBlock {
-                    self.delegate?.btnTappedWith(identifier: "4")
-                }
-                }.disposed(by: disposeBag)
+            some.rx.tap.subscribe({ [weak self] _ in
+                some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
+                    self?.delegate?.btnTappedWith(identifier: "4")
+                })
+            }).disposed(by: disposeBag)
             return some
         }()
         
         private lazy var _btn5: UIButton = {
             let some = AppFactory.UIKit.button(baseView: self.view, style: .alternative)
             some.setTitleForAllStates("5")
-            some.rx.tap.debug("_btn5 tap").bind {
-                some.bumpAndPerformBlock {
-                    self.delegate?.btnTappedWith(identifier: "5")
-                }
-                }.disposed(by: disposeBag)
+            some.rx.tap.subscribe({ [weak self] _ in
+                some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
+                    self?.delegate?.btnTappedWith(identifier: "5")
+                })
+            }).disposed(by: disposeBag)
             return some
         }()
         

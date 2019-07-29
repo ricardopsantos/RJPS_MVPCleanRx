@@ -54,15 +54,13 @@ extension AppView {
             some.rjsALayouts.setWidth(AppGlobal.screenWidth/2 - 2*_margin)
             some.rjsALayouts.setMargin(_margin, on: .bottom)
             some.rjsALayouts.setHeight(50)
-            some.rx.tap.debug("_btnShare1 tap")
-                .throttle(.milliseconds(AppConstants.Rx.tappingDefaultThrottle), scheduler: MainScheduler.instance)
-                .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)                  .subscribe({ [weak self] _ in
-                    some.bumpAndPerformBlock {
-                        guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
-                        strongSelf.presenter.userDidPretendToShareInApp()
-                    }
+            some.rx.tap.subscribe({ [weak self] _ in
+                some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
+                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+                    strongSelf.presenter.userDidPretendToShareInApp()
                 })
-                .disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
             return some
         }()
 
@@ -73,12 +71,11 @@ extension AppView {
             some.rjsALayouts.setMargin(_margin, on: .bottom)
             some.rjsALayouts.setHeight(50)
             some.rx.tap
-                .throttle(.milliseconds(AppConstants.Rx.tappingDefaultThrottle), scheduler: MainScheduler.instance)
-                .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)                  .subscribe({ [weak self] _ in
-                    some.bumpAndPerformBlock {
-                        guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                    .subscribe({ [weak self] _ in
+                    some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
+                        guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                         strongSelf.presenter.userDidPretendToShareByEmail()
-                    }
+                    })
                 })
                 .disposed(by: disposeBag)
             return some
@@ -111,11 +108,9 @@ extension AppView {
             some.rjsALayouts.setMargin(_margin, on: .left)
             some.rjsALayouts.setMargin(_margin, on: .bottom, from: _btnShare1)
             some.register(Sample_TableViewCell.self, forCellReuseIdentifier: Sample_TableViewCell.reuseIdentifier)
-            some.rx
-                .modelSelected(E.Bliss.ChoiceElement.self)
-                .throttle(.milliseconds(AppConstants.Rx.tappingDefaultThrottle), scheduler: MainScheduler.instance)
+            some.rx.modelSelected(E.Bliss.ChoiceElement.self)
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)                  .subscribe(onNext:  { [weak self]  item in
-                    guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                     AppLogs.DLog("Tapped [\(item)]")
                     strongSelf.presenter.tableView.didSelect(object:item)
                     if let index = some.indexPathForSelectedRow {
@@ -124,10 +119,9 @@ extension AppView {
                 })
                 .disposed(by: disposeBag)
             _rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
-                guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
-                var indexPath = NSIndexPath(row: row, section: 0)
+                guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                 cell.set(textColor:AppColors.lblTextColor)
-                strongSelf.presenter.tableView.configure(cell: cell , indexPath: indexPath as IndexPath)
+                strongSelf.presenter.tableView.configure(cell: cell , indexPath: NSIndexPath(row: row, section: 0) as IndexPath)
                 }.disposed(by: disposeBag)
             return some
         }()

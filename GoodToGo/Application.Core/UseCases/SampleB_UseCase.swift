@@ -17,13 +17,13 @@ extension UseCases {
     class SampleB_UseCase : SampleB_UseCaseProtocol {
         
         func operation1(canUseCache: Bool, completionHandler: @escaping SampleB_UseCaseCompletionHandler) {
-            AppLogs.DLog(code: .notImplemented)
-            completionHandler(Result.failure(AppFactory.Errors.with(code: .notImplemented)))
+            AppLogs.DLog(appCode: .notImplemented)
+            completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notImplemented)))
         }
         
         func operation2(param: String, completionHandler: @escaping SampleB_UseCaseCompletionHandler) {
-            AppLogs.DLog(code: .notImplemented)
-            completionHandler(Result.failure(AppFactory.Errors.with(code: .notImplemented)))
+            AppLogs.DLog(appCode: .notImplemented)
+            completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notImplemented)))
         }
         
     }

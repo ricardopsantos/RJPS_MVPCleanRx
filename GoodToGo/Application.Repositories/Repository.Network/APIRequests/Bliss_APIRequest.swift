@@ -27,7 +27,7 @@ extension Repository.Network.Bliss {
                 urlRequest = URLRequest(url: url)
                 urlRequest.httpMethod = "GET"
                 responseType = .json
-                if(AppConstants.Bliss.useMockedData) {
+                if(AppConstants.URLs.useMockedData) {
                     mockedData =
                     """
                     {
@@ -37,7 +37,7 @@ extension Repository.Network.Bliss {
                 }
             }
             else {
-                throw AppFactory.Errors.with(code: .invalidURL)
+                throw AppFactory.Errors.with(appCode: .invalidURL)
             }
         }
         
@@ -59,7 +59,7 @@ extension Repository.Network.Bliss {
                 urlRequest = URLRequest(url: url)
                 urlRequest.httpMethod = "GET"
                 responseType = .json
-                if(AppConstants.Bliss.useMockedData) {
+                if(AppConstants.URLs.useMockedData) {
                     mockedData =
                     """
                     [
@@ -112,7 +112,7 @@ extension Repository.Network.Bliss {
 
             }
             else {
-                throw AppFactory.Errors.with(code: .invalidURL)
+                throw AppFactory.Errors.with(appCode: .invalidURL)
             }
         }
         
@@ -133,7 +133,7 @@ extension Repository.Network.Bliss {
                 urlRequest = URLRequest(url: url)
                 urlRequest.httpMethod = "GET"
                 responseType = .json
-                if(AppConstants.Bliss.useMockedData) {
+                if(AppConstants.URLs.useMockedData) {
                     mockedData =
                     """
                     {
@@ -163,7 +163,7 @@ extension Repository.Network.Bliss {
  
             }
             else {
-                throw AppFactory.Errors.with(code: .invalidURL)
+                throw AppFactory.Errors.with(appCode: .invalidURL)
             }
         }
         
@@ -199,7 +199,7 @@ extension Repository.Network.Bliss {
                 responseType = .json
             }
             else {
-                throw AppFactory.Errors.with(code: .invalidURL)
+                throw AppFactory.Errors.with(appCode: .invalidURL)
             }
         }
         
@@ -236,7 +236,7 @@ extension Repository.Network.Bliss {
                 responseType = .json
             }
             else {
-                throw AppFactory.Errors.with(code: .invalidURL)
+                throw AppFactory.Errors.with(appCode: .invalidURL)
             }
         }
         
@@ -260,7 +260,7 @@ extension Repository.Network.Bliss {
                 responseType = .json
             }
             else {
-                throw AppFactory.Errors.with(code: .invalidURL)
+                throw AppFactory.Errors.with(appCode: .invalidURL)
             }
         }
         

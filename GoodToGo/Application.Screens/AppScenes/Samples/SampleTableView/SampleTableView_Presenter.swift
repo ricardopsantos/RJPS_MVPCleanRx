@@ -40,7 +40,7 @@ extension Presenter {
         weak var genericView  : GenericView?
         weak var view   : SampleTableView_ViewProtocol!
         var viewModel   : VM.SampleTableView_ViewModel? {
-            didSet { AppLogs.DLog(code: .vmChanged); viewModelChanged() }
+            didSet { AppLogs.DLog(appCode: .vmChanged); viewModelChanged() }
         }
         var router      : SampleTableView_RouterProtocol!
         var tableView   : GenericTableView_Protocol!
@@ -129,7 +129,7 @@ extension P.SampleTableView_Presenter {
     }
     
     private func updateViewWith(vm:VM.SampleTableView_ViewModel?) -> Void {
-        guard vm != nil else { AppLogs.DLog(code: .ignored); return }
+        guard vm != nil else { AppLogs.DLog(appCode: .ignored); return }
         if let vm = vm {
             view.viewNeedsToDisplay(list: vm.employeesList)
         }
@@ -143,11 +143,11 @@ extension P.SampleTableView_Presenter {
         rxObservable_GetEmployees()
             .subscribe(
                 onNext: { [weak self] employeeList in
-                    guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                     strongSelf.viewModel?.employeesList = employeeList
                 },
                 onError: { [weak self] error in
-                    guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                     strongSelf.genericView?.displayMessage(error.localizedDescription, type: .error)
                 }
             )
@@ -155,7 +155,7 @@ extension P.SampleTableView_Presenter {
         
         reachabilityService.reachability.subscribe(
             onNext: { [weak self] some in
-                guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                 strongSelf.view.setNetworkViewVisibilityTo(some.reachable)
             }
             ).disposed(by: disposeBag)

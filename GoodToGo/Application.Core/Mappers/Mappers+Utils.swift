@@ -13,7 +13,7 @@ extension Mappers {
     static func listFromCSV<T:Decodable>(_ dataString:String) -> [T] {
         do {
             guard let jsonKeys: [String] = dataString.components(separatedBy: "\n").first?.components(separatedBy: ",") else {
-                AppLogs.DLog(code: .parsingError)
+                AppLogs.DLog(appCode: .parsingError)
                 return []
             }
             var parsedCSV: [[String: String]] = dataString
@@ -29,7 +29,7 @@ extension Mappers {
                 })
             parsedCSV.removeFirst()
             guard let jsonData = try? JSONSerialization.data(withJSONObject: parsedCSV, options: []) else{
-                AppLogs.DLog(code: .parsingError)
+                AppLogs.DLog(appCode: .parsingError)
                 return []
             }
             return try JSONDecoder().decode([T].self, from: jsonData)

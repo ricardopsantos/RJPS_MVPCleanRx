@@ -25,6 +25,7 @@ extension AppView {
         
         private lazy var _searchBar: CustomSearchBar = {
             func handle(filter:String, sender:String) {
+                guard !filter.isEmpty else { return }
                 aux_log(message: "[_searchBar.][handle] from [\(sender)] : [\(filter)]", showAlert: true, appendToTable: true)
             }
             let some = AppFactory.UIKit.searchBar(baseView: self.view)
@@ -36,9 +37,7 @@ extension AppView {
                 print(text as Any)
             }).disposed(by: disposeBag)
             some.rx.text
-                .orEmpty
                 .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
-                .throttle(.milliseconds(AppConstants.Rx.textFieldsDefaultThrottle), scheduler: MainScheduler.instance)
                 .subscribe(onNext: { [weak self] _ in
                     let query = self?._searchBar.text?.trim ?? ""
                     handle(filter: query, sender:"[_searchBar][onNext]")
@@ -62,12 +61,13 @@ extension AppView {
             some.rjsALayouts.setMargin(_margin, on: .right)
             some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
             some.rjsALayouts.setHeight(_btnHeight)
-            some.rx.tap.debug("_btnThrottle tap")
+            let trigger = PublishSubject<Bool>()
+            some.rx.tap
+                .debug("_btnThrottle tap")
                 .throttle(.milliseconds(throttle*1000), scheduler: MainScheduler.instance)
                 .subscribe({ [weak self] _ in
-                    some.bumpAndPerformBlock {
-                        self?.aux_log(message: "[_btnThrottle][fired]", showAlert: true, appendToTable: true)
-                    }
+                    self?.aux_log(message: "[_btnThrottle][fired]", showAlert: true, appendToTable: true)
+                    
                 })
                 .disposed(by: disposeBag)
             return some
@@ -80,12 +80,13 @@ extension AppView {
             some.rjsALayouts.setMargin(_margin, on: .left)
             some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
             some.rjsALayouts.setHeight(_btnHeight)
-            some.rx.tap.debug("_btnDebounce tap")
+            some.rx.tap
+                .debug("_btnDebounce tap")
                 .debounce(.milliseconds(debounce*1000), scheduler: MainScheduler.instance)
                 .subscribe({ [weak self] _ in
-                    some.bumpAndPerformBlock {
+                    some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
                         self?.aux_log(message: "[_btnDebounce][fired]", showAlert: true, appendToTable: true)
-                    }
+                    })
                 })
                 .disposed(by: disposeBag)
             return some
@@ -115,16 +116,18 @@ extension AppView {
         private lazy var _btnRxRelays: UIButton = {
             
             _rxPublishRelay_a.asSignal() // PublishRelay (to model events) without param
-                .do(onNext: { _ in print("_rxPublishRelay_a : 1") })
-                .do(onNext: { _ in print("_rxPublishRelay_a : 2") })
+                .debug("rxPublishRelay_a")
+                .do(onNext: { _ in print("_rxPublishRelay_a : do.onNext_1") })
+                .do(onNext: { _ in print("_rxPublishRelay_a : do.onNext_2") })
                 .emit(onNext: { [weak self] in
                     self?.aux_log(message: "[_rxPublishRelay_a][emit]", showAlert: true, appendToTable: true)
                 })
                 .disposed(by: disposeBag)
             
             _rxPublishRelay_b.asSignal() // PublishRelay (to model events) with param
-                .do(onNext: { _ in print("_rxPublishRelay_b : 1") })
-                .do(onNext: { _ in print("_rxPublishRelay_b : 2") })
+                .debug("_rxPublishRelay_b")
+                .do(onNext: { _ in print("_rxPublishRelay_b : do.onNext_1") })
+                .do(onNext: { _ in print("_rxPublishRelay_b : do.onNext_2") })
                 .emit(onNext: { [weak self] some in
                     self?.aux_log(message: "[_rxPublishRelay_b][emit] with param [\(some)]", showAlert: true, appendToTable: true)
                 })
@@ -132,26 +135,28 @@ extension AppView {
             
             _rxBehaviorRelay_a // BehaviorRelay (to models states) connected to Label
                 .asDriver()
-                .do(onNext: { _ in print("_rxBehaviorRelay_a") })
-                .do(onNext: { _ in print("_rxBehaviorRelay_a") })
+                .debug("_rxBehaviorRelay_a")
+                .do(onNext: { _ in print("_rxBehaviorRelay_a : do.onNext_1") })
+                .do(onNext: { _ in print("_rxBehaviorRelay_a : do.onNext_2") })
                 .drive(_searchBar.rx.text)
                 .disposed(by: disposeBag)
             
             _rxBehaviorRelay_b  // BehaviorRelay (to models states) connected  to other BehaviorRelay
-                .do(onNext: { _ in print("_rxPublishRelay_a : 2") })
+                .debug("_rxBehaviorRelay_b")
+                .do(onNext: { _ in print("_rxBehaviorRelay_b : do.onNext_1") })
                 .bind(to: _rxBehaviorRelay_a)
                 .disposed(by: disposeBag)
             
             _rxBehaviorRelay_c // BehaviorRelay (to models states) doing random stuff
                 .asObservable()
-                .do(onNext: { _ in print("_rxBehaviorRelay_c: a") })
-                .do(onNext: { _ in print("_rxBehaviorRelay_c: b") })
+                .do(onNext: { _ in print("_rxBehaviorRelay_c : do.onNext_1") })
+                .do(onNext: { _ in print("_rxBehaviorRelay_c : do.onNext_2") })
                 .map { some -> Int in return some / 2 }
-                .do(onNext: { _ in print("_rxBehaviorRelay_c: c") })
+                .do(onNext: { _ in print("_rxBehaviorRelay_c : do.onNext_3") })
                 .subscribe(onNext: { self._searchBar.text = "\($0)" })
                 .disposed(by: disposeBag)
             
-            let some = AppFactory.UIKit.button(baseView: self.view, title: "[Publish|Behavior]", style: .regular)
+            let some = AppFactory.UIKit.button(baseView: self.view, title: "[Publish|Behavior]Relay", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .top, from: _btnDebounce)
             some.rjsALayouts.setMargin(_margin, on: .left)
             some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
@@ -180,7 +185,7 @@ extension AppView {
         }()
   
         private lazy var _btnZip: UIButton = {
-            let some = AppFactory.UIKit.button(baseView: self.view, title: "Zip|combineLatest", style: .regular)
+            let some = AppFactory.UIKit.button(baseView: self.view, title: "Zip vs combineLatest", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .top, from: _btnRxRelays)
             some.rjsALayouts.setMargin(_margin, on: .right)
             some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
@@ -192,39 +197,28 @@ extension AppView {
 
             // http://adamborek.com/combinelatest-withlatestfrom-zip/
 
-            //let replay = 0
-            let _rxSignal1 = _rxPublishRelay1.share(replay: 0, scope: .forever).asSignal(onErrorJustReturn: nil)
-            let _rxSignal2 = _rxPublishRelay2.share(replay: 0, scope: .forever).asSignal(onErrorJustReturn: nil)
-            let _rxSignal3 = _rxPublishRelay3.share(replay: 0, scope: .forever).asSignal(onErrorJustReturn: nil)
-
             // CombineLatest emits an item whenever any of the source Observables
             // emits an item (so long as each of the source Observables has emitted at least one item)
             
             Observable.combineLatest(_rxPublishRelay1, _rxPublishRelay2, _rxPublishRelay3,
-                resultSelector: {
-                    return "\($0 ?? "nil")|\($1 ?? "nil")|\($2 ?? "nil")"
-            }).observeOn(MainScheduler.instance)
-                .subscribe(
-                    onNext: {
-                        self.aux_log(message: "[combineLatest][onNext] \($0)", showAlert: true, appendToTable: true)
-                })
+                resultSelector: { return "\($0 ?? "nil")|\($1 ?? "nil")|\($2 ?? "nil")" })
+                .observeOn(MainScheduler.instance)
+                .subscribe( onNext: { self.aux_log(message: "[combineLatest][onNext] \($0)", showAlert: true, appendToTable: true) })
                 .disposed(by: disposeBag)
             
-            Signal<String?>.zip(_rxSignal1, _rxSignal2, _rxSignal3) {
-                return "\($0 ?? "nil")|\($1 ?? "nil")|\($2 ?? "nil")"
-                }
-                .emit(onNext: {
-                    self.aux_log(message: "[zip][emit] \($0!)", showAlert: true, appendToTable: true)
-                })
-                .disposed(by: disposeBag)
+            // Waiting for both responses
+            // ZIP operator combine the emissions of multiple Observables together via a
+            // specified closure and emit single items for each combination based on the results of this closure.
+            //
             
-            #warning("ver combinetLatest")
+            Observable.zip(_rxPublishRelay1, _rxPublishRelay2, _rxPublishRelay3,
+                                     resultSelector: { return "\($0 ?? "nil")|\($1 ?? "nil")|\($2 ?? "nil")" })
+                .observeOn(MainScheduler.instance)
+                .subscribe( onNext: { self.aux_log(message: "[zip][onNext] \($0)", showAlert: true, appendToTable: true) })
+                .disposed(by: disposeBag)
             
             some.onTouchUpInside {
-                // Waiting for both responses
-                // ZIP operator combine the emissions of multiple Observables together via a
-                // specified closure and emit single items for each combination based on the results of this closure.
-                //
+ 
                 _rxPublishRelay1.accept("1.1")
                 _rxPublishRelay2.accept("2.1")
                 _rxPublishRelay3.accept("3.1") // Zip fires
@@ -287,7 +281,7 @@ extension AppView {
                 })
                 .disposed(by: disposeBag)
             _rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
-                guard let _ = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                guard let _ = self else { AppLogs.DLog(appCode: .referenceLost); return }
                 cell.set(title:element)
                 }.disposed(by: disposeBag)
             return some
@@ -321,7 +315,7 @@ extension AppView.RxTesting {
                 }
                 else {
                     self?.aux_log(message: "[rxObservableAssyncRequest][onError]", showAlert: false, appendToTable: true)
-                    observer.onError(AppFactory.Errors.with(code: .invalidURL))
+                    observer.onError(AppFactory.Errors.with(appCode: .invalidURL))
                 }
             })
             return Disposables.create()
@@ -375,6 +369,7 @@ extension AppView.RxTesting: UITableViewDelegate {
 }
 
 extension V.RxTesting {
+    
     func sampleObservables() {
         
         ///////////////////////////////////////////////////////////////////////
@@ -382,93 +377,115 @@ extension V.RxTesting {
         ///////////////////////////////////////////////////////////////////////
         
         // 3 ways to do same thing
+        if(false) {
+            Observable<String>.of("2","3","3","5")
+                .map { return Int($0)! * 10 }
+                .filter { $0 > 25 }
+                .subscribe(
+                    onNext: { print($0) },
+                    onError: { print($0) },
+                    onCompleted: { print("completed s1") }
+                ).disposed(by: disposeBag)
+            
+            Observable<String>.of("2","3","3","5")
+                .map { return Int($0)! * 10 }
+                .filter { $0 > 25 }
+                .subscribe({
+                    switch $0 {
+                    case .next(let value): print(value)
+                    case .error(let error): print(error)
+                    case .completed: print("completed s2")
+                    }
+                }).disposed(by: disposeBag)
+            
+            Observable<String>.of("2","3","3","5")
+                .map { return Int($0)! * 10 }
+                .filter { $0 > 25 }
+                .subscribe({ event in
+                    switch event {
+                    case .next(let value): print(value)
+                    case .error(let error): print(error)
+                    case .completed: print("completed s3")
+                    }
+                }).disposed(by: disposeBag)
+        }
+ 
         
-        Observable<String>.of("2","3","3","5")
-            .map { return Int($0)! * 10 }
-            .filter { $0 > 25 }
-            .subscribe(
-                onNext: { print($0) },
-                onError: { print($0) },
-                onCompleted: { print("completed s1") }
-            ).disposed(by: disposeBag)
+        ///////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////
         
-        Observable<String>.of("2","3","3","5")
-            .map { return Int($0)! * 10 }
-            .filter { $0 > 25 }
-            .subscribe({
-                switch $0 {
-                case .next(let value): print(value)
-                case .error(let error): print(error)
-                case .completed: print("completed s2")
+        if(false) {
+            //
+            // RxSwift provides a method that creates a sequence which returns one element upon subscription.
+            // That method is called just. Let's write our own implementation of it:
+            //
+            
+            func myJust<E>(_ element: E) -> Observable<E> {
+                return Observable.create { observer in
+                    observer.on(.next(element))
+                    observer.on(.completed)
+                    return Disposables.create()
                 }
-            }).disposed(by: disposeBag)
-        
-        Observable<String>.of("2","3","3","5")
-            .map { return Int($0)! * 10 }
-            .filter { $0 > 25 }
-            .subscribe({ event in
-                switch event {
-                case .next(let value): print(value)
-                case .error(let error): print(error)
-                case .completed: print("completed s3")
+            }
+            
+            func myFrom<E>(_ sequence: [E]) -> Observable<E> {
+                return Observable.create { observer in
+                    for element in sequence {
+                        observer.on(.next(element))
+                    }
+                    observer.on(.completed)
+                    return Disposables.create()
                 }
-            }).disposed(by: disposeBag)
-        
-        ///////////////////////////////////////////////////////////////////////
-        ///////////////////////////////////////////////////////////////////////
-        ///////////////////////////////////////////////////////////////////////
-        
+            }
+            
+            //
+            // Lets now create an observable that returns elements from an array.
+            //
+            
+            let just = myJust("## my just ##")
+            let _ = just.subscribe(onNext: { n in print("just_1 : \(n)") })
+            let _ = just.subscribe(onNext: { n in print("just_2 : \(n)") })
+            
+            let from = myFrom(["## element_1 ##", "## element_2 ##", "## element_3 ##"]).share()
+            let _ = from.subscribe(onNext: { n in print("from_1 : \(n)") })
+            let _ = from.subscribe(onNext: { n in print("from_2 : \(n)") })
+        }
 
         
-        //
-        // RxSwift provides a method that creates a sequence which returns one element upon subscription.
-        // That method is called just. Let's write our own implementation of it:
-        //
+        let intervalObservable_1 = Observable<NSInteger>
+            .interval(0.1, scheduler: MainScheduler.instance)
+            .take(10)
+            .map { "\($0)" }
         
-        func myJust<E>(_ element: E) -> Observable<E> {
-            return Observable.create { observer in
-                observer.on(.next(element))
-                observer.on(.completed)
-                return Disposables.create()
-            }
-        }
+        intervalObservable_1
+            . subscribe(onNext: { n in print("intervalObservable : \(n)") })
         
-        let _ = myJust(0).subscribe(onNext: { n in print(n) })
+        intervalObservable_1
+            .throttle(.milliseconds(2000), scheduler: MainScheduler.instance)
+            .elementAt(0)
+            .subscribe(onNext: { n in print("intervalObservable_throttle : \(n)") })
+
         
-        func myFrom<E>(_ sequence: [E]) -> Observable<E> {
-            return Observable.create { observer in
-                for element in sequence {
-                    observer.on(.next(element))
-                }
-                observer.on(.completed)
-                return Disposables.create()
-            }
-        }
+        /*
+        let intervalObservable_2 = Observable<NSInteger>
+            .interval(0.2, scheduler: MainScheduler.instance)
+            .take(4)
         
-        //
-        // Lets now create an observable that returns elements from an array.
-        //
-        
-        let stringCounter = myFrom(["first", "second"])
-        
-        print("Started ----")
-        
-        // first time
-        let _ = stringCounter
-            .subscribe(onNext: { n in
-                print(n)
+        let zip = Observable
+            .zip(Observable.of("🔴", "🔵", "🔺"), intervalObservable_2,
+                 resultSelector: { value1, _ in
+                    return value1
             })
         
-        print("----")
-        
-        // again
-        let _ = stringCounter
-            .subscribe(onNext: { n in
-                print(n)
+        intervalObservable_1
+            .withLatestFrom(zip).observeOn(MainScheduler.instance)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { data in
+                print(data)
             })
-        
-        print("Ended ----")
-        
+            .disposed(by: disposeBag)
+        */
     }
     
     func sampleDisposing() {

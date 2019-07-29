@@ -59,12 +59,12 @@ extension AppView {
             some.rjsALayouts.setMargin(_margin*2, on: .top, from: _txtPass)
             some.rjsALayouts.setHeight(_margin*2)
             some.onTouchUpInside { [weak self] in
-                some.bumpAndPerformBlock {
-                    guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
+                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                     let user = strongSelf._txtUser.text
                     let pass = strongSelf._txtPass.text
                     strongSelf.presenter.userDidTryToLoginWith(user: user!, password: pass!)
-                }
+                })
             }
             return some
         }()
@@ -90,10 +90,10 @@ extension AppView {
             some.rjsALayouts.setMargin(_margin*2, on: .top, from: _lblMessage)
             some.rjsALayouts.setHeight(_margin*2)
             some.onTouchUpInside { [weak self] in
-                some.bumpAndPerformBlock {
-                    guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
+                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                     strongSelf.presenter.router.presentControllerWith(vm:nil)
-                }
+                })
             }
             return some
         }()
@@ -105,10 +105,10 @@ extension AppView {
             some.rjsALayouts.setMargin(_margin*2, on: .top, from: _lblMessage)
             some.rjsALayouts.setHeight(_margin*2)
             some.onTouchUpInside { [weak self] in
-                some.bumpAndPerformBlock {
-                    guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
+                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                     strongSelf.presenter.router.dismissView()
-                }
+                })
             }
             return some
         }()

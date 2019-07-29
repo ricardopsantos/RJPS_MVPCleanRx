@@ -43,12 +43,27 @@ extension Router {
                     self?.baseView?.present($0, animated: true, completion: { })
                 })
                 .disposed(by: disposeBag)
-        
+            
+            //
+            // Dismiss : Option 1
+            //
             rxPublishRelay_dismissView.asSignal()
-                .emit(onNext: { [weak self] _ in
-                    self?.baseView?.dismiss(animated: true)
-                })
+                .debug("rxPublishRelay_dismissView.asSignal")
+                .emit(onNext: { [weak self] _ in self?.generalDismiss() })
                 .disposed(by: disposeBag)
+            
+            //
+            // Dismiss : Option 2
+            //
+            rxPublishRelay_dismissView.asObservable()
+                .debug("rxPublishRelay_dismissView.asObservable ")
+                .subscribe(onNext: { [weak self] _ in self?.generalDismiss() })
+                .disposed(by: disposeBag)
+            
+        }
+        
+        private func generalDismiss() {
+            baseView?.dismiss(animated: true)
         }
         
         func dismissView() {

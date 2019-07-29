@@ -38,7 +38,7 @@ extension Presenter {
         weak var generic      : GenericPresenter_Protocol?
         weak var genericView  : GenericView?
         weak var view   : SampleView_ViewProtocol!
-        var viewModel   : VM.SampleView_ViewModel? { didSet { AppLogs.DLog(code: .vmChanged); viewModelChanged() } }
+        var viewModel   : VM.SampleView_ViewModel? { didSet { AppLogs.DLog(appCode: .vmChanged); viewModelChanged() } }
         var router      : SampleView_RouterProtocol!
 
         var sample_UseCase : Sample_UseCaseProtocol!
@@ -55,7 +55,7 @@ extension P.SampleView_Presenter : SampleView_PresenterProtocol {
         AppLogs.DLog("\(user) | \(password)")
         genericView?.setActivityState(true)
         sample_UseCase.operation1(canUseCache: false) { [weak self] (result) in
-            guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+            guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
             strongSelf.genericView?.setActivityState(false)
             switch result {
             case .success(let some): strongSelf.viewModel = VM.SampleView_ViewModel(someString: "\(some)")
@@ -72,10 +72,13 @@ extension P.SampleView_Presenter : SampleView_PresenterProtocol {
 
 extension P.SampleView_Presenter : GenericPresenter_Protocol {
     func view_deinit()    -> Void { }
-    func loadView()       -> Void { }
+    func loadView()       -> Void { setupPresenter() }
     func viewDidAppear()  -> Void { }
     func viewDidLoad()    -> Void { }
     func viewWillAppear() -> Void { }
+    
+    func setupPresenter() -> Void { }
+
 }
 
 //
@@ -89,7 +92,7 @@ extension P.SampleView_Presenter {
     }
     
     private func updateViewWith(vm:VM.SampleView_ViewModel?) -> Void {
-        guard viewModel != nil else { AppLogs.DLog(code: .ignored); return }
+        guard viewModel != nil else { AppLogs.DLog(appCode: .ignored); return }
         view.updateViewWith(message: viewModel!.someString)
     }
 

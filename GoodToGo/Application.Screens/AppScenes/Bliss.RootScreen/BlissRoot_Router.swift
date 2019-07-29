@@ -20,7 +20,7 @@ protocol BlissRoot_RouterProtocol: class {
 extension Router {
     class BlissRoot_Router: GenericRouter, GenericRouter_Protocol, BlissRoot_RouterProtocol {
         
-        fileprivate weak var baseView : V.BlissRoot_View?
+        private weak var baseView : V.BlissRoot_View?
         // PublishRelay model Events
         private var rxPublishRelay_ShowQuestionsList = PublishRelay<VM.BlissQuestionsList_ViewModel?>()
         init(viewController: V.BlissRoot_View) {

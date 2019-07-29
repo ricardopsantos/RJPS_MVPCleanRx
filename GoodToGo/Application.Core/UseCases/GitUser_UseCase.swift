@@ -16,7 +16,7 @@ extension UseCases {
         func getInfoOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitUser_Single_UseCaseCompletionHandler) {
             
             guard RJS_Utils.existsInternetConnection() else {
-                completionHandler(Result.failure(AppFactory.Errors.with(code: .noInternet)))
+                completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
                 return
             }
             
@@ -36,7 +36,7 @@ extension UseCases {
         func getFriendsOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitUser_Friends_UseCaseCompletionHandler) {
             
             guard RJS_Utils.existsInternetConnection() else {
-                completionHandler(Result.failure(AppFactory.Errors.with(code: .noInternet)))
+                completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
                 return
             }
             

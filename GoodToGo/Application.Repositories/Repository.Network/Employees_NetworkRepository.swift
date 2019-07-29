@@ -28,8 +28,8 @@ extension Repository.Network {
         }
         
         func netWork_OperationB(completionHandler: @escaping Samples_NetWorkRepositoryCompletionHandler) {
-            AppLogs.DLog(code: .notImplemented)
-            completionHandler(Result.failure(AppFactory.Errors.with(code: .notImplemented)))
+            AppLogs.DLog(appCode: .notImplemented)
+            completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notImplemented)))
         }
 
     }

@@ -15,6 +15,8 @@ public protocol OptionalType {
     var optional: Wrapped? { get }
 }
 
+
+
 extension Optional: OptionalType {
     public var optional: Wrapped? { return self }
 }
@@ -28,6 +30,7 @@ extension Observable where Element: OptionalType {
 }
 
 extension ObservableType {
+    
     
     /**
      Filters the source observable sequence using a trigger observable sequence producing Bool values.

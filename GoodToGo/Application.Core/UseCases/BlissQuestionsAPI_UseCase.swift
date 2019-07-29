@@ -30,7 +30,7 @@ extension UseCases {
         func getHealth(completionHandler: @escaping (Result<E.Bliss.ServerHealth>) -> Void) {
          
             guard RJS_Utils.existsInternetConnection() else {
-                completionHandler(Result.failure(AppFactory.Errors.with(code: .noInternet)))
+                completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
                 return
             }
             
@@ -49,7 +49,7 @@ extension UseCases {
         
         func shareQuestionBy(email: String, url: String, checkHealth:Bool, completionHandler: @escaping (Result<E.Bliss.ShareByEmail>) -> Void) {
             let doWork = { [weak self] in
-                guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                 strongSelf.repositoryNetwork.shareQuestionBy(email: email, url: url, completionHandler: { (result) in
                     switch result {
                     case .success(let some): completionHandler(Result.success(some.entity)); break
@@ -59,7 +59,7 @@ extension UseCases {
             }
             if(!checkHealth) {
                 guard RJS_Utils.existsInternetConnection() else {
-                    completionHandler(Result.failure(AppFactory.Errors.with(code: .noInternet)))
+                    completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
                     return
                 }
                 doWork()
@@ -67,7 +67,7 @@ extension UseCases {
             else {
                 serverIsOK { (ok) in
                     if(ok) { doWork() }
-                    else { completionHandler(Result.failure(AppFactory.Errors.with(code: .notPredicted))) }
+                    else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
                 }
             }
         }
@@ -76,7 +76,7 @@ extension UseCases {
         func updateQuestion(question: E.Bliss.QuestionElement, checkHealth: Bool, completionHandler: @escaping (Result<E.Bliss.QuestionElement>) -> Void) {
             
             let doWork = { [weak self] in
-                guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                 strongSelf.repositoryNetwork.updateQuestion(question: question, completionHandler: { (result) in
                     switch result {
                     case .success(let some): completionHandler(Result.success(some.entity)); break
@@ -86,7 +86,7 @@ extension UseCases {
             }
             if(!checkHealth) {
                 guard RJS_Utils.existsInternetConnection() else {
-                    completionHandler(Result.failure(AppFactory.Errors.with(code: .noInternet)))
+                    completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
                     return
                 }
                 doWork()
@@ -94,7 +94,7 @@ extension UseCases {
             else {
                 serverIsOK { (ok) in
                     if(ok) { doWork() }
-                    else { completionHandler(Result.failure(AppFactory.Errors.with(code: .notPredicted))) }
+                    else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
                 }
             }
         }
@@ -102,7 +102,7 @@ extension UseCases {
         func getQuestions(limit: Int, filter: String, offSet: Int, checkHealth:Bool=true, completionHandler: @escaping (Result<[E.Bliss.QuestionElement]>) -> Void) {
             
             let doWork = { [weak self] in
-                guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                 strongSelf.repositoryNetwork.getQuestions(limit: limit, filter: filter, offSet: offSet, completionHandler: { (result) in
                     switch result {
                     case .success(let some): completionHandler(Result.success(some.entity)); break
@@ -113,7 +113,7 @@ extension UseCases {
             
             if(!checkHealth) {
                 guard RJS_Utils.existsInternetConnection() else {
-                    completionHandler(Result.failure(AppFactory.Errors.with(code: .noInternet)))
+                    completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
                     return
                 }
                 doWork()
@@ -121,7 +121,7 @@ extension UseCases {
             else {
                 serverIsOK { (ok) in
                     if(ok) { doWork() }
-                    else { completionHandler(Result.failure(AppFactory.Errors.with(code: .notPredicted))) }
+                    else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
                 }
             }
         
@@ -130,7 +130,7 @@ extension UseCases {
         func getQuestionBy(id: Int, checkHealth:Bool=true, completionHandler: @escaping (Result<E.Bliss.QuestionElement>) -> Void) {
             
             let doWork = { [weak self] in
-                guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                 strongSelf.repositoryNetwork.getQuestionBy(id: id, completionHandler: { (result) in
                     switch result {
                     case .success(let some): completionHandler(Result.success(some.entity)); break
@@ -141,7 +141,7 @@ extension UseCases {
             
             if(!checkHealth) {
                 guard RJS_Utils.existsInternetConnection() else {
-                    completionHandler(Result.failure(AppFactory.Errors.with(code: .noInternet)))
+                    completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
                     return
                 }
                 doWork()
@@ -149,7 +149,7 @@ extension UseCases {
             else {
                 serverIsOK { (ok) in
                     if(ok) { doWork() }
-                    else { completionHandler(Result.failure(AppFactory.Errors.with(code: .notPredicted))) }
+                    else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
                 }
             }
         }
@@ -157,7 +157,7 @@ extension UseCases {
         func makeQuestion(question: E.Bliss.QuestionElement, checkHealth:Bool=true, completionHandler: @escaping (Result<E.Bliss.QuestionElement>) -> Void) {
             
             let doWork = { [weak self] in
-                guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                 strongSelf.repositoryNetwork.makeQuestion(question: question, completionHandler: { (result) in
                     switch result {
                     case .success(let some): completionHandler(Result.success(some.entity)); break
@@ -167,7 +167,7 @@ extension UseCases {
             }
             if(!checkHealth) {
                 guard RJS_Utils.existsInternetConnection() else {
-                    completionHandler(Result.failure(AppFactory.Errors.with(code: .noInternet)))
+                    completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
                     return
                 }
                 doWork()
@@ -175,7 +175,7 @@ extension UseCases {
             else {
                 serverIsOK { (ok) in
                     if(ok) { doWork() }
-                    else { completionHandler(Result.failure(AppFactory.Errors.with(code: .notPredicted))) }
+                    else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
                 }
             }
         }

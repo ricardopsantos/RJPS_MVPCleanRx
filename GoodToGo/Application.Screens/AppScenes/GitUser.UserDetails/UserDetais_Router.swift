@@ -12,23 +12,36 @@ import RxCocoa
 
 protocol UserDetais_RouterProtocol: class {
     func dismissView()
-    var rxPublishRelay_dismissView: PublishRelay<Void> { get } // PublishRelay model Events
 }
 
 extension Router {
     class UserDetais_Router: GenericRouter, GenericRouter_Protocol, UserDetais_RouterProtocol {
         
-        fileprivate weak var baseView : V.UserDetais_View?
+        private weak var baseView : V.UserDetais_View?
 
         init(viewController: V.UserDetais_View) {
             super.init()
             baseView = viewController
-            func generalDismiss() {
-                baseView?.dismiss(animated: true)
-            }
+            
+            //
+            // Dismiss : Option 1
+            //
             rxPublishRelay_dismissView.asSignal()
-                .emit(onNext: { _ in generalDismiss() })
+                .debug("rxPublishRelay_dismissView.asSignal")
+                .emit(onNext: { [weak self] _ in self?.generalDismiss() })
                 .disposed(by: disposeBag)
+            
+            //
+            // Dismiss : Option 2
+            //
+            rxPublishRelay_dismissView.asObservable()
+                .debug("rxPublishRelay_dismissView.asObservable ")
+                .subscribe(onNext: { [weak self] _ in self?.generalDismiss() })
+                .disposed(by: disposeBag)
+        }
+        
+        private func generalDismiss() {
+            baseView?.dismiss(animated: true)
         }
         
         func dismissView() {

@@ -1,10 +1,10 @@
 #!/bin/bash
 
-eval brew update
+brew update
 
-eval brew install carthage
+brew install carthage
 
-eval brew upgrade carthage
+brew upgrade carthage
 
-eval carthage update --platform iOS
+carthage update --platform iOS
 

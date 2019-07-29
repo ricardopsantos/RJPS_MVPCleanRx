@@ -23,7 +23,7 @@ extension Repository.Network {
                 responseType = .json
             }
             else {
-                throw AppFactory.Errors.with(code: .invalidURL)
+                throw AppFactory.Errors.with(appCode: .invalidURL)
             }
         }
         

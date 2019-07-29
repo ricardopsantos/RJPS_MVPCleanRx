@@ -47,16 +47,15 @@ extension AppView {
             some.rx.text
                 .orEmpty
                 .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
-                .throttle(.milliseconds(AppConstants.Rx.textFieldsDefaultThrottle), scheduler: MainScheduler.instance)
                 .subscribe(onNext: { [weak self] _ in
-                    guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                     let query = strongSelf._searchBar.text?.trim ?? ""
                     strongSelf.presenter.userPretendDoSearchWith(filter: query)
                 })
                 .disposed(by: disposeBag)
             some.rx.textDidEndEditing
                 .subscribe(onNext: { [weak self] (query) in
-                    guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                     let query = strongSelf._searchBar.text?.trim ?? ""
                     //if(query.count>0) {
                     //    strongSelf.presenter.userPretendDoSearchWith(filter: query)
@@ -76,12 +75,10 @@ extension AppView {
             some.rjsALayouts.setMargin(0, on: .bottom)
             some.register(Sample_TableViewCell.self, forCellReuseIdentifier: Sample_TableViewCell.reuseIdentifier)
             some.rx.setDelegate(self).disposed(by: disposeBag) // To manage heightForRowAt
-            some.rx
-                .modelSelected(E.Bliss.QuestionElement.self)
-                .throttle(.milliseconds(AppConstants.Rx.tappingDefaultThrottle), scheduler: MainScheduler.instance)
-                .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)                
+            some.rx.modelSelected(E.Bliss.QuestionElement.self)
+                .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
                 .subscribe(onNext:  { [weak self]  item in
-                    guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                     AppLogs.DLog("Tapped [\(item)]")
                     strongSelf.presenter.tableView.didSelect(object:item)
                     if let index = some.indexPathForSelectedRow {
@@ -90,7 +87,7 @@ extension AppView {
                 })
                 .disposed(by: disposeBag)
             _rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
-                guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                 var indexPath = NSIndexPath(row: row, section: 0)
                 cell.set(textColor:AppColors.lblTextColor)
                 strongSelf.presenter.tableView.configure(cell: cell , indexPath: indexPath as IndexPath)

@@ -117,7 +117,7 @@ extension V.UserDetais_View : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: V.UserTableViewCell.reuseIdentifier) as? V.UserTableViewCell else {
-            AppLogs.DLog(code: .dequeueReusableCellFail)
+            AppLogs.DLog(appCode: .dequeueReusableCellFail)
             return UITableViewCell()
         }
         print(cell)

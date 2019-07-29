@@ -12,7 +12,6 @@ extension AppConstants {
     private init() {}
     
     struct Bliss {
-        static let useMockedData = false
         static let logoURL : String = "https://static.itjobs.pt/images/companies/57/1d3/1475/logo.png?btfc=1498121844" //"https://media.licdn.com/dms/image/C560BAQF48lgMCIY3FA/company-logo_200_200/0?e=2159024400&v=beta&t=OD27mw1uDClWEJLmtz7wU8TFg9Hod2Yd1p1Wx6Zl0Eo"
 
         struct URLs {

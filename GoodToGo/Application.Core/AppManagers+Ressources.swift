@@ -76,9 +76,9 @@ extension AppManagers {
             
             let result = _currentLanguageBundle!.localizedString(forKey: code, value: nil, table: nil)
             
-            if(result == code) {
-                AppLogs.DLogWarning("Ressource with code [\(code)] not found for language [\(selectedLanguage)]")
-            }
+            //if(result == code) {
+            //    AppLogs.DLogWarning("Ressource with code [\(code)] not found for language [\(selectedLanguage)]")
+            //}
             
             return result
         }

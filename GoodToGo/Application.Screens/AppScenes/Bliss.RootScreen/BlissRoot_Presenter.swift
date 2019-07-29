@@ -43,7 +43,7 @@ extension Presenter {
         var blissQuestions_UseCase : BlissQuestionsAPI_UseCaseProtocol!
         var blissGeneric_UseCase   : BlissGenericAppBussiness_UseCaseProtocol!
         var viewModel         : VM.BlissRoot_ViewModel? {
-            didSet { AppLogs.DLog(code: .vmChanged); viewModelChanged() }
+            didSet { AppLogs.DLog(appCode: .vmChanged); viewModelChanged() }
         }
     }
 }
@@ -57,7 +57,7 @@ extension P.BlissRoot_Presenter : BlissRoot_PresenterProtocol {
     
     func userDidReadBadServerHealthMessage() {
         DispatchQueue.executeWithDelay (delay:AppConstants.defaultAnimationsTime) { [weak self] in
-            guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+            guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
             strongSelf.checkServerStatus()
         }
     }
@@ -100,12 +100,12 @@ extension P.BlissRoot_Presenter {
         
         let delayToHaveTimeToEnjoyMainScreen : Double = 2
         DispatchQueue.executeWithDelay(delay:delayToHaveTimeToEnjoyMainScreen) { [weak self] in
-            guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+            guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
 
             let handleFail = { strongSelf.view.viewNeedsToDisplayBadServerMessage() }
             
             let handleSucess = { [weak self] in
-                guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                 strongSelf.router.goToList(asNavigationController: true)
             }
             strongSelf.genericView?.setActivityState(true)
@@ -126,7 +126,7 @@ extension P.BlissRoot_Presenter {
         }
     }
     
-    private func setupPresenter() {
+    func setupPresenter() {
    
         reachabilityService.reachability.subscribe(
             onNext: { [weak self] some in
@@ -159,7 +159,7 @@ extension P.BlissRoot_Presenter {
         return Observable.create { observer -> Disposable in
             AppSimpleNetworkClient.downloadImageFrom(AppConstants.Bliss.logoURL, completion: { (image) in
                 if(image != nil) { observer.onNext(image!) }
-                else { observer.onError(AppFactory.Errors.with(code: .unknownError)) }
+                else { observer.onError(AppFactory.Errors.with(appCode: .unknownError)) }
             })
             return Disposables.create() }
             .retry(3)

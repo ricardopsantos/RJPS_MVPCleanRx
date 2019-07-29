@@ -38,7 +38,7 @@ extension Presenter {
     class UserDetais_Presenter : GenericPresenter {
         var generic     : GenericPresenter_Protocol?
         var genericView : GenericView?
-        var viewModel   : VM.UserDetais? { didSet { AppLogs.DLog(code: .vmChanged); viewModelChanged() } }
+        var viewModel   : VM.UserDetais? { didSet { AppLogs.DLog(appCode: .vmChanged); viewModelChanged() } }
         weak var view   : UserDetais_ViewProtocol!
         var router      : UserDetais_RouterProtocol!
         var tableView   : GenericTableView_Protocol!
@@ -54,7 +54,7 @@ extension P.UserDetais_Presenter : UserDetais_PresenterProtocol {
     // PublishRelay model Events
     var rxPublishRelay_dismissView: PublishRelay<Void> {
         let relay = PublishRelay<Void>()
-        relay.bind(to: router.rxPublishRelay_dismissView).disposed(by: disposeBag)
+        relay.bind(to: (router as! GenericRouter).rxPublishRelay_dismissView).disposed(by: disposeBag)
         return relay
     }
 }
@@ -79,10 +79,13 @@ extension P.UserDetais_Presenter : GenericTableView_Protocol {
 
 extension P.UserDetais_Presenter : GenericPresenter_Protocol {
     func view_deinit()    -> Void { }
-    func loadView()       -> Void { }
+    func loadView()       -> Void { setupPresenter() }
     func viewDidAppear()  -> Void { }
     func viewDidLoad()    -> Void { }
     func viewWillAppear() -> Void { if(viewModel != nil) { updateViewWith(vm: viewModel) } }
+    
+    func setupPresenter() -> Void { }
+
 }
 
 /**
@@ -92,7 +95,7 @@ extension P.UserDetais_Presenter : GenericPresenter_Protocol {
 extension P.UserDetais_Presenter {
     
     private func updateViewWith(vm:VM.UserDetais?) -> Void {
-        guard vm != nil else { AppLogs.DLog(code: .ignored); return }
+        guard vm != nil else { AppLogs.DLog(appCode: .ignored); return }
         view.viewDataToScreen(some: vm!)
         downloadImage(imageURL: vm!.user.avatarUrl!, onFail: AppImages.notFound) { [weak self] (image) -> (Void) in
             self?.view.setAvatarWith(image: image!)

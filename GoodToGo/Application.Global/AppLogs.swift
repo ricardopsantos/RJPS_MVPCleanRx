@@ -15,9 +15,9 @@ struct AppLogs {
         RJS_Logs.DLog(message, function: function, file: file, line: line)
     }
     
-    static func DLog(code: AppEnuns.AppCodes, function: String = #function, file: String = #file, line: Int = #line) {
+    static func DLog(appCode: AppEnuns.AppCodes, function: String = #function, file: String = #file, line: Int = #line) {
         guard (AppCan.Logs.doLogs) else { return }
-        RJS_Logs.DLog(code.localizableString, function: function, file: file, line: line)
+        RJS_Logs.DLog(appCode.localizedMessageForDevTeam, function: function, file: file, line: line)
     }
     
     static func DLogWarning(_ message: String, function: String = #function, file: String = #file, line: Int = #line) {

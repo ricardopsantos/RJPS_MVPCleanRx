@@ -29,7 +29,7 @@ extension AppManagers {
             }
             
             let block_recover = {
-                AppLogs.DLog(code: .notPredicted)
+                AppLogs.DLog(appCode: .notPredicted)
                 set_dev()
             }
             

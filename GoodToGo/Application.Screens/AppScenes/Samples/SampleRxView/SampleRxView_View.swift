@@ -74,14 +74,12 @@ extension AppView {
             some.rjsALayouts.setMargin(_margin, on: .right)
             some.rjsALayouts.setMargin(_margin*2, on: .top, from: _txtPass)
             some.rjsALayouts.setHeight(_margin*2)
-            some.rx.tap.debug("_btnLogin tap")
-                .throttle(.milliseconds(AppConstants.Rx.tappingDefaultThrottle), scheduler: MainScheduler.instance)
-                .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
+            some.rx.tap
                 .subscribe({ [weak self] _ in
-                    some.bumpAndPerformBlock {
-                        guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                    some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
+                        guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                         strongSelf.presenter.userDidTryToLoginWith(user: strongSelf._txtUser.text!, password: strongSelf._txtPass.text!)
-                    }
+                    })
                 })
                 .disposed(by: disposeBag)
             
@@ -99,18 +97,15 @@ extension AppView {
             some.rjsALayouts.setWidth((AppGlobal.screenWidth / 2) - (1.5 * _margin))
             some.rjsALayouts.setMargin(_margin*2, on: .top, from: _lblMessage)
             some.rjsALayouts.setHeight(_margin*2)
-            some.rx.tap
-                .throttle(.milliseconds(AppConstants.Rx.tappingDefaultThrottle), scheduler: MainScheduler.instance)
-                .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
-                .subscribe({ [weak self] _ in
-                    some.bumpAndPerformBlock {
-                        guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
-                        let someString = "[\(String(describing: strongSelf._txtUser.text))][\(String(describing: strongSelf._txtPass.text))]"
-                        let vm = VM.SampleRxView_ViewModel(someString:someString )
-                        strongSelf.presenter.router.presentControllerWith(vm: vm)
-                    }
+            some.rx.tap.subscribe({ [weak self] _ in
+                some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
+                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+                    let someString = "[\(strongSelf._txtUser.text ?? "")][\(strongSelf._txtPass.text ?? "")]"
+                    let vm = VM.SampleRxView_ViewModel(someString:someString )
+                    strongSelf.presenter.router.presentControllerWith(vm: vm)
                 })
-                .disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
             return some
         }()
         
@@ -120,16 +115,13 @@ extension AppView {
             some.rjsALayouts.setWidth((AppGlobal.screenWidth / 2) - (1.5 * _margin))
             some.rjsALayouts.setMargin(_margin*2, on: .top, from: _lblMessage)
             some.rjsALayouts.setHeight(_margin*2)
-            some.rx.tap.debug("_btnDismiss tap")
-                .throttle(.milliseconds(AppConstants.Rx.tappingDefaultThrottle), scheduler: MainScheduler.instance)
-                .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
-                .subscribe({ [weak self] _ in
-                    some.bumpAndPerformBlock {
-                        guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
-                        strongSelf.presenter.router.dismissView()
-                    }
+            some.rx.tap.subscribe({ [weak self] _ in
+                some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
+                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+                    strongSelf.presenter.router.dismissView()
                 })
-                .disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
             return some
         }()
         

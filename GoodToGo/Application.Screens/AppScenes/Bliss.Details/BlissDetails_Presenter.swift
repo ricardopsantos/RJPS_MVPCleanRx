@@ -48,7 +48,7 @@ extension Presenter {
         var blissQuestions_UseCase : BlissQuestionsAPI_UseCaseProtocol!
         var blissGeneric_UseCase   : BlissGenericAppBussiness_UseCaseProtocol!
         var tableView              : GenericTableView_Protocol!
-        var viewModel              : VM.BlissDetails_ViewModel? { didSet { AppLogs.DLog(code: .vmChanged); viewModelChanged() } }
+        var viewModel              : VM.BlissDetails_ViewModel? { didSet { AppLogs.DLog(appCode: .vmChanged); viewModelChanged() } }
     }
 }
 
@@ -77,7 +77,7 @@ extension P.BlissDetails_Presenter : BlissDetails_PresenterProtocol {
                 }
             }
             else {
-                AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost)
+                AppLogs.DLog(appCode: .referenceLost)
             }
             return Disposables.create()
             }.retry(3)
@@ -92,7 +92,7 @@ extension P.BlissDetails_Presenter : BlissDetails_PresenterProtocol {
         guard existsInternetConnection else { return }
         genericView?.setActivityState(true)
         blissQuestions_UseCase.shareQuestionBy(email: "www.meumail@gmail.com", url: linkToShare, checkHealth: true) { [weak self] (result) in
-            guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+            guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
             strongSelf.genericView?.setActivityState(false)
             switch result {
             case .success(let some):
@@ -143,12 +143,12 @@ extension P.BlissDetails_Presenter : GenericTableView_Protocol {
             //.throttle(.milliseconds(AppConstants.Rx.servicesDefaultThrottle), scheduler: MainScheduler.instance) 
             .subscribe(
                 onNext: { [weak self] some in
-                    guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                     strongSelf.genericView?.setActivityState(false)
                     strongSelf.genericView?.displayMessage(AppMessages.sucess, type: .sucess)
                 },
                 onError: { [weak self] error in
-                    guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                     strongSelf.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
                     strongSelf.genericView?.setActivityState(false)
                 }
@@ -192,7 +192,7 @@ extension P.BlissDetails_Presenter {
     
     private func viewModelChanged() {
         guard viewModel != nil, viewModel?.question != nil else {
-            AppLogs.DLog(code: AppEnuns.AppCodes.notPredicted)
+            AppLogs.DLog(appCode: AppEnuns.AppCodes.notPredicted)
             return
         }
         view.set(title: (viewModel!.question!.question.description))
@@ -214,7 +214,7 @@ extension P.BlissDetails_Presenter {
                  if let someInt = Int(value) {
                     AppLogs.DLog("Handling data!")
                     blissQuestions_UseCase.getQuestionBy(id: someInt, checkHealth: true) { [weak self] (result) in
-                        guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                        guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                         switch result {
                         case .success(let some): strongSelf.viewModel!.question = some; break
                         case .failure(_): strongSelf.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error); break
@@ -232,7 +232,7 @@ extension P.BlissDetails_Presenter {
         return false
     }
     
-    private func setupPresenter() {
+    func setupPresenter() {
         
         blissGeneric_UseCase.rxPublishRelayAppicationDidReceivedData.asSignal()
             .emit(onNext: { [weak self] in
@@ -241,7 +241,7 @@ extension P.BlissDetails_Presenter {
         
         reachabilityService.reachability.subscribe(
             onNext: { [weak self] some in
-                guard let strongSelf = self else { AppLogs.DLog(code: AppEnuns.AppCodes.referenceLost); return }
+                guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                 strongSelf.genericView?.setNoConnectionViewVisibity(to: !some.reachable)
             }
             ).disposed(by: disposeBag)
