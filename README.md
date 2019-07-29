@@ -10,13 +10,13 @@ The intent of this project is to show a simple implementation of the __MVP Clean
 # Index
 
 ## Features
- -[x] - Localizable ressources
- -[x] - RJPSLib (logs, caching, keychain client, network client, generic extensions...)
- -[x] - Sample App - GitUser (search users on GitHub)
- -[x] - RxSwift & RxCocoa sample examples
- -[x] - .xcconfig usage
- -[x] - Dependency injection with [Swinject](https://github.com/Swinject/Swinject)
- -[x] - Command line [script](https://github.com/ricardopsantos/RJPS_MVPCleanRx/blob/master/_iOSGenericCompile.sh) for app bild 
+- [x] Localizable ressources
+- [x] RJPSLib (logs, caching, keychain client, network client, generic extensions...)
+- [x] Sample App - GitUser (search users on GitHub)
+- [x] RxSwift & RxCocoa sample examples
+- [x] .xcconfig usage
+- [x] Dependency injection with [Swinject](https://github.com/Swinject/Swinject)
+- [x] Command line [script](https://github.com/ricardopsantos/RJPS_MVPCleanRx/blob/master/_iOSGenericCompile.sh) for app bild 
  
  More info about the project and arquitecture [here](https://github.com/ricardopsantos/RJPS_MVPCleanRx/tree/master/Docs)
  
