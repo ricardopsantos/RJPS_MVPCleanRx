@@ -1,4 +1,4 @@
-iOS Architecture design patterns : MVVM
+iOS Architecture design patterns : MVP + Clean + Rx
 -----
 
 - [x] 📱  iOS 10.0+
