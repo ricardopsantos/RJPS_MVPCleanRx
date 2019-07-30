@@ -115,8 +115,8 @@ extension P.BlissQuestionsList_Presenter : BlissQuestionsList_PresenterProtocol 
             if let strongSelf = self {
                 strongSelf.blissQuestions_UseCase.getQuestions(limit: 10, filter: filter, offSet: offSet, checkHealth: true, completionHandler: { (result) in
                     switch result {
-                    case .success(let questionsList): observer.onNext(questionsList); break
-                    case .failure(let error) : observer.onError(error); break
+                    case .success(let questionsList): observer.onNext(questionsList)
+                    case .failure(let error) : observer.onError(error)
                     }
                 })
             } else {
@@ -214,8 +214,7 @@ extension P.BlissQuestionsList_Presenter {
                     }
                     blissGeneric_UseCase.screenHaveHandledData(screen: V.BlissQuestionsList_View.className)
                 }
-            }
-            else if let _ = blissGeneric_UseCase.screenHaveDataToHandle(screen: V.BlissDetails_View.className) {
+            } else if let _ = blissGeneric_UseCase.screenHaveDataToHandle(screen: V.BlissDetails_View.className) {
                 if self.genericView!.isVisible {
                     // If we are on the list, jump to details screen
                     router.goToDetails()
@@ -235,7 +234,4 @@ extension P.BlissQuestionsList_Presenter {
             }
             ).disposed(by: disposeBag)
     }
-    
-    
 }
-

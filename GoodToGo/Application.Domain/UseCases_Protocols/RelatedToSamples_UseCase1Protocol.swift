@@ -17,5 +17,3 @@ protocol Sample_UseCaseProtocol : class {
     func operation1(canUseCache:Bool, completionHandler: @escaping Sample_UseCaseCompletionHandler)
     func operation2(param:String, completionHandler: @escaping Sample_UseCaseCompletionHandler)
 }
-
-

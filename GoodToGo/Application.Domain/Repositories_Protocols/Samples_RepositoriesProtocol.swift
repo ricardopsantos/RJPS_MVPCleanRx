@@ -20,4 +20,3 @@ protocol Samples_NetWorkRepositoryProtocol : class {
     func netWork_OperationA(completionHandler: @escaping Samples_NetWorkRepositoryCompletionHandler)
     func netWork_OperationB(completionHandler: @escaping Samples_NetWorkRepositoryCompletionHandler)
 }
-

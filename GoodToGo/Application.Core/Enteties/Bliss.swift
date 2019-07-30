@@ -97,5 +97,3 @@ extension E.Bliss {
         let votes: Int
     }
 }
-
-

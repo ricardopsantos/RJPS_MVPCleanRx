@@ -34,7 +34,5 @@ extension Router {
         func dismissView() {
             rxPublishRelay_dismissView.accept(())
         }
-        
     }
 }
-

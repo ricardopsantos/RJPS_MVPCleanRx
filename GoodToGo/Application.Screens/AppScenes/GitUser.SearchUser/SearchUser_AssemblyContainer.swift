@@ -15,7 +15,7 @@ extension AssembyContainer {
         
             // Router
             let routerProtocol = SearchUser_RouterProtocol.self
-            container.register(routerProtocol) { (r, viewController: V.SearchUser_View) in
+            container.register(routerProtocol) { (_, viewController: V.SearchUser_View) in
                 return R.SearchUser_Router(viewController: viewController)
             }
             
@@ -41,4 +41,3 @@ extension AssembyContainer {
         }
     }
 }
-

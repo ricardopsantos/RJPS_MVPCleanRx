@@ -21,4 +21,3 @@ protocol BlissGenericAppBussiness_UseCaseProtocol : class {
     func screenHaveHandledData(screen:String)
     func handle(url:URL)
 }
-

@@ -120,8 +120,7 @@ extension V.UserDetais_View : UITableViewDelegate, UITableViewDataSource {
             AppLogs.DLog(appCode: .dequeueReusableCellFail)
             return UITableViewCell()
         }
-        print(cell)
-        presenter.tableView.configure(cell: cell , indexPath: indexPath)
+        presenter.tableView.configure(cell: cell, indexPath: indexPath)
         return cell
     }
 }

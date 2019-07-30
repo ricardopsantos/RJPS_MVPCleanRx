@@ -57,7 +57,5 @@ struct AppConstants {
         static let keyCoreDataSaveLang = "keyCoreDataSaveLang"
         static let numberOfLogins      = "numberOfLogins"
         static let mainStoryBoard      = "Main"
-    }
-    
+    }    
 }
-

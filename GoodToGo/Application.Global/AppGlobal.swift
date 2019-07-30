@@ -23,7 +23,3 @@ struct AppGlobal {
     static func saveContext() -> Void { RJS_DataModelManager.saveContext() }
 
 }
-
-
-
-

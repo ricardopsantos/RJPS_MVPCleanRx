@@ -22,8 +22,9 @@ class GenericView: UIViewController {
     private var _keyboardIsVisible = false
     private var _keyboardHeigth : CGFloat = 0
     var keyboardHeigth : CGFloat {
-        if _keyboardIsVisible { let autoCorrectBarSize : CGFloat = 44; return _keyboardHeigth - autoCorrectBarSize }
-        else { return 0 }
+        if _keyboardIsVisible {
+            let autoCorrectBarSize : CGFloat = 44; return _keyboardHeigth - autoCorrectBarSize
+        } else { return 0 }
     }
     
     private var _lblMessageDistanceFromTop      : NSLayoutConstraint?
@@ -59,7 +60,7 @@ class GenericView: UIViewController {
         some.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer()
         some.addGestureRecognizer(tapGesture)
-        tapGesture.rx.event.bind(onNext: { [weak self]  recognizer in
+        tapGesture.rx.event.bind(onNext: { [weak self] _ in
             guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
             strongSelf.setTopMessageVisibityTo(state: false, message: "", type: .sucess)
         }).disposed(by: disposeBag)
@@ -71,8 +72,8 @@ class GenericView: UIViewController {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(self.keyboardWillShowNotification(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(self.keyboardWillHideNotification(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(self.keyboardDidShowNotification(_:)),  name: UIResponder.keyboardDidShowNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(self.keyboardDidHideNotification(_:)),  name: UIResponder.keyboardDidHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(self.keyboardDidShowNotification(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(self.keyboardDidHideNotification(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,8 +91,7 @@ class GenericView: UIViewController {
     func displayMessage(_ message: String, type: Enuns.AlertType, asAlert:Bool=false) {
         if asAlert {
             (self as UIViewController).rjs.showAlert(title: "\(type)".uppercased(), message: message)
-        }
-        else {
+        } else {
             setTopMessageVisibityTo(state: true, message: message, type: type)
         }
     }

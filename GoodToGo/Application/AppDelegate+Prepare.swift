@@ -14,4 +14,3 @@ extension AppDelegate {
         AppLogs.DLog("Number of logins : \(AppUserDefaultsVars.incrementIntWithKey(AppConstants.Dev.numberOfLogins))")
     }
 }
-

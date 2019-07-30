@@ -8,8 +8,6 @@
 import Foundation
 import UIKit
 
-
-
 //
 // MARK: - UserTableViewCell_Protocol
 //
@@ -17,5 +15,3 @@ import UIKit
 protocol UserTableViewCell_Protocol : GenericTableViewCell_Protocol {
 
 }
-
-

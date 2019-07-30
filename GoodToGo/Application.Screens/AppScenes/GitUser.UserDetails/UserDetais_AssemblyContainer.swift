@@ -15,7 +15,7 @@ extension AssembyContainer {
          
             // Router
             let routerProtocol = UserDetais_RouterProtocol.self
-            container.register(routerProtocol) { (r, viewController: V.UserDetais_View) in
+            container.register(routerProtocol) { (_, viewController: V.UserDetais_View) in
                 return R.UserDetais_Router(viewController: viewController)
             }
    
@@ -40,4 +40,3 @@ extension AssembyContainer {
         }
     }
 }
-

@@ -121,7 +121,7 @@ extension AppView {
             _rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
                 guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                 cell.set(textColor:AppColors.lblTextColor)
-                strongSelf.presenter.tableView.configure(cell: cell , indexPath: NSIndexPath(row: row, section: 0) as IndexPath)
+                strongSelf.presenter.tableView.configure(cell: cell, indexPath: NSIndexPath(row: row, section: 0) as IndexPath)
                 }.disposed(by: disposeBag)
             return some
         }()
@@ -169,7 +169,7 @@ extension V.BlissDetails_View : BlissDetails_ViewProtocol {
     func displayShareOptionsWith(text: String) {
         AppLogs.DLog("")
         let itens = [text]
-        let activityViewController = UIActivityViewController(activityItems: itens , applicationActivities: nil)
+        let activityViewController = UIActivityViewController(activityItems: itens, applicationActivities: nil)
         self.present(activityViewController, animated: true, completion: nil)
     }
     

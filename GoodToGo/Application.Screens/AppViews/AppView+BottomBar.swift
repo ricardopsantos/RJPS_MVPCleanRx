@@ -136,4 +136,3 @@ extension V.BottomBar {
     static func backgroundHeight() -> CGFloat { return defaultHeight()-30 }
     func lazyLoad()                -> Void { /* Lazy var auxiliar */ }
 }
-

@@ -70,8 +70,8 @@ extension P.BlissDetails_Presenter : BlissDetails_PresenterProtocol {
             if let strongSelf = self {
                 strongSelf.blissQuestions_UseCase.updateQuestion(question: strongSelf.viewModel!.question!, checkHealth: true) {  (result) in
                     switch result {
-                    case .success(let some) : observer.onNext(some); break
-                    case .failure(let error): observer.onError(error); break
+                    case .success(let some) : observer.onNext(some)
+                    case .failure(let error): observer.onError(error)
                     }
                 }
             } else {
@@ -96,8 +96,7 @@ extension P.BlissDetails_Presenter : BlissDetails_PresenterProtocol {
             case .success(let some):
                 if some.sucess {
                     strongSelf.genericView?.displayMessage(AppMessages.Bliss.sharedWithSucess, type: .sucess)
-                }
-                else {
+                } else {
                     strongSelf.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
                 }
             case .failure(let error):
@@ -139,7 +138,7 @@ extension P.BlissDetails_Presenter : GenericTableView_Protocol {
             //.debounce(.milliseconds(AppConstants.Rx.servicesDefaultDebounce), scheduler: MainScheduler.instance)
             //.throttle(.milliseconds(AppConstants.Rx.servicesDefaultThrottle), scheduler: MainScheduler.instance) 
             .subscribe(
-                onNext: { [weak self] some in
+                onNext: { [weak self] _ in
                     guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                     strongSelf.genericView?.setActivityState(false)
                     strongSelf.genericView?.displayMessage(AppMessages.sucess, type: .sucess)
@@ -194,7 +193,7 @@ extension P.BlissDetails_Presenter {
         }
         view.set(title: (viewModel!.question!.question.description))
         view.viewNeedsToDisplay(list: viewModel!.question!.choices)
-        downloadImage(imageURL: viewModel!.question!.imageURL, onFail: AppImages.notFound) { [weak self] (image) -> (Void) in
+        downloadImage(imageURL: viewModel!.question!.imageURL, onFail: AppImages.notFound) { [weak self] (image) in
             self?.view.set(image: image!)
         }
     }
@@ -213,8 +212,8 @@ extension P.BlissDetails_Presenter {
                     blissQuestions_UseCase.getQuestionBy(id: someInt, checkHealth: true) { [weak self] (result) in
                         guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                         switch result {
-                        case .success(let some): strongSelf.viewModel!.question = some; break
-                        case .failure(_): strongSelf.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error); break
+                        case .success(let some): strongSelf.viewModel!.question = some
+                        case .failure(_): strongSelf.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
                         }
                     }
                     return true
@@ -243,7 +242,4 @@ extension P.BlissDetails_Presenter {
             }
             ).disposed(by: disposeBag)
     }
-    
 }
-
-

@@ -78,12 +78,11 @@ extension P.SampleRxView_Presenter : SampleRxView_PresenterProtocol {
             if let strongSelf = self {
                 strongSelf.sample_UseCase.operation1(canUseCache: true) { (result) in
                     switch result {
-                    case .success(let some): observer.onNext("\(some)"); break
-                    case .failure(let error) : observer.onError(error); break
+                    case .success(let some): observer.onNext("\(some)")
+                    case .failure(let error) : observer.onError(error)
                     }
                 }
-            }
-            else {
+            } else {
                 AppLogs.DLog(appCode: .referenceLost)
             }
             return Disposables.create()
@@ -119,4 +118,3 @@ extension P.SampleRxView_Presenter {
         
     }
 }
-

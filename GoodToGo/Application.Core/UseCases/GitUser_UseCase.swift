@@ -41,10 +41,8 @@ extension UseCases {
                     let user : E.GitHubUser = some.entity
                     completionHandler(Result.success(user))
                     strongSelf.generic_CacheRepositoryProtocol.add(object: some.entity as AnyObject, withKey: cacheKey)
-                    break
                 case .failure(let error):
                     completionHandler(Result.failure(error))
-                    break
                 }
             })
         }
@@ -80,9 +78,4 @@ extension UseCases {
             })
         }
     }
-    
 }
-
-
-
-

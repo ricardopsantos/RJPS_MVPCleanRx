@@ -9,6 +9,4 @@ import UIKit
 
 class Layouts_Controller_SearchUserVC: INWCommonUIViewController {
 
-
 }
-

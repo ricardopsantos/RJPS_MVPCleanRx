@@ -59,12 +59,11 @@ extension P.SampleView_Presenter : SampleView_PresenterProtocol {
             strongSelf.genericView?.setActivityState(false)
             switch result {
             case .success(let some): strongSelf.viewModel = VM.SampleView_ViewModel(someString: "\(some)")
-            case .failure(_)       : strongSelf.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
+            case .failure          : strongSelf.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
             }
         }
     }
 }
-
 
 //
 // MARK: - GenericPresenter_Protocol

@@ -44,7 +44,7 @@ extension UseCases {
                 parans.forEach { (kv) in
                     if kv.key == AppConstants.Bliss.DeepLinks.questionsFilter {
                         setNeedToOpenScreen(screen: V.BlissQuestionsList_View.className, key: kv.key, value: kv.value)
-                    } else if(kv.key == AppConstants.Bliss.DeepLinks.questionId) {
+                    } else if kv.key == AppConstants.Bliss.DeepLinks.questionId {
                         setNeedToOpenScreen(screen: V.BlissDetails_View.className, key: kv.key, value: kv.value)
                     } else {
                         AppGlobal.assert(false, message: RJS_Constants.notPredicted + "\(kv)")
@@ -80,7 +80,7 @@ extension UseCases {
         func setNeedToOpenScreen(screen:String, key:String, value:String) {
             let storedKey = "\(screen).\(key)"
             let _ = generic_LocalStorageRepository.save(key: storedKey, value: value, expireDate: RJS_DataModel.baseDate.add(minutes: 1))
-            if(AppEnvironments.isDev()) {
+            if AppEnvironments.isDev() {
                 let stored = screenHaveDataToHandle(screen: screen)
                 AppGlobal.assert(stored!.0 == key)
                 AppGlobal.assert(stored!.1 == value)
@@ -89,7 +89,3 @@ extension UseCases {
         
     }
 }
-
-
-
-

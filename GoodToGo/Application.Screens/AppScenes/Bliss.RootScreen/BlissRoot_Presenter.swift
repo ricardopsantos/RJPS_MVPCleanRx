@@ -48,7 +48,6 @@ extension Presenter {
     }
 }
 
-
 //
 // MARK: - BlissRoot_PresenterProtocol
 //
@@ -118,7 +117,7 @@ extension P.BlissRoot_Presenter {
                     } else {
                         handleFail()
                     }
-                case .failure(_):
+                case .failure:
                     handleFail()
                 }
             }

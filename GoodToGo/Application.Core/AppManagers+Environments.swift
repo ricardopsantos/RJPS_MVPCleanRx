@@ -35,21 +35,16 @@ extension AppManagers {
             
             if let mode = appMode() {
                 switch mode {
-                case "Debug.Dev"  : set_dev(); break
-                case "Debug.QA"   : set_qa(); break
-                case "Debug.Prod" : set_prod(); break
-                case "Release"    : set_prod(); break
+                case "Debug.Dev"  : set_dev()
+                case "Debug.QA"   : set_qa()
+                case "Debug.Prod" : set_prod()
+                case "Release"    : set_prod()
                 default           :
                     block_recover()
-                    break
                 }
-            }
-            else {
+            } else {
                 block_recover()
             }
         }
     }
-
 }
-
-

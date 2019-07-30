@@ -5,7 +5,6 @@
 //  Copyright © 2019 Ricardo P Santos. All rights reserved.
 //
 
-
 import UIKit
 import RxSwift
 import RxCocoa
@@ -47,7 +46,5 @@ extension Router {
         func dismissView() {
             rxPublishRelay_dismissView.accept(())
         }
-        
     }
 }
-

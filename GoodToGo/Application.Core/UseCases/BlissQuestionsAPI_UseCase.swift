@@ -38,12 +38,8 @@ extension UseCases {
             
             repositoryNetwork.getHealth { (result) in
                 switch result {
-                case .success(let some):
-                    completionHandler(Result.success(some.entity))
-                    break
-                case .failure(let error):
-                    completionHandler(Result.failure(error))
-                    break
+                case .success(let some) : completionHandler(Result.success(some.entity))
+                case .failure(let error):completionHandler(Result.failure(error))
                 }
             }
 
@@ -54,8 +50,8 @@ extension UseCases {
                 guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                 strongSelf.repositoryNetwork.shareQuestionBy(email: email, url: url, completionHandler: { (result) in
                     switch result {
-                    case .success(let some): completionHandler(Result.success(some.entity)); break
-                    case .failure(let error): completionHandler(Result.failure(error)); break
+                    case .success(let some): completionHandler(Result.success(some.entity))
+                    case .failure(let error): completionHandler(Result.failure(error))
                     }
                 })
             }
@@ -81,8 +77,8 @@ extension UseCases {
                 guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                 strongSelf.repositoryNetwork.updateQuestion(question: question, completionHandler: { (result) in
                     switch result {
-                    case .success(let some): completionHandler(Result.success(some.entity)); break
-                    case .failure(let error): completionHandler(Result.failure(error)); break
+                    case .success(let some) : completionHandler(Result.success(some.entity))
+                    case .failure(let error): completionHandler(Result.failure(error))
                     }
                 })
             }
@@ -92,8 +88,7 @@ extension UseCases {
                     return
                 }
                 doWork()
-            }
-            else {
+            } else {
                 serverIsOK { (ok) in
                     if ok { doWork() }
                     else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
@@ -119,8 +114,7 @@ extension UseCases {
                     return
                 }
                 doWork()
-            }
-            else {
+            } else {
                 serverIsOK { (ok) in
                     if ok { doWork() }
                     else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
@@ -135,8 +129,8 @@ extension UseCases {
                 guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                 strongSelf.repositoryNetwork.getQuestionBy(id: id, completionHandler: { (result) in
                     switch result {
-                    case .success(let some): completionHandler(Result.success(some.entity)); break
-                    case .failure(let error): completionHandler(Result.failure(error)); break
+                    case .success(let some): completionHandler(Result.success(some.entity))
+                    case .failure(let error): completionHandler(Result.failure(error))
                     }
                 })
             }
@@ -147,11 +141,11 @@ extension UseCases {
                     return
                 }
                 doWork()
-            }
-            else {
+            } else {
                 serverIsOK { (ok) in
-                    if(ok) { doWork() }
-                    else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
+                    if ok {
+                        doWork()
+                    } else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
                 }
             }
         }
@@ -167,17 +161,17 @@ extension UseCases {
                     }
                 })
             }
-            if(!checkHealth) {
+            if !checkHealth {
                 guard existsInternetConnection else {
                     completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
                     return
                 }
                 doWork()
-            }
-            else {
+            } else {
                 serverIsOK { (ok) in
-                    if ok { doWork() }
-                    else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
+                    if ok {
+                        doWork()
+                    } else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
                 }
             }
         }

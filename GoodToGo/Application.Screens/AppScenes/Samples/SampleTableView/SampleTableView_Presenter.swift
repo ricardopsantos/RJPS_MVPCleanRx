@@ -69,7 +69,7 @@ extension P.SampleTableView_Presenter : GenericTableView_Protocol {
             let title = "\(employee.employeeName) | \(employee.employeeSalary)"
             //someCell.set(title:title)
             someCell.rxBehaviorRelay_title.accept(title)
-            downloadImage(imageURL: employee.profileImage, onFail: AppImages.notFound) { (image) -> (Void) in
+            downloadImage(imageURL: employee.profileImage, onFail: AppImages.notFound) { (image) in
                 someCell.rxBehaviorRelay_image.accept(image)
             }
         } else {
@@ -169,11 +169,9 @@ extension P.SampleTableView_Presenter {
                     case .success(let some):
                         let employeeList = some.entity
                         observer.onNext(employeeList)
-                        break
                     case .failure(let error):
                         RJS_Logs.DLogError(error)
                         observer.onError(error)
-                        break
                     }
                 })
             }

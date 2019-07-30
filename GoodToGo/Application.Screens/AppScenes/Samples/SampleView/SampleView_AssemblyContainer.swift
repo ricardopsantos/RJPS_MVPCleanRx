@@ -19,7 +19,7 @@ extension AssembyContainer {
 
             // Router
             let routerProtocol = SampleView_RouterProtocol.self
-            container.register(routerProtocol) { (r, viewController: V.SampleView_View) in
+            container.register(routerProtocol) { (_, viewController: V.SampleView_View) in
                 return R.SampleView_Router(viewController: viewController)
             }
             
@@ -44,4 +44,3 @@ extension AssembyContainer {
         }
     }
 }
-

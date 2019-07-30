@@ -42,10 +42,10 @@ extension ObservableType {
         return withLatestFrom(trigger) { (myValue, triggerValue) -> (Element, Bool) in
             return (myValue, triggerValue)
             }
-            .filter { (myValue, triggerValue) -> Bool in
+            .filter { (_, triggerValue) -> Bool in
                 return triggerValue == true
             }
-            .map { (myValue, triggerValue) -> Element in
+            .map { (myValue, _) -> Element in
                 return myValue
         }
         

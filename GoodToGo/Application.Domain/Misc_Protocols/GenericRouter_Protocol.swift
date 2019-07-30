@@ -19,4 +19,3 @@ protocol GenericRouter_Protocol : AppUtils_Protocol {
     //func dismissView()
     //var rxPublishRelay_dismissView: PublishRelay<Void> { get } // PublishRelay model Events
 }
-

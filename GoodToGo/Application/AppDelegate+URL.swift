@@ -24,8 +24,4 @@ extension AppDelegate {
         blissGenericAppBussiness_UseCase.handle(url: url)
         return true
     }
-    
 }
-
-
-

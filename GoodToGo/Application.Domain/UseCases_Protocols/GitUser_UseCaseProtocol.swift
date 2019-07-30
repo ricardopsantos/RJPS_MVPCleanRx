@@ -16,5 +16,3 @@ protocol GitUser_UseCaseProtocol : class {
     func getInfoOfUserWith(userName:String, canUseCache:Bool, completionHandler: @escaping GitUser_Single_UseCaseCompletionHandler)
     func getFriendsOfUserWith(userName:String, canUseCache:Bool, completionHandler: @escaping GitUser_Friends_UseCaseCompletionHandler)
 }
-
-

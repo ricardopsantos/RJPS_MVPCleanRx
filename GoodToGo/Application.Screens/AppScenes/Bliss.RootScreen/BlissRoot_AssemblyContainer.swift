@@ -19,7 +19,7 @@ extension AssembyContainer {
             
             // Router
             let routerProtocol = BlissRoot_RouterProtocol.self
-            container.register(routerProtocol) { (r, viewController: V.BlissRoot_View) in
+            container.register(routerProtocol) { (_, viewController: V.BlissRoot_View) in
                 return R.BlissRoot_Router(viewController: viewController)
             }
             
@@ -45,4 +45,3 @@ extension AssembyContainer {
         }
     }
 }
-

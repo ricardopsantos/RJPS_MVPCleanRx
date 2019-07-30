@@ -30,6 +30,4 @@ extension AppConstants {
             static let questionId      = "question_id"     // DONT CHANGE VALUE
         }
     }
-   
 }
-

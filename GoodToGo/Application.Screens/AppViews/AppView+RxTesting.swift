@@ -243,7 +243,7 @@ extension AppView {
             func doRequest() {
                 rxObservableAssyncRequest
                     .subscribe(
-                        onNext: { [weak self] some in
+                        onNext: { [weak self] _ in
                             self?.aux_log(message: "[Observable<T>][onNext]", showAlert: true, appendToTable: true)
                             self?.displayMessage(AppMessages.ok, type: .sucess)
                         },
@@ -377,7 +377,7 @@ extension V.RxTesting {
         
         // 3 ways to do same thing
         if false {
-            Observable<String>.of("2","3","3","5")
+            Observable<String>.of("2", "3", "3", "5")
                 .map { return Int($0)! * 10 }
                 .filter { $0 > 25 }
                 .subscribe(
@@ -386,7 +386,7 @@ extension V.RxTesting {
                     onCompleted: { print("completed s1") }
                 ).disposed(by: disposeBag)
             
-            Observable<String>.of("2","3","3","5")
+            Observable<String>.of("2", "3", "3", "5")
                 .map { return Int($0)! * 10 }
                 .filter { $0 > 25 }
                 .subscribe({
@@ -397,7 +397,7 @@ extension V.RxTesting {
                     }
                 }).disposed(by: disposeBag)
             
-            Observable<String>.of("2","3","3","5")
+            Observable<String>.of("2", "3", "3", "5")
                 .map { return Int($0)! * 10 }
                 .filter { $0 > 25 }
                 .subscribe({ event in
@@ -459,7 +459,6 @@ extension V.RxTesting {
             .elementAt(0)
             .subscribe(onNext: { n in print("intervalObservable_throttle : \(n)") })
 
-        
         /*
         let intervalObservable_2 = Observable<NSInteger>
             .interval(0.2, scheduler: MainScheduler.instance)

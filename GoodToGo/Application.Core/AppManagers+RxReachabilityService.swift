@@ -363,6 +363,3 @@ private extension Reachability {
         }
     }
 }
-
-
-

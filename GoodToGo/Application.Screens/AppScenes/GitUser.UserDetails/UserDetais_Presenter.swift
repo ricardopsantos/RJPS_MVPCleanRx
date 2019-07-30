@@ -64,10 +64,10 @@ extension P.UserDetais_Presenter : GenericTableView_Protocol {
         return viewModel?.friends.count ?? 0
     }
     
-    func configure(cell: GenericTableViewCell_Protocol, indexPath: IndexPath) -> Void {
+    func configure(cell: GenericTableViewCell_Protocol, indexPath: IndexPath) {
         let user = viewModel!.friends[indexPath.row]
         cell.set(title:user.name ?? "unknown")
-        downloadImage(imageURL: user.avatarUrl!, onFail: AppImages.notFound) { (image) -> (Void) in
+        downloadImage(imageURL: user.avatarUrl!, onFail: AppImages.notFound) { (image) in
             cell.set(image: image)
         }
     }
@@ -97,7 +97,7 @@ extension P.UserDetais_Presenter {
     private func updateViewWith(vm:VM.UserDetais?) -> Void {
         guard vm != nil else { AppLogs.DLog(appCode: .ignored); return }
         view.viewDataToScreen(some: vm!)
-        downloadImage(imageURL: vm!.user.avatarUrl!, onFail: AppImages.notFound) { [weak self] (image) -> (Void) in
+        downloadImage(imageURL: vm!.user.avatarUrl!, onFail: AppImages.notFound) { [weak self] (image) in
             self?.view.setAvatarWith(image: image!)
         }
     }

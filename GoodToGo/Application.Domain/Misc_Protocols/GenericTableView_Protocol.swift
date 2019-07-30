@@ -23,7 +23,3 @@ extension GenericTableView_Protocol {
     func didSelect(object:Any) -> Void { }
     func didSelectRowAt(indexPath: IndexPath) -> Void { }
 }
-
-
-
-

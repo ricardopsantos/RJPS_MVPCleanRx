@@ -162,7 +162,6 @@ extension AppView {
     }
 }
 
-
 // MARK: - View Protocol
 
 extension V.SampleRxView_View : SampleRxView_ViewProtocol {
@@ -170,7 +169,3 @@ extension V.SampleRxView_View : SampleRxView_ViewProtocol {
         _lblMessage.textAnimated = message
     }
 }
-
-
-
-

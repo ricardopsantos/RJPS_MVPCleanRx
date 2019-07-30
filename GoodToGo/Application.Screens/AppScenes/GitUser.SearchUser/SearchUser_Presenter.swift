@@ -78,7 +78,6 @@ extension P.SearchUser_Presenter : SearchUser_PresenterProtocol {
     }
 }
 
-
 /**
  * 4 - Implementation : GenericPresenter_Protocol Protocol
  */
@@ -132,7 +131,7 @@ extension P.SearchUser_Presenter {
     }
     
     private func rxObservable_getUserInfo(for username: String) -> Observable<Bool?> {
-        return Observable.create { [weak self] observer -> Disposable in
+        return Observable.create { [weak self] _ -> Disposable in
             if let strongSelf = self {
                 strongSelf.useCase_1.getInfoOfUserWith(userName: username, canUseCache: true) { [weak self] result in
                     guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
@@ -143,8 +142,7 @@ extension P.SearchUser_Presenter {
                         strongSelf.rxPublishRelay_error.accept(error)
                     }
                 }
-            }
-            else {
+            } else {
                 AppLogs.DLog(appCode: .referenceLost)
             }
             return Disposables.create()
@@ -153,7 +151,7 @@ extension P.SearchUser_Presenter {
     }
     
     private func rxObservable_getUserFriends(for username: String) -> Observable<Bool?> {
-        return Observable.create { [weak self] observer -> Disposable in
+        return Observable.create { [weak self] _ -> Disposable in
             if let strongSelf = self {
                 strongSelf.useCase_1.getFriendsOfUserWith(userName: username, canUseCache: true, completionHandler: { [weak self] result in
                     guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }

@@ -55,12 +55,9 @@ extension AppUtils_Protocol {
             if let sender = sender {
                 (sender as UIViewController).present(alert, animated: true, completion: nil)
             }
-        }
-        else {
+        } else {
             block()
         }
     }
     
 }
-
-

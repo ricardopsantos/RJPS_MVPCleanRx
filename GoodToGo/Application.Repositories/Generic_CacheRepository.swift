@@ -23,4 +23,3 @@ extension RP.Cache {
         func clean(sender: String)                   { RJS_Cache.clean(sender:sender) }
     }
 }
-

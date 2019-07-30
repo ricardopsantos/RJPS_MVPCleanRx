@@ -18,5 +18,3 @@ protocol BlissQuestionsAPI_UseCaseProtocol : class {
     func shareQuestionBy(email:String, url:String, checkHealth:Bool, completionHandler: @escaping (_ result: Result<E.Bliss.ShareByEmail>) -> Void)
     
 }
-
-

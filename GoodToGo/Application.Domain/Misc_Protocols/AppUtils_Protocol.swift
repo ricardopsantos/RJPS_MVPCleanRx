@@ -13,7 +13,7 @@ protocol AppUtils_Protocol : class {
     // If there is internet; execture the code in the block. If not, presente a warging
     var existsInternetConnection : Bool { get }
     
-    func assertExistsInternetConnection(sender:GenericView?, message:String, block:@escaping ()->())
+    func assertExistsInternetConnection(sender:GenericView?, message:String, block:@escaping ()->Void)
     
     func downloadImage(imageURL:String, onFail:UIImage?, completion:@escaping (UIImage?) -> (Void)) -> Void
 
