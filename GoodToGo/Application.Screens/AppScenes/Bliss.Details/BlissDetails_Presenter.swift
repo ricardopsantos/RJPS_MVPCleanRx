@@ -171,7 +171,7 @@ extension P.BlissDetails_Presenter : GenericPresenter_Protocol {
     }
     func viewDidAppear()  -> Void { }
     func viewDidLoad()    -> Void {
-        let _ = checkDataToHandle()
+        _ = checkDataToHandle()
         setupPresenter()
     }
     func viewWillAppear() -> Void { }
@@ -207,7 +207,7 @@ extension P.BlissDetails_Presenter {
         if let data = blissGeneric_UseCase.screenHaveDataToHandle(screen: V.BlissDetails_View.className) {
             let key   = data.0
             let value = data.1
-            if(key == AppConstants.Bliss.DeepLinks.questionId) {
+            if key == AppConstants.Bliss.DeepLinks.questionId {
                  if let someInt = Int(value) {
                     AppLogs.DLog("Handling data!")
                     blissQuestions_UseCase.getQuestionBy(id: someInt, checkHealth: true) { [weak self] (result) in
@@ -233,7 +233,7 @@ extension P.BlissDetails_Presenter {
         
         blissGeneric_UseCase.rxPublishRelayAppicationDidReceivedData.asSignal()
             .emit(onNext: { [weak self] in
-                let _ = self?.checkDataToHandle()
+                _ = self?.checkDataToHandle()
             }).disposed(by: disposeBag)
         
         reachabilityService.reachability.subscribe(

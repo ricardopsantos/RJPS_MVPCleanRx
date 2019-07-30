@@ -90,7 +90,7 @@
 		9F9BEDA022E5CC4F0018BD4C /* RxGesture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9BED9F22E5CC4F0018BD4C /* RxGesture.framework */; };
 		9FA0DCC922BE5E45003ADF99 /* GitUser_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0DCC322BE5E45003ADF99 /* GitUser_UseCase.swift */; };
 		9FA0DCCA22BE5E45003ADF99 /* SampleB_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0DCC522BE5E45003ADF99 /* SampleB_UseCase.swift */; };
-		9FA0DCCB22BE5E45003ADF99 /* SampleA_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0DCC622BE5E45003ADF99 /* SampleA_UseCase.swift */; };
+		9FA0DCCB22BE5E45003ADF99 /* Sample_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0DCC622BE5E45003ADF99 /* Sample_UseCase.swift */; };
 		9FACC16B223BA4CC00576498 /* Mappers+GitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FACC16A223BA4CB00576498 /* Mappers+GitUser.swift */; };
 		9FACC173223BBD8600576498 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC172223BBD8600576498 /* RxCocoa.framework */; };
 		9FACC177223BBFC700576498 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC176223BBFC600576498 /* RxSwift.framework */; };
@@ -266,7 +266,7 @@
 		9F9BED9F22E5CC4F0018BD4C /* RxGesture.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxGesture.framework; path = Carthage/Build/iOS/RxGesture.framework; sourceTree = "<group>"; };
 		9FA0DCC322BE5E45003ADF99 /* GitUser_UseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitUser_UseCase.swift; sourceTree = "<group>"; };
 		9FA0DCC522BE5E45003ADF99 /* SampleB_UseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleB_UseCase.swift; sourceTree = "<group>"; };
-		9FA0DCC622BE5E45003ADF99 /* SampleA_UseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleA_UseCase.swift; sourceTree = "<group>"; };
+		9FA0DCC622BE5E45003ADF99 /* Sample_UseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sample_UseCase.swift; sourceTree = "<group>"; };
 		9FACC16A223BA4CB00576498 /* Mappers+GitUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Mappers+GitUser.swift"; sourceTree = "<group>"; };
 		9FACC172223BBD8600576498 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		9FACC176223BBFC600576498 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
@@ -635,7 +635,7 @@
 		9FA0DCC122BE5E45003ADF99 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				9FA0DCC622BE5E45003ADF99 /* SampleA_UseCase.swift */,
+				9FA0DCC622BE5E45003ADF99 /* Sample_UseCase.swift */,
 				9FA0DCC522BE5E45003ADF99 /* SampleB_UseCase.swift */,
 				9FA0DCC322BE5E45003ADF99 /* GitUser_UseCase.swift */,
 				9F6BB2D422E3474F00829A6F /* BlissQuestionsAPI_UseCase.swift */,
@@ -937,7 +937,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    echo \"will lint? un comment! next line\"\n#swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if which swiftlint >/dev/null; then\n    echo \"will lint? un comment! next line\"\nswiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1041,7 +1041,7 @@
 				9F58FB4322BE5DE700042A8C /* AppView+TabBarController.swift in Sources */,
 				9F58FB3E22BE5DE700042A8C /* AppView+TopBar.swift in Sources */,
 				9FB9F97322E4B8CB00D64FD2 /* BlissQuestionsAPI_UseCaseProtocol.swift in Sources */,
-				9FA0DCCB22BE5E45003ADF99 /* SampleA_UseCase.swift in Sources */,
+				9FA0DCCB22BE5E45003ADF99 /* Sample_UseCase.swift in Sources */,
 				9FD387DA223F0CF4001D2F4E /* String+AppExtensions.swift in Sources */,
 				9F8D4ABE223877D400777976 /* Repository.Network.Employees.swift in Sources */,
 				9FFF80BC22BFB9A6003C4562 /* UIImage+AppExtensions.swift in Sources */,

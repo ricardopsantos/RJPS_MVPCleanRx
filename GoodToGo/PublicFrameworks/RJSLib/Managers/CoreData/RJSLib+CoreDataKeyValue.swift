@@ -47,7 +47,7 @@ extension RJSLib_CoreDataKeyValue : CoreDataEntetie_Protocol, StorableKeyValueWi
             checkSucess()
         }
         if(object != nil) {
-            let _ = deleteWith(key:key)
+            _ = deleteWith(key:key)
             saveNewRecordBlock()
         }
         else {

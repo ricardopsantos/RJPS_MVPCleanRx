@@ -70,7 +70,7 @@ extension RJSLib {
                         if let image = UIImage(data: data) {
                             completion(image, true)
                             if(caching == .fileSystem) {
-                                let _ = Storages.Files.saveImageWith(name: cachedImageName, image: image)
+                                _ = Storages.Files.saveImageWith(name: cachedImageName, image: image)
                             }
                             else if(caching == .nsCache) {
                                 _imagesCache.setObject(image, forKey: cachedImageName as NSString)

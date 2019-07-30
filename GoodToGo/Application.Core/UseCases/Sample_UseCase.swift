@@ -20,7 +20,7 @@ extension UseCases {
         var generic_LocalStorageRepository  : Generic_LocalStorageRepositoryProtocol!
         
         func operation1(canUseCache: Bool, completionHandler: @escaping Sample_UseCaseCompletionHandler) {
-            guard RJS_Utils.existsInternetConnection() else {
+            guard existsInternetConnection else {
                 completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
                 return
             }
@@ -29,7 +29,7 @@ extension UseCases {
             let coreDatakey   = "\(cacheKey).lastUpdate"
             let cacheLifeSpam = AppConstants.Cache.serverRequestCacheLifeSpam
             
-            if(canUseCache && !cachedValueIsOld(coreDatakey:coreDatakey, maxLifeSpam:cacheLifeSpam)) {
+            if canUseCache && !cachedValueIsOld(coreDatakey:coreDatakey, maxLifeSpam:cacheLifeSpam) {
                 if let cachedValue =  generic_CacheRepositoryProtocol.get(key: cacheKey)  {
                     completionHandler(Result.success(cachedValue as! [String]))
                     return
@@ -44,7 +44,7 @@ extension UseCases {
         }
         
         func operation2(param: String, completionHandler: @escaping Sample_UseCaseCompletionHandler) {
-            guard RJS_Utils.existsInternetConnection() else {
+            guard existsInternetConnection else {
                 completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
                 return
             }

@@ -155,7 +155,7 @@ extension P.BlissRoot_Presenter {
     var rxObservableAssyncRequest : Observable<UIImage> {
         return Observable.create { observer -> Disposable in
             AppSimpleNetworkClient.downloadImageFrom(AppConstants.Bliss.logoURL, completion: { (image) in
-                if(image != nil) { observer.onNext(image!) }
+                if image != nil { observer.onNext(image!) }
                 else { observer.onError(AppFactory.Errors.with(appCode: .unknownError)) }
             })
             return Disposables.create() }

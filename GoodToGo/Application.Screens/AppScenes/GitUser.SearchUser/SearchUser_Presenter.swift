@@ -88,7 +88,7 @@ extension P.SearchUser_Presenter : GenericPresenter_Protocol {
     func loadView()       -> Void { setupPresenter() }
     func viewDidAppear()  -> Void { }
     func viewDidLoad()    -> Void { }
-    func viewWillAppear() -> Void { if(viewModel != nil) { updateViewWith(vm: viewModel) } }
+    func viewWillAppear() -> Void { if viewModel != nil { updateViewWith(vm: viewModel) } }
     
     func setupPresenter() -> Void {
         Observable.zip(_rxPublishRelay_userInfo, _rxPublishRelay_userFriends, resultSelector: { return ($0, $1)} )

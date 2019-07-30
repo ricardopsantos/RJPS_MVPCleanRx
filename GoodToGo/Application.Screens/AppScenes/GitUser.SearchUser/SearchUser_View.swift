@@ -42,7 +42,7 @@ extension AppView {
             some.rx.textDidEndEditing
                 .subscribe(onNext: { [weak self] (query) in
                     guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
-                    if(strongSelf._searchBar.text!.count>0) {
+                    if strongSelf._searchBar.text!.count>0  {
                         strongSelf.presenter.searchUserWith(username: some.text ?? "")
                     }
                 })

@@ -50,8 +50,8 @@ extension Presenter {
             didSet { AppLogs.DLog(appCode: .vmChanged); viewModelChanged() }
         }
 
-        private var _lastFilder : String? = nil
-        private var _lastOffSet : Int? = nil
+        private var _lastFilder : String?
+        private var _lastOffSet : Int? 
 
     }
 }
@@ -59,7 +59,6 @@ extension Presenter {
 //
 // MARK: - GenericTableView_Protocol
 //
-
 
 extension P.BlissQuestionsList_Presenter : GenericTableView_Protocol {
     
@@ -208,8 +207,8 @@ extension P.BlissQuestionsList_Presenter {
             if let data = blissGeneric_UseCase.screenHaveDataToHandle(screen: V.BlissQuestionsList_View.className) {
                 let key   = data.0
                 let value = data.1
-                if(key == AppConstants.Bliss.DeepLinks.questionsFilter) {
-                    if(value.count > 0) {
+                if key == AppConstants.Bliss.DeepLinks.questionsFilter {
+                    if value.count > 0 {
                         view.setSearch(text: value)
                         userPretendDoSearchWith(filter: value)
                     }
@@ -217,7 +216,7 @@ extension P.BlissQuestionsList_Presenter {
                 }
             }
             else if let _ = blissGeneric_UseCase.screenHaveDataToHandle(screen: V.BlissDetails_View.className) {
-                if (self.genericView!.isVisible) {
+                if self.genericView!.isVisible {
                     // If we are on the list, jump to details screen
                     router.goToDetails()
                 }
@@ -226,7 +225,7 @@ extension P.BlissQuestionsList_Presenter {
         
         blissGeneric_UseCase.rxPublishRelayAppicationDidReceivedData.asSignal()
             .emit(onNext: {
-                let _ = checkDataToHandle()
+                _ = checkDataToHandle()
             }).disposed(by: disposeBag)
         
         reachabilityService.reachability.subscribe(

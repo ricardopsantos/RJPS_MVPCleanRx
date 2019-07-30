@@ -44,7 +44,7 @@ extension RP.Network.Bliss {
         var debugRequest      : Bool = AppCan.Logs.requests
         var urlRequest        : URLRequest
         var responseType      : NetworkClientResponseType
-        var mockedData        : String? = nil
+        var mockedData        : String?
 
         init(limit:Int, filter:String, offSet:Int) throws {
             let escaped = filter.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
@@ -166,7 +166,7 @@ extension RP.Network.Bliss {
         var debugRequest      : Bool = AppCan.Logs.requests
         var urlRequest        : URLRequest
         var responseType      : NetworkClientResponseType
-        var mockedData        : String? = nil
+        var mockedData        : String?
 
         init(question:E.Bliss.QuestionElement) throws {
             if let url = URL(string: "\(AppConstants.Bliss.URLs.blissAPIBaseUrl)/questions") {
@@ -201,7 +201,7 @@ extension RP.Network.Bliss {
         var debugRequest      : Bool = AppCan.Logs.requests
         var urlRequest        : URLRequest
         var responseType      : NetworkClientResponseType
-        var mockedData        : String? = nil
+        var mockedData        : String? 
 
         init(question:E.Bliss.QuestionElement) throws {
             if let url = URL(string: "\(AppConstants.Bliss.URLs.blissAPIBaseUrl)/questions/\(question.id)") {

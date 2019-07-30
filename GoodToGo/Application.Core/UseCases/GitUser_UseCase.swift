@@ -14,10 +14,11 @@ extension UseCases {
     class GitUser_UseCase : GenericUseCase, GitUser_UseCaseProtocol {
 
         var generic_CacheRepositoryProtocol : Generic_CacheRepositoryProtocol!
-        
+        var repositoryNetwork               : GitUser_NetWorkRepositoryProtocol!
+
         func getInfoOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitUser_Single_UseCaseCompletionHandler) {
             
-            guard RJS_Utils.existsInternetConnection() else {
+            guard existsInternetConnection else {
                 completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
                 return
             }
@@ -26,14 +27,14 @@ extension UseCases {
             let coreDatakey   = "\(cacheKey).lastUpdate"
             let cacheLifeSpam = AppConstants.Cache.serverRequestCacheLifeSpam
             
-            if(canUseCache && !cachedValueIsOld(coreDatakey:coreDatakey, maxLifeSpam:cacheLifeSpam)) {
+            if canUseCache && !cachedValueIsOld(coreDatakey:coreDatakey, maxLifeSpam:cacheLifeSpam) {
                 if let cachedValue =  generic_CacheRepositoryProtocol.get(key: cacheKey)  {
                     completionHandler(Result.success(cachedValue as! E.GitHubUser))
                     return
                 }
             }
             
-            RP.Network.GitUser.NetWorkRepository().getInfoOfUserWith(userName: userName, canUseCache: true, completionHandler: { [weak self] result in
+            repositoryNetwork.getInfoOfUserWith(userName: userName, canUseCache: true, completionHandler: { [weak self] result in
                 guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                 switch result {
                 case .success(let some):
@@ -50,7 +51,7 @@ extension UseCases {
         
         func getFriendsOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitUser_Friends_UseCaseCompletionHandler) {
             
-            guard RJS_Utils.existsInternetConnection() else {
+            guard existsInternetConnection else {
                 completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
                 return
             }
@@ -59,24 +60,22 @@ extension UseCases {
             let coreDatakey   = "\(cacheKey).lastUpdate"
             let cacheLifeSpam = AppConstants.Cache.serverRequestCacheLifeSpam
             
-            if(canUseCache && !cachedValueIsOld(coreDatakey:coreDatakey, maxLifeSpam:cacheLifeSpam)) {
+            if canUseCache && !cachedValueIsOld(coreDatakey:coreDatakey, maxLifeSpam:cacheLifeSpam) {
                 if let cachedValue =  generic_CacheRepositoryProtocol.get(key: cacheKey)  {
                     completionHandler(Result.success(cachedValue as! [E.GitHubUser]))
                     return
                 }
             }
             
-            RP.Network.GitUser.NetWorkRepository().getFriendsOfUserWith(userName: userName, canUseCache: true, completionHandler: { [weak self] result in
+            repositoryNetwork.getFriendsOfUserWith(userName: userName, canUseCache: true, completionHandler: { [weak self] result in
                 guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                 switch result {
                 case .success(let some):
                     let friends : [E.GitHubUser] = some.entity
                     completionHandler(Result.success(friends))
                     strongSelf.generic_CacheRepositoryProtocol.add(object: some.entity as AnyObject, withKey: cacheKey)
-                    break
                 case .failure(let error):
                     completionHandler(Result.failure(error))
-                    break
                 }
             })
         }

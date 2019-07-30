@@ -195,7 +195,7 @@ extension RJPSLayouts where Target: UIView {
             case .right:
                 constraint = NSLayoutConstraint(item: tView, attribute: .trailing, relatedBy: .equal, toItem: toItem, attribute: .trailing, multiplier: multiplier, constant: constant)
             default:
-                let _ = 1
+                _ = 1
             }
             return activate(constraint: constraint, identifier: "id__same_\(property)_as_x", priority: priority)
         }
@@ -218,7 +218,7 @@ extension RJPSLayouts where Target: UIView {
             case .right:
                 tView.leadingAnchor.constraint(equalTo: toItem.leadingAnchor, constant: constant).isActive = true
             default:
-                let _ = 1
+                _ = 1
             }
             return nil
         }
@@ -250,7 +250,7 @@ extension RJPSLayouts where Target: UIView {
             case .right:
                 constraint = NSLayoutConstraint(item: tView, attribute: .trailing, relatedBy: .equal, toItem: target, attribute: targetIsSuper ? .trailing : .leading, multiplier: 1, constant: -margin)
             default:
-                let _ = 1
+                _ = 1
             }
             return activate(constraint: constraint, identifier: "id__margin_\(property)", priority: priority)
         }

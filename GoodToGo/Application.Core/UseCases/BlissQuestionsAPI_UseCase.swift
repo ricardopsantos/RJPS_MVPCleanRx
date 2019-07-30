@@ -31,7 +31,7 @@ extension UseCases {
         
         func getHealth(completionHandler: @escaping (Result<E.Bliss.ServerHealth>) -> Void) {
          
-            guard RJS_Utils.existsInternetConnection() else {
+            guard existsInternetConnection else {
                 completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
                 return
             }
@@ -59,8 +59,8 @@ extension UseCases {
                     }
                 })
             }
-            if(!checkHealth) {
-                guard RJS_Utils.existsInternetConnection() else {
+            if !checkHealth {
+                guard existsInternetConnection else {
                     completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
                     return
                 }
@@ -68,7 +68,7 @@ extension UseCases {
             }
             else {
                 serverIsOK { (ok) in
-                    if(ok) { doWork() }
+                    if ok { doWork() }
                     else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
                 }
             }
@@ -86,8 +86,8 @@ extension UseCases {
                     }
                 })
             }
-            if(!checkHealth) {
-                guard RJS_Utils.existsInternetConnection() else {
+            if !checkHealth {
+                guard existsInternetConnection else {
                     completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
                     return
                 }
@@ -95,7 +95,7 @@ extension UseCases {
             }
             else {
                 serverIsOK { (ok) in
-                    if(ok) { doWork() }
+                    if ok { doWork() }
                     else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
                 }
             }
@@ -107,14 +107,14 @@ extension UseCases {
                 guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                 strongSelf.repositoryNetwork.getQuestions(limit: limit, filter: filter, offSet: offSet, completionHandler: { (result) in
                     switch result {
-                    case .success(let some): completionHandler(Result.success(some.entity)); break
-                    case .failure(let error): completionHandler(Result.failure(error)); break
+                    case .success(let some): completionHandler(Result.success(some.entity))
+                    case .failure(let error): completionHandler(Result.failure(error))
                     }
                 })
             }
             
-            if(!checkHealth) {
-                guard RJS_Utils.existsInternetConnection() else {
+            if !checkHealth {
+                guard existsInternetConnection else {
                     completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
                     return
                 }
@@ -122,7 +122,7 @@ extension UseCases {
             }
             else {
                 serverIsOK { (ok) in
-                    if(ok) { doWork() }
+                    if ok { doWork() }
                     else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
                 }
             }
@@ -141,8 +141,8 @@ extension UseCases {
                 })
             }
             
-            if(!checkHealth) {
-                guard RJS_Utils.existsInternetConnection() else {
+            if !checkHealth {
+                guard existsInternetConnection else {
                     completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
                     return
                 }
@@ -162,13 +162,13 @@ extension UseCases {
                 guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                 strongSelf.repositoryNetwork.makeQuestion(question: question, completionHandler: { (result) in
                     switch result {
-                    case .success(let some): completionHandler(Result.success(some.entity)); break
-                    case .failure(let error): completionHandler(Result.failure(error)); break
+                    case .success(let some): completionHandler(Result.success(some.entity))
+                    case .failure(let error): completionHandler(Result.failure(error))
                     }
                 })
             }
             if(!checkHealth) {
-                guard RJS_Utils.existsInternetConnection() else {
+                guard existsInternetConnection else {
                     completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
                     return
                 }
@@ -176,13 +176,10 @@ extension UseCases {
             }
             else {
                 serverIsOK { (ok) in
-                    if(ok) { doWork() }
+                    if ok { doWork() }
                     else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
                 }
             }
         }
     }
 }
-
-
-

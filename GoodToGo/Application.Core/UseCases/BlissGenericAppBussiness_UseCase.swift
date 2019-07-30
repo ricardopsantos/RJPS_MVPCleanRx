@@ -42,13 +42,11 @@ extension UseCases {
             
             if let parans = getKeyValsFromURL(url: url) {
                 parans.forEach { (kv) in
-                    if(kv.key == AppConstants.Bliss.DeepLinks.questionsFilter) {
+                    if kv.key == AppConstants.Bliss.DeepLinks.questionsFilter {
                         setNeedToOpenScreen(screen: V.BlissQuestionsList_View.className, key: kv.key, value: kv.value)
-                    }
-                    else if(kv.key == AppConstants.Bliss.DeepLinks.questionId) {
+                    } else if(kv.key == AppConstants.Bliss.DeepLinks.questionId) {
                         setNeedToOpenScreen(screen: V.BlissDetails_View.className, key: kv.key, value: kv.value)
-                    }
-                    else {
+                    } else {
                         AppGlobal.assert(false, message: RJS_Constants.notPredicted + "\(kv)")
                     }                    
                 }

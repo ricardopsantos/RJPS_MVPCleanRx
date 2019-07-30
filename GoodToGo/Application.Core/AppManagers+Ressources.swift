@@ -26,7 +26,7 @@ extension AppManagers {
         }
         static var selectedLanguage : SelectedLanguage = _storedLanguage {
             didSet{
-                if(selectedLanguage != _storedLanguage) {
+                if selectedLanguage != _storedLanguage {
                     _currentLanguageBundle = nil
                     AppGlobal.saveWith(key: AppConstants.Dev.keyCoreDataSaveLang, value: "\(selectedLanguage.rawValue)")
                     AppLogs.DLogWarning("Language code changed to [\(selectedLanguage)]")
@@ -55,7 +55,7 @@ extension AppManagers {
         private static func resource(_ code : String/*, languageCode : SelectedLanguage = prepareLanguageCode()*/) -> String {
             guard !code.isEmpty else { return "" }
             
-            if(_currentLanguageBundle == nil) {
+            if _currentLanguageBundle == nil {
                 var file = ""
                 switch selectedLanguage {
                 case .en: file = "en"

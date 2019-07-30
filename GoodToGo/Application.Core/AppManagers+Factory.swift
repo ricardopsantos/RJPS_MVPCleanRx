@@ -67,7 +67,7 @@ extension AppManagers {
             static func imageView(baseView:UIView? = nil, image:UIImage?=nil, tag:Int=0) -> UIImageView {
                 let some = UIImageView()
                 some.tag = tag
-                if(image != nil) {
+                if image != nil {
                     some.image = image
                 }
                 baseView?.addSubview(some)
@@ -77,7 +77,7 @@ extension AppManagers {
             static func tableView(baseView:UIView? = nil, tag:Int=0, cellIdentifier:String=AppConstants.Dev.cellIdentifier) -> UITableView {
                 let some = UITableView()
                 some.tag = tag
-                if(!cellIdentifier.trim.isEmpty) {
+                if !cellIdentifier.trim.isEmpty {
                     some.register(UITableViewCell.self, forCellReuseIdentifier:cellIdentifier)
                 }
                 baseView?.addSubview(some)

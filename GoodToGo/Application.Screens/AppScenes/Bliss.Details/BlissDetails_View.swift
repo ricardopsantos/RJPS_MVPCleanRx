@@ -43,7 +43,7 @@ extension AppView {
                 .disposed(by: disposeBag)
             some.rxSignal_viewTapped
                 .do(onNext: { _ in print("rxSignal_viewTapped : 2") })
-                .emit(onNext: { let _ = $0 })
+                .emit(onNext: { _ = $0 })
                 .disposed(by: disposeBag)
             return some
         }()

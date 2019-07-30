@@ -53,7 +53,7 @@ extension Router {
         
         private func controllerWith(vm: VM.BlissDetails_ViewModel?) -> V.BlissDetails_View? {
             guard let controller = AppDelegate.shared.container.resolve(V.BlissDetails_View.self) else { return nil }
-            if(vm != nil) {
+            if vm != nil {
                 controller.presenter.viewModel = vm
             }
             return controller

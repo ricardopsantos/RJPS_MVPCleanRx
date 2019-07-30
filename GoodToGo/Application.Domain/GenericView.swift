@@ -22,7 +22,7 @@ class GenericView: UIViewController {
     private var _keyboardIsVisible = false
     private var _keyboardHeigth : CGFloat = 0
     var keyboardHeigth : CGFloat {
-        if(_keyboardIsVisible) { let autoCorrectBarSize : CGFloat = 44; return _keyboardHeigth - autoCorrectBarSize }
+        if _keyboardIsVisible { let autoCorrectBarSize : CGFloat = 44; return _keyboardHeigth - autoCorrectBarSize }
         else { return 0 }
     }
     
@@ -88,7 +88,7 @@ class GenericView: UIViewController {
     }
     
     func displayMessage(_ message: String, type: Enuns.AlertType, asAlert:Bool=false) {
-        if(asAlert) {
+        if asAlert {
             (self as UIViewController).rjs.showAlert(title: "\(type)".uppercased(), message: message)
         }
         else {
@@ -113,7 +113,7 @@ class GenericView: UIViewController {
     }
     
     func setActivityState(_ state:Bool) {
-        if(state) { self.view.rjs.startActivityIndicator() }
+        if state { self.view.rjs.startActivityIndicator() }
         else { self.view.rjs.stopActivityIndicator() }
     }
     
@@ -134,7 +134,7 @@ extension GenericView {
     }
     
     private func setTopMessageVisibityTo(state:Bool, message: String, type: Enuns.AlertType) {
-        if(state) {
+        if state {
             _lblMessageTimmer?.invalidate()
             _lblMessageTimmer = nil
         }
@@ -142,7 +142,7 @@ extension GenericView {
             guard let strongSelf1 = self else { AppLogs.DLog(appCode: .referenceLost); return }
             let value = !state
             let duration = 0.5
-            if(state) {
+            if state {
                 strongSelf1._lblMessage.text = message
                 switch type {
                 case .sucess : strongSelf1._lblMessage.backgroundColor = AppColors.sucess

@@ -46,7 +46,7 @@ extension AppView {
             some.rx.textDidEndEditing
                 .subscribe(onNext: { [weak self] (query) in
                     let query = self?._searchBar.text?.trim ?? ""
-                    if(query.count>0) {
+                    if query.count>0 {
                         handle(filter: query, sender:"[_searchBar][textDidEndEditing]")
                     }
                 })
@@ -413,7 +413,7 @@ extension V.RxTesting {
         ///////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////
         
-        if(false) {
+        if false {
             //
             // RxSwift provides a method that creates a sequence which returns one element upon subscription.
             // That method is called just. Let's write our own implementation of it:
@@ -438,12 +438,12 @@ extension V.RxTesting {
             // Lets now create an observable that returns elements from an array.
             //
             let just = myJust("## my just ##")
-            let _ = just.subscribe(onNext: { n in print("just_1 : \(n)") })
-            let _ = just.subscribe(onNext: { n in print("just_2 : \(n)") })
+            _ = just.subscribe(onNext: { n in print("just_1 : \(n)") })
+            _ = just.subscribe(onNext: { n in print("just_2 : \(n)") })
     
             let from = myFrom(["## element_1 ##", "## element_2 ##", "## element_3 ##"]).share()
-            let _ = from.subscribe(onNext: { n in print("from_1 : \(n)") })
-            let _ = from.subscribe(onNext: { n in print("from_2 : \(n)") })
+            _ = from.subscribe(onNext: { n in print("from_1 : \(n)") })
+            _ = from.subscribe(onNext: { n in print("from_2 : \(n)") })
         }
 
         let intervalObservable_1 = Observable<NSInteger>

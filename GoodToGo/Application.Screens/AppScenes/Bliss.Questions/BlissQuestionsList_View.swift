@@ -31,7 +31,7 @@ extension AppView {
             some.setTitle(AppMessages.Bliss.appName)
             some.rxSignal_viewTapped
                 .emit(onNext: { [weak self] in
-                    let _ = $0
+                    _ = $0
                     self?._searchBar.resignFirstResponder()
                 })
                 .disposed(by: disposeBag)
@@ -57,9 +57,6 @@ extension AppView {
                 .subscribe(onNext: { [weak self] (query) in
                     guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                     let query = strongSelf._searchBar.text?.trim ?? ""
-                    //if(query.count>0) {
-                    //    strongSelf.presenter.userPretendDoSearchWith(filter: query)
-                    //}
                 })
                 .disposed(by: self.disposeBag)
             return some

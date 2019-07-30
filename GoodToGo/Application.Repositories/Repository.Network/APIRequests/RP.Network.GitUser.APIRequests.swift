@@ -14,7 +14,7 @@ extension RP.Network.GitUser {
         var debugRequest      : Bool
         var urlRequest        : URLRequest
         var responseType      : NetworkClientResponseType
-        var mockedData        : String? = nil
+        var mockedData        : String?
 
         init(userName:String) throws {
             if let url = URL(string: "\(AppConstants.URLs.githubAPIBaseUrl)/users/\(userName)") {
@@ -23,7 +23,7 @@ extension RP.Network.GitUser {
                 responseType      = .json
                 debugRequest      = AppCan.Logs.requests
                 returnOnMainTread = false
-                if(AppConstants.URLs.useMockedData) {
+                if AppConstants.URLs.useMockedData {
                     mockedData = """
                     {
                     "login": "ricardopsantos",
@@ -71,7 +71,7 @@ extension RP.Network.GitUser {
         var debugRequest      : Bool
         var urlRequest        : URLRequest
         var responseType      : NetworkClientResponseType
-        var mockedData        : String? = nil
+        var mockedData        : String? 
 
         init(userName:String) throws {
             if let url = URL(string: "\(AppConstants.URLs.githubAPIBaseUrl)/users/\(userName)/followers") {
