@@ -17,4 +17,3 @@ protocol Bliss_NetWorkRepositoryProtocol : class {
     func updateQuestion(question:E.Bliss.QuestionElement, completionHandler: @escaping (_ result: Result<NetworkClientResponse<E.Bliss.QuestionElement>>) -> Void)
     func shareQuestionBy(email:String, url:String, completionHandler: @escaping (_ result: Result<NetworkClientResponse<E.Bliss.ShareByEmail>>) -> Void)
 }
-

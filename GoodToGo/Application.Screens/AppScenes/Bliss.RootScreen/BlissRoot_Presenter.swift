@@ -132,8 +132,8 @@ extension P.BlissRoot_Presenter {
                         self?.genericView?.setNoConnectionViewVisibity(to: false)
                         self?.rxObservableAssyncRequest
                             .subscribe(
-                                onNext: { [weak self] some in self?.view.set(image: some); self?.checkServerStatus() },
-                                onError: { [weak self] error in self?.view.set(image: AppImages.notFound) }
+                                onNext : { [weak self] some in self?.view.set(image: some); self?.checkServerStatus() },
+                                onError: { [weak self] _ in self?.view.set(image: AppImages.notFound) }
                             )
                             .disposed(by: self!.disposeBag)
                     } else {
@@ -154,8 +154,9 @@ extension P.BlissRoot_Presenter {
     var rxObservableAssyncRequest : Observable<UIImage> {
         return Observable.create { observer -> Disposable in
             AppSimpleNetworkClient.downloadImageFrom(AppConstants.Bliss.logoURL, completion: { (image) in
-                if image != nil { observer.onNext(image!) }
-                else { observer.onError(AppFactory.Errors.with(appCode: .unknownError)) }
+                if image != nil {
+                    observer.onNext(image!)
+                } else { observer.onError(AppFactory.Errors.with(appCode: .unknownError)) }
             })
             return Disposables.create() }
             .retry(3)

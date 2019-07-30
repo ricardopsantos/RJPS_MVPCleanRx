@@ -26,4 +26,3 @@ extension UIFont {
         static func light(size: AppFonts.Size)   -> UIFont { return UIFont(name: "HelveticaNeue-Thin", size: size.rawValue)! }
     }
 }
-

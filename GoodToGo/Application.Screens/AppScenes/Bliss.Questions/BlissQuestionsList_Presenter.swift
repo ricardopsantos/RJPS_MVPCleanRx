@@ -68,11 +68,10 @@ extension P.BlissQuestionsList_Presenter : GenericTableView_Protocol {
             let title = "\(question.question.description)"
             //someCell.set(title:title)
             someCell.rxBehaviorRelay_title.accept(title)
-            downloadImage(imageURL: question.thumbURL, onFail: AppImages.notFound) { (image) -> (Void) in
+            downloadImage(imageURL: question.thumbURL, onFail: AppImages.notFound) { (image) in
                 someCell.rxBehaviorRelay_image.accept(image)
             }
-        }
-        else {
+        } else {
             AppGlobal.assert(false, message: RJS_Constants.notPredicted + "\(cell)")
         }
     }
@@ -201,9 +200,6 @@ extension P.BlissQuestionsList_Presenter {
     func setupPresenter() {
     
         func checkDataToHandle() -> Void {
-            /*
-             FREQ-02: Questions List Screen - Deep links
-             */
             if let data = blissGeneric_UseCase.screenHaveDataToHandle(screen: V.BlissQuestionsList_View.className) {
                 let key   = data.0
                 let value = data.1
@@ -214,7 +210,7 @@ extension P.BlissQuestionsList_Presenter {
                     }
                     blissGeneric_UseCase.screenHaveHandledData(screen: V.BlissQuestionsList_View.className)
                 }
-            } else if let _ = blissGeneric_UseCase.screenHaveDataToHandle(screen: V.BlissDetails_View.className) {
+            } else if blissGeneric_UseCase.screenHaveDataToHandle(screen: V.BlissDetails_View.className) != nil {
                 if self.genericView!.isVisible {
                     // If we are on the list, jump to details screen
                     router.goToDetails()

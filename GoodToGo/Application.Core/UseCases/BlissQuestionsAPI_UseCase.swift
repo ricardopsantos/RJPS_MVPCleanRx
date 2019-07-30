@@ -20,11 +20,11 @@ extension UseCases {
         var generic_CacheRepositoryProtocol : Generic_CacheRepositoryProtocol!
         var generic_LocalStorageRepository  : Generic_LocalStorageRepositoryProtocol!
         
-        private func serverIsOK(completionHandler:@escaping (Bool)->()) -> Void {
+        private func serverIsOK(completionHandler:@escaping (Bool)->Void) {
             getHealth { (some) in
                 switch some {
                 case .success(let some): completionHandler(some.isOK)
-                case .failure(_): completionHandler(false)
+                case .failure          : completionHandler(false)
                 }
             }
         }
@@ -61,16 +61,15 @@ extension UseCases {
                     return
                 }
                 doWork()
-            }
-            else {
+            } else {
                 serverIsOK { (ok) in
-                    if ok { doWork() }
-                    else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
+                    if ok {
+                        doWork()
+                    } else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
                 }
             }
         }
         
-
         func updateQuestion(question: E.Bliss.QuestionElement, checkHealth: Bool, completionHandler: @escaping (Result<E.Bliss.QuestionElement>) -> Void) {
             
             let doWork = { [weak self] in
@@ -90,8 +89,9 @@ extension UseCases {
                 doWork()
             } else {
                 serverIsOK { (ok) in
-                    if ok { doWork() }
-                    else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
+                    if ok {
+                        doWork()
+                    } else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
                 }
             }
         }
@@ -116,8 +116,9 @@ extension UseCases {
                 doWork()
             } else {
                 serverIsOK { (ok) in
-                    if ok { doWork() }
-                    else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
+                    if ok {
+                        doWork()
+                    } else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
                 }
             }
         

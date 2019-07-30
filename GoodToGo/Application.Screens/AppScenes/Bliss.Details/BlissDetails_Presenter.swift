@@ -213,12 +213,11 @@ extension P.BlissDetails_Presenter {
                         guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                         switch result {
                         case .success(let some): strongSelf.viewModel!.question = some
-                        case .failure(_): strongSelf.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
+                        case .failure          : strongSelf.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
                         }
                     }
                     return true
-                }
-                else {
+                } else {
                     let message = "Invalid param\n\(AppMessages.pleaseTryAgainLater)"
                     genericView?.displayMessage(message, type: .error)
                 }

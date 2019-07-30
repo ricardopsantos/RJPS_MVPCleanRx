@@ -59,7 +59,7 @@ extension UIButton {
             self.clipsToBounds      = true
         }
         switch style {
-        case .notAplyed   : let _ = 1
+        case .notAplyed   : _ = 1
         case .regular     : regular()
         case .alternative : alternative()
         case .dismiss     : dismiss()

@@ -90,7 +90,7 @@ extension P.SearchUser_Presenter : GenericPresenter_Protocol {
     func viewWillAppear() -> Void { if viewModel != nil { updateViewWith(vm: viewModel) } }
     
     func setupPresenter() -> Void {
-        Observable.zip(_rxPublishRelay_userInfo, _rxPublishRelay_userFriends, resultSelector: { return ($0, $1)} )
+        Observable.zip(_rxPublishRelay_userInfo, _rxPublishRelay_userFriends, resultSelector: { return ($0, $1) })
             .observeOn(MainScheduler.instance)
             .subscribe( onNext: { [weak self] in
                 guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }

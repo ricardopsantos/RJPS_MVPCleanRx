@@ -19,7 +19,7 @@ extension AssembyContainer {
 
             // Router
             let routerProtocol = SampleTableView_RouterProtocol.self
-            container.register(routerProtocol) { (r, viewController: V.SampleTableView_View) in
+            container.register(routerProtocol) { (_, viewController: V.SampleTableView_View) in
                 return R.SampleTableView_Router(viewController: viewController)
             }
             

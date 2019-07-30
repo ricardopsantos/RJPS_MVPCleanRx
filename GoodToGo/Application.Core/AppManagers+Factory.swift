@@ -88,7 +88,7 @@ extension AppManagers {
                 let bar        = V.TopBar()
                 let screenWidth = UIScreen.main.bounds.width
                 let height      = V.TopBar.defaultHeight
-                let container   = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: screenWidth , height: height)))
+                let container   = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: screenWidth, height: height)))
                 baseController.view.addSubview(container)
                 UIViewController.rjs.loadViewControllerInContainedView(sender: baseController, senderContainedView: container, controller: bar) { (_, _) in }
                 

@@ -15,7 +15,7 @@ protocol AppUtils_Protocol : class {
     
     func assertExistsInternetConnection(sender:GenericView?, message:String, block:@escaping ()->Void)
     
-    func downloadImage(imageURL:String, onFail:UIImage?, completion:@escaping (UIImage?) -> (Void)) -> Void
+    func downloadImage(imageURL:String, onFail:UIImage?, completion:@escaping (UIImage?) -> Void)
 
     func cachedValueIsOld(coreDatakey:String, maxLifeSpam:Int) -> Bool
 }

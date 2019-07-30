@@ -23,13 +23,13 @@ extension UseCases {
         var rxPublishRelayAppicationDidReceivedData : PublishRelay = PublishRelay<Void>() // PublishRelay model Events
 
         func handle(url:URL) {
-            func getKeyValsFromURL(url:URL) -> Dictionary<String, String>? {
+            func getKeyValsFromURL(url:URL) -> [String: String]? {
                 let urlUriKeysValuesSeparator = "?"
                 let urlUriKeyValueSeparator   = "="
                 var results = [String:String]()
                 guard let query = url.query else { return results }
                 let keyValues = query.components(separatedBy: urlUriKeysValuesSeparator)
-                if (keyValues.count > 0) {
+                if keyValues.count > 0 {
                     for pair in keyValues {
                         let kv = pair.components(separatedBy: urlUriKeyValueSeparator)
                         if kv.count > 1 {
@@ -79,7 +79,7 @@ extension UseCases {
         
         func setNeedToOpenScreen(screen:String, key:String, value:String) {
             let storedKey = "\(screen).\(key)"
-            let _ = generic_LocalStorageRepository.save(key: storedKey, value: value, expireDate: RJS_DataModel.baseDate.add(minutes: 1))
+            _ = generic_LocalStorageRepository.save(key: storedKey, value: value, expireDate: RJS_DataModel.baseDate.add(minutes: 1))
             if AppEnvironments.isDev() {
                 let stored = screenHaveDataToHandle(screen: screen)
                 AppGlobal.assert(stored!.0 == key)

@@ -174,8 +174,7 @@ extension P.SampleTableView_Presenter {
                         observer.onError(error)
                     }
                 })
-            }
-            catch {
+            } catch {
                 RJS_Logs.DLogError(error)
                 observer.onError(error)
             }

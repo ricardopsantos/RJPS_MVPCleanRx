@@ -10,7 +10,7 @@ disabled_rules: # rule identifiers to exclude from running
 #  - function_body_length
 #  - leading_whitespace
 - line_length
-#  - nesting
+- nesting
 #  - operator_whitespace
 - opening_brace
 - return_arrow_whitespace

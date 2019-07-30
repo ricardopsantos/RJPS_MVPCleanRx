@@ -37,8 +37,5 @@ extension UIColor {
         static let error   : UIColor = _red1
         static let sucess  : UIColor = _blue2
         static let warning : UIColor = UIColor(red:242, green:168, blue:62)
-
-
-        
     }
 }

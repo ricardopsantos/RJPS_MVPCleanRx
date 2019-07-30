@@ -88,9 +88,6 @@ extension ObservableConvertibleType {
     }
 }
 
-
-
-
 import SystemConfiguration
 import struct Foundation.Notification
 import class Foundation.NotificationCenter

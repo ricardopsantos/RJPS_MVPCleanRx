@@ -32,7 +32,6 @@ extension E.Bliss {
         }
     }
     
-
     // MARK: - ChoiceElement
     struct ChoiceElement: Codable {
         let choice: ChoiceEnum
@@ -55,9 +54,6 @@ extension E.Bliss {
     }
 }
 
-
-
-
 extension E.Bliss.QuestionElement {
     static func make() -> E.Bliss.QuestionElement {
         let question = E.Bliss.Question.favouriteProgrammingLanguage
@@ -70,7 +66,6 @@ extension E.Bliss.QuestionElement {
         return questionElement
     }
 }
-
 
 extension E.Bliss {
 

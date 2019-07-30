@@ -11,4 +11,3 @@ extension AppEnuns {
     private init() {}
     enum AppMode   : Int { case prod, qa, dev }
 }
-

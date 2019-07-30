@@ -113,8 +113,9 @@ class GenericView: UIViewController {
     }
     
     func setActivityState(_ state:Bool) {
-        if state { self.view.rjs.startActivityIndicator() }
-        else { self.view.rjs.stopActivityIndicator() }
+        if state {
+            self.view.rjs.startActivityIndicator()
+        } else { self.view.rjs.stopActivityIndicator() }
     }
     
     func prepareLayout()    -> Void { AppLogs.DLog(appCode: .notImplemented) }

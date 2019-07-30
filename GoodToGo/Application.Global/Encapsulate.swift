@@ -54,7 +54,6 @@ struct Router { private init() {} }
 typealias UC = UseCases
 class UseCases  { private init() {} }
 
-
 typealias MP = Mappers
 struct Mappers { private init() {} }
 

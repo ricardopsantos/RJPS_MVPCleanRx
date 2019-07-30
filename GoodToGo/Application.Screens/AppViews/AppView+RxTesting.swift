@@ -281,7 +281,9 @@ extension AppView {
                 })
                 .disposed(by: disposeBag)
             _rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
-                guard let _ = self else { AppLogs.DLog(appCode: .referenceLost); return }
+                _ = element
+                _ = row
+                guard self != nil else { AppLogs.DLog(appCode: .referenceLost); return }
                 cell.set(title:element)
                 }.disposed(by: disposeBag)
             return some
@@ -451,10 +453,10 @@ extension V.RxTesting {
             .take(10)
             .map { "\($0)" }
         
-        intervalObservable_1
+        _ = intervalObservable_1
             . subscribe(onNext: { n in print("intervalObservable : \(n)") })
         
-        intervalObservable_1
+        _ = intervalObservable_1
             .throttle(.milliseconds(2000), scheduler: MainScheduler.instance)
             .elementAt(0)
             .subscribe(onNext: { n in print("intervalObservable_throttle : \(n)") })

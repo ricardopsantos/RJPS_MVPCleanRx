@@ -25,8 +25,7 @@ extension Router {
             func generalDismiss() {
                 if let navigationController = baseView?.navigationController {
                     navigationController.popViewController(animated: true)
-                }
-                else {
+                } else {
                     baseView?.dismiss(animated: true)
                 }
             }

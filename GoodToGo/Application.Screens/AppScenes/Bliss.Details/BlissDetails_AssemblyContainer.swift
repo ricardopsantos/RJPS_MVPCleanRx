@@ -19,7 +19,7 @@ extension AssembyContainer {
             
             // Router
             let routerProtocol = BlissDetails_RouterProtocol.self
-            container.register(routerProtocol) { (r, viewController: V.BlissDetails_View) in
+            container.register(routerProtocol) { (_, viewController: V.BlissDetails_View) in
                 return R.BlissDetails_Router(viewController: viewController)
             }
             

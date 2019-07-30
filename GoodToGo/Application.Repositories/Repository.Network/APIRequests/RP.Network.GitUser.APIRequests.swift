@@ -60,10 +60,7 @@ extension RP.Network.GitUser {
                     }
                     """
                 }
-            }
-            else {
-                throw AppFactory.Errors.with(appCode: .invalidURL)
-            }
+            } else { throw AppFactory.Errors.with(appCode: .invalidURL) }
         }
     }
     struct GetFriends_APIRequest : WebAPIRequest_Protocol {

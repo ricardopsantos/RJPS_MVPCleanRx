@@ -51,7 +51,6 @@ extension AppManagers {
             static var invalidURL          : String { return get("Invalid URL") }
         }
         
- 
         private static func resource(_ code : String/*, languageCode : SelectedLanguage = prepareLanguageCode()*/) -> String {
             guard !code.isEmpty else { return "" }
             

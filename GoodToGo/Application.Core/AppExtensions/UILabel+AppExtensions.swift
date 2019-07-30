@@ -48,7 +48,7 @@ extension UILabel {
             self.numberOfLines  = 0
         }
         switch style {
-        case .notAplyed : let _ = 1
+        case .notAplyed : _ = 1
         case .title     : title()
         case .value     : value()
         }

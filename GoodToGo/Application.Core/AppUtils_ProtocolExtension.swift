@@ -22,7 +22,7 @@ extension AppUtils_Protocol {
         return cachedValueIsOld
     }
     
-    func downloadImage(imageURL:String, onFail:UIImage?=nil, completion:@escaping (UIImage?) -> (Void)) -> Void {
+    func downloadImage(imageURL:String, onFail:UIImage?=nil, completion:@escaping (UIImage?) -> Void) {
         guard !imageURL.isEmpty else { return completion(AppImages.notFound) }
         AppSimpleNetworkClient.downloadImageFrom(imageURL, caching: .fileSystem) { (image) in completion(image ?? onFail) }
     }
@@ -31,10 +31,9 @@ extension AppUtils_Protocol {
         return RJS_Utils.existsInternetConnection()
     }
     
-    
     func assertExistsInternetConnection(sender:GenericView?,
                                         message:String=AppMessages.noInternet,
-                                        block:@escaping ()->()) {
+                                        block:@escaping ()->Void) {
 
         if !existsInternetConnection {
             let title   = AppRessources.get("Alert")

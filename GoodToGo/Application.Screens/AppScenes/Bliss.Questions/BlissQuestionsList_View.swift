@@ -84,10 +84,11 @@ extension AppView {
                 })
                 .disposed(by: disposeBag)
             _rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
+                _ = element
                 guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                 var indexPath = NSIndexPath(row: row, section: 0)
                 cell.set(textColor:AppColors.lblTextColor)
-                strongSelf.presenter.tableView.configure(cell: cell , indexPath: indexPath as IndexPath)
+                strongSelf.presenter.tableView.configure(cell: cell, indexPath: indexPath as IndexPath)
                 }.disposed(by: disposeBag)
             return some
         }()

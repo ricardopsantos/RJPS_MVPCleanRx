@@ -13,7 +13,6 @@ protocol BlissQuestionsList_RouterProtocol: class {
     func dismissView()
     var rxPublishRelay_dismissView: PublishRelay<Void> { get } // PublishRelay model Events
 
-
     func goToDetails(vm:VM.BlissDetails_ViewModel)
     func goToDetails()
 }
@@ -39,8 +38,7 @@ extension Router {
                 .subscribe(onNext: { [weak self] in
                     if let navigationController = self?.baseView?.navigationController {
                         navigationController.pushViewController($0, animated: true)
-                    }
-                    else {
+                    } else {
                         self?.baseView?.present($0, animated: true, completion: { })
                     }
                 })

@@ -18,7 +18,7 @@ struct AppGlobal {
         RJS_Utils.assert(value(), message: message(), function: function, file: file, line: line)
     }
 
-    static func saveWith(key:String, value:String, expireDate:Date?=nil) -> Void { let _ = RJS_DataModel.save(key: key, value: value, expireDate: expireDate) }
+    static func saveWith(key:String, value:String, expireDate:Date?=nil) { _ = RJS_DataModel.save(key: key, value: value, expireDate: expireDate) }
     static func getWith(key:String) -> String? { if let obj = RJS_DataModel.with(key: key) { return obj.value } else { return nil } }
     static func saveContext() -> Void { RJS_DataModelManager.saveContext() }
 

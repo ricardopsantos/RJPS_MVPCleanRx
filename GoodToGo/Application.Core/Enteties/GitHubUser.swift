@@ -24,7 +24,6 @@ extension ViewModel {
     }
 }
 
-
 extension Entity {
     
     struct GitHubUser : Codable {
@@ -63,7 +62,7 @@ extension Entity {
             return false
         }
         
-        static func listFrom(jsonList:[Dictionary<String, Any>]) -> [E.GitHubUser] {
+        static func listFrom(jsonList:[[String: Any]]) -> [E.GitHubUser] {
             let result : [E.GitHubUser] = jsonList.compactMap { (some) -> E.GitHubUser? in return E.GitHubUser(json: some) }
             return result
         }        
