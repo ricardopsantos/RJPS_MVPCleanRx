@@ -74,12 +74,3 @@ doArquive
 
 doGenerateIPA
 
-#eval "rm "$var_output"/"$var_exportFileName".ipa.zip"
-#eval "rm "$var_output"/"$var_exportFileName".xcarchive.zip"
-
-rm -rf ~/Library/Developer/Xcode/DerivedData
-rm -rf ~/Library/Developer/Xcode/Archives
-rm -rf ~/Library/Developer/Xcode/iOS\ Device\ Logs
-rm -rf ~/Library/Developer/Xcode/watchOS\ DeviceSupport
-rm -rf ~/Library/Developer/Xcode/UserData/IB\ Support
-rm -rf ~/Library/Developer/Xcode/Products

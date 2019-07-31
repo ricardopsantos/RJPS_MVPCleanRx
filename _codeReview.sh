@@ -41,4 +41,18 @@ echo "###########################################"
 #swiftlint lint > report.swiftlint.txt
 swiftlint lint
 
+echo "###########################################"
+echo "############## FengNiao ###################"
+echo "###########################################"
 
+#
+# A command line tool for cleaning unused resources in Xcode.
+# https://github.com/onevcat/FengNiao
+# https://www.avanderlee.com/optimization/unused-images-clean-up/
+#
+
+# git clone https://github.com/onevcat/FengNiao.git
+# cd FengNiao
+# ./install.sh
+
+fengniao --exclude Carthage fastlane

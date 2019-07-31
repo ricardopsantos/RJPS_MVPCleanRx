@@ -243,6 +243,7 @@
 		9F6BB2F722E3C0E400829A6F /* BlissDetails_View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlissDetails_View.swift; sourceTree = "<group>"; };
 		9F6BB2F822E3C0E400829A6F /* BlissDetails_ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlissDetails_ViewModel.swift; sourceTree = "<group>"; };
 		9F6BB2F922E3C0E400829A6F /* BlissDetails_AssemblyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlissDetails_AssemblyContainer.swift; sourceTree = "<group>"; };
+		9F79F0FE22F06EBE005BF406 /* _badAssDiskCleaner.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = _badAssDiskCleaner.sh; sourceTree = SOURCE_ROOT; };
 		9F7B2F4421B9451C001F3FFA /* DevNotes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = DevNotes.txt; sourceTree = "<group>"; };
 		9F7CE25B22CE279700B1AC31 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		9F8666EF22E7C5CA00A1B9A0 /* GenericTableViewCell_Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericTableViewCell_Protocol.swift; sourceTree = "<group>"; };
@@ -438,6 +439,7 @@
 			children = (
 				9F55525522E9A73D009364D1 /* README.md */,
 				9F55525622E9B984009364D1 /* _iOSGenericCompile.sh */,
+				9F79F0FE22F06EBE005BF406 /* _badAssDiskCleaner.sh */,
 				9F55525322E9A70F009364D1 /* _gitGenericCreateTag.sh */,
 				9F55525222E9A70F009364D1 /* _gitGenericMerge.sh */,
 				9FB35E0B22EC8B1B00326092 /* _installPackages.sh */,
@@ -816,6 +818,7 @@
 				9F8D4A6C2237325600777976 /* ShellScript */,
 				9F574F0E2235B473007DAA58 /* ShellScript */,
 				9F47A7B22204CCE100EB6139 /* ShellScript */,
+				9F79F0FF22F092A8005BF406 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -921,6 +924,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# The carthage copy-frameworks command strips out these extra architectures. w00t!\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+		9F79F0FF22F092A8005BF406 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# https://github.com/onevcat/FengNiao\nfengniao --exclude Carthage --force\n";
 		};
 		9F8D4A6C2237325600777976 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
