@@ -19,9 +19,8 @@ extension AppView {
         lazy var imageView: UIImageView = {
             let some = UIImageView()
             self.addSubview(some)
-            //some.contentMode = .scaleAspectFit
+            some.contentMode = .scaleAspectFit
             some.rjsALayouts.setMargin(margim, on: .top)
-            //some.rjsALayouts.setSame(.centerY, as: self)
             some.rjsALayouts.setSame(.centerX, as: self)
             some.rjsALayouts.setSize(CGSize(width: 200, height: 200))
             return some
@@ -34,6 +33,7 @@ extension AppView {
             some.rjsALayouts.setMargin(margim, on: .right)
             some.rjsALayouts.setHeight(margim*3)
             some.textAlignment = .center
+            some.textColor     = AppColors.TopBar.background
             return some
         }()
         
@@ -44,6 +44,7 @@ extension AppView {
             some.rjsALayouts.setMargin(margim, on: .right)
             some.rjsALayouts.setHeight(margim*3)
             some.textAlignment = .center
+            some.textColor     = AppColors.TopBar.background
             return some
         }()
         
@@ -54,15 +55,12 @@ extension AppView {
             some.rjsALayouts.setMargin(margim, on: .right)
             some.rjsALayouts.setHeight(margim*3)
             some.textAlignment = .center
+            some.textColor     = AppColors.TopBar.background
             return some
         }()
         
         public override init(frame: CGRect) {
             super.init(frame: frame)
-            prepareLayout()
-        }
-        
-        private func prepareLayout() {
             imageView.lazyLoad()
             lblName.lazyLoad()
             lblAge.lazyLoad()

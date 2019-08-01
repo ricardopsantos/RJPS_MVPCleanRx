@@ -9,7 +9,9 @@ import UIKit
 
 extension VC {
 
-    public class Pet_ViewController : GenericView {
+    public class Pet_ViewController : GenericView, Pet_ViewProtocol {
+
+        var viewModel: Pet_ViewModelProtocol?
 
         lazy var petView: V.Pet_View = {
             let some = V.Pet_View()
@@ -23,30 +25,28 @@ extension VC {
             super.loadView()
             view.accessibilityIdentifier = AppConstants_UITests.UIViewControllers.genericAccessibilityIdentifier(self)
             prepareLayout()
-            self.view.backgroundColor = AppColors.appDefaultBackgroundColor.withAlphaComponent(0.5)
         }
         
         override func viewDidLoad() {
             super.viewDidLoad()
             prepareLayout()
+            self.view.backgroundColor = AppColors.appDefaultBackgroundColor
+            petView.lazyLoad()
         }
         
         override func prepareLayout() {
             super.prepareLayout()
-
-            let birthday = Date.utcNow().add(days: -2*360)
-            let image    = UIImage(named: "notInternet")!
-            let somePet = M.Pet(name: "Stuart", birthday: birthday, rarity: .veryRare, image: image)
+        
+            if viewModel == nil {
+                viewModel = VM.Pet_ViewModel(pet: M.Pet.makeOne(name: "Dog_B"))
+            }
             
-            // 2
-            let viewModel : Pet_ViewModelProtocol = VM.Pet_ViewModel(pet: somePet)
-            
-            // 4
-            petView.lblName.text        = viewModel.name
-            petView.imageView.image     = viewModel.image
-            petView.lblAge.text         = viewModel.ageText
-            petView.lblAdoptionFee.text = viewModel.adoptionFeeText
-            
+            if let vm = viewModel {
+                petView.lblName.text        = vm.name
+                petView.imageView.image     = vm.image
+                petView.lblAge.text         = vm.ageText
+                petView.lblAdoptionFee.text = vm.adoptionFeeText
+            }
         }
     }
    

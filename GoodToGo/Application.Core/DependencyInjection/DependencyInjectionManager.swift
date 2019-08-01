@@ -19,9 +19,12 @@ final class ApplicationAssembly {
             AS.SampleView_AssemblyContainer(),
             AS.SampleRxView_AssemblyContainer(),
             AS.SampleTableView_AssemblyContainer(),
+            
             AS.BlissQuestionsList_AssemblyContainer(),
             AS.BlissRoot_AssemblyContainer(),
-            AS.BlissDetails_AssemblyContainer()
+            AS.BlissDetails_AssemblyContainer(),
+            
+            AS.Pet_AssemblyContainer()
         ]
         return Assembler(assemblyList)
     }
