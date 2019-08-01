@@ -1,12 +1,11 @@
 disabled_rules: # rule identifiers to exclude from running
-#- force_cast
-#- force_try
+- force_cast
+- force_try
 - nesting
 - trailing_whitespace
 - type_name
+- identifier_name
 # - shorthand_operator
-# - colon
-# - redundant_void_return
 # - comma
 # - control_statement
 # - file_length
@@ -14,8 +13,10 @@ disabled_rules: # rule identifiers to exclude from running
 # - leading_whitespace
 # - line_length
 # - operator_whitespace
-# - opening_brace
-# - return_arrow_whitespace
+- redundant_void_return
+- colon
+- opening_brace
+- return_arrow_whitespace
 # - statement_position
 # - todo
 # - trailing_newline

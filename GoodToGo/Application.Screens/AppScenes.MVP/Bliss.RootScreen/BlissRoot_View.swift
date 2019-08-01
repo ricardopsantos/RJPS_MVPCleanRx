@@ -67,7 +67,7 @@ extension AppView {
 
 // MARK: - View Protocol
 
-extension V.BlissRoot_View : BlissRoot_ViewProtocol {
+extension V.BlissRoot_View: BlissRoot_ViewProtocol {
     
     func set(image: UIImage?) {
         guard let image = image else {

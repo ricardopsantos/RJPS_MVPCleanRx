@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 extension AppView {
-    class RxTesting: GenericView {
+    class RxTesting: GenericView, AppUtils_Protocol {
         
         let _margin    : CGFloat = 10
         let _btnHeight : CGFloat = 40
@@ -108,11 +108,11 @@ extension AppView {
          [PublishRelay/PublishSubject] model Events (hence it does not replay latest value)
          
         */
-        var _rxPublishRelay_a  : PublishRelay  = PublishRelay<Void>()
-        var _rxPublishRelay_b  : PublishRelay  = PublishRelay<String>()
-        var _rxBehaviorRelay_a : BehaviorRelay = BehaviorRelay<String>(value: "")
-        var _rxBehaviorRelay_b : BehaviorRelay = BehaviorRelay<String>(value: "")
-        var _rxBehaviorRelay_c : BehaviorRelay = BehaviorRelay<Int>(value: 0)
+        var _rxPublishRelay_a: PublishRelay  = PublishRelay<Void>()
+        var _rxPublishRelay_b: PublishRelay  = PublishRelay<String>()
+        var _rxBehaviorRelay_a: BehaviorRelay = BehaviorRelay<String>(value: "")
+        var _rxBehaviorRelay_b: BehaviorRelay = BehaviorRelay<String>(value: "")
+        var _rxBehaviorRelay_c: BehaviorRelay = BehaviorRelay<Int>(value: 0)
         private lazy var _btnRxRelays: UIButton = {
             
             _rxPublishRelay_a.asSignal() // PublishRelay (to model events) without param
@@ -310,7 +310,7 @@ extension AppView.RxTesting {
     var rxObservableAssyncRequest : Observable<UIImage> {
         return Observable.create { [weak self] observer -> Disposable in
             let adress = Bool.random() ? "https://image.shutterstock.com/image-photo/white-transparent-leaf-on-mirror-260nw-1029171697.jpg" : "lalal"
-            AppSimpleNetworkClient.downloadImageFrom(adress, completion: { (image) in
+            self?.downloadImage(imageURL: adress, completion: { (image) in
                 if image != nil {
                     self?.aux_log(message: "[rxObservableAssyncRequest][onNext]", showAlert: false, appendToTable: true)
                     observer.onNext(image!)

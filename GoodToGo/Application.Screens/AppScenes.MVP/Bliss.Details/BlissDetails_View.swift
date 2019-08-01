@@ -112,7 +112,7 @@ extension AppView {
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)                  .subscribe(onNext:  { [weak self]  item in
                     guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                     AppLogs.DLog("Tapped [\(item)]")
-                    strongSelf.presenter.tableView.didSelect(object:item)
+                    strongSelf.presenter.tableView.didSelect(object: item)
                     if let index = some.indexPathForSelectedRow {
                         some.deselectRow(at: index, animated: true)
                     }
@@ -121,7 +121,7 @@ extension AppView {
             _rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
                 _ = element
                 guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
-                cell.set(textColor:AppColors.lblTextColor)
+                cell.set(textColor: AppColors.lblTextColor)
                 strongSelf.presenter.tableView.configure(cell: cell, indexPath: NSIndexPath(row: row, section: 0) as IndexPath)
                 }.disposed(by: disposeBag)
             return some

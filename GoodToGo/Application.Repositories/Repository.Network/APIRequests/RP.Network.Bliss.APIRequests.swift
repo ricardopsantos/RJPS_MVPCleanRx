@@ -40,11 +40,11 @@ extension RP.Network.Bliss {
 
 extension RP.Network.Bliss {
     struct ListQuestions_APIRequest : WebAPIRequest_Protocol {
-        var returnOnMainTread : Bool = true
-        var debugRequest      : Bool = AppCan.Logs.requests
-        var urlRequest        : URLRequest
-        var responseType      : NetworkClientResponseType
-        var mockedData        : String?
+        var returnOnMainTread: Bool = true
+        var debugRequest: Bool = AppCan.Logs.requests
+        var urlRequest: URLRequest
+        var responseType: NetworkClientResponseType
+        var mockedData: String?
 
         init(limit:Int, filter:String, offSet:Int) throws {
             let escaped = filter.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
@@ -113,11 +113,11 @@ extension RP.Network.Bliss {
 
 extension RP.Network.Bliss {
     struct QuestionById_APIRequest : WebAPIRequest_Protocol {
-        var returnOnMainTread : Bool = true
-        var debugRequest      : Bool = AppCan.Logs.requests
-        var urlRequest        : URLRequest
-        var responseType      : NetworkClientResponseType
-        var mockedData        : String?
+        var returnOnMainTread: Bool = true
+        var debugRequest: Bool = AppCan.Logs.requests
+        var urlRequest: URLRequest
+        var responseType: NetworkClientResponseType
+        var mockedData: String?
 
         init(id:Int) throws {
             if let url = URL(string: "\(AppConstants.Bliss.URLs.blissAPIBaseUrl)/questions/\(id)") {
@@ -162,13 +162,13 @@ extension RP.Network.Bliss {
 
 extension RP.Network.Bliss {
     struct NewQuestion_APIRequest : WebAPIRequest_Protocol {
-        var returnOnMainTread : Bool = true
-        var debugRequest      : Bool = AppCan.Logs.requests
-        var urlRequest        : URLRequest
-        var responseType      : NetworkClientResponseType
-        var mockedData        : String?
+        var returnOnMainTread: Bool = true
+        var debugRequest: Bool = AppCan.Logs.requests
+        var urlRequest: URLRequest
+        var responseType: NetworkClientResponseType
+        var mockedData: String?
 
-        init(question:E.Bliss.QuestionElement) throws {
+        init(question: E.Bliss.QuestionElement) throws {
             if let url = URL(string: "\(AppConstants.Bliss.URLs.blissAPIBaseUrl)/questions") {
                 urlRequest = URLRequest(url: url)
                 urlRequest.httpMethod = "POST"
@@ -197,11 +197,11 @@ extension RP.Network.Bliss {
 
 extension RP.Network.Bliss {
     struct UpdateQuestion_APIRequest : WebAPIRequest_Protocol {
-        var returnOnMainTread : Bool = true
-        var debugRequest      : Bool = AppCan.Logs.requests
-        var urlRequest        : URLRequest
-        var responseType      : NetworkClientResponseType
-        var mockedData        : String? 
+        var returnOnMainTread: Bool = true
+        var debugRequest: Bool = AppCan.Logs.requests
+        var urlRequest: URLRequest
+        var responseType: NetworkClientResponseType
+        var mockedData: String?
 
         init(question:E.Bliss.QuestionElement) throws {
             if let url = URL(string: "\(AppConstants.Bliss.URLs.blissAPIBaseUrl)/questions/\(question.id)") {
@@ -232,11 +232,11 @@ extension RP.Network.Bliss {
 
 extension RP.Network.Bliss {
     struct Share_APIRequest : WebAPIRequest_Protocol {
-        var returnOnMainTread : Bool = true
-        var debugRequest      : Bool = AppCan.Logs.requests
-        var urlRequest        : URLRequest
-        var responseType      : NetworkClientResponseType
-        var mockedData        : String?
+        var returnOnMainTread: Bool = true
+        var debugRequest: Bool = AppCan.Logs.requests
+        var urlRequest: URLRequest
+        var responseType: NetworkClientResponseType
+        var mockedData: String?
 
         init(email:String, url:String) throws {
             let escapedURL = url.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!

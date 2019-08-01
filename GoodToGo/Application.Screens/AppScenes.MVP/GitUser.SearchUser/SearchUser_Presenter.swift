@@ -70,7 +70,7 @@ extension Presenter {
  */
 
 extension P.SearchUser_Presenter : SearchUser_PresenterProtocol {
-    func searchUserWith(username:String) {
+    func searchUserWith(username: String) {
         guard username.trim.count > 0 else { return }
         genericView?.setActivityState(true)
         rxObservable_getUserInfo(for: username.trim).subscribe().disposed(by: disposeBag)
@@ -83,11 +83,11 @@ extension P.SearchUser_Presenter : SearchUser_PresenterProtocol {
  */
 
 extension P.SearchUser_Presenter : GenericPresenter_Protocol {
-    func view_deinit()    -> Void { }
-    func loadView()       -> Void { setupPresenter() }
-    func viewDidAppear()  -> Void { }
-    func viewDidLoad()    -> Void { }
-    func viewWillAppear() -> Void { if viewModel != nil { updateViewWith(vm: viewModel) } }
+    func view_deinit() { }
+    func loadView() { setupPresenter() }
+    func viewDidAppear() { }
+    func viewDidLoad() { }
+    func viewWillAppear() { if viewModel != nil { updateViewWith(vm: viewModel) } }
     
     func setupPresenter() -> Void {
         Observable.zip(_rxPublishRelay_userInfo, _rxPublishRelay_userFriends, resultSelector: { return ($0, $1) })

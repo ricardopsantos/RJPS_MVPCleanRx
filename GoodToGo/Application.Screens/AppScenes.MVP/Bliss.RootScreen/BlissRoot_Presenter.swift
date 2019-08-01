@@ -153,7 +153,7 @@ extension P.BlissRoot_Presenter {
     var rxReturnOnError : UIImage { return AppImages.notInternet }
     var rxObservableAssyncRequest : Observable<UIImage> {
         return Observable.create { observer -> Disposable in
-            AppSimpleNetworkClient.downloadImageFrom(AppConstants.Bliss.logoURL, completion: { (image) in
+            self.downloadImage(imageURL: AppConstants.Bliss.logoURL, completion: { (image) in
                 if image != nil {
                     observer.onNext(image!)
                 } else { observer.onError(AppFactory.Errors.with(appCode: .unknownError)) }

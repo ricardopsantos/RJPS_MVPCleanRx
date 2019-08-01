@@ -8,11 +8,25 @@
 import Foundation
 import UIKit
 
+//////////////////////// MVVM STUFF ONLY ////////////////////////
+//////////////////////// MVVM STUFF ONLY ////////////////////////
+//////////////////////// MVVM STUFF ONLY ////////////////////////
+
+typealias M = Model
+struct Model { private init() {} }
+
+typealias VC = ViewController
+struct ViewController { private init() {} }
+
+//////////////////////// MVP STUFF ONLY ////////////////////////
+//////////////////////// MVP STUFF ONLY ////////////////////////
+//////////////////////// MVP STUFF ONLY ////////////////////////
+
 /**
  Encapsulate all Entity
  */
 
-typealias E = Entity
+typealias E = Entity // Same as Model in MVP
 struct Entity { private init() {} }
 
 /**
@@ -28,34 +42,31 @@ typealias P = Presenter
 struct Presenter { private init() {} }
 
 /**
- Encapsulate all AppsViews
+ Encapsulate all AppsViews (ViewControllers)
  */
 
 typealias V = AppView
 struct AppView { private init() {} }
 
-/**
- Encapsulate all Repositories
- */
-typealias RP = Repository
-struct Repository {
-    private init() {}
-}
+//////////////////////// CLEAN STUFF ONLY ////////////////////////
+//////////////////////// CLEAN STUFF ONLY ////////////////////////
+//////////////////////// CLEAN STUFF ONLY ////////////////////////
 
-/**
- Encapsulate all Routers
- */
+typealias RP = Repository
+struct Repository { private init() {} }
+
 typealias R = Router
 struct Router { private init() {} }
 
-/**
- Encapsulate all UserCases
- */
 typealias UC = UseCases
 class UseCases  { private init() {} }
 
 typealias MP = Mappers
 struct Mappers { private init() {} }
+
+//////////////////////// UTILS STUFF ONLY ////////////////////////
+//////////////////////// UTILS STUFF ONLY ////////////////////////
+//////////////////////// UTILS STUFF ONLY ////////////////////////
 
 /**
  Encapsulate AssembyContainers

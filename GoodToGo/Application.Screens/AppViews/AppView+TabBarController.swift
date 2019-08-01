@@ -25,6 +25,8 @@ extension AppView {
             let c6 = createControllers(tabName: "RxTesting", vc: RxTesting())
             let c4 = createControllers(tabName: "Bliss", vc: container.resolve(V.BlissRoot_View.self)!)
             viewControllers = [c1, c2, c3, c4, c5, c6]
+            
+            viewControllers = [VC.Pet_ViewController()]
         }
         
         private func createControllers(tabName: String, vc: UIViewController) -> UINavigationController{

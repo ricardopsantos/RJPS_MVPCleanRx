@@ -34,7 +34,7 @@ protocol SampleView_ViewProtocol : class {
 //
 
 extension Presenter {
-    class SampleView_Presenter : GenericPresenter {
+    class SampleView_Presenter: GenericPresenter {
         weak var generic      : GenericPresenter_Protocol?
         weak var genericView  : GenericView?
         weak var view   : SampleView_ViewProtocol!

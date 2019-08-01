@@ -13,6 +13,6 @@ import UIKit
 
 extension ViewModel {
     struct BlissDetails_ViewModel {
-        var question : E.Bliss.QuestionElement?
+        var question: E.Bliss.QuestionElement?
     }
 }

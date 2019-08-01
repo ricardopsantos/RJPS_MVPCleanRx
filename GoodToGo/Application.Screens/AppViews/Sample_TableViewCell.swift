@@ -52,10 +52,10 @@ extension AppView {
             super.init(coder: aDecoder)
         }
             
-        private var _marginH    : CGFloat { return 10 }
-        private var _marginV    : CGFloat { return _marginH }
-        private var _imageSize  : CGFloat { return V.Sample_TableViewCell.cellSize() - 2 * _marginV }
-        private let _disposeBag : DisposeBag = DisposeBag()
+        private var _marginH: CGFloat { return 10 }
+        private var _marginV: CGFloat { return _marginH }
+        private var _imageSize: CGFloat { return V.Sample_TableViewCell.cellSize() - 2 * _marginV }
+        private let _disposeBag: DisposeBag = DisposeBag()
         
         private lazy var _lblTitle: UILabel = {
             let some = AppFactory.UIKit.label(baseView: self, style: .value)

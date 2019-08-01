@@ -15,9 +15,9 @@ import RxCocoa
 //
 
 protocol BlissDetails_PresenterProtocol : class {
-    var generic     : GenericPresenter_Protocol?   { get }     // Mandatory in ALL Presenters
+    var generic : GenericPresenter_Protocol?   { get }     // Mandatory in ALL Presenters
     var genericView : GenericView?                 { get }     // Mandatory in ALL Presenters
-    var viewModel   : VM.BlissDetails_ViewModel?   { get set } // Mandatory in ALL Presenters
+    var viewModel : VM.BlissDetails_ViewModel?   { get set } // Mandatory in ALL Presenters
     var router      : BlissDetails_RouterProtocol! { get }     // Mandatory in ALL Presenters
     var tableView   : GenericTableView_Protocol!   { get }
     
@@ -30,8 +30,8 @@ protocol BlissDetails_PresenterProtocol : class {
 
 protocol BlissDetails_ViewProtocol : class {
     func viewNeedsToDisplay(list: [E.Bliss.ChoiceElement])
-    func set(image:UIImage)
-    func set(title:String)
+    func set(image: UIImage)
+    func set(title: String)
     func displayShareOptionsWith(text:String)
 }
 
@@ -42,7 +42,7 @@ protocol BlissDetails_ViewProtocol : class {
 extension Presenter {
     class BlissDetails_Presenter : GenericPresenter {
         weak var generic           : GenericPresenter_Protocol?
-        weak var genericView       : GenericView?
+        weak var genericView : GenericView?
         weak var view              : BlissDetails_ViewProtocol!
         var router                 : BlissDetails_RouterProtocol!
         var blissQuestions_UseCase : BlissQuestionsAPI_UseCaseProtocol!

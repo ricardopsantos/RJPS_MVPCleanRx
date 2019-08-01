@@ -21,14 +21,14 @@ import RxCocoa
 protocol SampleRxView_PresenterProtocol : class {
     var generic     : GenericPresenter_Protocol?   { get }     // Mandatory in ALL Presenters
     var genericView : GenericView?                 { get }     // Mandatory in ALL Presenters
-    var viewModel   : VM.SampleRxView_ViewModel?   { get set }
+    var viewModel   : VM.SampleRxView_ViewModel? { get set }
     var router      : SampleRxView_RouterProtocol! { get }     // Mandatory in ALL Presenters
     
     func userDidTryToLoginWith(user:String, password:String)
 }
 
-protocol SampleRxView_ViewProtocol : class {
-    func updateViewWith(message:String)
+protocol SampleRxView_ViewProtocol: class {
+    func updateViewWith(message: String)
 }
 
 //
