@@ -13,7 +13,7 @@ import UIKit
 
 extension AppView {
 
-    public class Pet_View: UIView {
+    public class Pet_View: UIView, Pet_ViewProtocol {
         
         let margim : CGFloat = 10
         lazy var imageView: UIImageView = {

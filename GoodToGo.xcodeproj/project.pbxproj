@@ -396,11 +396,11 @@
 		9F20554A22F25B7C006B9DB7 /* Pet */ = {
 			isa = PBXGroup;
 			children = (
-				9F4EE07E22F3086800FCAC40 /* Pet_AssemblyContainer.swift */,
-				9F20554722F25B52006B9DB7 /* Pet_Model.swift */,
-				9F20554B22F25C1F006B9DB7 /* Pet_ViewModel.swift */,
-				9F20554D22F25C83006B9DB7 /* Pet_View.swift */,
 				9F20554F22F25CED006B9DB7 /* Pet_ViewController.swift */,
+				9F20554D22F25C83006B9DB7 /* Pet_View.swift */,
+				9F20554B22F25C1F006B9DB7 /* Pet_ViewModel.swift */,
+				9F20554722F25B52006B9DB7 /* Pet_Model.swift */,
+				9F4EE07E22F3086800FCAC40 /* Pet_AssemblyContainer.swift */,
 			);
 			path = Pet;
 			sourceTree = "<group>";
@@ -556,8 +556,8 @@
 		9F58FB0F22BE5DE700042A8C /* Application.Screens */ = {
 			isa = PBXGroup;
 			children = (
-				9F20554922F25B5F006B9DB7 /* AppScenes.MVVM */,
 				9F58FB1022BE5DE700042A8C /* AppViews */,
+				9F20554922F25B5F006B9DB7 /* AppScenes.MVVM */,
 				9F58FB1722BE5DE700042A8C /* AppScenes.MVP */,
 			);
 			path = Application.Screens;

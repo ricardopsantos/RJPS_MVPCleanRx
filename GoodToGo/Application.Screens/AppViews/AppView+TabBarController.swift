@@ -25,11 +25,11 @@ extension AppView {
             let c6 = createControllers(tabName: "RxTesting", vc: RxTesting())
             let c4 = createControllers(tabName: "Bliss", vc: container.resolve(V.BlissRoot_View.self)!)
             viewControllers = [c1, c2, c3, c4, c5, c6]
-            
+ /*
             let petVC = container.resolve(VC.Pet_ViewController.self)!
-            petVC.viewModel = VM.Pet_ViewModel(pet: M.Pet.makeOne(name: "Dog_A"))
-            let mvvm = createControllers(tabName: "petVC", vc: petVC)
-            viewControllers = [mvvm]
+            petVC.viewModel = VM.Pet_ViewModel(viewModel: M.Pet.makeOne(name: "Dog_A"))
+            let mvvm = createControllers(tabName: "MVVM", vc: petVC)
+            viewControllers = [mvvm]*/
         }
         
         private func createControllers(tabName: String, vc: UIViewController) -> UINavigationController{

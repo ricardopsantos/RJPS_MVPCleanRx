@@ -104,17 +104,25 @@ extension AppView {
          [BehaviorRelay] can do stuff before on [.do(onNext: { _ in print("stuff") })]
          [BehaviorRelay] The event "fires" on [accept]
          
+         [PublishSubject] can have parameters, but does not need to have one on start with
+         [PublishSubject] fire with [onNext(someValue)]
+         [PublishSubject] Good to bing with sutff (amimations?)
+
          [BehaviorRelay/BehaviorSubject] model a State (hence it replays its latest value) and so does a Driver (models State).
          [PublishRelay/PublishSubject] model Events (hence it does not replay latest value)
          
         */
-        var _rxPublishRelay_a: PublishRelay  = PublishRelay<Void>()
-        var _rxPublishRelay_b: PublishRelay  = PublishRelay<String>()
+        var _rxPublishSubject_a: PublishSubject  = PublishSubject<Void>()
+        
+        var _rxPublishRelay_a : PublishRelay  = PublishRelay<Void>()
+        var _rxPublishRelay_b : PublishRelay  = PublishRelay<String>()
+        
         var _rxBehaviorRelay_a: BehaviorRelay = BehaviorRelay<String>(value: "")
         var _rxBehaviorRelay_b: BehaviorRelay = BehaviorRelay<String>(value: "")
         var _rxBehaviorRelay_c: BehaviorRelay = BehaviorRelay<Int>(value: 0)
+        
         private lazy var _btnRxRelays: UIButton = {
-            
+        
             _rxPublishRelay_a.asSignal() // PublishRelay (to model events) without param
                 .debug("rxPublishRelay_a")
                 .do(onNext: { _ in print("_rxPublishRelay_a : do.onNext_1") })
