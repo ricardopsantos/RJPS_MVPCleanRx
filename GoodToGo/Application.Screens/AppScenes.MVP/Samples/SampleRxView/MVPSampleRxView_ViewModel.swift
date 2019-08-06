@@ -12,7 +12,7 @@ import UIKit
  */
 
 extension ViewModel {
-    struct SampleRxView_ViewModel {
+    struct MVPSampleRxView_ViewModel {
         var someString = ""
     }
 }

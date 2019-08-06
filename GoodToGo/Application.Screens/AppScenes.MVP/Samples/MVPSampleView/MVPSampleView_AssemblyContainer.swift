@@ -13,20 +13,20 @@ import Swinject
  */
 
 extension AssembyContainer {
-    final class SampleView_AssemblyContainer: Assembly {
+    final class MVPSampleView_AssemblyContainer: Assembly {
         
         func assemble(container: Container) {
 
             // Router
-            let routerProtocol = SampleView_RouterProtocol.self
-            container.register(routerProtocol) { (_, viewController: V.SampleView_View) in
-                return R.SampleView_Router(viewController: viewController)
+            let routerProtocol = MVPSampleView_RouterProtocol.self
+            container.register(routerProtocol) { (_, viewController: V.MVPSampleView_View) in
+                return R.MVPSampleView_Router(viewController: viewController)
             }
             
             // Presenter
-            let presenterProtocol = SampleView_PresenterProtocol.self
-            container.register(presenterProtocol) { (r, viewController: V.SampleView_View) in
-                let presenter         = P.SampleView_Presenter()
+            let presenterProtocol = MVPSampleView_PresenterProtocol.self
+            container.register(presenterProtocol) { (r, viewController: V.MVPSampleView_View) in
+                let presenter         = P.MVPSampleView_Presenter()
                 presenter.view        = viewController
                 presenter.router      = r.resolve(routerProtocol, argument: viewController)
                 presenter.genericView = viewController
@@ -36,8 +36,8 @@ extension AssembyContainer {
             }
             
             // View
-            container.register(V.SampleView_View.self) { r in
-                let controller = V.SampleView_View()
+            container.register(V.MVPSampleView_View.self) { r in
+                let controller = V.MVPSampleView_View()
                 controller.presenter = r.resolve(presenterProtocol, argument: controller)
                 return controller
             }

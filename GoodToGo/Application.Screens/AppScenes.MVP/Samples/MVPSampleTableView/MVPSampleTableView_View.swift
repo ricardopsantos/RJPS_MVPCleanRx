@@ -11,14 +11,14 @@ import RxCocoa
 import RJPSLib
 
 extension AppView {
-    class SampleTableView_View: GenericView {
+    class MVPSampleTableView_View: GenericView {
         
         deinit {
             AppLogs.DLog("\(self.className) was killed")
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
-        var presenter : SampleTableView_PresenterProtocol!
+        var presenter : MVPSampleTableView_PresenterProtocol!
        
         // BehaviorRelay model a State
         private var _rxBehaviorRelay_tableDataSource = BehaviorRelay<[E.Employee]>(value: [])
@@ -93,7 +93,7 @@ extension AppView {
 // MARK: - View Protocol
 //
 
-extension V.SampleTableView_View : SampleTableView_ViewProtocol {
+extension V.MVPSampleTableView_View : MVPSampleTableView_ViewProtocol {
     func setNetworkViewVisibilityTo(_ value: Bool) {
 
     }

@@ -18,16 +18,16 @@ import RxCocoa
 // MARK: - Presenter_Protocol & View_Protocol
 //
 
-protocol SampleRxView_PresenterProtocol : class {
+protocol MVPSampleRxView_PresenterProtocol : class {
     var generic     : GenericPresenter_Protocol?   { get }     // Mandatory in ALL Presenters
     var genericView : GenericView?                 { get }     // Mandatory in ALL Presenters
-    var viewModel   : VM.SampleRxView_ViewModel? { get set }
-    var router      : SampleRxView_RouterProtocol! { get }     // Mandatory in ALL Presenters
+    var viewModel   : VM.MVPSampleRxView_ViewModel? { get set }
+    var router      : MVPSampleRxView_RouterProtocol! { get }     // Mandatory in ALL Presenters
     
     func userDidTryToLoginWith(user:String, password:String)
 }
 
-protocol SampleRxView_ViewProtocol: class {
+protocol MVPSampleRxView_ViewProtocol: class {
     func updateViewWith(message: String)
 }
 
@@ -36,12 +36,12 @@ protocol SampleRxView_ViewProtocol: class {
 //
 
 extension Presenter {
-    class SampleRxView_Presenter : GenericPresenter {
+    class MVPSampleRxView_Presenter : GenericPresenter {
         weak var generic      : GenericPresenter_Protocol?
         weak var genericView  : GenericView?
-        weak var view   : SampleRxView_ViewProtocol!
-        var viewModel   : VM.SampleRxView_ViewModel? { didSet { AppLogs.DLog(appCode: .vmChanged); viewModelChanged() } }
-        var router      : SampleRxView_RouterProtocol!
+        weak var view   : MVPSampleRxView_ViewProtocol!
+        var viewModel   : VM.MVPSampleRxView_ViewModel? { didSet { AppLogs.DLog(appCode: .vmChanged); viewModelChanged() } }
+        var router      : MVPSampleRxView_RouterProtocol!
 
         var sample_UseCase : Sample_UseCaseProtocol!
     
@@ -52,7 +52,7 @@ extension Presenter {
 // MARK: - Presenter Protocol
 //
 
-extension P.SampleRxView_Presenter : SampleRxView_PresenterProtocol {
+extension P.MVPSampleRxView_Presenter : MVPSampleRxView_PresenterProtocol {
     
     func userDidTryToLoginWith(user:String, password:String) {
         rxObservable_doAssynTask(user: user, password: password)
@@ -63,7 +63,7 @@ extension P.SampleRxView_Presenter : SampleRxView_PresenterProtocol {
             .debug("Subscription 3")
             .subscribe(
                 onNext: { [weak self] some in
-                    self?.viewModel! = VM.SampleRxView_ViewModel(someString: some)
+                    self?.viewModel! = VM.MVPSampleRxView_ViewModel(someString: some)
                 },
                 onError: { [weak self] error in
                     self?.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
@@ -95,7 +95,7 @@ extension P.SampleRxView_Presenter : SampleRxView_PresenterProtocol {
 // MARK: - GenericPresenter_Protocol
 //
 
-extension P.SampleRxView_Presenter : GenericPresenter_Protocol {
+extension P.MVPSampleRxView_Presenter : GenericPresenter_Protocol {
     func view_deinit()    -> Void { }
     func loadView()       -> Void { setupPresenter() }
     func viewDidAppear()  -> Void { }
@@ -103,13 +103,13 @@ extension P.SampleRxView_Presenter : GenericPresenter_Protocol {
     func viewWillAppear() -> Void { }
 }
 
-extension P.SampleRxView_Presenter {
+extension P.MVPSampleRxView_Presenter {
     
     private func viewModelChanged() -> Void {
         updateViewWith(vm: viewModel)
     }
     
-    private func updateViewWith(vm:VM.SampleRxView_ViewModel?) -> Void {
+    private func updateViewWith(vm:VM.MVPSampleRxView_ViewModel?) -> Void {
         guard viewModel != nil else { AppLogs.DLog(appCode: .ignored); return }
         view.updateViewWith(message: viewModel!.someString)
     }

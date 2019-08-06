@@ -35,7 +35,7 @@ extension VC {
             
             viewModel?.rxPublishRelay_needsToUpdate.asSignal()
                 .debug("rxPublishRelay_needsToUpdate")
-                .emit(onNext: { [weak self] some in
+                .emit(onNext: { [weak self] _ in
                     self?.viewModel?.configure(view: self!.viewModelView)
                 })
                 .disposed(by: disposeBag)

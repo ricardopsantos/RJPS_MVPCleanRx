@@ -19,8 +19,8 @@ protocol Pet_ViewModelProtocol {
     var image          : UIImage { get }
     var ageText        : String { get }
     var adoptionFeeText: String { get }
-    var rxPublishSubject_loading: PublishSubject<Bool> { get }
-    var rxPublishRelay_needsToUpdate : PublishRelay<String> { get }
+    var rxPublishSubject_loading     : PublishSubject<Bool> { get }
+    var rxPublishRelay_needsToUpdate : PublishRelay<Void> { get }
 
 }
 
@@ -49,8 +49,8 @@ extension VM {
         #warning("Put in assembly containner")
         var sampleUseCase : Sample_UseCaseProtocol = AppDelegate.shared.container.resolve(AppProtocols.sample_UseCase)!
         
-        public var rxPublishSubject_loading: PublishSubject<Bool> = PublishSubject()
-        public var rxPublishRelay_needsToUpdate : PublishRelay<String>  = PublishRelay<String>()
+        public var rxPublishSubject_loading     : PublishSubject<Bool> = PublishSubject()
+        public var rxPublishRelay_needsToUpdate : PublishRelay<Void>  = PublishRelay<Void>()
 
         public init() {
             _viewModel = nil
@@ -82,7 +82,7 @@ extension VM.Pet_ViewModel : Pet_ViewModelProtocol {
             self?.rxPublishSubject_loading.onNext(true)
             DispatchQueue.executeWithDelay (delay:2) { [weak self] in
                 self?.rxPublishSubject_loading.onNext(false)
-                self?.rxPublishRelay_needsToUpdate.accept("")
+                self?.rxPublishRelay_needsToUpdate.accept(())
             }
         }
     }

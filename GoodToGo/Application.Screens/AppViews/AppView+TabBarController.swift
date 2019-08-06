@@ -18,18 +18,22 @@ extension AppView {
         }
         override func viewDidLoad() {
             super.viewDidLoad()
-            let c1 = createControllers(tabName: "GitUser", vc: container.resolve(V.SearchUser_View.self)!)
-            let c2 = createControllers(tabName: "MVP", vc: container.resolve(V.SampleView_View.self)!)
-            let c3 = createControllers(tabName: "MVPRx", vc: container.resolve(V.SampleRxView_View.self)!)
-            let c5 = createControllers(tabName: "MVPRxTable", vc: container.resolve(V.SampleTableView_View.self)!)
-            let c6 = createControllers(tabName: "RxTesting", vc: RxTesting())
-            let c4 = createControllers(tabName: "Bliss", vc: container.resolve(V.BlissRoot_View.self)!)
-            viewControllers = [c1, c2, c3, c4, c5, c6]
- /*
-            let petVC = container.resolve(VC.Pet_ViewController.self)!
-            petVC.viewModel = VM.Pet_ViewModel(viewModel: M.Pet.makeOne(name: "Dog_A"))
-            let mvvm = createControllers(tabName: "MVVM", vc: petVC)
-            viewControllers = [mvvm]*/
+            
+            if !true {
+                let c1 = createControllers(tabName: "GitUser", vc: container.resolve(V.SearchUser_View.self)!)
+                let c2 = createControllers(tabName: "MVP", vc: container.resolve(V.MVPSampleView_View.self)!)
+                let c3 = createControllers(tabName: "MVPRx", vc: container.resolve(V.MVPSampleRxView_View.self)!)
+                let c5 = createControllers(tabName: "MVPRxTable", vc: container.resolve(V.MVPSampleTableView_View.self)!)
+                let c6 = createControllers(tabName: "RxTesting", vc: RxTesting())
+                let c4 = createControllers(tabName: "Bliss", vc: container.resolve(V.BlissRoot_View.self)!)
+                viewControllers = [c1, c2, c3, c4, c5, c6]
+            }
+            else {
+                let petVC = container.resolve(VC.Pet_ViewController.self)!
+                petVC.viewModel = VM.Pet_ViewModel(viewModel: M.Pet.makeOne(name: "Dog_A"))
+                let mvvm = createControllers(tabName: "MVVM", vc: petVC)
+                viewControllers = [mvvm]
+            }
         }
         
         private func createControllers(tabName: String, vc: UIViewController) -> UINavigationController{

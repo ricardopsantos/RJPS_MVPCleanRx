@@ -126,9 +126,7 @@ class GenericView: UIViewController {
 //
 
 
-extension GenericView : loadingViewable_Protocol {
-    func startAnimating() { setActivityState(true) }
-    func stopAnimating() { setActivityState(false) }
+extension GenericView {
     func setActivityState(_ state:Bool) {
         if state {
             self.view.rjs.startActivityIndicator()

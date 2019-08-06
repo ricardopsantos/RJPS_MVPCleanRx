@@ -104,12 +104,14 @@ extension AppView {
          [BehaviorRelay] can do stuff before on [.do(onNext: { _ in print("stuff") })]
          [BehaviorRelay] The event "fires" on [accept]
          
+         [BehaviorRelay/BehaviorSubject] model a State (hence it replays its latest value) and so does a Driver (models State).
+         [PublishRelay/PublishSubject] model Events (hence it does not replay latest value)
+         
          [PublishSubject] can have parameters, but does not need to have one on start with
          [PublishSubject] fire with [onNext(someValue)]
          [PublishSubject] Good to bing with sutff (amimations?)
-
-         [BehaviorRelay/BehaviorSubject] model a State (hence it replays its latest value) and so does a Driver (models State).
-         [PublishRelay/PublishSubject] model Events (hence it does not replay latest value)
+         [PublishSubject] A Subject is a reactive type that is both an Observable Sequence and an Observer
+         [PublishSubject] Is concerned only with emitting new events to its subscribers.
          
         */
         var _rxPublishSubject_a: PublishSubject  = PublishSubject<Void>()

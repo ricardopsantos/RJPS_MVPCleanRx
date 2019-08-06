@@ -15,14 +15,14 @@ import RxCocoa
  */
 
 extension AppView {
-    class SampleRxView_View: GenericView {
+    class MVPSampleRxView_View: GenericView {
         
         deinit {
             AppLogs.DLog("\(self.className) was killed")
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
-        var presenter : SampleRxView_PresenterProtocol!
+        var presenter : MVPSampleRxView_PresenterProtocol!
         
         private let _margin : CGFloat = 25
         
@@ -101,7 +101,7 @@ extension AppView {
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
                     guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
                     let someString = "[\(strongSelf._txtUser.text ?? "")][\(strongSelf._txtPass.text ?? "")]"
-                    let vm = VM.SampleRxView_ViewModel(someString:someString )
+                    let vm = VM.MVPSampleRxView_ViewModel(someString:someString )
                     strongSelf.presenter.router.presentControllerWith(vm: vm)
                 })
             })
@@ -164,7 +164,7 @@ extension AppView {
 
 // MARK: - View Protocol
 
-extension V.SampleRxView_View : SampleRxView_ViewProtocol {
+extension V.MVPSampleRxView_View : MVPSampleRxView_ViewProtocol {
     func updateViewWith(message:String) {
         _lblMessage.textAnimated = message
     }

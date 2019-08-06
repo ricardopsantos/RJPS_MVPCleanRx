@@ -12,7 +12,7 @@ import UIKit
  */
 
 extension ViewModel {
-    struct SampleView_ViewModel {
-        var someString = ""
+    struct MVPSampleTableView_ViewModel {
+        var employeesList : [E.Employee] = []
     }
 }

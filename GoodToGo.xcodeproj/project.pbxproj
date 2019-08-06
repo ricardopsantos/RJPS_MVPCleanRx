@@ -46,11 +46,11 @@
 		9F6BB2BD22E3287B00829A6F /* RP.Network.Bliss.APIRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2BC22E3287B00829A6F /* RP.Network.Bliss.APIRequests.swift */; };
 		9F6BB2BF22E3292C00829A6F /* Repository.Network.Bliss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2BE22E3292C00829A6F /* Repository.Network.Bliss.swift */; };
 		9F6BB2C122E32A3C00829A6F /* Bliss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2C022E32A3C00829A6F /* Bliss.swift */; };
-		9F6BB2CF22E3470200829A6F /* SampleTableView_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF809822BFB5CF003C4562 /* SampleTableView_ViewModel.swift */; };
-		9F6BB2D022E3470200829A6F /* SampleTableView_AssemblyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF809922BFB5CF003C4562 /* SampleTableView_AssemblyContainer.swift */; };
-		9F6BB2D122E3470200829A6F /* SampleTableView_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF809A22BFB5CF003C4562 /* SampleTableView_View.swift */; };
-		9F6BB2D222E3470200829A6F /* SampleTableView_Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF809B22BFB5CF003C4562 /* SampleTableView_Presenter.swift */; };
-		9F6BB2D322E3470200829A6F /* SampleTableView_Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF809C22BFB5CF003C4562 /* SampleTableView_Router.swift */; };
+		9F6BB2CF22E3470200829A6F /* MVPSampleTableView_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF809822BFB5CF003C4562 /* MVPSampleTableView_ViewModel.swift */; };
+		9F6BB2D022E3470200829A6F /* MVPSampleTableView_AssemblyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF809922BFB5CF003C4562 /* MVPSampleTableView_AssemblyContainer.swift */; };
+		9F6BB2D122E3470200829A6F /* MVPSampleTableView_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF809A22BFB5CF003C4562 /* MVPSampleTableView_View.swift */; };
+		9F6BB2D222E3470200829A6F /* MVPSampleTableView_Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF809B22BFB5CF003C4562 /* MVPSampleTableView_Presenter.swift */; };
+		9F6BB2D322E3470200829A6F /* MVPSampleTableView_Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF809C22BFB5CF003C4562 /* MVPSampleTableView_Router.swift */; };
 		9F6BB2D522E3474F00829A6F /* BlissQuestionsAPI_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2D422E3474F00829A6F /* BlissQuestionsAPI_UseCase.swift */; };
 		9F6BB2D722E35A0C00829A6F /* Bliss+ExtensionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2D622E35A0C00829A6F /* Bliss+ExtensionUtils.swift */; };
 		9F6BB2D922E3673200829A6F /* AppDelegate+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2D822E3673200829A6F /* AppDelegate+URL.swift */; };
@@ -123,16 +123,16 @@
 		9FD387DD223F0CF4001D2F4E /* UIFont+AppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD387CC223F0CF4001D2F4E /* UIFont+AppExtensions.swift */; };
 		9FD387E0223F0CF4001D2F4E /* UIView+AppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD387CD223F0CF4001D2F4E /* UIView+AppExtensions.swift */; };
 		9FD387E8223F0EB2001D2F4E /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD387E7223F0EB2001D2F4E /* AppGlobal.swift */; };
-		9FE0572422E8D75400802747 /* SampleRxView_Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0571F22E8D75400802747 /* SampleRxView_Router.swift */; };
-		9FE0572522E8D75400802747 /* SampleRxView_AssemblyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0572022E8D75400802747 /* SampleRxView_AssemblyContainer.swift */; };
-		9FE0572622E8D75400802747 /* SampleRxView_Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0572122E8D75400802747 /* SampleRxView_Presenter.swift */; };
-		9FE0572722E8D75400802747 /* SampleRxView_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0572222E8D75400802747 /* SampleRxView_ViewModel.swift */; };
-		9FE0572822E8D75400802747 /* SampleRxView_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0572322E8D75400802747 /* SampleRxView_View.swift */; };
-		9FE0572922E8D8F000802747 /* SampleView_Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF809222BFB5CF003C4562 /* SampleView_Router.swift */; };
-		9FE0572A22E8D8F000802747 /* SampleView_AssemblyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF809322BFB5CF003C4562 /* SampleView_AssemblyContainer.swift */; };
-		9FE0572B22E8D8F000802747 /* SampleView_Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF809422BFB5CF003C4562 /* SampleView_Presenter.swift */; };
-		9FE0572C22E8D8F000802747 /* SampleView_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF809522BFB5CF003C4562 /* SampleView_ViewModel.swift */; };
-		9FE0572D22E8D8F000802747 /* SampleView_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF809622BFB5CF003C4562 /* SampleView_View.swift */; };
+		9FE0572422E8D75400802747 /* MVPSampleRxView_Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0571F22E8D75400802747 /* MVPSampleRxView_Router.swift */; };
+		9FE0572522E8D75400802747 /* MVPSampleRxView_AssemblyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0572022E8D75400802747 /* MVPSampleRxView_AssemblyContainer.swift */; };
+		9FE0572622E8D75400802747 /* MVPSampleRxView_Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0572122E8D75400802747 /* MVPSampleRxView_Presenter.swift */; };
+		9FE0572722E8D75400802747 /* MVPSampleRxView_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0572222E8D75400802747 /* MVPSampleRxView_ViewModel.swift */; };
+		9FE0572822E8D75400802747 /* MVPSampleRxView_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0572322E8D75400802747 /* MVPSampleRxView_View.swift */; };
+		9FE0572922E8D8F000802747 /* MVPSampleView_Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF809222BFB5CF003C4562 /* MVPSampleView_Router.swift */; };
+		9FE0572A22E8D8F000802747 /* MVPSampleView_AssemblyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF809322BFB5CF003C4562 /* MVPSampleView_AssemblyContainer.swift */; };
+		9FE0572B22E8D8F000802747 /* MVPSampleView_Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF809422BFB5CF003C4562 /* MVPSampleView_Presenter.swift */; };
+		9FE0572C22E8D8F000802747 /* MVPSampleView_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF809522BFB5CF003C4562 /* MVPSampleView_ViewModel.swift */; };
+		9FE0572D22E8D8F000802747 /* MVPSampleView_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF809622BFB5CF003C4562 /* MVPSampleView_View.swift */; };
 		9FE1439721AF2F520026BDFC /* AppAlias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE1438821AF2D8B0026BDFC /* AppAlias.swift */; };
 		9FE1439F21AF2F520026BDFC /* GenericView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE1437721AF1ADC0026BDFC /* GenericView.swift */; };
 		9FE143A921AF2F520026BDFC /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F02AE5B20F91E7B00AB5942 /* AppConstants.swift */; };
@@ -309,27 +309,27 @@
 		9FD387CC223F0CF4001D2F4E /* UIFont+AppExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+AppExtensions.swift"; sourceTree = "<group>"; };
 		9FD387CD223F0CF4001D2F4E /* UIView+AppExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AppExtensions.swift"; sourceTree = "<group>"; };
 		9FD387E7223F0EB2001D2F4E /* AppGlobal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGlobal.swift; sourceTree = "<group>"; };
-		9FE0571F22E8D75400802747 /* SampleRxView_Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleRxView_Router.swift; sourceTree = "<group>"; };
-		9FE0572022E8D75400802747 /* SampleRxView_AssemblyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleRxView_AssemblyContainer.swift; sourceTree = "<group>"; };
-		9FE0572122E8D75400802747 /* SampleRxView_Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleRxView_Presenter.swift; sourceTree = "<group>"; };
-		9FE0572222E8D75400802747 /* SampleRxView_ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleRxView_ViewModel.swift; sourceTree = "<group>"; };
-		9FE0572322E8D75400802747 /* SampleRxView_View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleRxView_View.swift; sourceTree = "<group>"; };
+		9FE0571F22E8D75400802747 /* MVPSampleRxView_Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSampleRxView_Router.swift; sourceTree = "<group>"; };
+		9FE0572022E8D75400802747 /* MVPSampleRxView_AssemblyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSampleRxView_AssemblyContainer.swift; sourceTree = "<group>"; };
+		9FE0572122E8D75400802747 /* MVPSampleRxView_Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSampleRxView_Presenter.swift; sourceTree = "<group>"; };
+		9FE0572222E8D75400802747 /* MVPSampleRxView_ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSampleRxView_ViewModel.swift; sourceTree = "<group>"; };
+		9FE0572322E8D75400802747 /* MVPSampleRxView_View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSampleRxView_View.swift; sourceTree = "<group>"; };
 		9FE1437021AF1ADC0026BDFC /* AppManagers+Environments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppManagers+Environments.swift"; sourceTree = "<group>"; };
 		9FE1437721AF1ADC0026BDFC /* GenericView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericView.swift; sourceTree = "<group>"; };
 		9FE1438821AF2D8B0026BDFC /* AppAlias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAlias.swift; sourceTree = "<group>"; };
 		9FE1438A21AF2EBD0026BDFC /* UITextField+AppExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+AppExtensions.swift"; sourceTree = "<group>"; };
 		9FE143F421AF2F520026BDFC /* MVP_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVP_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FFCCF1A22E77871006C3862 /* GenericUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericUIView.swift; sourceTree = "<group>"; };
-		9FFF809222BFB5CF003C4562 /* SampleView_Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleView_Router.swift; sourceTree = "<group>"; };
-		9FFF809322BFB5CF003C4562 /* SampleView_AssemblyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleView_AssemblyContainer.swift; sourceTree = "<group>"; };
-		9FFF809422BFB5CF003C4562 /* SampleView_Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleView_Presenter.swift; sourceTree = "<group>"; };
-		9FFF809522BFB5CF003C4562 /* SampleView_ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleView_ViewModel.swift; sourceTree = "<group>"; };
-		9FFF809622BFB5CF003C4562 /* SampleView_View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleView_View.swift; sourceTree = "<group>"; };
-		9FFF809822BFB5CF003C4562 /* SampleTableView_ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleTableView_ViewModel.swift; sourceTree = "<group>"; };
-		9FFF809922BFB5CF003C4562 /* SampleTableView_AssemblyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleTableView_AssemblyContainer.swift; sourceTree = "<group>"; };
-		9FFF809A22BFB5CF003C4562 /* SampleTableView_View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleTableView_View.swift; sourceTree = "<group>"; };
-		9FFF809B22BFB5CF003C4562 /* SampleTableView_Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleTableView_Presenter.swift; sourceTree = "<group>"; };
-		9FFF809C22BFB5CF003C4562 /* SampleTableView_Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleTableView_Router.swift; sourceTree = "<group>"; };
+		9FFF809222BFB5CF003C4562 /* MVPSampleView_Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSampleView_Router.swift; sourceTree = "<group>"; };
+		9FFF809322BFB5CF003C4562 /* MVPSampleView_AssemblyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSampleView_AssemblyContainer.swift; sourceTree = "<group>"; };
+		9FFF809422BFB5CF003C4562 /* MVPSampleView_Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSampleView_Presenter.swift; sourceTree = "<group>"; };
+		9FFF809522BFB5CF003C4562 /* MVPSampleView_ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSampleView_ViewModel.swift; sourceTree = "<group>"; };
+		9FFF809622BFB5CF003C4562 /* MVPSampleView_View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSampleView_View.swift; sourceTree = "<group>"; };
+		9FFF809822BFB5CF003C4562 /* MVPSampleTableView_ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSampleTableView_ViewModel.swift; sourceTree = "<group>"; };
+		9FFF809922BFB5CF003C4562 /* MVPSampleTableView_AssemblyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSampleTableView_AssemblyContainer.swift; sourceTree = "<group>"; };
+		9FFF809A22BFB5CF003C4562 /* MVPSampleTableView_View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSampleTableView_View.swift; sourceTree = "<group>"; };
+		9FFF809B22BFB5CF003C4562 /* MVPSampleTableView_Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSampleTableView_Presenter.swift; sourceTree = "<group>"; };
+		9FFF809C22BFB5CF003C4562 /* MVPSampleTableView_Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSampleTableView_Router.swift; sourceTree = "<group>"; };
 		9FFF80A922BFB68C003C4562 /* GenericRouter_Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericRouter_Protocol.swift; sourceTree = "<group>"; };
 		9FFF80AB22BFB68C003C4562 /* GenericTableView_Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericTableView_Protocol.swift; sourceTree = "<group>"; };
 		9FFF80AC22BFB68D003C4562 /* GenericPresenter_Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericPresenter_Protocol.swift; sourceTree = "<group>"; };
@@ -727,11 +727,11 @@
 		9FE0571E22E8D75400802747 /* SampleRxView */ = {
 			isa = PBXGroup;
 			children = (
-				9FE0571F22E8D75400802747 /* SampleRxView_Router.swift */,
-				9FE0572022E8D75400802747 /* SampleRxView_AssemblyContainer.swift */,
-				9FE0572122E8D75400802747 /* SampleRxView_Presenter.swift */,
-				9FE0572222E8D75400802747 /* SampleRxView_ViewModel.swift */,
-				9FE0572322E8D75400802747 /* SampleRxView_View.swift */,
+				9FE0571F22E8D75400802747 /* MVPSampleRxView_Router.swift */,
+				9FE0572022E8D75400802747 /* MVPSampleRxView_AssemblyContainer.swift */,
+				9FE0572122E8D75400802747 /* MVPSampleRxView_Presenter.swift */,
+				9FE0572222E8D75400802747 /* MVPSampleRxView_ViewModel.swift */,
+				9FE0572322E8D75400802747 /* MVPSampleRxView_View.swift */,
 			);
 			path = SampleRxView;
 			sourceTree = "<group>";
@@ -778,34 +778,34 @@
 			isa = PBXGroup;
 			children = (
 				9FE0571E22E8D75400802747 /* SampleRxView */,
-				9FFF809122BFB5CF003C4562 /* SampleView */,
-				9FFF809722BFB5CF003C4562 /* SampleTableView */,
+				9FFF809122BFB5CF003C4562 /* MVPSampleView */,
+				9FFF809722BFB5CF003C4562 /* MVPSampleTableView */,
 			);
 			path = Samples;
 			sourceTree = "<group>";
 		};
-		9FFF809122BFB5CF003C4562 /* SampleView */ = {
+		9FFF809122BFB5CF003C4562 /* MVPSampleView */ = {
 			isa = PBXGroup;
 			children = (
-				9FFF809222BFB5CF003C4562 /* SampleView_Router.swift */,
-				9FFF809322BFB5CF003C4562 /* SampleView_AssemblyContainer.swift */,
-				9FFF809422BFB5CF003C4562 /* SampleView_Presenter.swift */,
-				9FFF809522BFB5CF003C4562 /* SampleView_ViewModel.swift */,
-				9FFF809622BFB5CF003C4562 /* SampleView_View.swift */,
+				9FFF809222BFB5CF003C4562 /* MVPSampleView_Router.swift */,
+				9FFF809322BFB5CF003C4562 /* MVPSampleView_AssemblyContainer.swift */,
+				9FFF809422BFB5CF003C4562 /* MVPSampleView_Presenter.swift */,
+				9FFF809522BFB5CF003C4562 /* MVPSampleView_ViewModel.swift */,
+				9FFF809622BFB5CF003C4562 /* MVPSampleView_View.swift */,
 			);
-			path = SampleView;
+			path = MVPSampleView;
 			sourceTree = "<group>";
 		};
-		9FFF809722BFB5CF003C4562 /* SampleTableView */ = {
+		9FFF809722BFB5CF003C4562 /* MVPSampleTableView */ = {
 			isa = PBXGroup;
 			children = (
-				9FFF809822BFB5CF003C4562 /* SampleTableView_ViewModel.swift */,
-				9FFF809922BFB5CF003C4562 /* SampleTableView_AssemblyContainer.swift */,
-				9FFF809A22BFB5CF003C4562 /* SampleTableView_View.swift */,
-				9FFF809B22BFB5CF003C4562 /* SampleTableView_Presenter.swift */,
-				9FFF809C22BFB5CF003C4562 /* SampleTableView_Router.swift */,
+				9FFF809822BFB5CF003C4562 /* MVPSampleTableView_ViewModel.swift */,
+				9FFF809922BFB5CF003C4562 /* MVPSampleTableView_AssemblyContainer.swift */,
+				9FFF809A22BFB5CF003C4562 /* MVPSampleTableView_View.swift */,
+				9FFF809B22BFB5CF003C4562 /* MVPSampleTableView_Presenter.swift */,
+				9FFF809C22BFB5CF003C4562 /* MVPSampleTableView_Router.swift */,
 			);
-			path = SampleTableView;
+			path = MVPSampleTableView;
 			sourceTree = "<group>";
 		};
 		9FFF99A42247B1FA00783EE2 /* Application */ = {
@@ -991,8 +991,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FE0572A22E8D8F000802747 /* SampleView_AssemblyContainer.swift in Sources */,
-				9FE0572522E8D75400802747 /* SampleRxView_AssemblyContainer.swift in Sources */,
+				9FE0572A22E8D8F000802747 /* MVPSampleView_AssemblyContainer.swift in Sources */,
+				9FE0572522E8D75400802747 /* MVPSampleRxView_AssemblyContainer.swift in Sources */,
 				9F3ED4BC22E618C80020A50A /* AppView+RxTesting.swift in Sources */,
 				9FD387D1223F0CF4001D2F4E /* UIColor+AppExtensions.swift in Sources */,
 				9FCF332A22EF66CB0074DAB9 /* Repository.Network.swift in Sources */,
@@ -1022,7 +1022,7 @@
 				9F20554E22F25C83006B9DB7 /* Pet_View.swift in Sources */,
 				9FD387E8223F0EB2001D2F4E /* AppGlobal.swift in Sources */,
 				9FE1439F21AF2F520026BDFC /* GenericView.swift in Sources */,
-				9F6BB2D122E3470200829A6F /* SampleTableView_View.swift in Sources */,
+				9F6BB2D122E3470200829A6F /* MVPSampleTableView_View.swift in Sources */,
 				9F58FB4722BE5DE700042A8C /* UserDetais_AssemblyContainer.swift in Sources */,
 				9F8AE1642205DD0400DF75F6 /* AppManagers+Ressources.swift in Sources */,
 				9F20555022F25CED006B9DB7 /* Pet_ViewController.swift in Sources */,
@@ -1035,16 +1035,16 @@
 				9F6BB2D722E35A0C00829A6F /* Bliss+ExtensionUtils.swift in Sources */,
 				9F6BB2FA22E3C0E400829A6F /* BlissDetails_Router.swift in Sources */,
 				9F98293F223986CE00ACA6B7 /* GitUser_UseCaseProtocol.swift in Sources */,
-				9F6BB2D222E3470200829A6F /* SampleTableView_Presenter.swift in Sources */,
+				9F6BB2D222E3470200829A6F /* MVPSampleTableView_Presenter.swift in Sources */,
 				9FE143A921AF2F520026BDFC /* AppConstants.swift in Sources */,
 				9F8666F022E7C5CA00A1B9A0 /* GenericTableViewCell_Protocol.swift in Sources */,
-				9FE0572822E8D75400802747 /* SampleRxView_View.swift in Sources */,
-				9FE0572D22E8D8F000802747 /* SampleView_View.swift in Sources */,
+				9FE0572822E8D75400802747 /* MVPSampleRxView_View.swift in Sources */,
+				9FE0572D22E8D8F000802747 /* MVPSampleView_View.swift in Sources */,
 				9F15CF2F22BFA56F00FB402A /* AppEnuns.AppErrors.swift in Sources */,
 				9F58FB4B22BE5DE700042A8C /* SearchUser_Presenter.swift in Sources */,
 				9FFFFB1D22E2023E00611E27 /* AppManagers+RxReachabilityService.swift in Sources */,
 				9F103A302236C08900C57BC0 /* DependencyInjectionManager.swift in Sources */,
-				9F6BB2D022E3470200829A6F /* SampleTableView_AssemblyContainer.swift in Sources */,
+				9F6BB2D022E3470200829A6F /* MVPSampleTableView_AssemblyContainer.swift in Sources */,
 				9F8D4AA322386DCF00777976 /* Samples_RepositoriesProtocol.swift in Sources */,
 				9F8D4AC52238832E00777976 /* RelatedToSamples_UseCase2Protocol.swift in Sources */,
 				9F15CF2822BFA0A300FB402A /* AppConstants_UITests.swift in Sources */,
@@ -1058,22 +1058,22 @@
 				9F58FB4C22BE5DE700042A8C /* SearchUser_View.swift in Sources */,
 				9F8D4AC1223877D400777976 /* RP.Network.Employees.APIRequests.swift in Sources */,
 				9F6BB2EE22E3A97F00829A6F /* BlissQuestionsList_AssemblyContainer.swift in Sources */,
-				9FE0572C22E8D8F000802747 /* SampleView_ViewModel.swift in Sources */,
-				9FE0572722E8D75400802747 /* SampleRxView_ViewModel.swift in Sources */,
+				9FE0572C22E8D8F000802747 /* MVPSampleView_ViewModel.swift in Sources */,
+				9FE0572722E8D75400802747 /* MVPSampleRxView_ViewModel.swift in Sources */,
 				9F6BB2FF22E3CB2D00829A6F /* BlissRoot_Presenter.swift in Sources */,
 				9FE143C021AF2F520026BDFC /* AppDelegate.swift in Sources */,
 				9FD387C4223DCAF5001D2F4E /* Mappers+Utils.swift in Sources */,
 				9FACC17B223BDD5B00576498 /* ToDo.swift in Sources */,
 				9F6BB2E122E39DF600829A6F /* AppManagers+Ressources+Bliss.swift in Sources */,
-				9FE0572922E8D8F000802747 /* SampleView_Router.swift in Sources */,
-				9FE0572422E8D75400802747 /* SampleRxView_Router.swift in Sources */,
+				9FE0572922E8D8F000802747 /* MVPSampleView_Router.swift in Sources */,
+				9FE0572422E8D75400802747 /* MVPSampleRxView_Router.swift in Sources */,
 				9F6BB30222E3CB2D00829A6F /* BlissRoot_View.swift in Sources */,
 				9F6BB2BF22E3292C00829A6F /* Repository.Network.Bliss.swift in Sources */,
 				9FFF80B522BFB68D003C4562 /* GenericPresenter_Protocol.swift in Sources */,
 				9F6BB2FC22E3C0E400829A6F /* BlissDetails_View.swift in Sources */,
 				9FE143C221AF2F520026BDFC /* UITextField+AppExtensions.swift in Sources */,
 				9F6BB30122E3CB2D00829A6F /* BlissRoot_Router.swift in Sources */,
-				9F6BB2CF22E3470200829A6F /* SampleTableView_ViewModel.swift in Sources */,
+				9F6BB2CF22E3470200829A6F /* MVPSampleTableView_ViewModel.swift in Sources */,
 				9F6BB30022E3CB2D00829A6F /* BlissRoot_AssemblyContainer.swift in Sources */,
 				9FACC18B223BFB0F00576498 /* AppDelegate+Prepare.swift in Sources */,
 				9F20554822F25B52006B9DB7 /* Pet_Model.swift in Sources */,
@@ -1103,9 +1103,9 @@
 				9FFF80BE22BFBBB5003C4562 /* Sample_TableViewCell.swift in Sources */,
 				9F58FB4222BE5DE700042A8C /* AppView+UserTableViewCell.swift in Sources */,
 				9FCF332622EF552E0074DAB9 /* Generic_CacheRepository.swift in Sources */,
-				9F6BB2D322E3470200829A6F /* SampleTableView_Router.swift in Sources */,
-				9FE0572B22E8D8F000802747 /* SampleView_Presenter.swift in Sources */,
-				9FE0572622E8D75400802747 /* SampleRxView_Presenter.swift in Sources */,
+				9F6BB2D322E3470200829A6F /* MVPSampleTableView_Router.swift in Sources */,
+				9FE0572B22E8D8F000802747 /* MVPSampleView_Presenter.swift in Sources */,
+				9FE0572622E8D75400802747 /* MVPSampleRxView_Presenter.swift in Sources */,
 				9F15CF3022BFA56F00FB402A /* AppEnuns.AppCodes.swift in Sources */,
 				9FACC16B223BA4CC00576498 /* Mappers+GitUser.swift in Sources */,
 				9FA0DCC922BE5E45003ADF99 /* GitUser_UseCase.swift in Sources */,

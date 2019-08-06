@@ -9,16 +9,16 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol SampleTableView_RouterProtocol: class {
+protocol MVPSampleTableView_RouterProtocol: class {
     func dismissView()
     var rxPublishRelay_dismissView: PublishRelay<Void> { get } // PublishRelay model Events
 }
 
 extension Router {
-    class SampleTableView_Router: GenericRouter, GenericRouter_Protocol, SampleTableView_RouterProtocol {
+    class MVPSampleTableView_Router: GenericRouter, GenericRouter_Protocol, MVPSampleTableView_RouterProtocol {
 
-        private weak var baseView : V.SampleTableView_View?
-        init(viewController: V.SampleTableView_View) {
+        private weak var baseView : V.MVPSampleTableView_View?
+        init(viewController: V.MVPSampleTableView_View) {
             super.init()
             baseView = viewController
             

@@ -17,8 +17,7 @@ extension AssembyContainer {
             let viewModelProtocol = Pet_ViewModelProtocol.self
             container.register(viewModelProtocol) { resolver in
                 let viewModel           = VM.Pet_ViewModel()
-                //viewModel.sampleUseCase = resolver.resolve(AppProtocols.sample_UseCase)
-                //dump(viewModel.sampleUseCase)
+                viewModel.sampleUseCase = resolver.resolve(AppProtocols.sample_UseCase)!
                 return viewModel
             }
             

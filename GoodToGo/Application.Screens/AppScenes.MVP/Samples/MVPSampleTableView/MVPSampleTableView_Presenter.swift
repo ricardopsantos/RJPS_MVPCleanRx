@@ -14,18 +14,18 @@ import RxCocoa
 // MARK: - Presenter_Protocol & View_Protocol
 //
 
-protocol SampleTableView_PresenterProtocol : class {
+protocol MVPSampleTableView_PresenterProtocol : class {
     var generic     : GenericPresenter_Protocol?      { get }     // Mandatory in ALL Presenters
     var genericView : GenericView?                    { get }     // Mandatory in ALL Presenters
-    var viewModel   : VM.SampleTableView_ViewModel?   { get set } // Mandatory in ALL Presenters
-    var router      : SampleTableView_RouterProtocol! { get }     // Mandatory in ALL Presenters
+    var viewModel   : VM.MVPSampleTableView_ViewModel?   { get set } // Mandatory in ALL Presenters
+    var router      : MVPSampleTableView_RouterProtocol! { get }     // Mandatory in ALL Presenters
     var tableView   : GenericTableView_Protocol!      { get }
     
     var rxPublishRelay_dismissView: PublishRelay<Void> { get }    // PublishRelay model Events
     
 }
 
-protocol SampleTableView_ViewProtocol : class {
+protocol MVPSampleTableView_ViewProtocol : class {
     func viewNeedsToDisplay(list:[E.Employee])
     func setNetworkViewVisibilityTo(_ value:Bool) 
 }
@@ -35,14 +35,14 @@ protocol SampleTableView_ViewProtocol : class {
 //
 
 extension Presenter {
-    class SampleTableView_Presenter {
+    class MVPSampleTableView_Presenter {
         weak var generic      : GenericPresenter_Protocol?
         weak var genericView  : GenericView?
-        weak var view   : SampleTableView_ViewProtocol!
-        var viewModel   : VM.SampleTableView_ViewModel? {
+        weak var view   : MVPSampleTableView_ViewProtocol!
+        var viewModel   : VM.MVPSampleTableView_ViewModel? {
             didSet { AppLogs.DLog(appCode: .vmChanged); viewModelChanged() }
         }
-        var router      : SampleTableView_RouterProtocol!
+        var router      : MVPSampleTableView_RouterProtocol!
         var tableView   : GenericTableView_Protocol!
 
         var sample_UseCase : Sample_UseCaseProtocol!
@@ -57,7 +57,7 @@ extension Presenter {
     }
 }
 
-extension P.SampleTableView_Presenter : GenericTableView_Protocol {
+extension P.MVPSampleTableView_Presenter : GenericTableView_Protocol {
     
     func numberOfRows(_ section:Int) -> Int {
         return viewModel?.employeesList.count ?? 0
@@ -91,7 +91,7 @@ extension P.SampleTableView_Presenter : GenericTableView_Protocol {
 // MARK: - SampleTableView_PresenterProtocol
 //
 
-extension P.SampleTableView_Presenter : SampleTableView_PresenterProtocol {
+extension P.MVPSampleTableView_Presenter : MVPSampleTableView_PresenterProtocol {
     
     // PublishRelay model Events
     var rxPublishRelay_dismissView: PublishRelay<Void> {
@@ -105,12 +105,12 @@ extension P.SampleTableView_Presenter : SampleTableView_PresenterProtocol {
 // MARK: - GenericPresenter_Protocol
 //
 
-extension P.SampleTableView_Presenter : GenericPresenter_Protocol {
+extension P.MVPSampleTableView_Presenter : GenericPresenter_Protocol {
     func view_deinit()    -> Void { }
     func loadView()       -> Void { }
     func viewDidAppear()  -> Void { }
     func viewDidLoad()    -> Void {
-        viewModel = VM.SampleTableView_ViewModel()
+        viewModel = VM.MVPSampleTableView_ViewModel()
     }
     func viewWillAppear() -> Void {
         setupPresenter()
@@ -121,13 +121,13 @@ extension P.SampleTableView_Presenter : GenericPresenter_Protocol {
 // MARK: - Presenter Private Stuff
 //
 
-extension P.SampleTableView_Presenter {
+extension P.MVPSampleTableView_Presenter {
     
     private func viewModelChanged() -> Void {
         updateViewWith(vm: viewModel)
     }
     
-    private func updateViewWith(vm:VM.SampleTableView_ViewModel?) -> Void {
+    private func updateViewWith(vm:VM.MVPSampleTableView_ViewModel?) -> Void {
         guard vm != nil else { AppLogs.DLog(appCode: .ignored); return }
         if let vm = vm {
             view.viewNeedsToDisplay(list: vm.employeesList)

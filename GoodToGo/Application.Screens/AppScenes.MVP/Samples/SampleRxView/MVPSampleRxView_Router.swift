@@ -10,26 +10,26 @@ import RJPSLib
 import RxCocoa
 import RxSwift
 
-protocol SampleRxView_RouterProtocol: class {
+protocol MVPSampleRxView_RouterProtocol: class {
     func dismissView()
-    func presentControllerWith(vm:VM.SampleRxView_ViewModel?)
+    func presentControllerWith(vm:VM.MVPSampleRxView_ViewModel?)
 }
 
 extension Router {
-    class SampleRxView_Router: GenericRouter, GenericRouter_Protocol, SampleRxView_RouterProtocol {
+    class MVPSampleRxView_Router: GenericRouter, GenericRouter_Protocol, MVPSampleRxView_RouterProtocol {
         
         // PublishRelay model Events
-        var rxPublishRelay_showDetails = PublishRelay<VM.SampleRxView_ViewModel?>()
+        var rxPublishRelay_showDetails = PublishRelay<VM.MVPSampleRxView_ViewModel?>()
 
-        private weak var baseView : V.SampleRxView_View?
-        init(viewController: V.SampleRxView_View) {
+        private weak var baseView : V.MVPSampleRxView_View?
+        init(viewController: V.MVPSampleRxView_View) {
             super.init()
             baseView = viewController
             
             rxPublishRelay_showDetails.asObservable()
                 .map { data -> UINavigationController? in
                     // Prepare controller
-                    guard let controller = AppDelegate.shared.container.resolve(V.SampleRxView_View.self) else { return nil }
+                    guard let controller = AppDelegate.shared.container.resolve(V.MVPSampleRxView_View.self) else { return nil }
                     if data != nil {
                         controller.presenter.viewModel = data
                     }
@@ -70,7 +70,7 @@ extension Router {
             rxPublishRelay_dismissView.accept(())
         }
         
-        func presentControllerWith(vm: VM.SampleRxView_ViewModel?) {
+        func presentControllerWith(vm: VM.MVPSampleRxView_ViewModel?) {
             rxPublishRelay_showDetails.accept(vm)
         }
     }

@@ -8,16 +8,16 @@
 import UIKit
 import RJPSLib
 
-protocol SampleView_RouterProtocol: class {
+protocol MVPSampleView_RouterProtocol: class {
     func dismissView()
-    func presentControllerWith(vm:VM.SampleView_ViewModel?)
+    func presentControllerWith(vm:VM.MVPSampleView_ViewModel?)
 }
 
 extension Router {
-    class SampleView_Router: GenericRouter, GenericRouter_Protocol, SampleView_RouterProtocol {
+    class MVPSampleView_Router: GenericRouter, GenericRouter_Protocol, MVPSampleView_RouterProtocol {
 
-        private weak var baseView : V.SampleView_View?
-        init(viewController: V.SampleView_View) {
+        private weak var baseView : V.MVPSampleView_View?
+        init(viewController: V.MVPSampleView_View) {
             super.init()
             baseView = viewController
         }
@@ -30,8 +30,8 @@ extension Router {
             generalDismiss()
         }
                 
-        func presentControllerWith(vm:VM.SampleView_ViewModel?) {
-            guard let controller = AppDelegate.shared.container.resolve(V.SampleView_View.self) else { return }
+        func presentControllerWith(vm:VM.MVPSampleView_ViewModel?) {
+            guard let controller = AppDelegate.shared.container.resolve(V.MVPSampleView_View.self) else { return }
             if vm != nil {
                 controller.presenter.viewModel = vm
             }
