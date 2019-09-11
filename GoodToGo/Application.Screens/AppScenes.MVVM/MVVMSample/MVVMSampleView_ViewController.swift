@@ -9,11 +9,11 @@ import UIKit
 
 extension VC {
 
-    public class Pet_ViewController : GenericView, Pet_ViewControllerProtocol {
+    public class MVVMSampleView_ViewController : GenericView, MVVMSampleView_ViewControllerProtocol {
 
-        var viewModel: Pet_ViewModelProtocol?
-        lazy var viewModelView: Pet_ViewProtocol = {
-            let some = V.Pet_View()
+        var viewModel: MVVMSampleView_ViewModelProtocol?
+        lazy var viewModelView: MVVMSampleView_ViewProtocol = {
+            let some = V.MVVMSampleView_View()
             self.view.addSubview(some)
             let margin : CGFloat = 50
             some.rjsALayouts.setMarginFromSuper(top: margin, bottom: margin, left: margin, right: margin)
@@ -23,11 +23,13 @@ extension VC {
         override func loadView() {
             super.loadView()
             view.accessibilityIdentifier = AppConstants_UITests.UIViewControllers.genericAccessibilityIdentifier(self)
-            setupBindings()
+            rxSetup()
             prepareLayout()
         }
         
-        func setupBindings() {
+        func rxSetup() {
+            
+            // Activity indicator
             viewModel?.rxPublishSubject_loading
                 .debug("rxPublishSubject_loading")
                 .bind(to: self.rx.isAnimating)
@@ -40,6 +42,13 @@ extension VC {
                 })
                 .disposed(by: disposeBag)
             
+            // Messages to display
+            viewModel?.rxPublishRelay_genericMessages.asSignal()
+                .debug("rxPublishRelay_genericMessages")
+                .emit(onNext: { [weak self] some in
+                    self?.displayMessage(some.0, type: some.1)
+                })
+                .disposed(by: disposeBag)
         }
         
         override func prepareLayout() {

@@ -10,7 +10,6 @@ import UIKit
 
 protocol GenericTableView_Protocol : class {
     func configure(cell:GenericTableViewCell_Protocol, indexPath: IndexPath) -> Void
-
     func numberOfRows(_ section:Int) -> Int
     func didSelectRowAt(indexPath: IndexPath) -> Void
     func numberOfSections() ->Int

@@ -50,6 +50,17 @@ extension AppView {
                     }
                 })
                 .disposed(by: disposeBag)
+            some.rx.willDisplayCell
+                .subscribe(onNext: ({ (cell,_) in
+                    cell.alpha = 0
+                    let transform = CATransform3DTranslate(CATransform3DIdentity, 0, -250, 0)
+                    cell.layer.transform = transform
+                    UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+                        cell.alpha = 1
+                        cell.layer.transform = CATransform3DIdentity
+                    }, completion: nil)
+                })).disposed(by: disposeBag)
+            
             _rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
                 _ = element
                 guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }

@@ -79,12 +79,12 @@ extension P.UserDetais_Presenter : GenericTableView_Protocol {
 
 extension P.UserDetais_Presenter : GenericPresenter_Protocol {
     func view_deinit()    -> Void { }
-    func loadView()       -> Void { setupPresenter() }
+    func loadView()       -> Void { rxSetup() }
     func viewDidAppear()  -> Void { }
     func viewDidLoad()    -> Void { }
     func viewWillAppear() -> Void { if viewModel != nil { updateViewWith(vm: viewModel) } }
     
-    func setupPresenter() -> Void { }
+    func rxSetup() -> Void { }
 
 }
 

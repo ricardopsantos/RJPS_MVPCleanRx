@@ -84,12 +84,12 @@ extension P.SearchUser_Presenter : SearchUser_PresenterProtocol {
 
 extension P.SearchUser_Presenter : GenericPresenter_Protocol {
     func view_deinit() { }
-    func loadView() { setupPresenter() }
+    func loadView() { rxSetup() }
     func viewDidAppear() { }
     func viewDidLoad() { }
     func viewWillAppear() { if viewModel != nil { updateViewWith(vm: viewModel) } }
     
-    func setupPresenter() -> Void {
+    func rxSetup() -> Void {
         Observable.zip(_rxPublishRelay_userInfo, _rxPublishRelay_userFriends, resultSelector: { return ($0, $1) })
             .observeOn(MainScheduler.instance)
             .subscribe( onNext: { [weak self] in

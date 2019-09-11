@@ -13,23 +13,23 @@ import RxCocoa
 // MARK: - UserTableViewCell
 //
 
-protocol Pet_ViewModelProtocol {
-    func configure(view: Pet_ViewProtocol)
-    var name           : String { get }
+protocol MVVMSampleView_ViewModelProtocol {
+    func configure(view: MVVMSampleView_ViewProtocol)
+    var someString     : String { get }
     var image          : UIImage { get }
     var ageText        : String { get }
     var adoptionFeeText: String { get }
-    var rxPublishSubject_loading     : PublishSubject<Bool> { get }
-    var rxPublishRelay_needsToUpdate : PublishRelay<Void> { get }
-
+    var rxPublishSubject_loading       : PublishSubject<Bool> { get }
+    var rxPublishRelay_needsToUpdate   : PublishRelay<Void> { get }
+    var rxPublishRelay_genericMessages : PublishRelay<(String,AppEnuns.AlertType)> { get }
 }
 
-protocol Pet_ViewControllerProtocol {
-    var viewModelView : Pet_ViewProtocol { get }
-    var viewModel     : Pet_ViewModelProtocol? { get set }
+protocol MVVMSampleView_ViewControllerProtocol {
+    var viewModelView : MVVMSampleView_ViewProtocol { get }
+    var viewModel     : MVVMSampleView_ViewModelProtocol? { get set }
 }
 
-protocol Pet_ViewProtocol {
+protocol MVVMSampleView_ViewProtocol {
     var imageView     : UIImageView { get }
     var lblName       : UILabel { get }
     var lblAge        : UILabel { get }
@@ -42,22 +42,23 @@ protocol Pet_ViewProtocol {
 
 extension VM {
     
-    public class Pet_ViewModel {
+    public class MVVMSampleView_ViewModel {
         
-        private var _viewModel : M.Pet?
+        private var _viewModel : M.MVVMSampleView?
         private var _calendar: Calendar?
-        #warning("Put in assembly containner")
+
         var sampleUseCase : Sample_UseCaseProtocol = AppDelegate.shared.container.resolve(AppProtocols.sample_UseCase)!
         
-        public var rxPublishSubject_loading     : PublishSubject<Bool> = PublishSubject()
-        public var rxPublishRelay_needsToUpdate : PublishRelay<Void>  = PublishRelay<Void>()
+        public var rxPublishSubject_loading       : PublishSubject<Bool> = PublishSubject()
+        public var rxPublishRelay_needsToUpdate   : PublishRelay<Void>  = PublishRelay<Void>()
+        public var rxPublishRelay_genericMessages : PublishRelay<(String,AppEnuns.AlertType)> = PublishRelay<(String,AppEnuns.AlertType)>()
 
         public init() {
             _viewModel = nil
             _calendar  = nil
         }
         
-        public init(viewModel: M.Pet?) {
+        public init(viewModel: M.MVVMSampleView?) {
             guard viewModel != nil else { return }
             self._viewModel = viewModel
             self._calendar  = Calendar(identifier: .gregorian)
@@ -70,10 +71,10 @@ extension VM {
 // MARK: - ViewModelProtocol
 //
 
-extension VM.Pet_ViewModel : Pet_ViewModelProtocol {
+extension VM.MVVMSampleView_ViewModel : MVVMSampleView_ViewModelProtocol {
     
-    func configure(view: Pet_ViewProtocol) {
-        view.lblName.text        = name
+    func configure(view: MVVMSampleView_ViewProtocol) {
+        view.lblName.text        = someString
         view.imageView.image     = image
         view.lblAge.text         = ageText
         view.lblAdoptionFee.text = adoptionFeeText
@@ -95,7 +96,7 @@ extension VM.Pet_ViewModel : Pet_ViewModelProtocol {
         print("Tap!")
     }
     
-    var name : String { return _viewModel?.name ?? "" }
+    var someString : String { return _viewModel?.name ?? "" }
     var image: UIImage {
         print(sampleUseCase)
         return _viewModel?.image ?? UIImage()
@@ -120,4 +121,3 @@ extension VM.Pet_ViewModel : Pet_ViewModelProtocol {
         }
     }
 }
-

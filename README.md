@@ -1,15 +1,13 @@
-iOS Architecture design patterns : MVP + Clean + Rx
------
+# iOS Architecture design patterns : MVP + Clean + Rx
 
 - [x] 📱  iOS 10.0+
 - [x] 🔨  XCode 1.2.1, Swift 5.0
 
-The intent of this project is to show a simple implementation of the __MVP Clean Rx__ pattern. This is my vision about it, and if you dont agree with someting, just email me, I love to hear opinions and learn from that.
+The intent of this project is to show a simple implementation of the __MVP Clean (Rx)__ pattern. This is my vision about it, and if you dont agree with someting, just email me, I love to hear opinions and learn from that.
 
-------
-# Index
 
-## Features
+# Features
+
 - [x] Localizable ressources
 - [x] [RJPSLib](https://github.com/ricardopsantos/RJPSLib) to manage logs, caching, network client, generic extensions...
 - [x] Sample App - GitUser (search users on GitHub)
@@ -22,11 +20,11 @@ The intent of this project is to show a simple implementation of the __MVP Clean
  
  More info about the project and arquitecture [here](https://github.com/ricardopsantos/RJPS_MVPCleanRx/tree/master/Docs)
  
-## Install
+# Install
 
-Just download code and run ```./_installPackages.sh```
+Just download source code and run  ```./_script_installPackages.sh```
 
-## License
+# License
 
 [Unlicense](http://unlicense.org)
 

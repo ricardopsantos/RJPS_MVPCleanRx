@@ -23,7 +23,7 @@ extension RP.Network.Employees {
                 urlRequest = URLRequest(url: url)
                 urlRequest.httpMethod = "GET"
                 responseType = .json
-                if AppConstants.URLs.useMockedData {
+                if AppConstants.URLs.useMockedData || true {
                     mockedData = RP.Network.Employees.GetEmployees_APIRequest.mock
                 }
             } else {

@@ -136,7 +136,7 @@ extension P.BlissQuestionsList_Presenter : GenericPresenter_Protocol {
         NotificationCenter.default.removeObserver(self)
     }
     func loadView()  -> Void {
-        setupPresenter()
+        rxSetup()
     }
     func viewDidAppear()  -> Void { }
     func viewDidLoad()    -> Void {
@@ -197,7 +197,7 @@ extension P.BlissQuestionsList_Presenter {
             .disposed(by: disposeBag)
     }
     
-    func setupPresenter() {
+    func rxSetup() {
     
         func checkDataToHandle() -> Void {
             if let data = blissGeneric_UseCase.screenHaveDataToHandle(screen: V.BlissQuestionsList_View.className) {

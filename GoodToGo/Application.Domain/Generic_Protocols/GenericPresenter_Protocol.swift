@@ -24,5 +24,5 @@ protocol GenericPresenter_Protocol : AppUtils_Protocol {
     func viewWillAppear() -> Void
     func viewDidAppear()  -> Void
     
-    func setupPresenter() -> Void // Called on loadView (ussually)
+    func rxSetup() -> Void // Called on loadView (ussually)
 }

@@ -9,21 +9,21 @@ import Foundation
 import Swinject
 
 extension AssembyContainer {
-    final class Pet_AssemblyContainer: Assembly {
+    final class MVVMSampleView_AssemblyContainer: Assembly {
         
         func assemble(container: Container) {
             
             // ViewModel (Presenter on MVP Pattern)
-            let viewModelProtocol = Pet_ViewModelProtocol.self
+            let viewModelProtocol = MVVMSampleView_ViewModelProtocol.self
             container.register(viewModelProtocol) { resolver in
-                let viewModel           = VM.Pet_ViewModel()
+                let viewModel           = VM.MVVMSampleView_ViewModel()
                 viewModel.sampleUseCase = resolver.resolve(AppProtocols.sample_UseCase)!
                 return viewModel
             }
             
             // View
-            container.register(VC.Pet_ViewController.self) { resolver in
-                let controller       = VC.Pet_ViewController()
+            container.register(VC.MVVMSampleView_ViewController.self) { resolver in
+                let controller       = VC.MVVMSampleView_ViewController()
                 controller.viewModel = resolver.resolve(viewModelProtocol)
                 return controller
             }

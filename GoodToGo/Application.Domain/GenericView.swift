@@ -11,8 +11,6 @@ import RxSwift
 import RJPSLib
 import RxCocoa
 
-
-
 class GenericView: UIViewController {
 
     deinit {
@@ -124,7 +122,6 @@ class GenericView: UIViewController {
 //
 // MARK: - loadingViewable
 //
-
 
 extension GenericView {
     func setActivityState(_ state:Bool) {

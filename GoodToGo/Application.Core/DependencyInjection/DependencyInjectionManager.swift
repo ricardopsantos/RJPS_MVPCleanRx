@@ -24,7 +24,7 @@ final class ApplicationAssembly {
             AS.BlissRoot_AssemblyContainer(),
             AS.BlissDetails_AssemblyContainer(),
             
-            AS.Pet_AssemblyContainer()
+            AS.MVVMSampleView_AssemblyContainer()
         ]
         return Assembler(assemblyList)
     }

@@ -61,7 +61,6 @@ extension ObservableType {
     }
 }
 
-
 protocol loadingViewable_Protocol {
     func startAnimating()
     func stopAnimating()

@@ -13,7 +13,7 @@ import UIKit
 
 extension M {
 
-    public class Pet {
+    public class MVVMSampleView {
         public enum Rarity {
             case common
             case uncommon
@@ -38,10 +38,10 @@ extension M {
     }
 }
 
-extension M.Pet {
-    static func makeOne(name:String) -> M.Pet {
+extension M.MVVMSampleView {
+    static func makeOne(name:String) -> M.MVVMSampleView {
         let birthday = Date.utcNow().add(days: -2*360)
         let image    = UIImage(named: "notInternet")!
-        return M.Pet(name: name, birthday: birthday, rarity: .veryRare, image: image)
+        return M.MVVMSampleView(name: name, birthday: birthday, rarity: .veryRare, image: image)
     }
 }

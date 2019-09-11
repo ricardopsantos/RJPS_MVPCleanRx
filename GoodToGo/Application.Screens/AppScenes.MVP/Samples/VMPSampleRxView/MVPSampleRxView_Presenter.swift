@@ -97,7 +97,7 @@ extension P.MVPSampleRxView_Presenter : MVPSampleRxView_PresenterProtocol {
 
 extension P.MVPSampleRxView_Presenter : GenericPresenter_Protocol {
     func view_deinit()    -> Void { }
-    func loadView()       -> Void { setupPresenter() }
+    func loadView()       -> Void { rxSetup() }
     func viewDidAppear()  -> Void { }
     func viewDidLoad()    -> Void { }
     func viewWillAppear() -> Void { }
@@ -114,7 +114,7 @@ extension P.MVPSampleRxView_Presenter {
         view.updateViewWith(message: viewModel!.someString)
     }
     
-    func setupPresenter() {
+    func rxSetup() {
         
     }
 }

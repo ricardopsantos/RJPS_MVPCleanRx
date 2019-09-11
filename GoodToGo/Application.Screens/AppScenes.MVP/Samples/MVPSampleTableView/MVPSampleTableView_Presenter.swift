@@ -67,7 +67,6 @@ extension P.MVPSampleTableView_Presenter : GenericTableView_Protocol {
         if let someCell = cell as? Sample_TableViewCellProtocol {
             let employee = viewModel!.employeesList[indexPath.row]
             let title = "\(employee.employeeName) | \(employee.employeeSalary)"
-            //someCell.set(title:title)
             someCell.rxBehaviorRelay_title.accept(title)
             downloadImage(imageURL: employee.profileImage, onFail: AppImages.notFound) { (image) in
                 someCell.rxBehaviorRelay_image.accept(image)
@@ -113,7 +112,7 @@ extension P.MVPSampleTableView_Presenter : GenericPresenter_Protocol {
         viewModel = VM.MVPSampleTableView_ViewModel()
     }
     func viewWillAppear() -> Void {
-        setupPresenter()
+        rxSetup()
     }
 }
 
@@ -136,7 +135,14 @@ extension P.MVPSampleTableView_Presenter {
         }
     }
     
-    func setupPresenter() {
+    func rxSetup() {
+        
+        reachabilityService.reachability.subscribe(
+            onNext: { [weak self] some in
+                guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+                strongSelf.view.setNetworkViewVisibilityTo(some.reachable)
+            }
+            ).disposed(by: disposeBag)
         
         rxObservable_GetEmployees()
             .subscribe(
@@ -151,12 +157,6 @@ extension P.MVPSampleTableView_Presenter {
             )
             .disposed(by: disposeBag)
         
-        reachabilityService.reachability.subscribe(
-            onNext: { [weak self] some in
-                guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
-                strongSelf.view.setNetworkViewVisibilityTo(some.reachable)
-            }
-            ).disposed(by: disposeBag)
     }
     
     func rxObservable_GetEmployees() -> Observable<[E.Employee]> {

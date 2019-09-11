@@ -71,12 +71,12 @@ extension P.MVPSampleView_Presenter : MVPSampleView_PresenterProtocol {
 
 extension P.MVPSampleView_Presenter : GenericPresenter_Protocol {
     func view_deinit()    -> Void { }
-    func loadView()       -> Void { setupPresenter() }
+    func loadView()       -> Void { rxSetup() }
     func viewDidAppear()  -> Void { }
     func viewDidLoad()    -> Void { }
     func viewWillAppear() -> Void { }
     
-    func setupPresenter() -> Void { }
+    func rxSetup() -> Void { }
 
 }
 

@@ -171,7 +171,7 @@ extension P.BlissDetails_Presenter : GenericPresenter_Protocol {
     func viewDidAppear()  -> Void { }
     func viewDidLoad()    -> Void {
         _ = checkDataToHandle()
-        setupPresenter()
+        rxSetup()
     }
     func viewWillAppear() -> Void { }
 }
@@ -227,7 +227,7 @@ extension P.BlissDetails_Presenter {
         return false
     }
     
-    func setupPresenter() {
+    func rxSetup() {
         
         blissGeneric_UseCase.rxPublishRelayAppicationDidReceivedData.asSignal()
             .emit(onNext: { [weak self] in

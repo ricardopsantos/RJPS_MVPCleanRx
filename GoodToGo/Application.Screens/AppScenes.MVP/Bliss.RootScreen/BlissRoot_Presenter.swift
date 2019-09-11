@@ -81,7 +81,7 @@ extension P.BlissRoot_Presenter : GenericPresenter_Protocol {
         viewModel = VM.BlissRoot_ViewModel()
     }
     func viewWillAppear() -> Void {
-        setupPresenter()
+        rxSetup()
     }
 }
 
@@ -124,7 +124,7 @@ extension P.BlissRoot_Presenter {
         }
     }
     
-    func setupPresenter() {
+    func rxSetup() {
    
         reachabilityService.reachability.subscribe(
             onNext: { [weak self] some in
