@@ -195,7 +195,6 @@
 		9F346E9322BFB495008A22C4 /* AppLogs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLogs.swift; sourceTree = "<group>"; };
 		9F3ED4BB22E618C80020A50A /* AppView+RxTesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppView+RxTesting.swift"; sourceTree = "<group>"; };
 		9F4EE07E22F3086800FCAC40 /* MVVMSampleView_AssemblyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVVMSampleView_AssemblyContainer.swift; sourceTree = "<group>"; };
-		9F55525422E9A70F009364D1 /* _script_gitMerge.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = _script_gitMerge.sh; path = Scripts/_script_gitMerge.sh; sourceTree = SOURCE_ROOT; };
 		9F55525522E9A73D009364D1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		9F574EFD22356CA6007DAA58 /* AppManagers+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppManagers+Factory.swift"; sourceTree = "<group>"; };
 		9F574F7B22367F97007DAA58 /* GoodToGo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoodToGo-Info.plist"; sourceTree = "<group>"; };
@@ -288,11 +287,6 @@
 		9FBF4B0522BEAE9600E0D1AB /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		9FBF4B0722BEBC3B00E0D1AB /* RJPSLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RJPSLib.framework; path = Carthage/Build/iOS/RJPSLib.framework; sourceTree = "<group>"; };
 		9FC6819A22F9907000D3F281 /* Notes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Notes.md; sourceTree = "<group>"; };
-		9FC6819E22F994A100D3F281 /* _script_badAssDiskCleaner.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = _script_badAssDiskCleaner.sh; sourceTree = "<group>"; };
-		9FC6819F22F994A100D3F281 /* _script_gitGenericMerge.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = _script_gitGenericMerge.sh; sourceTree = "<group>"; };
-		9FC681A022F994A100D3F281 /* _script_iOSGenericCompile.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = _script_iOSGenericCompile.sh; sourceTree = "<group>"; };
-		9FC681A122F994A100D3F281 /* _script_codeReview.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = _script_codeReview.sh; sourceTree = "<group>"; };
-		9FC681A222F9950800D3F281 /* _script_installPackages.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = _script_installPackages.sh; sourceTree = "<group>"; };
 		9FCF331E22EF18A90074DAB9 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
 		9FCF332222EF53890074DAB9 /* GenericUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericUseCase.swift; sourceTree = "<group>"; };
 		9FCF332522EF552E0074DAB9 /* Generic_CacheRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generic_CacheRepository.swift; sourceTree = "<group>"; };
@@ -461,8 +455,8 @@
 			isa = PBXGroup;
 			children = (
 				9F55525522E9A73D009364D1 /* README.md */,
-				9FC6819D22F994A100D3F281 /* DeveloperScripts */,
-				9FC6819B22F9942E00D3F281 /* Dev */,
+				9F7B2F4421B9451C001F3FFA /* DevNotes.txt */,
+				9FC6819A22F9907000D3F281 /* Notes.md */,
 				9FACC17A223BDD5B00576498 /* ToDo.swift */,
 				9FCF331E22EF18A90074DAB9 /* .swiftlint.yml */,
 				9F6BB2BB22E31D0400829A6F /* MVPClean_Arquitecture.pptx */,
@@ -692,28 +686,6 @@
 			);
 			path = Application.Core;
 			sourceTree = "<group>";
-		};
-		9FC6819B22F9942E00D3F281 /* Dev */ = {
-			isa = PBXGroup;
-			children = (
-				9F7B2F4421B9451C001F3FFA /* DevNotes.txt */,
-				9FC6819A22F9907000D3F281 /* Notes.md */,
-			);
-			path = Dev;
-			sourceTree = "<group>";
-		};
-		9FC6819D22F994A100D3F281 /* DeveloperScripts */ = {
-			isa = PBXGroup;
-			children = (
-				9F55525422E9A70F009364D1 /* _script_gitMerge.sh */,
-				9FC6819E22F994A100D3F281 /* _script_badAssDiskCleaner.sh */,
-				9FC681A222F9950800D3F281 /* _script_installPackages.sh */,
-				9FC6819F22F994A100D3F281 /* _script_gitGenericMerge.sh */,
-				9FC681A022F994A100D3F281 /* _script_iOSGenericCompile.sh */,
-				9FC681A122F994A100D3F281 /* _script_codeReview.sh */,
-			);
-			path = DeveloperScripts;
-			sourceTree = SOURCE_ROOT;
 		};
 		9FC681A522F99BB100D3F281 /* Generic_Protocols */ = {
 			isa = PBXGroup;
