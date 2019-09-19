@@ -458,19 +458,21 @@ extension V.RxTesting {
             _ = from.subscribe(onNext: { n in print("from_2 : \(n)") })
         }
 
-        let intervalObservable_1 = Observable<NSInteger>
-            .interval(0.1, scheduler: MainScheduler.instance)
-            .take(10)
-            .map { "\($0)" }
+        if false {
+            let intervalObservable_1 = Observable<NSInteger>
+                 .interval(0.1, scheduler: MainScheduler.instance)
+                 .take(10)
+                 .map { "\($0)" }
+             
+             _ = intervalObservable_1
+                 . subscribe(onNext: { n in print("intervalObservable : \(n)") })
+             
+             _ = intervalObservable_1
+                 .throttle(.milliseconds(2000), scheduler: MainScheduler.instance)
+                 .elementAt(0)
+                 .subscribe(onNext: { n in print("intervalObservable_throttle : \(n)") })
+        }
         
-        _ = intervalObservable_1
-            . subscribe(onNext: { n in print("intervalObservable : \(n)") })
-        
-        _ = intervalObservable_1
-            .throttle(.milliseconds(2000), scheduler: MainScheduler.instance)
-            .elementAt(0)
-            .subscribe(onNext: { n in print("intervalObservable_throttle : \(n)") })
-
         /*
         let intervalObservable_2 = Observable<NSInteger>
             .interval(0.2, scheduler: MainScheduler.instance)

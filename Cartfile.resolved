@@ -1,5 +1,5 @@
 github "ReactiveX/RxSwift" "5.0.1"
 github "RxSwiftCommunity/RxGesture" "3.0.0"
-github "Swinject/Swinject" "2.6.2"
-github "Swinject/SwinjectAutoregistration" "2.6.0"
-github "ricardopsantos/RJPSLib" "79be057d6fabcf59239cd222df56fc3cc2771cdb"
+github "Swinject/Swinject" "2.7.1"
+github "Swinject/SwinjectAutoregistration" "2.6.1"
+github "ricardopsantos/RJPSLib" "519e23e5400a17c1f1df4101c0784e176d10c016"

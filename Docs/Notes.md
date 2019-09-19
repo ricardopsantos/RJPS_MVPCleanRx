@@ -17,48 +17,7 @@ Notes
     * Thumb rule : The name of the var, should be clear about the type associated. 
     
 ------
-## Code Samples
+## WIKI
 
+[https://github.com/ricardopsantos/RJPS_Docs](https://github.com/ricardopsantos/RJPS_Docs)
 
-------
-## RxNotes
-
-```
-sdasda
-```
-
-## Misc Notes
-
-
-### Swift
-
-####  Check Versions 
-
-```
-xcrun swift -version
-xcode-select --print-path
-```
-
-
-####  Check Versions : Change Compiler version (for xcodebuild)
-
-```
-sudo xcode-select --switch "/Applications/Xcode_10.1.app/Contents/Developer"
-sudo xcode-select --switch "/Applications/Xcode.app/Contents/Developer"
-```
-
-### Git
-
-####  Check commits
-
-```
-git log --oneline --decorate
-```
-
-### Tags
-
-```
-git tag -a ProductName_VersionX.X.X_BuildX_01Jan2030 -m "ProductName-VersionX.X.X-BuildX-01Jan2030"
-git push --tags
-
-```
