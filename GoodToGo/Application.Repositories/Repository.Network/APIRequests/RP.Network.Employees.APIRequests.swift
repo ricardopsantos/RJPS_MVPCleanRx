@@ -8,20 +8,22 @@
 import Foundation
 import RJPSLib
 
+// swiftlint:disable line_length
+
 extension RP.Network.Employees {
     struct GetEmployees_APIRequest : WebAPIRequest_Protocol {
-        var returnOnMainTread : Bool = true
-        var debugRequest      : Bool = AppCan.Logs.requests
-        var urlRequest        : URLRequest
-        var responseType      : NetworkClientResponseType
-        var mockedData        : String?
+        var returnOnMainTread: Bool = true
+        var debugRequest: Bool = AppCan.Logs.requests
+        var urlRequest: URLRequest
+        var responseType: NetworkClientResponseType
+        var mockedData: String?
 
         init() throws {
             if let url = URL(string: AppConstants.URLs.getEmployees) {
                 urlRequest = URLRequest(url: url)
                 urlRequest.httpMethod = "GET"
                 responseType = .json
-                if AppConstants.URLs.useMockedData {
+                if AppConstants.URLs.useMockedData || true {
                     mockedData = RP.Network.Employees.GetEmployees_APIRequest.mock
                 }
             } else {

@@ -30,7 +30,7 @@ struct AppConstants {
 
     struct URLs {
         private init() {}
-        static let useMockedData = false
+        static let useMockedData = true
         static var githubAPIBaseUrl : String {
             switch AppEnvironments.current {
             case .dev  : return "https://api.github.com"

@@ -8,13 +8,15 @@
 import Foundation
 import RJPSLib
 
+// swiftlint:disable line_length
+
 extension RP.Network.GitUser {
     struct GetUserInfo_APIRequest : WebAPIRequest_Protocol {
-        var returnOnMainTread : Bool
-        var debugRequest      : Bool
-        var urlRequest        : URLRequest
-        var responseType      : NetworkClientResponseType
-        var mockedData        : String?
+        var returnOnMainTread: Bool
+        var debugRequest: Bool
+        var urlRequest: URLRequest
+        var responseType: NetworkClientResponseType
+        var mockedData: String?
 
         init(userName:String) throws {
             if let url = URL(string: "\(AppConstants.URLs.githubAPIBaseUrl)/users/\(userName)") {
@@ -64,11 +66,11 @@ extension RP.Network.GitUser {
         }
     }
     struct GetFriends_APIRequest : WebAPIRequest_Protocol {
-        var returnOnMainTread : Bool
-        var debugRequest      : Bool
-        var urlRequest        : URLRequest
-        var responseType      : NetworkClientResponseType
-        var mockedData        : String? 
+        var returnOnMainTread: Bool
+        var debugRequest: Bool
+        var urlRequest: URLRequest
+        var responseType: NetworkClientResponseType
+        var mockedData: String? 
 
         init(userName:String) throws {
             if let url = URL(string: "\(AppConstants.URLs.githubAPIBaseUrl)/users/\(userName)/followers") {

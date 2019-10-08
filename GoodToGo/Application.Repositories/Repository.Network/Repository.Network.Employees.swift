@@ -23,7 +23,7 @@ extension RP.Network.Employees {
         func netWork_OperationA(completionHandler: @escaping Samples_NetWorkRepositoryCompletionHandler) {
             do {
                 let apiRequest: WebAPIRequest_Protocol = try RP.Network.Employees.GetEmployees_APIRequest()
-                let apiClient : NetworkClient_Protocol = RJSLib.NetworkClient()
+                let apiClient: NetworkClient_Protocol = RJSLib.NetworkClient()
                 apiClient.execute(request: apiRequest, completionHandler: { (result : Result<NetworkClientResponse<[E.Employee]>>) in
                     completionHandler(result)
                 })

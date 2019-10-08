@@ -16,12 +16,15 @@ final class ApplicationAssembly {
             RootAssemblyContainer(),
             AS.SearchUser_AssemblyContainer(),
             AS.UserDetais_AssemblyContainer(),
-            AS.SampleView_AssemblyContainer(),
-            AS.SampleRxView_AssemblyContainer(),
-            AS.SampleTableView_AssemblyContainer(),
+            AS.MVPSampleView_AssemblyContainer(),
+            AS.MVPSampleRxView_AssemblyContainer(),
+            AS.MVPSampleTableView_AssemblyContainer(),
+            
             AS.BlissQuestionsList_AssemblyContainer(),
             AS.BlissRoot_AssemblyContainer(),
-            AS.BlissDetails_AssemblyContainer()
+            AS.BlissDetails_AssemblyContainer(),
+            
+            AS.MVVMSampleView_AssemblyContainer()
         ]
         return Assembler(assemblyList)
     }

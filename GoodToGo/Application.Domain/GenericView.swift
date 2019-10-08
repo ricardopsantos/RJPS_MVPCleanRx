@@ -12,6 +12,7 @@ import RJPSLib
 import RxCocoa
 
 class GenericView: UIViewController {
+
     deinit {
         AppLogs.DLog("\(self.className) was killed")
         NotificationCenter.default.removeObserver(self)
@@ -25,6 +26,11 @@ class GenericView: UIViewController {
         if _keyboardIsVisible {
             let autoCorrectBarSize : CGFloat = 44; return _keyboardHeigth - autoCorrectBarSize
         } else { return 0 }
+    }
+    
+    static var onDarkMode : Bool {
+        if #available(iOS 12.0, *) { return GenericView().traitCollection.userInterfaceStyle == .dark }
+        else { return false }
     }
     
     private var _lblMessageDistanceFromTop      : NSLayoutConstraint?
@@ -112,16 +118,22 @@ class GenericView: UIViewController {
         }
     }
     
+    func prepareLayout()    -> Void { AppLogs.DLog(appCode: .notImplemented) }
+    func keyboardDidShow() { }
+    func keyboardDidHide() { }
+    func dismissKeyboard()  -> Void { }
+}
+
+//
+// MARK: - loadingViewable
+//
+
+extension GenericView {
     func setActivityState(_ state:Bool) {
         if state {
             self.view.rjs.startActivityIndicator()
         } else { self.view.rjs.stopActivityIndicator() }
     }
-    
-    func prepareLayout()    -> Void { AppLogs.DLog(appCode: .notImplemented) }
-    func keyboardDidShow() { }
-    func keyboardDidHide() { }
-    func dismissKeyboard()  -> Void { }
 }
 
 //

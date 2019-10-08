@@ -86,13 +86,6 @@ extension V.TopBar {
     
     var rxSignal_btnBackTapped : Signal<Void> {
         return _btnBack.rx.controlEvent(.touchUpInside).asSignal()
-        /*
-        some.rxSignal_btnBackTapped
-            .asObservable()
-            .do(onNext: { _ in AppLogs.DLog("V.TopBar.") })
-            .bind(to: presenter.rxPublishRelay_dismissView)
-            .disposed(by: disposeBag)
-        */
     }
     
     var rxSignal_viewTapped : Signal<CGPoint> {
@@ -101,12 +94,6 @@ extension V.TopBar {
             .when(.recognized)
             .map({ $0.location(in: $0.view)})
             .asSignal(onErrorJustReturn: .zero)
-        /*
-        some.rxSignal_viewTapped
-            .do(onNext: { _ in print("rxSignal_viewTapped : 2") })
-            .emit(onNext: { let _ = $0 })
-            .disposed(by: disposeBag)
-         */
     }
     
 }

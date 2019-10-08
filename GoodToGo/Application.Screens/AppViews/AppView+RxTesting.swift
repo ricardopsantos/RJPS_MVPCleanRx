@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 extension AppView {
-    class RxTesting: GenericView {
+    class RxTesting: GenericView, AppUtils_Protocol {
         
         let _margin    : CGFloat = 10
         let _btnHeight : CGFloat = 40
@@ -61,7 +61,7 @@ extension AppView {
             some.rjsALayouts.setMargin(_margin, on: .right)
             some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
             some.rjsALayouts.setHeight(_btnHeight)
-            let trigger = PublishSubject<Bool>()
+            //let trigger = PublishSubject<Bool>()
             some.rx.tap
                 .debug("_btnThrottle tap")
                 .throttle(.milliseconds(throttle*1000), scheduler: MainScheduler.instance)
@@ -107,14 +107,24 @@ extension AppView {
          [BehaviorRelay/BehaviorSubject] model a State (hence it replays its latest value) and so does a Driver (models State).
          [PublishRelay/PublishSubject] model Events (hence it does not replay latest value)
          
+         [PublishSubject] can have parameters, but does not need to have one on start with
+         [PublishSubject] fire with [onNext(someValue)]
+         [PublishSubject] Good to bing with sutff (amimations?)
+         [PublishSubject] A Subject is a reactive type that is both an Observable Sequence and an Observer
+         [PublishSubject] Is concerned only with emitting new events to its subscribers.
+         
         */
-        var _rxPublishRelay_a  : PublishRelay  = PublishRelay<Void>()
-        var _rxPublishRelay_b  : PublishRelay  = PublishRelay<String>()
-        var _rxBehaviorRelay_a : BehaviorRelay = BehaviorRelay<String>(value: "")
-        var _rxBehaviorRelay_b : BehaviorRelay = BehaviorRelay<String>(value: "")
-        var _rxBehaviorRelay_c : BehaviorRelay = BehaviorRelay<Int>(value: 0)
+        var _rxPublishSubject_a: PublishSubject  = PublishSubject<Void>()
+        
+        var _rxPublishRelay_a : PublishRelay  = PublishRelay<Void>()
+        var _rxPublishRelay_b : PublishRelay  = PublishRelay<String>()
+        
+        var _rxBehaviorRelay_a: BehaviorRelay = BehaviorRelay<String>(value: "")
+        var _rxBehaviorRelay_b: BehaviorRelay = BehaviorRelay<String>(value: "")
+        var _rxBehaviorRelay_c: BehaviorRelay = BehaviorRelay<Int>(value: 0)
+        
         private lazy var _btnRxRelays: UIButton = {
-            
+        
             _rxPublishRelay_a.asSignal() // PublishRelay (to model events) without param
                 .debug("rxPublishRelay_a")
                 .do(onNext: { _ in print("_rxPublishRelay_a : do.onNext_1") })
@@ -294,9 +304,16 @@ extension AppView {
             aux_prepare()
         }
         
+        func delay(_ delay:Double, block: @escaping () -> Void) {
+            DispatchQueue.executeWithDelay (delay:delay) {
+                block()
+            }
+        }
+           
         override func viewDidLoad() {
             super.viewDidLoad()
-            sampleObservables()
+            
+            
         }
     }
 }
@@ -310,7 +327,7 @@ extension AppView.RxTesting {
     var rxObservableAssyncRequest : Observable<UIImage> {
         return Observable.create { [weak self] observer -> Disposable in
             let adress = Bool.random() ? "https://image.shutterstock.com/image-photo/white-transparent-leaf-on-mirror-260nw-1029171697.jpg" : "lalal"
-            AppSimpleNetworkClient.downloadImageFrom(adress, completion: { (image) in
+            self?.downloadImage(imageURL: adress, completion: { (image) in
                 if image != nil {
                     self?.aux_log(message: "[rxObservableAssyncRequest][onNext]", showAlert: false, appendToTable: true)
                     observer.onNext(image!)
@@ -443,43 +460,47 @@ extension V.RxTesting {
             _ = just.subscribe(onNext: { n in print("just_1 : \(n)") })
             _ = just.subscribe(onNext: { n in print("just_2 : \(n)") })
     
-            let from = myFrom(["## element_1 ##", "## element_2 ##", "## element_3 ##"]).share()
+            let from = myFrom(["## A ##", "## B ##", "## C ##"]).share()
             _ = from.subscribe(onNext: { n in print("from_1 : \(n)") })
             _ = from.subscribe(onNext: { n in print("from_2 : \(n)") })
         }
 
-        let intervalObservable_1 = Observable<NSInteger>
-            .interval(0.1, scheduler: MainScheduler.instance)
-            .take(10)
-            .map { "\($0)" }
+        if false {
+            let intervalObservable_1 = Observable<NSInteger>
+                 .interval(0.1, scheduler: MainScheduler.instance)
+                 .take(5)
+                 .map { "\($0)" }
+             
+             _ = intervalObservable_1
+                 . subscribe(onNext: { n in print("intervalObservable : \(n)") })
+             
+             _ = intervalObservable_1
+                 .throttle(.milliseconds(2000), scheduler: MainScheduler.instance)
+                 .elementAt(0)
+                 .subscribe(onNext: { n in print("intervalObservable_throttle : \(n)") })
+        }
         
-        _ = intervalObservable_1
-            . subscribe(onNext: { n in print("intervalObservable : \(n)") })
-        
-        _ = intervalObservable_1
-            .throttle(.milliseconds(2000), scheduler: MainScheduler.instance)
-            .elementAt(0)
-            .subscribe(onNext: { n in print("intervalObservable_throttle : \(n)") })
+        if false {
+            let intervalObservable_2 = Observable<NSInteger>
+                .interval(0.2, scheduler: MainScheduler.instance)
+                .take(5)
+            
+            let zip = Observable
+                .zip(Observable.of("AA", "BB", "CC"), intervalObservable_2,
+                     resultSelector: { value1, _ in
+                        return value1
+                })
+            
+            intervalObservable_2
+                .withLatestFrom(zip).observeOn(MainScheduler.instance)
+                .observeOn(MainScheduler.instance)
+                .subscribe(onNext: { data in
+                    print(data)
+                })
+                .disposed(by: disposeBag)
+        }
 
-        /*
-        let intervalObservable_2 = Observable<NSInteger>
-            .interval(0.2, scheduler: MainScheduler.instance)
-            .take(4)
         
-        let zip = Observable
-            .zip(Observable.of("🔴", "🔵", "🔺"), intervalObservable_2,
-                 resultSelector: { value1, _ in
-                    return value1
-            })
-        
-        intervalObservable_1
-            .withLatestFrom(zip).observeOn(MainScheduler.instance)
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { data in
-                print(data)
-            })
-            .disposed(by: disposeBag)
-        */
     }
     
     func sampleDisposing() {

@@ -124,7 +124,7 @@ extension UseCases {
         
         }
         
-        func getQuestionBy(id: Int, checkHealth:Bool=true, completionHandler: @escaping (Result<E.Bliss.QuestionElement>) -> Void) {
+        func getQuestionBy(id: Int, checkHealth: Bool=true, completionHandler: @escaping (Result<E.Bliss.QuestionElement>) -> Void) {
             
             let doWork = { [weak self] in
                 guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }

@@ -43,6 +43,9 @@ final class RootAssemblyContainer: Assembly {
         container.autoregister(AppProtocols.gitUser_NetWorkRepository,
                                initializer: RP.Network.GitUser.NetWorkRepository.init).inObjectScope(.container)
 
+        container.autoregister(AppProtocols.bliss_NetWorkRepository,
+                               initializer: RP.Network.Bliss.NetWorkRepository.init).inObjectScope(.container)
+        
         container.register(AppProtocols.sample_UseCase) { resolver in
             let uc = UC.Sample_UseCase()
             uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
@@ -80,7 +83,7 @@ final class RootAssemblyContainer: Assembly {
         }
         
         container.register(AppProtocols.blissGenericAppBussiness_UseCase) { resolver in
-            let uc               = UC.BlissGenericAppBussiness_UseCase()
+            let uc = UC.BlissGenericAppBussiness_UseCase()
             uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
             return uc
