@@ -947,7 +947,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# https://github.com/onevcat/FengNiao\nfengniao --exclude Carthage --force\n";
+			shellScript = "# https://github.com/onevcat/FengNiao\n# fengniao --exclude Carthage --force\n";
 		};
 		9F8D4A6C2237325600777976 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
