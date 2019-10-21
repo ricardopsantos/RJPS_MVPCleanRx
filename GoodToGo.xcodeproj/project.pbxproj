@@ -883,7 +883,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F58FB4022BE5DE700042A8C /* Main.storyboard in Resources */,
+				9FB9F97722E520DB00D64FD2 /* Debug.QA.xcconfig in Resources */,
+				9FACC184223BF28E00576498 /* Release.xcconfig in Resources */,
+				9FACC187223BF28E00576498 /* Debug.Prod.xcconfig in Resources */,
 				9FB35E0A22EC611000326092 /* Localizable.strings in Resources */,
+				9FACC17F223BF26000576498 /* Debug.Dev.xcconfig in Resources */,
 				9FE143F021AF2F520026BDFC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -931,23 +935,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# The carthage copy-frameworks command strips out these extra architectures. w00t!\n/usr/local/bin/carthage copy-frameworks\n";
-		};
-		9F79F0FF22F092A8005BF406 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# https://github.com/onevcat/FengNiao\n# fengniao --exclude Carthage --force\n";
 		};
 		9F8D4A6C2237325600777976 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

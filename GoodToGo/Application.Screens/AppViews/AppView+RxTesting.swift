@@ -468,7 +468,7 @@ extension V.RxTesting {
         if false {
             let intervalObservable_1 = Observable<NSInteger>
                  .interval(0.1, scheduler: MainScheduler.instance)
-                 .take(5)
+                .take(5)
                  .map { "\($0)" }
              
              _ = intervalObservable_1
@@ -479,27 +479,6 @@ extension V.RxTesting {
                  .elementAt(0)
                  .subscribe(onNext: { n in print("intervalObservable_throttle : \(n)") })
         }
-        
-        if false {
-            let intervalObservable_2 = Observable<NSInteger>
-                .interval(0.2, scheduler: MainScheduler.instance)
-                .take(5)
-            
-            let zip = Observable
-                .zip(Observable.of("AA", "BB", "CC"), intervalObservable_2,
-                     resultSelector: { value1, _ in
-                        return value1
-                })
-            
-            intervalObservable_2
-                .withLatestFrom(zip).observeOn(MainScheduler.instance)
-                .observeOn(MainScheduler.instance)
-                .subscribe(onNext: { data in
-                    print(data)
-                })
-                .disposed(by: disposeBag)
-        }
-
         
     }
     
