@@ -28,12 +28,9 @@ displayCompilerInfo() {
 
 ################################################################################
 
-echo -n "### Brew"
-printf "\n"
-echo -n " - Install [1]: "
-printf "\n"
-echo -n " - Update [2]: "
-printf "\n"
+echo "### Brew"
+echo " [1] : Install"
+echo " [2] : Update"
 echo -n "Option? "
 read option
 case $option in
@@ -49,10 +46,8 @@ printf "\n"
 printf "\n"
 
 echo -n "### Carthage"
-printf "\n"
-echo -n " - Install [1]: "
-printf "\n"
-echo -n " - Update [2]: "
+echo " [1] : Install"
+echo " [2] : Update"
 printf "\n"
 echo -n "Option? "
 read option
@@ -72,17 +67,19 @@ displayCompilerInfo
 printf "\n"
 printf "\n"
 
-echo -n "### Change Compiler?"
-printf "\n"
-echo -n "[1] - Xcode (current) Version"
-printf "\n"
-echo -n " - Version 11.0 beta 6 [2]: "
+echo "### Change Compiler?"
+echo "[1] : Xcode current - Version 11.1 (11A1027)"
+echo "[2] : Xcode Version 11.0 (11A420a)"
+echo "[3] : Xcode Version 10.3 (10G8)"
+echo "[4] : Xcode Version 9.4.1 (9F2000)"
 printf "\n"
 echo -n "Option? "
 read option
 case $option in
     [1] ) sudo xcode-select --switch "/Applications/Xcode.app/Contents/Developer" ;;
-    [2] ) sudo xcode-select --switch "/Applications/Xcode_11-beta7.app/Contents/Developer" ;;
+    [2] ) sudo xcode-select --switch "/Applications/Xcode_11.app/Contents/Developer" ;;
+    [3] ) sudo xcode-select --switch "/Applications/Xcode_10.3.app/Contents/Developer" ;;
+    [4] ) sudo xcode-select --switch "/Applications/Xcode_9.4.1.app/Contents/Developer" ;;
    *) echo "Ignored...."
 ;;
 esac
