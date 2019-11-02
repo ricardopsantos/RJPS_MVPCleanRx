@@ -1,34 +1,36 @@
 disabled_rules: # rule identifiers to exclude from running
-- shorthand_operator
-- colon
-- redundant_void_return
-#  - comma
-#  - control_statement
-#  - file_length
 - force_cast
 - force_try
-#  - function_body_length
-#  - leading_whitespace
-- line_length
 - nesting
-#  - operator_whitespace
+- trailing_whitespace
+- type_name
+- identifier_name
+# - shorthand_operator
+# - comma
+# - control_statement
+# - file_length
+# - function_body_length
+# - leading_whitespace
+# - line_length
+# - operator_whitespace
+- redundant_void_return
+- colon
 - opening_brace
 - return_arrow_whitespace
-#  - statement_position
-#  - todo
-#  - trailing_newline
-#  - trailing_semicolon
-- trailing_whitespace
-#  - type_body_length
-- type_name
-- valid_docs
-- variable_name
-- variable_name_min_length
-#  - variable_name_max_length
+# - statement_position
+# - todo
+# - trailing_newline
+# - trailing_semicolon
+# - type_body_length
+# - valid_docs
+# - variable_name
+# - variable_name_min_length
+# - variable_name_max_length
 excluded: # paths to ignore during linting. overridden by `included`.
 - Carthage
 - Pods
 - fastlane
+- PublicCode
 # parameterized rules can be customized from this configuration file
 file_length:
 - 700
@@ -49,3 +51,4 @@ variable_name_max_length:
 variable_name_min_length:
 - 2 # warning
 - 1 # error
+
