@@ -58,6 +58,9 @@ extension UIButton {
             self.layer.cornerRadius = 4.0
             self.clipsToBounds      = true
         }
+        
+        self
+        
         switch style {
         case .notAplyed   : _ = 1
         case .regular     : regular()
