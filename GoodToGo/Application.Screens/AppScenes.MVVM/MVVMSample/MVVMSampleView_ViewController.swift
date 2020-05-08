@@ -16,7 +16,7 @@ extension VC {
             let some = V.MVVMSampleView_View()
             self.view.addSubview(some)
             let margin : CGFloat = 50
-            some.rjsALayouts.setMarginFromSuper(top: margin, bottom: margin, left: margin, right: margin)
+            some.rjsALayouts.setMarginFromSuperview(top: margin, bottom: margin, left: margin, right: margin) 
             return some
         }()
   

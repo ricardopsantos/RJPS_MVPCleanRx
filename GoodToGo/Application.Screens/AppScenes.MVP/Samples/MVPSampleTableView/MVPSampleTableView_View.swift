@@ -26,7 +26,7 @@ extension AppView {
         private lazy var _tableView: UITableView = {
             let some = AppFactory.UIKit.tableView(baseView: self.view)
             some.backgroundColor = self.view.backgroundColor
-            some.rjsALayouts.setMarginFromSuper(top: 0, bottom: 0, left: 0, right: 0)
+            some.rjsALayouts.setMarginFromSuperview(top: 0, bottom: 0, left: 0, right: 0)
             some.register(Sample_TableViewCell.self, forCellReuseIdentifier: Sample_TableViewCell.reuseIdentifier)
             some.rx.modelSelected(E.Employee.self)
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
