@@ -11,16 +11,16 @@ import RxCocoa
 
 protocol BlissRoot_RouterProtocol: class {
     func dismissView()                                // Mandatory in all Routers
-    var rxPublishRelay_dismissView : PublishRelay<Void> { get } // PublishRelay model Events
+    var rxPublishRelay_dismissView: PublishRelay<Void> { get } // PublishRelay model Events
 
-    func goToList(asNavigationController:Bool)
-    func goToListWith(vm:VM.BlissQuestionsList_ViewModel?, asNavigationController:Bool)
+    func goToList(asNavigationController: Bool)
+    func goToListWith(vm: VM.BlissQuestionsList_ViewModel?, asNavigationController: Bool)
 }
 
 extension Router {
     class BlissRoot_Router: GenericRouter, GenericRouter_Protocol, BlissRoot_RouterProtocol {
         
-        private weak var baseView : V.BlissRoot_View?
+        private weak var baseView: V.BlissRoot_View?
         // PublishRelay model Events
         private var rxPublishRelay_ShowQuestionsList = PublishRelay<VM.BlissQuestionsList_ViewModel?>()
         init(viewController: V.BlissRoot_View) {
@@ -44,7 +44,7 @@ extension Router {
                 .disposed(by: disposeBag)
         }
         
-        private func controllerWith(vm:VM.BlissQuestionsList_ViewModel?) -> UINavigationController? {
+        private func controllerWith(vm: VM.BlissQuestionsList_ViewModel?) -> UINavigationController? {
             guard let controller = AppDelegate.shared.container.resolve(V.BlissQuestionsList_View.self) else { return nil }
             if let vm = vm {
                 controller.presenter.viewModel = vm
@@ -54,12 +54,12 @@ extension Router {
             return navigationController
         }
         
-        func goToListWith(vm: VM.BlissQuestionsList_ViewModel?, asNavigationController:Bool) {
+        func goToListWith(vm: VM.BlissQuestionsList_ViewModel?, asNavigationController: Bool) {
             rxPublishRelay_ShowQuestionsList.accept(vm)
         }
         
-        func goToList(asNavigationController:Bool) {
-            goToListWith(vm: nil, asNavigationController:asNavigationController)
+        func goToList(asNavigationController: Bool) {
+            goToListWith(vm: nil, asNavigationController: asNavigationController)
         }
         
         func dismissView() {

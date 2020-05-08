@@ -17,7 +17,7 @@ extension AppView {
     class BottomBar: GenericView {
 
         deinit {
-            AppLogs.DLog("\(self.className) was killed")
+            AppLogger.log("\(self.className) was killed")
             NotificationCenter.default.removeObserver(self)
         }
         weak var delegate: BottomBar_Delegate?
@@ -102,11 +102,11 @@ extension AppView {
 
             self.view.backgroundColor = .clear
             let btns =  [_btn1, _btn2, _btn3, _btn4, _btn5]
-            let k : CGFloat = 0.3
+            let k: CGFloat = 0.3
             let dimH = V.BottomBar.backgroundHeight()*(1.0-k)
             let dimW = (AppGlobal.screenWidth / (CGFloat(btns.count+1)))
             
-            let margin : CGFloat = V.BottomBar.defaultHeight()*(k/2.0)
+            let margin: CGFloat = V.BottomBar.defaultHeight()*(k/2.0)
             let btnSize = CGSize(width: dimW, height: dimH)
             btns.forEach { (some) in
                 if some == _btn3 {

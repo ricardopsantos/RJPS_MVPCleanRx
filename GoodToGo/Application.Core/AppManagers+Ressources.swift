@@ -29,26 +29,26 @@ extension AppManagers {
                 if selectedLanguage != _storedLanguage {
                     _currentLanguageBundle = nil
                     AppGlobal.saveWith(key: AppConstants.Dev.keyCoreDataSaveLang, value: "\(selectedLanguage.rawValue)")
-                    AppLogs.DLogWarning("Language code changed to [\(selectedLanguage)]")
+                    AppLogger.warning("Language code changed to [\(selectedLanguage)]")
                 }
             }
         }
 
         enum SelectedLanguage: Int { case en, pt }
         
-        static func get(_ code:String) -> String { return resource(code) }
+        static func get(_ code: String) -> String { return resource(code) }
 
         struct Messages {
             private init() {}
-            static var noInternet          : String { return get("NoInternetConnection") }
-            static var pleaseTryAgainLater : String { return get("Please try again latter") }
-            static var dismiss             : String { return get("Dismiss") }
-            static var alert               : String { return get("Alert") }
-            static var ok                  : String { return get("OK") }
-            static var sucess              : String { return get("Sucess") }
-            static var no                  : String { return get("NO") }
-            static var details             : String { return get("Details") }
-            static var invalidURL          : String { return get("Invalid URL") }
+            static var noInternet: String { return get("NoInternetConnection") }
+            static var pleaseTryAgainLater: String { return get("Please try again latter") }
+            static var dismiss: String { return get("Dismiss") }
+            static var alert: String { return get("Alert") }
+            static var ok: String { return get("OK") }
+            static var sucess: String { return get("Sucess") }
+            static var no: String { return get("NO") }
+            static var details: String { return get("Details") }
+            static var invalidURL: String { return get("Invalid URL") }
         }
         
         private static func resource(_ code : String/*, languageCode : SelectedLanguage = prepareLanguageCode()*/) -> String {

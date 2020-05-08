@@ -30,7 +30,7 @@ class StatsDetailRouter: NSObject, StatsDetailRoutingLogic, StatsDetailDataPassi
         }
     }
 
-    // FIXME refactor to reuse code from StatsRouter
+    #warning("refactor to reuse code from StatsRouter")
     private func routeToId(id: StatsDetailId, type: TransactionType) {
         let destinationVC = StatsDetailViewController.makeFromXib()
         var destinationDataSource = destinationVC.router!.dataStore!
@@ -42,7 +42,7 @@ class StatsDetailRouter: NSObject, StatsDetailRoutingLogic, StatsDetailDataPassi
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }
 
-    // FIXME refactor to reuase code from DashboardRouter
+    #warning("refactor to reuase code from DashboardRouter")
     private func routeToTransactionDetail(id: String) {
         let destination = TimelineDetailViewController.makeFromXib()
         var destinationDS = destination.router!.dataStore!

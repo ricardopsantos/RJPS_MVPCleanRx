@@ -15,17 +15,14 @@ extension UILabel {
         case title
         case value
     }
-    
     var layoutStyle: UILabel.LayoutStyle {
         set { layoutWith(style: newValue) }
         get { return .notAplyed }
     }
-    
     var textAnimated: String? {
         set { fadeTransition(); self.text = newValue ?? "" }
         get { return self.text }
     }
-    
 }
 
 //

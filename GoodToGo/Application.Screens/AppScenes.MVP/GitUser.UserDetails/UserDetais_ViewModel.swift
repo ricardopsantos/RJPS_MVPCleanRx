@@ -9,7 +9,7 @@ import UIKit
 
 extension ViewModel {
     struct UserDetais {
-        let user    : E.GitHubUser
-        let friends : [E.GitHubUser]
+        let user: E.GitHubUser
+        let friends: [E.GitHubUser]
     }
 }

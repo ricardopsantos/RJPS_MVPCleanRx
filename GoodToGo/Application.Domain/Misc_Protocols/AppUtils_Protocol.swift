@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol AppUtils_Protocol : class {
+protocol AppUtils_Protocol: class {
 
     // If there is internet; execture the code in the block. If not, presente a warging
     var existsInternetConnection : Bool { get }

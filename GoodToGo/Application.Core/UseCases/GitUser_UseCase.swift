@@ -35,7 +35,7 @@ extension UseCases {
             }
             
             repositoryNetwork.getInfoOfUserWith(userName: userName, canUseCache: true, completionHandler: { [weak self] result in
-                guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+                guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
                 switch result {
                 case .success(let some):
                     let user : E.GitHubUser = some.entity
@@ -66,7 +66,7 @@ extension UseCases {
             }
             
             repositoryNetwork.getFriendsOfUserWith(userName: userName, canUseCache: true, completionHandler: { [weak self] result in
-                guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+                guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
                 switch result {
                 case .success(let some):
                     let friends : [E.GitHubUser] = some.entity

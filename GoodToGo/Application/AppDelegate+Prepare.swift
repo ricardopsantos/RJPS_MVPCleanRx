@@ -11,6 +11,6 @@ import Swinject
 extension AppDelegate {
     func appPrepare(application:UIApplication) -> Void {
         AppEnvironments.autoSet()
-        AppLogs.DLog("Number of logins : \(AppUserDefaultsVars.incrementIntWithKey(AppConstants.Dev.numberOfLogins))")
+        AppLogger.log("Number of logins : \(AppUserDefaultsVars.incrementIntWithKey(AppConstants.Dev.numberOfLogins))")
     }
 }

@@ -12,7 +12,7 @@ import RxSwift
 
 protocol MVPSampleRxView_RouterProtocol: class {
     func dismissView()
-    func presentControllerWith(vm:VM.MVPSampleRxView_ViewModel?)
+    func presentControllerWith(vm: VM.MVPSampleRxView_ViewModel?)
 }
 
 extension Router {
@@ -21,7 +21,7 @@ extension Router {
         // PublishRelay model Events
         var rxPublishRelay_showDetails = PublishRelay<VM.MVPSampleRxView_ViewModel?>()
 
-        private weak var baseView : V.MVPSampleRxView_View?
+        private weak var baseView: V.MVPSampleRxView_View?
         init(viewController: V.MVPSampleRxView_View) {
             super.init()
             baseView = viewController

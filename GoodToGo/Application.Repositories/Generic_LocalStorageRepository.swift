@@ -20,7 +20,7 @@ extension RP.LocalStorage {
         
         @discardableResult
         func save(key: String, value: String, expireDate: Date?) -> Bool {
-            return RJS_DataModel.save(key: key, value: value, expireDate:expireDate)
+            return RJS_DataModel.save(key: key, value: value, expireDate: expireDate)
         }
         
         func existsWith(key: String) -> Bool {

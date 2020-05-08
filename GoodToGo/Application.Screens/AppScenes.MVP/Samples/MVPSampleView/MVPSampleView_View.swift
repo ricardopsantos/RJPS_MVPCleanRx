@@ -16,13 +16,13 @@ extension AppView {
     class MVPSampleView_View: GenericView {
         
         deinit {
-            AppLogs.DLog("\(self.className) was killed")
+            AppLogger.log("\(self.className) was killed")
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
         var presenter : MVPSampleView_PresenterProtocol!
         
-        private let _margin : CGFloat = 25
+        private let _margin: CGFloat = 25
         
         private lazy var _txtUser: UITextField = {
             let some = AppFactory.UIKit.textField(baseView: self.view)
@@ -60,7 +60,7 @@ extension AppView {
             some.rjsALayouts.setHeight(_margin*2)
             some.onTouchUpInside { [weak self] in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
                     let user = strongSelf._txtUser.text
                     let pass = strongSelf._txtPass.text
                     strongSelf.presenter.userDidTryToLoginWith(user: user!, password: pass!)
@@ -91,8 +91,8 @@ extension AppView {
             some.rjsALayouts.setHeight(_margin*2)
             some.onTouchUpInside { [weak self] in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
-                    strongSelf.presenter.router.presentControllerWith(vm:nil)
+                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
+                    strongSelf.presenter.router.presentControllerWith(vm: nil)
                 })
             }
             return some
@@ -106,7 +106,7 @@ extension AppView {
             some.rjsALayouts.setHeight(_margin*2)
             some.onTouchUpInside { [weak self] in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
                     strongSelf.presenter.router.dismissView()
                 })
             }

@@ -14,20 +14,20 @@ import RxCocoa
  * 1 - Declare : Presenter_Protocol & View_Protocol
  */
 
-protocol UserDetais_PresenterProtocol : class {
-    var generic     : GenericPresenter_Protocol? { get }   // Mandatory in ALL Presenters
-    var genericView : GenericView? { get }                 // Mandatory in ALL Presenters
-    var viewModel   : VM.UserDetais? { get set }           // Mandatory in ALL Presenters
-    var router      : UserDetais_RouterProtocol! { get }   // Mandatory in ALL Presenters
-    var tableView   : GenericTableView_Protocol! { get }
+protocol UserDetais_PresenterProtocol: class {
+    var generic: GenericPresenter_Protocol?   { get }   // Mandatory in ALL Presenters
+    var genericView: GenericView?             { get }                 // Mandatory in ALL Presenters
+    var viewModel: VM.UserDetais?             { get set }           // Mandatory in ALL Presenters
+    var router: UserDetais_RouterProtocol!    { get }   // Mandatory in ALL Presenters
+    var tableView: GenericTableView_Protocol! { get }
     
     var rxPublishRelay_dismissView: PublishRelay<Void> { get }     // PublishRelay model Events
 
 }
 
-protocol UserDetais_ViewProtocol : class {
-    func viewDataToScreen(some:VM.UserDetais)
-    func setAvatarWith(image:UIImage)
+protocol UserDetais_ViewProtocol: class {
+    func viewDataToScreen(some: VM.UserDetais)
+    func setAvatarWith(image: UIImage)
 }
 
 /**
@@ -35,13 +35,13 @@ protocol UserDetais_ViewProtocol : class {
  */
 
 extension Presenter {
-    class UserDetais_Presenter : GenericPresenter {
-        var generic     : GenericPresenter_Protocol?
-        var genericView : GenericView?
-        var viewModel   : VM.UserDetais? { didSet { AppLogs.DLog(appCode: .vmChanged); viewModelChanged() } }
-        weak var view   : UserDetais_ViewProtocol!
-        var router      : UserDetais_RouterProtocol!
-        var tableView   : GenericTableView_Protocol!
+    class UserDetais_Presenter: GenericPresenter {
+        var generic: GenericPresenter_Protocol?
+        var genericView: GenericView?
+        var viewModel: VM.UserDetais? { didSet { AppLogger.log(appCode: .vmChanged); viewModelChanged() } }
+        weak var view: UserDetais_ViewProtocol!
+        var router: UserDetais_RouterProtocol!
+        var tableView: GenericTableView_Protocol!
     }
 }
 
@@ -49,7 +49,7 @@ extension Presenter {
  * 3 - Implementation : Presenter Protocol
  */
 
-extension P.UserDetais_Presenter : UserDetais_PresenterProtocol {
+extension P.UserDetais_Presenter: UserDetais_PresenterProtocol {
     
     // PublishRelay model Events
     var rxPublishRelay_dismissView: PublishRelay<Void> {
@@ -59,8 +59,8 @@ extension P.UserDetais_Presenter : UserDetais_PresenterProtocol {
     }
 }
 
-extension P.UserDetais_Presenter : GenericTableView_Protocol {
-    func numberOfRows(_ section:Int) -> Int {
+extension P.UserDetais_Presenter: GenericTableView_Protocol {
+    func numberOfRows(_ section: Int) -> Int {
         return viewModel?.friends.count ?? 0
     }
     
@@ -77,7 +77,7 @@ extension P.UserDetais_Presenter : GenericTableView_Protocol {
  * 4 - Implementation : GenericPresenter_Protocol Protocol
  */
 
-extension P.UserDetais_Presenter : GenericPresenter_Protocol {
+extension P.UserDetais_Presenter: GenericPresenter_Protocol {
     func view_deinit()    -> Void { }
     func loadView()       -> Void { rxSetup() }
     func viewDidAppear()  -> Void { }
@@ -95,7 +95,7 @@ extension P.UserDetais_Presenter : GenericPresenter_Protocol {
 extension P.UserDetais_Presenter {
     
     private func updateViewWith(vm:VM.UserDetais?) -> Void {
-        guard vm != nil else { AppLogs.DLog(appCode: .ignored); return }
+        guard vm != nil else { AppLogger.log(appCode: .ignored); return }
         view.viewDataToScreen(some: vm!)
         downloadImage(imageURL: vm!.user.avatarUrl!, onFail: AppImages.notFound) { [weak self] (image) in
             self?.view.setAvatarWith(image: image!)

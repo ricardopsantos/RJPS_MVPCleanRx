@@ -47,7 +47,7 @@ extension AppView {
                 .subscribe(onNext: { [weak self] (query) in
                     let query = self?._searchBar.text?.trim ?? ""
                     if query.count>0 {
-                        handle(filter: query, sender:"[_searchBar][textDidEndEditing]")
+                        handle(filter: query, sender: "[_searchBar][textDidEndEditing]")
                     }
                 })
                 .disposed(by: self.disposeBag)
@@ -293,8 +293,8 @@ extension AppView {
             _rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
                 _ = element
                 _ = row
-                guard self != nil else { AppLogs.DLog(appCode: .referenceLost); return }
-                cell.set(title:element)
+                guard self != nil else { AppLogger.log(appCode: .referenceLost); return }
+                cell.set(title: element)
                 }.disposed(by: disposeBag)
             return some
         }()
@@ -305,15 +305,13 @@ extension AppView {
         }
         
         func delay(_ delay:Double, block: @escaping () -> Void) {
-            DispatchQueue.executeWithDelay (delay:delay) {
+            DispatchQueue.executeWithDelay (delay: delay) {
                 block()
             }
         }
            
         override func viewDidLoad() {
             super.viewDidLoad()
-            
-            
         }
     }
 }
@@ -323,7 +321,7 @@ extension AppView {
 //
 extension AppView.RxTesting {
     
-    var rxReturnOnError : UIImage { return AppImages.notInternet }
+    var rxReturnOnError: UIImage { return AppImages.notInternet }
     var rxObservableAssyncRequest : Observable<UIImage> {
         return Observable.create { [weak self] observer -> Disposable in
             let adress = Bool.random() ? "https://image.shutterstock.com/image-photo/white-transparent-leaf-on-mirror-260nw-1029171697.jpg" : "lalal"

@@ -13,7 +13,7 @@ extension AppView {
     class SearchUser_View: GenericView {
         
         deinit {
-            AppLogs.DLog("\(self.className) was killed")
+            AppLogger.log("\(self.className) was killed")
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
@@ -35,13 +35,13 @@ extension AppView {
                 .orEmpty
                 .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
                 .subscribe(onNext: { [weak self] _ in
-                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
                     strongSelf.presenter.searchUserWith(username: some.text ?? "")
                 })
                 .disposed(by: disposeBag)
             some.rx.textDidEndEditing
                 .subscribe(onNext: { [weak self] (_) in
-                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
                     if strongSelf._searchBar.text!.count>0  {
                         strongSelf.presenter.searchUserWith(username: some.text ?? "")
                     }

@@ -40,7 +40,7 @@ extension Entity {
             case url
         }
         
-        init(json:Dictionary<String, Any>) {
+        init(json: Dictionary<String, Any>) {
             if let login     = json["login"]      as? String { self.login = login }
             if let name      = json["name"]       as? String { self.name = name }
             if let avatarUrl = json["avatar_url"] as? String { self.avatarUrl = avatarUrl }
@@ -49,7 +49,7 @@ extension Entity {
         
         init?(data:Data) {
             guard let object = try? JSONDecoder().decode(GitHubUser.self, from: data) else {
-                AppLogs.DLogError("Error: Couldn't decode data into Blog")
+                AppLogger.error("Error: Couldn't decode data into Blog")
                 return nil
             }
             self = object
@@ -62,8 +62,8 @@ extension Entity {
             return false
         }
         
-        static func listFrom(jsonList:[[String: Any]]) -> [E.GitHubUser] {
-            let result : [E.GitHubUser] = jsonList.compactMap { (some) -> E.GitHubUser? in return E.GitHubUser(json: some) }
+        static func listFrom(jsonList: [[String: Any]]) -> [E.GitHubUser] {
+            let result: [E.GitHubUser] = jsonList.compactMap { (some) -> E.GitHubUser? in return E.GitHubUser(json: some) }
             return result
         }        
     }

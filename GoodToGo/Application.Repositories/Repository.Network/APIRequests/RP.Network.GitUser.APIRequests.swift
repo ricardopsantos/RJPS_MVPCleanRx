@@ -18,7 +18,7 @@ extension RP.Network.GitUser {
         var responseType: NetworkClientResponseType
         var mockedData: String?
 
-        init(userName:String) throws {
+        init(userName: String) throws {
             if let url = URL(string: "\(AppConstants.URLs.githubAPIBaseUrl)/users/\(userName)") {
                 urlRequest = URLRequest(url: url)
                 urlRequest.httpMethod = "GET"
@@ -65,14 +65,14 @@ extension RP.Network.GitUser {
             } else { throw AppFactory.Errors.with(appCode: .invalidURL) }
         }
     }
-    struct GetFriends_APIRequest : WebAPIRequest_Protocol {
+    struct GetFriends_APIRequest: WebAPIRequest_Protocol {
         var returnOnMainTread: Bool
         var debugRequest: Bool
         var urlRequest: URLRequest
         var responseType: NetworkClientResponseType
         var mockedData: String? 
 
-        init(userName:String) throws {
+        init(userName: String) throws {
             if let url = URL(string: "\(AppConstants.URLs.githubAPIBaseUrl)/users/\(userName)/followers") {
                 urlRequest = URLRequest(url: url)
                 urlRequest.httpMethod = "GET"

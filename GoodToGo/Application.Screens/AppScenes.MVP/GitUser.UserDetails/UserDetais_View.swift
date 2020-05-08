@@ -11,14 +11,14 @@ extension AppView {
     class UserDetais_View: GenericView {
     
         deinit {
-            AppLogs.DLog("\(self.className) was killed")
+            AppLogger.log("\(self.className) was killed")
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
-        var presenter : UserDetais_PresenterProtocol!
+        var presenter: UserDetais_PresenterProtocol!
         
-        private let _margin    : CGFloat = 25
-        private let _imageSize : CGFloat = 100
+        private let _margin: CGFloat = 25
+        private let _imageSize: CGFloat = 100
         
         private lazy var _lblUserName: UILabel = {
             let some = AppFactory.UIKit.label(baseView: self.view, style: .value)
@@ -33,7 +33,7 @@ extension AppView {
             let some = AppFactory.UIKit.tableView(baseView: self.view)
             some.delegate   = self as UITableViewDelegate
             some.dataSource = self as UITableViewDataSource
-            some.rjsALayouts.setMargin(_margin, on: .top, from:_imgAvatar)
+            some.rjsALayouts.setMargin(_margin, on: .top, from: _imgAvatar)
             some.rjsALayouts.setMargin(_margin, on: .left)
             some.rjsALayouts.setMargin(_margin, on: .right)
             some.rjsALayouts.setMargin(_margin+V.TopBar.defaultHeight, on: .bottom)
@@ -44,7 +44,7 @@ extension AppView {
         private lazy var _imgAvatar: UIImageView = {
             let some = AppFactory.UIKit.imageView(baseView: self.view)
             some.rjsALayouts.setSize(CGSize(width: _imageSize, height: _imageSize))
-            some.rjsALayouts.setMargin(_margin, on: .top, from:_topGenericBar.view)
+            some.rjsALayouts.setMargin(_margin, on: .top, from: _topGenericBar.view)
             some.rjsALayouts.setMargin(_margin, on: .right)
             return some
         }()
@@ -62,7 +62,7 @@ extension AppView {
                 .bind(to: presenter.rxPublishRelay_dismissView)
                 .disposed(by: disposeBag)
             some.rxSignal_viewTapped
-                .emit(onNext: { AppLogs.DLog("Tapped! \($0)") })
+                .emit(onNext: { AppLogger.log("Tapped! \($0)") })
                 .disposed(by: disposeBag)
             return some
         }()
@@ -97,7 +97,7 @@ extension AppView {
 
 // MARK: - View Protocol
 
-extension V.UserDetais_View : UserDetais_ViewProtocol {
+extension V.UserDetais_View: UserDetais_ViewProtocol {
     func setAvatarWith(image: UIImage) {
         _imgAvatar.image = image
     }
@@ -110,14 +110,14 @@ extension V.UserDetais_View : UserDetais_ViewProtocol {
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
-extension V.UserDetais_View : UITableViewDelegate, UITableViewDataSource {
+extension V.UserDetais_View: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.tableView.numberOfRows(section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: V.UserTableViewCell.reuseIdentifier) as? V.UserTableViewCell else {
-            AppLogs.DLog(appCode: .dequeueReusableCellFail)
+            AppLogger.log(appCode: .dequeueReusableCellFail)
             return UITableViewCell()
         }
         presenter.tableView.configure(cell: cell, indexPath: indexPath)

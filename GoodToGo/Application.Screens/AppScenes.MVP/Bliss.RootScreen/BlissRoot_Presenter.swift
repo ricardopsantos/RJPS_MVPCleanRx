@@ -14,20 +14,20 @@ import RxCocoa
 // MARK: - Presenter_Protocol & View_Protocol
 //
 
-protocol BlissRoot_PresenterProtocol : class {
-    var generic     : GenericPresenter_Protocol? { get }     // Mandatory in ALL Presenters
-    var genericView : GenericView?               { get }     // Mandatory in ALL Presenters
-    var viewModel   : VM.BlissRoot_ViewModel?    { get set } // Mandatory in ALL Presenters
-    var router      : BlissRoot_RouterProtocol!  { get }     // Mandatory in ALL Presenters
+protocol BlissRoot_PresenterProtocol: class {
+    var generic: GenericPresenter_Protocol? { get }     // Mandatory in ALL Presenters
+    var genericView: GenericView?           { get }                   // Mandatory in ALL Presenters
+    var viewModel: VM.BlissRoot_ViewModel?  { get set }    // Mandatory in ALL Presenters
+    var router: BlissRoot_RouterProtocol!   { get }      // Mandatory in ALL Presenters
     
     // PublishRelay model Events
     var rxPublishRelay_dismissView: PublishRelay<Void> { get }
     func userDidReadBadServerHealthMessage()
 }
 
-protocol BlissRoot_ViewProtocol : class {
+protocol BlissRoot_ViewProtocol: class {
     func viewNeedsToDisplayBadServerMessage()
-    func set(image:UIImage?)
+    func set(image: UIImage?)
 }
 
 //
@@ -35,15 +35,15 @@ protocol BlissRoot_ViewProtocol : class {
 //
 
 extension Presenter {
-    class BlissRoot_Presenter : GenericPresenter {
-        weak var generic           : GenericPresenter_Protocol?
-        weak var genericView       : GenericView?
-        weak var view              : BlissRoot_ViewProtocol!
-        var router                 : BlissRoot_RouterProtocol!
-        var blissQuestions_UseCase : BlissQuestionsAPI_UseCaseProtocol!
-        var blissGeneric_UseCase   : BlissGenericAppBussiness_UseCaseProtocol!
-        var viewModel         : VM.BlissRoot_ViewModel? {
-            didSet { AppLogs.DLog(appCode: .vmChanged); viewModelChanged() }
+    class BlissRoot_Presenter: GenericPresenter {
+        weak var generic: GenericPresenter_Protocol?
+        weak var genericView: GenericView?
+        weak var view: BlissRoot_ViewProtocol!
+        var router: BlissRoot_RouterProtocol!
+        var blissQuestions_UseCase: BlissQuestionsAPI_UseCaseProtocol!
+        var blissGeneric_UseCase: BlissGenericAppBussiness_UseCaseProtocol!
+        var viewModel: VM.BlissRoot_ViewModel? {
+            didSet { AppLogger.log(appCode: .vmChanged); viewModelChanged() }
         }
     }
 }
@@ -52,11 +52,11 @@ extension Presenter {
 // MARK: - BlissRoot_PresenterProtocol
 //
 
-extension P.BlissRoot_Presenter : BlissRoot_PresenterProtocol {
+extension P.BlissRoot_Presenter: BlissRoot_PresenterProtocol {
     
     func userDidReadBadServerHealthMessage() {
-        DispatchQueue.executeWithDelay (delay:AppConstants.defaultAnimationsTime) { [weak self] in
-            guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+        DispatchQueue.executeWithDelay (delay: AppConstants.defaultAnimationsTime) { [weak self] in
+            guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
             strongSelf.checkServerStatus()
         }
     }
@@ -73,7 +73,7 @@ extension P.BlissRoot_Presenter : BlissRoot_PresenterProtocol {
 // MARK: - GenericPresenter_Protocol
 //
 
-extension P.BlissRoot_Presenter : GenericPresenter_Protocol {
+extension P.BlissRoot_Presenter: GenericPresenter_Protocol {
     func view_deinit()    -> Void { }
     func loadView()       -> Void { }
     func viewDidAppear()  -> Void { }
@@ -98,13 +98,13 @@ extension P.BlissRoot_Presenter {
     private func checkServerStatus() {
         
         let delayToHaveTimeToEnjoyMainScreen : Double = 2
-        DispatchQueue.executeWithDelay(delay:delayToHaveTimeToEnjoyMainScreen) { [weak self] in
-            guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+        DispatchQueue.executeWithDelay(delay: delayToHaveTimeToEnjoyMainScreen) { [weak self] in
+            guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
 
             let handleFail = { strongSelf.view.viewNeedsToDisplayBadServerMessage() }
             
             let handleSucess = { [weak self] in
-                guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+                guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
                 strongSelf.router.goToList(asNavigationController: true)
             }
             strongSelf.genericView?.setActivityState(true)
@@ -150,8 +150,8 @@ extension P.BlissRoot_Presenter {
 // MARK: - RxRelated
 //
 extension P.BlissRoot_Presenter {
-    var rxReturnOnError : UIImage { return AppImages.notInternet }
-    var rxObservableAssyncRequest : Observable<UIImage> {
+    var rxReturnOnError: UIImage { return AppImages.notInternet }
+    var rxObservableAssyncRequest: Observable<UIImage> {
         return Observable.create { observer -> Disposable in
             self.downloadImage(imageURL: AppConstants.Bliss.logoURL, completion: { (image) in
                 if image != nil {

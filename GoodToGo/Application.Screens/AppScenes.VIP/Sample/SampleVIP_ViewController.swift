@@ -25,19 +25,17 @@ import RxCocoa
 
 // Adicionar botao de router para mudar de ecran
 
-protocol SampleVIP_DisplayLogic: class
-{
+protocol SampleVIP_DisplayLogic: class {
   func displaySomething(viewModel: SampleVIP.SearchView.ViewModel)
 }
 
-class SampleVIP_ViewController: GenericView, SampleVIP_DisplayLogic
-{
+class SampleVIP_ViewController: GenericView, SampleVIP_DisplayLogic {
   var interactor: SampleVIP_BusinessLogic?
   var router: (NSObjectProtocol & SampleVIP_RoutingLogic & SampleVIP_DataPassing)?
 
     // Added to template
     deinit {
-            AppLogs.DLog("\(self.className) was killed")
+            AppLogger.log("\(self.className) was killed")
             NotificationCenter.default.removeObserver(self)
         }
         
@@ -49,7 +47,7 @@ class SampleVIP_ViewController: GenericView, SampleVIP_DisplayLogic
         some.rjsALayouts.setHeight(50)
         some.rx.textDidEndEditing
             .subscribe(onNext: { [weak self] (_) in
-                guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+                guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
                 if strongSelf._searchBar.text!.count>0  {
                //     strongSelf.presenter.searchUserWith(username: some.text ?? "")
                 }
@@ -57,18 +55,15 @@ class SampleVIP_ViewController: GenericView, SampleVIP_DisplayLogic
             .disposed(by: self.disposeBag)
         return some
     }()
-    
-    
+
   // MARK: Object lifecycle
   
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-  {
+  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     setup()
   }
   
-  required init?(coder aDecoder: NSCoder)
-  {
+  required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     setup()
   }
@@ -82,8 +77,7 @@ class SampleVIP_ViewController: GenericView, SampleVIP_DisplayLogic
          _searchBar.lazyLoad()
      }
     
-  private func setup()
-  {
+  private func setup() {
     let viewController = self
     let interactor = SampleVIP_Interactor()
     let presenter = SampleVIP_Presenter()
@@ -117,11 +111,9 @@ class SampleVIP_ViewController: GenericView, SampleVIP_DisplayLogic
         prepareLayout()
     }
     
-  override func viewDidLoad()
-  {
+  override func viewDidLoad() {
     super.viewDidLoad()
-   
-    
+
     DispatchQueue.executeWithDelay (delay:3) {
         self.doSomething()
     }
@@ -132,14 +124,12 @@ class SampleVIP_ViewController: GenericView, SampleVIP_DisplayLogic
   
   //@IBOutlet weak var nameTextField: UITextField!
   
-  func doSomething()
-  {
+  func doSomething() {
     let request = SampleVIP.SearchView.Request()
     interactor?.doSomething(request: request)
   }
   
-  func displaySomething(viewModel: SampleVIP.SearchView.ViewModel)
-  {
+  func displaySomething(viewModel: SampleVIP.SearchView.ViewModel) {
     _searchBar.text = viewModel.name
   }
 }

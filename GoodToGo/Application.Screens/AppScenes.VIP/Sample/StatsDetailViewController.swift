@@ -139,7 +139,7 @@ extension StatsDetailViewController {
             .disposed(by: disposeBag)
 
         tableItems
-            .do(onNext: { [weak self] sections in
+            .do(onNext: { [weak self] /*sections*/ _ in
                 guard let self = self else { return }
                 if self.shouldShowSeeAll {
                     self.tableView.tableFooterView = self.buttonFooterView
@@ -223,7 +223,6 @@ extension StatsDetailViewController: StatsDetailDisplayLogic {
         }.sorted {
             orderByOptionalDate(date0: $0.0, date1: $1.0)
         }
-
 
         return orderedDataForSections.map { (arg) -> Section in
             let (date, items) = arg

@@ -13,7 +13,7 @@ protocol SearchUser_RouterProtocol: class {
     func dismissView()
     var rxPublishRelay_dismissView: PublishRelay<Void> { get }  // PublishRelay model Events
 
-    func presentUserDetails(vm:VM.UserDetais)
+    func presentUserDetails(vm: VM.UserDetais)
 }
 
 extension Router {
@@ -43,7 +43,7 @@ extension Router {
             
         }
     
-        private func controllerWith(vm:VM.UserDetais) -> V.UserDetais_View? {
+        private func controllerWith(vm: VM.UserDetais) -> V.UserDetais_View? {
             guard let controller = AppDelegate.shared.container.resolve(V.UserDetais_View.self) else { return nil }
             controller.presenter.viewModel = vm
             return controller
@@ -53,7 +53,7 @@ extension Router {
             rxPublishRelay_dismissView.accept(())
         }
         
-        func presentUserDetails(vm:VM.UserDetais) {
+        func presentUserDetails(vm: VM.UserDetais) {
             rxPublishRelay_ShowDetails.accept(vm)
         }
     }

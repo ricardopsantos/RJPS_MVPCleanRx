@@ -14,14 +14,14 @@ extension AppView {
     class BlissRoot_View: GenericView {
         
         deinit {
-            AppLogs.DLog("\(self.className) was killed")
+            AppLogger.log("\(self.className) was killed")
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
-        var presenter : BlissRoot_PresenterProtocol!
+        var presenter: BlissRoot_PresenterProtocol!
        
-        private var _imageSize : CGFloat = 200
-        private var _imgConstraintHeigth : NSLayoutConstraint?
+        private var _imageSize: CGFloat = 200
+        private var _imgConstraintHeigth: NSLayoutConstraint?
         private lazy var _imageView: UIImageView = {
             let some = UIImageView()
             self.view.addSubview(some)
@@ -82,7 +82,7 @@ extension V.BlissRoot_View: BlissRoot_ViewProtocol {
         _imageView.fadeTo(1)
         _imageView.rjsALayouts.updateConstraint(_imgConstraintHeigth!,
                                                toValue: newHeigth,
-                                               duration:0.3,
+                                               duration: 0.3,
                                                completion: { (_) in
                                                 
         })
@@ -91,7 +91,7 @@ extension V.BlissRoot_View: BlissRoot_ViewProtocol {
     func viewNeedsToDisplayBadServerMessage() {
         let alert = UIAlertController(title: "", message: AppMessages.Bliss.serverDown, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: AppMessages.ok, style: .default, handler: { [weak self] _ in
-            guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+            guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
             strongSelf.presenter.userDidReadBadServerHealthMessage()
         }))
         self.present(alert, animated: true, completion: nil)

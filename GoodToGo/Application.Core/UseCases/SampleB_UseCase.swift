@@ -20,12 +20,12 @@ extension UseCases {
         var generic_LocalStorageRepository  : Generic_LocalStorageRepositoryProtocol!
         
         func operation1(canUseCache: Bool, completionHandler: @escaping SampleB_UseCaseCompletionHandler) {
-            AppLogs.DLog(appCode: .notImplemented)
+            AppLogger.log(appCode: .notImplemented)
             completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notImplemented)))
         }
         
         func operation2(param: String, completionHandler: @escaping SampleB_UseCaseCompletionHandler) {
-            AppLogs.DLog(appCode: .notImplemented)
+            AppLogger.log(appCode: .notImplemented)
             completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notImplemented)))
         }
         

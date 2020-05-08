@@ -13,6 +13,6 @@ import UIKit
 
 extension ViewModel {
     struct BlissRoot_ViewModel {
-        var questionsList : [E.Bliss.QuestionElement] = []
+        var questionsList: [E.Bliss.QuestionElement] = []
     }
 }

@@ -31,7 +31,7 @@ struct AppConstants {
     struct URLs {
         private init() {}
         static let useMockedData = true
-        static var githubAPIBaseUrl : String {
+        static var githubAPIBaseUrl: String {
             switch AppEnvironments.current {
             case .dev  : return "https://api.github.com"
             case .prod : return "https://api.github.com"
@@ -44,13 +44,13 @@ struct AppConstants {
     }
     
     struct Cache {
-        static let serverRequestCacheLifeSpam : Int = 5 // minutes
-        static let servicesCache              : String = "servicesCache"
+        static let serverRequestCacheLifeSpam: Int = 5 // minutes
+        static let servicesCache: String = "servicesCache"
     }
     
     struct Dev {
         private init() {}
-        static let tapDefaultDisableTime : Double = 2
+        static let tapDefaultDisableTime: Double = 2
         static let cellIdentifier      = "DefaultCell"
         static let keyCoreDataLastUser = "keyCoreDataLastUser"
 

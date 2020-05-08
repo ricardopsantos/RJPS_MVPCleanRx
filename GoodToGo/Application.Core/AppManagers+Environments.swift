@@ -14,9 +14,9 @@ extension AppManagers {
         private static var _current : AppEnuns.AppMode = .dev
         static var current : AppEnuns.AppMode { return _current }
         
-        private static func set_dev()  -> Void { _current = .dev;  AppLogs.DLog("Environment set \(String(describing: _current))".uppercased()) }
-        private static func set_qa()   -> Void { _current = .qa;   AppLogs.DLog("Environment set \(String(describing: _current))".uppercased()) }
-        private static func set_prod() -> Void { _current = .prod; AppLogs.DLog("Environment set \(String(describing: _current))".uppercased()) }
+        private static func set_dev()  -> Void { _current = .dev;  AppLogger.log("Environment set \(String(describing: _current))".uppercased()) }
+        private static func set_qa()   -> Void { _current = .qa;   AppLogger.log("Environment set \(String(describing: _current))".uppercased()) }
+        private static func set_prod() -> Void { _current = .prod; AppLogger.log("Environment set \(String(describing: _current))".uppercased()) }
         
         static func isDev()  -> Bool { return current == .dev }
         static func isQA()   -> Bool { return current == .qa }
@@ -29,7 +29,7 @@ extension AppManagers {
             }
             
             let block_recover = {
-                AppLogs.DLog(appCode: .notPredicted)
+                AppLogger.log(appCode: .notPredicted)
                 set_dev()
             }
             

@@ -43,13 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-
-
-
-
-
 func teste() {
-    
 
 }
 
@@ -69,26 +63,26 @@ func testeRefreshToken() {
     }
 }
 
-var disposeBag : DisposeBag = DisposeBag()
+var disposeBag: DisposeBag = DisposeBag()
 
 class WEBAPI {
     private enum TokenState { case valid, invalid, refreshing }
     private let rxTokenState: BehaviorRelay = BehaviorRelay<TokenState>(value: .invalid)
     private let rxTokenValue: BehaviorRelay = BehaviorRelay<String>(value: "")
-    
+
     func invalidateToken() { print("Token invalidated...".uppercased()); rxTokenState.accept(.invalid) }
-    func assyncRequest(param:String, result:@escaping(String) -> Void) {
-       
-        func requestThatNeedsToken(_ token:String) {
+    func assyncRequest(param: String, result: @escaping(String) -> Void) {
+
+        func requestThatNeedsToken(_ token: String) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { result("assyncRequestA.response.[\(param)][\(token)]") }
         }
-        
+
         _rxObservableGetTokenRequest.subscribe(onSuccess: { _ in
             requestThatNeedsToken(self.rxTokenValue.value)
         }).disposed(by: disposeBag)
     }
-    
-    private var _rxObservableGetTokenRequest : Single<Void> {
+
+    private var _rxObservableGetTokenRequest: Single<Void> {
         return Single<Void>.create { observer -> Disposable in
             let identifier = "# TokenRefresh: "
             let endSequecence = {
@@ -119,7 +113,7 @@ class WEBAPI {
                         } else {
                             print("\(identifier)Fail generating token!".uppercased())
                             self.rxTokenState.accept(.invalid)
-                            observer(.error(NSError(domain:"error.domain.refreshing", code:0, userInfo:nil)))
+                            observer(.error(NSError(domain: "error.domain.refreshing", code: 0, userInfo: nil)))
                         }
                     }
                 }

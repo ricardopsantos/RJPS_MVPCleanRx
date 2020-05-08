@@ -14,7 +14,7 @@ extension AppView {
     class BlissDetails_View: GenericView {
         
         deinit {
-            AppLogs.DLog("\(self.className) was killed")
+            AppLogger.log("\(self.className) was killed")
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
@@ -23,8 +23,8 @@ extension AppView {
         // BehaviorRelay model a State
         private var _rxBehaviorRelay_tableDataSource = BehaviorRelay<[E.Bliss.ChoiceElement]>(value: [])
         private var _imgCoverConstraintHeigth : NSLayoutConstraint?
-        private let _margin    : CGFloat = 15
-        private let _imageSize : Int = 100
+        private let _margin: CGFloat = 15
+        private let _imageSize: Int = 100
         
         private lazy var _topGenericView: V.TopBar = {
             let some = AppFactory.UIKit.topBar(baseController: self)
@@ -33,12 +33,12 @@ extension AppView {
             some.addBackButton()
             some.rxSignal_btnDismissTapped
                 .asObservable()
-                .do(onNext: { _ in AppLogs.DLog("rxSignal_btnDismissTapped") })
+                .do(onNext: { _ in AppLogger.log("rxSignal_btnDismissTapped") })
                 .bind(to: presenter.rxPublishRelay_dismissView)
                 .disposed(by: disposeBag)
             some.rxSignal_btnBackTapped
                 .asObservable()
-                .do(onNext: { _ in AppLogs.DLog("rxSignal_btnBackTapped") })
+                .do(onNext: { _ in AppLogger.log("rxSignal_btnBackTapped") })
                 .bind(to: presenter.rxPublishRelay_dismissView)
                 .disposed(by: disposeBag)
             some.rxSignal_viewTapped
@@ -56,7 +56,7 @@ extension AppView {
             some.rjsALayouts.setHeight(50)
             some.rx.tap.subscribe({ [weak self] _ in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
                     strongSelf.presenter.userDidPretendToShareInApp()
                 })
             })
@@ -73,7 +73,7 @@ extension AppView {
             some.rx.tap
                     .subscribe({ [weak self] _ in
                     some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                        guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+                        guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
                         strongSelf.presenter.userDidPretendToShareByEmail()
                     })
                 })
@@ -110,8 +110,8 @@ extension AppView {
             some.register(Sample_TableViewCell.self, forCellReuseIdentifier: Sample_TableViewCell.reuseIdentifier)
             some.rx.modelSelected(E.Bliss.ChoiceElement.self)
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)                  .subscribe(onNext:  { [weak self]  item in
-                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
-                    AppLogs.DLog("Tapped [\(item)]")
+                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
+                    AppLogger.log("Tapped [\(item)]")
                     strongSelf.presenter.tableView.didSelect(object: item)
                     if let index = some.indexPathForSelectedRow {
                         some.deselectRow(at: index, animated: true)
@@ -120,7 +120,7 @@ extension AppView {
                 .disposed(by: disposeBag)
             _rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
                 _ = element
-                guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+                guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
                 cell.set(textColor: AppColors.lblTextColor)
                 strongSelf.presenter.tableView.configure(cell: cell, indexPath: NSIndexPath(row: row, section: 0) as IndexPath)
                 }.disposed(by: disposeBag)
@@ -168,13 +168,13 @@ extension AppView {
 extension V.BlissDetails_View : BlissDetails_ViewProtocol {
     
     func displayShareOptionsWith(text: String) {
-        AppLogs.DLog("")
+        AppLogger.log("")
         let itens = [text]
         let activityViewController = UIActivityViewController(activityItems: itens, applicationActivities: nil)
         self.present(activityViewController, animated: true, completion: nil)
     }
     
-    func set(title:String) {
+    func set(title: String) {
         _topGenericView.setTitle(title)
     }
 
@@ -190,7 +190,7 @@ extension V.BlissDetails_View : BlissDetails_ViewProtocol {
         _imgCover.fadeTo(1)
         _imgCover.rjsALayouts.updateConstraint(_imgCoverConstraintHeigth!,
                                                            toValue: newHeigth,
-                                                           duration:0.3,
+                                                           duration: 0.3,
                                                            completion: { (_) in
                                                             
         })

@@ -28,7 +28,7 @@ extension AppManagers {
         struct UIKit {
             private init() {}
             
-            static func textField(baseView:UIView? = nil, title:String="", tag:Int=0) -> UITextField {
+            static func textField(baseView: UIView? = nil, title:String="", tag: Int=0) -> UITextField {
                 let some = UITextField()
                 some.text = title
                 some.tag = tag
@@ -36,7 +36,7 @@ extension AppManagers {
                 return some
             }
             
-            static func label(baseView:UIView? = nil, title:String="", style:UILabel.LayoutStyle, tag:Int=0) -> UILabel {
+            static func label(baseView: UIView? = nil, title: String="", style:UILabel.LayoutStyle, tag: Int=0) -> UILabel {
                 let some = UILabel()
                 some.text = title
                 some.numberOfLines = 0
@@ -46,7 +46,7 @@ extension AppManagers {
                 return some
             }
             
-            static func button(baseView:UIView? = nil, title:String="", style:UIButton.LayoutStyle, tag:Int=0) -> UIButton {
+            static func button(baseView: UIView? = nil, title: String="", style:UIButton.LayoutStyle, tag: Int=0) -> UIButton {
                 let some = UIButton()
                 some.tag = tag
                 some.setTitleForAllStates(title)
@@ -55,7 +55,7 @@ extension AppManagers {
                 return some
             }
             
-            static func searchBar(baseView:UIView? = nil, tag:Int=0) -> CustomSearchBar {
+            static func searchBar(baseView: UIView? = nil, tag: Int=0) -> CustomSearchBar {
                 let some = CustomSearchBar()
                 baseView?.addSubview(some)
                 some.tintColor = AppColors.TopBar.background
@@ -64,7 +64,7 @@ extension AppManagers {
                 return some
             }
             
-            static func imageView(baseView:UIView? = nil, image:UIImage?=nil, tag:Int=0) -> UIImageView {
+            static func imageView(baseView: UIView? = nil, image: UIImage?=nil, tag: Int=0) -> UIImageView {
                 let some = UIImageView()
                 some.tag = tag
                 if image != nil {
@@ -73,12 +73,12 @@ extension AppManagers {
                 baseView?.addSubview(some)
                 return some
             }
-            
+
             static func tableView(baseView:UIView? = nil, tag:Int=0, cellIdentifier:String=AppConstants.Dev.cellIdentifier) -> UITableView {
                 let some = UITableView()
                 some.tag = tag
                 if !cellIdentifier.trim.isEmpty {
-                    some.register(UITableViewCell.self, forCellReuseIdentifier:cellIdentifier)
+                    some.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
                 }
                 baseView?.addSubview(some)
                 return some
@@ -103,7 +103,7 @@ extension AppManagers {
                 bar.view.rjsALayouts.setHeight(V.TopBar.defaultHeight)
                 return bar
             }
-            static func bottomBar(baseController:GenericView) -> V.BottomBar {
+            static func bottomBar(baseController: GenericView) -> V.BottomBar {
                 let bar         = V.BottomBar()
                 bar.view.backgroundColor = .clear
                 let screenWidth = UIScreen.main.bounds.width
@@ -124,25 +124,6 @@ extension AppManagers {
                 bar.view.rjsALayouts.setHeight(V.BottomBar.defaultHeight())
                 return bar
             }
-            /*
-            static func collectionView(baseController:GenericView,
-                                       itemSize:CGSize,
-                                       direction: UICollectionView.ScrollDirection) -> UICollectionView {
-                
-                let margin : CGFloat = 20
-                let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-                layout.sectionInset    = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
-                layout.itemSize        = itemSize
-                layout.scrollDirection = direction
-                
-                let some:UICollectionView = UICollectionView(frame: baseController.view.frame, collectionViewLayout: layout)
-                some.dataSource = (baseController as! UICollectionViewDataSource)
-                some.delegate   = (baseController as! UICollectionViewDelegate)
-                some.register(UICollectionViewCell.self, forCellWithReuseIdentifier: AppConstants.Dev.cellIdentifier)
-                some.backgroundColor = UIColor.brown
-                baseController.view.addSubview(some)
-                return some
-            }*/
         }
     }
 }

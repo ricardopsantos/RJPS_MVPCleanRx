@@ -17,16 +17,16 @@ import RJPSLib
 //
 
 protocol MVPSampleView_PresenterProtocol : class {
-    var generic     : GenericPresenter_Protocol?   { get }     // Mandatory in ALL Presenters
-    var genericView : GenericView?                 { get }     // Mandatory in ALL Presenters
-    var viewModel   : VM.MVPSampleView_ViewModel?     { get set } // Mandatory in ALL Presenters
-    var router      : MVPSampleView_RouterProtocol!   { get }     // Mandatory in ALL Presenters
+    var generic: GenericPresenter_Protocol?    { get }     // Mandatory in ALL Presenters
+    var genericView: GenericView?              { get }     // Mandatory in ALL Presenters
+    var viewModel: VM.MVPSampleView_ViewModel? { get set } // Mandatory in ALL Presenters
+    var router: MVPSampleView_RouterProtocol!  { get }     // Mandatory in ALL Presenters
     
-    func userDidTryToLoginWith(user:String, password:String)
+    func userDidTryToLoginWith(user: String, password: String)
 }
 
 protocol MVPSampleView_ViewProtocol : class {
-    func updateViewWith(message:String)
+    func updateViewWith(message: String)
 }
 
 //
@@ -35,13 +35,13 @@ protocol MVPSampleView_ViewProtocol : class {
 
 extension Presenter {
     class MVPSampleView_Presenter: GenericPresenter {
-        weak var generic      : GenericPresenter_Protocol?
-        weak var genericView  : GenericView?
-        weak var view   : MVPSampleView_ViewProtocol!
-        var viewModel   : VM.MVPSampleView_ViewModel? { didSet { AppLogs.DLog(appCode: .vmChanged); viewModelChanged() } }
-        var router      : MVPSampleView_RouterProtocol!
+        weak var generic: GenericPresenter_Protocol?
+        weak var genericView: GenericView?
+        weak var view: MVPSampleView_ViewProtocol!
+        var viewModel: VM.MVPSampleView_ViewModel? { didSet { AppLogger.log(appCode: .vmChanged); viewModelChanged() } }
+        var router: MVPSampleView_RouterProtocol!
 
-        var sample_UseCase : Sample_UseCaseProtocol!
+        var sample_UseCase: Sample_UseCaseProtocol!
     }
 }
 
@@ -52,10 +52,10 @@ extension Presenter {
 extension P.MVPSampleView_Presenter : MVPSampleView_PresenterProtocol {
     
     func userDidTryToLoginWith(user: String, password: String) {
-        AppLogs.DLog("\(user) | \(password)")
+        AppLogger.log("\(user) | \(password)")
         genericView?.setActivityState(true)
         sample_UseCase.operation1(canUseCache: false) { [weak self] (result) in
-            guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+            guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
             strongSelf.genericView?.setActivityState(false)
             switch result {
             case .success(let some): strongSelf.viewModel = VM.MVPSampleView_ViewModel(someString: "\(some)")
@@ -70,11 +70,11 @@ extension P.MVPSampleView_Presenter : MVPSampleView_PresenterProtocol {
 //
 
 extension P.MVPSampleView_Presenter : GenericPresenter_Protocol {
-    func view_deinit()    -> Void { }
-    func loadView()       -> Void { rxSetup() }
-    func viewDidAppear()  -> Void { }
-    func viewDidLoad()    -> Void { }
-    func viewWillAppear() -> Void { }
+    func view_deinit()     { }
+    func loadView()        { rxSetup() }
+    func viewDidAppear()   { }
+    func viewDidLoad()     { }
+    func viewWillAppear()  { }
     
     func rxSetup() -> Void { }
 
@@ -91,7 +91,7 @@ extension P.MVPSampleView_Presenter {
     }
     
     private func updateViewWith(vm:VM.MVPSampleView_ViewModel?) -> Void {
-        guard viewModel != nil else { AppLogs.DLog(appCode: .ignored); return }
+        guard viewModel != nil else { AppLogger.log(appCode: .ignored); return }
         view.updateViewWith(message: viewModel!.someString)
     }
 

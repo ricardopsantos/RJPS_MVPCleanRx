@@ -16,7 +16,7 @@ protocol UserDetais_RouterProtocol: class {
 extension Router {
     class UserDetais_Router: GenericRouter, GenericRouter_Protocol, UserDetais_RouterProtocol {
         
-        private weak var baseView : V.UserDetais_View?
+        private weak var baseView: V.UserDetais_View?
 
         init(viewController: V.UserDetais_View) {
             super.init()

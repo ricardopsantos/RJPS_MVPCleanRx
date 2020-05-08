@@ -10,16 +10,16 @@ import RxSwift
 import RxCocoa
 
 protocol Sample_TableViewCellProtocol : GenericTableViewCell_Protocol {
-    var rxBehaviorRelay_title     : BehaviorRelay<String>   { get set }
-    var rxBehaviorRelay_image     : BehaviorRelay<UIImage?> { get set }
-    var rxBehaviorRelay_textColor : BehaviorRelay<UIColor>  { get set }
+    var rxBehaviorRelay_title: BehaviorRelay<String>   { get set }
+    var rxBehaviorRelay_image: BehaviorRelay<UIImage?> { get set }
+    var rxBehaviorRelay_textColor: BehaviorRelay<UIColor>  { get set }
 }
 
 extension AppView {
     
     class Sample_TableViewCell: UITableViewCell, GenericTableViewCell_Protocol {
         deinit {
-            AppLogs.DLog("\(self.className) was killed")
+            AppLogger.log("\(self.className) was killed")
             NotificationCenter.default.removeObserver(self)
         }
 
@@ -102,5 +102,5 @@ extension V.Sample_TableViewCell {
 extension V.Sample_TableViewCell: Sample_TableViewCellProtocol {
     func set(title: String)      { rxBehaviorRelay_title.accept(title) }
     func set(textColor: UIColor) { rxBehaviorRelay_textColor.accept(textColor) }
-    func set(image:UIImage?)     { rxBehaviorRelay_image.accept(image)  }
+    func set(image: UIImage?)     { rxBehaviorRelay_image.accept(image)  }
 }

@@ -15,7 +15,7 @@ extension AppView {
 
     public class MVVMSampleView_View: UIView, MVVMSampleView_ViewProtocol {
         
-        let margim : CGFloat = 10
+        let margim: CGFloat = 10
         lazy var imageView: UIImageView = {
             let some = UIImageView()
             self.addSubview(some)
@@ -28,7 +28,7 @@ extension AppView {
         
         lazy var lblName: UILabel = {
             let some = AppFactory.UIKit.label(baseView: self, style: .title)
-            some.rjsALayouts.setMargin(margim, on: .top, from:imageView)
+            some.rjsALayouts.setMargin(margim, on: .top, from: imageView)
             some.rjsALayouts.setMargin(margim, on: .left)
             some.rjsALayouts.setMargin(margim, on: .right)
             some.rjsALayouts.setHeight(margim*3)
@@ -39,7 +39,7 @@ extension AppView {
         
         lazy var lblAge: UILabel = {
             let some = AppFactory.UIKit.label(baseView: self, style: .title)
-            some.rjsALayouts.setMargin(margim, on: .top, from:lblName)
+            some.rjsALayouts.setMargin(margim, on: .top, from: lblName)
             some.rjsALayouts.setMargin(margim, on: .left)
             some.rjsALayouts.setMargin(margim, on: .right)
             some.rjsALayouts.setHeight(margim*3)
@@ -50,7 +50,7 @@ extension AppView {
         
         lazy var lblAdoptionFee: UILabel = {
             let some = AppFactory.UIKit.label(baseView: self, style: .title)
-            some.rjsALayouts.setMargin(margim, on: .top, from:lblAge)
+            some.rjsALayouts.setMargin(margim, on: .top, from: lblAge)
             some.rjsALayouts.setMargin(margim, on: .left)
             some.rjsALayouts.setMargin(margim, on: .right)
             some.rjsALayouts.setHeight(margim*3)

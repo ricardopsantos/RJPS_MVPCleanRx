@@ -11,13 +11,13 @@ import RJPSLib
 extension AppDelegate {
     
     func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
-        AppLogs.DLog("App is handling URL : \(url)")
+        AppLogger.log("App is handling URL : \(url)")
         return true
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         
-        AppLogs.DLog("App is opening URL [\(url)] with option [\(options)]")
+        AppLogger.log("App is opening URL [\(url)] with option [\(options)]")
         
         var blissGenericAppBussiness_UseCase : BlissGenericAppBussiness_UseCaseProtocol { return container.resolve(AppProtocols.blissGenericAppBussiness_UseCase)! }
         

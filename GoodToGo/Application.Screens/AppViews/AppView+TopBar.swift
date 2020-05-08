@@ -15,7 +15,7 @@ extension AppView {
     class TopBar: GenericView {
 
         deinit {
-            AppLogs.DLog("\(self.className) was killed")
+            AppLogger.log("\(self.className) was killed")
             NotificationCenter.default.removeObserver(self)
         }
         
@@ -74,21 +74,21 @@ extension AppView {
  */
 extension V.TopBar {
 
-    static var defaultHeight    : CGFloat { return 60 }
+    static var defaultHeight: CGFloat { return 60 }
     func addBackButton()          -> Void { enable(btn: _btnBack) }
     func addDismissButton()       -> Void { enable(btn: _btnClose) }
     func setTitle(_ title:String) -> Void { _lblTitle.text = title }
     func lazyLoad()               -> Void { /* Lazy var auxiliar */ }
     
-    var rxSignal_btnDismissTapped : Signal<Void> {
+    var rxSignal_btnDismissTapped: Signal<Void> {
         return _btnClose.rx.controlEvent(.touchUpInside).asSignal()
     }
     
-    var rxSignal_btnBackTapped : Signal<Void> {
+    var rxSignal_btnBackTapped: Signal<Void> {
         return _btnBack.rx.controlEvent(.touchUpInside).asSignal()
     }
     
-    var rxSignal_viewTapped : Signal<CGPoint> {
+    var rxSignal_viewTapped: Signal<CGPoint> {
         return _lblTitle.rx
             .tapGesture()
             .when(.recognized)

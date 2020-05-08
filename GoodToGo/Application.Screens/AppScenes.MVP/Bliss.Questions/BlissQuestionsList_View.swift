@@ -14,7 +14,7 @@ extension AppView {
     class BlissQuestionsList_View: GenericView {
         
         deinit {
-            AppLogs.DLog("\(self.className) was killed")
+            AppLogger.log("\(self.className) was killed")
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
@@ -48,14 +48,14 @@ extension AppView {
                 .orEmpty
                 .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
                 .subscribe(onNext: { [weak self] _ in
-                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
                     let query = strongSelf._searchBar.text?.trim ?? ""
                     strongSelf.presenter.userPretendDoSearchWith(filter: query)
                 })
                 .disposed(by: disposeBag)
             some.rx.textDidEndEditing
                 .subscribe(onNext: { [weak self] (query) in
-                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
                     let query = strongSelf._searchBar.text?.trim ?? ""
                 })
                 .disposed(by: self.disposeBag)
@@ -75,7 +75,7 @@ extension AppView {
             let animateCellsOnAppear = true
             if animateCellsOnAppear {
                 some.rx.willDisplayCell
-                .subscribe(onNext: ({ (cell, indexPath) in
+                .subscribe(onNext: ({ (cell, /*indexPath*/ _ ) in
                     cell.alpha = 0
                     let transform = CATransform3DTranslate(CATransform3DIdentity, -250, 0, 0)
                     cell.layer.transform = transform
@@ -88,8 +88,8 @@ extension AppView {
             some.rx.modelSelected(E.Bliss.QuestionElement.self)
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
                 .subscribe(onNext:  { [weak self]  item in
-                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
-                    AppLogs.DLog("Tapped [\(item)]")
+                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
+                    AppLogger.log("Tapped [\(item)]")
                     strongSelf.presenter.tableView.didSelect(object:item)
                     if let index = some.indexPathForSelectedRow {
                         some.deselectRow(at: index, animated: true)
@@ -98,9 +98,9 @@ extension AppView {
                 .disposed(by: disposeBag)
             _rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
                 _ = element
-                guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+                guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
                 var indexPath = NSIndexPath(row: row, section: 0)
-                cell.set(textColor:AppColors.lblTextColor)
+                cell.set(textColor: AppColors.lblTextColor)
                 strongSelf.presenter.tableView.configure(cell: cell, indexPath: indexPath as IndexPath)
                 }.disposed(by: disposeBag)
             return some

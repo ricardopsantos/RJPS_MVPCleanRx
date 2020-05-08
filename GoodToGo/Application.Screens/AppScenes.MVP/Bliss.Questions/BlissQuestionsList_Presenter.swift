@@ -28,7 +28,7 @@ protocol BlissQuestionsList_PresenterProtocol : class {
     var rxPublishRelay_dismissView: PublishRelay<Void> { get }
 }
 
-protocol BlissQuestionsList_ViewProtocol : class {
+protocol BlissQuestionsList_ViewProtocol: class {
     func viewNeedsToDisplay(list:[E.Bliss.QuestionElement])
     func setSearch(text:String)
 }
@@ -38,20 +38,20 @@ protocol BlissQuestionsList_ViewProtocol : class {
 //
 
 extension Presenter {
-    class BlissQuestionsList_Presenter : GenericPresenter {
-        weak var generic           : GenericPresenter_Protocol?
-        weak var genericView       : GenericView?
-        weak var view              : BlissQuestionsList_ViewProtocol!
-        var router                 : BlissQuestionsList_RouterProtocol!
-        var tableView              : GenericTableView_Protocol!
-        var blissQuestions_UseCase : BlissQuestionsAPI_UseCaseProtocol!
-        var blissGeneric_UseCase   : BlissGenericAppBussiness_UseCaseProtocol!
-        var viewModel         : VM.BlissQuestionsList_ViewModel? {
-            didSet { AppLogs.DLog(appCode: .vmChanged); viewModelChanged() }
+    class BlissQuestionsList_Presenter: GenericPresenter {
+        weak var generic: GenericPresenter_Protocol?
+        weak var genericView: GenericView?
+        weak var view: BlissQuestionsList_ViewProtocol!
+        var router: BlissQuestionsList_RouterProtocol!
+        var tableView: GenericTableView_Protocol!
+        var blissQuestions_UseCase: BlissQuestionsAPI_UseCaseProtocol!
+        var blissGeneric_UseCase: BlissGenericAppBussiness_UseCaseProtocol!
+        var viewModel: VM.BlissQuestionsList_ViewModel? {
+            didSet { AppLogger.log(appCode: .vmChanged); viewModelChanged() }
         }
 
-        private var _lastFilder : String?
-        private var _lastOffSet : Int? 
+        private var _lastFilder: String?
+        private var _lastOffSet: Int?
 
     }
 }
@@ -75,8 +75,8 @@ extension P.BlissQuestionsList_Presenter : GenericTableView_Protocol {
         }
     }
     
-    func didSelect(object:Any) {
-        AppLogs.DLog("\(object)")
+    func didSelect(object: Any) {
+        AppLogger.log("\(object)")
         guard existsInternetConnection, let question = object as? E.Bliss.QuestionElement else {
             return
         }
@@ -121,7 +121,7 @@ extension P.BlissQuestionsList_Presenter : BlissQuestionsList_PresenterProtocol 
                     }
                 })
             } else {
-                AppLogs.DLog(appCode: .referenceLost)
+                AppLogger.log(appCode: .referenceLost)
             }
             return Disposables.create()
             }.retry(3)
@@ -170,7 +170,7 @@ extension P.BlissQuestionsList_Presenter {
         // Not pretty, but very efective in avoind duplicated repeated server calls
         if _lastFilder != nil && _lastOffSet != nil {
             guard "\(_lastFilder!)|\(_lastOffSet!)" != "\(filter)|\(offSet)" else {
-                AppLogs.DLogWarning("Ignored. Same filter and offset")
+                AppLogger.warning("Ignored. Same filter and offset")
                 return
             }
         }
@@ -182,7 +182,7 @@ extension P.BlissQuestionsList_Presenter {
             .throttle(.milliseconds(AppConstants.Rx.servicesDefaultThrottle), scheduler: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] questionsList in
-                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
                     if strongSelf._lastOffSet == 0 {
                         strongSelf.viewModel?.questionsList = questionsList
                     } else {
@@ -191,7 +191,7 @@ extension P.BlissQuestionsList_Presenter {
                     strongSelf.genericView?.setActivityState(false)
                 },
                 onError: { [weak self] error in
-                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
                     strongSelf.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
                     strongSelf.genericView?.setActivityState(false)
                 }
@@ -227,7 +227,7 @@ extension P.BlissQuestionsList_Presenter {
         
         reachabilityService.reachability.subscribe(
             onNext: { [weak self] some in
-                guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+                guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
                 strongSelf.genericView?.setNoConnectionViewVisibity(to: !some.reachable)
             }
             ).disposed(by: disposeBag)

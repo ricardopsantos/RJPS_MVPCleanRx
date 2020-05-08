@@ -11,7 +11,7 @@ import RJPSLib
 // swiftlint:disable line_length
 
 extension RP.Network.Employees {
-    struct GetEmployees_APIRequest : WebAPIRequest_Protocol {
+    struct GetEmployees_APIRequest: WebAPIRequest_Protocol {
         var returnOnMainTread: Bool = true
         var debugRequest: Bool = AppCan.Logs.requests
         var urlRequest: URLRequest

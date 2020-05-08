@@ -24,7 +24,7 @@ extension RP.Network.Employees {
             do {
                 let apiRequest: WebAPIRequest_Protocol = try RP.Network.Employees.GetEmployees_APIRequest()
                 let apiClient: NetworkClient_Protocol = RJSLib.NetworkClient()
-                apiClient.execute(request: apiRequest, completionHandler: { (result : Result<NetworkClientResponse<[E.Employee]>>) in
+                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<[E.Employee]>>) in
                     completionHandler(result)
                 })
             } catch let error {
@@ -33,7 +33,7 @@ extension RP.Network.Employees {
         }
         
         func netWork_OperationB(completionHandler: @escaping Samples_NetWorkRepositoryCompletionHandler) {
-            AppLogs.DLog(appCode: .notImplemented)
+            AppLogger.log(appCode: .notImplemented)
             completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notImplemented)))
         }
         

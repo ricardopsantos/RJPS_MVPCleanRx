@@ -20,6 +20,6 @@ extension RP.Cache {
     class Generic_CacheRepository: Generic_CacheRepositoryProtocol {
         func add(object: AnyObject, withKey: String) { RJS_Cache.add(object: object, withKey: withKey) }
         func get(key: String) -> AnyObject?          { return RJS_Cache.get(key: key) }
-        func clean(sender: String)                   { RJS_Cache.clean(sender:sender) }
+        func clean(sender: String)                   { RJS_Cache.clean(sender: sender) }
     }
 }

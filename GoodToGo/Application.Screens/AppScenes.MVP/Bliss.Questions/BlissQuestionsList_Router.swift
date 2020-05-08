@@ -13,7 +13,7 @@ protocol BlissQuestionsList_RouterProtocol: class {
     func dismissView()
     var rxPublishRelay_dismissView: PublishRelay<Void> { get } // PublishRelay model Events
 
-    func goToDetails(vm:VM.BlissDetails_ViewModel)
+    func goToDetails(vm: VM.BlissDetails_ViewModel)
     func goToDetails()
 }
 

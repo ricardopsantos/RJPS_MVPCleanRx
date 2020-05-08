@@ -13,6 +13,6 @@ import UIKit
 
 extension ViewModel {
     struct MVPSampleTableView_ViewModel {
-        var employeesList : [E.Employee] = []
+        var employeesList: [E.Employee] = []
     }
 }

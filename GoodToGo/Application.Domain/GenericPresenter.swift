@@ -13,7 +13,7 @@ import RxCocoa
 
 class GenericPresenter {
     deinit {
-        AppLogs.DLog("\(self) was killed")
+        AppLogger.log("\(self) was killed")
         NotificationCenter.default.removeObserver(self)
     }
     

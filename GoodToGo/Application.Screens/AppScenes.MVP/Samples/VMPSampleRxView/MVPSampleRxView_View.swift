@@ -18,7 +18,7 @@ extension AppView {
     class MVPSampleRxView_View: GenericView {
         
         deinit {
-            AppLogs.DLog("\(self.className) was killed")
+            AppLogger.log("\(self.className) was killed")
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
@@ -77,7 +77,7 @@ extension AppView {
             some.rx.tap
                 .subscribe({ [weak self] _ in
                     some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                        guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+                        guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
                         strongSelf.presenter.userDidTryToLoginWith(user: strongSelf._txtUser.text!, password: strongSelf._txtPass.text!)
                     })
                 })
@@ -87,7 +87,7 @@ extension AppView {
             let isEmailVaild    = _txtUser.rx.text.orEmpty.map( { $0.count >= 5 && $0.contains("@") }).distinctUntilChanged()
             let isButtonEnabled = Observable.combineLatest(isPasswordValid, isEmailVaild) { $0 && $1 }
             isButtonEnabled.bind(to: some.rx.isEnabled).disposed(by: disposeBag)
-            isButtonEnabled.subscribe(onNext:{ some.alpha = $0 ? 1 : 0.5 }).disposed(by: disposeBag)
+            isButtonEnabled.subscribe(onNext: { some.alpha = $0 ? 1 : 0.5 }).disposed(by: disposeBag)
             return some
         }()
         
@@ -99,9 +99,9 @@ extension AppView {
             some.rjsALayouts.setHeight(_margin*2)
             some.rx.tap.subscribe({ [weak self] _ in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
                     let someString = "[\(strongSelf._txtUser.text ?? "")][\(strongSelf._txtPass.text ?? "")]"
-                    let vm = VM.MVPSampleRxView_ViewModel(someString:someString )
+                    let vm = VM.MVPSampleRxView_ViewModel(someString: someString )
                     strongSelf.presenter.router.presentControllerWith(vm: vm)
                 })
             })
@@ -117,7 +117,7 @@ extension AppView {
             some.rjsALayouts.setHeight(_margin*2)
             some.rx.tap.subscribe({ [weak self] _ in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                    guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
                     strongSelf.presenter.router.dismissView()
                 })
             })

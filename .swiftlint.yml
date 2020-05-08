@@ -1,54 +1,177 @@
-disabled_rules: # rule identifiers to exclude from running
-- force_cast
-- force_try
-- nesting
-- trailing_whitespace
-- type_name
-- identifier_name
-# - shorthand_operator
-# - comma
-# - control_statement
-# - file_length
-# - function_body_length
-# - leading_whitespace
-# - line_length
-# - operator_whitespace
-- redundant_void_return
-- colon
-- opening_brace
-- return_arrow_whitespace
-# - statement_position
-# - todo
-# - trailing_newline
-# - trailing_semicolon
-# - type_body_length
-# - valid_docs
-# - variable_name
-# - variable_name_min_length
-# - variable_name_max_length
-excluded: # paths to ignore during linting. overridden by `included`.
-- Carthage
-- Pods
-- fastlane
-- PublicCode
-# parameterized rules can be customized from this configuration file
-file_length:
-- 700
-- 1000
-line_length:
-- 230
-- 250
-# parameterized rules are first parameterized as a warning level, then error level.
-function_body_length:
-- 150 # warning
-- 200 # error
-type_body_length:
-- 300 # warning
-- 400 # error
-variable_name_max_length:
-- 30 # warning
-- 40 # error
-variable_name_min_length:
-- 2 # warning
-- 1 # error
+#
+# https://medium.com/flawless-app-stories/swiftlint-in-use-279f44b3182e
+# https://regex101.com/
+#
 
+excluded:
+    - Carthage
+
+custom_rules:
+
+    no_letUnderscore:
+        included: ".*\\.swift"
+        name: "Don't use let _"
+        regex: 'let[ ][_][ ][=]'
+        message: "Don't use let _ = xxx , use xxx != nil"
+        severity: error
+
+    naming_Singletons:
+        included: ".*\\.swift"
+        name: "Singleton naming"
+        regex: "static (var|let)[ ](instance|sharedInstance)[ ]*[:]"
+        message: "Don't use instance/sharedInstance. Use shared"
+        severity: error
+
+    no_hardCodedTimeZones:
+        included: ".*\\.swift"
+        name: "Hardcoded TimeZones"
+        regex: "\"UTC\"|\"GMT\""
+        message: "Don't use hardcoded TimeZones. Use AppConstants.TimeZones..."
+        severity: error
+
+    no_TODO:
+        included: ".*\\.swift"
+        name: "Invalid TODO/FIX"
+        regex: "TODO|TO DO|FIX"
+        message: "Don't use TODO/FIX. Use #warning"
+        severity: error
+
+    no_hardCodedDateFormats:
+        included: ".*\\.swift"
+        name: "Hardcoded DateFormats"
+        regex: '= "yyyy|DateFormatter(withFormat'
+        message: "Use a DateFormats on AppContants.Date or DateFormatterTypes"
+        severity: error
+
+    numbers_smell:
+        regex: '(return |case |\w\(|: |\?\? |\, |== |<=? |>=? |\+= |\-= |\/= |\*= |%= |\w\.\w+ = )\(*-?\d{2,}'
+        message: "Numbers smell; define a constant instead."
+        severity: warning
+
+    no_print:
+        included: ".*\\.swift"
+        name: "No prints"
+        regex: "print[(]"
+        message: "Don't use print. Use DevTools.Log"
+        severity: warning
+
+    no_hardCodedImages:
+        included: ".*\\.swift"
+        name: "No hardCoded images"
+        regex: "(image|[(]named]|imageLiteralResourceName|highlightedResource|resourceName){1}[ ]*[:][ ]*[\"]"
+        message: "Don't use hardCoded images"
+        severity: error
+
+    multiline_commented_code:
+        regex: '^\s*[a-z]'
+        match_kinds: comment
+        message: "Comment starting with lowercase letter - did you forget to delete old code?"
+        severity: warning
+
+#    commented_code:
+#        regex: '(?<!:|\/)\/\/\h*[a-z.](?!wiftlint)'
+#        message: "Comment starting with lowercase letter - did you forget to delete old code?"
+#        severity: warning
+
+file_length:
+    - 750  # warning
+    - 1000 # error
+
+type_body_length:
+    - 500  # warning
+    - 1000 # error
+
+large_tuple:
+    - 4  # warning
+    - 5  # error
+
+empty_enum_arguments:
+    warning
+
+force_try:
+    warning
+
+force_cast:
+    warning
+
+line_length:
+    warning: 175
+    error: 300
+
+nesting:
+    type_level:
+        warning: 3
+
+type_name:
+    max_length: 60
+    allowed_symbols: "_"
+    excluded:
+        - iPhone
+        - R
+        - V
+        - VM
+        - VC
+        - W
+        - P
+        - I
+        - E
+        - MD
+        - Id
+
+identifier_name:
+    max_length: 60
+    excluded:
+        - iPhone
+        - id
+
+function_parameter_count: 10
+
+disabled_rules:
+    - todo
+    - valid_ibinspectable
+    - identifier_name
+    - trailing_whitespace
+
+#
+# THE RULES BELOW ARE NOT TO BE DELETED
+#  All warnings of this type were fixed @ 31-03-2020, please don't do more...
+#
+
+duplicate_imports:
+    severity: error
+
+operator_whitespace:
+    severity: error
+
+redundant_string_enum_value:
+    severity: error
+
+trailing_newline:
+    severity: error
+
+statement_position:
+    severity: error
+
+unused_closure_parameter:
+    severity: error
+
+vertical_whitespace:
+    severity: error
+
+implicit_getter:
+    severity: warning
+
+colon:
+    severity: error
+
+shorthand_operator:
+    severity: warning
+
+trailing_comma:
+    severity: warning
+
+comma:
+    severity: warning
+
+redundant_void_return:
+    severity: warning

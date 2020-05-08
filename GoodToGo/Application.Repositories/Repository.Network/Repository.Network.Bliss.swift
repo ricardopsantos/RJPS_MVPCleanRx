@@ -24,8 +24,8 @@ extension RP.Network.Bliss {
         func shareQuestionBy(email: String, url: String, completionHandler: @escaping (Result<NetworkClientResponse<E.Bliss.ShareByEmail>>) -> Void) {
             do {
                 let apiRequest: WebAPIRequest_Protocol = try RP.Network.Bliss.Share_APIRequest(email: email, url: url)
-                let apiClient : NetworkClient_Protocol = RJSLib.NetworkClient()
-                apiClient.execute(request: apiRequest, completionHandler: { (result : Result<NetworkClientResponse<E.Bliss.ShareByEmail>>) in
+                let apiClient: NetworkClient_Protocol = RJSLib.NetworkClient()
+                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<E.Bliss.ShareByEmail>>) in
                     completionHandler(result)
                 })
             } catch let error {
@@ -37,7 +37,7 @@ extension RP.Network.Bliss {
             do {
                 let apiRequest: WebAPIRequest_Protocol = try RP.Network.Bliss.UpdateQuestion_APIRequest(question: question)
                 let apiClient: NetworkClient_Protocol = RJSLib.NetworkClient()
-                apiClient.execute(request: apiRequest, completionHandler: { (result : Result<NetworkClientResponse<E.Bliss.QuestionElement>>) in
+                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<E.Bliss.QuestionElement>>) in
                     completionHandler(result)
                 })
             } catch let error {
@@ -49,7 +49,7 @@ extension RP.Network.Bliss {
             do {
                 let apiRequest: WebAPIRequest_Protocol = try RP.Network.Bliss.NewQuestion_APIRequest(question: question)
                 let apiClient: NetworkClient_Protocol = RJSLib.NetworkClient()
-                apiClient.execute(request: apiRequest, completionHandler: { (result : Result<NetworkClientResponse<E.Bliss.QuestionElement>>) in
+                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<E.Bliss.QuestionElement>>) in
                     completionHandler(result)
                 })
             } catch let error {
@@ -74,7 +74,7 @@ extension RP.Network.Bliss {
              
                 let apiRequest: WebAPIRequest_Protocol = try RP.Network.Bliss.ListQuestions_APIRequest(limit: limit, filter: filter, offSet: offSet)
                 let apiClient: NetworkClient_Protocol = RJSLib.NetworkClient()
-                apiClient.execute(request: apiRequest, completionHandler: { (result : Result<NetworkClientResponse<[E.Bliss.QuestionElement]>>) in
+                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<[E.Bliss.QuestionElement]>>) in
                     completionHandler(result)
                 })
             } catch let error {
@@ -86,7 +86,7 @@ extension RP.Network.Bliss {
             do {
                 let apiRequest: WebAPIRequest_Protocol = try RP.Network.Bliss.GetHealthStatus_APIRequest()
                 let apiClient: NetworkClient_Protocol = RJSLib.NetworkClient()
-                apiClient.execute(request: apiRequest, completionHandler: { (result : Result<NetworkClientResponse<E.Bliss.ServerHealth>>) in
+                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<E.Bliss.ServerHealth>>) in
                     completionHandler(result)
                 })
             } catch let error {

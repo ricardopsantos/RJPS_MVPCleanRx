@@ -49,14 +49,14 @@ extension UIColor {
             static var background : UIColor { return _blue1.toDark() }
             static var titleColor : UIColor { return _grey_7.toDark() }
         }
-        static var appDefaultBackgroundColor : UIColor { return _grey_7.toDark() }
-        static var btnBackgroundColor        : UIColor { return _grey_6.toDark() }
-        static var lblBackgroundColor        : UIColor { return _grey_6.toDark() }
-        static var btnTextColor              : UIColor { return _grey_1.toDark() }
-        static var lblTextColor              : UIColor { return _grey_1.toDark() }
+        static var appDefaultBackgroundColor: UIColor { return _grey_7.toDark() }
+        static var btnBackgroundColor: UIColor { return _grey_6.toDark() }
+        static var lblBackgroundColor: UIColor { return _grey_6.toDark() }
+        static var btnTextColor: UIColor { return _grey_1.toDark() }
+        static var lblTextColor: UIColor { return _grey_1.toDark() }
         
-        static var error   : UIColor { return _red1.toDark() }
-        static var sucess  : UIColor { return _blue2.toDark() }
-        static var warning : UIColor { return UIColor(red:242, green:168, blue:62).toDark() }
+        static var error: UIColor { return _red1.toDark() }
+        static var sucess: UIColor { return _blue2.toDark() }
+        static var warning: UIColor { return UIColor(red:242, green:168, blue:62).toDark() }
     }
 }

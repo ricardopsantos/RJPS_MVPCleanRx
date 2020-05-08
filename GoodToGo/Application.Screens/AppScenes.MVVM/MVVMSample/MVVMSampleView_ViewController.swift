@@ -9,13 +9,13 @@ import UIKit
 
 extension VC {
 
-    public class MVVMSampleView_ViewController : GenericView, MVVMSampleView_ViewControllerProtocol {
+    public class MVVMSampleView_ViewController: GenericView, MVVMSampleView_ViewControllerProtocol {
 
         var viewModel: MVVMSampleView_ViewModelProtocol?
         lazy var viewModelView: MVVMSampleView_ViewProtocol = {
             let some = V.MVVMSampleView_View()
             self.view.addSubview(some)
-            let margin : CGFloat = 50
+            let margin: CGFloat = 50
             some.rjsALayouts.setMarginFromSuperview(top: margin, bottom: margin, left: margin, right: margin) 
             return some
         }()

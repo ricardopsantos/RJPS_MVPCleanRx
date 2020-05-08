@@ -14,7 +14,7 @@ import RxCocoa
 class GenericView: UIViewController {
 
     deinit {
-        AppLogs.DLog("\(self.className) was killed")
+        AppLogger.log("\(self.className) was killed")
         NotificationCenter.default.removeObserver(self)
     }
     
@@ -25,12 +25,17 @@ class GenericView: UIViewController {
     var keyboardHeigth : CGFloat {
         if _keyboardIsVisible {
             let autoCorrectBarSize : CGFloat = 44; return _keyboardHeigth - autoCorrectBarSize
-        } else { return 0 }
+        } else {
+            return 0
+        }
     }
     
     static var onDarkMode : Bool {
-        if #available(iOS 12.0, *) { return GenericView().traitCollection.userInterfaceStyle == .dark }
-        else { return false }
+        if #available(iOS 12.0, *) {
+            return GenericView().traitCollection.userInterfaceStyle == .dark
+        } else {
+            return false
+        }
     }
     
     private var _lblMessageDistanceFromTop      : NSLayoutConstraint?
@@ -67,7 +72,7 @@ class GenericView: UIViewController {
         let tapGesture = UITapGestureRecognizer()
         some.addGestureRecognizer(tapGesture)
         tapGesture.rx.event.bind(onNext: { [weak self] _ in
-            guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+            guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
             strongSelf.setTopMessageVisibityTo(state: false, message: "", type: .sucess)
         }).disposed(by: disposeBag)
         return some
@@ -94,7 +99,7 @@ class GenericView: UIViewController {
         _lblMessage.superview?.bringSubviewToFront(_lblReachability)
     }
     
-    func displayMessage(_ message: String, type: Enuns.AlertType, asAlert:Bool=false) {
+    func displayMessage(_ message: String, type: Enuns.AlertType, asAlert: Bool=false) {
         if asAlert {
             (self as UIViewController).rjs.showAlert(title: "\(type)".uppercased(), message: message)
         } else {
@@ -104,11 +109,11 @@ class GenericView: UIViewController {
     
     func setNoConnectionViewVisibity(to: Bool, withMessage: String = AppMessages.noInternet) {
         RJS_Utils.executeInMainTread { [weak self] in
-            guard let strongSelf = self else { AppLogs.DLog(appCode: .referenceLost); return }
+            guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
             let value = !to
             let duration = 0.5
             strongSelf._lblReachability.text = withMessage
-            strongSelf._lblReachability.fadeTo(value ? 0 : 0.95, duration:duration)
+            strongSelf._lblReachability.fadeTo(value ? 0 : 0.95, duration: duration)
             strongSelf._lblReachability.rjsALayouts.updateConstraint(strongSelf._lblReachabilityDistanceFromTop!,
                                                                toValue: value ? -strongSelf._lblReachabilityHeight : strongSelf._margin,
                                                                duration:duration,
@@ -118,7 +123,7 @@ class GenericView: UIViewController {
         }
     }
     
-    func prepareLayout()    -> Void { AppLogs.DLog(appCode: .notImplemented) }
+    func prepareLayout()   { AppLogger.log(appCode: .notImplemented) }
     func keyboardDidShow() { }
     func keyboardDidHide() { }
     func dismissKeyboard()  -> Void { }
@@ -129,7 +134,7 @@ class GenericView: UIViewController {
 //
 
 extension GenericView {
-    func setActivityState(_ state:Bool) {
+    func setActivityState(_ state: Bool) {
         if state {
             self.view.rjs.startActivityIndicator()
         } else { self.view.rjs.stopActivityIndicator() }
@@ -152,7 +157,7 @@ extension GenericView {
             _lblMessageTimmer = nil
         }
         RJS_Utils.executeInMainTread { [weak self] in
-            guard let strongSelf1 = self else { AppLogs.DLog(appCode: .referenceLost); return }
+            guard let strongSelf1 = self else { AppLogger.log(appCode: .referenceLost); return }
             let value = !state
             let duration = 0.5
             if state {
@@ -163,7 +168,7 @@ extension GenericView {
                 case .error  : strongSelf1._lblMessage.backgroundColor = AppColors.error
                 }
             }
-            strongSelf1._lblMessage.fadeTo(value ? 0 : 0.95, duration:duration)
+            strongSelf1._lblMessage.fadeTo(value ? 0 : 0.95, duration: duration)
             strongSelf1._lblMessage.rjsALayouts.updateConstraint(strongSelf1._lblMessageDistanceFromTop!,
                                                                      toValue: value ? -strongSelf1._lblMessageHeight : strongSelf1._margin,
                                                                      duration:duration,

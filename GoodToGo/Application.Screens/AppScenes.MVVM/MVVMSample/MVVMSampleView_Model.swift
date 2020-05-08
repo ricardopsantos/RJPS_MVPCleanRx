@@ -21,10 +21,10 @@ extension M {
             case veryRare
         }
         
-        public let name     : String
-        public let birthday : Date
-        public let rarity   : Rarity
-        public let image    : UIImage
+        public let name: String
+        public let birthday: Date
+        public let rarity: Rarity
+        public let image: UIImage
         
         public init(name: String,
                     birthday: Date,
@@ -39,7 +39,7 @@ extension M {
 }
 
 extension M.MVVMSampleView {
-    static func makeOne(name:String) -> M.MVVMSampleView {
+    static func makeOne(name: String) -> M.MVVMSampleView {
         let birthday = Date.utcNow().add(days: -2*360)
         let image    = UIImage(named: "notInternet")!
         return M.MVVMSampleView(name: name, birthday: birthday, rarity: .veryRare, image: image)

@@ -15,24 +15,24 @@ import RxCocoa
 
 protocol MVVMSampleView_ViewModelProtocol {
     func configure(view: MVVMSampleView_ViewProtocol)
-    var someString     : String { get }
-    var image          : UIImage { get }
-    var ageText        : String { get }
+    var someString: String { get }
+    var image: UIImage { get }
+    var ageText: String { get }
     var adoptionFeeText: String { get }
-    var rxPublishSubject_loading       : PublishSubject<Bool> { get }
-    var rxPublishRelay_needsToUpdate   : PublishRelay<Void> { get }
-    var rxPublishRelay_genericMessages : PublishRelay<(String,AppEnuns.AlertType)> { get }
+    var rxPublishSubject_loading: PublishSubject<Bool> { get }
+    var rxPublishRelay_needsToUpdate: PublishRelay<Void> { get }
+    var rxPublishRelay_genericMessages: PublishRelay<(String,AppEnuns.AlertType)> { get }
 }
 
 protocol MVVMSampleView_ViewControllerProtocol {
-    var viewModelView : MVVMSampleView_ViewProtocol { get }
-    var viewModel     : MVVMSampleView_ViewModelProtocol? { get set }
+    var viewModelView: MVVMSampleView_ViewProtocol { get }
+    var viewModel: MVVMSampleView_ViewModelProtocol? { get set }
 }
 
 protocol MVVMSampleView_ViewProtocol {
-    var imageView     : UIImageView { get }
-    var lblName       : UILabel { get }
-    var lblAge        : UILabel { get }
+    var imageView: UIImageView { get }
+    var lblName: UILabel { get }
+    var lblAge: UILabel { get }
     var lblAdoptionFee: UILabel { get }
 }
 
@@ -44,14 +44,14 @@ extension VM {
     
     public class MVVMSampleView_ViewModel {
         
-        private var _viewModel : M.MVVMSampleView?
+        private var _viewModel: M.MVVMSampleView?
         private var _calendar: Calendar?
 
-        var sampleUseCase : Sample_UseCaseProtocol = AppDelegate.shared.container.resolve(AppProtocols.sample_UseCase)!
+        var sampleUseCase: Sample_UseCaseProtocol = AppDelegate.shared.container.resolve(AppProtocols.sample_UseCase)!
         
-        public var rxPublishSubject_loading       : PublishSubject<Bool> = PublishSubject()
-        public var rxPublishRelay_needsToUpdate   : PublishRelay<Void>  = PublishRelay<Void>()
-        public var rxPublishRelay_genericMessages : PublishRelay<(String,AppEnuns.AlertType)> = PublishRelay<(String,AppEnuns.AlertType)>()
+        public var rxPublishSubject_loading: PublishSubject<Bool> = PublishSubject()
+        public var rxPublishRelay_needsToUpdate: PublishRelay<Void>  = PublishRelay<Void>()
+        public var rxPublishRelay_genericMessages: PublishRelay<(String, AppEnuns.AlertType)> = PublishRelay<(String,AppEnuns.AlertType)>()
 
         public init() {
             _viewModel = nil
@@ -71,7 +71,7 @@ extension VM {
 // MARK: - ViewModelProtocol
 //
 
-extension VM.MVVMSampleView_ViewModel : MVVMSampleView_ViewModelProtocol {
+extension VM.MVVMSampleView_ViewModel: MVVMSampleView_ViewModelProtocol {
     
     func configure(view: MVVMSampleView_ViewProtocol) {
         view.lblName.text        = someString
@@ -79,9 +79,9 @@ extension VM.MVVMSampleView_ViewModel : MVVMSampleView_ViewModelProtocol {
         view.lblAge.text         = ageText
         view.lblAdoptionFee.text = adoptionFeeText
         
-        DispatchQueue.executeWithDelay (delay:1) { [weak self] in
+        DispatchQueue.executeWithDelay (delay: 1) { [weak self] in
             self?.rxPublishSubject_loading.onNext(true)
-            DispatchQueue.executeWithDelay (delay:2) { [weak self] in
+            DispatchQueue.executeWithDelay (delay: 2) { [weak self] in
                 self?.rxPublishSubject_loading.onNext(false)
                 self?.rxPublishRelay_needsToUpdate.accept(())
             }
@@ -96,7 +96,7 @@ extension VM.MVVMSampleView_ViewModel : MVVMSampleView_ViewModelProtocol {
         print("Tap!")
     }
     
-    var someString : String { return _viewModel?.name ?? "" }
+    var someString: String { return _viewModel?.name ?? "" }
     var image: UIImage {
         print(sampleUseCase)
         return _viewModel?.image ?? UIImage()
