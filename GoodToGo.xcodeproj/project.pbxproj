@@ -344,6 +344,7 @@
 		D779A5FC234FE97300D3D6F7 /* StatsDetailModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StatsDetailModels.swift; path = GoodToGo/Application.Screens/AppScenes.VIP/Sample/StatsDetailModels.swift; sourceTree = SOURCE_ROOT; };
 		D779A5FD234FE97300D3D6F7 /* StatsDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StatsDetailPresenter.swift; path = GoodToGo/Application.Screens/AppScenes.VIP/Sample/StatsDetailPresenter.swift; sourceTree = SOURCE_ROOT; };
 		D779A5FE234FE97300D3D6F7 /* StatsDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = StatsDetailViewController.xib; path = GoodToGo/Application.Screens/AppScenes.VIP/Sample/StatsDetailViewController.xib; sourceTree = SOURCE_ROOT; };
+		D7A620B0246556A1008B1722 /* _script_installPackages.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = _script_installPackages.sh; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -474,6 +475,7 @@
 				9FC6819A22F9907000D3F281 /* Notes.md */,
 				9FACC17A223BDD5B00576498 /* ToDo.swift */,
 				9FCF331E22EF18A90074DAB9 /* .swiftlint.yml */,
+				D7A620B0246556A1008B1722 /* _script_installPackages.sh */,
 				9F6BB2BB22E31D0400829A6F /* MVPClean_Arquitecture.pptx */,
 			);
 			path = Docs;
@@ -888,7 +890,6 @@
 				9F8D4A6C2237325600777976 /* ShellScript */,
 				9F574F0E2235B473007DAA58 /* ShellScript */,
 				9F47A7B22204CCE100EB6139 /* ShellScript */,
-				9F79F0FF22F092A8005BF406 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -939,11 +940,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F58FB4022BE5DE700042A8C /* Main.storyboard in Resources */,
-				9FB9F97722E520DB00D64FD2 /* Debug.QA.xcconfig in Resources */,
-				9FACC184223BF28E00576498 /* Release.xcconfig in Resources */,
-				9FACC187223BF28E00576498 /* Debug.Prod.xcconfig in Resources */,
 				9FB35E0A22EC611000326092 /* Localizable.strings in Resources */,
-				9FACC17F223BF26000576498 /* Debug.Dev.xcconfig in Resources */,
 				9FE143F021AF2F520026BDFC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
