@@ -21,7 +21,7 @@ import DevTools
 import PointFreeFunctions
 import AppDomain
 
-extension AppUtils_Protocol {
+public extension AppUtils_Protocol {
     
     func cachedValueIsOld(coreDatakey: String, maxLifeSpam: Int) -> Bool {
         var cachedValueIsOld = false

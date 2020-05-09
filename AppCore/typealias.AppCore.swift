@@ -10,3 +10,6 @@ import Foundation
 import DevTools
 
 typealias AppLogger = DevTools.AppLogger
+
+public typealias UC = UseCases
+public class UseCases { private init() {} }

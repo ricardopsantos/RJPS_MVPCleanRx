@@ -15,14 +15,14 @@ import AppConstants
 import PointFreeFunctions
 import AppDomain
 
-extension UseCases {
-    
-    class GitUser_UseCase: GenericUseCase, GitUser_UseCaseProtocol {
+//public extension UseCases {
+
+public class GitUser_UseCase: GenericUseCase, GitUser_UseCaseProtocol {
 
         var generic_CacheRepositoryProtocol: Generic_CacheRepositoryProtocol!
         var repositoryNetwork: GitUser_NetWorkRepositoryProtocol!
 
-        func getInfoOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitUser_Single_UseCaseCompletionHandler) {
+    public func getInfoOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitUser_Single_UseCaseCompletionHandler) {
             
             guard existsInternetConnection else {
                 completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
@@ -53,7 +53,7 @@ extension UseCases {
             })
         }
         
-        func getFriendsOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitUser_Friends_UseCaseCompletionHandler) {
+    public func getFriendsOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitUser_Friends_UseCaseCompletionHandler) {
             
             guard existsInternetConnection else {
                 completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
@@ -84,4 +84,4 @@ extension UseCases {
             })
         }
     }
-}
+//}

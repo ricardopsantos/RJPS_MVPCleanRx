@@ -10,25 +10,25 @@ import UIKit
 import RJPSLib
 import AppDomain
 
-extension UseCases {
+//public extension UseCases {
     
     /**
      * Brain. Where we can have business rules
      */
-    class SampleB_UseCase: GenericUseCase, SampleB_UseCaseProtocol {
+ public class SampleB_UseCase: GenericUseCase, SampleB_UseCaseProtocol {
 
         var generic_CacheRepositoryProtocol: Generic_CacheRepositoryProtocol!
         var generic_LocalStorageRepository: Generic_LocalStorageRepositoryProtocol!
         
-        func operation1(canUseCache: Bool, completionHandler: @escaping SampleB_UseCaseCompletionHandler) {
+    public func operation1(canUseCache: Bool, completionHandler: @escaping SampleB_UseCaseCompletionHandler) {
             AppLogger.log(appCode: .notImplemented)
             completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notImplemented)))
         }
         
-        func operation2(param: String, completionHandler: @escaping SampleB_UseCaseCompletionHandler) {
+    public func operation2(param: String, completionHandler: @escaping SampleB_UseCaseCompletionHandler) {
             AppLogger.log(appCode: .notImplemented)
             completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notImplemented)))
         }
         
     }
-}
+//}

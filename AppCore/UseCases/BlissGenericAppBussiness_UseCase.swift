@@ -16,18 +16,18 @@ import AppConstants
 import PointFreeFunctions
 import AppDomain
 
-extension UseCases {
+//public extension UseCases {
     
     /**
      * Brain. Where we can have business rules
      */
-    class BlissGenericAppBussiness_UseCase: GenericUseCase, BlissGenericAppBussiness_UseCaseProtocol {
+public class BlissGenericAppBussiness_UseCase: GenericUseCase, BlissGenericAppBussiness_UseCaseProtocol {
         
         var generic_CacheRepositoryProtocol: Generic_CacheRepositoryProtocol!
         var generic_LocalStorageRepository: Generic_LocalStorageRepositoryProtocol!
-        var rxPublishRelayAppicationDidReceivedData: PublishRelay = PublishRelay<Void>() // PublishRelay model Events
+    public var rxPublishRelayAppicationDidReceivedData: PublishRelay = PublishRelay<Void>() // PublishRelay model Events
 
-        func handle(url: URL) {
+    public func handle(url: URL) {
             func getKeyValsFromURL(url: URL) -> [String: String]? {
                 let urlUriKeysValuesSeparator = "?"
                 let urlUriKeyValueSeparator   = "="
@@ -59,7 +59,7 @@ extension UseCases {
             }
         }
         
-        func screenHaveHandledData(screen: String) {
+    public func screenHaveHandledData(screen: String) {
             if let object = generic_LocalStorageRepository.with(prefix: screen) {
                 if let key  = object.key {
                     generic_LocalStorageRepository.deleteWith(key: key)
@@ -68,7 +68,7 @@ extension UseCases {
         }
         
         // The first param is a key, and the second a value
-        func screenHaveDataToHandle(screen: String) -> (String, String)? {
+    public func screenHaveDataToHandle(screen: String) -> (String, String)? {
             if let object = generic_LocalStorageRepository.with(prefix: screen) {
                 if let key  = object.key {
                     let value = object.value
@@ -81,7 +81,7 @@ extension UseCases {
             return nil
         }
         
-        func setNeedToOpenScreen(screen: String, key: String, value: String) {
+    public func setNeedToOpenScreen(screen: String, key: String, value: String) {
             let storedKey = "\(screen).\(key)"
             _ = generic_LocalStorageRepository.save(key: storedKey, value: value, expireDate: RJS_DataModel.baseDate.add(minutes: 1))
             if AppEnvironments.isDev() {
@@ -92,4 +92,4 @@ extension UseCases {
         }
         
     }
-}
+//}

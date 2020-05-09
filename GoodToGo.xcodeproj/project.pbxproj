@@ -1096,7 +1096,6 @@
 			children = (
 				D7E25A6D2465E5B5003BBEA0 /* README.md */,
 				9FFF80B922BFB7CC003C4562 /* AppUtils_ProtocolExtension.swift */,
-				9FA0DCC122BE5E45003ADF99 /* UseCases */,
 			);
 			path = Application.Core;
 			sourceTree = "<group>";
@@ -1395,6 +1394,7 @@
 			isa = PBXGroup;
 			children = (
 				D7D9E7912467545D005B4313 /* typealias.AppCore.swift */,
+				9FA0DCC122BE5E45003ADF99 /* UseCases */,
 				9F574F5722366004007DAA58 /* Mappers */,
 				D7AB24C6246743BD000142C4 /* AppCore.h */,
 				D7AB24C7246743BD000142C4 /* Info.plist */,

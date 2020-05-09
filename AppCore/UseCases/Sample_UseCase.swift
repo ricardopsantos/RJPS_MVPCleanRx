@@ -15,7 +15,7 @@ import AppConstants
 import PointFreeFunctions
 import AppDomain
 
-extension UseCases {
+//public extension UseCases {
     
     /**
      * Brain. Where we can have business rules
@@ -62,4 +62,4 @@ extension UseCases {
         }
         
     }
-}
+//}

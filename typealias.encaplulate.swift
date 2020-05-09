@@ -43,9 +43,6 @@ public struct Router { private init() {} }
 public typealias RP = Repository
 public struct Repository { private init() {} }
 
-public typealias UC = UseCases
-public class UseCases { private init() {} }
-
 // MARK: - Utils
 
 public typealias AS = AssembyContainer

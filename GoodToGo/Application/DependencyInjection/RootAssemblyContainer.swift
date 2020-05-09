@@ -8,7 +8,6 @@
 import Swinject
 import RJPSLib
 import AppDomain
-import AppDomain
 
 struct RootAssemblyContainerProtocols {
 
@@ -49,35 +48,35 @@ final class RootAssemblyContainer: Assembly {
                                initializer: RP.Network.Bliss.NetWorkRepository.init).inObjectScope(.container)
         
         container.register(AppProtocols.sample_UseCase) { resolver in
-            let uc = UC.Sample_UseCase()
+            let uc = Sample_UseCase()
             uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
             return uc
         }
         
         container.register(AppProtocols.sampleB_UseCase) { resolver in
-            let uc = UC.SampleB_UseCase()
+            let uc = SampleB_UseCase()
             uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
             return uc
         }
         
         container.register(AppProtocols.gitUser_UseCase) { resolver in
-            let uc = UC.GitUser_UseCase()
+            let uc = GitUser_UseCase()
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
             uc.repositoryNetwork               = resolver.resolve(AppProtocols.gitUser_NetWorkRepository)
             return uc
         }
         
         container.register(AppProtocols.sample_UseCase) { resolver in
-            let uc = UC.Sample_UseCase()
+            let uc = Sample_UseCase()
             uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
             return uc
         }
         
         container.register(AppProtocols.blissQuestions_UseCase) { resolver in
-            let uc = UC.BlissQuestionsAPI_UseCase()
+            let uc = BlissQuestionsAPI_UseCase()
             uc.repositoryNetwork               = resolver.resolve(AppProtocols.bliss_NetWorkRepository)
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
             uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
@@ -85,7 +84,7 @@ final class RootAssemblyContainer: Assembly {
         }
         
         container.register(AppProtocols.blissGenericAppBussiness_UseCase) { resolver in
-            let uc = UC.BlissGenericAppBussiness_UseCase()
+            let uc = BlissGenericAppBussiness_UseCase()
             uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
             return uc
