@@ -895,6 +895,7 @@
 				D7AB24BC24674323000142C4 /* Applications.Managers */,
 				9F574F8922369187007DAA58 /* Application.Domain */,
 				9FB8DFCD2233E7B400095420 /* Application.Core */,
+				9FE143F621AF47840026BDFC /* Application.Extensions */,
 				9FFC442E2236EA25000BB058 /* Application.Repositories */,
 				9FD971A420FF418A00F73FB9 /* SupportingFiles */,
 			);
@@ -1096,7 +1097,6 @@
 				D7E25A6D2465E5B5003BBEA0 /* README.md */,
 				9FFF80B922BFB7CC003C4562 /* AppUtils_ProtocolExtension.swift */,
 				9FA0DCC122BE5E45003ADF99 /* UseCases */,
-				9F103A2D2236C08900C57BC0 /* DependencyInjection */,
 			);
 			path = Application.Core;
 			sourceTree = "<group>";
@@ -1143,14 +1143,14 @@
 			path = VMPSampleRxView;
 			sourceTree = "<group>";
 		};
-		9FE143F621AF47840026BDFC /* AppExtensions */ = {
+		9FE143F621AF47840026BDFC /* Application.Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				9F1C3FEA22EEDC84000BDA8E /* NSError+AppExtensions.swift */,
 				9F5D1CF322E5E45700C0AF38 /* OptionalType+Rx+AppExtensions.swift */,
 				9FFF80BB22BFB9A6003C4562 /* UIImage+AppExtensions.swift */,
 			);
-			path = AppExtensions;
+			path = Application.Extensions;
 			sourceTree = "<group>";
 		};
 		9FFC442E2236EA25000BB058 /* Application.Repositories */ = {
@@ -1210,6 +1210,7 @@
 		9FFF99A42247B1FA00783EE2 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				9F103A2D2236C08900C57BC0 /* DependencyInjection */,
 				9F288F2720F8089F008A9539 /* AppDelegate.swift */,
 				9FACC18A223BFB0F00576498 /* AppDelegate+Setup.swift */,
 				9F6BB2D822E3673200829A6F /* AppDelegate+URL.swift */,
@@ -1394,7 +1395,6 @@
 			isa = PBXGroup;
 			children = (
 				D7D9E7912467545D005B4313 /* typealias.AppCore.swift */,
-				9FE143F621AF47840026BDFC /* AppExtensions */,
 				9F574F5722366004007DAA58 /* Mappers */,
 				D7AB24C6246743BD000142C4 /* AppCore.h */,
 				D7AB24C7246743BD000142C4 /* Info.plist */,
