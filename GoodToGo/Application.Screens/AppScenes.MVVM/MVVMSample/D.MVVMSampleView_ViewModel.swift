@@ -21,7 +21,7 @@ import DevTools
 import PointFreeFunctions
 
 //
-// MARK: - UserTableViewCell
+// MARK: - MVVMSampleView_ViewModelProtocol
 //
 
 protocol MVVMSampleView_ViewModelProtocol {

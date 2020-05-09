@@ -19,8 +19,6 @@ import UIBase
 
 public typealias CustomSearchBar = RJS_CustomSearchBar
 
-//extension AppManagers {
-    
     public struct Factory {
         private init() {}
     
@@ -97,10 +95,10 @@ public typealias CustomSearchBar = RJS_CustomSearchBar
                 return some
             }
 
-            public static func topBar(baseController: GenericView) -> V.TopBar {
-                let bar         = V.TopBar()
+            public static func topBar(baseController: GenericView) -> TopBar {
+                let bar         = TopBar()
                 let screenWidth = UIScreen.main.bounds.width
-                let height      = V.TopBar.defaultHeight
+                let height      = TopBar.defaultHeight
                 let container   = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: screenWidth, height: height)))
                 baseController.view.addSubview(container)
                 UIViewController.rjs.loadViewControllerInContainedView(sender: baseController, senderContainedView: container, controller: bar) { (_, _) in }
@@ -108,19 +106,20 @@ public typealias CustomSearchBar = RJS_CustomSearchBar
                 container.rjsALayouts.setMargin(0, on: .top)
                 container.rjsALayouts.setMargin(0, on: .right)
                 container.rjsALayouts.setMargin(0, on: .left)
-                container.rjsALayouts.setHeight(V.TopBar.defaultHeight)
+                container.rjsALayouts.setHeight(TopBar.defaultHeight)
                 
                 bar.view.rjsALayouts.setMargin(0, on: .top)
                 bar.view.rjsALayouts.setMargin(0, on: .right)
                 bar.view.rjsALayouts.setMargin(0, on: .left)
-                bar.view.rjsALayouts.setHeight(V.TopBar.defaultHeight)
+                bar.view.rjsALayouts.setHeight(TopBar.defaultHeight)
                 return bar
             }
-            public static func bottomBar(baseController: GenericView) -> V.BottomBar {
-                let bar         = V.BottomBar()
+
+            public static func bottomBar(baseController: GenericView) -> BottomBar {
+                let bar         = BottomBar()
                 bar.view.backgroundColor = .clear
                 let screenWidth = UIScreen.main.bounds.width
-                let height      = V.TopBar.defaultHeight
+                let height      = TopBar.defaultHeight
                 let container   = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: screenWidth, height: height)))
                 baseController.view.addSubview(container)
                 UIViewController.rjs.loadViewControllerInContainedView(sender: baseController, senderContainedView: container, controller: bar) { (_, _) in }
@@ -128,13 +127,13 @@ public typealias CustomSearchBar = RJS_CustomSearchBar
                 container.rjsALayouts.setMargin(0, on: .bottom)
                 container.rjsALayouts.setMargin(0, on: .right)
                 container.rjsALayouts.setMargin(0, on: .left)
-                container.rjsALayouts.setHeight(V.BottomBar.defaultHeight())
+                container.rjsALayouts.setHeight(BottomBar.defaultHeight())
                 container.backgroundColor = .clear
                 
                 bar.view.rjsALayouts.setMargin(0, on: .top)
                 bar.view.rjsALayouts.setMargin(0, on: .right)
                 bar.view.rjsALayouts.setMargin(0, on: .left)
-                bar.view.rjsALayouts.setHeight(V.BottomBar.defaultHeight())
+                bar.view.rjsALayouts.setHeight(BottomBar.defaultHeight())
                 return bar
             }
         }

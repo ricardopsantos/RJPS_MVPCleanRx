@@ -8,7 +8,7 @@
 import UIKit
 
 //
-// MARK: - UserTableViewCell
+// MARK: - MVVMSampleView_View
 //
 
 extension AppView {

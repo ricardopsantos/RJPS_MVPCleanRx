@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import Designables
 
 //
 // MARK: - UserTableViewCell
 //
 
-public extension AppView {
-    class UserTableViewCell: V.Sample_TableViewCell {
+extension V {
+    class UserTableViewCell: Sample_TableViewCell {
         public override class func cellSize() -> CGFloat { return 40 }
     }
 }
