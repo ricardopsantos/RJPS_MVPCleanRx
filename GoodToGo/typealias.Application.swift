@@ -46,7 +46,7 @@ typealias AppLogger   = DevTools.AppLogger
 
 // MARK: - GenericView
 
-typealias GenericView = UIBase.GenericView
+typealias GenericView = UIBase.BaseViewController
 
 // MARK: - Designables
 

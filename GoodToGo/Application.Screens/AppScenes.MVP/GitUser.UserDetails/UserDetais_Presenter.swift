@@ -47,7 +47,7 @@ protocol UserDetais_ViewProtocol: class {
  */
 
 extension Presenter {
-    class UserDetais_Presenter: GenericPresenter {
+    class UserDetais_Presenter: BasePresenter {
         var generic: GenericPresenter_Protocol?
         var genericView: GenericViewProtocol?
         var viewModel: VM.UserDetais? { didSet { AppLogger.log(appCode: .vmChanged); viewModelChanged() } }
@@ -66,7 +66,7 @@ extension P.UserDetais_Presenter: UserDetais_PresenterProtocol {
     // PublishRelay model Events
     var rxPublishRelay_dismissView: PublishRelay<Void> {
         let relay = PublishRelay<Void>()
-        relay.bind(to: (router as! GenericRouter).rxPublishRelay_dismissView).disposed(by: disposeBag)
+        relay.bind(to: (router as! BaseRouter).rxPublishRelay_dismissView).disposed(by: disposeBag)
         return relay
     }
 }

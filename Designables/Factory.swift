@@ -95,7 +95,7 @@ public typealias CustomSearchBar = RJS_CustomSearchBar
                 return some
             }
 
-            public static func topBar(baseController: GenericView) -> TopBar {
+            public static func topBar(baseController: BaseViewController) -> TopBar {
                 let bar         = TopBar()
                 let screenWidth = UIScreen.main.bounds.width
                 let height      = TopBar.defaultHeight
@@ -115,7 +115,7 @@ public typealias CustomSearchBar = RJS_CustomSearchBar
                 return bar
             }
 
-            public static func bottomBar(baseController: GenericView) -> BottomBar {
+            public static func bottomBar(baseController: BaseViewController) -> BottomBar {
                 let bar         = BottomBar()
                 bar.view.backgroundColor = .clear
                 let screenWidth = UIScreen.main.bounds.width

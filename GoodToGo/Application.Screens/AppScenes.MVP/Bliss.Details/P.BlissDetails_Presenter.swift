@@ -52,7 +52,7 @@ protocol BlissDetails_ViewProtocol: class {
 //
 
 extension Presenter {
-    class BlissDetails_Presenter: GenericPresenter {
+    class BlissDetails_Presenter: BasePresenter {
         weak var generic: GenericPresenter_Protocol?
         weak var genericView: GenericViewProtocol?
         weak var view: BlissDetails_ViewProtocol!

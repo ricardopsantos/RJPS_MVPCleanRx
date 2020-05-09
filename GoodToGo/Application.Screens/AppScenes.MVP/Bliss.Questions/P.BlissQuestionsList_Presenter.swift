@@ -50,7 +50,7 @@ protocol BlissQuestionsList_ViewProtocol: class {
 //
 
 extension Presenter {
-    class BlissQuestionsList_Presenter: GenericPresenter {
+    class BlissQuestionsList_Presenter: BasePresenter {
         weak var generic: GenericPresenter_Protocol?
         weak var genericView: GenericViewProtocol?
         weak var view: BlissQuestionsList_ViewProtocol!

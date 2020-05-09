@@ -19,7 +19,7 @@ protocol BlissDetails_RouterProtocol: class {
 }
 
 extension Router {
-    class BlissDetails_Router: GenericRouter, GenericRouter_Protocol, BlissDetails_RouterProtocol {
+    class BlissDetails_Router: BaseRouter, GenericRouter_Protocol, BlissDetails_RouterProtocol {
         
         private weak var baseView: V.BlissDetails_View?
         init(viewController: V.BlissDetails_View) {

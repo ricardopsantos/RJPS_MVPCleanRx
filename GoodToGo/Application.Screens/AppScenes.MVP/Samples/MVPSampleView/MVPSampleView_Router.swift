@@ -19,7 +19,7 @@ protocol MVPSampleView_RouterProtocol: class {
 }
 
 extension Router {
-    class MVPSampleView_Router: GenericRouter, GenericRouter_Protocol, MVPSampleView_RouterProtocol {
+    class MVPSampleView_Router: BaseRouter, GenericRouter_Protocol, MVPSampleView_RouterProtocol {
 
         private weak var baseView: V.MVPSampleView_View?
         init(viewController: V.MVPSampleView_View) {

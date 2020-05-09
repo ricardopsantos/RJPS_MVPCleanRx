@@ -53,5 +53,3 @@ public struct Mappers { private init() {} }
 
 public typealias AS = AssembyContainer
 public struct AssembyContainer { private init() {} }
-
-public struct AppManagers { private init() {} }

@@ -19,7 +19,7 @@ protocol MVPSampleRxView_RouterProtocol: class {
 }
 
 extension Router {
-    class MVPSampleRxView_Router: GenericRouter, GenericRouter_Protocol, MVPSampleRxView_RouterProtocol {
+    class MVPSampleRxView_Router: BaseRouter, GenericRouter_Protocol, MVPSampleRxView_RouterProtocol {
         
         // PublishRelay model Events
         var rxPublishRelay_showDetails = PublishRelay<VM.MVPSampleRxView_ViewModel?>()

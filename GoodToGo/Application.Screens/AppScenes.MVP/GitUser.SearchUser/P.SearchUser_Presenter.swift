@@ -60,7 +60,7 @@ protocol SearchUser_ViewProtocol: class {
  */
 
 extension Presenter {
-    class SearchUser_Presenter: GenericPresenter {
+    class SearchUser_Presenter: BasePresenter {
         weak var generic: GenericPresenter_Protocol?
         weak var genericView: GenericViewProtocol?
         weak var view: SearchUser_ViewProtocol!

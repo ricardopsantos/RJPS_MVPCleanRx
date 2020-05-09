@@ -21,7 +21,7 @@ protocol SearchUser_RouterProtocol: class {
 }
 
 extension Router {
-    class SearchUser_Router: GenericRouter, GenericRouter_Protocol, SearchUser_RouterProtocol {
+    class SearchUser_Router: BaseRouter, GenericRouter_Protocol, SearchUser_RouterProtocol {
         
         private weak var baseView: V.SearchUser_View?
         // PublishRelay model Events

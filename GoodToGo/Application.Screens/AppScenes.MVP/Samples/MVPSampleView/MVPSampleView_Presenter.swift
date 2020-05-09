@@ -48,7 +48,7 @@ protocol MVPSampleView_ViewProtocol: class {
 //
 
 extension Presenter {
-    class MVPSampleView_Presenter: GenericPresenter {
+    class MVPSampleView_Presenter: BasePresenter {
         weak var generic: GenericPresenter_Protocol?
         weak var genericView: GenericViewProtocol?
         weak var view: MVPSampleView_ViewProtocol!

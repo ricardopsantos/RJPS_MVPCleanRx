@@ -17,7 +17,7 @@ import AppConstants
 import DevTools
 import PointFreeFunctions
 
-open class TopBar: GenericView {
+open class TopBar: BaseViewController {
 
     deinit {
         AppLogger.log("\(self.className) was killed")
