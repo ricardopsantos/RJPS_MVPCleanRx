@@ -7,9 +7,14 @@
 
 import UIKit
 import Foundation
+//
 import RJPSLib
+//
 import AppConstants
 import AppTheme
+import AppResources
+import UIBase
+import DevTools
 
 typealias SequenceBlock          = RJS_Sequence
 typealias CustomSearchBar        = RJS_CustomSearchBar
@@ -27,12 +32,18 @@ typealias AppUserDefaults        = RJS_UserDefaults
 typealias WebAPIRequest_Protocol = RJSLibWebAPIRequest_Protocol
 
 typealias AppEnvironments        = AppManagers.Environments
-typealias AppFactory             = AppManagers.Factory
+//typealias AppFactory             = UIBase.Factory
 typealias AppCan                 = AppManagers.AppCan
-typealias AppResources           = AppManagers.Resources
-typealias AppMessages            = AppManagers.Resources.Messages
+//typealias AppResources           = AppManagers.Resources
+//typealias AppMessages            = AppResources.Messages
 typealias AppLayouts             = AppManagers.Layouts
-typealias AppColors              = AppTheme.UIColor.App
+typealias AppColors              = UIColor.App
 typealias AppFonts               = UIFont.App
 typealias AppImages              = UIImage.App
 typealias AppProtocols           = RootAssemblyContainerProtocols
+
+typealias AppLogger = DevTools.AppLogger
+typealias GenericView = UIBase.GenericView
+typealias GenericTableView_Protocol = UIBase.GenericTableView_Protocol
+typealias AppFactory = UIBase.Factory
+

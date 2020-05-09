@@ -19,12 +19,7 @@ public struct AppLogger {
         guard enabled else { return }
         RJS_Logs.DLog(message, function: function, file: file, line: line)
     }
-    
-    public static func log(appCode: AppCodes, function: String = #function, file: String = #file, line: Int = #line) {
-        guard enabled else { return }
-        RJS_Logs.DLog(appCode.localizedMessageForDevTeam, function: function, file: file, line: line)
-    }
-    
+        
     public static func warning(_ message: String, function: String = #function, file: String = #file, line: Int = #line) {
         guard enabled else { return }
         RJS_Logs.DLogWarning(message, function: function, file: file, line: line)

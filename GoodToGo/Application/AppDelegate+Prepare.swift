@@ -13,7 +13,7 @@ import RJPSLib
 //
 import AppConstants
 import PointFreeFunctions
-import <#module#>
+
 extension AppDelegate {
     func setup(application: UIApplication) {
         AppEnvironments.setup()

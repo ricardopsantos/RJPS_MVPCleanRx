@@ -6,10 +6,13 @@
 //
 
 import Foundation
+//
 import UIKit
 import RxSwift
 import RJPSLib
 import RxCocoa
+//
+import DevTools
 
 class GenericPresenter {
     deinit {
@@ -17,7 +20,7 @@ class GenericPresenter {
         NotificationCenter.default.removeObserver(self)
     }
     
-    var rxPublishRelay_error       = PublishRelay<Error>()
+    var rxPublishRelay_error = PublishRelay<Error>()
     var reachabilityService: ReachabilityService! = try! DefaultReachabilityService() // try! is only for simplicity sake
     var disposeBag: DisposeBag = DisposeBag()
    

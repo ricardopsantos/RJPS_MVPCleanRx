@@ -13,6 +13,7 @@ import RJPSLib
 //
 import AppConstants
 import PointFreeFunctions
+import Designables
 
 extension AppView {
     class BlissDetails_View: GenericView {

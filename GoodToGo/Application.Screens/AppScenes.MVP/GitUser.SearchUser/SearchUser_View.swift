@@ -14,8 +14,8 @@ import RJPSLib
 import AppConstants
 import PointFreeFunctions
 
-extension AppView {
-    class SearchUser_View: GenericView {
+public extension AppView {
+    open class SearchUser_View: GenericView {
         
         deinit {
             AppLogger.log("\(self.className) was killed")

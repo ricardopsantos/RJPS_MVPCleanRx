@@ -51,8 +51,8 @@ public extension UIColor {
             
         public struct TopBar {
             private init() {}
-            static var background: UIColor { return _blue1.toDark() }
-            static var titleColor: UIColor { return _grey_7.toDark() }
+            public static var background: UIColor { return _blue1.toDark() }
+            public static var titleColor: UIColor { return _grey_7.toDark() }
         }
         public static var appDefaultBackgroundColor: UIColor { return _grey_7.toDark() }
         public static var btnBackgroundColor: UIColor { return _grey_6.toDark() }
@@ -61,7 +61,7 @@ public extension UIColor {
         public static var lblTextColor: UIColor { return _grey_1.toDark() }
         
         public static var error: UIColor { return _red1.toDark() }
-        public static var sucess: UIColor { return _blue2.toDark() }
+        public static var success: UIColor { return _blue2.toDark() }
         public static var warning: UIColor { return UIColor(red: 242, green: 168, blue: 62).toDark() }
     }
 }

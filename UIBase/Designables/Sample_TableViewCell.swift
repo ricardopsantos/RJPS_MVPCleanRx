@@ -6,8 +6,10 @@
 //
 
 import UIKit
+//
 import RxSwift
 import RxCocoa
+import DevTools
 
 protocol Sample_TableViewCellProtocol: GenericTableViewCell_Protocol {
     var rxBehaviorRelay_title: BehaviorRelay<String> { get set }
@@ -15,7 +17,7 @@ protocol Sample_TableViewCellProtocol: GenericTableViewCell_Protocol {
     var rxBehaviorRelay_textColor: BehaviorRelay<UIColor> { get set }
 }
 
-extension AppView {
+public extension AppView {
     
     class Sample_TableViewCell: UITableViewCell, GenericTableViewCell_Protocol {
         deinit {
@@ -26,7 +28,7 @@ extension AppView {
         // BehaviorRelay model a State
         var rxBehaviorRelay_title     = BehaviorRelay<String>(value: "")
         var rxBehaviorRelay_image     = BehaviorRelay<UIImage?>(value: nil) 
-        var rxBehaviorRelay_textColor = BehaviorRelay<UIColor>(value: AppColors.lblTextColor)
+        var rxBehaviorRelay_textColor = BehaviorRelay<UIColor>(value: UIColor.App.lblTextColor)
 
         class func cellSize() -> CGFloat { return 60 }
         static func prepare(tableView: UITableView) {
@@ -58,7 +60,7 @@ extension AppView {
         private let _disposeBag: DisposeBag = DisposeBag()
         
         private lazy var _lblTitle: UILabel = {
-            let some = AppFactory.UIKit.label(baseView: self, style: .value)
+            let some = Factory.UIKit.label(baseView: self, style: .value)
             some.rjsALayouts.setMargin(_marginH, on: .left)
             some.rjsALayouts.setMargin(_marginH*2+_imageSize, on: .right)
             some.rjsALayouts.setMargin(_marginV, on: .top)
@@ -67,7 +69,7 @@ extension AppView {
         }()
         
         private lazy var _image: UIImageView = {
-            let some = AppFactory.UIKit.imageView(baseView: self)
+            let some = Factory.UIKit.imageView(baseView: self)
             some.rjsALayouts.setMargin(_marginH, on: .right)
             some.rjsALayouts.setMargin(_marginV, on: .top)
             some.rjsALayouts.setSize(CGSize(width: _imageSize, height: _imageSize))
@@ -76,12 +78,12 @@ extension AppView {
             return some
         }()
         
-        override func prepareForReuse() {
+        public override func prepareForReuse() {
             super.prepareForReuse()
             set(image: nil)
         }
         
-        override func setNeedsLayout() {
+        public override func setNeedsLayout() {
             super.setNeedsLayout()
         }
     }
@@ -100,7 +102,7 @@ extension V.Sample_TableViewCell {
 //
 
 extension V.Sample_TableViewCell: Sample_TableViewCellProtocol {
-    func set(title: String) { rxBehaviorRelay_title.accept(title) }
-    func set(textColor: UIColor) { rxBehaviorRelay_textColor.accept(textColor) }
-    func set(image: UIImage?) { rxBehaviorRelay_image.accept(image)  }
+    public func set(title: String) { rxBehaviorRelay_title.accept(title) }
+    public func set(textColor: UIColor) { rxBehaviorRelay_textColor.accept(textColor) }
+    public func set(image: UIImage?) { rxBehaviorRelay_image.accept(image)  }
 }

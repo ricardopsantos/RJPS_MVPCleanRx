@@ -7,10 +7,10 @@
 
 import Foundation
 
-extension AppConstants.AppEnuns {
+public extension AppResources {
     private init() {}
 
-    public enum AppCodes: Int {
+    enum AppCodes: Int {
         case noInternet = 1000
         case notImplemented
         case notPredicted

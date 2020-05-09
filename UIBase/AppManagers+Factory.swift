@@ -13,29 +13,34 @@ import RJPSLib
 //
 import AppConstants
 import PointFreeFunctions
+import Extensions
+import AppResources
 
-extension AppManagers {
+public typealias CustomSearchBar = RJS_CustomSearchBar
+
+//extension AppManagers {
     
-    struct Factory {
+    public struct Factory {
         private init() {}
     
-        struct Errors {
+        public struct Errors {
             private init() {}
-            static func with(appCode: AppEnuns.AppCodes, info: String="") -> Error {
+            public static func with(appCode: AppCodes, info: String="") -> Error {
                 let domain: String = "\(Bundle.main.bundleIdentifier!)"//appCode.localizableString
                 let code: Int = appCode.rawValue
                 var userInfo: [String: Any] = [:]
-                userInfo[NSError.AppKeys.userInfoDevMessageKey]  = appCode.localizedMessageForDevTeam
-                userInfo[NSError.AppKeys.userInfoViewMessageKey] = appCode.localizedMessageForView
-                userInfo[NSError.AppKeys.userInfoMoreInfoKey]    = info
+                #warning("uncoment")
+                //userInfo[NSError.AppKeys.userInfoDevMessageKey]  = appCode.localizedMessageForDevTeam
+                //userInfo[NSError.AppKeys.userInfoViewMessageKey] = appCode.localizedMessageForView
+                //userInfo[NSError.AppKeys.userInfoMoreInfoKey]    = info
                 return NSError(domain: domain, code: code, userInfo: userInfo)
             }
         }
         
-        struct UIKit {
+        public struct UIKit {
             private init() {}
             
-            static func textField(baseView: UIView? = nil, title: String="", tag: Int=0) -> UITextField {
+            public static func textField(baseView: UIView? = nil, title: String="", tag: Int=0) -> UITextField {
                 let some = UITextField()
                 some.text = title
                 some.tag = tag
@@ -43,7 +48,7 @@ extension AppManagers {
                 return some
             }
             
-            static func label(baseView: UIView? = nil, title: String="", style: UILabel.LayoutStyle, tag: Int=0) -> UILabel {
+            public static func label(baseView: UIView? = nil, title: String="", style: UILabel.LayoutStyle, tag: Int=0) -> UILabel {
                 let some = UILabel()
                 some.text = title
                 some.numberOfLines = 0
@@ -53,7 +58,7 @@ extension AppManagers {
                 return some
             }
             
-            static func button(baseView: UIView? = nil, title: String="", style: UIButton.LayoutStyle, tag: Int=0) -> UIButton {
+            public static func button(baseView: UIView? = nil, title: String="", style: UIButton.LayoutStyle, tag: Int=0) -> UIButton {
                 let some = UIButton()
                 some.tag = tag
                 some.setTitleForAllStates(title)
@@ -62,16 +67,16 @@ extension AppManagers {
                 return some
             }
             
-            static func searchBar(baseView: UIView? = nil, tag: Int=0) -> CustomSearchBar {
+            public static func searchBar(baseView: UIView? = nil, tag: Int=0) -> CustomSearchBar {
                 let some = CustomSearchBar()
                 baseView?.addSubview(some)
-                some.tintColor = AppColors.TopBar.background
+                some.tintColor = UIColor.App.TopBar.background
                 some.tag = tag
                 some.barStyle = .default
                 return some
             }
             
-            static func imageView(baseView: UIView? = nil, image: UIImage?=nil, tag: Int=0) -> UIImageView {
+            public static func imageView(baseView: UIView? = nil, image: UIImage?=nil, tag: Int=0) -> UIImageView {
                 let some = UIImageView()
                 some.tag = tag
                 if image != nil {
@@ -81,7 +86,7 @@ extension AppManagers {
                 return some
             }
 
-            static func tableView(baseView: UIView? = nil, tag: Int=0, cellIdentifier: String=AppConstants.Dev.cellIdentifier) -> UITableView {
+            public static func tableView(baseView: UIView? = nil, tag: Int=0, cellIdentifier: String=AppConstants.Dev.cellIdentifier) -> UITableView {
                 let some = UITableView()
                 some.tag = tag
                 if !cellIdentifier.trim.isEmpty {
@@ -91,7 +96,7 @@ extension AppManagers {
                 return some
             }
 
-            static func topBar(baseController: GenericView) -> V.TopBar {
+            public static func topBar(baseController: GenericView) -> V.TopBar {
                 let bar         = V.TopBar()
                 let screenWidth = UIScreen.main.bounds.width
                 let height      = V.TopBar.defaultHeight
@@ -110,7 +115,7 @@ extension AppManagers {
                 bar.view.rjsALayouts.setHeight(V.TopBar.defaultHeight)
                 return bar
             }
-            static func bottomBar(baseController: GenericView) -> V.BottomBar {
+            public static func bottomBar(baseController: GenericView) -> V.BottomBar {
                 let bar         = V.BottomBar()
                 bar.view.backgroundColor = .clear
                 let screenWidth = UIScreen.main.bounds.width
@@ -133,4 +138,4 @@ extension AppManagers {
             }
         }
     }
-}
+//}

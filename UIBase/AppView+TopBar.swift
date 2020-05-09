@@ -6,12 +6,13 @@
 //
 
 import Foundation
+//
 import UIKit
 import RxSwift
 import RxCocoa
 import RxGesture
 
-extension AppView {
+public extension AppView {
     class TopBar: GenericView {
 
         deinit {
@@ -22,7 +23,7 @@ extension AppView {
         private var _btnSize: CGFloat { return TopBar.defaultHeight / 2.0 }
         
         private lazy var _btnBack: UIButton = {
-            let some = AppFactory.UIKit.button(baseView: self.view, style: .dismiss)
+            let some = Factory.UIKit.button(baseView: self.view, style: .dismiss)
             some.rjsALayouts.setMargin(_btnSize/2, on: .left)
             some.rjsALayouts.setMargin(_btnSize/2, on: .top)
             some.rjsALayouts.setSize(CGSize(width: _btnSize, height: _btnSize))
@@ -33,7 +34,7 @@ extension AppView {
         }()
         
         private lazy var _btnClose: UIButton = {
-            let some = AppFactory.UIKit.button(baseView: self.view, style: .dismiss)
+            let some = Factory.UIKit.button(baseView: self.view, style: .dismiss)
             some.rjsALayouts.setMargin(_btnSize/2, on: .right)
             some.rjsALayouts.setMargin(_btnSize/2, on: .top)
             some.rjsALayouts.setSize(CGSize(width: _btnSize, height: _btnSize))
@@ -44,7 +45,7 @@ extension AppView {
         }()
         
         private lazy var _lblTitle: UILabel = {
-            let some = AppFactory.UIKit.label(baseView: self.view, style: .title)
+            let some = Factory.UIKit.label(baseView: self.view, style: .title)
             some.textAlignment = .center
             some.rjsALayouts.setMargin(_btnSize*2, on: .left)
             some.rjsALayouts.setMargin(_btnSize*2, on: .right)
@@ -52,7 +53,7 @@ extension AppView {
             some.rjsALayouts.setMargin(0, on: .bottom)
             some.numberOfLines = 0
             some.layoutStyle   = .title
-            some.textColor     = AppColors.TopBar.titleColor
+            some.textColor     = UIColor.App.TopBar.titleColor
             return some
         }()
         
@@ -61,10 +62,10 @@ extension AppView {
             btn.isUserInteractionEnabled = true
         }
         
-        override func viewDidLoad() {
+        public override func viewDidLoad() {
             super.viewDidLoad()
             view.accessibilityIdentifier = AppConstants_UITests.UIViewControllers.genericAccessibilityIdentifier(self)
-            self.view.backgroundColor    =  AppColors.TopBar.background
+            self.view.backgroundColor    =  UIColor.App.TopBar.background
         }
     }
 }

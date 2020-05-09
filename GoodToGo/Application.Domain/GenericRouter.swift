@@ -5,11 +5,20 @@
 //  Copyright © 2019 Ricardo P Santos. All rights reserved.
 //
 
-import Foundation
 import UIKit
-import RxSwift
+import Foundation
+//
 import RJPSLib
+import RxSwift
 import RxCocoa
+//
+import AppResources
+import UIBase
+import AppTheme
+import AppConstants
+import Extensions
+import DevTools
+import PointFreeFunctions
 
 class GenericRouter {
     deinit {

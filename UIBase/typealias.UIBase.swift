@@ -10,6 +10,8 @@ import Foundation
 //
 import AppTheme
 import DevTools
+import AppResources
 
 public typealias AppLogger = DevTools.AppLogger
-public typealias AppColors = UIColor.App
+//public typealias AppColors = UIColor.App
+public typealias AppMessages = AppResources.Resources.Messages

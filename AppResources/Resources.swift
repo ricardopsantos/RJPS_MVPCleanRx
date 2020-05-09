@@ -13,8 +13,9 @@ import RJPSLib
 //
 import AppConstants
 import PointFreeFunctions
+import DevTools
 
-extension AppManagers {
+public extension AppResources {
     
     struct Resources {
         private init() {}
@@ -22,7 +23,7 @@ extension AppManagers {
         private static var _currentLanguageBundle: Bundle?
         private static var _defaultLanguage: SelectedLanguage = .en
         private static var _storedLanguage: SelectedLanguage {
-            if let storedLanguageString = AppGlobal.getWith(key: AppConstants.Dev.keyCoreDataSaveLang) {
+            if let storedLanguageString = getWith(key: AppConstants.Dev.keyCoreDataSaveLang) {
                 // We have a stored language!
                 if let storedLanguage = SelectedLanguage(rawValue: Int(storedLanguageString) ?? _defaultLanguage.rawValue ) {
                     return storedLanguage
@@ -34,7 +35,7 @@ extension AppManagers {
             didSet {
                 if selectedLanguage != _storedLanguage {
                     _currentLanguageBundle = nil
-                    AppGlobal.saveWith(key: AppConstants.Dev.keyCoreDataSaveLang, value: "\(selectedLanguage.rawValue)")
+                    saveWith(key: AppConstants.Dev.keyCoreDataSaveLang, value: "\(selectedLanguage.rawValue)")
                     AppLogger.warning("Language code changed to [\(selectedLanguage)]")
                 }
             }
@@ -42,19 +43,19 @@ extension AppManagers {
 
         enum SelectedLanguage: Int { case en, pt }
         
-        static func get(_ code: String) -> String { return resource(code) }
+        public static func get(_ code: String) -> String { return resource(code) }
 
-        struct Messages {
+        public struct Messages {
             private init() {}
-            static var noInternet: String { return get("NoInternetConnection") }
-            static var pleaseTryAgainLater: String { return get("Please try again latter") }
-            static var dismiss: String { return get("Dismiss") }
-            static var alert: String { return get("Alert") }
-            static var ok: String { return get("OK") }
-            static var sucess: String { return get("Sucess") }
-            static var no: String { return get("NO") }
-            static var details: String { return get("Details") }
-            static var invalidURL: String { return get("Invalid URL") }
+            public static var noInternet: String { return get("NoInternetConnection") }
+            public static var pleaseTryAgainLater: String { return get("Please try again latter") }
+            public static var dismiss: String { return get("Dismiss") }
+            public static var alert: String { return get("Alert") }
+            public static var ok: String { return get("OK") }
+            public static var success: String { return get("Success") }
+            public static var no: String { return get("NO") }
+            public static var details: String { return get("Details") }
+            public static var invalidURL: String { return get("Invalid URL") }
         }
         
         private static func resource(_ code: String) -> String {
@@ -68,20 +69,18 @@ extension AppManagers {
                 }
                 let path = Bundle.main.path(forResource: file, ofType: "lproj")
                 guard path != nil else {
-                    AppGlobal.assert(false, message: "Fail location ressource")
+                    assert(false, message: "Fail location resource")
                     return code
                 }
                 
                 _currentLanguageBundle = Bundle(path: path!)
                 guard _currentLanguageBundle != nil else {
-                    AppGlobal.assert(false, message: "Fail location ressource")
+                    assert(false, message: "Fail location resource")
                     return code
                 }
             }
             
-            let result = _currentLanguageBundle!.localizedString(forKey: code, value: nil, table: nil)
-
-            return result
+            return _currentLanguageBundle!.localizedString(forKey: code, value: nil, table: nil)
         }
         
     }

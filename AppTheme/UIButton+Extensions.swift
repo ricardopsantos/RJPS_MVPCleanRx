@@ -8,20 +8,22 @@
 import UIKit
 import Foundation
 
-extension UIButton {
-    enum LayoutStyle {
+import AppResources
+
+public extension UIButton {
+    public enum LayoutStyle {
         case notAplyed
         case regular
         case dismiss
         case alternative
     }
     
-    var layoutStyle: UIButton.LayoutStyle {
+    public var layoutStyle: UIButton.LayoutStyle {
         set { layoutWith(style: newValue) }
         get { return .notAplyed }
     }
     
-    func setState(enabled: Bool) {
+    public func setState(enabled: Bool) {
         self.isUserInteractionEnabled = enabled
         self.alpha = enabled ? 1.0 : 0.6
     }
@@ -34,26 +36,26 @@ extension UIButton {
     
     private func layoutWith(style: UIButton.LayoutStyle) {
         let regular = {
-            self.titleLabel?.font = AppFonts.regular(size: .big)
-            self.backgroundColor  = AppColors.btnBackgroundColor
-            self.setTextColorForAllStates(AppColors.btnTextColor)
+            self.titleLabel?.font = UIFont.App.regular(size: .big)
+            self.backgroundColor  = UIColor.App.btnBackgroundColor
+            self.setTextColorForAllStates(UIColor.App.btnTextColor)
             self.setState(enabled: true)
             self.layer.cornerRadius = 10.0
             self.clipsToBounds      = true
         }
         let alternative = {
-            self.titleLabel?.font = AppFonts.regular(size: .small)
-            self.backgroundColor  = AppColors.btnBackgroundColor
-            self.setTextColorForAllStates(AppColors.btnTextColor)
+            self.titleLabel?.font = UIFont.App.regular(size: .small)
+            self.backgroundColor  = UIColor.App.btnBackgroundColor
+            self.setTextColorForAllStates(UIColor.App.btnTextColor)
             self.setState(enabled: true)
             self.layer.cornerRadius = 10.0
             self.clipsToBounds      = true
         }
         let dismiss = {
-            self.titleLabel?.font = AppFonts.regular(size: .regular)
-            self.backgroundColor  = AppColors.btnBackgroundColor
-            self.setTextColorForAllStates(AppColors.btnTextColor)
-            self.setTitleForAllStates(AppMessages.dismiss)
+            self.titleLabel?.font = UIFont.App.regular(size: .regular)
+            self.backgroundColor  = UIColor.App.btnBackgroundColor
+            self.setTextColorForAllStates(UIColor.App.btnTextColor)
+            self.setTitleForAllStates(AppResources.Resources.Messages.dismiss)
             self.setState(enabled: true)
             self.layer.cornerRadius = 4.0
             self.clipsToBounds      = true

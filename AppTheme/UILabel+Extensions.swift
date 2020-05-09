@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-extension UILabel {
+public extension UILabel {
     
     enum LayoutStyle {
         case notAplyed /// not Applied
@@ -34,14 +34,14 @@ extension UILabel {
     private func layoutWith(style: UILabel.LayoutStyle) {
         let title = {
             self.backgroundColor = .clear
-            self.textColor       = AppColors.TopBar.titleColor
-            self.font            = AppFonts.bold(size: .big)
+            self.textColor       = UIColor.App.TopBar.titleColor
+            self.font            = UIFont.App.bold(size: .big)
             self.numberOfLines  = 0
         }
         let value = {
             self.backgroundColor = .clear
-            self.textColor       = AppColors.lblTextColor
-            self.font            = AppFonts.regular(size: .small)
+            self.textColor       = UIColor.App.lblTextColor
+            self.font            = UIFont.App.regular(size: .small)
             self.numberOfLines  = 0
         }
         switch style {

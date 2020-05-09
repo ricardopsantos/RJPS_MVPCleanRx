@@ -16,8 +16,9 @@ import DevTools
 import Extensions
 import AppTheme
 import AppConstants
+import AppResources
 
-class GenericView: UIViewController {
+open class GenericView: UIViewController {
 
     deinit {
         AppLogger.log("\(self.className) was killed")
@@ -25,7 +26,7 @@ class GenericView: UIViewController {
     }
     
     var reachabilityService: ReachabilityService! = try! DefaultReachabilityService() // try! is only for simplicity sake
-    var disposeBag: DisposeBag = DisposeBag()
+    public var disposeBag: DisposeBag = DisposeBag()
     private var _keyboardIsVisible = false
     private var _keyboardHeigth: CGFloat = 0
     var keyboardHeigth: CGFloat {
@@ -47,15 +48,16 @@ class GenericView: UIViewController {
     private var _lblMessageDistanceFromTop: NSLayoutConstraint?
     private var _lblReachabilityDistanceFromTop: NSLayoutConstraint?
     private var _lblReachabilityHeight: CGFloat = 25
-    private var _lblMessageHeight: CGFloat = V.TopBar.defaultHeight
+    #warning("hardcoded till fix V.TopBar.defaultHeight dependencie")
+    private var _lblMessageHeight: CGFloat = 50// V.TopBar.defaultHeight
     private var _margin: CGFloat = 20
     private var _lblMessageTimmer: Timer?
 
     private lazy var _lblReachability: UILabel = {
-        let some             = AppFactory.UIKit.label(baseView: self.view, style: .title)
-        some.textColor       = AppColors.TopBar.titleColor
+        let some             = Factory.UIKit.label(baseView: self.view, style: .title)
+        some.textColor       = UIColor.App.TopBar.titleColor
         some.textAlignment   = .center
-        some.backgroundColor = AppColors.error
+        some.backgroundColor = UIColor.App.error
         some.alpha           = 0
         some.rjsALayouts.setMargin(0, on: .left)
         some.rjsALayouts.setMargin(0, on: .right)
@@ -65,8 +67,8 @@ class GenericView: UIViewController {
     }()
     
     private lazy var _lblMessage: UILabel = {
-        let some           = AppFactory.UIKit.label(baseView: self.view, style: .title)
-        some.textColor     = AppColors.TopBar.titleColor
+        let some           = Factory.UIKit.label(baseView: self.view, style: .title)
+        some.textColor     = UIColor.App.TopBar.titleColor
         some.textAlignment = .center
         some.alpha         = 0
         some.numberOfLines = 0
@@ -84,7 +86,7 @@ class GenericView: UIViewController {
         return some
     }()
     
-    override func loadView() {
+    public override func loadView() {
         super.loadView()
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(self.keyboardWillShowNotification(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -93,11 +95,11 @@ class GenericView: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(self.keyboardDidHideNotification(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         _lblReachability.lazyLoad()
         _lblReachability.superview?.bringSubviewToFront(_lblReachability)
@@ -105,7 +107,7 @@ class GenericView: UIViewController {
         _lblMessage.superview?.bringSubviewToFront(_lblReachability)
     }
     
-    func displayMessage(_ message: String, type: Enuns.AlertType, asAlert: Bool=false) {
+    public func displayMessage(_ message: String, type: AlertType, asAlert: Bool=false) {
         if asAlert {
             (self as UIViewController).rjs.showAlert(title: "\(type)".uppercased(), message: message)
         } else {
@@ -113,7 +115,7 @@ class GenericView: UIViewController {
         }
     }
     
-    func setNoConnectionViewVisibity(to: Bool, withMessage: String = AppMessages.noInternet) {
+    public func setNoConnectionViewVisibity(to: Bool, withMessage: String = AppMessages.noInternet) {
         RJS_Utils.executeInMainTread { [weak self] in
             guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
             let value = !to
@@ -129,7 +131,7 @@ class GenericView: UIViewController {
         }
     }
     
-    func prepareLayout() { AppLogger.log(appCode: .notImplemented) }
+    public func prepareLayout() { AppLogger.log(appCode: .notImplemented) }
     func keyboardDidShow() { }
     func keyboardDidHide() { }
     func dismissKeyboard() { }
@@ -139,7 +141,7 @@ class GenericView: UIViewController {
 // MARK: - loadingViewable
 //
 
-extension GenericView {
+public extension GenericView {
     func setActivityState(_ state: Bool) {
         if state {
             self.view.rjs.startActivityIndicator()
@@ -157,7 +159,7 @@ extension GenericView {
         setTopMessageVisibityTo(state: false, message: "", type: .sucess)
     }
     
-    private func setTopMessageVisibityTo(state: Bool, message: String, type: Enuns.AlertType) {
+    private func setTopMessageVisibityTo(state: Bool, message: String, type: AlertType) {
         if state {
             _lblMessageTimmer?.invalidate()
             _lblMessageTimmer = nil
@@ -169,9 +171,9 @@ extension GenericView {
             if state {
                 strongSelf1._lblMessage.text = message
                 switch type {
-                case .sucess : strongSelf1._lblMessage.backgroundColor = AppColors.sucess
-                case .warning: strongSelf1._lblMessage.backgroundColor = AppColors.warning
-                case .error  : strongSelf1._lblMessage.backgroundColor = AppColors.error
+                case .sucess : strongSelf1._lblMessage.backgroundColor = UIColor.App.success
+                case .warning: strongSelf1._lblMessage.backgroundColor = UIColor.App.warning
+                case .error  : strongSelf1._lblMessage.backgroundColor = UIColor.App.error
                 }
             }
             strongSelf1._lblMessage.fadeTo(value ? 0 : 0.95, duration: duration)

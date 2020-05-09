@@ -8,9 +8,8 @@
 
 import Foundation
 
-extension AppConstants {
+public struct AppResources {
     private init() {}
-    public struct AppEnuns { private init() { } }
 }
-public typealias AlertType = AppConstants.AppEnuns.AlertType
-public typealias AppMode   = AppConstants.AppEnuns.AppMode
+
+public typealias AppCodes = AppResources.AppCodes

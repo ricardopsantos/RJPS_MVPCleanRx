@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol GenericTableView_Protocol: class {
+public protocol GenericTableView_Protocol: class {
     func configure(cell: GenericTableViewCell_Protocol, indexPath: IndexPath)
     func numberOfRows(_ section: Int) -> Int
     func didSelectRowAt(indexPath: IndexPath)
@@ -16,7 +16,7 @@ protocol GenericTableView_Protocol: class {
     func didSelect(object: Any)
 }
 
-extension GenericTableView_Protocol {
+public extension GenericTableView_Protocol {
     func numberOfRows(_ section: Int) -> Int { return 0 }
     func numberOfSections() -> Int { return 1 }
     func didSelect(object: Any) { }

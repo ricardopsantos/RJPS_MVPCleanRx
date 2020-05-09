@@ -14,12 +14,13 @@ import RJPSLib
 //
 import AppConstants
 import PointFreeFunctions
+import Designables
 
-protocol BottomBar_Delegate: AnyObject {
+public protocol BottomBar_Delegate: AnyObject {
     func btnTappedWith(identifier: String)
 }
 
-extension AppView {
+public extension AppView {
     class BottomBar: GenericView {
 
         deinit {
@@ -29,7 +30,7 @@ extension AppView {
         weak var delegate: BottomBar_Delegate?
         
         private lazy var _btn1: UIButton = {
-            let some = AppFactory.UIKit.button(baseView: self.view, style: .alternative)
+            let some = Factory.UIKit.button(baseView: self.view, style: .alternative)
             some.setTitleForAllStates("1")
             some.rx.tap.subscribe({ [weak self] _ in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
@@ -40,7 +41,7 @@ extension AppView {
         }()
         
         private lazy var _btn2: UIButton = {
-            let some = AppFactory.UIKit.button(baseView: self.view, style: .alternative)
+            let some = Factory.UIKit.button(baseView: self.view, style: .alternative)
             some.setTitleForAllStates("2")
             some.rx.tap.subscribe({ [weak self] _ in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
@@ -51,7 +52,7 @@ extension AppView {
         }()
         
         private lazy var _btn3: UIButton = {
-            let some = AppFactory.UIKit.button(baseView: self.view, style: .alternative)
+            let some = Factory.UIKit.button(baseView: self.view, style: .alternative)
             some.setTitleForAllStates("3")
             some.rx.tap.subscribe({ [weak self] _ in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
@@ -62,7 +63,7 @@ extension AppView {
         }()
         
         private lazy var _btn4: UIButton = {
-            let some = AppFactory.UIKit.button(baseView: self.view, style: .alternative)
+            let some = Factory.UIKit.button(baseView: self.view, style: .alternative)
             some.setTitleForAllStates("4")
             some.rx.tap.subscribe({ [weak self] _ in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
@@ -73,7 +74,7 @@ extension AppView {
         }()
         
         private lazy var _btn5: UIButton = {
-            let some = AppFactory.UIKit.button(baseView: self.view, style: .alternative)
+            let some = Factory.UIKit.button(baseView: self.view, style: .alternative)
             some.setTitleForAllStates("5")
             some.rx.tap.subscribe({ [weak self] _ in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
@@ -83,18 +84,18 @@ extension AppView {
             return some
         }()
         
-        override func loadView() {
+        public override func loadView() {
             super.loadView()
             prepareLayout()
         }
         
-        override func viewDidLoad() {
+        public override func viewDidLoad() {
             super.viewDidLoad()
             view.accessibilityIdentifier = AppConstants_UITests.UIViewControllers.genericAccessibilityIdentifier(self)
-            self.view.backgroundColor =  AppColors.TopBar.background
+            self.view.backgroundColor = UIColor.App.TopBar.background
         }
         
-        override func prepareLayout() {
+        public override func prepareLayout() {
              super.prepareLayout()
 
             let viewBack = UIView()
@@ -110,7 +111,7 @@ extension AppView {
             let btns =  [_btn1, _btn2, _btn3, _btn4, _btn5]
             let k: CGFloat = 0.3
             let dimH = V.BottomBar.backgroundHeight()*(1.0-k)
-            let dimW = (AppGlobal.screenWidth / (CGFloat(btns.count+1)))
+            let dimW = (screenWidth / (CGFloat(btns.count+1)))
             
             let margin: CGFloat = V.BottomBar.defaultHeight()*(k/2.0)
             let btnSize = CGSize(width: dimW, height: dimH)

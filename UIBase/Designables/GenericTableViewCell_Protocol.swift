@@ -15,13 +15,13 @@ import RJPSLib
 import AppConstants
 import PointFreeFunctions
 
-protocol GenericTableViewCell_Protocol: ReusableCell_Protocol {
+public protocol GenericTableViewCell_Protocol: ReusableCell_Protocol {
     func set(title: String)     // Mandatory
     func set(image: UIImage?)
     func set(textColor: UIColor)
 }
 
-extension GenericTableViewCell_Protocol {
+public extension GenericTableViewCell_Protocol {
     func set(image: UIImage?) { }
     func set(textColor: UIColor) { }
 }
