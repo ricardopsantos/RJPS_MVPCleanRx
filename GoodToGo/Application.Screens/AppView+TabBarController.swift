@@ -7,6 +7,7 @@
 
 import UIKit
 import Swinject
+import AppDomain
 
 extension V {
 

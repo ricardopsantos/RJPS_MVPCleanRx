@@ -7,6 +7,7 @@
 
 import Foundation
 import RJPSLib
+import AppDomain
 
 /**
  * WE CANT HAVE BUSINESS RULES HERE! THE CLIENT JUST DO THE OPERATION AND LEAVE

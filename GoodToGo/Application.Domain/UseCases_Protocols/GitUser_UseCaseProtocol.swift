@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import RJPSLib
+import AppDomain
 
 typealias GitUser_Single_UseCaseCompletionHandler = (_ result: Result<GitHub.UserResponseDto>) -> Void
 typealias GitUser_Friends_UseCaseCompletionHandler = (_ result: Result<[GitHub.UserResponseDto]>) -> Void

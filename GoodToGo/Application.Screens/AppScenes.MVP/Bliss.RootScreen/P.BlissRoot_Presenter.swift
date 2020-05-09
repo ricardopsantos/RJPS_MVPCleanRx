@@ -13,6 +13,7 @@ import RJPSLib
 //
 import AppConstants
 import PointFreeFunctions
+import AppDomain
 
 //
 // MARK: - Presenter_Protocol & View_Protocol

@@ -13,6 +13,7 @@ import RJPSLib
 //
 import AppConstants
 import PointFreeFunctions
+import AppDomain
 
 extension RP.Network.Bliss {
     struct GetHealthStatus_APIRequest: WebAPIRequest_Protocol {

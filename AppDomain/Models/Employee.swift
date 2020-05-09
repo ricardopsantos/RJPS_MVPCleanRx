@@ -10,7 +10,6 @@ import UIKit
 
 public struct Employee {
     private init() { }
-
 }
 
 extension Employee {

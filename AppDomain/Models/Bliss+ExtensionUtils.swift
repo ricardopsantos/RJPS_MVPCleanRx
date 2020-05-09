@@ -29,7 +29,7 @@ public extension Bliss {
 }
 
 public extension Bliss.ShareByEmail {
-    var sucess: Bool { return status == "OK" }
+    var success: Bool { return status == "OK" }
 }
 
 extension Bliss.Question: CustomStringConvertible {

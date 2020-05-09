@@ -31,12 +31,12 @@ public extension GitHub {
 public extension GitHub {
     struct UserResponseDto: Codable {
 
-        private(set) var name: String?
-        private(set) var login: String?
-        private(set) var avatarUrl: String?
-        private(set) var url: String?
+        public var name: String?
+        public var login: String?
+        public var avatarUrl: String?
+        public var url: String?
 
-        private enum CodingKeys: String, CodingKey {
+        enum CodingKeys: String, CodingKey {
             case name
             case avatarUrl = "avatar_url"
             case login

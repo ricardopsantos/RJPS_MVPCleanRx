@@ -193,10 +193,10 @@
 		D7AB245524671CBF000142C4 /* AppDomain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7AB244D24671CBF000142C4 /* AppDomain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7AB2477246723BA000142C4 /* typealias.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.encaplulate.swift */; };
 		D7AB247924672405000142C4 /* typealias.Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AB247824672405000142C4 /* typealias.Domain.swift */; };
-		D7AB247A2467280D000142C4 /* GitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1947C20F8870B0098CE39 /* GitHub.swift */; };
-		D7AB247B2467280D000142C4 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2B922E3160E00829A6F /* Employee.swift */; };
-		D7AB247C2467280D000142C4 /* Bliss+ExtensionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2D622E35A0C00829A6F /* Bliss+ExtensionUtils.swift */; };
-		D7AB247D2467280D000142C4 /* Bliss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2C022E32A3C00829A6F /* Bliss.swift */; };
+		D7AB247F24672F36000142C4 /* GitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1947C20F8870B0098CE39 /* GitHub.swift */; };
+		D7AB248024673000000142C4 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2B922E3160E00829A6F /* Employee.swift */; };
+		D7AB248124673062000142C4 /* Bliss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2C022E32A3C00829A6F /* Bliss.swift */; };
+		D7AB248224673062000142C4 /* Bliss+ExtensionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2D622E35A0C00829A6F /* Bliss+ExtensionUtils.swift */; };
 		D7E25A7E246699FC003BBEA0 /* PointFreeFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = D7E25A7C246699FC003BBEA0 /* PointFreeFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D7E25A8E24669B02003BBEA0 /* PointFreeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E25A8D24669B02003BBEA0 /* PointFreeFunctions.swift */; };
 		D7E25A9824669B9B003BBEA0 /* AppConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D7E25A9624669B9B003BBEA0 /* AppConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -794,8 +794,8 @@
 			isa = PBXGroup;
 			children = (
 				9FE1438821AF2D8B0026BDFC /* typealias.Application.swift */,
-				9F288F7320F80987008A9539 /* Enteties */,
 				9FFF99A42247B1FA00783EE2 /* Application */,
+				9F288F7320F80987008A9539 /* Enteties */,
 				9F58FB0F22BE5DE700042A8C /* Application.Screens */,
 				9F574F8922369187007DAA58 /* Application.Domain */,
 				9FB8DFCD2233E7B400095420 /* Application.Core */,
@@ -808,10 +808,6 @@
 		9F288F7320F80987008A9539 /* Enteties */ = {
 			isa = PBXGroup;
 			children = (
-				9FB1947C20F8870B0098CE39 /* GitHub.swift */,
-				9F6BB2B922E3160E00829A6F /* Employee.swift */,
-				9F6BB2D622E35A0C00829A6F /* Bliss+ExtensionUtils.swift */,
-				9F6BB2C022E32A3C00829A6F /* Bliss.swift */,
 			);
 			path = Enteties;
 			sourceTree = "<group>";
@@ -1279,9 +1275,21 @@
 			children = (
 				D7E25A6C2465E5A6003BBEA0 /* README.md */,
 				D7AB247824672405000142C4 /* typealias.Domain.swift */,
+				D7AB248324673105000142C4 /* Models */,
 				D7AB245024671CBF000142C4 /* Info.plist */,
 			);
 			path = AppDomain;
+			sourceTree = "<group>";
+		};
+		D7AB248324673105000142C4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9FB1947C20F8870B0098CE39 /* GitHub.swift */,
+				9F6BB2D622E35A0C00829A6F /* Bliss+ExtensionUtils.swift */,
+				9F6BB2C022E32A3C00829A6F /* Bliss.swift */,
+				9F6BB2B922E3160E00829A6F /* Employee.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		D7E25A7B246699FC003BBEA0 /* PointFreeFunctions */ = {
@@ -1942,7 +1950,6 @@
 				9F20554C22F25C1F006B9DB7 /* D.MVVMSampleView_ViewModel.swift in Sources */,
 				9F8AE14C2205DD0400DF75F6 /* AppManagers+AppCan.swift in Sources */,
 				9FA0DCCA22BE5E45003ADF99 /* SampleB_UseCase.swift in Sources */,
-				D7AB247B2467280D000142C4 /* Employee.swift in Sources */,
 				9F4EE07F22F3086800FCAC40 /* AS.MVVMSampleView_AssemblyContainer.swift in Sources */,
 				9FCF332822EF55500074DAB9 /* Generic_CacheRepositoryProtocol.swift in Sources */,
 				D779A5F3234FE3A500D3D6F7 /* VC.SampleVIP_ViewController.swift in Sources */,
@@ -1980,7 +1987,6 @@
 				9F8D4AB7223876D700777976 /* Generic_LocalStorageRepository.swift in Sources */,
 				9FE143B821AF2F520026BDFC /* AppManagers+Environments.swift in Sources */,
 				9F58FB4C22BE5DE700042A8C /* V.SearchUser_View.swift in Sources */,
-				D7AB247D2467280D000142C4 /* Bliss.swift in Sources */,
 				9F8D4AC1223877D400777976 /* RP.Network.Employees.APIRequests.swift in Sources */,
 				9F6BB2EE22E3A97F00829A6F /* AS.BlissQuestionsList_AssemblyContainer.swift in Sources */,
 				9FE0572C22E8D8F000802747 /* MVPSampleView_ViewModel.swift in Sources */,
@@ -2012,7 +2018,6 @@
 				9F58FB4822BE5DE700042A8C /* UserDetais_ViewModel.swift in Sources */,
 				9F9BED9E22E5C9620018BD4C /* GenericPresenter.swift in Sources */,
 				9F6BB2DB22E36C5B00829A6F /* BlissGenericAppBussiness_UseCase.swift in Sources */,
-				D7AB247A2467280D000142C4 /* GitHub.swift in Sources */,
 				D7AB2443246716C6000142C4 /* V.UserTableViewCell.swift in Sources */,
 				9F58FB4A22BE5DE700042A8C /* D.SearchUser_ViewModel.swift in Sources */,
 				9FB9F97322E4B8CB00D64FD2 /* BlissQuestionsAPI_UseCaseProtocol.swift in Sources */,
@@ -2029,7 +2034,6 @@
 				9FACC16B223BA4CC00576498 /* Mappers+GitUser.swift in Sources */,
 				9FA0DCC922BE5E45003ADF99 /* GitUser_UseCase.swift in Sources */,
 				9F5D1CF422E5E45700C0AF38 /* OptionalType+Rx+AppExtensions.swift in Sources */,
-				D7AB247C2467280D000142C4 /* Bliss+ExtensionUtils.swift in Sources */,
 				9F8AE1682205DD0400DF75F6 /* AppManagers+Layouts.swift in Sources */,
 				9F98294C22398DF700ACA6B7 /* RP.Network.GitUser.APIRequests.swift in Sources */,
 				9FB8DFCA2233E67100095420 /* typealias.encaplulate.swift in Sources */,
@@ -2126,8 +2130,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7AB247F24672F36000142C4 /* GitHub.swift in Sources */,
+				D7AB248024673000000142C4 /* Employee.swift in Sources */,
 				D7AB247924672405000142C4 /* typealias.Domain.swift in Sources */,
 				D7AB2477246723BA000142C4 /* typealias.encaplulate.swift in Sources */,
+				D7AB248124673062000142C4 /* Bliss.swift in Sources */,
+				D7AB248224673062000142C4 /* Bliss+ExtensionUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,7 +11,6 @@ import Foundation
 import RJPSLib
 import RxSwift
 import RxCocoa
-import Swinject
 //
 import AppResources
 import UIBase
@@ -21,6 +20,7 @@ import Extensions
 import DevTools
 import PointFreeFunctions
 import Designables
+import AppDomain
 
 extension V {
     class MVPSampleTableView_View: GenericView {

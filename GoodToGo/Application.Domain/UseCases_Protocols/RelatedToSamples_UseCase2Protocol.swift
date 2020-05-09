@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import RJPSLib
+import AppDomain
 
 typealias SampleB_UseCaseCompletionHandler = (_ result: Result<[Employee.ResponseDto]>) -> Void
 protocol SampleB_UseCaseProtocol: class {

@@ -20,6 +20,7 @@ import Extensions
 import DevTools
 import PointFreeFunctions
 import Designables
+import AppDomain
 
 //
 // MARK: - Presenter_Protocol & View_Protocol
@@ -105,7 +106,7 @@ extension P.BlissDetails_Presenter: BlissDetails_PresenterProtocol {
             self.genericView?.setActivityState(false)
             switch result {
             case .success(let some):
-                if some.sucess {
+                if some.success {
                     self.genericView?.displayMessage(AppMessages.Bliss.sharedWithSucess, type: .sucess)
                 } else {
                     self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error)
