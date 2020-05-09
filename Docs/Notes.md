@@ -1,14 +1,13 @@
-Notes
------
-
+# Notes
 
 ------
-## Code Guidlines/Convencions
 
-* All is private (variable, funtions, etc), unless really need to be public
-* If a varibale is private, ALLWAYS start by _underscore_ 
-* The function where where set RxSuff will allways be named  ```rxSetup```
-* The funtion where we setup the View layout will allways be namre ```prepareLayout```
+## Code Guidelines/Conventions
+
+* All is private (variable, functions, etc), unless really need to be public
+* If a variable is private, __ALLWAYS__ start by _underscore_ 
+* The function where where set RxSuff will always be named  `rxSetup`
+* The function where we setup the View layout will allways be named `prepareLayout´
 * UIKit names
     * All UIButtons start by _btn_, example : _btnLogin_, _btnRegister_
     * All UILabel start by _lbl_. Example _llbName_, _lblPassword_
@@ -17,6 +16,7 @@ Notes
     * Thumb rule : The name of the var, should be clear about the type associated. 
     
 ------
+
 ## WIKI
 
 [https://github.com/ricardopsantos/RJPS_Docs](https://github.com/ricardopsantos/RJPS_Docs)

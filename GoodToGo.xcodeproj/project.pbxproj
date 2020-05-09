@@ -940,7 +940,7 @@
 				9FE1438821AF2D8B0026BDFC /* typealias.Application.swift */,
 				9FFF99A42247B1FA00783EE2 /* Application */,
 				9F58FB0F22BE5DE700042A8C /* Application.Screens */,
-				D7AB24BC24674323000142C4 /* Applications.Managers */,
+				D7AB24BC24674323000142C4 /* Application.Comom */,
 				9F574F8922369187007DAA58 /* Application.Domain */,
 				9FB8DFCD2233E7B400095420 /* Application.Core */,
 				9FE143F621AF47840026BDFC /* Application.Extensions */,
@@ -1430,7 +1430,7 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		D7AB24BC24674323000142C4 /* Applications.Managers */ = {
+		D7AB24BC24674323000142C4 /* Application.Comom */ = {
 			isa = PBXGroup;
 			children = (
 				9F8AE14B2205DD0300DF75F6 /* AppManagers+Layouts.swift */,
@@ -1439,7 +1439,7 @@
 				9FE1437021AF1ADC0026BDFC /* AppManagers+Environments.swift */,
 				D7AB24BD2467435A000142C4 /* AppManagers.swift */,
 			);
-			path = Applications.Managers;
+			path = Application.Comom;
 			sourceTree = "<group>";
 		};
 		D7AB24C5246743BD000142C4 /* AppCore */ = {
