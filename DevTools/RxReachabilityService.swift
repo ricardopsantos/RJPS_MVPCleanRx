@@ -15,7 +15,7 @@ public enum ReachabilityStatus {
     case unreachable
 }
 
-extension ReachabilityStatus {
+public extension ReachabilityStatus {
     var reachable: Bool {
         switch self {
         case .reachable:return true
@@ -24,25 +24,25 @@ extension ReachabilityStatus {
     }
 }
 
-protocol ReachabilityService {
+public protocol ReachabilityService {
     var reachability: Observable<ReachabilityStatus> { get }
 }
 
-enum ReachabilityServiceError: Error {
+public enum ReachabilityServiceError: Error {
     case failedToCreate
 }
 
-class DefaultReachabilityService: ReachabilityService {
+public class DefaultReachabilityService: ReachabilityService {
     
     private let _reachabilitySubject: BehaviorSubject<ReachabilityStatus>
     
-    var reachability: Observable<ReachabilityStatus> {
+    public var reachability: Observable<ReachabilityStatus> {
         return _reachabilitySubject.asObservable()
     }
     
     let _reachability: Reachability
     
-    init() throws {
+    public init() throws {
         guard let reachabilityRef = Reachability() else { throw ReachabilityServiceError.failedToCreate }
         let reachabilitySubject = BehaviorSubject<ReachabilityStatus>(value: .unreachable)
         
@@ -71,7 +71,7 @@ class DefaultReachabilityService: ReachabilityService {
     }
 }
 
-extension ObservableConvertibleType {
+public extension ObservableConvertibleType {
     func retryOnBecomesReachable(_ valueOnFailure: Element, reachabilityService: ReachabilityService) -> Observable<Element> {
         return self.asObservable()
             .catchError { (e) -> Observable<Element> in
@@ -100,7 +100,7 @@ public enum ReachabilityError: Error {
 
 public let ReachabilityChangedNotification = Notification.Name("ReachabilityChangedNotification")
 
-func callback(reachability: SCNetworkReachability, flags: SCNetworkReachabilityFlags, info: UnsafeMutableRawPointer?) {
+public func callback(reachability: SCNetworkReachability, flags: SCNetworkReachabilityFlags, info: UnsafeMutableRawPointer?) {
     
     guard let info = info else { return }
     

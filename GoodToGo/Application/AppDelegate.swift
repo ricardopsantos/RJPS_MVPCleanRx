@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //resetAllData = true
         }
         
-        appPrepare(application: application)
+        setup(application: application)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             teste()

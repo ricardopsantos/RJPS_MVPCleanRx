@@ -7,10 +7,10 @@
 
 import Foundation
 
-extension AppEnuns {
+extension AppConstants.AppEnuns {
     private init() {}
-    
-    enum AppCodes: Int {
+
+    public enum AppCodes: Int {
         case noInternet = 1000
         case notImplemented
         case notPredicted
@@ -25,7 +25,7 @@ extension AppEnuns {
         //
         // For Dev Team
         //
-        var localizedMessageForDevTeam: String {
+        public var localizedMessageForDevTeam: String {
             switch self {
             case .noInternet              : return "Dev : No internet"
             case .invalidURL              : return "Dev : Invalid url"
@@ -39,24 +39,26 @@ extension AppEnuns {
             case .referenceLost           : return "Dev : Reference lost"
             }
         }
-        
+
+        #warning("arrange reference to AppMessages")
         //
         // For end users
         //
-        var localizedMessageForView: String {
+        public var localizedMessageForView: String {
             switch self {
-            case .noInternet              : return AppMessages.noInternet
-            case .invalidURL              : return AppMessages.invalidURL
-                
-            case .notImplemented          : return AppMessages.pleaseTryAgainLater
-            case .notPredicted            : return AppMessages.pleaseTryAgainLater
-            case .parsingError            : return AppMessages.pleaseTryAgainLater
-            case .ignored                 : return AppMessages.pleaseTryAgainLater
-            case .vmChanged               : return AppMessages.pleaseTryAgainLater
-            case .dequeueReusableCellFail : return AppMessages.pleaseTryAgainLater
-            case .unknownError            : return AppMessages.pleaseTryAgainLater
-            case .referenceLost           : return AppMessages.pleaseTryAgainLater
+            case .noInternet              : return "AppMessages.noInternet"
+            case .invalidURL              : return "AppMessages.invalidURL"
+
+            case .notImplemented          : return "AppMessages.pleaseTryAgainLater"
+            case .notPredicted            : return "AppMessages.pleaseTryAgainLater"
+            case .parsingError            : return "AppMessages.pleaseTryAgainLater"
+            case .ignored                 : return "AppMessages.pleaseTryAgainLater"
+            case .vmChanged               : return "AppMessages.pleaseTryAgainLater"
+            case .dequeueReusableCellFail : return "AppMessages.pleaseTryAgainLater"
+            case .unknownError            : return "AppMessages.pleaseTryAgainLater"
+            case .referenceLost           : return "AppMessages.pleaseTryAgainLater"
             }
         }
-    }    
+    }
+
 }

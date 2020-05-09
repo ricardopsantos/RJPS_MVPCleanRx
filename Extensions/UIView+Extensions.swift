@@ -7,9 +7,10 @@
 
 import UIKit
 import Foundation
+//
 import RJPSLib
 
-extension UIView {
+public extension UIView {
     func lazyLoad() { /* Lazy loading aux */ }
     func fadeTo(_ value: CGFloat, duration: Double=RJS_Constants.defaultAnimationsTime) {
         RJS_Utils.executeInMainTread { [weak self] in

@@ -9,6 +9,7 @@ import UIKit
 import Foundation
 import RJPSLib
 import AppConstants
+import AppTheme
 
 typealias SequenceBlock          = RJS_Sequence
 typealias CustomSearchBar        = RJS_CustomSearchBar
@@ -31,7 +32,7 @@ typealias AppCan                 = AppManagers.AppCan
 typealias AppResources           = AppManagers.Resources
 typealias AppMessages            = AppManagers.Resources.Messages
 typealias AppLayouts             = AppManagers.Layouts
-typealias AppColors              = UIColor.App
+typealias AppColors              = AppTheme.UIColor.App
 typealias AppFonts               = UIFont.App
 typealias AppImages              = UIImage.App
 typealias AppProtocols           = RootAssemblyContainerProtocols

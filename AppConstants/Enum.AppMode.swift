@@ -5,9 +5,14 @@
 //  Copyright © 2019 Ricardo P Santos. All rights reserved.
 //
 
-import UIKit
 import Foundation
 
-extension UIViewController {
+public extension AppConstants.AppEnuns {
+    private init() {}
 
+    enum AppMode: Int {
+        case prod
+        case qa
+        case dev
+    }
 }

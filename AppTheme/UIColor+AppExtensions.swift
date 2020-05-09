@@ -7,10 +7,15 @@
 
 import UIKit
 import Foundation
+//
+import RJPSLib
+//
 
-extension UIColor {
+public extension UIColor {
     
     private func toDark() -> UIColor {
+        return self
+        /*
         guard GenericView.onDarkMode else {
             return self
         }
@@ -27,7 +32,7 @@ extension UIColor {
         if cgColor.components!.count == 4 {
             a = CGFloat(cgColor.components![3])
         }
-        return UIColor(red: r, green: g, blue: b, alpha: a)
+        return UIColor(red: r, green: g, blue: b, alpha: a)*/
     }
     
     struct App {
@@ -44,19 +49,19 @@ extension UIColor {
         private static let _blue1  = UIColor.colorFromRGBString("10,173,175")
         private static let _blue2  = UIColor.colorFromRGBString("148,208,187")
             
-        struct TopBar {
+        public struct TopBar {
             private init() {}
             static var background: UIColor { return _blue1.toDark() }
             static var titleColor: UIColor { return _grey_7.toDark() }
         }
-        static var appDefaultBackgroundColor: UIColor { return _grey_7.toDark() }
-        static var btnBackgroundColor: UIColor { return _grey_6.toDark() }
-        static var lblBackgroundColor: UIColor { return _grey_6.toDark() }
-        static var btnTextColor: UIColor { return _grey_1.toDark() }
-        static var lblTextColor: UIColor { return _grey_1.toDark() }
+        public static var appDefaultBackgroundColor: UIColor { return _grey_7.toDark() }
+        public static var btnBackgroundColor: UIColor { return _grey_6.toDark() }
+        public static var lblBackgroundColor: UIColor { return _grey_6.toDark() }
+        public static var btnTextColor: UIColor { return _grey_1.toDark() }
+        public static var lblTextColor: UIColor { return _grey_1.toDark() }
         
-        static var error: UIColor { return _red1.toDark() }
-        static var sucess: UIColor { return _blue2.toDark() }
-        static var warning: UIColor { return UIColor(red: 242, green: 168, blue: 62).toDark() }
+        public static var error: UIColor { return _red1.toDark() }
+        public static var sucess: UIColor { return _blue2.toDark() }
+        public static var warning: UIColor { return UIColor(red: 242, green: 168, blue: 62).toDark() }
     }
 }

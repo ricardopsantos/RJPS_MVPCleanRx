@@ -13,10 +13,11 @@ import RJPSLib
 //
 import AppConstants
 import PointFreeFunctions
-
+import <#module#>
 extension AppDelegate {
-    func appPrepare(application: UIApplication) {
+    func setup(application: UIApplication) {
         AppEnvironments.setup()
+        AppLogger.enabled = AppCan.Logs.doLogs
         AppLogger.log("Number of logins : \(AppUserDefaultsVars.incrementIntWithKey(AppConstants.Dev.numberOfLogins))")
     }
 }

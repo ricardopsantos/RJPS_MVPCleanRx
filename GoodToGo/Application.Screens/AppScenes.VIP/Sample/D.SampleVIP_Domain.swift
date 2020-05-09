@@ -12,7 +12,7 @@
 
 import UIKit
 
-// MARK:- Interactor
+//MARK:- Interactor
 
 protocol SampleVIP_BusinessLogic {
   func doSomething(request: SampleVIP.SearchView.Request)

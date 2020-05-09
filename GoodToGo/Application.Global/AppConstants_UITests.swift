@@ -9,7 +9,7 @@
 
 public enum AppConstants_UITests {
     
-    struct Misc {
+    public struct Misc {
         struct CommandLineArguments {
             static let deleteUserData = "--uitesting_CommandLineArguments.deleteUserData"
         }

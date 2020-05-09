@@ -9,7 +9,7 @@ import UIKit
 import Foundation
 
 @IBDesignable
-extension UITextField {
+public extension UITextField {
     
     @IBInspectable var leftPaddingWidth: CGFloat {
         get { return leftView!.frame.size.width }

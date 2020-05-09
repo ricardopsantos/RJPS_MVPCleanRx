@@ -8,6 +8,6 @@
 import UIKit
 import Foundation
 
-extension Notification.Name {
-    static let didReceiveData = Notification.Name("didReceiveData")
+public extension UIViewController {
+
 }

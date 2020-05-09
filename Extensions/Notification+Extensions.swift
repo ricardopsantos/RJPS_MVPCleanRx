@@ -5,9 +5,9 @@
 //  Copyright © 2019 Ricardo P Santos. All rights reserved.
 //
 
+import UIKit
 import Foundation
 
-extension AppEnuns {
-    private init() {}
-    enum AppMode: Int { case prod, qa, dev }
+public extension Notification.Name {
+    static let didReceiveData = Notification.Name("didReceiveData")
 }
