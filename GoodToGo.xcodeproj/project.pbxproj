@@ -159,7 +159,7 @@
 		D72923652466B80B00DAD480 /* AppResources+AppCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F15CF2C22BFA56F00FB402A /* AppResources+AppCodes.swift */; };
 		D72923672466B84100DAD480 /* typealias.AppResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923662466B84100DAD480 /* typealias.AppResources.swift */; };
 		D72923692466B8EA00DAD480 /* AppLogger+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923682466B8EA00DAD480 /* AppLogger+Extension.swift */; };
-		D72923732466BB8600DAD480 /* AppResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8AE14A2205DD0300DF75F6 /* AppResources.swift */; };
+		D72923732466BB8600DAD480 /* AppResources+Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8AE14A2205DD0300DF75F6 /* AppResources+Private.swift */; };
 		D72923752466BC7F00DAD480 /* typealias.AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923742466BC7E00DAD480 /* typealias.AppTheme.swift */; };
 		D72923782466BDE900DAD480 /* typealias.Designables.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923772466BDE900DAD480 /* typealias.Designables.swift */; };
 		D72923892466BF4700DAD480 /* AppView+TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1622BE5DE700042A8C /* AppView+TabBarController.swift */; };
@@ -184,6 +184,7 @@
 		D72923B82467089700DAD480 /* AppResources+Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923B72467089700DAD480 /* AppResources+Messages.swift */; };
 		D72923C024670D5300DAD480 /* AppConstants+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923BF24670D5300DAD480 /* AppConstants+Testing.swift */; };
 		D72923C224670D7500DAD480 /* AppConstants+Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923C124670D7500DAD480 /* AppConstants+Strings.swift */; };
+		D73E05BF2467112500965E96 /* AppResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E05BE2467112500965E96 /* AppResources.swift */; };
 		D779A5EF234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5E9234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift */; };
 		D779A5F0234FE3A500D3D6F7 /* W.SampleVIP_Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5EA234FE3A500D3D6F7 /* W.SampleVIP_Worker.swift */; };
 		D779A5F1234FE3A500D3D6F7 /* R.SampleVIP_Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5EB234FE3A500D3D6F7 /* R.SampleVIP_Router.swift */; };
@@ -420,7 +421,7 @@
 		9F8666EF22E7C5CA00A1B9A0 /* GenericTableViewCell_Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericTableViewCell_Protocol.swift; sourceTree = "<group>"; };
 		9F8666F322E7D31D00A1B9A0 /* RP.Network.Bliss.APIRequests.apib */ = {isa = PBXFileReference; lastKnownFileType = text; path = RP.Network.Bliss.APIRequests.apib; sourceTree = "<group>"; };
 		9F8AE1442205DD0300DF75F6 /* AppManagers+AppCan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppManagers+AppCan.swift"; sourceTree = "<group>"; };
-		9F8AE14A2205DD0300DF75F6 /* AppResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppResources.swift; sourceTree = "<group>"; };
+		9F8AE14A2205DD0300DF75F6 /* AppResources+Private.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppResources+Private.swift"; sourceTree = "<group>"; };
 		9F8AE14B2205DD0300DF75F6 /* AppManagers+Layouts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppManagers+Layouts.swift"; sourceTree = "<group>"; };
 		9F8D4AA222386DCF00777976 /* Samples_RepositoriesProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Samples_RepositoriesProtocol.swift; sourceTree = "<group>"; };
 		9F8D4AB2223873CD00777976 /* RelatedToSamples_UseCase1Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedToSamples_UseCase1Protocol.swift; sourceTree = "<group>"; };
@@ -531,6 +532,7 @@
 		D72923B72467089700DAD480 /* AppResources+Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppResources+Messages.swift"; sourceTree = "<group>"; };
 		D72923BF24670D5300DAD480 /* AppConstants+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppConstants+Testing.swift"; sourceTree = "<group>"; };
 		D72923C124670D7500DAD480 /* AppConstants+Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppConstants+Strings.swift"; sourceTree = "<group>"; };
+		D73E05BE2467112500965E96 /* AppResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppResources.swift; sourceTree = "<group>"; };
 		D779A5E9234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.SampleVIP_Presenter.swift; sourceTree = "<group>"; };
 		D779A5EA234FE3A500D3D6F7 /* W.SampleVIP_Worker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W.SampleVIP_Worker.swift; sourceTree = "<group>"; };
 		D779A5EB234FE3A500D3D6F7 /* R.SampleVIP_Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.SampleVIP_Router.swift; sourceTree = "<group>"; };
@@ -1156,7 +1158,8 @@
 			isa = PBXGroup;
 			children = (
 				D72923662466B84100DAD480 /* typealias.AppResources.swift */,
-				9F8AE14A2205DD0300DF75F6 /* AppResources.swift */,
+				D73E05BE2467112500965E96 /* AppResources.swift */,
+				9F8AE14A2205DD0300DF75F6 /* AppResources+Private.swift */,
 				D72923B72467089700DAD480 /* AppResources+Messages.swift */,
 				9F15CF2C22BFA56F00FB402A /* AppResources+AppCodes.swift */,
 				D72923B52467076000DAD480 /* AppResources+SelectedLanguage.swift */,
@@ -1984,8 +1987,9 @@
 				D72923B62467076000DAD480 /* AppResources+SelectedLanguage.swift in Sources */,
 				D72923652466B80B00DAD480 /* AppResources+AppCodes.swift in Sources */,
 				D72923672466B84100DAD480 /* typealias.AppResources.swift in Sources */,
+				D73E05BF2467112500965E96 /* AppResources.swift in Sources */,
 				D72923B82467089700DAD480 /* AppResources+Messages.swift in Sources */,
-				D72923732466BB8600DAD480 /* AppResources.swift in Sources */,
+				D72923732466BB8600DAD480 /* AppResources+Private.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

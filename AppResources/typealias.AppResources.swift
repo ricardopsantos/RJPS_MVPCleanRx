@@ -8,9 +8,5 @@
 
 import Foundation
 
-public struct AppResources {
-    private init() {}
-}
-
 public typealias AppCodes = AppResources.AppCodes
 public typealias AppMessages = AppResources.Messages
