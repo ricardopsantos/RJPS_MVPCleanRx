@@ -50,14 +50,14 @@ typealias GenericView = UIBase.GenericView
 
 // MARK: - Designables
 
-typealias GenericTableViewCell_Protocol = Designables.GenericTableViewCell_Protocol
-typealias GenericTableView_Protocol     = Designables.GenericTableView_Protocol
+//typealias GenericTableViewCell_Protocol = Designables.GenericTableViewCell_Protocol
+//typealias GenericTableView_Protocol     = Designables.GenericTableView_Protocol
 typealias AppFactory                    = Designables.Factory
-typealias TopBar                        = Designables.TopBar
-typealias BottomBar                     = Designables.BottomBar
-typealias Sample_TableViewCell          = Designables.Sample_TableViewCell
+//typealias TopBar                        = Designables.TopBar
+//typealias BottomBar                     = Designables.BottomBar
+//typealias Sample_TableViewCell          = Designables.Sample_TableViewCell
 //typealias UserTableViewCell             = Designables.V.UserTableViewCell
-typealias Sample_TableViewCellProtocol  = Designables.Sample_TableViewCellProtocol
+//typealias Sample_TableViewCellProtocol  = Designables.Sample_TableViewCellProtocol
 
 // MARK: - MISC
 

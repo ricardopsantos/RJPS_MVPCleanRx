@@ -24,7 +24,7 @@ import PointFreeFunctions
  * Needs to added AS.Sample_AssemblyContainer() to DependencyInjectionManager.swift
  */
 
-extension AppView {
+extension V {
     class MVPSampleRxView_View: GenericView {
         
         deinit {

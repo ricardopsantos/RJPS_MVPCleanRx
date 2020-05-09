@@ -19,8 +19,9 @@ import AppConstants
 import Extensions
 import DevTools
 import PointFreeFunctions
+import Designables
 
-public extension AppView {
+public extension V {
     internal class SearchUser_View: GenericView {
         
         deinit {

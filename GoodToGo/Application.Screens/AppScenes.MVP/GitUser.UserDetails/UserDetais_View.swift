@@ -21,7 +21,7 @@ import DevTools
 import PointFreeFunctions
 import Designables
 
-extension AppView {
+extension V {
     class UserDetais_View: GenericView {
         
         deinit {

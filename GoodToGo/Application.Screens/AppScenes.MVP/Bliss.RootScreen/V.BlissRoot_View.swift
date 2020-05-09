@@ -20,7 +20,7 @@ import Extensions
 import DevTools
 import PointFreeFunctions
 
-extension AppView {
+extension V {
     class BlissRoot_View: GenericView {
         
         deinit {

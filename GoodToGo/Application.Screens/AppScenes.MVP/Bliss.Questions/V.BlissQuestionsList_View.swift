@@ -19,8 +19,9 @@ import AppConstants
 import Extensions
 import DevTools
 import PointFreeFunctions
+import Designables
 
-extension AppView {
+extension V {
     class BlissQuestionsList_View: GenericView {
         
         deinit {

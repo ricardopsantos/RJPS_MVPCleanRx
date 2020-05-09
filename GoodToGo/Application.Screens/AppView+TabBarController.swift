@@ -8,7 +8,7 @@
 import UIKit
 import Swinject
 
-extension AppView {
+extension V {
 
     class TabBarController: UITabBarController {
         

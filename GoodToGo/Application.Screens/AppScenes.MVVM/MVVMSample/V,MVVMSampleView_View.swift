@@ -11,7 +11,7 @@ import UIKit
 // MARK: - MVVMSampleView_View
 //
 
-extension AppView {
+extension V {
 
     public class MVVMSampleView_View: UIView, MVVMSampleView_ViewProtocol {
         

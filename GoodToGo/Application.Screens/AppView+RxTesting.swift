@@ -19,10 +19,11 @@ import AppConstants
 import Extensions
 import DevTools
 import PointFreeFunctions
+import Designables
 
 // swiftlint:disable all
 
-extension AppView {
+extension V {
     class RxTesting: GenericView, AppUtils_Protocol {
         
         let _margin: CGFloat = 10
