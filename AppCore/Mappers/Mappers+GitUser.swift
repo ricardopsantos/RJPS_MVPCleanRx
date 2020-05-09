@@ -14,7 +14,7 @@ import AppDomain
 // The Brain Of The App
 //
 
-extension Mappers {
+public extension Mappers {
     struct GitUser {
         private init() {}
         static func toViewModelList(_ list: [GitHub.UserResponseDto]) -> [GitHub.UserViewModel] {

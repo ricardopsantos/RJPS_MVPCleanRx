@@ -7,13 +7,16 @@
 
 import Foundation
 import UIKit
+import DevTools
 
-extension Mappers {
+#warning("colocar a usar o perfect mapper")
+
+public extension Mappers {
     
     static func listFromCSV<T: Decodable>(_ dataString: String) -> [T] {
         do {
             guard let jsonKeys: [String] = dataString.components(separatedBy: "\n").first?.components(separatedBy: ",") else {
-                AppLogger.log(appCode: .parsingError)
+                AppLogger.error("Parsing error")
                 return []
             }
             var parsedCSV: [[String: String]] = dataString
@@ -29,7 +32,7 @@ extension Mappers {
                 })
             parsedCSV.removeFirst()
             guard let jsonData = try? JSONSerialization.data(withJSONObject: parsedCSV, options: []) else {
-                AppLogger.log(appCode: .parsingError)
+                AppLogger.error("Parsing error")
                 return []
             }
             return try JSONDecoder().decode([T].self, from: jsonData)

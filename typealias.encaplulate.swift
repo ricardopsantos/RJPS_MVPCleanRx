@@ -46,9 +46,6 @@ public struct Repository { private init() {} }
 public typealias UC = UseCases
 public class UseCases { private init() {} }
 
-public typealias MP = Mappers
-public struct Mappers { private init() {} }
-
 // MARK: - Utils
 
 public typealias AS = AssembyContainer

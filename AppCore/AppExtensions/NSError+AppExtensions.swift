@@ -20,7 +20,7 @@ import Extensions
 import DevTools
 import PointFreeFunctions
 
-extension NSError {
+public extension NSError {
     
     struct AppKeys {
         static let userInfoDevMessageKey  = "Factory.Errors.userInfoDevMessageKey"

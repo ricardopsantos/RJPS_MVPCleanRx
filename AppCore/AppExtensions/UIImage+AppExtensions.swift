@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-extension UIImage {
+public extension UIImage {
     struct App {
         private init() {}
         struct TopBar {
