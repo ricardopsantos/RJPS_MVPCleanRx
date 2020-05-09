@@ -20,7 +20,7 @@ extension AppView {
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
-        var presenter : MVPSampleView_PresenterProtocol!
+        var presenter: MVPSampleView_PresenterProtocol!
         
         private let _margin: CGFloat = 25
         
@@ -152,8 +152,8 @@ extension AppView {
 
 // MARK: - View Protocol
 
-extension V.MVPSampleView_View : MVPSampleView_ViewProtocol {
-    func updateViewWith(message:String) {
+extension V.MVPSampleView_View: MVPSampleView_ViewProtocol {
+    func updateViewWith(message: String) {
         _lblMessage.textAnimated = message
     }
 }

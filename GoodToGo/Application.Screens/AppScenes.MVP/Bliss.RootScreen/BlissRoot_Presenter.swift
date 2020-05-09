@@ -16,9 +16,9 @@ import RxCocoa
 
 protocol BlissRoot_PresenterProtocol: class {
     var generic: GenericPresenter_Protocol? { get }     // Mandatory in ALL Presenters
-    var genericView: GenericView?           { get }                   // Mandatory in ALL Presenters
-    var viewModel: VM.BlissRoot_ViewModel?  { get set }    // Mandatory in ALL Presenters
-    var router: BlissRoot_RouterProtocol!   { get }      // Mandatory in ALL Presenters
+    var genericView: GenericView? { get }               // Mandatory in ALL Presenters
+    var viewModel: VM.BlissRoot_ViewModel? { get set }  // Mandatory in ALL Presenters
+    var router: BlissRoot_RouterProtocol! { get }       // Mandatory in ALL Presenters
     
     // PublishRelay model Events
     var rxPublishRelay_dismissView: PublishRelay<Void> { get }
@@ -55,7 +55,7 @@ extension Presenter {
 extension P.BlissRoot_Presenter: BlissRoot_PresenterProtocol {
     
     func userDidReadBadServerHealthMessage() {
-        DispatchQueue.executeWithDelay (delay: AppConstants.defaultAnimationsTime) { [weak self] in
+        DispatchQueue.executeWithDelay(delay: AppConstants.defaultAnimationsTime) { [weak self] in
             guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
             strongSelf.checkServerStatus()
         }
@@ -74,13 +74,13 @@ extension P.BlissRoot_Presenter: BlissRoot_PresenterProtocol {
 //
 
 extension P.BlissRoot_Presenter: GenericPresenter_Protocol {
-    func view_deinit()    -> Void { }
-    func loadView()       -> Void { }
-    func viewDidAppear()  -> Void { }
-    func viewDidLoad()    -> Void {
+    func view_deinit() { }
+    func loadView() { }
+    func viewDidAppear() { }
+    func viewDidLoad() {
         viewModel = VM.BlissRoot_ViewModel()
     }
-    func viewWillAppear() -> Void {
+    func viewWillAppear() {
         rxSetup()
     }
 }
@@ -97,7 +97,7 @@ extension P.BlissRoot_Presenter {
     
     private func checkServerStatus() {
         
-        let delayToHaveTimeToEnjoyMainScreen : Double = 2
+        let delayToHaveTimeToEnjoyMainScreen: Double = 2
         DispatchQueue.executeWithDelay(delay: delayToHaveTimeToEnjoyMainScreen) { [weak self] in
             guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
 
@@ -128,11 +128,11 @@ extension P.BlissRoot_Presenter {
    
         reachabilityService.reachability.subscribe(
             onNext: { [weak self] some in
-                    if some.reachable  {
+                    if some.reachable {
                         self?.genericView?.setNoConnectionViewVisibity(to: false)
                         self?.rxObservableAssyncRequest
                             .subscribe(
-                                onNext : { [weak self] some in self?.view.set(image: some); self?.checkServerStatus() },
+                                onNext: { [weak self] some in self?.view.set(image: some); self?.checkServerStatus() },
                                 onError: { [weak self] _ in self?.view.set(image: AppImages.notFound) }
                             )
                             .disposed(by: self!.disposeBag)

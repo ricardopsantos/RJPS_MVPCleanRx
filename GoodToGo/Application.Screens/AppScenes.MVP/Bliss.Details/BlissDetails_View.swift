@@ -18,11 +18,11 @@ extension AppView {
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
-        var presenter : BlissDetails_PresenterProtocol!
+        var presenter: BlissDetails_PresenterProtocol!
 
         // BehaviorRelay model a State
         private var _rxBehaviorRelay_tableDataSource = BehaviorRelay<[E.Bliss.ChoiceElement]>(value: [])
-        private var _imgCoverConstraintHeigth : NSLayoutConstraint?
+        private var _imgCoverConstraintHeigth: NSLayoutConstraint?
         private let _margin: CGFloat = 15
         private let _imageSize: Int = 100
         
@@ -42,8 +42,8 @@ extension AppView {
                 .bind(to: presenter.rxPublishRelay_dismissView)
                 .disposed(by: disposeBag)
             some.rxSignal_viewTapped
-                .do(onNext: { _ in print("rxSignal_viewTapped : 2") })
-                .emit(onNext: { print("rxSignal_viewTapped : 3 \($0)") })
+                .do(onNext: { _ in AppLogger.log("rxSignal_viewTapped : 2") })
+                .emit(onNext: { AppLogger.log("rxSignal_viewTapped : 3 \($0)") })
                 .disposed(by: disposeBag)
             return some
         }()
@@ -87,7 +87,7 @@ extension AppView {
             some.rjsALayouts.setMargin(_margin, on: .right)
             _imgCoverConstraintHeigth = some.rjsALayouts.setHeight(0, method: .constraints)
             some.rjsALayouts.setWidth(CGFloat(_imageSize))
-            some.rjsALayouts.setMargin(_margin, on: .top, from:_topGenericView.view)
+            some.rjsALayouts.setMargin(_margin, on: .top, from: _topGenericView.view)
             some.rjsALayouts.setSame(.centerX, as: self.view)
             some.alpha = 0
             some.layer.cornerRadius = CGFloat(_imageSize) * 0.1
@@ -109,7 +109,7 @@ extension AppView {
             some.rjsALayouts.setMargin(_margin, on: .bottom, from: _btnShare1)
             some.register(Sample_TableViewCell.self, forCellReuseIdentifier: Sample_TableViewCell.reuseIdentifier)
             some.rx.modelSelected(E.Bliss.ChoiceElement.self)
-                .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)                  .subscribe(onNext:  { [weak self]  item in
+                .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)                  .subscribe(onNext: { [weak self]  item in
                     guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
                     AppLogger.log("Tapped [\(item)]")
                     strongSelf.presenter.tableView.didSelect(object: item)
@@ -165,7 +165,7 @@ extension AppView {
 // MARK: - View Protocol
 //
 
-extension V.BlissDetails_View : BlissDetails_ViewProtocol {
+extension V.BlissDetails_View: BlissDetails_ViewProtocol {
     
     func displayShareOptionsWith(text: String) {
         AppLogger.log("")

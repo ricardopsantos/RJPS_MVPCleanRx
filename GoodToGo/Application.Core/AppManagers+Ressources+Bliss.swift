@@ -5,7 +5,7 @@
 //  Copyright © 2019 Ricardo P Santos. All rights reserved.
 //
 
-extension AppManagers.Ressources.Messages {
+extension AppManagers.Resources.Messages {
     struct Bliss {
         static let serverDown       = "Server is down"
         static let appName          = "Bliss app"

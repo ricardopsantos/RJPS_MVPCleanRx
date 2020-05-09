@@ -18,13 +18,13 @@ import RxCocoa
 // MARK: - Presenter_Protocol & View_Protocol
 //
 
-protocol MVPSampleRxView_PresenterProtocol : class {
-    var generic: GenericPresenter_Protocol?       { get }     // Mandatory in ALL Presenters
-    var genericView: GenericView?                 { get }     // Mandatory in ALL Presenters
-    var viewModel: VM.MVPSampleRxView_ViewModel?  { get set }
-    var router: MVPSampleRxView_RouterProtocol!   { get }     // Mandatory in ALL Presenters
+protocol MVPSampleRxView_PresenterProtocol: class {
+    var generic: GenericPresenter_Protocol? { get }          // Mandatory in ALL Presenters
+    var genericView: GenericView? { get }                    // Mandatory in ALL Presenters
+    var viewModel: VM.MVPSampleRxView_ViewModel? { get set }
+    var router: MVPSampleRxView_RouterProtocol! { get }       // Mandatory in ALL Presenters
     
-    func userDidTryToLoginWith(user:String, password:String)
+    func userDidTryToLoginWith(user: String, password: String)
 }
 
 protocol MVPSampleRxView_ViewProtocol: class {
@@ -95,21 +95,21 @@ extension P.MVPSampleRxView_Presenter: MVPSampleRxView_PresenterProtocol {
 // MARK: - GenericPresenter_Protocol
 //
 
-extension P.MVPSampleRxView_Presenter : GenericPresenter_Protocol {
-    func view_deinit()    -> Void { }
-    func loadView()       -> Void { rxSetup() }
-    func viewDidAppear()  -> Void { }
-    func viewDidLoad()    -> Void { }
-    func viewWillAppear() -> Void { }
+extension P.MVPSampleRxView_Presenter: GenericPresenter_Protocol {
+    func view_deinit() { }
+    func loadView() { rxSetup() }
+    func viewDidAppear() { }
+    func viewDidLoad() { }
+    func viewWillAppear() { }
 }
 
 extension P.MVPSampleRxView_Presenter {
     
-    private func viewModelChanged() -> Void {
+    private func viewModelChanged() {
         updateViewWith(vm: viewModel)
     }
     
-    private func updateViewWith(vm: VM.MVPSampleRxView_ViewModel?) -> Void {
+    private func updateViewWith(vm: VM.MVPSampleRxView_ViewModel?) {
         guard viewModel != nil else { AppLogger.log(appCode: .ignored); return }
         view.updateViewWith(message: viewModel!.someString)
     }

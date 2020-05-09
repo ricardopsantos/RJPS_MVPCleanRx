@@ -15,8 +15,8 @@ import UIKit
 extension Mappers {
     struct GitUser {
         private init() {}
-        static func toViewModelList(_ list:[E.GitHubUser]) -> [VM.GitHubUser] {
-            var result : [VM.GitHubUser] = []
+        static func toViewModelList(_ list: [E.GitHubUser]) -> [VM.GitHubUser] {
+            var result: [VM.GitHubUser] = []
             for element in list {
                 result.append(VM.GitHubUser(some: element))
             }

@@ -14,21 +14,21 @@ extension AppManagers {
     
         struct Errors {
             private init() {}
-            static func with(appCode:AppEnuns.AppCodes, info:String="") -> Error {
-                let domain   : String = "\(Bundle.main.bundleIdentifier!)"//appCode.localizableString
-                let code     : Int = appCode.rawValue
-                var userInfo : [String:Any] = [:]
+            static func with(appCode: AppEnuns.AppCodes, info: String="") -> Error {
+                let domain: String = "\(Bundle.main.bundleIdentifier!)"//appCode.localizableString
+                let code: Int = appCode.rawValue
+                var userInfo: [String: Any] = [:]
                 userInfo[NSError.AppKeys.userInfoDevMessageKey]  = appCode.localizedMessageForDevTeam
                 userInfo[NSError.AppKeys.userInfoViewMessageKey] = appCode.localizedMessageForView
                 userInfo[NSError.AppKeys.userInfoMoreInfoKey]    = info
-                return NSError(domain:domain, code:code, userInfo:userInfo)
+                return NSError(domain: domain, code: code, userInfo: userInfo)
             }
         }
         
         struct UIKit {
             private init() {}
             
-            static func textField(baseView: UIView? = nil, title:String="", tag: Int=0) -> UITextField {
+            static func textField(baseView: UIView? = nil, title: String="", tag: Int=0) -> UITextField {
                 let some = UITextField()
                 some.text = title
                 some.tag = tag
@@ -36,7 +36,7 @@ extension AppManagers {
                 return some
             }
             
-            static func label(baseView: UIView? = nil, title: String="", style:UILabel.LayoutStyle, tag: Int=0) -> UILabel {
+            static func label(baseView: UIView? = nil, title: String="", style: UILabel.LayoutStyle, tag: Int=0) -> UILabel {
                 let some = UILabel()
                 some.text = title
                 some.numberOfLines = 0
@@ -46,7 +46,7 @@ extension AppManagers {
                 return some
             }
             
-            static func button(baseView: UIView? = nil, title: String="", style:UIButton.LayoutStyle, tag: Int=0) -> UIButton {
+            static func button(baseView: UIView? = nil, title: String="", style: UIButton.LayoutStyle, tag: Int=0) -> UIButton {
                 let some = UIButton()
                 some.tag = tag
                 some.setTitleForAllStates(title)
@@ -74,7 +74,7 @@ extension AppManagers {
                 return some
             }
 
-            static func tableView(baseView:UIView? = nil, tag:Int=0, cellIdentifier:String=AppConstants.Dev.cellIdentifier) -> UITableView {
+            static func tableView(baseView: UIView? = nil, tag: Int=0, cellIdentifier: String=AppConstants.Dev.cellIdentifier) -> UITableView {
                 let some = UITableView()
                 some.tag = tag
                 if !cellIdentifier.trim.isEmpty {
@@ -84,8 +84,8 @@ extension AppManagers {
                 return some
             }
 
-            static func topBar(baseController:GenericView) -> V.TopBar {
-                let bar        = V.TopBar()
+            static func topBar(baseController: GenericView) -> V.TopBar {
+                let bar         = V.TopBar()
                 let screenWidth = UIScreen.main.bounds.width
                 let height      = V.TopBar.defaultHeight
                 let container   = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: screenWidth, height: height)))

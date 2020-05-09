@@ -11,7 +11,7 @@ import RJPSLib
 // swiftlint:disable line_length
 
 extension RP.Network.GitUser {
-    struct GetUserInfo_APIRequest : WebAPIRequest_Protocol {
+    struct GetUserInfo_APIRequest: WebAPIRequest_Protocol {
         var returnOnMainTread: Bool
         var debugRequest: Bool
         var urlRequest: URLRequest

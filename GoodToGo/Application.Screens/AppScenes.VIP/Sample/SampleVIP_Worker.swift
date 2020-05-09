@@ -12,9 +12,6 @@
 
 import UIKit
 
-class SampleVIP_Worker
-{
-  func doSomeWork()
-  {
-  }
+class SampleVIP_Worker {
+  func doSomeWork() { }
 }

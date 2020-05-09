@@ -9,6 +9,6 @@ import UIKit
 
 extension ViewModel {
     struct SearchUser {
-        let user : String
+        let user: String
     }
 }

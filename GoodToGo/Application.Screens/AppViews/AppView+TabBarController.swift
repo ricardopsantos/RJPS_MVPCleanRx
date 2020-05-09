@@ -38,7 +38,7 @@ extension AppView {
             }
         }
         
-        private func createControllers(tabName: String, vc: UIViewController) -> UINavigationController{
+        private func createControllers(tabName: String, vc: UIViewController) -> UINavigationController {
             let tabVC = UINavigationController(rootViewController: vc)
             tabVC.setNavigationBarHidden(true, animated: false)
             tabVC.tabBarItem.title = tabName

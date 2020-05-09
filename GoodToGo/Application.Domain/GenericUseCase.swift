@@ -11,6 +11,6 @@ import RxSwift
 import RJPSLib
 import RxCocoa
 
-class GenericUseCase : AppUtils_Protocol {
+class GenericUseCase: AppUtils_Protocol {
     
 }

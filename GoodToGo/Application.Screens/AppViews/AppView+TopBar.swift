@@ -19,7 +19,7 @@ extension AppView {
             NotificationCenter.default.removeObserver(self)
         }
         
-        private var _btnSize : CGFloat { return TopBar.defaultHeight / 2.0 }
+        private var _btnSize: CGFloat { return TopBar.defaultHeight / 2.0 }
         
         private lazy var _btnBack: UIButton = {
             let some = AppFactory.UIKit.button(baseView: self.view, style: .dismiss)
@@ -56,7 +56,7 @@ extension AppView {
             return some
         }()
         
-        private func enable(btn:UIButton) {
+        private func enable(btn: UIButton) {
             btn.isHidden                 = false
             btn.isUserInteractionEnabled = true
         }
@@ -75,10 +75,10 @@ extension AppView {
 extension V.TopBar {
 
     static var defaultHeight: CGFloat { return 60 }
-    func addBackButton()          -> Void { enable(btn: _btnBack) }
-    func addDismissButton()       -> Void { enable(btn: _btnClose) }
-    func setTitle(_ title:String) -> Void { _lblTitle.text = title }
-    func lazyLoad()               -> Void { /* Lazy var auxiliar */ }
+    func addBackButton() { enable(btn: _btnBack) }
+    func addDismissButton() { enable(btn: _btnClose) }
+    func setTitle(_ title: String) { _lblTitle.text = title }
+    func lazyLoad() { /* Lazy var auxiliar */ }
     
     var rxSignal_btnDismissTapped: Signal<Void> {
         return _btnClose.rx.controlEvent(.touchUpInside).asSignal()

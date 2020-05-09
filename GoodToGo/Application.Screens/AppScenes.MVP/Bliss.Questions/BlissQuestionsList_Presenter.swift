@@ -14,23 +14,23 @@ import RxCocoa
 // MARK: - Presenter_Protocol & View_Protocol
 //
 
-protocol BlissQuestionsList_PresenterProtocol : class {
-    var generic     : GenericPresenter_Protocol?         { get }     // Mandatory in ALL Presenters
-    var genericView : GenericView?                       { get }     // Mandatory in ALL Presenters
-    var viewModel   : VM.BlissQuestionsList_ViewModel?   { get set } // Mandatory in ALL Presenters
-    var router      : BlissQuestionsList_RouterProtocol! { get }     // Mandatory in ALL Presenters
-    var tableView   : GenericTableView_Protocol!         { get }
+protocol BlissQuestionsList_PresenterProtocol: class {
+    var generic: GenericPresenter_Protocol? { get }             // Mandatory in ALL Presenters
+    var genericView: GenericView? { get }                       // Mandatory in ALL Presenters
+    var viewModel: VM.BlissQuestionsList_ViewModel? { get set } // Mandatory in ALL Presenters
+    var router: BlissQuestionsList_RouterProtocol! { get }      // Mandatory in ALL Presenters
+    var tableView: GenericTableView_Protocol! { get }
     
-    func userPretendDoSearchWith(filter:String)
-    func viewNeedsMoreData(filter:String)
+    func userPretendDoSearchWith(filter: String)
+    func viewNeedsMoreData(filter: String)
     
     // PublishRelay model Events
     var rxPublishRelay_dismissView: PublishRelay<Void> { get }
 }
 
 protocol BlissQuestionsList_ViewProtocol: class {
-    func viewNeedsToDisplay(list:[E.Bliss.QuestionElement])
-    func setSearch(text:String)
+    func viewNeedsToDisplay(list: [E.Bliss.QuestionElement])
+    func setSearch(text: String)
 }
 
 //
@@ -60,9 +60,9 @@ extension Presenter {
 // MARK: - GenericTableView_Protocol
 //
 
-extension P.BlissQuestionsList_Presenter : GenericTableView_Protocol {
+extension P.BlissQuestionsList_Presenter: GenericTableView_Protocol {
     
-    func configure(cell: GenericTableViewCell_Protocol, indexPath: IndexPath) -> Void {
+    func configure(cell: GenericTableViewCell_Protocol, indexPath: IndexPath) {
         if let someCell = cell as? Sample_TableViewCellProtocol {
             let question = viewModel!.questionsList[indexPath.row]
             let title = "\(question.question.description)"
@@ -89,7 +89,7 @@ extension P.BlissQuestionsList_Presenter : GenericTableView_Protocol {
 // MARK: - BlissQuestionsList_PresenterProtocol
 //
 
-extension P.BlissQuestionsList_Presenter : BlissQuestionsList_PresenterProtocol {
+extension P.BlissQuestionsList_Presenter: BlissQuestionsList_PresenterProtocol {
 
     // PublishRelay model Events
     var rxPublishRelay_dismissView: PublishRelay<Void> {
@@ -108,7 +108,7 @@ extension P.BlissQuestionsList_Presenter : BlissQuestionsList_PresenterProtocol 
         updateData(filter: filter, offSet: _lastOffSet != nil ? _lastOffSet! + 1 : 1)
     }
     
-    func rxObservable_GetList(filter:String, offSet:Int) -> Observable<[E.Bliss.QuestionElement]> {
+    func rxObservable_GetList(filter: String, offSet: Int) -> Observable<[E.Bliss.QuestionElement]> {
         return Single.create { [weak self] observer -> Disposable in
             if let strongSelf = self {
                 strongSelf.blissQuestions_UseCase.getQuestions(limit: 10, filter: filter, offSet: offSet, checkHealth: true, completionHandler: { (result) in
@@ -133,21 +133,21 @@ extension P.BlissQuestionsList_Presenter : BlissQuestionsList_PresenterProtocol 
 // MARK: - GenericPresenter_Protocol
 //
 
-extension P.BlissQuestionsList_Presenter : GenericPresenter_Protocol {
-    func view_deinit() -> Void {
+extension P.BlissQuestionsList_Presenter: GenericPresenter_Protocol {
+    func view_deinit() {
         NotificationCenter.default.removeObserver(self)
     }
-    func loadView()  -> Void {
+    func loadView() {
         rxSetup()
     }
-    func viewDidAppear()  -> Void { }
-    func viewDidLoad()    -> Void {
+    func viewDidAppear() { }
+    func viewDidLoad() {
         viewModel = VM.BlissQuestionsList_ViewModel()
         _lastFilder = nil
         _lastOffSet = nil
         updateData(filter: "", offSet: 0)
     }
-    func viewWillAppear() -> Void { }
+    func viewWillAppear() { }
 }
 
 //
@@ -164,7 +164,7 @@ extension P.BlissQuestionsList_Presenter {
         }
     }
     
-    private func updateData(filter:String, offSet:Int) {
+    private func updateData(filter: String, offSet: Int) {
         let filter = filter.trim
         
         // Not pretty, but very efective in avoind duplicated repeated server calls
@@ -201,7 +201,7 @@ extension P.BlissQuestionsList_Presenter {
     
     func rxSetup() {
     
-        func checkDataToHandle() -> Void {
+        func checkDataToHandle() {
             if let data = blissGeneric_UseCase.screenHaveDataToHandle(screen: V.BlissQuestionsList_View.className) {
                 let key   = data.0
                 let value = data.1

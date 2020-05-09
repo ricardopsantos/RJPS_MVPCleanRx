@@ -14,12 +14,12 @@ import RxCocoa
 // MARK: - Presenter_Protocol & View_Protocol
 //
 
-protocol BlissDetails_PresenterProtocol : class {
-    var generic : GenericPresenter_Protocol?   { get }     // Mandatory in ALL Presenters
-    var genericView : GenericView?                 { get }     // Mandatory in ALL Presenters
-    var viewModel : VM.BlissDetails_ViewModel?   { get set } // Mandatory in ALL Presenters
-    var router      : BlissDetails_RouterProtocol! { get }     // Mandatory in ALL Presenters
-    var tableView   : GenericTableView_Protocol!   { get }
+protocol BlissDetails_PresenterProtocol: class {
+    var generic: GenericPresenter_Protocol? { get }       // Mandatory in ALL Presenters
+    var genericView: GenericView? { get }                 // Mandatory in ALL Presenters
+    var viewModel: VM.BlissDetails_ViewModel? { get set } // Mandatory in ALL Presenters
+    var router: BlissDetails_RouterProtocol! { get }      // Mandatory in ALL Presenters
+    var tableView: GenericTableView_Protocol! { get }
     
     func userDidPretendToShareInApp()
     func userDidPretendToShareByEmail()
@@ -32,7 +32,7 @@ protocol BlissDetails_ViewProtocol: class {
     func viewNeedsToDisplay(list: [E.Bliss.ChoiceElement])
     func set(image: UIImage)
     func set(title: String)
-    func displayShareOptionsWith(text:String)
+    func displayShareOptionsWith(text: String)
 }
 
 //
@@ -40,7 +40,7 @@ protocol BlissDetails_ViewProtocol: class {
 //
 
 extension Presenter {
-    class BlissDetails_Presenter : GenericPresenter {
+    class BlissDetails_Presenter: GenericPresenter {
         weak var generic: GenericPresenter_Protocol?
         weak var genericView: GenericView?
         weak var view: BlissDetails_ViewProtocol!
@@ -113,7 +113,7 @@ extension P.BlissDetails_Presenter: BlissDetails_PresenterProtocol {
 
 extension P.BlissDetails_Presenter: GenericTableView_Protocol {
     
-    func configure(cell: GenericTableViewCell_Protocol, indexPath: IndexPath) -> Void {
+    func configure(cell: GenericTableViewCell_Protocol, indexPath: IndexPath) {
         guard viewModel != nil, viewModel?.question != nil else {
             return
         }
@@ -160,20 +160,20 @@ extension P.BlissDetails_Presenter: GenericTableView_Protocol {
 //
 
 extension P.BlissDetails_Presenter: GenericPresenter_Protocol {
-    func view_deinit() -> Void {
+    func view_deinit() {
         NotificationCenter.default.removeObserver(self)
     }
-    func loadView()       -> Void {
+    func loadView() {
         if viewModel == nil {
             viewModel = VM.BlissDetails_ViewModel()
         }
     }
-    func viewDidAppear()  -> Void { }
-    func viewDidLoad()    -> Void {
+    func viewDidAppear() { }
+    func viewDidLoad() {
         _ = checkDataToHandle()
         rxSetup()
     }
-    func viewWillAppear() -> Void { }
+    func viewWillAppear() { }
 }
 
 //

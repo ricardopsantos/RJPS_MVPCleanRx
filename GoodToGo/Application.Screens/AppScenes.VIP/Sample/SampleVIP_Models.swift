@@ -12,22 +12,14 @@
 
 import UIKit
 
-enum SampleVIP
-{
+enum SampleVIP {
   // MARK: Use cases
   
-  enum SearchView
-  {
-    struct Request
-    {
-    }
-    struct Response
-    {
-    }
-    struct ViewModel
-    {
-        let name : String
+  enum SearchView {
+    struct Request { }
+    struct Response { }
+    struct ViewModel {
+        let name: String
     }
   }
-
 }

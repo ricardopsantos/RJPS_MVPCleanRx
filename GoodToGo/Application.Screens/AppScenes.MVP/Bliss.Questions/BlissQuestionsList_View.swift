@@ -18,12 +18,12 @@ extension AppView {
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
-        var presenter : BlissQuestionsList_PresenterProtocol!
+        var presenter: BlissQuestionsList_PresenterProtocol!
        
         // BehaviorRelay model a State
         private var _rxBehaviorRelay_tableDataSource = BehaviorRelay<[E.Bliss.QuestionElement]>(value: [])
 
-        private let _tableViewThreshold : CGFloat = 100.0 // threshold from bottom of tableView
+        private let _tableViewThreshold: CGFloat = 100.0 // threshold from bottom of tableView
         private var _tableViewIsLoadingMoreData = false // flag
     
         private lazy var _topGenericView: V.TopBar = {
@@ -87,10 +87,10 @@ extension AppView {
             }
             some.rx.modelSelected(E.Bliss.QuestionElement.self)
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
-                .subscribe(onNext:  { [weak self]  item in
+                .subscribe(onNext: { [weak self]  item in
                     guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
                     AppLogger.log("Tapped [\(item)]")
-                    strongSelf.presenter.tableView.didSelect(object:item)
+                    strongSelf.presenter.tableView.didSelect(object: item)
                     if let index = some.indexPathForSelectedRow {
                         some.deselectRow(at: index, animated: true)
                     }
@@ -142,7 +142,7 @@ extension AppView {
 // MARK: - View Protocol
 //
 
-extension V.BlissQuestionsList_View : BlissQuestionsList_ViewProtocol {
+extension V.BlissQuestionsList_View: BlissQuestionsList_ViewProtocol {
     
     func setSearch(text: String) {
         _searchBar.text = text

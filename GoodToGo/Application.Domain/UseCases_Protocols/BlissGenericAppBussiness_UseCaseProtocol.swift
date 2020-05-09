@@ -11,13 +11,13 @@ import RJPSLib
 import RxCocoa
 import RxSwift
 
-protocol BlissGenericAppBussiness_UseCaseProtocol : class {
+protocol BlissGenericAppBussiness_UseCaseProtocol: class {
     
     // PublishRelay model Events
-    var rxPublishRelayAppicationDidReceivedData : PublishRelay<Void> { get }
+    var rxPublishRelayAppicationDidReceivedData: PublishRelay<Void> { get }
 
-    func setNeedToOpenScreen(screen:String, key:String, value:String)
-    func screenHaveDataToHandle(screen:String) -> (String, String)?
-    func screenHaveHandledData(screen:String)
-    func handle(url:URL)
+    func setNeedToOpenScreen(screen: String, key: String, value: String)
+    func screenHaveDataToHandle(screen: String) -> (String, String)?
+    func screenHaveHandledData(screen: String)
+    func handle(url: URL)
 }

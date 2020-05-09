@@ -15,17 +15,17 @@ import RxCocoa
 //
 
 protocol MVPSampleTableView_PresenterProtocol: class {
-    var generic: GenericPresenter_Protocol?          { get }     // Mandatory in ALL Presenters
-    var genericView: GenericView?                    { get }     // Mandatory in ALL Presenters
-    var viewModel: VM.MVPSampleTableView_ViewModel?  { get set } // Mandatory in ALL Presenters
-    var router: MVPSampleTableView_RouterProtocol!   { get }     // Mandatory in ALL Presenters
-    var tableView: GenericTableView_Protocol!        { get }
+    var generic: GenericPresenter_Protocol? { get }             // Mandatory in ALL Presenters
+    var genericView: GenericView? { get }                       // Mandatory in ALL Presenters
+    var viewModel: VM.MVPSampleTableView_ViewModel? { get set } // Mandatory in ALL Presenters
+    var router: MVPSampleTableView_RouterProtocol! { get }      // Mandatory in ALL Presenters
+    var tableView: GenericTableView_Protocol! { get }
     
     var rxPublishRelay_dismissView: PublishRelay<Void> { get }    // PublishRelay model Events
     
 }
 
-protocol MVPSampleTableView_ViewProtocol : class {
+protocol MVPSampleTableView_ViewProtocol: class {
     func viewNeedsToDisplay(list: [E.Employee])
     func setNetworkViewVisibilityTo(_ value: Bool)
 }
@@ -63,7 +63,7 @@ extension P.MVPSampleTableView_Presenter: GenericTableView_Protocol {
         return viewModel?.employeesList.count ?? 0
     }
     
-    func configure(cell: GenericTableViewCell_Protocol, indexPath: IndexPath) -> Void {
+    func configure(cell: GenericTableViewCell_Protocol, indexPath: IndexPath) {
         if let someCell = cell as? Sample_TableViewCellProtocol {
             let employee = viewModel!.employeesList[indexPath.row]
             let title = "\(employee.employeeName) | \(employee.employeeSalary)"
@@ -104,14 +104,14 @@ extension P.MVPSampleTableView_Presenter: MVPSampleTableView_PresenterProtocol {
 // MARK: - GenericPresenter_Protocol
 //
 
-extension P.MVPSampleTableView_Presenter : GenericPresenter_Protocol {
-    func view_deinit()    -> Void { }
-    func loadView()       -> Void { }
-    func viewDidAppear()  -> Void { }
-    func viewDidLoad()    -> Void {
+extension P.MVPSampleTableView_Presenter: GenericPresenter_Protocol {
+    func view_deinit() { }
+    func loadView() { }
+    func viewDidAppear() { }
+    func viewDidLoad() {
         viewModel = VM.MVPSampleTableView_ViewModel()
     }
-    func viewWillAppear() -> Void {
+    func viewWillAppear() {
         rxSetup()
     }
 }
@@ -122,11 +122,11 @@ extension P.MVPSampleTableView_Presenter : GenericPresenter_Protocol {
 
 extension P.MVPSampleTableView_Presenter {
     
-    private func viewModelChanged() -> Void {
+    private func viewModelChanged() {
         updateViewWith(vm: viewModel)
     }
     
-    private func updateViewWith(vm: VM.MVPSampleTableView_ViewModel?) -> Void {
+    private func updateViewWith(vm: VM.MVPSampleTableView_ViewModel?) {
         guard vm != nil else { AppLogger.log(appCode: .ignored); return }
         if let vm = vm {
             view.viewNeedsToDisplay(list: vm.employeesList)
@@ -164,7 +164,7 @@ extension P.MVPSampleTableView_Presenter {
             do {
                 let apiRequest: WebAPIRequest_Protocol = try RP.Network.Employees.GetEmployees_APIRequest()
                 let apiClient: NetworkClient_Protocol = RJSLib.NetworkClient()
-                apiClient.execute(request: apiRequest, completionHandler: { (result : Result<NetworkClientResponse<[E.Employee]>>) in
+                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<[E.Employee]>>) in
                     switch result {
                     case .success(let some):
                         let employeeList = some.entity

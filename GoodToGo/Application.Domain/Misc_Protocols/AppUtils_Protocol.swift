@@ -10,12 +10,12 @@ import UIKit
 
 protocol AppUtils_Protocol: class {
 
-    // If there is internet; execture the code in the block. If not, presente a warging
-    var existsInternetConnection : Bool { get }
+    // If there is internet; execute the code in the block. If not, present a warning
+    var existsInternetConnection: Bool { get }
     
-    func assertExistsInternetConnection(sender:GenericView?, message:String, block:@escaping ()->Void)
+    func assertExistsInternetConnection(sender: GenericView?, message: String, block:@escaping () -> Void)
     
-    func downloadImage(imageURL:String, onFail:UIImage?, completion:@escaping (UIImage?) -> Void)
+    func downloadImage(imageURL: String, onFail: UIImage?, completion: @escaping (UIImage?) -> Void)
 
-    func cachedValueIsOld(coreDatakey:String, maxLifeSpam:Int) -> Bool
+    func cachedValueIsOld(coreDatakey: String, maxLifeSpam: Int) -> Bool
 }

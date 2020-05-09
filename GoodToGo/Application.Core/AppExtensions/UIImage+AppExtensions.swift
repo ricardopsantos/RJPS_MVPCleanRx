@@ -13,9 +13,9 @@ extension UIImage {
         private init() {}
         struct TopBar {
             private init() {}
-            static let background : UIImage = UIImage()
+            static let background: UIImage = UIImage()
         }
-        static let notFound   : UIImage = UIImage(named: "notFound") ?? UIImage()
-        static let notInternet : UIImage = UIImage(named: "notInternet") ?? UIImage()
+        static let notFound: UIImage = UIImage(named: "notFound") ?? UIImage()
+        static let notInternet: UIImage = UIImage(named: "notInternet") ?? UIImage()
     }
 }

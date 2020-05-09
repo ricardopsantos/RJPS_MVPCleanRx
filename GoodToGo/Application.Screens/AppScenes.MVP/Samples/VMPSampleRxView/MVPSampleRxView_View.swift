@@ -22,9 +22,9 @@ extension AppView {
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
-        var presenter : MVPSampleRxView_PresenterProtocol!
+        var presenter: MVPSampleRxView_PresenterProtocol!
         
-        private let _margin : CGFloat = 25
+        private let _margin: CGFloat = 25
         
         private lazy var _txtUser: UITextField = {
             let some = AppFactory.UIKit.textField(baseView: self.view)
@@ -84,8 +84,8 @@ extension AppView {
                 .disposed(by: disposeBag)
             
             let isPasswordValid = _txtPass.rx.text.orEmpty.map { $0.count >= 8 }.distinctUntilChanged()
-            let isEmailVaild    = _txtUser.rx.text.orEmpty.map( { $0.count >= 5 && $0.contains("@") }).distinctUntilChanged()
-            let isButtonEnabled = Observable.combineLatest(isPasswordValid, isEmailVaild) { $0 && $1 }
+            let isEmailValid    = _txtUser.rx.text.orEmpty.map({ $0.count >= 5 && $0.contains("@") }).distinctUntilChanged()
+            let isButtonEnabled = Observable.combineLatest(isPasswordValid, isEmailValid) { $0 && $1 }
             isButtonEnabled.bind(to: some.rx.isEnabled).disposed(by: disposeBag)
             isButtonEnabled.subscribe(onNext: { some.alpha = $0 ? 1 : 0.5 }).disposed(by: disposeBag)
             return some
@@ -164,8 +164,8 @@ extension AppView {
 
 // MARK: - View Protocol
 
-extension V.MVPSampleRxView_View : MVPSampleRxView_ViewProtocol {
-    func updateViewWith(message:String) {
+extension V.MVPSampleRxView_View: MVPSampleRxView_ViewProtocol {
+    func updateViewWith(message: String) {
         _lblMessage.textAnimated = message
     }
 }

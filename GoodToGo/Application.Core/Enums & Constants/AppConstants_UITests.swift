@@ -19,7 +19,7 @@ public enum AppConstants_UITests {
     struct UIViewControllers {
         private init() {}
         private static let accessibilityIdentifierPrefix = "acId"
-        static func genericAccessibilityIdentifier(_ controller:GenericView) -> String {
+        static func genericAccessibilityIdentifier(_ controller: GenericView) -> String {
             return "\(accessibilityIdentifierPrefix).\(controller.className)"
         }
     }

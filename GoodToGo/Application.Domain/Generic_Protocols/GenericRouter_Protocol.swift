@@ -15,6 +15,6 @@ import RxCocoa
 // All the ROUTERS must implement this protocol
 ////////////////////////////////////////////
 
-protocol GenericRouter_Protocol : AppUtils_Protocol {
+protocol GenericRouter_Protocol: AppUtils_Protocol {
 
 }

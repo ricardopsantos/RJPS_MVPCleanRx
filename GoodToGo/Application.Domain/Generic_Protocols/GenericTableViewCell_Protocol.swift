@@ -10,14 +10,14 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-protocol GenericTableViewCell_Protocol : ReusableCell_Protocol {
-    func set(title:String)     // Mandatory
-    func set(image:UIImage?)
+protocol GenericTableViewCell_Protocol: ReusableCell_Protocol {
+    func set(title: String)     // Mandatory
+    func set(image: UIImage?)
     func set(textColor: UIColor)
 }
 
 extension GenericTableViewCell_Protocol {
-    func set(image:UIImage?)     { }
+    func set(image: UIImage?) { }
     func set(textColor: UIColor) { }
 }
 

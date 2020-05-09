@@ -31,7 +31,7 @@ extension UILabel {
 
 extension UILabel {
     
-    private func layoutWith(style:UILabel.LayoutStyle) -> Void {
+    private func layoutWith(style: UILabel.LayoutStyle) {
         let title = {
             self.backgroundColor = .clear
             self.textColor       = AppColors.TopBar.titleColor

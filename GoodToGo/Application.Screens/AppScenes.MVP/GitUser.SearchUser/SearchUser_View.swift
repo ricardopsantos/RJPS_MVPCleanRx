@@ -17,7 +17,7 @@ extension AppView {
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
-        var presenter : SearchUser_PresenterProtocol!
+        var presenter: SearchUser_PresenterProtocol!
         
         private lazy var _topGenericView: V.TopBar = {
             let some = AppFactory.UIKit.topBar(baseController: self)
@@ -42,7 +42,7 @@ extension AppView {
             some.rx.textDidEndEditing
                 .subscribe(onNext: { [weak self] (_) in
                     guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                    if strongSelf._searchBar.text!.count>0  {
+                    if strongSelf._searchBar.text!.count>0 {
                         strongSelf.presenter.searchUserWith(username: some.text ?? "")
                     }
                 })
@@ -63,12 +63,10 @@ extension AppView {
                 let darkView = self.view
                 darkView!.overrideUserInterfaceStyle = .dark
                 // Follows the appearance of its superview.
-                let unspecifiedView = self.view
+                //let unspecifiedView = self.view
                 view.overrideUserInterfaceStyle = .unspecified
                 self.view = darkView
-                
-                let isDark = traitCollection.userInterfaceStyle == .dark
-                
+                //let isDark = traitCollection.userInterfaceStyle == .dark
             }
             
         }

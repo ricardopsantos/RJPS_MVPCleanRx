@@ -9,7 +9,7 @@ import UIKit
 import Swinject
 
 extension AppDelegate {
-    func appPrepare(application:UIApplication) -> Void {
+    func appPrepare(application: UIApplication) {
         AppEnvironments.autoSet()
         AppLogger.log("Number of logins : \(AppUserDefaultsVars.incrementIntWithKey(AppConstants.Dev.numberOfLogins))")
     }

@@ -18,7 +18,7 @@ extension AppView {
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
-        var presenter : MVPSampleTableView_PresenterProtocol!
+        var presenter: MVPSampleTableView_PresenterProtocol!
        
         // BehaviorRelay model a State
         private var _rxBehaviorRelay_tableDataSource = BehaviorRelay<[E.Employee]>(value: [])
@@ -30,10 +30,10 @@ extension AppView {
             some.register(Sample_TableViewCell.self, forCellReuseIdentifier: Sample_TableViewCell.reuseIdentifier)
             some.rx.modelSelected(E.Employee.self)
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
-                .subscribe(onNext:  { [weak self]  item in
+                .subscribe(onNext: { [weak self]  item in
                     guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
                     AppLogger.log("Tapped [\(item)]")
-                    strongSelf.presenter.tableView.didSelect(object:some)
+                    strongSelf.presenter.tableView.didSelect(object: some)
                     if let index = some.indexPathForSelectedRow {
                         some.deselectRow(at: index, animated: true)
                     }
@@ -51,7 +51,7 @@ extension AppView {
                 })
                 .disposed(by: disposeBag)
             some.rx.willDisplayCell
-                .subscribe(onNext: ({ (cell,_) in
+                .subscribe(onNext: ({ (cell, _) in
                     cell.alpha = 0
                     let transform = CATransform3DTranslate(CATransform3DIdentity, 0, -250, 0)
                     cell.layer.transform = transform

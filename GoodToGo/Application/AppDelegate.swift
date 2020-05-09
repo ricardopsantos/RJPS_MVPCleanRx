@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    static var shared : AppDelegate { return UIApplication.shared.delegate as! AppDelegate }
+    static var shared: AppDelegate { return UIApplication.shared.delegate as! AppDelegate }
     
     // Where we have all the dependencies
     let container: Container = { return ApplicationAssembly.assembler.resolver as! Container }()
@@ -55,7 +55,7 @@ func testeRefreshToken() {
     webAPI.assyncRequest(param: "BB") { (result) in print(result) }
     webAPI.assyncRequest(param: "CC") { (result) in print(result) }
 
-    DispatchQueue.executeWithDelay (delay:5) {
+    DispatchQueue.executeWithDelay(delay: 5) {
         webAPI.invalidateToken()
         webAPI.assyncRequest(param: "DD") { (result) in print(result) }
         webAPI.assyncRequest(param: "EE") { (result) in print(result) }
@@ -70,7 +70,7 @@ class WEBAPI {
     private let rxTokenState: BehaviorRelay = BehaviorRelay<TokenState>(value: .invalid)
     private let rxTokenValue: BehaviorRelay = BehaviorRelay<String>(value: "")
 
-    func invalidateToken() { print("Token invalidated...".uppercased()); rxTokenState.accept(.invalid) }
+    func invalidateToken() { AppLogger.log("Token invalidated...".uppercased()); rxTokenState.accept(.invalid) }
     func assyncRequest(param: String, result: @escaping(String) -> Void) {
 
         func requestThatNeedsToken(_ token: String) {
@@ -86,32 +86,32 @@ class WEBAPI {
         return Single<Void>.create { observer -> Disposable in
             let identifier = "# TokenRefresh: "
             let endSequecence = {
-                print("\(identifier)Returned valid token.")
+                AppLogger.log("\(identifier)Returned valid token.")
                 observer(.success(()))
             }
             if self.rxTokenState.value == .valid {
                 endSequecence()
             } else {
                 if self.rxTokenState.value == .refreshing {
-                    print("\(identifier)A new Token is allready refreshing. Will observe for a change....")
+                    AppLogger.log("\(identifier)A new Token is allready refreshing. Will observe for a change....")
                     self.rxTokenState.subscribe(onNext: { state in
                         if state == .valid {
-                            print("\(identifier)Theres a new token available!")
+                            AppLogger.log("\(identifier)Theres a new token available!")
                             endSequecence()
                         }
                         }).disposed(by: disposeBag)
                 } else {
-                    print("\(identifier)Invalid token. Will refresh...")
+                    AppLogger.log("\(identifier)Invalid token. Will refresh...")
                     self.rxTokenState.accept(.refreshing)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         if Bool.random() {
                             let newToken = "some_token_[\(Date())]"
-                            print("\(identifier)New Token generated!".uppercased() + " -> " + newToken)
+                            AppLogger.log("\(identifier)New Token generated!".uppercased() + " -> " + newToken)
                             self.rxTokenValue.accept(newToken)
                             self.rxTokenState.accept(.valid)
                             endSequecence()
                         } else {
-                            print("\(identifier)Fail generating token!".uppercased())
+                            AppLogger.log("\(identifier)Fail generating token!".uppercased())
                             self.rxTokenState.accept(.invalid)
                             observer(.error(NSError(domain: "error.domain.refreshing", code: 0, userInfo: nil)))
                         }

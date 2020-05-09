@@ -12,18 +12,15 @@
 
 import UIKit
 
-@objc protocol SampleVIP_RoutingLogic
-{
+@objc protocol SampleVIP_RoutingLogic {
   //func routeToSomewhere(segue: UIStoryboardSegue?)
 }
 
-protocol SampleVIP_DataPassing
-{
+protocol SampleVIP_DataPassing {
   var dataStore: SampleVIP_DataStore? { get }
 }
 
-class SampleVIP_Router: NSObject, SampleVIP_RoutingLogic, SampleVIP_DataPassing
-{
+class SampleVIP_Router: NSObject, SampleVIP_RoutingLogic, SampleVIP_DataPassing {
   weak var viewController: SampleVIP_ViewController?
   var dataStore: SampleVIP_DataStore?
   

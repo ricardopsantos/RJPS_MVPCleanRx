@@ -22,7 +22,7 @@ extension Entity.Bliss {
 }
 
 extension E.Bliss.ServerHealth {
-    var isOK : Bool { return status == "OK" }
+    var isOK: Bool { return status == "OK" }
 }
 
 extension E.Bliss {
@@ -32,11 +32,11 @@ extension E.Bliss {
 }
 
 extension E.Bliss.ShareByEmail {
-    var sucess : Bool { return status == "OK" }
+    var sucess: Bool { return status == "OK" }
 }
 
-extension E.Bliss.Question : CustomStringConvertible {
-    var description : String {
+extension E.Bliss.Question: CustomStringConvertible {
+    var description: String {
         switch self {
         case .favouriteProgrammingLanguage: return "Favourite programming language?"
         }

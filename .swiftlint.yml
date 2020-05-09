@@ -108,6 +108,10 @@ type_name:
     excluded:
         - iPhone
         - R
+        - RP
+        - AC
+        - UC
+        - MP
         - V
         - VM
         - VC
@@ -116,6 +120,7 @@ type_name:
         - I
         - E
         - MD
+        - M
         - Id
 
 identifier_name:
@@ -165,13 +170,22 @@ colon:
     severity: error
 
 shorthand_operator:
-    severity: warning
+    severity: error
 
 trailing_comma:
-    severity: warning
+    severity: error
 
 comma:
-    severity: warning
+    severity: error
 
 redundant_void_return:
-    severity: warning
+    severity: error
+
+return_arrow_whitespace:
+    severity: error
+
+opening_brace:
+    severity: error
+
+no_space_in_method_call:
+    severity: error

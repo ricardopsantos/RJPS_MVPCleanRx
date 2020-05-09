@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 import RxSwift
 
-protocol BottomBar_Delegate : AnyObject {
-    func btnTappedWith(identifier:String)
+protocol BottomBar_Delegate: AnyObject {
+    func btnTappedWith(identifier: String)
 }
 
 extension AppView {
@@ -132,7 +132,7 @@ extension AppView {
  * Public stuff
  */
 extension V.BottomBar {
-    static func defaultHeight()    -> CGFloat { return 100 }
+    static func defaultHeight() -> CGFloat { return 100 }
     static func backgroundHeight() -> CGFloat { return defaultHeight()-30 }
-    func lazyLoad()                -> Void { /* Lazy var auxiliar */ }
+    func lazyLoad() { /* Lazy var auxiliar */ }
 }

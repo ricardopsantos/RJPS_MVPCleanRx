@@ -10,12 +10,12 @@ import UIKit
 
 extension AppManagers {
     
-    struct Ressources {
+    struct Resources {
         private init() {}
 
-        private static var _currentLanguageBundle : Bundle?
-        private static var _defaultLanguage       : SelectedLanguage = .en
-        private static var _storedLanguage : SelectedLanguage {
+        private static var _currentLanguageBundle: Bundle?
+        private static var _defaultLanguage: SelectedLanguage = .en
+        private static var _storedLanguage: SelectedLanguage {
             if let storedLanguageString = AppGlobal.getWith(key: AppConstants.Dev.keyCoreDataSaveLang) {
                 // We have a stored language!
                 if let storedLanguage = SelectedLanguage(rawValue: Int(storedLanguageString) ?? _defaultLanguage.rawValue ) {
@@ -24,8 +24,8 @@ extension AppManagers {
             }
             return _defaultLanguage
         }
-        static var selectedLanguage : SelectedLanguage = _storedLanguage {
-            didSet{
+        static var selectedLanguage: SelectedLanguage = _storedLanguage {
+            didSet {
                 if selectedLanguage != _storedLanguage {
                     _currentLanguageBundle = nil
                     AppGlobal.saveWith(key: AppConstants.Dev.keyCoreDataSaveLang, value: "\(selectedLanguage.rawValue)")
@@ -51,7 +51,7 @@ extension AppManagers {
             static var invalidURL: String { return get("Invalid URL") }
         }
         
-        private static func resource(_ code : String/*, languageCode : SelectedLanguage = prepareLanguageCode()*/) -> String {
+        private static func resource(_ code: String) -> String {
             guard !code.isEmpty else { return "" }
             
             if _currentLanguageBundle == nil {
@@ -74,11 +74,7 @@ extension AppManagers {
             }
             
             let result = _currentLanguageBundle!.localizedString(forKey: code, value: nil, table: nil)
-            
-            //if(result == code) {
-            //    AppLogs.DLogWarning("Ressource with code [\(code)] not found for language [\(selectedLanguage)]")
-            //}
-            
+
             return result
         }
         

@@ -14,16 +14,16 @@ extension UIColor {
         guard GenericView.onDarkMode else {
             return self
         }
-        let k : CGFloat = 1.2
-        let treshold : CGFloat = 0.5
-        let r : CGFloat = CGFloat(self.cgColor.components![0]/k)
-        let g : CGFloat = CGFloat(self.cgColor.components![1]/k)
-        let b : CGFloat = CGFloat(self.cgColor.components![2]/k)
-        var mean = (r + g + b) / 3.0
+        let k: CGFloat = 1.2
+        //let treshold: CGFloat = 0.5
+        let r: CGFloat = CGFloat(self.cgColor.components![0]/k)
+        let g: CGFloat = CGFloat(self.cgColor.components![1]/k)
+        let b: CGFloat = CGFloat(self.cgColor.components![2]/k)
+        //var mean = (r + g + b) / 3.0
         //guard mean > treshold else {
         //    return self
         //}
-        var a : CGFloat = 3
+        var a: CGFloat = 3
         if cgColor.components!.count == 4 {
             a = CGFloat(cgColor.components![3])
         }
@@ -46,8 +46,8 @@ extension UIColor {
             
         struct TopBar {
             private init() {}
-            static var background : UIColor { return _blue1.toDark() }
-            static var titleColor : UIColor { return _grey_7.toDark() }
+            static var background: UIColor { return _blue1.toDark() }
+            static var titleColor: UIColor { return _grey_7.toDark() }
         }
         static var appDefaultBackgroundColor: UIColor { return _grey_7.toDark() }
         static var btnBackgroundColor: UIColor { return _grey_6.toDark() }
@@ -57,6 +57,6 @@ extension UIColor {
         
         static var error: UIColor { return _red1.toDark() }
         static var sucess: UIColor { return _blue2.toDark() }
-        static var warning: UIColor { return UIColor(red:242, green:168, blue:62).toDark() }
+        static var warning: UIColor { return UIColor(red: 242, green: 168, blue: 62).toDark() }
     }
 }

@@ -16,16 +16,16 @@ import RJPSLib
 // MARK: - Presenter_Protocol & View_Protocol
 //
 
-protocol MVPSampleView_PresenterProtocol : class {
-    var generic: GenericPresenter_Protocol?    { get }     // Mandatory in ALL Presenters
-    var genericView: GenericView?              { get }     // Mandatory in ALL Presenters
+protocol MVPSampleView_PresenterProtocol: class {
+    var generic: GenericPresenter_Protocol? { get }        // Mandatory in ALL Presenters
+    var genericView: GenericView? { get }                  // Mandatory in ALL Presenters
     var viewModel: VM.MVPSampleView_ViewModel? { get set } // Mandatory in ALL Presenters
-    var router: MVPSampleView_RouterProtocol!  { get }     // Mandatory in ALL Presenters
+    var router: MVPSampleView_RouterProtocol! { get }      // Mandatory in ALL Presenters
     
     func userDidTryToLoginWith(user: String, password: String)
 }
 
-protocol MVPSampleView_ViewProtocol : class {
+protocol MVPSampleView_ViewProtocol: class {
     func updateViewWith(message: String)
 }
 
@@ -49,7 +49,7 @@ extension Presenter {
 // MARK: - Presenter Protocol
 //
 
-extension P.MVPSampleView_Presenter : MVPSampleView_PresenterProtocol {
+extension P.MVPSampleView_Presenter: MVPSampleView_PresenterProtocol {
     
     func userDidTryToLoginWith(user: String, password: String) {
         AppLogger.log("\(user) | \(password)")
@@ -69,14 +69,14 @@ extension P.MVPSampleView_Presenter : MVPSampleView_PresenterProtocol {
 // MARK: - GenericPresenter_Protocol
 //
 
-extension P.MVPSampleView_Presenter : GenericPresenter_Protocol {
-    func view_deinit()     { }
-    func loadView()        { rxSetup() }
-    func viewDidAppear()   { }
-    func viewDidLoad()     { }
-    func viewWillAppear()  { }
+extension P.MVPSampleView_Presenter: GenericPresenter_Protocol {
+    func view_deinit() { }
+    func loadView() { rxSetup() }
+    func viewDidAppear() { }
+    func viewDidLoad() { }
+    func viewWillAppear() { }
     
-    func rxSetup() -> Void { }
+    func rxSetup() { }
 
 }
 
@@ -86,11 +86,11 @@ extension P.MVPSampleView_Presenter : GenericPresenter_Protocol {
 
 extension P.MVPSampleView_Presenter {
     
-    private func viewModelChanged() -> Void {
+    private func viewModelChanged() {
         updateViewWith(vm: viewModel)
     }
     
-    private func updateViewWith(vm:VM.MVPSampleView_ViewModel?) -> Void {
+    private func updateViewWith(vm: VM.MVPSampleView_ViewModel?) {
         guard viewModel != nil else { AppLogger.log(appCode: .ignored); return }
         view.updateViewWith(message: viewModel!.someString)
     }

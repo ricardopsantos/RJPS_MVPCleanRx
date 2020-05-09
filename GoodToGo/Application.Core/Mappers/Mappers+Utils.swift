@@ -10,7 +10,7 @@ import UIKit
 
 extension Mappers {
     
-    static func listFromCSV<T:Decodable>(_ dataString:String) -> [T] {
+    static func listFromCSV<T: Decodable>(_ dataString: String) -> [T] {
         do {
             guard let jsonKeys: [String] = dataString.components(separatedBy: "\n").first?.components(separatedBy: ",") else {
                 AppLogger.log(appCode: .parsingError)
@@ -28,7 +28,7 @@ extension Mappers {
                     return result
                 })
             parsedCSV.removeFirst()
-            guard let jsonData = try? JSONSerialization.data(withJSONObject: parsedCSV, options: []) else{
+            guard let jsonData = try? JSONSerialization.data(withJSONObject: parsedCSV, options: []) else {
                 AppLogger.log(appCode: .parsingError)
                 return []
             }

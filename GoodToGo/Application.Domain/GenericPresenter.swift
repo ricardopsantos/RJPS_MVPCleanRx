@@ -19,6 +19,6 @@ class GenericPresenter {
     
     var rxPublishRelay_error       = PublishRelay<Error>()
     var reachabilityService: ReachabilityService! = try! DefaultReachabilityService() // try! is only for simplicity sake
-    var disposeBag : DisposeBag = DisposeBag()
+    var disposeBag: DisposeBag = DisposeBag()
    
 }

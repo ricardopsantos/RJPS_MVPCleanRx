@@ -20,7 +20,7 @@ protocol BlissQuestionsList_RouterProtocol: class {
 extension Router {
     class BlissQuestionsList_Router: GenericRouter, GenericRouter_Protocol, BlissQuestionsList_RouterProtocol {
 
-        private weak var baseView : V.BlissQuestionsList_View?
+        private weak var baseView: V.BlissQuestionsList_View?
         // PublishRelay model Events
         private var rxPublishRelay_ShowDetails = PublishRelay<VM.BlissDetails_ViewModel?>()
         init(viewController: V.BlissQuestionsList_View) {
@@ -58,7 +58,7 @@ extension Router {
             return controller
         }
         
-        func goToDetails(vm:VM.BlissDetails_ViewModel) {
+        func goToDetails(vm: VM.BlissDetails_ViewModel) {
             rxPublishRelay_ShowDetails.accept(vm)
         }
         

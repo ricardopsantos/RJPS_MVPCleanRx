@@ -32,7 +32,7 @@ enum ReachabilityServiceError: Error {
     case failedToCreate
 }
 
-class DefaultReachabilityService : ReachabilityService {
+class DefaultReachabilityService: ReachabilityService {
     
     private let _reachabilitySubject: BehaviorSubject<ReachabilityStatus>
     
@@ -72,7 +72,7 @@ class DefaultReachabilityService : ReachabilityService {
 }
 
 extension ObservableConvertibleType {
-    func retryOnBecomesReachable(_ valueOnFailure:Element, reachabilityService: ReachabilityService) -> Observable<Element> {
+    func retryOnBecomesReachable(_ valueOnFailure: Element, reachabilityService: ReachabilityService) -> Observable<Element> {
         return self.asObservable()
             .catchError { (e) -> Observable<Element> in
                 reachabilityService.reachability
@@ -100,7 +100,7 @@ public enum ReachabilityError: Error {
 
 public let ReachabilityChangedNotification = Notification.Name("ReachabilityChangedNotification")
 
-func callback(reachability:SCNetworkReachability, flags: SCNetworkReachabilityFlags, info: UnsafeMutableRawPointer?) {
+func callback(reachability: SCNetworkReachability, flags: SCNetworkReachabilityFlags, info: UnsafeMutableRawPointer?) {
     
     guard let info = info else { return }
     

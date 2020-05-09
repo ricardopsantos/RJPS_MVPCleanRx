@@ -21,7 +21,7 @@ extension UIButton {
         get { return .notAplyed }
     }
     
-    func setState(enabled:Bool) -> Void {
+    func setState(enabled: Bool) {
         self.isUserInteractionEnabled = enabled
         self.alpha = enabled ? 1.0 : 0.6
     }
@@ -32,7 +32,7 @@ extension UIButton {
 //
 extension UIButton {
     
-    private func layoutWith(style:UIButton.LayoutStyle) -> Void {
+    private func layoutWith(style: UIButton.LayoutStyle) {
         let regular = {
             self.titleLabel?.font = AppFonts.regular(size: .big)
             self.backgroundColor  = AppColors.btnBackgroundColor
@@ -58,9 +58,7 @@ extension UIButton {
             self.layer.cornerRadius = 4.0
             self.clipsToBounds      = true
         }
-        
-        self
-        
+                
         switch style {
         case .notAplyed   : _ = 1
         case .regular     : regular()

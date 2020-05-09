@@ -19,7 +19,7 @@ protocol SearchUser_RouterProtocol: class {
 extension Router {
     class SearchUser_Router: GenericRouter, GenericRouter_Protocol, SearchUser_RouterProtocol {
         
-        private weak var baseView : V.SearchUser_View?
+        private weak var baseView: V.SearchUser_View?
         // PublishRelay model Events
         private var rxPublishRelay_ShowDetails = PublishRelay<VM.UserDetais>()
         init(viewController: V.SearchUser_View) {

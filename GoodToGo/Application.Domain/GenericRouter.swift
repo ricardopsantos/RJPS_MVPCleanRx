@@ -18,7 +18,7 @@ class GenericRouter {
     }
     
     var reachabilityService: ReachabilityService! = try! DefaultReachabilityService() // try! is only for simplicity sake
-    var disposeBag : DisposeBag = DisposeBag()
+    var disposeBag: DisposeBag = DisposeBag()
     var rxPublishRelay_dismissView = PublishRelay<Void>() // PublishRelay model Events
 
 }

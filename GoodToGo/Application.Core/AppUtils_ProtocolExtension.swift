@@ -11,7 +11,7 @@ import RJPSLib
 
 extension AppUtils_Protocol {
     
-    func cachedValueIsOld(coreDatakey:String, maxLifeSpam:Int) -> Bool {
+    func cachedValueIsOld(coreDatakey: String, maxLifeSpam: Int) -> Bool {
         var cachedValueIsOld = false
         if let lastTime = RJS_DataModel.dateWith(key: coreDatakey) {
             let cacheLifeSpam = maxLifeSpam//5 * 60 // 5m cache
@@ -22,28 +22,28 @@ extension AppUtils_Protocol {
         return cachedValueIsOld
     }
     
-    func downloadImage(imageURL:String, onFail:UIImage?=nil, completion:@escaping (UIImage?) -> Void) {
+    func downloadImage(imageURL: String, onFail: UIImage?=nil, completion: @escaping (UIImage?) -> Void) {
         guard !imageURL.isEmpty else { return completion(AppImages.notFound) }
         AppSimpleNetworkClient.downloadImageFrom(imageURL, caching: .fileSystem) { (image) in completion(image ?? onFail) }
     }
     
-    var existsInternetConnection : Bool {
+    var existsInternetConnection: Bool {
         return RJS_Utils.existsInternetConnection()
     }
     
-    func assertExistsInternetConnection(sender:GenericView?,
-                                        message:String=AppMessages.noInternet,
-                                        block:@escaping ()->Void) {
+    func assertExistsInternetConnection(sender: GenericView?,
+                                        message: String=AppMessages.noInternet,
+                                        block: @escaping () -> Void) {
 
         if !existsInternetConnection {
-            let title   = AppRessources.get("Alert")
-            let option  = AppMessages.ok
+            let title = AppResources.get("Alert")
+            let option = AppMessages.ok
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: option, style: .default, handler: { action in
-                switch action.style{
+                switch action.style {
                 case .default:
                     sender?.setActivityState(true)
-                    DispatchQueue.executeWithDelay (delay:1) {
+                    DispatchQueue.executeWithDelay(delay: 1) {
                         sender?.setActivityState(false)
                         self.assertExistsInternetConnection(sender: sender, block: block)
                     }

@@ -15,11 +15,11 @@ extension AppManagers {
         
         struct Button {
             private init() {}
-            static var defaultSize : CGSize { return CGSize(width: 125, height: 40) }
+            static var defaultSize: CGSize { return CGSize(width: 125, height: 40) }
         }
         struct Misc {
             private init() {}
-            static let defaultMargin : CGFloat = 25
+            static let defaultMargin: CGFloat = 25
         }
         
     }

@@ -16,7 +16,7 @@ extension NSError {
         static let userInfoMoreInfoKey    = "Factory.Errors.moreInfo"
     }
     
-    var localizableMessageForView : String {
+    var localizableMessageForView: String {
         if let localizableMessageForView = self.userInfo[NSError.AppKeys.userInfoViewMessageKey] as? String {
             return localizableMessageForView
         }

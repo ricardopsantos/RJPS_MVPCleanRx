@@ -12,19 +12,16 @@
 
 import UIKit
 
-protocol SampleVIP_PresentationLogic
-{
+protocol SampleVIP_PresentationLogic {
   func presentSomething(response: SampleVIP.SearchView.Response)
 }
 
-class SampleVIP_Presenter: SampleVIP_PresentationLogic
-{
+class SampleVIP_Presenter: SampleVIP_PresentationLogic {
   weak var viewController: SampleVIP_DisplayLogic?
   
   // MARK: Do something
   
-  func presentSomething(response: SampleVIP.SearchView.Response)
-  {
+  func presentSomething(response: SampleVIP.SearchView.Response) {
     let viewModel = SampleVIP.SearchView.ViewModel(name: "name")
     viewController?.displaySomething(viewModel: viewModel)
   }

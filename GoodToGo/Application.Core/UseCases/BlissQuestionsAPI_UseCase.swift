@@ -14,13 +14,13 @@ extension UseCases {
     /**
      * Brain. Where we can have business rules
      */
-    class BlissQuestionsAPI_UseCase : GenericUseCase, BlissQuestionsAPI_UseCaseProtocol {
+    class BlissQuestionsAPI_UseCase: GenericUseCase, BlissQuestionsAPI_UseCaseProtocol {
 
-        var repositoryNetwork               : Bliss_NetWorkRepositoryProtocol!
-        var generic_CacheRepositoryProtocol : Generic_CacheRepositoryProtocol!
-        var generic_LocalStorageRepository  : Generic_LocalStorageRepositoryProtocol!
+        var repositoryNetwork: Bliss_NetWorkRepositoryProtocol!
+        var generic_CacheRepositoryProtocol: Generic_CacheRepositoryProtocol!
+        var generic_LocalStorageRepository: Generic_LocalStorageRepositoryProtocol!
         
-        private func serverIsOK(completionHandler:@escaping (Bool)->Void) {
+        private func serverIsOK(completionHandler: @escaping (Bool) -> Void) {
             getHealth { (some) in
                 switch some {
                 case .success(let some): completionHandler(some.isOK)
@@ -45,7 +45,7 @@ extension UseCases {
 
         }
         
-        func shareQuestionBy(email: String, url: String, checkHealth:Bool, completionHandler: @escaping (Result<E.Bliss.ShareByEmail>) -> Void) {
+        func shareQuestionBy(email: String, url: String, checkHealth: Bool, completionHandler: @escaping (Result<E.Bliss.ShareByEmail>) -> Void) {
             let doWork = { [weak self] in
                 guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
                 strongSelf.repositoryNetwork.shareQuestionBy(email: email, url: url, completionHandler: { (result) in
@@ -96,7 +96,7 @@ extension UseCases {
             }
         }
         
-        func getQuestions(limit: Int, filter: String, offSet: Int, checkHealth:Bool=true, completionHandler: @escaping (Result<[E.Bliss.QuestionElement]>) -> Void) {
+        func getQuestions(limit: Int, filter: String, offSet: Int, checkHealth: Bool=true, completionHandler: @escaping (Result<[E.Bliss.QuestionElement]>) -> Void) {
             
             let doWork = { [weak self] in
                 guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
@@ -151,7 +151,7 @@ extension UseCases {
             }
         }
         
-        func makeQuestion(question: E.Bliss.QuestionElement, checkHealth:Bool=true, completionHandler: @escaping (Result<E.Bliss.QuestionElement>) -> Void) {
+        func makeQuestion(question: E.Bliss.QuestionElement, checkHealth: Bool=true, completionHandler: @escaping (Result<E.Bliss.QuestionElement>) -> Void) {
             
             let doWork = { [weak self] in
                 guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }

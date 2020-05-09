@@ -17,7 +17,7 @@ protocol MVPSampleTableView_RouterProtocol: class {
 extension Router {
     class MVPSampleTableView_Router: GenericRouter, GenericRouter_Protocol, MVPSampleTableView_RouterProtocol {
 
-        private weak var baseView : V.MVPSampleTableView_View?
+        private weak var baseView: V.MVPSampleTableView_View?
         init(viewController: V.MVPSampleTableView_View) {
             super.init()
             baseView = viewController

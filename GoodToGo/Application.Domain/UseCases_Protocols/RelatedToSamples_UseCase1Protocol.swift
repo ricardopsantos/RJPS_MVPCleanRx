@@ -10,10 +10,10 @@ import UIKit
 import RJPSLib
 
 typealias Sample_UseCaseCompletionHandler = (_ result: Result<[String]>) -> Void
-protocol Sample_UseCaseProtocol : class {
+protocol Sample_UseCaseProtocol: class {
     
-    var generic_LocalStorageRepository : Generic_LocalStorageRepositoryProtocol! { get set }
+    var generic_LocalStorageRepository: Generic_LocalStorageRepositoryProtocol! { get set }
 
-    func operation1(canUseCache:Bool, completionHandler: @escaping Sample_UseCaseCompletionHandler)
-    func operation2(param:String, completionHandler: @escaping Sample_UseCaseCompletionHandler)
+    func operation1(canUseCache: Bool, completionHandler: @escaping Sample_UseCaseCompletionHandler)
+    func operation2(param: String, completionHandler: @escaping Sample_UseCaseCompletionHandler)
 }

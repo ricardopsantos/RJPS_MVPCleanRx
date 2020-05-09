@@ -10,7 +10,7 @@ import Foundation
 extension AppEnuns {
     private init() {}
     
-    enum AppCodes : Int {
+    enum AppCodes: Int {
         case noInternet = 1000
         case notImplemented
         case notPredicted
@@ -25,7 +25,7 @@ extension AppEnuns {
         //
         // For Dev Team
         //
-        var localizedMessageForDevTeam : String {
+        var localizedMessageForDevTeam: String {
             switch self {
             case .noInternet              : return "Dev : No internet"
             case .invalidURL              : return "Dev : Invalid url"
@@ -43,7 +43,7 @@ extension AppEnuns {
         //
         // For end users
         //
-        var localizedMessageForView : String {
+        var localizedMessageForView: String {
             switch self {
             case .noInternet              : return AppMessages.noInternet
             case .invalidURL              : return AppMessages.invalidURL

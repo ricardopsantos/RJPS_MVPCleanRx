@@ -12,8 +12,8 @@ import RxCocoa
 extension AppView {
     class RxTesting: GenericView, AppUtils_Protocol {
         
-        let _margin    : CGFloat = 10
-        let _btnHeight : CGFloat = 40
+        let _margin: CGFloat = 10
+        let _btnHeight: CGFloat = 40
 
         private var _rxReachabilityService = try! DefaultReachabilityService()
         
@@ -24,7 +24,7 @@ extension AppView {
         }()
         
         private lazy var _searchBar: CustomSearchBar = {
-            func handle(filter:String, sender:String) {
+            func handle(filter: String, sender: String) {
                 guard !filter.isEmpty else { return }
                 aux_log(message: "[_searchBar.][handle] from [\(sender)] : [\(filter)]", showAlert: true, appendToTable: true)
             }
@@ -33,14 +33,14 @@ extension AppView {
             some.rjsALayouts.setMargin(0, on: .right)
             some.rjsALayouts.setMargin(0, on: .left)
             some.rjsALayouts.setHeight(50)
-            some.rx.text.subscribe(onNext:{ text in
+            some.rx.text.subscribe(onNext: { text in
                 print(text as Any)
             }).disposed(by: disposeBag)
             some.rx.text
                 .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
                 .subscribe(onNext: { [weak self] _ in
                     let query = self?._searchBar.text?.trim ?? ""
-                    handle(filter: query, sender:"[_searchBar][onNext]")
+                    handle(filter: query, sender: "[_searchBar][onNext]")
                 })
                 .disposed(by: disposeBag)
             some.rx.textDidEndEditing
@@ -96,12 +96,12 @@ extension AppView {
          [PublishRelay] have parameters (optional)
          [PublishRelay] "fires" on [accept]
          [PublishRelay] is a good replacement for NSLocalNotications
-         [PublishRelay] can do stuff before on [.do(onNext: { _ in print("stuff") })]
+         [PublishRelay] can do stuff before on [.do(onNext: { _ in AppLogger.log("stuff") })]
 
          [BehaviorRelay] have parameters (mandatory)
          [BehaviorRelay] can be "connected" to a property of some UI thing
          [BehaviorRelay] can be connected to other [BehaviorRelay]
-         [BehaviorRelay] can do stuff before on [.do(onNext: { _ in print("stuff") })]
+         [BehaviorRelay] can do stuff before on [.do(onNext: { _ in AppLogger.log("stuff") })]
          [BehaviorRelay] The event "fires" on [accept]
          
          [BehaviorRelay/BehaviorSubject] model a State (hence it replays its latest value) and so does a Driver (models State).
@@ -116,8 +116,8 @@ extension AppView {
         */
         var _rxPublishSubject_a: PublishSubject  = PublishSubject<Void>()
         
-        var _rxPublishRelay_a : PublishRelay  = PublishRelay<Void>()
-        var _rxPublishRelay_b : PublishRelay  = PublishRelay<String>()
+        var _rxPublishRelay_a: PublishRelay  = PublishRelay<Void>()
+        var _rxPublishRelay_b: PublishRelay  = PublishRelay<String>()
         
         var _rxBehaviorRelay_a: BehaviorRelay = BehaviorRelay<String>(value: "")
         var _rxBehaviorRelay_b: BehaviorRelay = BehaviorRelay<String>(value: "")
@@ -127,8 +127,8 @@ extension AppView {
         
             _rxPublishRelay_a.asSignal() // PublishRelay (to model events) without param
                 .debug("rxPublishRelay_a")
-                .do(onNext: { _ in print("_rxPublishRelay_a : do.onNext_1") })
-                .do(onNext: { _ in print("_rxPublishRelay_a : do.onNext_2") })
+                .do(onNext: { _ in AppLogger.log("_rxPublishRelay_a : do.onNext_1") })
+                .do(onNext: { _ in AppLogger.log("_rxPublishRelay_a : do.onNext_2") })
                 .emit(onNext: { [weak self] in
                     self?.aux_log(message: "[_rxPublishRelay_a][emit]", showAlert: true, appendToTable: true)
                 })
@@ -136,8 +136,8 @@ extension AppView {
             
             _rxPublishRelay_b.asSignal() // PublishRelay (to model events) with param
                 .debug("_rxPublishRelay_b")
-                .do(onNext: { _ in print("_rxPublishRelay_b : do.onNext_1") })
-                .do(onNext: { _ in print("_rxPublishRelay_b : do.onNext_2") })
+                .do(onNext: { _ in AppLogger.log("_rxPublishRelay_b : do.onNext_1") })
+                .do(onNext: { _ in AppLogger.log("_rxPublishRelay_b : do.onNext_2") })
                 .emit(onNext: { [weak self] some in
                     self?.aux_log(message: "[_rxPublishRelay_b][emit] with param [\(some)]", showAlert: true, appendToTable: true)
                 })
@@ -146,23 +146,23 @@ extension AppView {
             _rxBehaviorRelay_a // BehaviorRelay (to models states) connected to Label
                 .asDriver()
                 .debug("_rxBehaviorRelay_a")
-                .do(onNext: { _ in print("_rxBehaviorRelay_a : do.onNext_1") })
-                .do(onNext: { _ in print("_rxBehaviorRelay_a : do.onNext_2") })
+                .do(onNext: { _ in AppLogger.log("_rxBehaviorRelay_a : do.onNext_1") })
+                .do(onNext: { _ in AppLogger.log("_rxBehaviorRelay_a : do.onNext_2") })
                 .drive(_searchBar.rx.text)
                 .disposed(by: disposeBag)
             
             _rxBehaviorRelay_b  // BehaviorRelay (to models states) connected  to other BehaviorRelay
                 .debug("_rxBehaviorRelay_b")
-                .do(onNext: { _ in print("_rxBehaviorRelay_b : do.onNext_1") })
+                .do(onNext: { _ in AppLogger.log("_rxBehaviorRelay_b : do.onNext_1") })
                 .bind(to: _rxBehaviorRelay_a)
                 .disposed(by: disposeBag)
             
             _rxBehaviorRelay_c // BehaviorRelay (to models states) doing random stuff
                 .asObservable()
-                .do(onNext: { _ in print("_rxBehaviorRelay_c : do.onNext_1") })
-                .do(onNext: { _ in print("_rxBehaviorRelay_c : do.onNext_2") })
+                .do(onNext: { _ in AppLogger.log("_rxBehaviorRelay_c : do.onNext_1") })
+                .do(onNext: { _ in AppLogger.log("_rxBehaviorRelay_c : do.onNext_2") })
                 .map { some -> Int in return some / 2 }
-                .do(onNext: { _ in print("_rxBehaviorRelay_c : do.onNext_3") })
+                .do(onNext: { _ in AppLogger.log("_rxBehaviorRelay_c : do.onNext_3") })
                 .subscribe(onNext: { self._searchBar.text = "\($0)" })
                 .disposed(by: disposeBag)
             
@@ -304,8 +304,8 @@ extension AppView {
             aux_prepare()
         }
         
-        func delay(_ delay:Double, block: @escaping () -> Void) {
-            DispatchQueue.executeWithDelay (delay: delay) {
+        func delay(_ delay: Double, block: @escaping () -> Void) {
+            DispatchQueue.executeWithDelay(delay: delay) {
                 block()
             }
         }
@@ -322,7 +322,7 @@ extension AppView {
 extension AppView.RxTesting {
     
     var rxReturnOnError: UIImage { return AppImages.notInternet }
-    var rxObservableAssyncRequest : Observable<UIImage> {
+    var rxObservableAssyncRequest: Observable<UIImage> {
         return Observable.create { [weak self] observer -> Disposable in
             let adress = Bool.random() ? "https://image.shutterstock.com/image-photo/white-transparent-leaf-on-mirror-260nw-1029171697.jpg" : "lalal"
             self?.downloadImage(imageURL: adress, completion: { (image) in
@@ -363,7 +363,7 @@ extension AppView.RxTesting {
         _tableView.lazyLoad()
     }
     
-    func aux_log(message:String, showAlert:Bool, appendToTable:Bool) {
+    func aux_log(message: String, showAlert: Bool, appendToTable: Bool) {
         _searchBar.resignFirstResponder()
         print("\(message)")
         if appendToTable {
@@ -419,9 +419,9 @@ extension V.RxTesting {
                 .filter { $0 > 25 }
                 .subscribe({ event in
                     switch event {
-                    case .next(let value): print(value)
-                    case .error(let error): print(error)
-                    case .completed: print("completed s3")
+                    case .next(let value): AppLogger.log("\(value)")
+                    case .error(let error): AppLogger.log("\(error)")
+                    case .completed: AppLogger.log("completed s3")
                     }
                 }).disposed(by: disposeBag)
         }
@@ -455,12 +455,12 @@ extension V.RxTesting {
             // Lets now create an observable that returns elements from an array.
             //
             let just = myJust("## my just ##")
-            _ = just.subscribe(onNext: { n in print("just_1 : \(n)") })
-            _ = just.subscribe(onNext: { n in print("just_2 : \(n)") })
+            _ = just.subscribe(onNext: { n in AppLogger.log("just_1 : \(n)") })
+            _ = just.subscribe(onNext: { n in AppLogger.log("just_2 : \(n)") })
     
             let from = myFrom(["## A ##", "## B ##", "## C ##"]).share()
-            _ = from.subscribe(onNext: { n in print("from_1 : \(n)") })
-            _ = from.subscribe(onNext: { n in print("from_2 : \(n)") })
+            _ = from.subscribe(onNext: { n in AppLogger.log("from_1 : \(n)") })
+            _ = from.subscribe(onNext: { n in AppLogger.log("from_2 : \(n)") })
         }
 
         if false {

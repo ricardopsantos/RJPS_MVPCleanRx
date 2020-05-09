@@ -21,7 +21,7 @@ protocol MVVMSampleView_ViewModelProtocol {
     var adoptionFeeText: String { get }
     var rxPublishSubject_loading: PublishSubject<Bool> { get }
     var rxPublishRelay_needsToUpdate: PublishRelay<Void> { get }
-    var rxPublishRelay_genericMessages: PublishRelay<(String,AppEnuns.AlertType)> { get }
+    var rxPublishRelay_genericMessages: PublishRelay<(String, AppEnuns.AlertType)> { get }
 }
 
 protocol MVVMSampleView_ViewControllerProtocol {
@@ -51,7 +51,7 @@ extension VM {
         
         public var rxPublishSubject_loading: PublishSubject<Bool> = PublishSubject()
         public var rxPublishRelay_needsToUpdate: PublishRelay<Void>  = PublishRelay<Void>()
-        public var rxPublishRelay_genericMessages: PublishRelay<(String, AppEnuns.AlertType)> = PublishRelay<(String,AppEnuns.AlertType)>()
+        public var rxPublishRelay_genericMessages: PublishRelay<(String, AppEnuns.AlertType)> = PublishRelay<(String, AppEnuns.AlertType)>()
 
         public init() {
             _viewModel = nil
@@ -79,9 +79,9 @@ extension VM.MVVMSampleView_ViewModel: MVVMSampleView_ViewModelProtocol {
         view.lblAge.text         = ageText
         view.lblAdoptionFee.text = adoptionFeeText
         
-        DispatchQueue.executeWithDelay (delay: 1) { [weak self] in
+        DispatchQueue.executeWithDelay(delay: 1) { [weak self] in
             self?.rxPublishSubject_loading.onNext(true)
-            DispatchQueue.executeWithDelay (delay: 2) { [weak self] in
+            DispatchQueue.executeWithDelay(delay: 2) { [weak self] in
                 self?.rxPublishSubject_loading.onNext(false)
                 self?.rxPublishRelay_needsToUpdate.accept(())
             }
@@ -93,7 +93,7 @@ extension VM.MVVMSampleView_ViewModel: MVVMSampleView_ViewModelProtocol {
     }
     
     func userDidTapX() {
-        print("Tap!")
+        AppLogger.log("Tap!")
     }
     
     var someString: String { return _viewModel?.name ?? "" }

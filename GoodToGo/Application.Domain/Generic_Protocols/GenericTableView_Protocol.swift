@@ -9,16 +9,16 @@ import Foundation
 import UIKit
 
 protocol GenericTableView_Protocol: class {
-    func configure(cell:GenericTableViewCell_Protocol, indexPath: IndexPath) -> Void
-    func numberOfRows(_ section:Int) -> Int
-    func didSelectRowAt(indexPath: IndexPath) -> Void
+    func configure(cell: GenericTableViewCell_Protocol, indexPath: IndexPath)
+    func numberOfRows(_ section: Int) -> Int
+    func didSelectRowAt(indexPath: IndexPath)
     func numberOfSections() -> Int
-    func didSelect(object:Any) -> Void
+    func didSelect(object: Any)
 }
 
 extension GenericTableView_Protocol {
-    func numberOfRows(_ section:Int) -> Int { return 0 }
-    func numberOfSections() ->Int { return 1 }
-    func didSelect(object:Any) -> Void { }
-    func didSelectRowAt(indexPath: IndexPath) -> Void { }
+    func numberOfRows(_ section: Int) -> Int { return 0 }
+    func numberOfSections() -> Int { return 1 }
+    func didSelect(object: Any) { }
+    func didSelectRowAt(indexPath: IndexPath) { }
 }

@@ -9,5 +9,5 @@ import Foundation
 
 extension AppEnuns {
     private init() {}
-    enum AlertType : Int { case sucess, warning, error }
+    enum AlertType: Int { case sucess, warning, error }
 }

@@ -10,13 +10,13 @@ import UIKit
 import RJPSLib
 
 typealias Samples_LocalRepositoryCompletionHandler = (_ result: Result<Void>) -> Void
-protocol Samples_LocalRepositoryProtocol : class {
-    func local_OperationA(someList:[E.Employee], completionHandler: @escaping Samples_LocalRepositoryCompletionHandler)
-    func local_OperationB(someList:[E.Employee], completionHandler: @escaping Samples_LocalRepositoryCompletionHandler)
+protocol Samples_LocalRepositoryProtocol: class {
+    func local_OperationA(someList: [E.Employee], completionHandler: @escaping Samples_LocalRepositoryCompletionHandler)
+    func local_OperationB(someList: [E.Employee], completionHandler: @escaping Samples_LocalRepositoryCompletionHandler)
 }
 
 typealias Samples_NetWorkRepositoryCompletionHandler = (_ result: Result<NetworkClientResponse<[E.Employee]>>) -> Void
-protocol Samples_NetWorkRepositoryProtocol : class {
+protocol Samples_NetWorkRepositoryProtocol: class {
     func netWork_OperationA(completionHandler: @escaping Samples_NetWorkRepositoryCompletionHandler)
     func netWork_OperationB(completionHandler: @escaping Samples_NetWorkRepositoryCompletionHandler)
 }

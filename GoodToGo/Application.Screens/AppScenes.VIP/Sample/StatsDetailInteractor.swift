@@ -95,7 +95,7 @@ class StatsDetailInteractor: BaseInteractor, StatsDetailBusinessLogic, StatsDeta
                 let title = entityInfo.name
                 let date: Date? = $0.date
                 let transactionsCount: Int = 0
-                let percentage:Float? = nil
+                let percentage: Float? = nil
                 return StatsDetail.WorkerModel.WorkerItem(id: id,
                                                           categoryGroupColor: categoryGroupColor,
                                                           images: images,

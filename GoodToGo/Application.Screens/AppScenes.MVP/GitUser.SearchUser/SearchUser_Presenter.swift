@@ -15,7 +15,7 @@ import RxCocoa
  */
 
 protocol SearchUser_PresenterProtocol_Input { // From View to Presenter
-    func searchUserWith(username:String)
+    func searchUserWith(username: String)
 }
 
 protocol SearchUser_PresenterProtocol_Output { // From Presenter to View
@@ -23,7 +23,7 @@ protocol SearchUser_PresenterProtocol_Output { // From Presenter to View
 }
 
 protocol SearchUser_ProtocolPresenter_IO: SearchUser_PresenterProtocol_Input, SearchUser_PresenterProtocol_Output {
-    var input:  SearchUser_PresenterProtocol_Input  { get }
+    var input: SearchUser_PresenterProtocol_Input { get }
     var output: SearchUser_PresenterProtocol_Output { get }
 }
 
@@ -31,17 +31,17 @@ protocol SearchUser_ProtocolPresenter_IO: SearchUser_PresenterProtocol_Input, Se
  * 1 - Declare : Presenter_Protocol & View_Protocol (IMPERATIVE WAY)
  */
 
-protocol SearchUser_PresenterProtocol : class, SearchUser_ProtocolPresenter_IO {
+protocol SearchUser_PresenterProtocol: class, SearchUser_ProtocolPresenter_IO {
     var generic: GenericPresenter_Protocol? { get }   // Mandatory in ALL Presenters
-    var genericView: GenericView?           { get }                 // Mandatory in ALL Presenters
-    var viewModel: VM.SearchUser?           { get set }           // Mandatory in ALL Presenters
-    var router: SearchUser_RouterProtocol!  { get }   // Mandatory in ALL Presenters
+    var genericView: GenericView? { get }                 // Mandatory in ALL Presenters
+    var viewModel: VM.SearchUser? { get set }           // Mandatory in ALL Presenters
+    var router: SearchUser_RouterProtocol! { get }   // Mandatory in ALL Presenters
 
-    func searchUserWith(username:String)
+    func searchUserWith(username: String)
 }
 
 protocol SearchUser_ViewProtocol: class {
-    func viewDataToScreen(some:VM.SearchUser)
+    func viewDataToScreen(some: VM.SearchUser)
 }
 
 /**
@@ -49,7 +49,7 @@ protocol SearchUser_ViewProtocol: class {
  */
 
 extension Presenter {
-    class SearchUser_Presenter : GenericPresenter {
+    class SearchUser_Presenter: GenericPresenter {
         weak var generic: GenericPresenter_Protocol?
         weak var genericView: GenericView?
         weak var view: SearchUser_ViewProtocol!
@@ -57,9 +57,9 @@ extension Presenter {
         var router: SearchUser_RouterProtocol!
         var useCase_1: GitUser_UseCaseProtocol!
         
-        var input: SearchUser_PresenterProtocol_Input  { return self }
+        var input: SearchUser_PresenterProtocol_Input { return self }
         var output: SearchUser_PresenterProtocol_Output { return self }
-        var users : Signal<[String]>!
+        var users: Signal<[String]>!
         private var _rxPublishRelay_userInfo    = PublishRelay<E.GitHubUser?>()
         private var _rxPublishRelay_userFriends = PublishRelay<[E.GitHubUser]?>()
     }
@@ -89,7 +89,7 @@ extension P.SearchUser_Presenter: GenericPresenter_Protocol {
     func viewDidLoad() { }
     func viewWillAppear() { if viewModel != nil { updateViewWith(vm: viewModel) } }
     
-    func rxSetup() -> Void {
+    func rxSetup() {
         Observable.zip(_rxPublishRelay_userInfo, _rxPublishRelay_userFriends, resultSelector: { return ($0, $1) })
             .observeOn(MainScheduler.instance)
             .subscribe( onNext: { [weak self] in
@@ -121,11 +121,11 @@ extension P.SearchUser_Presenter: GenericPresenter_Protocol {
 
 extension P.SearchUser_Presenter {
     
-    private func viewModelChanged() -> Void {
+    private func viewModelChanged() {
         updateViewWith(vm: viewModel)
     }
     
-    private func updateViewWith(vm:VM.SearchUser?) -> Void {
+    private func updateViewWith(vm: VM.SearchUser?) {
         guard vm != nil else { AppLogger.log(appCode: .ignored); return }
         view.viewDataToScreen(some: vm!)
     }

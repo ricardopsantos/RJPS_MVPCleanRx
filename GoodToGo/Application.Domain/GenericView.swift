@@ -19,18 +19,18 @@ class GenericView: UIViewController {
     }
     
     var reachabilityService: ReachabilityService! = try! DefaultReachabilityService() // try! is only for simplicity sake
-    var disposeBag : DisposeBag = DisposeBag()
+    var disposeBag: DisposeBag = DisposeBag()
     private var _keyboardIsVisible = false
-    private var _keyboardHeigth : CGFloat = 0
-    var keyboardHeigth : CGFloat {
+    private var _keyboardHeigth: CGFloat = 0
+    var keyboardHeigth: CGFloat {
         if _keyboardIsVisible {
-            let autoCorrectBarSize : CGFloat = 44; return _keyboardHeigth - autoCorrectBarSize
+            let autoCorrectBarSize: CGFloat = 44; return _keyboardHeigth - autoCorrectBarSize
         } else {
             return 0
         }
     }
     
-    static var onDarkMode : Bool {
+    static var onDarkMode: Bool {
         if #available(iOS 12.0, *) {
             return GenericView().traitCollection.userInterfaceStyle == .dark
         } else {
@@ -38,12 +38,12 @@ class GenericView: UIViewController {
         }
     }
     
-    private var _lblMessageDistanceFromTop      : NSLayoutConstraint?
-    private var _lblReachabilityDistanceFromTop : NSLayoutConstraint?
-    private var _lblReachabilityHeight : CGFloat = 25
-    private var _lblMessageHeight      : CGFloat = V.TopBar.defaultHeight
-    private var _margin                : CGFloat = 20
-    private var _lblMessageTimmer : Timer?
+    private var _lblMessageDistanceFromTop: NSLayoutConstraint?
+    private var _lblReachabilityDistanceFromTop: NSLayoutConstraint?
+    private var _lblReachabilityHeight: CGFloat = 25
+    private var _lblMessageHeight: CGFloat = V.TopBar.defaultHeight
+    private var _margin: CGFloat = 20
+    private var _lblMessageTimmer: Timer?
 
     private lazy var _lblReachability: UILabel = {
         let some             = AppFactory.UIKit.label(baseView: self.view, style: .title)
@@ -116,17 +116,17 @@ class GenericView: UIViewController {
             strongSelf._lblReachability.fadeTo(value ? 0 : 0.95, duration: duration)
             strongSelf._lblReachability.rjsALayouts.updateConstraint(strongSelf._lblReachabilityDistanceFromTop!,
                                                                toValue: value ? -strongSelf._lblReachabilityHeight : strongSelf._margin,
-                                                               duration:duration,
+                                                               duration: duration,
                                                                completion: { (_) in
                                                                 
             })
         }
     }
     
-    func prepareLayout()   { AppLogger.log(appCode: .notImplemented) }
+    func prepareLayout() { AppLogger.log(appCode: .notImplemented) }
     func keyboardDidShow() { }
     func keyboardDidHide() { }
-    func dismissKeyboard()  -> Void { }
+    func dismissKeyboard() { }
 }
 
 //
@@ -151,7 +151,7 @@ extension GenericView {
         setTopMessageVisibityTo(state: false, message: "", type: .sucess)
     }
     
-    private func setTopMessageVisibityTo(state:Bool, message: String, type: Enuns.AlertType) {
+    private func setTopMessageVisibityTo(state: Bool, message: String, type: Enuns.AlertType) {
         if state {
             _lblMessageTimmer?.invalidate()
             _lblMessageTimmer = nil
@@ -171,7 +171,7 @@ extension GenericView {
             strongSelf1._lblMessage.fadeTo(value ? 0 : 0.95, duration: duration)
             strongSelf1._lblMessage.rjsALayouts.updateConstraint(strongSelf1._lblMessageDistanceFromTop!,
                                                                      toValue: value ? -strongSelf1._lblMessageHeight : strongSelf1._margin,
-                                                                     duration:duration,
+                                                                     duration: duration,
                                                                      completion: { (_) in
             })
             

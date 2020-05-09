@@ -11,8 +11,8 @@ import UIKit
 extension ViewModel {
     struct GitHubUser {
         private init() {}
-        var name  : String!
-        init(some:E.GitHubUser) {
+        var name: String!
+        init(some: E.GitHubUser) {
             name = some.name ?? ""
         }
         func pretyDescription() -> String {
@@ -26,12 +26,12 @@ extension ViewModel {
 
 extension Entity {
     
-    struct GitHubUser : Codable {
+    struct GitHubUser: Codable {
         
-        private(set) var name       : String?
-        private(set) var login      : String?
-        private(set) var avatarUrl  : String?
-        private(set) var url        : String?
+        private(set) var name: String?
+        private(set) var login: String?
+        private(set) var avatarUrl: String?
+        private(set) var url: String?
         
         private enum CodingKeys: String, CodingKey {
             case name
@@ -47,7 +47,7 @@ extension Entity {
             if let url       = json["url"]        as? String { self.url = url }
         }
         
-        init?(data:Data) {
+        init?(data: Data) {
             guard let object = try? JSONDecoder().decode(GitHubUser.self, from: data) else {
                 AppLogger.error("Error: Couldn't decode data into Blog")
                 return nil

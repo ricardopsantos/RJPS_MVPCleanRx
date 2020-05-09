@@ -14,10 +14,10 @@ extension UseCases {
     /**
      * Brain. Where we can have business rules
      */
-    class Sample_UseCase : GenericUseCase, Sample_UseCaseProtocol {
+    class Sample_UseCase: GenericUseCase, Sample_UseCaseProtocol {
         
-        var generic_CacheRepositoryProtocol : Generic_CacheRepositoryProtocol!
-        var generic_LocalStorageRepository  : Generic_LocalStorageRepositoryProtocol!
+        var generic_CacheRepositoryProtocol: Generic_CacheRepositoryProtocol!
+        var generic_LocalStorageRepository: Generic_LocalStorageRepositoryProtocol!
         
         func operation1(canUseCache: Bool, completionHandler: @escaping Sample_UseCaseCompletionHandler) {
             guard existsInternetConnection else {
@@ -29,14 +29,14 @@ extension UseCases {
             let coreDatakey   = "\(cacheKey).lastUpdate"
             let cacheLifeSpam = AppConstants.Cache.serverRequestCacheLifeSpam
             
-            if canUseCache && !cachedValueIsOld(coreDatakey:coreDatakey, maxLifeSpam:cacheLifeSpam) {
-                if let cachedValue =  generic_CacheRepositoryProtocol.get(key: cacheKey)  {
+            if canUseCache && !cachedValueIsOld(coreDatakey: coreDatakey, maxLifeSpam: cacheLifeSpam) {
+                if let cachedValue =  generic_CacheRepositoryProtocol.get(key: cacheKey) {
                     completionHandler(Result.success(cachedValue as! [String]))
                     return
                 }
             }
             
-            DispatchQueue.executeWithDelay (delay:1) { [weak self] in
+            DispatchQueue.executeWithDelay(delay: 1) { [weak self] in
                 let response = ["\(Date.utcNow())"]
                 completionHandler(Result.success(response))
                 self?.generic_CacheRepositoryProtocol.add(object: response as AnyObject, withKey: cacheKey)
@@ -49,7 +49,7 @@ extension UseCases {
                 return
             }
             
-            DispatchQueue.executeWithDelay (delay:1) {
+            DispatchQueue.executeWithDelay(delay: 1) {
                 let response = ["\(Date.utcNow())"]
                 completionHandler(Result.success(response))
             }

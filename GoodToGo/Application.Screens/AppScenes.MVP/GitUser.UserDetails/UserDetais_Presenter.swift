@@ -15,10 +15,10 @@ import RxCocoa
  */
 
 protocol UserDetais_PresenterProtocol: class {
-    var generic: GenericPresenter_Protocol?   { get }   // Mandatory in ALL Presenters
-    var genericView: GenericView?             { get }                 // Mandatory in ALL Presenters
-    var viewModel: VM.UserDetais?             { get set }           // Mandatory in ALL Presenters
-    var router: UserDetais_RouterProtocol!    { get }   // Mandatory in ALL Presenters
+    var generic: GenericPresenter_Protocol? { get }  // Mandatory in ALL Presenters
+    var genericView: GenericView? { get }            // Mandatory in ALL Presenters
+    var viewModel: VM.UserDetais? { get set }        // Mandatory in ALL Presenters
+    var router: UserDetais_RouterProtocol! { get }   // Mandatory in ALL Presenters
     var tableView: GenericTableView_Protocol! { get }
     
     var rxPublishRelay_dismissView: PublishRelay<Void> { get }     // PublishRelay model Events
@@ -66,7 +66,7 @@ extension P.UserDetais_Presenter: GenericTableView_Protocol {
     
     func configure(cell: GenericTableViewCell_Protocol, indexPath: IndexPath) {
         let user = viewModel!.friends[indexPath.row]
-        cell.set(title:user.name ?? "unknown")
+        cell.set(title: user.name ?? "unknown")
         downloadImage(imageURL: user.avatarUrl!, onFail: AppImages.notFound) { (image) in
             cell.set(image: image)
         }
@@ -78,13 +78,13 @@ extension P.UserDetais_Presenter: GenericTableView_Protocol {
  */
 
 extension P.UserDetais_Presenter: GenericPresenter_Protocol {
-    func view_deinit()    -> Void { }
-    func loadView()       -> Void { rxSetup() }
-    func viewDidAppear()  -> Void { }
-    func viewDidLoad()    -> Void { }
-    func viewWillAppear() -> Void { if viewModel != nil { updateViewWith(vm: viewModel) } }
+    func view_deinit() { }
+    func loadView() { rxSetup() }
+    func viewDidAppear() { }
+    func viewDidLoad() { }
+    func viewWillAppear() { if viewModel != nil { updateViewWith(vm: viewModel) } }
     
-    func rxSetup() -> Void { }
+    func rxSetup() { }
 
 }
 
@@ -94,7 +94,7 @@ extension P.UserDetais_Presenter: GenericPresenter_Protocol {
 
 extension P.UserDetais_Presenter {
     
-    private func updateViewWith(vm:VM.UserDetais?) -> Void {
+    private func updateViewWith(vm: VM.UserDetais?) {
         guard vm != nil else { AppLogger.log(appCode: .ignored); return }
         view.viewDataToScreen(some: vm!)
         downloadImage(imageURL: vm!.user.avatarUrl!, onFail: AppImages.notFound) { [weak self] (image) in
@@ -102,7 +102,7 @@ extension P.UserDetais_Presenter {
         }
     }
     
-    private func viewModelChanged() -> Void {
+    private func viewModelChanged() {
         updateViewWith(vm: viewModel)
     }
 }

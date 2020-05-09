@@ -15,14 +15,14 @@ import RxSwift
 // All the PRESENTERS must implement this protocol
 ////////////////////////////////////////////
 
-protocol GenericPresenter_Protocol : AppUtils_Protocol {
-    var genericView : GenericView? { get }
+protocol GenericPresenter_Protocol: AppUtils_Protocol {
+    var genericView: GenericView? { get }
     
-    func view_deinit()    -> Void
-    func loadView()       -> Void
-    func viewDidLoad()    -> Void
-    func viewWillAppear() -> Void
-    func viewDidAppear()  -> Void
+    func view_deinit()
+    func loadView()
+    func viewDidLoad()
+    func viewWillAppear()
+    func viewDidAppear()
     
-    func rxSetup() -> Void // Called on loadView (ussually)
+    func rxSetup() // Called on loadView (ussually)
 }

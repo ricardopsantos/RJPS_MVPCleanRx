@@ -12,26 +12,22 @@
 
 import UIKit
 
-protocol SampleVIP_BusinessLogic
-{
+protocol SampleVIP_BusinessLogic {
   func doSomething(request: SampleVIP.SearchView.Request)
 }
 
-protocol SampleVIP_DataStore
-{
+protocol SampleVIP_DataStore {
   //var name: String { get set }
 }
 
-class SampleVIP_Interactor: SampleVIP_BusinessLogic, SampleVIP_DataStore
-{
+class SampleVIP_Interactor: SampleVIP_BusinessLogic, SampleVIP_DataStore {
   var presenter: SampleVIP_PresentationLogic?
   var worker: SampleVIP_Worker?
   //var name: String = ""
   
   // MARK: Do something
   
-  func doSomething(request: SampleVIP.SearchView.Request)
-  {
+  func doSomething(request: SampleVIP.SearchView.Request) {
     worker = SampleVIP_Worker()
     worker?.doSomeWork()
     

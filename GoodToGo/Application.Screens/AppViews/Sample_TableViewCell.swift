@@ -9,10 +9,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol Sample_TableViewCellProtocol : GenericTableViewCell_Protocol {
-    var rxBehaviorRelay_title: BehaviorRelay<String>   { get set }
+protocol Sample_TableViewCellProtocol: GenericTableViewCell_Protocol {
+    var rxBehaviorRelay_title: BehaviorRelay<String> { get set }
     var rxBehaviorRelay_image: BehaviorRelay<UIImage?> { get set }
-    var rxBehaviorRelay_textColor: BehaviorRelay<UIColor>  { get set }
+    var rxBehaviorRelay_textColor: BehaviorRelay<UIColor> { get set }
 }
 
 extension AppView {
@@ -29,7 +29,7 @@ extension AppView {
         var rxBehaviorRelay_textColor = BehaviorRelay<UIColor>(value: AppColors.lblTextColor)
 
         class func cellSize() -> CGFloat { return 60 }
-        static func prepare(tableView:UITableView) -> Void {
+        static func prepare(tableView: UITableView) {
             tableView.register(classForCoder(), forCellReuseIdentifier: reuseIdentifier)
         }
         
@@ -100,7 +100,7 @@ extension V.Sample_TableViewCell {
 //
 
 extension V.Sample_TableViewCell: Sample_TableViewCellProtocol {
-    func set(title: String)      { rxBehaviorRelay_title.accept(title) }
+    func set(title: String) { rxBehaviorRelay_title.accept(title) }
     func set(textColor: UIColor) { rxBehaviorRelay_textColor.accept(textColor) }
-    func set(image: UIImage?)     { rxBehaviorRelay_image.accept(image)  }
+    func set(image: UIImage?) { rxBehaviorRelay_image.accept(image)  }
 }

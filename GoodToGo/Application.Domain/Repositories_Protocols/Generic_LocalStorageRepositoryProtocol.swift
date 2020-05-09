@@ -10,12 +10,12 @@ import UIKit
 import RJPSLib
 
 protocol Generic_LocalStorageRepositoryProtocol {
-    @discardableResult func save(key:String, value:String, expireDate:Date?) -> Bool
-    func existsWith(key:String) -> Bool
-    func with(key:String) -> RJS_DataModel?
-    func with(prefix:String) -> RJS_DataModel?
+    @discardableResult func save(key: String, value: String, expireDate: Date?) -> Bool
+    func existsWith(key: String) -> Bool
+    func with(key: String) -> RJS_DataModel?
+    func with(prefix: String) -> RJS_DataModel?
     func allKeys() -> [String]
     func allRecords() -> [RJS_DataModel]
     @discardableResult func deleteAll() -> Bool
-    @discardableResult func deleteWith(key:String) -> Bool
+    @discardableResult func deleteWith(key: String) -> Bool
 }

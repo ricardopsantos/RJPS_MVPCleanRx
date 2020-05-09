@@ -48,7 +48,7 @@ class SampleVIP_ViewController: GenericView, SampleVIP_DisplayLogic {
         some.rx.textDidEndEditing
             .subscribe(onNext: { [weak self] (_) in
                 guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                if strongSelf._searchBar.text!.count>0  {
+                if strongSelf._searchBar.text!.count>0 {
                //     strongSelf.presenter.searchUserWith(username: some.text ?? "")
                 }
             })
@@ -91,18 +91,7 @@ class SampleVIP_ViewController: GenericView, SampleVIP_DisplayLogic {
   }
   
   // MARK: Routing
-  
-    /*
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
-    }
-  }
-  */
-    
+
   // MARK: View lifecycle
   
     // Added
@@ -114,7 +103,7 @@ class SampleVIP_ViewController: GenericView, SampleVIP_DisplayLogic {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    DispatchQueue.executeWithDelay (delay:3) {
+    DispatchQueue.executeWithDelay(delay: 3) {
         self.doSomething()
     }
     
