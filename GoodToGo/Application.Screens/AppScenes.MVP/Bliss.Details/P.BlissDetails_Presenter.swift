@@ -40,7 +40,7 @@ protocol BlissDetails_PresenterProtocol: class {
 }
 
 protocol BlissDetails_ViewProtocol: class {
-    func viewNeedsToDisplay(list: [Bliss.ChoiceElement])
+    func viewNeedsToDisplay(list: [Bliss.ChoiceElementResponseDto])
     func set(image: UIImage)
     func set(title: String)
     func displayShareOptionsWith(text: String)
@@ -76,7 +76,7 @@ extension P.BlissDetails_Presenter: BlissDetails_PresenterProtocol {
         return relay
     }
     
-    func rxObservable_DoVote() -> Observable<Bliss.QuestionElement?> {
+    func rxObservable_DoVote() -> Observable<Bliss.QuestionElementResponseDto?> {
         return Observable.create { [weak self] observer -> Disposable in
             if let self = self {
                 self.blissQuestions_UseCase.updateQuestion(question: self.viewModel!.question!, checkHealth: true) {  (result) in

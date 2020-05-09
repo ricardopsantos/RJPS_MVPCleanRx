@@ -13,7 +13,7 @@ import UIKit
 
 public extension VM {
     struct BlissQuestionsList_ViewModel {
-        var questionsList: [Bliss.QuestionElement] = []
+        var questionsList: [Bliss.QuestionElementResponseDto] = []
         var search: String = ""
     }
 }

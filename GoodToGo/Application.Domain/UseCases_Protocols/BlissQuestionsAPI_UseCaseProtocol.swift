@@ -14,10 +14,10 @@ import AppDomain
 
 protocol BlissQuestionsAPI_UseCaseProtocol: class {
     func getHealth(completionHandler: @escaping (_ result: Result<Bliss.ServerHealth>) -> Void)
-    func getQuestions(limit: Int, filter: String, offSet: Int, checkHealth: Bool, completionHandler: @escaping (Result<[Bliss.QuestionElement]>) -> Void)
-    func getQuestionBy(id: Int, checkHealth: Bool, completionHandler: @escaping (_ result: Result<Bliss.QuestionElement>) -> Void)
-    func makeQuestion(question: Bliss.QuestionElement, checkHealth: Bool, completionHandler: @escaping (_ result: Result<Bliss.QuestionElement>) -> Void)
-    func updateQuestion(question: Bliss.QuestionElement, checkHealth: Bool, completionHandler: @escaping (_ result: Result<Bliss.QuestionElement>) -> Void)
+    func getQuestions(limit: Int, filter: String, offSet: Int, checkHealth: Bool, completionHandler: @escaping (Result<[Bliss.QuestionElementResponseDto]>) -> Void)
+    func getQuestionBy(id: Int, checkHealth: Bool, completionHandler: @escaping (_ result: Result<Bliss.QuestionElementResponseDto>) -> Void)
+    func makeQuestion(question: Bliss.QuestionElementResponseDto, checkHealth: Bool, completionHandler: @escaping (_ result: Result<Bliss.QuestionElementResponseDto>) -> Void)
+    func updateQuestion(question: Bliss.QuestionElementResponseDto, checkHealth: Bool, completionHandler: @escaping (_ result: Result<Bliss.QuestionElementResponseDto>) -> Void)
     func shareQuestionBy(email: String, url: String, checkHealth: Bool, completionHandler: @escaping (_ result: Result<Bliss.ShareByEmail>) -> Void)
     
 }

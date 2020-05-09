@@ -14,7 +14,7 @@ import AppDomain
 
 public extension VM {
     struct UserDetais {
-        public let user: GitHubUserResponseDto
-        public let friends: [GitHubUserResponseDto]
+        public let user: GitHub.UserResponseDto
+        public let friends: [GitHub.UserResponseDto]
     }
 }

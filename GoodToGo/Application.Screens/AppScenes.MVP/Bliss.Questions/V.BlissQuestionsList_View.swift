@@ -32,7 +32,7 @@ extension V {
         var presenter: BlissQuestionsList_PresenterProtocol!
 
         // BehaviorRelay model a State
-        private var _rxBehaviorRelay_tableDataSource = BehaviorRelay<[Bliss.QuestionElement]>(value: [])
+        private var _rxBehaviorRelay_tableDataSource = BehaviorRelay<[Bliss.QuestionElementResponseDto]>(value: [])
 
         private let _tableViewThreshold: CGFloat = 100.0 // threshold from bottom of tableView
         private var _tableViewIsLoadingMoreData = false // flag
@@ -96,7 +96,7 @@ extension V {
                         }, completion: nil)
                     })).disposed(by: disposeBag)
             }
-            some.rx.modelSelected(Bliss.QuestionElement.self)
+            some.rx.modelSelected(Bliss.QuestionElementResponseDto.self)
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
                 .subscribe(onNext: { [weak self]  item in
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
@@ -165,7 +165,7 @@ extension V.BlissQuestionsList_View: BlissQuestionsList_ViewProtocol {
         _searchBar.text = text
     }
     
-    func viewNeedsToDisplay(list: [Bliss.QuestionElement]) {
+    func viewNeedsToDisplay(list: [Bliss.QuestionElementResponseDto]) {
         self._tableViewIsLoadingMoreData = false
         self._rxBehaviorRelay_tableDataSource.accept(list)
         self._searchBar.resignFirstResponder()

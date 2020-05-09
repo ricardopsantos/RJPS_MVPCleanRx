@@ -17,10 +17,10 @@ import AppDomain
 extension Mappers {
     struct GitUser {
         private init() {}
-        static func toViewModelList(_ list: [GitHubUserResponseDto]) -> [GitHubUserViewModel] {
-            var result: [GitHubUserViewModel] = []
+        static func toViewModelList(_ list: [GitHub.UserResponseDto]) -> [GitHub.UserViewModel] {
+            var result: [GitHub.UserViewModel] = []
             for element in list {
-                result.append(GitHubUserViewModel(some: element))
+                result.append(GitHub.UserViewModel(some: element))
             }
             return result
         }

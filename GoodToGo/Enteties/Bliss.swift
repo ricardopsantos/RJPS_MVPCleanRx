@@ -15,13 +15,13 @@ import UIKit
 public extension Bliss {
     
     // MARK: - ResponseElement
-    struct QuestionElement: Codable {
+    struct QuestionElementResponseDto: Codable {
         public let id: Int
         public let question: Question
         public let imageURL: String
         public let thumbURL: String
         public let publishedAt: PublishedAt
-        public let choices: [ChoiceElement]
+        public let choices: [ChoiceElementResponseDto]
         
         enum CodingKeys: String, CodingKey {
             case id, question
@@ -33,7 +33,7 @@ public extension Bliss {
     }
     
     // MARK: - ChoiceElement
-    struct ChoiceElement: Codable {
+    struct ChoiceElementResponseDto: Codable {
         public let choice: ChoiceEnum
         public let votes: Int
     }
@@ -54,15 +54,15 @@ public extension Bliss {
     }
 }
 
-public extension Bliss.QuestionElement {
-    static func make() -> Bliss.QuestionElement {
+public extension Bliss.QuestionElementResponseDto {
+    static func make() -> Bliss.QuestionElementResponseDto {
         let question = Bliss.Question.favouriteProgrammingLanguage
-        let choices1 = Bliss.ChoiceElement(choice: Bliss.ChoiceEnum.python, votes: 0)
-        let choices2 = Bliss.ChoiceElement(choice: Bliss.ChoiceEnum.objectiveC, votes: 0)
+        let choices1 = Bliss.ChoiceElementResponseDto(choice: Bliss.ChoiceEnum.python, votes: 0)
+        let choices2 = Bliss.ChoiceElementResponseDto(choice: Bliss.ChoiceEnum.objectiveC, votes: 0)
         let choices  = [choices1, choices2]
         let imageURL = "www.google.pt"
         let thumbURL = "www.google.pt"
-        let questionElement = Bliss.QuestionElement(id: 0, question: question, imageURL: imageURL, thumbURL: thumbURL, publishedAt: .the20150805T084051620Z, choices: choices)
+        let questionElement = Bliss.QuestionElementResponseDto(id: 0, question: question, imageURL: imageURL, thumbURL: thumbURL, publishedAt: .the20150805T084051620Z, choices: choices)
         return questionElement
     }
 }

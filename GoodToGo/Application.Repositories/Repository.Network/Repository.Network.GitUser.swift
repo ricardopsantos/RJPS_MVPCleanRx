@@ -24,7 +24,7 @@ extension RP.Network.GitUser {
             do {
                 let apiRequest: WebAPIRequest_Protocol = try RP.Network.GitUser.GetUserInfo_APIRequest(userName: userName)
                 let apiClient: NetworkClient_Protocol = RJSLib.NetworkClient()
-                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<GitHubUserResponseDto>>) in
+                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<GitHub.UserResponseDto>>) in
                     completionHandler(result)
                 })
             } catch let error {
@@ -36,7 +36,7 @@ extension RP.Network.GitUser {
             do {
                 let apiRequest: WebAPIRequest_Protocol = try RP.Network.GitUser.GetFriends_APIRequest(userName: userName)
                 let apiClient: NetworkClient_Protocol = RJSLib.NetworkClient()
-                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<[GitHubUserResponseDto]>>) in
+                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<[GitHub.UserResponseDto]>>) in
                     completionHandler(result)
                 })
             } catch let error {

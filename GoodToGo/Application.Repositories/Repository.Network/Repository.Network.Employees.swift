@@ -25,7 +25,7 @@ extension RP.Network.Employees {
             do {
                 let apiRequest: WebAPIRequest_Protocol = try RP.Network.Employees.GetEmployees_APIRequest()
                 let apiClient: NetworkClient_Protocol = RJSLib.NetworkClient()
-                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<[EmployeeResponseDto]>>) in
+                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<[Employee.ResponseDto]>>) in
                     completionHandler(result)
                 })
             } catch let error {

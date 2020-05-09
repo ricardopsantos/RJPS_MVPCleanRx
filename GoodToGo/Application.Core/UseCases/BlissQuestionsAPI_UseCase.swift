@@ -73,7 +73,7 @@ extension UseCases {
             }
         }
         
-        func updateQuestion(question: Bliss.QuestionElement, checkHealth: Bool, completionHandler: @escaping (Result<Bliss.QuestionElement>) -> Void) {
+        func updateQuestion(question: Bliss.QuestionElementResponseDto, checkHealth: Bool, completionHandler: @escaping (Result<Bliss.QuestionElementResponseDto>) -> Void) {
             
             let doWork = { [weak self] in
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
@@ -99,7 +99,7 @@ extension UseCases {
             }
         }
         
-        func getQuestions(limit: Int, filter: String, offSet: Int, checkHealth: Bool=true, completionHandler: @escaping (Result<[Bliss.QuestionElement]>) -> Void) {
+        func getQuestions(limit: Int, filter: String, offSet: Int, checkHealth: Bool=true, completionHandler: @escaping (Result<[Bliss.QuestionElementResponseDto]>) -> Void) {
             
             let doWork = { [weak self] in
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
@@ -127,7 +127,7 @@ extension UseCases {
         
         }
         
-        func getQuestionBy(id: Int, checkHealth: Bool=true, completionHandler: @escaping (Result<Bliss.QuestionElement>) -> Void) {
+        func getQuestionBy(id: Int, checkHealth: Bool=true, completionHandler: @escaping (Result<Bliss.QuestionElementResponseDto>) -> Void) {
             
             let doWork = { [weak self] in
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
@@ -154,7 +154,7 @@ extension UseCases {
             }
         }
         
-        func makeQuestion(question: Bliss.QuestionElement, checkHealth: Bool=true, completionHandler: @escaping (Result<Bliss.QuestionElement>) -> Void) {
+        func makeQuestion(question: Bliss.QuestionElementResponseDto, checkHealth: Bool=true, completionHandler: @escaping (Result<Bliss.QuestionElementResponseDto>) -> Void) {
             
             let doWork = { [weak self] in
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }

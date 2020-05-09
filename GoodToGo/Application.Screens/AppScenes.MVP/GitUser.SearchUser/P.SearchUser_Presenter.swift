@@ -70,8 +70,8 @@ extension Presenter {
         var input: SearchUser_PresenterProtocol_Input { return self }
         var output: SearchUser_PresenterProtocol_Output { return self }
         var users: Signal<[String]>!
-        private var _rxPublishRelay_userInfo    = PublishRelay<GitHubUserResponseDto?>()
-        private var _rxPublishRelay_userFriends = PublishRelay<[GitHubUserResponseDto]?>()
+        private var _rxPublishRelay_userInfo    = PublishRelay<GitHub.UserResponseDto?>()
+        private var _rxPublishRelay_userFriends = PublishRelay<[GitHub.UserResponseDto]?>()
     }
 }
 

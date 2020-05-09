@@ -40,7 +40,7 @@ protocol BlissQuestionsList_PresenterProtocol: class {
 }
 
 protocol BlissQuestionsList_ViewProtocol: class {
-    func viewNeedsToDisplay(list: [Bliss.QuestionElement])
+    func viewNeedsToDisplay(list: [Bliss.QuestionElementResponseDto])
     func setSearch(text: String)
 }
 
@@ -88,7 +88,7 @@ extension P.BlissQuestionsList_Presenter: GenericTableView_Protocol {
     
     func didSelect(object: Any) {
         AppLogger.log("\(object)")
-        guard existsInternetConnection, let question = object as? Bliss.QuestionElement else {
+        guard existsInternetConnection, let question = object as? Bliss.QuestionElementResponseDto else {
             return
         }
         router.goToDetails(vm: VM.BlissDetails_ViewModel(question: question))
@@ -119,7 +119,7 @@ extension P.BlissQuestionsList_Presenter: BlissQuestionsList_PresenterProtocol {
         updateData(filter: filter, offSet: _lastOffSet != nil ? _lastOffSet! + 1 : 1)
     }
     
-    func rxObservable_GetList(filter: String, offSet: Int) -> Observable<[Bliss.QuestionElement]> {
+    func rxObservable_GetList(filter: String, offSet: Int) -> Observable<[Bliss.QuestionElementResponseDto]> {
         return Single.create { [weak self] observer -> Disposable in
             if let self = self {
                 self.blissQuestions_UseCase.getQuestions(limit: 10, filter: filter, offSet: offSet, checkHealth: true, completionHandler: { (result) in

@@ -13,6 +13,6 @@ import UIKit
 
 public extension VM {
     struct MVPSampleTableView_ViewModel {
-        var employeesList: [EmployeeResponseDto] = []
+        var employeesList: [Employee.ResponseDto] = []
     }
 }
