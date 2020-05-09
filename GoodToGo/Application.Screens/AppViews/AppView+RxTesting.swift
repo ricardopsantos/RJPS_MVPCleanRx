@@ -393,7 +393,7 @@ extension AppView.RxTesting {
 
 extension AppView.RxTesting: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return V.Sample_TableViewCell.cellSize() * 0.5
+        return Sample_TableViewCell.cellSize() * 0.5
     }
 }
 

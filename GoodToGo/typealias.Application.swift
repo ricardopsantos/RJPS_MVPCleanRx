@@ -17,9 +17,7 @@ import UIBase
 import DevTools
 import Designables
 
-typealias SequenceBlock          = RJS_Sequence
-typealias CustomSearchBar        = RJS_CustomSearchBar
-typealias DeviceInfo             = RJS_DeviceInfo
+//MARK:- RJPSLib Shortcuts
 
 typealias AppStorages            = RJS_Storages
 typealias AppInfo                = RJS_AppInfo
@@ -32,23 +30,35 @@ typealias AppUserDefaultsVars    = RJS_UserDefaultsVars
 typealias AppUserDefaults        = RJS_UserDefaults
 typealias WebAPIRequest_Protocol = RJSLibWebAPIRequest_Protocol
 
+//MARK:- App Shortcuts
+
 typealias AppEnvironments        = AppManagers.Environments
-//typealias AppFactory             = UIBase.Factory
 typealias AppCan                 = AppManagers.AppCan
-//typealias AppResources           = AppManagers.Resources
-//typealias AppMessages            = AppResources.Messages
 typealias AppLayouts             = AppManagers.Layouts
 typealias AppColors              = UIColor.App
 typealias AppFonts               = UIFont.App
 typealias AppImages              = UIImage.App
 typealias AppProtocols           = RootAssemblyContainerProtocols
 
-typealias AppLogger = DevTools.AppLogger
+//MARK:- DevTools
+
+typealias AppLogger   = DevTools.AppLogger
+
+//MARK:- GenericView
+
 typealias GenericView = UIBase.GenericView
-//typealias GenericTableView_Protocol = UIBase.GenericTableView_Protocol
+
+//MARK:- Designables
 
 typealias GenericTableViewCell_Protocol = Designables.GenericTableViewCell_Protocol
-typealias GenericTableView_Protocol = Designables.GenericTableView_Protocol
+typealias GenericTableView_Protocol     = Designables.GenericTableView_Protocol
 typealias AppFactory = Designables.Factory
 typealias TopBar = Designables.V.TopBar
 typealias BottomBar = Designables.V.BottomBar
+typealias Sample_TableViewCell = Designables.V.Sample_TableViewCell
+typealias UserTableViewCell = Designables.V.UserTableViewCell
+typealias Sample_TableViewCellProtocol = Designables.Sample_TableViewCellProtocol
+
+//MARK:- MISC
+
+typealias CustomSearchBar = RJS_CustomSearchBar

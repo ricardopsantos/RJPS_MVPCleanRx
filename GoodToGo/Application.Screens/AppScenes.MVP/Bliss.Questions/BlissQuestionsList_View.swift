@@ -171,7 +171,7 @@ extension V.BlissQuestionsList_View: BlissQuestionsList_ViewProtocol {
 
 extension V.BlissQuestionsList_View: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return V.Sample_TableViewCell.cellSize()
+        return Sample_TableViewCell.cellSize()
     }
 }
 

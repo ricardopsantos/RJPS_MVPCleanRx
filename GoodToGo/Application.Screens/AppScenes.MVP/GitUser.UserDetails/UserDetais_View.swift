@@ -51,7 +51,7 @@ extension AppView {
             some.rjsALayouts.setMargin(_margin, on: .left)
             some.rjsALayouts.setMargin(_margin, on: .right)
             some.rjsALayouts.setMargin(_margin + TopBar.defaultHeight, on: .bottom)
-            V.UserTableViewCell.prepare(tableView: some)
+            UserTableViewCell.prepare(tableView: some)
             return some
         }()
         
@@ -130,7 +130,7 @@ extension V.UserDetais_View: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: V.UserTableViewCell.reuseIdentifier) as? V.UserTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.reuseIdentifier) as? UserTableViewCell else {
             AppLogger.log(appCode: .dequeueReusableCellFail)
             return UITableViewCell()
         }

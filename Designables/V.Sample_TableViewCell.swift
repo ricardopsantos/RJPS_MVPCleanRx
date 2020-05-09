@@ -20,7 +20,7 @@ import Extensions
 import DevTools
 import PointFreeFunctions
 
-protocol Sample_TableViewCellProtocol: GenericTableViewCell_Protocol {
+public protocol Sample_TableViewCellProtocol: GenericTableViewCell_Protocol {
     var rxBehaviorRelay_title: BehaviorRelay<String> { get set }
     var rxBehaviorRelay_image: BehaviorRelay<UIImage?> { get set }
     var rxBehaviorRelay_textColor: BehaviorRelay<UIColor> { get set }
@@ -35,12 +35,12 @@ public extension AppView {
         }
 
         // BehaviorRelay model a State
-        var rxBehaviorRelay_title     = BehaviorRelay<String>(value: "")
-        var rxBehaviorRelay_image     = BehaviorRelay<UIImage?>(value: nil) 
-        var rxBehaviorRelay_textColor = BehaviorRelay<UIColor>(value: UIColor.App.lblTextColor)
+        public var rxBehaviorRelay_title     = BehaviorRelay<String>(value: "")
+        public var rxBehaviorRelay_image     = BehaviorRelay<UIImage?>(value: nil)
+        public var rxBehaviorRelay_textColor = BehaviorRelay<UIColor>(value: UIColor.App.lblTextColor)
 
-        class func cellSize() -> CGFloat { return 60 }
-        static func prepare(tableView: UITableView) {
+        open class func cellSize() -> CGFloat { return 60 }
+        public static func prepare(tableView: UITableView) {
             tableView.register(classForCoder(), forCellReuseIdentifier: reuseIdentifier)
         }
         
@@ -69,7 +69,7 @@ public extension AppView {
         private let _disposeBag: DisposeBag = DisposeBag()
         
         private lazy var _lblTitle: UILabel = {
-            let some = AppFactory.UIKit.label(baseView: self, style: .value)
+            let some = Factory.UIKit.label(baseView: self, style: .value)
             some.rjsALayouts.setMargin(_marginH, on: .left)
             some.rjsALayouts.setMargin(_marginH*2+_imageSize, on: .right)
             some.rjsALayouts.setMargin(_marginV, on: .top)
@@ -78,7 +78,7 @@ public extension AppView {
         }()
         
         private lazy var _image: UIImageView = {
-            let some = AppFactory.UIKit.imageView(baseView: self)
+            let some = Factory.UIKit.imageView(baseView: self)
             some.rjsALayouts.setMargin(_marginH, on: .right)
             some.rjsALayouts.setMargin(_marginV, on: .top)
             some.rjsALayouts.setSize(CGSize(width: _imageSize, height: _imageSize))
