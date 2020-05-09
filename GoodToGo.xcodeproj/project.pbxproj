@@ -208,6 +208,7 @@
 		D7D9E79024675410005B4313 /* Mappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E78F24675410005B4313 /* Mappers.swift */; };
 		D7D9E7922467545D005B4313 /* typealias.AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E7912467545D005B4313 /* typealias.AppCore.swift */; };
 		D7D9E793246754AD005B4313 /* Mappers+GitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FACC16A223BA4CB00576498 /* Mappers+GitUser.swift */; };
+		D7D9E79524676CC1005B4313 /* UseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E79424676CC1005B4313 /* UseCases.swift */; };
 		D7E25A7E246699FC003BBEA0 /* PointFreeFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = D7E25A7C246699FC003BBEA0 /* PointFreeFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D7E25A8E24669B02003BBEA0 /* PointFreeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E25A8D24669B02003BBEA0 /* PointFreeFunctions.swift */; };
 		D7E25A9824669B9B003BBEA0 /* AppConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D7E25A9624669B9B003BBEA0 /* AppConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -682,6 +683,12 @@
 		D7AB24C7246743BD000142C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7D9E78F24675410005B4313 /* Mappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mappers.swift; sourceTree = "<group>"; };
 		D7D9E7912467545D005B4313 /* typealias.AppCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = typealias.AppCore.swift; sourceTree = "<group>"; };
+		D7D9E79424676CC1005B4313 /* UseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCases.swift; sourceTree = "<group>"; };
+		D7D9E79624676CD2005B4313 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D7D9E79724676D48005B4313 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D7D9E79824676D90005B4313 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D7D9E79924676E01005B4313 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D7D9E79A24676E4C005B4313 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7E25A6C2465E5A6003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7E25A6D2465E5B5003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7E25A6F2465E5CF003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -1074,6 +1081,7 @@
 		9FA0DCC122BE5E45003ADF99 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				D7D9E79424676CC1005B4313 /* UseCases.swift */,
 				9FA0DCC622BE5E45003ADF99 /* Sample_UseCase.swift */,
 				9FA0DCC522BE5E45003ADF99 /* SampleB_UseCase.swift */,
 				9FA0DCC322BE5E45003ADF99 /* GitUser_UseCase.swift */,
@@ -1259,6 +1267,7 @@
 		D72922B02466A0CA00DAD480 /* DevTools */ = {
 			isa = PBXGroup;
 			children = (
+				D7D9E79A24676E4C005B4313 /* README.md */,
 				D72922D42466A70100DAD480 /* typelias.DevTools.swift */,
 				D72923A92466EA4100DAD480 /* DevTools.swift */,
 				9F346E9322BFB495008A22C4 /* DevTools+AppLogger.swift */,
@@ -1273,6 +1282,7 @@
 		D72922E02466B06300DAD480 /* AppTheme */ = {
 			isa = PBXGroup;
 			children = (
+				D7D9E79724676D48005B4313 /* README.md */,
 				D72923742466BC7E00DAD480 /* typealias.AppTheme.swift */,
 				9FD387C9223F0CF3001D2F4E /* UIButton+Extensions.swift */,
 				9FD387CC223F0CF4001D2F4E /* UIFont+Extensions.swift */,
@@ -1300,6 +1310,7 @@
 		D729233F2466B78300DAD480 /* AppResources */ = {
 			isa = PBXGroup;
 			children = (
+				D7D9E79924676E01005B4313 /* README.md */,
 				D72923662466B84100DAD480 /* typealias.AppResources.swift */,
 				D73E05BE2467112500965E96 /* AppResources.swift */,
 				9F8AE14A2205DD0300DF75F6 /* AppResources+Private.swift */,
@@ -1354,13 +1365,13 @@
 		D7AB244E24671CBF000142C4 /* AppDomain */ = {
 			isa = PBXGroup;
 			children = (
+				D7E25A6C2465E5A6003BBEA0 /* README.md */,
 				D7AB24B22467377F000142C4 /* GenericViewProtocol.swift */,
 				9FFF99D12247D15700783EE2 /* Misc_Protocols */,
 				9FC681A522F99BB100D3F281 /* Generic_Protocols */,
 				9F574F9422369392007DAA58 /* Repositories_Protocols */,
 				D7AB248324673105000142C4 /* Models */,
 				9F574F8E223691D8007DAA58 /* UseCases_Protocols */,
-				D7E25A6C2465E5A6003BBEA0 /* README.md */,
 				D7AB247824672405000142C4 /* typealias.Domain.swift */,
 				D7AB245024671CBF000142C4 /* Info.plist */,
 			);
@@ -1393,6 +1404,7 @@
 		D7AB24C5246743BD000142C4 /* AppCore */ = {
 			isa = PBXGroup;
 			children = (
+				D7D9E79624676CD2005B4313 /* README.md */,
 				D7D9E7912467545D005B4313 /* typealias.AppCore.swift */,
 				9FA0DCC122BE5E45003ADF99 /* UseCases */,
 				9F574F5722366004007DAA58 /* Mappers */,
@@ -1415,6 +1427,7 @@
 		D7E25A9524669B9B003BBEA0 /* AppConstants */ = {
 			isa = PBXGroup;
 			children = (
+				D7D9E79824676D90005B4313 /* README.md */,
 				D72922D62466AD5D00DAD480 /* typealias.AppConstants.swift */,
 				9F02AE5B20F91E7B00AB5942 /* AppConstants.swift */,
 				D72923C124670D7500DAD480 /* AppConstants+Strings.swift */,
@@ -2300,6 +2313,7 @@
 			files = (
 				D7D9E79024675410005B4313 /* Mappers.swift in Sources */,
 				D7D9E7922467545D005B4313 /* typealias.AppCore.swift in Sources */,
+				D7D9E79524676CC1005B4313 /* UseCases.swift in Sources */,
 				D7D9E793246754AD005B4313 /* Mappers+GitUser.swift in Sources */,
 				D7D9E78E246753F0005B4313 /* Mappers+Utils.swift in Sources */,
 			);
