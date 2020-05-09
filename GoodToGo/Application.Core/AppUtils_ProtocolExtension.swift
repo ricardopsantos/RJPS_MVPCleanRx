@@ -47,7 +47,7 @@ extension AppUtils_Protocol {
                                         block: @escaping () -> Void) {
 
         if !existsInternetConnection {
-            let title = AppResources.Resources.get("Alert")
+            let title = AppResources.get("Alert")
             let option = AppMessages.ok
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: option, style: .default, handler: { action in

@@ -39,9 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setup(application: application)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+        /*DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             teste()
-        }
+        }*/
         
         self.window?.rootViewController = V.TabBarController()
 
@@ -53,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
+/*
 func teste() {
 
 }
@@ -133,3 +134,4 @@ class WEBAPI {
         .retry(10)
     }
 }
+*/

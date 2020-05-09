@@ -9,7 +9,7 @@
 import Foundation
 import RJPSLib
 
-public extension E {
+public extension DevTools {
     enum FeatureFlag: String, CaseIterable {
 
         case statsTotalEnabled  = "statsTotalEnabled"       // Client

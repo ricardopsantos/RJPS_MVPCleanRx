@@ -40,23 +40,22 @@ public extension AppResources {
             }
         }
 
-        #warning("arrange reference to AppMessages")
         //
         // For end users
         //
         public var localizedMessageForView: String {
             switch self {
-            case .noInternet              : return "AppMessages.noInternet"
-            case .invalidURL              : return "AppMessages.invalidURL"
+            case .noInternet              : return AppResources.Messages.noInternet
+            case .invalidURL              : return AppResources.Messages.invalidURL
 
-            case .notImplemented          : return "AppMessages.pleaseTryAgainLater"
-            case .notPredicted            : return "AppMessages.pleaseTryAgainLater"
-            case .parsingError            : return "AppMessages.pleaseTryAgainLater"
-            case .ignored                 : return "AppMessages.pleaseTryAgainLater"
-            case .vmChanged               : return "AppMessages.pleaseTryAgainLater"
-            case .dequeueReusableCellFail : return "AppMessages.pleaseTryAgainLater"
-            case .unknownError            : return "AppMessages.pleaseTryAgainLater"
-            case .referenceLost           : return "AppMessages.pleaseTryAgainLater"
+            case .notImplemented          : return AppResources.Messages.pleaseTryAgainLater
+            case .notPredicted            : return AppResources.Messages.pleaseTryAgainLater
+            case .parsingError            : return AppResources.Messages.pleaseTryAgainLater
+            case .ignored                 : return AppResources.Messages.pleaseTryAgainLater
+            case .vmChanged               : return AppResources.Messages.pleaseTryAgainLater
+            case .dequeueReusableCellFail : return AppResources.Messages.pleaseTryAgainLater
+            case .unknownError            : return AppResources.Messages.pleaseTryAgainLater
+            case .referenceLost           : return AppResources.Messages.pleaseTryAgainLater
             }
         }
     }

@@ -185,27 +185,19 @@
 		D72923452466B78300DAD480 /* AppResources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729233E2466B78300DAD480 /* AppResources.framework */; };
 		D72923462466B78300DAD480 /* AppResources.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D729233E2466B78300DAD480 /* AppResources.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D729234C2466B79C00DAD480 /* AppConstants.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7E25A9424669B9B003BBEA0 /* AppConstants.framework */; };
-		D729234D2466B79C00DAD480 /* AppConstants.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7E25A9424669B9B003BBEA0 /* AppConstants.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D72923502466B79C00DAD480 /* DevTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72922AF2466A0CA00DAD480 /* DevTools.framework */; };
-		D72923512466B79C00DAD480 /* DevTools.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D72922AF2466A0CA00DAD480 /* DevTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D72923542466B79C00DAD480 /* Extensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72923102466B35300DAD480 /* Extensions.framework */; };
-		D72923552466B79C00DAD480 /* Extensions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D72923102466B35300DAD480 /* Extensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D72923582466B79C00DAD480 /* PointFreeFunctions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7E25A7A246699FC003BBEA0 /* PointFreeFunctions.framework */; };
-		D72923592466B79C00DAD480 /* PointFreeFunctions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7E25A7A246699FC003BBEA0 /* PointFreeFunctions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D729235D2466B7B300DAD480 /* RJPSLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBF4B0722BEBC3B00E0D1AB /* RJPSLib.framework */; };
-		D729235E2466B7B300DAD480 /* RJPSLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBF4B0722BEBC3B00E0D1AB /* RJPSLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D729235F2466B7B300DAD480 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC172223BBD8600576498 /* RxCocoa.framework */; };
-		D72923602466B7B300DAD480 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC172223BBD8600576498 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D72923612466B7B300DAD480 /* RxGesture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9BED9F22E5CC4F0018BD4C /* RxGesture.framework */; };
-		D72923622466B7B300DAD480 /* RxGesture.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9BED9F22E5CC4F0018BD4C /* RxGesture.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D72923632466B7B300DAD480 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC176223BBFC600576498 /* RxSwift.framework */; };
-		D72923642466B7B300DAD480 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC176223BBFC600576498 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D72923652466B80B00DAD480 /* Enum.AppCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F15CF2C22BFA56F00FB402A /* Enum.AppCodes.swift */; };
+		D72923652466B80B00DAD480 /* AppResources+AppCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F15CF2C22BFA56F00FB402A /* AppResources+AppCodes.swift */; };
 		D72923672466B84100DAD480 /* typealias.AppResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923662466B84100DAD480 /* typealias.AppResources.swift */; };
 		D72923692466B8EA00DAD480 /* AppLogger+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923682466B8EA00DAD480 /* AppLogger+Extension.swift */; };
 		D729236A2466BA3000DAD480 /* Extensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72923102466B35300DAD480 /* Extensions.framework */; };
 		D729236E2466BA5200DAD480 /* AppResources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729233E2466B78300DAD480 /* AppResources.framework */; };
-		D72923732466BB8600DAD480 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8AE14A2205DD0300DF75F6 /* Resources.swift */; };
+		D72923732466BB8600DAD480 /* AppResources+Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8AE14A2205DD0300DF75F6 /* AppResources+Messages.swift */; };
 		D72923752466BC7F00DAD480 /* typealias.AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923742466BC7E00DAD480 /* typealias.AppTheme.swift */; };
 		D72923782466BDE900DAD480 /* typealias.Designables.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923772466BDE900DAD480 /* typealias.Designables.swift */; };
 		D72923892466BF4700DAD480 /* AppView+TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1622BE5DE700042A8C /* AppView+TabBarController.swift */; };
@@ -215,7 +207,6 @@
 		D729238D2466C67800DAD480 /* AppConstants_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F15CF2722BFA0A300FB402A /* AppConstants_UITests.swift */; };
 		D72923982466D5BB00DAD480 /* V.TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1122BE5DE700042A8C /* V.TopBar.swift */; };
 		D72923992466D60500DAD480 /* UIBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729228D2466A04200DAD480 /* UIBase.framework */; };
-		D729239A2466D60500DAD480 /* UIBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D729228D2466A04200DAD480 /* UIBase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D729239E2466D62900DAD480 /* V.BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1422BE5DE700042A8C /* V.BottomBar.swift */; };
 		D729239F2466D62C00DAD480 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F574EFD22356CA6007DAA58 /* Factory.swift */; };
 		D72923A02466D91700DAD480 /* AppConstants+Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E25A71246695EE003BBEA0 /* AppConstants+Mocks.swift */; };
@@ -224,12 +215,11 @@
 		D72923A32466DB8E00DAD480 /* GenericTableViewCell_Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8666EF22E7C5CA00A1B9A0 /* GenericTableViewCell_Protocol.swift */; };
 		D72923A42466DC6600DAD480 /* V.UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1522BE5DE700042A8C /* V.UserTableViewCell.swift */; };
 		D72923A52466DC6600DAD480 /* V.Sample_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80BD22BFBBB5003C4562 /* V.Sample_TableViewCell.swift */; };
-		D72923A82466EA0100DAD480 /* E.FeatureFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923A72466EA0100DAD480 /* E.FeatureFlag.swift */; };
+		D72923A82466EA0100DAD480 /* DevTools+FeatureFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923A72466EA0100DAD480 /* DevTools+FeatureFlag.swift */; };
 		D72923AA2466EA4100DAD480 /* DevTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923A92466EA4100DAD480 /* DevTools.swift */; };
 		D72923AC2466EE9400DAD480 /* ToastSwiftFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72923AB2466EE9400DAD480 /* ToastSwiftFramework.framework */; };
 		D72923AD2466EE9400DAD480 /* ToastSwiftFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D72923AB2466EE9400DAD480 /* ToastSwiftFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D72923AE2466EEAF00DAD480 /* ToastSwiftFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72923AB2466EE9400DAD480 /* ToastSwiftFramework.framework */; };
-		D72923AF2466EEAF00DAD480 /* ToastSwiftFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D72923AB2466EE9400DAD480 /* ToastSwiftFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D779A5EF234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5E9234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift */; };
 		D779A5F0234FE3A500D3D6F7 /* W.SampleVIP_Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5EA234FE3A500D3D6F7 /* W.SampleVIP_Worker.swift */; };
 		D779A5F1234FE3A500D3D6F7 /* R.SampleVIP_Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5EB234FE3A500D3D6F7 /* R.SampleVIP_Router.swift */; };
@@ -237,7 +227,6 @@
 		D779A5F3234FE3A500D3D6F7 /* VC.SampleVIP_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5ED234FE3A500D3D6F7 /* VC.SampleVIP_ViewController.swift */; };
 		D779A5F4234FE3A500D3D6F7 /* I.SampleVIP_Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5EE234FE3A500D3D6F7 /* I.SampleVIP_Interactor.swift */; };
 		D7E25A7E246699FC003BBEA0 /* PointFreeFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = D7E25A7C246699FC003BBEA0 /* PointFreeFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D7E25A8A24669ABB003BBEA0 /* RJPSLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBF4B0722BEBC3B00E0D1AB /* RJPSLib.framework */; };
 		D7E25A8E24669B02003BBEA0 /* PointFreeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E25A8D24669B02003BBEA0 /* PointFreeFunctions.swift */; };
 		D7E25A9824669B9B003BBEA0 /* AppConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D7E25A9624669B9B003BBEA0 /* AppConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D7E25AA224669BB3003BBEA0 /* RJPSLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBF4B0722BEBC3B00E0D1AB /* RJPSLib.framework */; };
@@ -468,46 +457,6 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D729235C2466B79C00DAD480 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				D72923602466B7B300DAD480 /* RxCocoa.framework in Embed Frameworks */,
-				D72923512466B79C00DAD480 /* DevTools.framework in Embed Frameworks */,
-				D72923622466B7B300DAD480 /* RxGesture.framework in Embed Frameworks */,
-				D729235E2466B7B300DAD480 /* RJPSLib.framework in Embed Frameworks */,
-				D72923642466B7B300DAD480 /* RxSwift.framework in Embed Frameworks */,
-				D72923592466B79C00DAD480 /* PointFreeFunctions.framework in Embed Frameworks */,
-				D729234D2466B79C00DAD480 /* AppConstants.framework in Embed Frameworks */,
-				D72923552466B79C00DAD480 /* Extensions.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D729239D2466D60500DAD480 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				D729239A2466D60500DAD480 /* UIBase.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D72923B02466EEAF00DAD480 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				D72923AF2466EEAF00DAD480 /* ToastSwiftFramework.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -518,7 +467,7 @@
 		9F103A3E2236C1FE00C57BC0 /* SwinjectAutoregistration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwinjectAutoregistration.framework; path = Carthage/Build/iOS/SwinjectAutoregistration.framework; sourceTree = "<group>"; };
 		9F15CF2722BFA0A300FB402A /* AppConstants_UITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants_UITests.swift; sourceTree = "<group>"; };
 		9F15CF2922BFA56E00FB402A /* Enum.AppMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.AppMode.swift; sourceTree = "<group>"; };
-		9F15CF2C22BFA56F00FB402A /* Enum.AppCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.AppCodes.swift; sourceTree = "<group>"; };
+		9F15CF2C22BFA56F00FB402A /* AppResources+AppCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppResources+AppCodes.swift"; sourceTree = "<group>"; };
 		9F1C3FEA22EEDC84000BDA8E /* NSError+AppExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+AppExtensions.swift"; sourceTree = "<group>"; };
 		9F20554722F25B52006B9DB7 /* M.MVVMSampleView_Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M.MVVMSampleView_Model.swift; sourceTree = "<group>"; };
 		9F20554B22F25C1F006B9DB7 /* D.MVVMSampleView_ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = D.MVVMSampleView_ViewModel.swift; sourceTree = "<group>"; };
@@ -584,7 +533,7 @@
 		9F8666EF22E7C5CA00A1B9A0 /* GenericTableViewCell_Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericTableViewCell_Protocol.swift; sourceTree = "<group>"; };
 		9F8666F322E7D31D00A1B9A0 /* RP.Network.Bliss.APIRequests.apib */ = {isa = PBXFileReference; lastKnownFileType = text; path = RP.Network.Bliss.APIRequests.apib; sourceTree = "<group>"; };
 		9F8AE1442205DD0300DF75F6 /* AppManagers+AppCan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppManagers+AppCan.swift"; sourceTree = "<group>"; };
-		9F8AE14A2205DD0300DF75F6 /* Resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
+		9F8AE14A2205DD0300DF75F6 /* AppResources+Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppResources+Messages.swift"; sourceTree = "<group>"; };
 		9F8AE14B2205DD0300DF75F6 /* AppManagers+Layouts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppManagers+Layouts.swift"; sourceTree = "<group>"; };
 		9F8D4AA222386DCF00777976 /* Samples_RepositoriesProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Samples_RepositoriesProtocol.swift; sourceTree = "<group>"; };
 		9F8D4AB2223873CD00777976 /* RelatedToSamples_UseCase1Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedToSamples_UseCase1Protocol.swift; sourceTree = "<group>"; };
@@ -644,7 +593,7 @@
 		9FE1437721AF1ADC0026BDFC /* GenericView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericView.swift; sourceTree = "<group>"; };
 		9FE1438821AF2D8B0026BDFC /* typealias.Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = typealias.Application.swift; sourceTree = "<group>"; };
 		9FE1438A21AF2EBD0026BDFC /* UITextField+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
-		9FE143F421AF2F520026BDFC /* MVP_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVP_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FE143F421AF2F520026BDFC /* GoodToGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodToGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FFF809222BFB5CF003C4562 /* MVPSampleView_Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSampleView_Router.swift; sourceTree = "<group>"; };
 		9FFF809322BFB5CF003C4562 /* MVPSampleView_AssemblyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSampleView_AssemblyContainer.swift; sourceTree = "<group>"; };
 		9FFF809422BFB5CF003C4562 /* MVPSampleView_Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSampleView_Presenter.swift; sourceTree = "<group>"; };
@@ -688,7 +637,7 @@
 		D72923682466B8EA00DAD480 /* AppLogger+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppLogger+Extension.swift"; sourceTree = "<group>"; };
 		D72923742466BC7E00DAD480 /* typealias.AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = typealias.AppTheme.swift; sourceTree = "<group>"; };
 		D72923772466BDE900DAD480 /* typealias.Designables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = typealias.Designables.swift; sourceTree = "<group>"; };
-		D72923A72466EA0100DAD480 /* E.FeatureFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E.FeatureFlag.swift; sourceTree = "<group>"; };
+		D72923A72466EA0100DAD480 /* DevTools+FeatureFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DevTools+FeatureFlag.swift"; sourceTree = "<group>"; };
 		D72923A92466EA4100DAD480 /* DevTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevTools.swift; sourceTree = "<group>"; };
 		D72923AB2466EE9400DAD480 /* ToastSwiftFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ToastSwiftFramework.framework; path = Carthage/Build/iOS/ToastSwiftFramework.framework; sourceTree = "<group>"; };
 		D779A5E9234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.SampleVIP_Presenter.swift; sourceTree = "<group>"; };
@@ -825,7 +774,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7E25A8A24669ABB003BBEA0 /* RJPSLib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -908,7 +856,7 @@
 		9F288F2520F8089F008A9539 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9FE143F421AF2F520026BDFC /* MVP_App.app */,
+				9FE143F421AF2F520026BDFC /* GoodToGo.app */,
 				D7E25A7A246699FC003BBEA0 /* PointFreeFunctions.framework */,
 				D7E25A9424669B9B003BBEA0 /* AppConstants.framework */,
 				D729226624669F3700DAD480 /* Designables.framework */,
@@ -1317,10 +1265,10 @@
 				D72922D42466A70100DAD480 /* typelias.DevTools.swift */,
 				D72923A92466EA4100DAD480 /* DevTools.swift */,
 				9F346E9322BFB495008A22C4 /* DevTools+AppLogger.swift */,
+				D72923A72466EA0100DAD480 /* DevTools+FeatureFlag.swift */,
 				9FFFFB1C22E2023D00611E27 /* RxReachabilityService.swift */,
 				D72922B12466A0CA00DAD480 /* DevTools.h */,
 				D72922B22466A0CA00DAD480 /* Info.plist */,
-				D72923A72466EA0100DAD480 /* E.FeatureFlag.swift */,
 			);
 			path = DevTools;
 			sourceTree = "<group>";
@@ -1357,8 +1305,8 @@
 			isa = PBXGroup;
 			children = (
 				D72923662466B84100DAD480 /* typealias.AppResources.swift */,
-				9F8AE14A2205DD0300DF75F6 /* Resources.swift */,
-				9F15CF2C22BFA56F00FB402A /* Enum.AppCodes.swift */,
+				9F8AE14A2205DD0300DF75F6 /* AppResources+Messages.swift */,
+				9F15CF2C22BFA56F00FB402A /* AppResources+AppCodes.swift */,
 				D72923402466B78300DAD480 /* AppResources.h */,
 				D72923682466B8EA00DAD480 /* AppLogger+Extension.swift */,
 				D72923412466B78300DAD480 /* Info.plist */,
@@ -1409,9 +1357,9 @@
 		D7E25A9524669B9B003BBEA0 /* AppConstants */ = {
 			isa = PBXGroup;
 			children = (
-				9F6BB2DE22E390B600829A6F /* AppConstants+Bliss.swift */,
-				D72922D62466AD5D00DAD480 /* typealias.AppConstants.swift */,
 				9F02AE5B20F91E7B00AB5942 /* AppConstants.swift */,
+				D72922D62466AD5D00DAD480 /* typealias.AppConstants.swift */,
+				9F6BB2DE22E390B600829A6F /* AppConstants+Bliss.swift */,
 				D7E25A71246695EE003BBEA0 /* AppConstants+Mocks.swift */,
 				9F9829C8223A611E00ACA6B7 /* Enum.AlertType.swift */,
 				9F15CF2922BFA56E00FB402A /* Enum.AppMode.swift */,
@@ -1521,7 +1469,7 @@
 			);
 			name = GoodToGo;
 			productName = GoodToGo;
-			productReference = 9FE143F421AF2F520026BDFC /* MVP_App.app */;
+			productReference = 9FE143F421AF2F520026BDFC /* GoodToGo.app */;
 			productType = "com.apple.product-type.application";
 		};
 		D729226524669F3700DAD480 /* Designables */ = {
@@ -1533,7 +1481,6 @@
 				D729226324669F3700DAD480 /* Frameworks */,
 				D729226424669F3700DAD480 /* Resources */,
 				D729227D24669F6500DAD480 /* ShellScript */,
-				D729239D2466D60500DAD480 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1577,7 +1524,6 @@
 				D72922AC2466A0CA00DAD480 /* Frameworks */,
 				D72922AD2466A0CA00DAD480 /* Resources */,
 				D72923022466B0BE00DAD480 /* ShellScript */,
-				D72923B02466EEAF00DAD480 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1641,7 +1587,6 @@
 				D729233A2466B78300DAD480 /* Sources */,
 				D729233B2466B78300DAD480 /* Frameworks */,
 				D729233C2466B78300DAD480 /* Resources */,
-				D729235C2466B79C00DAD480 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1750,9 +1695,9 @@
 			targets = (
 				9FE1438E21AF2F520026BDFC /* GoodToGo */,
 				D7E25A79246699FC003BBEA0 /* PointFreeFunctions */,
-				D7E25A9324669B9B003BBEA0 /* AppConstants */,
 				D729226524669F3700DAD480 /* Designables */,
 				D729228C2466A04200DAD480 /* UIBase */,
+				D7E25A9324669B9B003BBEA0 /* AppConstants */,
 				D72922AE2466A0CA00DAD480 /* DevTools */,
 				D72922DE2466B06300DAD480 /* AppTheme */,
 				D729230F2466B35300DAD480 /* Extensions */,
@@ -2158,7 +2103,7 @@
 				D72922CE2466A36C00DAD480 /* typealias.encaplulate.swift in Sources */,
 				D72922C42466A19500DAD480 /* DevTools+AppLogger.swift in Sources */,
 				D72923AA2466EA4100DAD480 /* DevTools.swift in Sources */,
-				D72923A82466EA0100DAD480 /* E.FeatureFlag.swift in Sources */,
+				D72923A82466EA0100DAD480 /* DevTools+FeatureFlag.swift in Sources */,
 				D72922D52466A70100DAD480 /* typelias.DevTools.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2192,9 +2137,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D72923692466B8EA00DAD480 /* AppLogger+Extension.swift in Sources */,
-				D72923652466B80B00DAD480 /* Enum.AppCodes.swift in Sources */,
+				D72923652466B80B00DAD480 /* AppResources+AppCodes.swift in Sources */,
 				D72923672466B84100DAD480 /* typealias.AppResources.swift in Sources */,
-				D72923732466BB8600DAD480 /* Resources.swift in Sources */,
+				D72923732466BB8600DAD480 /* AppResources+Messages.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2584,8 +2529,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.mvp;
-				PRODUCT_NAME = MVP_App;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo;
+				PRODUCT_NAME = GoodToGo;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2615,8 +2561,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.mvp;
-				PRODUCT_NAME = MVP_App;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo;
+				PRODUCT_NAME = GoodToGo;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2646,8 +2593,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.mvp;
-				PRODUCT_NAME = MVP_App;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo;
+				PRODUCT_NAME = GoodToGo;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
@@ -2738,8 +2686,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.mvp;
-				PRODUCT_NAME = MVP_App;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo;
+				PRODUCT_NAME = GoodToGo;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2821,7 +2770,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.Designables;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.Designables;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -2907,7 +2856,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.Designables;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.Designables;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -2993,7 +2942,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.Designables;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.Designables;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -3030,7 +2979,7 @@
 					"@loader_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.Designables;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.Designables;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -3113,7 +3062,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.UIBase;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGoUIBase;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -3199,7 +3148,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.UIBase;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGoUIBase;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -3285,7 +3234,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.UIBase;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGoUIBase;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -3322,7 +3271,7 @@
 					"@loader_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.UIBase;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGoUIBase;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -3405,7 +3354,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.DevTools;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.DevTools;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -3491,7 +3440,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.DevTools;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.DevTools;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -3577,7 +3526,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.DevTools;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.DevTools;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -3614,7 +3563,7 @@
 					"@loader_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.DevTools;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.DevTools;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -3697,7 +3646,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.AppTheme;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.AppTheme;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -3783,7 +3732,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.AppTheme;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.AppTheme;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -3869,7 +3818,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.AppTheme;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.AppTheme;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -3906,7 +3855,7 @@
 					"@loader_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.AppTheme;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.AppTheme;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -3989,7 +3938,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.Extensions;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.Extensions;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -4075,7 +4024,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.Extensions;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.Extensions;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -4161,7 +4110,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.Extensions;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.Extensions;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -4198,7 +4147,7 @@
 					"@loader_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.Extensions;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.Extensions;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -4281,7 +4230,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.AppResources;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.AppResources;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -4367,7 +4316,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.AppResources;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.AppResources;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -4453,7 +4402,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.AppResources;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.AppResources;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -4490,7 +4439,7 @@
 					"@loader_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.AppResources;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.AppResources;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -4573,7 +4522,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.PointFreeFunctions;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.PointFreeFunctions;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -4659,7 +4608,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.PointFreeFunctions;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.PointFreeFunctions;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -4745,7 +4694,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.PointFreeFunctions;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.PointFreeFunctions;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -4783,7 +4732,7 @@
 					"@loader_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.PointFreeFunctions;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.PointFreeFunctions;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -4866,7 +4815,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.AppConstants;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.AppConstants;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -4952,7 +4901,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.AppConstants;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.AppConstants;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -5038,7 +4987,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.AppConstants;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.AppConstants;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -5075,7 +5024,7 @@
 					"@loader_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = playground.framework.wrapper.AppConstants;
+				PRODUCT_BUNDLE_IDENTIFIER = GTG.GoodToGo.AppConstants;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;

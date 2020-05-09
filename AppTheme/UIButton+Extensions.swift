@@ -58,7 +58,7 @@ extension UIButton {
             self.titleLabel?.font = UIFont.App.regular(size: .regular)
             self.backgroundColor  = UIColor.App.btnBackgroundColor
             self.setTextColorForAllStates(UIColor.App.btnTextColor)
-            self.setTitleForAllStates(AppResources.Resources.Messages.dismiss)
+            self.setTitleForAllStates(AppResources.Messages.dismiss)
             self.setState(enabled: true)
             self.layer.cornerRadius = 4.0
             self.clipsToBounds      = true

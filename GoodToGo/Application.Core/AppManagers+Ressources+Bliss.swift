@@ -20,7 +20,7 @@ import Extensions
 import DevTools
 import PointFreeFunctions
 
-extension AppResources.Resources.Messages {
+extension AppResources.Messages {
     struct Bliss {
         static let serverDown       = "Server is down"
         static let appName          = "Bliss app"

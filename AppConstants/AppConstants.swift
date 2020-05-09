@@ -33,11 +33,6 @@ public struct AppConstants {
         public static let useMockedData = true
         public static var githubAPIBaseUrl: String {
             return "https://api.github.com"
-//            switch AppEnvironments.current {
-//            case .dev  : return "https://api.github.com"
-//            case .prod : return "https://api.github.com"
-//            case .qa   : return "https://api.github.com"
-//            }
         }
        
         public static let getPostCodes = "https://github.com/centraldedados/codigos_postais/raw/master/data/codigos_postais.csv"

@@ -92,7 +92,7 @@ extension DevTools {
         guard !DevTools.isProductionReleaseApp else { return } //If production bail out immediately
         guard DevTools.devModeIsEnabled else { return } // Not dev mode? bail out immediately
 
-        guard E.FeatureFlag.getFlag(.devTeam_showToasts) else {
+        guard DevTools.FeatureFlag.getFlag(.devTeam_showToasts) else {
             // Disabled toast
             return
         }

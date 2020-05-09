@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-// Commom to all frameworks
+// Common to all frameworks
 
 // MARK: - Models
 
