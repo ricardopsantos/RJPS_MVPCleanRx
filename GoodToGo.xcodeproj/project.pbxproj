@@ -65,7 +65,6 @@
 		9F8D4AC1223877D400777976 /* RP.Network.Employees.APIRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8D4ABD223877D400777976 /* RP.Network.Employees.APIRequests.swift */; };
 		9F98294C22398DF700ACA6B7 /* RP.Network.GitUser.APIRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F98294B22398DF700ACA6B7 /* RP.Network.GitUser.APIRequests.swift */; };
 		9F98295022398EDB00ACA6B7 /* Repository.Network.GitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F98294F22398EDB00ACA6B7 /* Repository.Network.GitUser.swift */; };
-		9F9BED9E22E5C9620018BD4C /* GenericPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9BED9D22E5C9620018BD4C /* GenericPresenter.swift */; };
 		9F9BEDA022E5CC4F0018BD4C /* RxGesture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9BED9F22E5CC4F0018BD4C /* RxGesture.framework */; };
 		9FA0DCC922BE5E45003ADF99 /* GitUser_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0DCC322BE5E45003ADF99 /* GitUser_UseCase.swift */; };
 		9FA0DCCA22BE5E45003ADF99 /* SampleB_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0DCC522BE5E45003ADF99 /* SampleB_UseCase.swift */; };
@@ -200,6 +199,7 @@
 		D7AB24B324673780000142C4 /* GenericViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AB24B22467377F000142C4 /* GenericViewProtocol.swift */; };
 		D7AB24B4246737A1000142C4 /* AppUtils_Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80AF22BFB68D003C4562 /* AppUtils_Protocol.swift */; };
 		D7AB24B82467402A000142C4 /* GenericRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5D1CF122E5DC8700C0AF38 /* GenericRouter.swift */; };
+		D7AB24BB2467424A000142C4 /* GenericPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9BED9D22E5C9620018BD4C /* GenericPresenter.swift */; };
 		D7E25A7E246699FC003BBEA0 /* PointFreeFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = D7E25A7C246699FC003BBEA0 /* PointFreeFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D7E25A8E24669B02003BBEA0 /* PointFreeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E25A8D24669B02003BBEA0 /* PointFreeFunctions.swift */; };
 		D7E25A9824669B9B003BBEA0 /* AppConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D7E25A9624669B9B003BBEA0 /* AppConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -868,7 +868,6 @@
 			isa = PBXGroup;
 			children = (
 				9FCF332222EF53890074DAB9 /* GenericUseCase.swift */,
-				9F9BED9D22E5C9620018BD4C /* GenericPresenter.swift */,
 			);
 			path = Application.Domain;
 			sourceTree = "<group>";
@@ -1179,6 +1178,7 @@
 			children = (
 				D7AB24B724673F00000142C4 /* README.md */,
 				9F15CF2722BFA0A300FB402A /* AppConstants+UIBase.swift */,
+				9F9BED9D22E5C9620018BD4C /* GenericPresenter.swift */,
 				9F5D1CF122E5DC8700C0AF38 /* GenericRouter.swift */,
 				D72922D82466AFC600DAD480 /* typealias.UIBase.swift */,
 				9FE1437721AF1ADC0026BDFC /* GenericView.swift */,
@@ -2026,7 +2026,6 @@
 				D779A5EF234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift in Sources */,
 				D72923892466BF4700DAD480 /* AppView+TabBarController.swift in Sources */,
 				9F58FB4822BE5DE700042A8C /* UserDetais_ViewModel.swift in Sources */,
-				9F9BED9E22E5C9620018BD4C /* GenericPresenter.swift in Sources */,
 				9F6BB2DB22E36C5B00829A6F /* BlissGenericAppBussiness_UseCase.swift in Sources */,
 				D7AB2443246716C6000142C4 /* V.UserTableViewCell.swift in Sources */,
 				9F58FB4A22BE5DE700042A8C /* D.SearchUser_ViewModel.swift in Sources */,
@@ -2071,6 +2070,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7AB24BB2467424A000142C4 /* GenericPresenter.swift in Sources */,
 				D72922D92466AFC600DAD480 /* typealias.UIBase.swift in Sources */,
 				D7AB24B82467402A000142C4 /* GenericRouter.swift in Sources */,
 				D72922CD2466A36C00DAD480 /* typealias.encaplulate.swift in Sources */,

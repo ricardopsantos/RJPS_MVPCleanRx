@@ -31,10 +31,10 @@ import AppDomain
 //
 
 protocol MVPSampleRxView_PresenterProtocol: class {
-    var generic: GenericPresenter_Protocol? { get }          // Mandatory in ALL Presenters
-    var genericView: GenericViewProtocol? { get }                    // Mandatory in ALL Presenters
-    var viewModel: VM.MVPSampleRxView_ViewModel? { get set }
-    var router: MVPSampleRxView_RouterProtocol! { get }       // Mandatory in ALL Presenters
+    var generic: GenericPresenter_Protocol? { get }            // Mandatory in ALL Presenters
+    var genericView: GenericViewProtocol? { get }              // Mandatory in ALL Presenters
+    var viewModel: VM.MVPSampleRxView_ViewModel? { get set }   // Mandatory in ALL Presenters
+    var router: MVPSampleRxView_RouterProtocol! { get }        // Mandatory in ALL Presenters
     
     func userDidTryToLoginWith(user: String, password: String)
 }

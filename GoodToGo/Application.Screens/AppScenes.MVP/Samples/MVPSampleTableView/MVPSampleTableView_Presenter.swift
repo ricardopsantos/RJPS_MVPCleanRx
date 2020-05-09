@@ -28,7 +28,7 @@ import AppDomain
 
 protocol MVPSampleTableView_PresenterProtocol: class {
     var generic: GenericPresenter_Protocol? { get }             // Mandatory in ALL Presenters
-    var genericView: GenericViewProtocol? { get }                       // Mandatory in ALL Presenters
+    var genericView: GenericViewProtocol? { get }               // Mandatory in ALL Presenters
     var viewModel: VM.MVPSampleTableView_ViewModel? { get set } // Mandatory in ALL Presenters
     var router: MVPSampleTableView_RouterProtocol! { get }      // Mandatory in ALL Presenters
     var tableView: GenericTableView_Protocol! { get }

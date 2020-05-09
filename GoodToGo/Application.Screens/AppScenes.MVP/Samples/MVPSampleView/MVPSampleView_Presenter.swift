@@ -32,7 +32,7 @@ import AppDomain
 
 protocol MVPSampleView_PresenterProtocol: class {
     var generic: GenericPresenter_Protocol? { get }        // Mandatory in ALL Presenters
-    var genericView: GenericViewProtocol? { get }                  // Mandatory in ALL Presenters
+    var genericView: GenericViewProtocol? { get }          // Mandatory in ALL Presenters
     var viewModel: VM.MVPSampleView_ViewModel? { get set } // Mandatory in ALL Presenters
     var router: MVPSampleView_RouterProtocol! { get }      // Mandatory in ALL Presenters
     

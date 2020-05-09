@@ -14,14 +14,14 @@ import RxCocoa
 //
 import DevTools
 
-class GenericPresenter {
+open class GenericPresenter {
     deinit {
         AppLogger.log("\(self) was killed")
         NotificationCenter.default.removeObserver(self)
     }
-    
-    var rxPublishRelay_error = PublishRelay<Error>()
-    var reachabilityService: ReachabilityService! = try! DefaultReachabilityService() // try! is only for simplicity sake
-    var disposeBag: DisposeBag = DisposeBag()
+    public init () { }
+    public var rxPublishRelay_error = PublishRelay<Error>()
+    public var reachabilityService: ReachabilityService! = try! DefaultReachabilityService() // try! is only for simplicity sake
+    public var disposeBag: DisposeBag = DisposeBag()
    
 }

@@ -15,6 +15,7 @@ import AppConstants
 import PointFreeFunctions
 import AppDomain
 import AppResources
+import UIBase
 
 //
 // MARK: - Presenter_Protocol & View_Protocol
@@ -22,7 +23,7 @@ import AppResources
 
 protocol BlissRoot_PresenterProtocol: class {
     var generic: GenericPresenter_Protocol? { get }     // Mandatory in ALL Presenters
-    var genericView: GenericViewProtocol? { get }               // Mandatory in ALL Presenters
+    var genericView: GenericViewProtocol? { get }       // Mandatory in ALL Presenters
     var viewModel: VM.BlissRoot_ViewModel? { get set }  // Mandatory in ALL Presenters
     var router: BlissRoot_RouterProtocol! { get }       // Mandatory in ALL Presenters
     
