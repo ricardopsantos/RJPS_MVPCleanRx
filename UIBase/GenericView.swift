@@ -49,8 +49,7 @@ open class GenericView: UIViewController {
     private var _lblMessageDistanceFromTop: NSLayoutConstraint?
     private var _lblReachabilityDistanceFromTop: NSLayoutConstraint?
     private var _lblReachabilityHeight: CGFloat = 25
-    #warning("hardcoded till fix V.TopBar.defaultHeight dependencie")
-    private var _lblMessageHeight: CGFloat = 50// V.TopBar.defaultHeight
+    private var _lblMessageHeight: CGFloat = 60// TopBar.defaultHeight
     private var _margin: CGFloat = 20
     private var _lblMessageTimmer: Timer?
 
@@ -82,7 +81,7 @@ open class GenericView: UIViewController {
         some.addGestureRecognizer(tapGesture)
         tapGesture.rx.event.bind(onNext: { [weak self] _ in
             guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-            self.setTopMessageVisibityTo(state: false, message: "", type: .sucess)
+            self.setTopMessageVisibilityTo(state: false, message: "", type: .sucess)
         }).disposed(by: disposeBag)
         return some
     }()
@@ -113,7 +112,7 @@ open class GenericView: UIViewController {
         if asAlert {
             (self as UIViewController).rjs.showAlert(title: "\(type)".uppercased(), message: message)
         } else {
-            setTopMessageVisibityTo(state: true, message: message, type: type)
+            setTopMessageVisibilityTo(state: true, message: message, type: type)
         }
     }
     
@@ -211,10 +210,10 @@ extension GenericView {
     }
 
     @objc func hideTopMessage() {
-        setTopMessageVisibityTo(state: false, message: "", type: .sucess)
+        setTopMessageVisibilityTo(state: false, message: "", type: .sucess)
     }
     
-    private func setTopMessageVisibityTo(state: Bool, message: String, type: AlertType) {
+    private func setTopMessageVisibilityTo(state: Bool, message: String, type: AlertType) {
         if state {
             _lblMessageTimmer?.invalidate()
             _lblMessageTimmer = nil

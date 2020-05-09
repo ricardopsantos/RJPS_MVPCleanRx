@@ -135,8 +135,8 @@
 		D72922C42466A19500DAD480 /* DevTools+AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F346E9322BFB495008A22C4 /* DevTools+AppLogger.swift */; };
 		D72922CD2466A36C00DAD480 /* typealias.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.encaplulate.swift */; };
 		D72922CE2466A36C00DAD480 /* typealias.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.encaplulate.swift */; };
-		D72922CF2466A3A300DAD480 /* Enum.AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9829C8223A611E00ACA6B7 /* Enum.AlertType.swift */; };
-		D72922D12466A3A300DAD480 /* Enum.AppMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F15CF2922BFA56E00FB402A /* Enum.AppMode.swift */; };
+		D72922CF2466A3A300DAD480 /* AppConstants+AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9829C8223A611E00ACA6B7 /* AppConstants+AlertType.swift */; };
+		D72922D12466A3A300DAD480 /* AppConstants+AppMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F15CF2922BFA56E00FB402A /* AppConstants+AppMode.swift */; };
 		D72922D52466A70100DAD480 /* typelias.DevTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72922D42466A70100DAD480 /* typelias.DevTools.swift */; };
 		D72922D72466AD5D00DAD480 /* typealias.AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72922D62466AD5D00DAD480 /* typealias.AppConstants.swift */; };
 		D72922D92466AFC600DAD480 /* typealias.UIBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72922D82466AFC600DAD480 /* typealias.UIBase.swift */; };
@@ -328,7 +328,7 @@
 		9F103A2F2236C08900C57BC0 /* RootAssemblyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootAssemblyContainer.swift; sourceTree = "<group>"; };
 		9F103A3E2236C1FE00C57BC0 /* SwinjectAutoregistration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwinjectAutoregistration.framework; path = Carthage/Build/iOS/SwinjectAutoregistration.framework; sourceTree = "<group>"; };
 		9F15CF2722BFA0A300FB402A /* AppConstants_UITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants_UITests.swift; sourceTree = "<group>"; };
-		9F15CF2922BFA56E00FB402A /* Enum.AppMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.AppMode.swift; sourceTree = "<group>"; };
+		9F15CF2922BFA56E00FB402A /* AppConstants+AppMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppConstants+AppMode.swift"; sourceTree = "<group>"; };
 		9F15CF2C22BFA56F00FB402A /* AppResources+AppCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppResources+AppCodes.swift"; sourceTree = "<group>"; };
 		9F1C3FEA22EEDC84000BDA8E /* NSError+AppExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+AppExtensions.swift"; sourceTree = "<group>"; };
 		9F20554722F25B52006B9DB7 /* M.MVVMSampleView_Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M.MVVMSampleView_Model.swift; sourceTree = "<group>"; };
@@ -407,7 +407,7 @@
 		9F9829422239892D00ACA6B7 /* Generic_LocalStorageRepositoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generic_LocalStorageRepositoryProtocol.swift; sourceTree = "<group>"; };
 		9F98294B22398DF700ACA6B7 /* RP.Network.GitUser.APIRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RP.Network.GitUser.APIRequests.swift; sourceTree = "<group>"; };
 		9F98294F22398EDB00ACA6B7 /* Repository.Network.GitUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.Network.GitUser.swift; sourceTree = "<group>"; };
-		9F9829C8223A611E00ACA6B7 /* Enum.AlertType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.AlertType.swift; sourceTree = "<group>"; };
+		9F9829C8223A611E00ACA6B7 /* AppConstants+AlertType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppConstants+AlertType.swift"; sourceTree = "<group>"; };
 		9F9BED9B22E5BA550018BD4C /* Repository.Network.Bliss.Mock.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Repository.Network.Bliss.Mock.txt; sourceTree = "<group>"; };
 		9F9BED9D22E5C9620018BD4C /* GenericPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericPresenter.swift; sourceTree = "<group>"; };
 		9F9BED9F22E5CC4F0018BD4C /* RxGesture.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxGesture.framework; path = Carthage/Build/iOS/RxGesture.framework; sourceTree = "<group>"; };
@@ -1183,8 +1183,8 @@
 				D72922D62466AD5D00DAD480 /* typealias.AppConstants.swift */,
 				9F6BB2DE22E390B600829A6F /* AppConstants+Bliss.swift */,
 				D7E25A71246695EE003BBEA0 /* AppConstants+Mocks.swift */,
-				9F9829C8223A611E00ACA6B7 /* Enum.AlertType.swift */,
-				9F15CF2922BFA56E00FB402A /* Enum.AppMode.swift */,
+				9F9829C8223A611E00ACA6B7 /* AppConstants+AlertType.swift */,
+				9F15CF2922BFA56E00FB402A /* AppConstants+AppMode.swift */,
 				D7E25A9624669B9B003BBEA0 /* AppConstants.h */,
 				D7E25A9724669B9B003BBEA0 /* Info.plist */,
 			);
@@ -1964,9 +1964,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D72922CF2466A3A300DAD480 /* Enum.AlertType.swift in Sources */,
+				D72922CF2466A3A300DAD480 /* AppConstants+AlertType.swift in Sources */,
 				D72922862466A00000DAD480 /* typealias.encaplulate.swift in Sources */,
-				D72922D12466A3A300DAD480 /* Enum.AppMode.swift in Sources */,
+				D72922D12466A3A300DAD480 /* AppConstants+AppMode.swift in Sources */,
 				D72923A12466D9E500DAD480 /* AppConstants+Bliss.swift in Sources */,
 				D72923A02466D91700DAD480 /* AppConstants+Mocks.swift in Sources */,
 				D72922D72466AD5D00DAD480 /* typealias.AppConstants.swift in Sources */,

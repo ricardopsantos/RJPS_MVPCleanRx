@@ -22,7 +22,7 @@ public extension UIButton {
     }
     
     var layoutStyle: UIButton.LayoutStyle {
-        set { layoutWith(style: newValue) }
+        set { apply(style: newValue) }
         get { return .notApplied }
     }
     
@@ -37,7 +37,7 @@ public extension UIButton {
 //
 extension UIButton {
     
-    private func layoutWith(style: UIButton.LayoutStyle) {
+    private func apply(style: UIButton.LayoutStyle) {
         let regular = {
             self.titleLabel?.font = UIFont.App.regular(size: .big)
             self.backgroundColor  = UIColor.App.btnBackgroundColor

@@ -16,7 +16,7 @@ public extension UILabel {
         case value
     }
     var layoutStyle: UILabel.LayoutStyle {
-        set { layoutWith(style: newValue) }
+        set { apply(style: newValue) }
         get { return .notApplied }
     }
     var textAnimated: String? {
@@ -31,7 +31,7 @@ public extension UILabel {
 
 extension UILabel {
     
-    private func layoutWith(style: UILabel.LayoutStyle) {
+    private func apply(style: UILabel.LayoutStyle) {
         let title = {
             self.backgroundColor = .clear
             self.textColor       = UIColor.App.TopBar.titleColor

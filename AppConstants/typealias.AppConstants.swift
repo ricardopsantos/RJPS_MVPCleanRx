@@ -10,7 +10,7 @@ import Foundation
 
 extension AppConstants {
     private init() {}
-    public struct AppEnuns { private init() { } }
+    public struct AppEnums { private init() { } }
 }
-public typealias AlertType = AppConstants.AppEnuns.AlertType
-public typealias AppMode   = AppConstants.AppEnuns.AppMode
+public typealias AlertType = AppConstants.AlertType
+public typealias AppMode   = AppConstants.AppMode
