@@ -84,7 +84,7 @@ extension AppView {
         override func loadView() {
             super.loadView()
             presenter.generic?.loadView()
-            view.accessibilityIdentifier = AppConstants_UITests.UIViewControllers.genericAccessibilityIdentifier(self)
+            view.accessibilityIdentifier = AppConstants.UIViewControllers.genericAccessibilityIdentifier(self)
         }
         
         override func viewDidLoad() {

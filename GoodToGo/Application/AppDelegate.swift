@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        if CommandLine.arguments.contains(AppConstants_UITests.Misc.CommandLineArguments.deleteUserData) {
+        if CommandLine.arguments.contains(AppConstants.Testing.CommandLineArguments.deleteUserData) {
             //resetAllData = true
         }
         

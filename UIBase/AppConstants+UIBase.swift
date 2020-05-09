@@ -7,14 +7,9 @@
 
 // Constants that are shared (existing) in the the app's and UI TESTS
 
-public enum AppConstants_UITests {
-    
-    public struct Misc {
-        public struct CommandLineArguments {
-            public static let deleteUserData = "--uitesting_CommandLineArguments.deleteUserData"
-        }
-        public static let devOptionAlertTitle = "Dev options"
-    }
+import AppConstants
+
+extension AppConstants {
     
     public struct UIViewControllers {
         private init() {}

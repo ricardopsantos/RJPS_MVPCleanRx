@@ -166,7 +166,7 @@
 		D729238A2466C16300DAD480 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD387C9223F0CF3001D2F4E /* UIButton+Extensions.swift */; };
 		D729238B2466C16300DAD480 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD387C7223F0CF3001D2F4E /* UILabel+Extensions.swift */; };
 		D729238C2466C16300DAD480 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD387CC223F0CF4001D2F4E /* UIFont+Extensions.swift */; };
-		D729238D2466C67800DAD480 /* AppConstants_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F15CF2722BFA0A300FB402A /* AppConstants_UITests.swift */; };
+		D729238D2466C67800DAD480 /* AppConstants+UIBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F15CF2722BFA0A300FB402A /* AppConstants+UIBase.swift */; };
 		D72923982466D5BB00DAD480 /* V.TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1122BE5DE700042A8C /* V.TopBar.swift */; };
 		D729239E2466D62900DAD480 /* V.BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1422BE5DE700042A8C /* V.BottomBar.swift */; };
 		D729239F2466D62C00DAD480 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F574EFD22356CA6007DAA58 /* Factory.swift */; };
@@ -182,6 +182,8 @@
 		D72923AD2466EE9400DAD480 /* ToastSwiftFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D72923AB2466EE9400DAD480 /* ToastSwiftFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D72923B62467076000DAD480 /* AppResources+SelectedLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923B52467076000DAD480 /* AppResources+SelectedLanguage.swift */; };
 		D72923B82467089700DAD480 /* AppResources+Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923B72467089700DAD480 /* AppResources+Messages.swift */; };
+		D72923C024670D5300DAD480 /* AppConstants+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923BF24670D5300DAD480 /* AppConstants+Testing.swift */; };
+		D72923C224670D7500DAD480 /* AppConstants+Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923C124670D7500DAD480 /* AppConstants+Strings.swift */; };
 		D779A5EF234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5E9234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift */; };
 		D779A5F0234FE3A500D3D6F7 /* W.SampleVIP_Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5EA234FE3A500D3D6F7 /* W.SampleVIP_Worker.swift */; };
 		D779A5F1234FE3A500D3D6F7 /* R.SampleVIP_Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5EB234FE3A500D3D6F7 /* R.SampleVIP_Router.swift */; };
@@ -350,7 +352,7 @@
 		9F103A2E2236C08900C57BC0 /* DependencyInjectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyInjectionManager.swift; sourceTree = "<group>"; };
 		9F103A2F2236C08900C57BC0 /* RootAssemblyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootAssemblyContainer.swift; sourceTree = "<group>"; };
 		9F103A3E2236C1FE00C57BC0 /* SwinjectAutoregistration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwinjectAutoregistration.framework; path = Carthage/Build/iOS/SwinjectAutoregistration.framework; sourceTree = "<group>"; };
-		9F15CF2722BFA0A300FB402A /* AppConstants_UITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants_UITests.swift; sourceTree = "<group>"; };
+		9F15CF2722BFA0A300FB402A /* AppConstants+UIBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppConstants+UIBase.swift"; sourceTree = "<group>"; };
 		9F15CF2922BFA56E00FB402A /* AppConstants+AppMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppConstants+AppMode.swift"; sourceTree = "<group>"; };
 		9F15CF2C22BFA56F00FB402A /* AppResources+AppCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppResources+AppCodes.swift"; sourceTree = "<group>"; };
 		9F1C3FEA22EEDC84000BDA8E /* NSError+AppExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+AppExtensions.swift"; sourceTree = "<group>"; };
@@ -527,6 +529,8 @@
 		D72923AB2466EE9400DAD480 /* ToastSwiftFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ToastSwiftFramework.framework; path = Carthage/Build/iOS/ToastSwiftFramework.framework; sourceTree = "<group>"; };
 		D72923B52467076000DAD480 /* AppResources+SelectedLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppResources+SelectedLanguage.swift"; sourceTree = "<group>"; };
 		D72923B72467089700DAD480 /* AppResources+Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppResources+Messages.swift"; sourceTree = "<group>"; };
+		D72923BF24670D5300DAD480 /* AppConstants+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppConstants+Testing.swift"; sourceTree = "<group>"; };
+		D72923C124670D7500DAD480 /* AppConstants+Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppConstants+Strings.swift"; sourceTree = "<group>"; };
 		D779A5E9234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.SampleVIP_Presenter.swift; sourceTree = "<group>"; };
 		D779A5EA234FE3A500D3D6F7 /* W.SampleVIP_Worker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W.SampleVIP_Worker.swift; sourceTree = "<group>"; };
 		D779A5EB234FE3A500D3D6F7 /* R.SampleVIP_Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.SampleVIP_Router.swift; sourceTree = "<group>"; };
@@ -1097,7 +1101,7 @@
 		D729228E2466A04200DAD480 /* UIBase */ = {
 			isa = PBXGroup;
 			children = (
-				9F15CF2722BFA0A300FB402A /* AppConstants_UITests.swift */,
+				9F15CF2722BFA0A300FB402A /* AppConstants+UIBase.swift */,
 				D72922D82466AFC600DAD480 /* typealias.UIBase.swift */,
 				9FE1437721AF1ADC0026BDFC /* GenericView.swift */,
 				D729228F2466A04200DAD480 /* UIBase.h */,
@@ -1206,8 +1210,10 @@
 		D7E25A9524669B9B003BBEA0 /* AppConstants */ = {
 			isa = PBXGroup;
 			children = (
-				9F02AE5B20F91E7B00AB5942 /* AppConstants.swift */,
 				D72922D62466AD5D00DAD480 /* typealias.AppConstants.swift */,
+				9F02AE5B20F91E7B00AB5942 /* AppConstants.swift */,
+				D72923C124670D7500DAD480 /* AppConstants+Strings.swift */,
+				D72923BF24670D5300DAD480 /* AppConstants+Testing.swift */,
 				9F6BB2DE22E390B600829A6F /* AppConstants+Bliss.swift */,
 				D7E25A71246695EE003BBEA0 /* AppConstants+Mocks.swift */,
 				9F9829C8223A611E00ACA6B7 /* AppConstants+AlertType.swift */,
@@ -1929,7 +1935,7 @@
 				D72922D92466AFC600DAD480 /* typealias.UIBase.swift in Sources */,
 				D72922CD2466A36C00DAD480 /* typealias.encaplulate.swift in Sources */,
 				D72922A92466A0B100DAD480 /* GenericView.swift in Sources */,
-				D729238D2466C67800DAD480 /* AppConstants_UITests.swift in Sources */,
+				D729238D2466C67800DAD480 /* AppConstants+UIBase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2000,9 +2006,11 @@
 				D72922862466A00000DAD480 /* typealias.encaplulate.swift in Sources */,
 				D72922D12466A3A300DAD480 /* AppConstants+AppMode.swift in Sources */,
 				D72923A12466D9E500DAD480 /* AppConstants+Bliss.swift in Sources */,
+				D72923C024670D5300DAD480 /* AppConstants+Testing.swift in Sources */,
 				D72923A02466D91700DAD480 /* AppConstants+Mocks.swift in Sources */,
 				D72922D72466AD5D00DAD480 /* typealias.AppConstants.swift in Sources */,
 				D7E25AA624669BF4003BBEA0 /* AppConstants.swift in Sources */,
+				D72923C224670D7500DAD480 /* AppConstants+Strings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

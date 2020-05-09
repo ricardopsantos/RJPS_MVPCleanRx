@@ -35,7 +35,7 @@ extension VC {
 
         public override func loadView() {
             super.loadView()
-            view.accessibilityIdentifier = AppConstants_UITests.UIViewControllers.genericAccessibilityIdentifier(self)
+            view.accessibilityIdentifier = AppConstants.UIViewControllers.genericAccessibilityIdentifier(self)
         }
         
         override func setupViewUIRx() {

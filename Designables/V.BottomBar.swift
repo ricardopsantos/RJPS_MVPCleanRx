@@ -91,7 +91,7 @@ public extension AppView {
         
         public override func viewDidLoad() {
             super.viewDidLoad()
-            view.accessibilityIdentifier = AppConstants_UITests.UIViewControllers.genericAccessibilityIdentifier(self)
+            view.accessibilityIdentifier = AppConstants.UIViewControllers.genericAccessibilityIdentifier(self)
             self.view.backgroundColor = UIColor.App.TopBar.background
         }
 

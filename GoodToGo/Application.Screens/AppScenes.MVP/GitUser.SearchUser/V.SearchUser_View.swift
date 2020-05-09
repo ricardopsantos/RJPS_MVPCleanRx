@@ -64,7 +64,7 @@ public extension AppView {
         public override func loadView() {
             super.loadView()
             presenter.generic?.loadView()
-            view.accessibilityIdentifier = AppConstants_UITests.UIViewControllers.genericAccessibilityIdentifier(self)
+            view.accessibilityIdentifier = AppConstants.UIViewControllers.genericAccessibilityIdentifier(self)
             
             if #available(iOS 13.0, *) {
                 // Always light.
