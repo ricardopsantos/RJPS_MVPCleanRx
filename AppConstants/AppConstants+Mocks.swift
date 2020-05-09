@@ -10,8 +10,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RJPSLib
-//
-import PointFreeFunctions
 
 extension AppConstants {
 

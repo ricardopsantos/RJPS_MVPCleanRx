@@ -7,23 +7,26 @@
 
 import UIKit
 import Foundation
-
+//
 import AppResources
+import AppConstants
+import DevTools
+import PointFreeFunctions
 
 public extension UIButton {
-    public enum LayoutStyle {
-        case notAplyed
+    enum LayoutStyle {
+        case notApplied
         case regular
         case dismiss
         case alternative
     }
     
-    public var layoutStyle: UIButton.LayoutStyle {
+    var layoutStyle: UIButton.LayoutStyle {
         set { layoutWith(style: newValue) }
-        get { return .notAplyed }
+        get { return .notApplied }
     }
     
-    public func setState(enabled: Bool) {
+    func setState(enabled: Bool) {
         self.isUserInteractionEnabled = enabled
         self.alpha = enabled ? 1.0 : 0.6
     }
@@ -62,7 +65,7 @@ extension UIButton {
         }
                 
         switch style {
-        case .notAplyed   : _ = 1
+        case .notApplied  : _ = 1
         case .regular     : regular()
         case .alternative : alternative()
         case .dismiss     : dismiss()

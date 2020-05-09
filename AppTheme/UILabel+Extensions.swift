@@ -11,13 +11,13 @@ import Foundation
 public extension UILabel {
     
     enum LayoutStyle {
-        case notAplyed /// not Applied
+        case notApplied /// not Applied
         case title
         case value
     }
     var layoutStyle: UILabel.LayoutStyle {
         set { layoutWith(style: newValue) }
-        get { return .notAplyed }
+        get { return .notApplied }
     }
     var textAnimated: String? {
         set { fadeTransition(); self.text = newValue ?? "" }
@@ -45,9 +45,9 @@ extension UILabel {
             self.numberOfLines  = 0
         }
         switch style {
-        case .notAplyed : _ = 1
-        case .title     : title()
-        case .value     : value()
+        case .notApplied : _ = 1
+        case .title      : title()
+        case .value      : value()
         }
     }
     
