@@ -40,7 +40,7 @@ extension Entity {
             case url
         }
         
-        init(json: Dictionary<String, Any>) {
+        init(json: [String: Any]) {
             if let login     = json["login"]      as? String { self.login = login }
             if let name      = json["name"]       as? String { self.name = name }
             if let avatarUrl = json["avatar_url"] as? String { self.avatarUrl = avatarUrl }

@@ -22,7 +22,7 @@ extension AppManagers {
         static func isQA() -> Bool { return current == .qa }
         static func isProd() -> Bool { return current == .prod }
         
-        static func autoSet() {
+        static func setup() {
             
             func appMode() -> String? {
                 return (Bundle.main.infoDictionary?["BuildConfig_AppMode"] as? String)?.replacingOccurrences(of: "\\", with: "")

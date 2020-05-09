@@ -8,6 +8,7 @@
 import UIKit
 import Foundation
 import RJPSLib
+import AppConstants
 
 typealias SequenceBlock          = RJS_Sequence
 typealias CustomSearchBar        = RJS_CustomSearchBar

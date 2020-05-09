@@ -14,9 +14,10 @@ import RJPSLib
 import AppConstants
 import PointFreeFunctions
 
-extension AppDelegate {
-    func appPrepare(application: UIApplication) {
-        AppEnvironments.setup()
-        AppLogger.log("Number of logins : \(AppUserDefaultsVars.incrementIntWithKey(AppConstants.Dev.numberOfLogins))")
+extension AppConstants {
+
+    struct Mocks {
+        
     }
+
 }

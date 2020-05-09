@@ -1,5 +1,5 @@
 //
-//  SampleVIP_Interactor.swift
+//  SampleVIP_Models.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 10/10/2019.
@@ -12,6 +12,8 @@
 
 import UIKit
 
+// MARK:- Interactor
+
 protocol SampleVIP_BusinessLogic {
   func doSomething(request: SampleVIP.SearchView.Request)
 }
@@ -20,18 +22,14 @@ protocol SampleVIP_DataStore {
   //var name: String { get set }
 }
 
-class SampleVIP_Interactor: SampleVIP_BusinessLogic, SampleVIP_DataStore {
-  var presenter: SampleVIP_PresentationLogic?
-  var worker: SampleVIP_Worker?
-  //var name: String = ""
+enum SampleVIP {
+  // MARK: Use cases
   
-  // MARK: Do something
-  
-  func doSomething(request: SampleVIP.SearchView.Request) {
-    worker = SampleVIP_Worker()
-    worker?.doSomeWork()
-    
-    let response = SampleVIP.SearchView.Response()
-    presenter?.presentSomething(response: response)
+  enum SearchView {
+    struct Request { }
+    struct Response { }
+    struct ViewModel {
+        let name: String
+    }
   }
 }

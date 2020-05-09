@@ -10,7 +10,7 @@ custom_rules:
 
     no_letUnderscore:
         included: ".*\\.swift"
-        name: "Don't use let _"
+        name: "No let _ = ..."
         regex: 'let[ ][_][ ][=]'
         message: "Don't use let _ = xxx , use xxx != nil"
         severity: error
@@ -19,21 +19,21 @@ custom_rules:
         included: ".*\\.swift"
         name: "Singleton naming"
         regex: "static (var|let)[ ](instance|sharedInstance)[ ]*[:]"
-        message: "Don't use instance/sharedInstance. Use shared"
+        message: "Use shared"
         severity: error
 
     no_hardCodedTimeZones:
         included: ".*\\.swift"
-        name: "Hardcoded TimeZones"
+        name: "Fordiden hardcoded TimeZones"
         regex: "\"UTC\"|\"GMT\""
-        message: "Don't use hardcoded TimeZones. Use AppConstants.TimeZones..."
+        message: "Use AppConstants.TimeZones..."
         severity: error
 
     no_TODO:
         included: ".*\\.swift"
-        name: "Invalid TODO/FIX"
+        name: "Fordiden TODO/FIX"
         regex: "TODO|TO DO|FIX"
-        message: "Don't use TODO/FIX. Use #warning"
+        message: "Use #warning"
         severity: error
 
     no_hardCodedDateFormats:
@@ -45,14 +45,14 @@ custom_rules:
 
     no_print:
         included: ".*\\.swift"
-        name: "No prints"
+        name: "Fordiden print"
         regex: "print[(]"
-        message: "Don't use print. Use AppLogger"
+        message: "Use AppLogger..."
         severity: warning
 
     no_hardCodedImages:
         included: ".*\\.swift"
-        name: "No hardCoded images"
+        name: "Fordiden hardCoded images"
         regex: "(image|[(]named]|imageLiteralResourceName|highlightedResource|resourceName){1}[ ]*[:][ ]*[\"]"
         message: "Don't use hardCoded images"
         severity: error
@@ -115,6 +115,8 @@ type_name:
         - V
         - VM
         - VC
+        - AS
+        - Rx
         - W
         - P
         - I

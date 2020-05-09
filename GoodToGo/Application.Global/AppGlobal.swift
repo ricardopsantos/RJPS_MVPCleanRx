@@ -14,7 +14,11 @@ struct AppGlobal {
     public static var screenWidth: CGFloat { return UIScreen.main.bounds.width }
     public static var screenHeight: CGFloat { return UIScreen.main.bounds.height }
     
-    static func assert(_ value: @autoclosure() -> Bool, message: @autoclosure() -> String="", function: StaticString = #function, file: StaticString = #file, line: Int = #line) {
+    static func assert(_ value: @autoclosure() -> Bool,
+                       message: @autoclosure() -> String="",
+                       function: StaticString = #function,
+                       file: StaticString = #file,
+                       line: Int = #line) {
         RJS_Utils.assert(value(), message: message(), function: function, file: file, line: line)
     }
 
