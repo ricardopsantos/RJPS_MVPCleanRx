@@ -43,16 +43,11 @@ custom_rules:
         message: "Use a DateFormats on AppContants.Date or DateFormatterTypes"
         severity: error
 
-    numbers_smell:
-        regex: '(return |case |\w\(|: |\?\? |\, |== |<=? |>=? |\+= |\-= |\/= |\*= |%= |\w\.\w+ = )\(*-?\d{2,}'
-        message: "Numbers smell; define a constant instead."
-        severity: warning
-
     no_print:
         included: ".*\\.swift"
         name: "No prints"
         regex: "print[(]"
-        message: "Don't use print. Use DevTools.Log"
+        message: "Don't use print. Use AppLogger"
         severity: warning
 
     no_hardCodedImages:
@@ -62,11 +57,16 @@ custom_rules:
         message: "Don't use hardCoded images"
         severity: error
 
-    multiline_commented_code:
-        regex: '^\s*[a-z]'
-        match_kinds: comment
-        message: "Comment starting with lowercase letter - did you forget to delete old code?"
-        severity: warning
+#numbers_smell:
+#    regex: '(return |case |\w\(|: |\?\? |\, |== |<=? |>=? |\+= |\-= |\/= |\*= |%= |\w\.\w+ = )\(*-?\d{2,}'
+#    message: "Numbers smell; define a constant instead."
+#    severity: warning
+
+#    multiline_commented_code:
+#        regex: '^\s*[a-z]'
+#        match_kinds: comment
+#        message: "Comment starting with lowercase letter - did you forget to delete old code?"
+#        severity: warning
 
 #    commented_code:
 #        regex: '(?<!:|\/)\/\/\h*[a-z.](?!wiftlint)'

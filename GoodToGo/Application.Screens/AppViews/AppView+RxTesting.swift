@@ -465,7 +465,7 @@ extension V.RxTesting {
 
         if false {
             let intervalObservable_1 = Observable<NSInteger>
-                 .interval(0.1, scheduler: MainScheduler.instance)
+                .interval(0.1, scheduler: MainScheduler.instance)
                 .take(5)
                  .map { "\($0)" }
              
