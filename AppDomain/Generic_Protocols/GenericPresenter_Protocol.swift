@@ -15,8 +15,8 @@ import RxSwift
 // All the PRESENTERS must implement this protocol
 ////////////////////////////////////////////
 
-protocol GenericPresenter_Protocol: AppUtils_Protocol {
-    var genericView: GenericView? { get }
+public protocol GenericPresenter_Protocol: AppUtils_Protocol {
+    var genericView: GenericViewProtocol? { get }
     
     func view_deinit()
     func loadView()

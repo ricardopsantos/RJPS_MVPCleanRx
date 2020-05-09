@@ -9,6 +9,7 @@ import UIKit
 import RJPSLib
 import RxCocoa
 import RxSwift
+import AppDomain
 
 protocol MVPSampleRxView_RouterProtocol: class {
     func dismissView()

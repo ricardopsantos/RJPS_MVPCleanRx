@@ -28,7 +28,7 @@ import AppDomain
 
 protocol BlissQuestionsList_PresenterProtocol: class {
     var generic: GenericPresenter_Protocol? { get }             // Mandatory in ALL Presenters
-    var genericView: GenericView? { get }                       // Mandatory in ALL Presenters
+    var genericView: GenericViewProtocol? { get }               // Mandatory in ALL Presenters
     var viewModel: VM.BlissQuestionsList_ViewModel? { get set } // Mandatory in ALL Presenters
     var router: BlissQuestionsList_RouterProtocol! { get }      // Mandatory in ALL Presenters
     var tableView: GenericTableView_Protocol! { get }
@@ -52,7 +52,7 @@ protocol BlissQuestionsList_ViewProtocol: class {
 extension Presenter {
     class BlissQuestionsList_Presenter: GenericPresenter {
         weak var generic: GenericPresenter_Protocol?
-        weak var genericView: GenericView?
+        weak var genericView: GenericViewProtocol?
         weak var view: BlissQuestionsList_ViewProtocol!
         var router: BlissQuestionsList_RouterProtocol!
         var tableView: GenericTableView_Protocol!
@@ -204,7 +204,7 @@ extension P.BlissQuestionsList_Presenter {
                 },
                 onError: { [weak self] error in
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-                    self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error)
+                    self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error, asAlert: false)
                     self.genericView?.setActivityState(false)
                 }
             )
@@ -225,10 +225,11 @@ extension P.BlissQuestionsList_Presenter {
                     blissGeneric_UseCase.screenHaveHandledData(screen: V.BlissQuestionsList_View.className)
                 }
             } else if blissGeneric_UseCase.screenHaveDataToHandle(screen: V.BlissDetails_View.className) != nil {
-                if self.genericView!.isVisible {
-                    // If we are on the list, jump to details screen
-                    router.goToDetails()
-                }
+                #warning("comentado nos deeplinks. apagar depois a variavel")
+                //if self.genericView!.isVisible {
+                //    // If we are on the list, jump to details screen
+                //    router.goToDetails()
+                //}
             }
         }
         
@@ -240,7 +241,7 @@ extension P.BlissQuestionsList_Presenter {
         reachabilityService.reachability.subscribe(
             onNext: { [weak self] some in
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-                self.genericView?.setNoConnectionViewVisibility(to: !some.reachable)
+                self.genericView?.setNoConnectionViewVisibility(to: !some.reachable, withMessage: AppMessages.noInternet.localised)
             }
             ).disposed(by: disposeBag)
     }

@@ -28,7 +28,7 @@ import AppDomain
 
 protocol UserDetais_PresenterProtocol: class {
     var generic: GenericPresenter_Protocol? { get }  // Mandatory in ALL Presenters
-    var genericView: GenericView? { get }            // Mandatory in ALL Presenters
+    var genericView: GenericViewProtocol? { get }            // Mandatory in ALL Presenters
     var viewModel: VM.UserDetais? { get set }        // Mandatory in ALL Presenters
     var router: UserDetais_RouterProtocol! { get }   // Mandatory in ALL Presenters
     var tableView: GenericTableView_Protocol! { get }
@@ -49,7 +49,7 @@ protocol UserDetais_ViewProtocol: class {
 extension Presenter {
     class UserDetais_Presenter: GenericPresenter {
         var generic: GenericPresenter_Protocol?
-        var genericView: GenericView?
+        var genericView: GenericViewProtocol?
         var viewModel: VM.UserDetais? { didSet { AppLogger.log(appCode: .vmChanged); viewModelChanged() } }
         weak var view: UserDetais_ViewProtocol!
         var router: UserDetais_RouterProtocol!

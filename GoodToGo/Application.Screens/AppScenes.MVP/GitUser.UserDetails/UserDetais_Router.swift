@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import AppDomain
 
 protocol UserDetais_RouterProtocol: class {
     func dismissView()

@@ -28,7 +28,7 @@ import AppDomain
 
 protocol MVPSampleTableView_PresenterProtocol: class {
     var generic: GenericPresenter_Protocol? { get }             // Mandatory in ALL Presenters
-    var genericView: GenericView? { get }                       // Mandatory in ALL Presenters
+    var genericView: GenericViewProtocol? { get }                       // Mandatory in ALL Presenters
     var viewModel: VM.MVPSampleTableView_ViewModel? { get set } // Mandatory in ALL Presenters
     var router: MVPSampleTableView_RouterProtocol! { get }      // Mandatory in ALL Presenters
     var tableView: GenericTableView_Protocol! { get }
@@ -49,7 +49,7 @@ protocol MVPSampleTableView_ViewProtocol: class {
 extension Presenter {
     class MVPSampleTableView_Presenter {
         weak var generic: GenericPresenter_Protocol?
-        weak var genericView: GenericView?
+        weak var genericView: GenericViewProtocol?
         weak var view: MVPSampleTableView_ViewProtocol!
         var viewModel: VM.MVPSampleTableView_ViewModel? {
             didSet { AppLogger.log(appCode: .vmChanged); viewModelChanged() }
@@ -164,7 +164,7 @@ extension P.MVPSampleTableView_Presenter {
                 },
                 onError: { [weak self] error in
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-                    self.genericView?.displayMessage(error.localizedDescription, type: .error)
+                    self.genericView?.displayMessage(error.localizedDescription, type: .error, asAlert: false)
                 }
             )
             .disposed(by: disposeBag)

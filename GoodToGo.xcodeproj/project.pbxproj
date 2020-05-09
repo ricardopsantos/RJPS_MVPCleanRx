@@ -97,9 +97,6 @@
 		9FE143B821AF2F520026BDFC /* AppManagers+Environments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE1437021AF1ADC0026BDFC /* AppManagers+Environments.swift */; };
 		9FE143C021AF2F520026BDFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F288F2720F8089F008A9539 /* AppDelegate.swift */; };
 		9FE143F021AF2F520026BDFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F288F3120F808A2008A9539 /* Assets.xcassets */; };
-		9FFF80B222BFB68D003C4562 /* GenericRouter_Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80A922BFB68C003C4562 /* GenericRouter_Protocol.swift */; };
-		9FFF80B522BFB68D003C4562 /* GenericPresenter_Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80AC22BFB68D003C4562 /* GenericPresenter_Protocol.swift */; };
-		9FFF80B822BFB68D003C4562 /* AppUtils_Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80AF22BFB68D003C4562 /* AppUtils_Protocol.swift */; };
 		9FFF80BA22BFB7CC003C4562 /* AppUtils_ProtocolExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80B922BFB7CC003C4562 /* AppUtils_ProtocolExtension.swift */; };
 		9FFF80BC22BFB9A6003C4562 /* UIImage+AppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80BB22BFB9A6003C4562 /* UIImage+AppExtensions.swift */; };
 		D729225E24669D5000DAD480 /* AppConstants.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7E25A9424669B9B003BBEA0 /* AppConstants.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -199,6 +196,10 @@
 		D7AB24AD24673675000142C4 /* BlissGenericAppBussiness_UseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9F97122E4B8CB00D64FD2 /* BlissGenericAppBussiness_UseCaseProtocol.swift */; };
 		D7AB24AE24673675000142C4 /* GitUser_UseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F98293E223986CE00ACA6B7 /* GitUser_UseCaseProtocol.swift */; };
 		D7AB24AF24673675000142C4 /* RelatedToSamples_UseCase1Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8D4AB2223873CD00777976 /* RelatedToSamples_UseCase1Protocol.swift */; };
+		D7AB24B02467374A000142C4 /* GenericRouter_Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80A922BFB68C003C4562 /* GenericRouter_Protocol.swift */; };
+		D7AB24B12467374A000142C4 /* GenericPresenter_Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80AC22BFB68D003C4562 /* GenericPresenter_Protocol.swift */; };
+		D7AB24B324673780000142C4 /* GenericViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AB24B22467377F000142C4 /* GenericViewProtocol.swift */; };
+		D7AB24B4246737A1000142C4 /* AppUtils_Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80AF22BFB68D003C4562 /* AppUtils_Protocol.swift */; };
 		D7E25A7E246699FC003BBEA0 /* PointFreeFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = D7E25A7C246699FC003BBEA0 /* PointFreeFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D7E25A8E24669B02003BBEA0 /* PointFreeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E25A8D24669B02003BBEA0 /* PointFreeFunctions.swift */; };
 		D7E25A9824669B9B003BBEA0 /* AppConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D7E25A9624669B9B003BBEA0 /* AppConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -341,6 +342,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = D7E25A79246699FC003BBEA0;
 			remoteInfo = PointFreeFunctions;
+		};
+		D7AB24B524673DFD000142C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F288F1C20F8089F008A9539 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D7AB244C24671CBF000142C4;
+			remoteInfo = AppDomain;
 		};
 		D7E25A7F246699FC003BBEA0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -611,6 +619,7 @@
 		D7AB244D24671CBF000142C4 /* AppDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7AB245024671CBF000142C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7AB247824672405000142C4 /* typealias.Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = typealias.Domain.swift; sourceTree = "<group>"; };
+		D7AB24B22467377F000142C4 /* GenericViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericViewProtocol.swift; sourceTree = "<group>"; };
 		D7E25A6C2465E5A6003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7E25A6D2465E5B5003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7E25A6F2465E5CF003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -860,8 +869,6 @@
 				9F5D1CF122E5DC8700C0AF38 /* GenericRouter.swift */,
 				9FCF332222EF53890074DAB9 /* GenericUseCase.swift */,
 				9F9BED9D22E5C9620018BD4C /* GenericPresenter.swift */,
-				9FC681A522F99BB100D3F281 /* Generic_Protocols */,
-				9FFF99D12247D15700783EE2 /* Misc_Protocols */,
 			);
 			path = Application.Domain;
 			sourceTree = "<group>";
@@ -1277,6 +1284,9 @@
 		D7AB244E24671CBF000142C4 /* AppDomain */ = {
 			isa = PBXGroup;
 			children = (
+				D7AB24B22467377F000142C4 /* GenericViewProtocol.swift */,
+				9FFF99D12247D15700783EE2 /* Misc_Protocols */,
+				9FC681A522F99BB100D3F281 /* Generic_Protocols */,
 				9F574F9422369392007DAA58 /* Repositories_Protocols */,
 				D7AB248324673105000142C4 /* Models */,
 				9F574F8E223691D8007DAA58 /* UseCases_Protocols */,
@@ -1470,6 +1480,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D7AB24B624673DFD000142C4 /* PBXTargetDependency */,
 				D7AB244224671656000142C4 /* PBXTargetDependency */,
 			);
 			name = UIBase;
@@ -2000,7 +2011,6 @@
 				9FE0572422E8D75400802747 /* MVPSampleRxView_Router.swift in Sources */,
 				9F6BB30222E3CB2D00829A6F /* V.BlissRoot_View.swift in Sources */,
 				9F6BB2BF22E3292C00829A6F /* Repository.Network.Bliss.swift in Sources */,
-				9FFF80B522BFB68D003C4562 /* GenericPresenter_Protocol.swift in Sources */,
 				9F6BB2FC22E3C0E400829A6F /* V.BlissDetails_View.swift in Sources */,
 				9F6BB30122E3CB2D00829A6F /* R.BlissRoot_Router.swift in Sources */,
 				9F6BB2CF22E3470200829A6F /* MVPSampleTableView_ViewModel.swift in Sources */,
@@ -2037,8 +2047,6 @@
 				9FB8DFCA2233E67100095420 /* typealias.encaplulate.swift in Sources */,
 				9F58FB4422BE5DE700042A8C /* UserDetais_View.swift in Sources */,
 				9F103A332236C08900C57BC0 /* RootAssemblyContainer.swift in Sources */,
-				9FFF80B822BFB68D003C4562 /* AppUtils_Protocol.swift in Sources */,
-				9FFF80B222BFB68D003C4562 /* GenericRouter_Protocol.swift in Sources */,
 				9F58FB4622BE5DE700042A8C /* UserDetais_Presenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2129,6 +2137,7 @@
 			files = (
 				D7AB24AC24673675000142C4 /* BlissQuestionsAPI_UseCaseProtocol.swift in Sources */,
 				D7AB24A72467366D000142C4 /* GitUser_NetWorkRepositoryProtocol.swift in Sources */,
+				D7AB24B324673780000142C4 /* GenericViewProtocol.swift in Sources */,
 				D7AB247F24672F36000142C4 /* GitHub.swift in Sources */,
 				D7AB248024673000000142C4 /* Employee.swift in Sources */,
 				D7AB24AB24673675000142C4 /* RelatedToSamples_UseCase2Protocol.swift in Sources */,
@@ -2139,8 +2148,11 @@
 				D7AB24AA2467366D000142C4 /* Generic_LocalStorageRepositoryProtocol.swift in Sources */,
 				D7AB2477246723BA000142C4 /* typealias.encaplulate.swift in Sources */,
 				D7AB24A82467366D000142C4 /* Samples_RepositoriesProtocol.swift in Sources */,
+				D7AB24B02467374A000142C4 /* GenericRouter_Protocol.swift in Sources */,
 				D7AB248124673062000142C4 /* Bliss.swift in Sources */,
+				D7AB24B12467374A000142C4 /* GenericPresenter_Protocol.swift in Sources */,
 				D7AB24A92467366D000142C4 /* Generic_CacheRepositoryProtocol.swift in Sources */,
+				D7AB24B4246737A1000142C4 /* AppUtils_Protocol.swift in Sources */,
 				D7AB248224673062000142C4 /* Bliss+ExtensionUtils.swift in Sources */,
 				D7AB24AE24673675000142C4 /* GitUser_UseCaseProtocol.swift in Sources */,
 			);
@@ -2268,6 +2280,11 @@
 			isa = PBXTargetDependency;
 			target = D7E25A79246699FC003BBEA0 /* PointFreeFunctions */;
 			targetProxy = D7AB245F24671CF2000142C4 /* PBXContainerItemProxy */;
+		};
+		D7AB24B624673DFD000142C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D7AB244C24671CBF000142C4 /* AppDomain */;
+			targetProxy = D7AB24B524673DFD000142C4 /* PBXContainerItemProxy */;
 		};
 		D7E25A80246699FC003BBEA0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

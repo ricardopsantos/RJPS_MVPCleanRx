@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import AppDomain
 
 protocol BlissDetails_RouterProtocol: class {
     func dismissView()                                          

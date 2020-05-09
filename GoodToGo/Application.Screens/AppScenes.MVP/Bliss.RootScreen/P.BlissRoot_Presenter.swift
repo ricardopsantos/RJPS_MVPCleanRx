@@ -14,6 +14,7 @@ import RJPSLib
 import AppConstants
 import PointFreeFunctions
 import AppDomain
+import AppResources
 
 //
 // MARK: - Presenter_Protocol & View_Protocol
@@ -21,7 +22,7 @@ import AppDomain
 
 protocol BlissRoot_PresenterProtocol: class {
     var generic: GenericPresenter_Protocol? { get }     // Mandatory in ALL Presenters
-    var genericView: GenericView? { get }               // Mandatory in ALL Presenters
+    var genericView: GenericViewProtocol? { get }               // Mandatory in ALL Presenters
     var viewModel: VM.BlissRoot_ViewModel? { get set }  // Mandatory in ALL Presenters
     var router: BlissRoot_RouterProtocol! { get }       // Mandatory in ALL Presenters
     
@@ -42,7 +43,7 @@ protocol BlissRoot_ViewProtocol: class {
 extension Presenter {
     class BlissRoot_Presenter: GenericPresenter {
         weak var generic: GenericPresenter_Protocol?
-        weak var genericView: GenericView?
+        weak var genericView: GenericViewProtocol?
         weak var view: BlissRoot_ViewProtocol!
         var router: BlissRoot_RouterProtocol!
         var blissQuestions_UseCase: BlissQuestionsAPI_UseCaseProtocol!
@@ -134,7 +135,7 @@ extension P.BlissRoot_Presenter {
         reachabilityService.reachability.subscribe(
             onNext: { [weak self] some in
                     if some.reachable {
-                        self?.genericView?.setNoConnectionViewVisibility(to: false)
+                        self?.genericView?.setNoConnectionViewVisibility(to: false, withMessage: "")
                         self?.rxObservableAssyncRequest
                             .subscribe(
                                 onNext: { [weak self] some in self?.view.set(image: some); self?.checkServerStatus() },
@@ -142,7 +143,7 @@ extension P.BlissRoot_Presenter {
                             )
                             .disposed(by: self!.disposeBag)
                     } else {
-                        self?.genericView?.setNoConnectionViewVisibility(to: true)
+                        self?.genericView?.setNoConnectionViewVisibility(to: true, withMessage: AppMessages.noInternet.localised)
                         self?.view.set(image: AppImages.notInternet)
                     }
             }

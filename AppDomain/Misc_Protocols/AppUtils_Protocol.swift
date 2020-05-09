@@ -8,12 +8,12 @@
 import Foundation
 import UIKit
 
-protocol AppUtils_Protocol: class {
+public protocol AppUtils_Protocol: class {
 
     // If there is internet; execute the code in the block. If not, present a warning
     var existsInternetConnection: Bool { get }
     
-    func assertExistsInternetConnection(sender: GenericView?, message: String, block:@escaping () -> Void)
+    func assertExistsInternetConnection(sender: GenericViewProtocol?, message: String, block:@escaping () -> Void)
     
     func downloadImage(imageURL: String, onFail: UIImage?, completion: @escaping (UIImage?) -> Void)
 

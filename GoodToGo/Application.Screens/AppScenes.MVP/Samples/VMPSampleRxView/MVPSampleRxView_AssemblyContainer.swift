@@ -7,6 +7,7 @@
 
 import Foundation
 import Swinject
+import AppDomain
 
 /*
  * Needs to added AS.Sample_AssemblyContainer() to DependencyInjectionManager.swift
@@ -29,7 +30,7 @@ extension AssembyContainer {
                 let presenter         = P.MVPSampleRxView_Presenter()
                 presenter.view        = viewController
                 presenter.router      = r.resolve(routerProtocol, argument: viewController)
-                presenter.genericView = viewController
+                presenter.genericView = viewController 
                 presenter.generic     = presenter
                 presenter.sample_UseCase = r.resolve(AppProtocols.sample_UseCase)
                 return presenter

@@ -7,6 +7,7 @@
 
 import Foundation
 import Swinject
+import AppDomain
 
 /*
  * Needs to added AS.Sample_AssemblyContainer() to DependencyInjectionManager.swift
@@ -28,7 +29,7 @@ extension AssembyContainer {
             container.register(presenterProtocol) { (r, viewController: V.BlissRoot_View) in
                 let presenter         = P.BlissRoot_Presenter()
                 presenter.view        = viewController
-                presenter.genericView = viewController
+                presenter.genericView = viewController 
                 presenter.generic     = presenter
                 presenter.router      = r.resolve(routerProtocol, argument: viewController)
                 presenter.blissQuestions_UseCase = r.resolve(AppProtocols.blissQuestions_UseCase)

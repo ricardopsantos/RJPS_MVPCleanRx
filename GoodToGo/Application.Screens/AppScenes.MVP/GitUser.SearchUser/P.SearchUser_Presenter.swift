@@ -44,7 +44,7 @@ protocol SearchUser_ProtocolPresenter_IO: SearchUser_PresenterProtocol_Input, Se
 
 protocol SearchUser_PresenterProtocol: class, SearchUser_ProtocolPresenter_IO {
     var generic: GenericPresenter_Protocol? { get }   // Mandatory in ALL Presenters
-    var genericView: GenericView? { get }                 // Mandatory in ALL Presenters
+    var genericView: GenericViewProtocol? { get }                 // Mandatory in ALL Presenters
     var viewModel: VM.SearchUser? { get set }           // Mandatory in ALL Presenters
     var router: SearchUser_RouterProtocol! { get }   // Mandatory in ALL Presenters
 
@@ -62,7 +62,7 @@ protocol SearchUser_ViewProtocol: class {
 extension Presenter {
     class SearchUser_Presenter: GenericPresenter {
         weak var generic: GenericPresenter_Protocol?
-        weak var genericView: GenericView?
+        weak var genericView: GenericViewProtocol?
         weak var view: SearchUser_ViewProtocol!
         var viewModel: VM.SearchUser? { didSet { AppLogger.log(appCode: .vmChanged); viewModelChanged() } }
         var router: SearchUser_RouterProtocol!
@@ -107,7 +107,7 @@ extension P.SearchUser_Presenter: GenericPresenter_Protocol {
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                 self.genericView?.setActivityState(false)
                 guard $0 != nil && $1 != nil else {
-                    self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error)
+                    self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error, asAlert: false)
                     return
                 }
                 let vm = VM.UserDetais(user: $0!, friends: $1!)
@@ -120,7 +120,7 @@ extension P.SearchUser_Presenter: GenericPresenter_Protocol {
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                 self.genericView?.setActivityState(false)
                 let localizableMessageForView = ($0 as NSError).localizableMessageForView
-                self.genericView?.displayMessage(localizableMessageForView, type: .error)
+                self.genericView?.displayMessage(localizableMessageForView, type: .error, asAlert: false)
             })
             .disposed(by: disposeBag)
     }

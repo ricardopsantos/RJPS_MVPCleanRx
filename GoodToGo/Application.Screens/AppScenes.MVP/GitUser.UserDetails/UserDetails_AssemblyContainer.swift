@@ -7,6 +7,7 @@
 
 import Foundation
 import Swinject
+import AppDomain
 
 extension AssembyContainer {
     final class UserDetails_AssemblyContainer: Assembly {

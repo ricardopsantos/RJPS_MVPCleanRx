@@ -32,7 +32,7 @@ import AppDomain
 
 protocol MVPSampleRxView_PresenterProtocol: class {
     var generic: GenericPresenter_Protocol? { get }          // Mandatory in ALL Presenters
-    var genericView: GenericView? { get }                    // Mandatory in ALL Presenters
+    var genericView: GenericViewProtocol? { get }                    // Mandatory in ALL Presenters
     var viewModel: VM.MVPSampleRxView_ViewModel? { get set }
     var router: MVPSampleRxView_RouterProtocol! { get }       // Mandatory in ALL Presenters
     
@@ -50,7 +50,7 @@ protocol MVPSampleRxView_ViewProtocol: class {
 extension Presenter {
     class MVPSampleRxView_Presenter: GenericPresenter {
         weak var generic: GenericPresenter_Protocol?
-        weak var genericView: GenericView?
+        weak var genericView: GenericViewProtocol?
         weak var view: MVPSampleRxView_ViewProtocol!
         var viewModel: VM.MVPSampleRxView_ViewModel? { didSet { AppLogger.log(appCode: .vmChanged); viewModelChanged() } }
         var router: MVPSampleRxView_RouterProtocol!
@@ -78,7 +78,7 @@ extension P.MVPSampleRxView_Presenter: MVPSampleRxView_PresenterProtocol {
                     self?.viewModel! = VM.MVPSampleRxView_ViewModel(someString: some)
                 },
                 onError: { [weak self] error in
-                    self?.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error)
+                    self?.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error, asAlert: false)
                 }
             )
             .disposed(by: disposeBag)

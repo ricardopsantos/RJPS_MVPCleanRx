@@ -7,6 +7,7 @@
 
 import UIKit
 import RJPSLib
+import AppDomain
 
 protocol MVPSampleView_RouterProtocol: class {
     func dismissView()

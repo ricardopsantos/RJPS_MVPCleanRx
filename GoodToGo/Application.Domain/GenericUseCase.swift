@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RJPSLib
 import RxCocoa
+import AppDomain
 
 class GenericUseCase: AppUtils_Protocol {
     

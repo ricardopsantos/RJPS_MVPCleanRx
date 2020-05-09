@@ -20,6 +20,7 @@ import Extensions
 import DevTools
 import PointFreeFunctions
 import Designables
+import AppDomain
 
 // swiftlint:disable all
 

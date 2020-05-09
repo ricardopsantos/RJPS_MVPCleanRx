@@ -19,6 +19,7 @@ import AppConstants
 import Extensions
 import DevTools
 import PointFreeFunctions
+import AppDomain
 
 extension AppUtils_Protocol {
     
@@ -42,7 +43,7 @@ extension AppUtils_Protocol {
         return RJS_Utils.existsInternetConnection()
     }
     
-    func assertExistsInternetConnection(sender: GenericView?,
+    func assertExistsInternetConnection(sender: GenericViewProtocol?,
                                         message: String=AppMessages.noInternet.localised,
                                         block: @escaping () -> Void) {
 
@@ -63,7 +64,7 @@ extension AppUtils_Protocol {
                 @unknown default: break
                 }}))
             if let sender = sender {
-                (sender as UIViewController).present(alert, animated: true, completion: nil)
+                (sender as! UIViewController).present(alert, animated: true, completion: nil)
             }
         } else {
             block()

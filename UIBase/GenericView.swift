@@ -18,8 +18,9 @@ import AppTheme
 import AppConstants
 import AppResources
 import PointFreeFunctions
+import AppDomain
 
-open class GenericView: UIViewController {
+open class GenericView: UIViewController, GenericViewProtocol {
 
     deinit {
         AppLogger.log("\(self.className) was killed")
