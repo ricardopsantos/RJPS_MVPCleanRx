@@ -10,16 +10,16 @@
 public enum AppConstants_UITests {
     
     public struct Misc {
-        struct CommandLineArguments {
-            static let deleteUserData = "--uitesting_CommandLineArguments.deleteUserData"
+        public struct CommandLineArguments {
+            public static let deleteUserData = "--uitesting_CommandLineArguments.deleteUserData"
         }
-        static let devOptionAlertTitle = "Dev options"
+        public static let devOptionAlertTitle = "Dev options"
     }
     
-    struct UIViewControllers {
+    public struct UIViewControllers {
         private init() {}
         private static let accessibilityIdentifierPrefix = "acId"
-        static func genericAccessibilityIdentifier(_ controller: GenericView) -> String {
+        public static func genericAccessibilityIdentifier(_ controller: GenericView) -> String {
             return "\(accessibilityIdentifierPrefix).\(controller.className)"
         }
     }

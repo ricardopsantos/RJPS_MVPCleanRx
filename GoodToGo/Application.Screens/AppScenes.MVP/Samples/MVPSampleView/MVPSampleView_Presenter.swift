@@ -6,7 +6,20 @@
 //
 
 import UIKit
+import Foundation
+//
 import RJPSLib
+import RxSwift
+import RxCocoa
+import Swinject
+//
+import AppResources
+import UIBase
+import AppTheme
+import AppConstants
+import Extensions
+import DevTools
+import PointFreeFunctions
 
 /*
  * Needs to added AS.Sample_AssemblyContainer() to DependencyInjectionManager.swift

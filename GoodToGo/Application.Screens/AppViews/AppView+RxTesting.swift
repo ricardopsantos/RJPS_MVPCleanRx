@@ -6,8 +6,19 @@
 //
 
 import UIKit
+import Foundation
+//
+import RJPSLib
 import RxSwift
 import RxCocoa
+//
+import AppResources
+import UIBase
+import AppTheme
+import AppConstants
+import Extensions
+import DevTools
+import PointFreeFunctions
 
 // swiftlint:disable all
 
@@ -19,7 +30,7 @@ extension AppView {
 
         private var _rxReachabilityService = try! DefaultReachabilityService()
         
-        private lazy var _topGenericView: V.TopBar = {
+        private lazy var _topGenericView: UIBase.V.TopBar = {
             let some = AppFactory.UIKit.topBar(baseController: self)
             some.setTitle("RxTesting")
             return some

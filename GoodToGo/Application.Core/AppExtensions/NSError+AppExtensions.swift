@@ -7,6 +7,19 @@
 
 import UIKit
 import Foundation
+//
+import RJPSLib
+import RxSwift
+import RxCocoa
+import Swinject
+//
+import AppResources
+import UIBase
+import AppTheme
+import AppConstants
+import Extensions
+import DevTools
+import PointFreeFunctions
 
 extension NSError {
     
@@ -21,7 +34,7 @@ extension NSError {
             return localizableMessageForView
         }
 
-        if let appCode = AppEnuns.AppCodes(rawValue: self.code) {
+        if let appCode = AppCodes(rawValue: self.code) {
             return appCode.localizedMessageForView
         }
         return self.localizedDescription + (self.localizedRecoverySuggestion ?? "")

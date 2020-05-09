@@ -6,10 +6,20 @@
 //
 
 import UIKit
-import Swinject
+import Foundation
+//
 import RJPSLib
-import RxCocoa
 import RxSwift
+import RxCocoa
+import Swinject
+//
+import AppResources
+import UIBase
+import AppTheme
+import AppConstants
+import Extensions
+import DevTools
+import PointFreeFunctions
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

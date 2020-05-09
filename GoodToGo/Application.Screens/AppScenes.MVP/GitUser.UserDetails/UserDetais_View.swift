@@ -5,7 +5,23 @@
 //  Copyright © 2019 Ricardo P Santos. All rights reserved.
 //
 
+import Swinject
+
 import UIKit
+import Foundation
+//
+import RJPSLib
+import RxSwift
+import RxCocoa
+import Swinject
+//
+import AppResources
+import UIBase
+import AppTheme
+import AppConstants
+import Extensions
+import DevTools
+import PointFreeFunctions
 
 extension AppView {
     class UserDetais_View: GenericView {
@@ -36,7 +52,7 @@ extension AppView {
             some.rjsALayouts.setMargin(_margin, on: .top, from: _imgAvatar)
             some.rjsALayouts.setMargin(_margin, on: .left)
             some.rjsALayouts.setMargin(_margin, on: .right)
-            some.rjsALayouts.setMargin(_margin+V.TopBar.defaultHeight, on: .bottom)
+            some.rjsALayouts.setMargin(_margin+UIBase.V.TopBar.defaultHeight, on: .bottom)
             V.UserTableViewCell.prepare(tableView: some)
             return some
         }()
@@ -49,7 +65,7 @@ extension AppView {
             return some
         }()
         
-        private lazy var _topGenericBar: V.TopBar = {
+        private lazy var _topGenericBar: UIBase.V.TopBar = {
             let some = AppFactory.UIKit.topBar(baseController: self)
             some.setTitle(AppMessages.details)
             some.addDismissButton()

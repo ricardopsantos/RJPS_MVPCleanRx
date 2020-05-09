@@ -20,7 +20,6 @@ import Extensions
 import DevTools
 import PointFreeFunctions
 
-
 /**
  * 1 - Declare : Presenter_Protocol & View_Protocol
  */

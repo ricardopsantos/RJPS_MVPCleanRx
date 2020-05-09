@@ -5,9 +5,20 @@
 //  Copyright © 2019 Ricardo P Santos. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import Foundation
+//
 import RJPSLib
+import RxSwift
+import RxCocoa
+//
+import AppResources
+import UIBase
+import AppTheme
+import AppConstants
+import Extensions
+import DevTools
+import PointFreeFunctions
 
 extension AppUtils_Protocol {
     
@@ -36,7 +47,7 @@ extension AppUtils_Protocol {
                                         block: @escaping () -> Void) {
 
         if !existsInternetConnection {
-            let title = AppResources.get("Alert")
+            let title = AppResources.Resources.get("Alert")
             let option = AppMessages.ok
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: option, style: .default, handler: { action in

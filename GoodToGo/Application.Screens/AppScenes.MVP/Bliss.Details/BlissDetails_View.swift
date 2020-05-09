@@ -6,14 +6,20 @@
 //
 
 import UIKit
+import Foundation
 //
+import RJPSLib
 import RxSwift
 import RxCocoa
-import RJPSLib
+import Swinject
 //
+import AppResources
+import UIBase
+import AppTheme
 import AppConstants
+import Extensions
+import DevTools
 import PointFreeFunctions
-import Designables
 
 extension AppView {
     class BlissDetails_View: GenericView {
@@ -31,7 +37,7 @@ extension AppView {
         private let _margin: CGFloat = 15
         private let _imageSize: Int = 100
         
-        private lazy var _topGenericView: V.TopBar = {
+        private lazy var _topGenericView: UIBase.V.TopBar = {
             let some = AppFactory.UIKit.topBar(baseController: self)
             some.setTitle(AppMessages.Bliss.appName)
             some.setTitle(AppMessages.details)

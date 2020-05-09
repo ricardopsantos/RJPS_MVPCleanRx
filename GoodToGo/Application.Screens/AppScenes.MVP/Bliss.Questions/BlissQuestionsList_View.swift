@@ -6,12 +6,19 @@
 //
 
 import UIKit
+import Foundation
 //
+import RJPSLib
 import RxSwift
 import RxCocoa
-import RJPSLib
+import Swinject
 //
+import AppResources
+import UIBase
+import AppTheme
 import AppConstants
+import Extensions
+import DevTools
 import PointFreeFunctions
 
 extension AppView {
@@ -30,7 +37,7 @@ extension AppView {
         private let _tableViewThreshold: CGFloat = 100.0 // threshold from bottom of tableView
         private var _tableViewIsLoadingMoreData = false // flag
     
-        private lazy var _topGenericView: V.TopBar = {
+        private lazy var _topGenericView: UIBase.V.TopBar = {
             let some = AppFactory.UIKit.topBar(baseController: self)
             some.setTitle(AppMessages.Bliss.appName)
             some.rxSignal_viewTapped

@@ -13,7 +13,7 @@ import RxCocoa
 import RxGesture
 
 public extension AppView {
-    class TopBar: GenericView {
+   public  class TopBar: GenericView {
 
         deinit {
             AppLogger.log("\(self.className) was killed")
@@ -75,21 +75,21 @@ public extension AppView {
  */
 extension V.TopBar {
 
-    static var defaultHeight: CGFloat { return 60 }
-    func addBackButton() { enable(btn: _btnBack) }
-    func addDismissButton() { enable(btn: _btnClose) }
-    func setTitle(_ title: String) { _lblTitle.text = title }
-    func lazyLoad() { /* Lazy var auxiliar */ }
+    public static var defaultHeight: CGFloat { return 60 }
+    public func addBackButton() { enable(btn: _btnBack) }
+    public func addDismissButton() { enable(btn: _btnClose) }
+    public func setTitle(_ title: String) { _lblTitle.text = title }
+    public func lazyLoad() { /* Lazy var auxiliar */ }
     
-    var rxSignal_btnDismissTapped: Signal<Void> {
+    public var rxSignal_btnDismissTapped: Signal<Void> {
         return _btnClose.rx.controlEvent(.touchUpInside).asSignal()
     }
     
-    var rxSignal_btnBackTapped: Signal<Void> {
+    public var rxSignal_btnBackTapped: Signal<Void> {
         return _btnBack.rx.controlEvent(.touchUpInside).asSignal()
     }
     
-    var rxSignal_viewTapped: Signal<CGPoint> {
+    public var rxSignal_viewTapped: Signal<CGPoint> {
         return _lblTitle.rx
             .tapGesture()
             .when(.recognized)

@@ -44,6 +44,5 @@ typealias AppProtocols           = RootAssemblyContainerProtocols
 
 typealias AppLogger = DevTools.AppLogger
 typealias GenericView = UIBase.GenericView
-typealias GenericTableView_Protocol = UIBase.GenericTableView_Protocol
+//typealias GenericTableView_Protocol = UIBase.GenericTableView_Protocol
 typealias AppFactory = UIBase.Factory
-

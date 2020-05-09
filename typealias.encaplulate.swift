@@ -21,10 +21,10 @@ public struct Entity { private init() {} }
 // MARK: - Scenes
 
 public typealias V = AppView
-public struct AppView { private init() {} }
+open class AppView { private init() {} }
 
 public typealias VC = ViewController
-public struct ViewController { private init() {} }
+public class ViewController { private init() {} }
 
 public typealias VM = ViewModel
 public struct ViewModel { private init() {} }

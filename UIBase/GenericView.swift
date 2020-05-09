@@ -86,7 +86,7 @@ open class GenericView: UIViewController {
         return some
     }()
     
-    public override func loadView() {
+    open override func loadView() {
         super.loadView()
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(self.keyboardWillShowNotification(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -95,11 +95,11 @@ open class GenericView: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(self.keyboardDidHideNotification(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
     }
     
-    public override func viewWillAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     
-    public override func viewDidAppear(_ animated: Bool) {
+    open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         _lblReachability.lazyLoad()
         _lblReachability.superview?.bringSubviewToFront(_lblReachability)
@@ -107,7 +107,7 @@ open class GenericView: UIViewController {
         _lblMessage.superview?.bringSubviewToFront(_lblReachability)
     }
     
-    public func displayMessage(_ message: String, type: AlertType, asAlert: Bool=false) {
+    open func displayMessage(_ message: String, type: AlertType, asAlert: Bool=false) {
         if asAlert {
             (self as UIViewController).rjs.showAlert(title: "\(type)".uppercased(), message: message)
         } else {
@@ -115,7 +115,7 @@ open class GenericView: UIViewController {
         }
     }
     
-    public func setNoConnectionViewVisibity(to: Bool, withMessage: String = AppMessages.noInternet) {
+    open func setNoConnectionViewVisibity(to: Bool, withMessage: String = AppMessages.noInternet) {
         RJS_Utils.executeInMainTread { [weak self] in
             guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
             let value = !to
@@ -131,7 +131,7 @@ open class GenericView: UIViewController {
         }
     }
     
-    public func prepareLayout() { AppLogger.log(appCode: .notImplemented) }
+    open func prepareLayout() { AppLogger.log(appCode: .notImplemented) }
     func keyboardDidShow() { }
     func keyboardDidHide() { }
     func dismissKeyboard() { }

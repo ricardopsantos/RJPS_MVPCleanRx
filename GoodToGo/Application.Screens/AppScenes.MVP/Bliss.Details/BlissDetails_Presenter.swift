@@ -151,7 +151,7 @@ extension P.BlissDetails_Presenter: GenericTableView_Protocol {
                 onNext: { [weak self] _ in
                     guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
                     strongSelf.genericView?.setActivityState(false)
-                    strongSelf.genericView?.displayMessage(AppMessages.sucess, type: .sucess)
+                    strongSelf.genericView?.displayMessage(AppMessages.success, type: .sucess)
                 },
                 onError: { [weak self] error in
                     guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
@@ -198,7 +198,7 @@ extension P.BlissDetails_Presenter {
     
     private func viewModelChanged() {
         guard viewModel != nil, viewModel?.question != nil else {
-            AppLogger.log(appCode: AppEnuns.AppCodes.notPredicted)
+            AppLogger.log(appCode: AppCodes.notPredicted)
             return
         }
         view.set(title: (viewModel!.question!.question.description))

@@ -6,10 +6,24 @@
 //
 
 import UIKit
+import Foundation
+//
+import RJPSLib
+import RxSwift
+import RxCocoa
+import Swinject
+//
+import AppResources
+import UIBase
+import AppTheme
+import AppConstants
+import Extensions
+import DevTools
+import PointFreeFunctions
 
 extension VC {
 
-    public class MVVMSampleView_ViewController: GenericView, MVVMSampleView_ViewControllerProtocol {
+    class MVVMSampleView_ViewController: GenericView, MVVMSampleView_ViewControllerProtocol {
 
         var viewModel: MVVMSampleView_ViewModelProtocol?
         lazy var viewModelView: MVVMSampleView_ViewProtocol = {
@@ -20,7 +34,7 @@ extension VC {
             return some
         }()
   
-        override func loadView() {
+        public override func loadView() {
             super.loadView()
             view.accessibilityIdentifier = AppConstants_UITests.UIViewControllers.genericAccessibilityIdentifier(self)
             rxSetup()

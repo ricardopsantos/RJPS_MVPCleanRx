@@ -6,16 +6,23 @@
 //
 
 import UIKit
+import Foundation
 //
+import RJPSLib
 import RxSwift
 import RxCocoa
-import RJPSLib
+import Swinject
 //
+import AppResources
+import UIBase
+import AppTheme
 import AppConstants
+import Extensions
+import DevTools
 import PointFreeFunctions
 
 public extension AppView {
-    open class SearchUser_View: GenericView {
+    internal class SearchUser_View: GenericView {
         
         deinit {
             AppLogger.log("\(self.className) was killed")
@@ -24,7 +31,7 @@ public extension AppView {
         }
         var presenter: SearchUser_PresenterProtocol!
         
-        private lazy var _topGenericView: V.TopBar = {
+        private lazy var _topGenericView: UIBase.V.TopBar = {
             let some = AppFactory.UIKit.topBar(baseController: self)
             some.setTitle("Search GitHub user")
             return some
@@ -55,7 +62,7 @@ public extension AppView {
             return some
         }()
         
-        override func loadView() {
+        public override func loadView() {
             super.loadView()
             presenter.generic?.loadView()
             view.accessibilityIdentifier = AppConstants_UITests.UIViewControllers.genericAccessibilityIdentifier(self)
@@ -76,24 +83,24 @@ public extension AppView {
             
         }
         
-        override func viewDidLoad() {
+        open override func viewDidLoad() {
             super.viewDidLoad()
             prepareLayout()
             presenter.generic?.viewDidLoad()
         }
         
-        override func viewWillAppear(_ animated: Bool) {
+        open override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             presenter.generic?.viewWillAppear()
         }
         
-        override func viewDidAppear(_ animated: Bool) {
+        open override func viewDidAppear(_ animated: Bool) {
             super.viewDidAppear(animated)
             presenter.generic?.viewDidAppear()
             _searchBar.becomeFirstResponder()
         }
         
-        override func prepareLayout() {
+        open override func prepareLayout() {
             super.prepareLayout()
             self.view.backgroundColor = AppColors.appDefaultBackgroundColor
             _topGenericView.lazyLoad()
