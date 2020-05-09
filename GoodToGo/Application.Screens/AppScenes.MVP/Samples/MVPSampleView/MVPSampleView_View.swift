@@ -73,10 +73,10 @@ extension AppView {
             some.rjsALayouts.setHeight(_margin*2)
             some.onTouchUpInside { [weak self] in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                    let user = strongSelf._txtUser.text
-                    let pass = strongSelf._txtPass.text
-                    strongSelf.presenter.userDidTryToLoginWith(user: user!, password: pass!)
+                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    let user = self._txtUser.text
+                    let pass = self._txtPass.text
+                    self.presenter.userDidTryToLoginWith(user: user!, password: pass!)
                 })
             }
             return some
@@ -104,8 +104,8 @@ extension AppView {
             some.rjsALayouts.setHeight(_margin*2)
             some.onTouchUpInside { [weak self] in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                    strongSelf.presenter.router.presentControllerWith(vm: nil)
+                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    self.presenter.router.presentControllerWith(vm: nil)
                 })
             }
             return some
@@ -119,8 +119,8 @@ extension AppView {
             some.rjsALayouts.setHeight(_margin*2)
             some.onTouchUpInside { [weak self] in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                    strongSelf.presenter.router.dismissView()
+                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    self.presenter.router.dismissView()
                 })
             }
             return some

@@ -104,8 +104,8 @@ extension V.BlissRoot_View: BlissRoot_ViewProtocol {
     func viewNeedsToDisplayBadServerMessage() {
         let alert = UIAlertController(title: "", message: AppMessages.Bliss.serverDown, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: AppMessages.ok, style: .default, handler: { [weak self] _ in
-            guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-            strongSelf.presenter.userDidReadBadServerHealthMessage()
+            guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+            self.presenter.userDidReadBadServerHealthMessage()
         }))
         self.present(alert, animated: true, completion: nil)
     }

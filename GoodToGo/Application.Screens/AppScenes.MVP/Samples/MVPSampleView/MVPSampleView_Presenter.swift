@@ -68,11 +68,11 @@ extension P.MVPSampleView_Presenter: MVPSampleView_PresenterProtocol {
         AppLogger.log("\(user) | \(password)")
         genericView?.setActivityState(true)
         sample_UseCase.operation1(canUseCache: false) { [weak self] (result) in
-            guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-            strongSelf.genericView?.setActivityState(false)
+            guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+            self.genericView?.setActivityState(false)
             switch result {
-            case .success(let some): strongSelf.viewModel = VM.MVPSampleView_ViewModel(someString: "\(some)")
-            case .failure          : strongSelf.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
+            case .success(let some): self.viewModel = VM.MVPSampleView_ViewModel(someString: "\(some)")
+            case .failure          : self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
             }
         }
     }

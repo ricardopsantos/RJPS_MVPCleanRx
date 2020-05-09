@@ -86,8 +86,8 @@ extension P.MVPSampleRxView_Presenter: MVPSampleRxView_PresenterProtocol {
     func rxObservable_doAssynTask(user: String, password: String) -> Observable<String> {
         return Observable.create { [weak self] observer -> Disposable in
             AppLogger.log("Creating observable...")
-            if let strongSelf = self {
-                strongSelf.sample_UseCase.operation1(canUseCache: true) { (result) in
+            if let self = self {
+                self.sample_UseCase.operation1(canUseCache: true) { (result) in
                     switch result {
                     case .success(let some): observer.onNext("\(some)")
                     case .failure(let error) : observer.onError(error)

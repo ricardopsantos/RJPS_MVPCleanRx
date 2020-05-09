@@ -103,23 +103,23 @@ extension P.SearchUser_Presenter: GenericPresenter_Protocol {
         Observable.zip(_rxPublishRelay_userInfo, _rxPublishRelay_userFriends, resultSelector: { return ($0, $1) })
             .observeOn(MainScheduler.instance)
             .subscribe( onNext: { [weak self] in
-                guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                strongSelf.genericView?.setActivityState(false)
+                guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                self.genericView?.setActivityState(false)
                 guard $0 != nil && $1 != nil else {
-                    self?.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
+                    self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
                     return
                 }
                 let vm = VM.UserDetais(user: $0!, friends: $1!)
-                strongSelf.router.presentUserDetails(vm: vm)
+                self.router.presentUserDetails(vm: vm)
             })
             .disposed(by: disposeBag)
         
         rxPublishRelay_error.asObservable()
             .subscribe(onNext: { [weak self] in
-                guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                strongSelf.genericView?.setActivityState(false)
+                guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                self.genericView?.setActivityState(false)
                 let localizableMessageForView = ($0 as NSError).localizableMessageForView
-                strongSelf.genericView?.displayMessage(localizableMessageForView, type: .error)
+                self.genericView?.displayMessage(localizableMessageForView, type: .error)
             })
             .disposed(by: disposeBag)
     }
@@ -142,14 +142,14 @@ extension P.SearchUser_Presenter {
     
     private func rxObservable_getUserInfo(for username: String) -> Observable<Bool?> {
         return Observable.create { [weak self] _ -> Disposable in
-            if let strongSelf = self {
-                strongSelf.useCase_1.getInfoOfUserWith(userName: username, canUseCache: true) { [weak self] result in
-                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
+            if let self = self {
+                self.useCase_1.getInfoOfUserWith(userName: username, canUseCache: true) { [weak self] result in
+                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                     switch result {
-                    case .success(let some): strongSelf._rxPublishRelay_userInfo.accept(some)
+                    case .success(let some): self._rxPublishRelay_userInfo.accept(some)
                     case .failure(let error):
-                        strongSelf._rxPublishRelay_userInfo.accept(nil)
-                        strongSelf.rxPublishRelay_error.accept(error)
+                        self._rxPublishRelay_userInfo.accept(nil)
+                        self.rxPublishRelay_error.accept(error)
                     }
                 }
             } else {
@@ -162,14 +162,14 @@ extension P.SearchUser_Presenter {
     
     private func rxObservable_getUserFriends(for username: String) -> Observable<Bool?> {
         return Observable.create { [weak self] _ -> Disposable in
-            if let strongSelf = self {
-                strongSelf.useCase_1.getFriendsOfUserWith(userName: username, canUseCache: true, completionHandler: { [weak self] result in
-                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
+            if let self = self {
+                self.useCase_1.getFriendsOfUserWith(userName: username, canUseCache: true, completionHandler: { [weak self] result in
+                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                     switch result {
-                    case .success(let some) : strongSelf._rxPublishRelay_userFriends.accept(some)
+                    case .success(let some) : self._rxPublishRelay_userFriends.accept(some)
                     case .failure(let error):
-                        strongSelf._rxPublishRelay_userFriends.accept(nil)
-                        strongSelf.rxPublishRelay_error.accept(error)
+                        self._rxPublishRelay_userFriends.accept(nil)
+                        self.rxPublishRelay_error.accept(error)
                     }
                 })
             } else {

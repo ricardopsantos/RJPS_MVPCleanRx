@@ -120,8 +120,8 @@ extension P.BlissQuestionsList_Presenter: BlissQuestionsList_PresenterProtocol {
     
     func rxObservable_GetList(filter: String, offSet: Int) -> Observable<[E.Bliss.QuestionElement]> {
         return Single.create { [weak self] observer -> Disposable in
-            if let strongSelf = self {
-                strongSelf.blissQuestions_UseCase.getQuestions(limit: 10, filter: filter, offSet: offSet, checkHealth: true, completionHandler: { (result) in
+            if let self = self {
+                self.blissQuestions_UseCase.getQuestions(limit: 10, filter: filter, offSet: offSet, checkHealth: true, completionHandler: { (result) in
                     switch result {
                     //case .success(let questionsList): observer.onNext(questionsList)
                     //case .failure(let error) : observer.onError(error)
@@ -192,18 +192,18 @@ extension P.BlissQuestionsList_Presenter {
             .throttle(.milliseconds(AppConstants.Rx.servicesDefaultThrottle), scheduler: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] questionsList in
-                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                    if strongSelf._lastOffSet == 0 {
-                        strongSelf.viewModel?.questionsList = questionsList
+                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    if self._lastOffSet == 0 {
+                        self.viewModel?.questionsList = questionsList
                     } else {
-                        strongSelf.viewModel?.questionsList.append(contentsOf: questionsList)
+                        self.viewModel?.questionsList.append(contentsOf: questionsList)
                     }
-                    strongSelf.genericView?.setActivityState(false)
+                    self.genericView?.setActivityState(false)
                 },
                 onError: { [weak self] error in
-                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                    strongSelf.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
-                    strongSelf.genericView?.setActivityState(false)
+                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
+                    self.genericView?.setActivityState(false)
                 }
             )
             .disposed(by: disposeBag)
@@ -237,8 +237,8 @@ extension P.BlissQuestionsList_Presenter {
         
         reachabilityService.reachability.subscribe(
             onNext: { [weak self] some in
-                guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                strongSelf.genericView?.setNoConnectionViewVisibity(to: !some.reachable)
+                guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                self.genericView?.setNoConnectionViewVisibity(to: !some.reachable)
             }
             ).disposed(by: disposeBag)
     }

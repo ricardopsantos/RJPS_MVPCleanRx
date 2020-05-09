@@ -80,8 +80,8 @@ open class GenericView: UIViewController {
         let tapGesture = UITapGestureRecognizer()
         some.addGestureRecognizer(tapGesture)
         tapGesture.rx.event.bind(onNext: { [weak self] _ in
-            guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-            strongSelf.setTopMessageVisibityTo(state: false, message: "", type: .sucess)
+            guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+            self.setTopMessageVisibityTo(state: false, message: "", type: .sucess)
         }).disposed(by: disposeBag)
         return some
     }()
@@ -117,13 +117,13 @@ open class GenericView: UIViewController {
     
     open func setNoConnectionViewVisibity(to: Bool, withMessage: String = AppMessages.noInternet) {
         RJS_Utils.executeInMainTread { [weak self] in
-            guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
+            guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
             let value = !to
             let duration = 0.5
-            strongSelf._lblReachability.text = withMessage
-            strongSelf._lblReachability.fadeTo(value ? 0 : 0.95, duration: duration)
-            strongSelf._lblReachability.rjsALayouts.updateConstraint(strongSelf._lblReachabilityDistanceFromTop!,
-                                                               toValue: value ? -strongSelf._lblReachabilityHeight : strongSelf._margin,
+            self._lblReachability.text = withMessage
+            self._lblReachability.fadeTo(value ? 0 : 0.95, duration: duration)
+            self._lblReachability.rjsALayouts.updateConstraint(self._lblReachabilityDistanceFromTop!,
+                                                               toValue: value ? -self._lblReachabilityHeight : self._margin,
                                                                duration: duration,
                                                                completion: { (_) in
                                                                 
@@ -175,25 +175,25 @@ extension GenericView {
             _lblMessageTimmer = nil
         }
         RJS_Utils.executeInMainTread { [weak self] in
-            guard let strongSelf1 = self else { AppLogger.log(appCode: .referenceLost); return }
+            guard let self1 = self else { AppLogger.log(appCode: .referenceLost); return }
             let value = !state
             let duration = 0.5
             if state {
-                strongSelf1._lblMessage.text = message
+                self1._lblMessage.text = message
                 switch type {
-                case .sucess : strongSelf1._lblMessage.backgroundColor = UIColor.App.success
-                case .warning: strongSelf1._lblMessage.backgroundColor = UIColor.App.warning
-                case .error  : strongSelf1._lblMessage.backgroundColor = UIColor.App.error
+                case .sucess : self1._lblMessage.backgroundColor = UIColor.App.success
+                case .warning: self1._lblMessage.backgroundColor = UIColor.App.warning
+                case .error  : self1._lblMessage.backgroundColor = UIColor.App.error
                 }
             }
-            strongSelf1._lblMessage.fadeTo(value ? 0 : 0.95, duration: duration)
-            strongSelf1._lblMessage.rjsALayouts.updateConstraint(strongSelf1._lblMessageDistanceFromTop!,
-                                                                     toValue: value ? -strongSelf1._lblMessageHeight : strongSelf1._margin,
+            self1._lblMessage.fadeTo(value ? 0 : 0.95, duration: duration)
+            self1._lblMessage.rjsALayouts.updateConstraint(self1._lblMessageDistanceFromTop!,
+                                                                     toValue: value ? -self1._lblMessageHeight : self1._margin,
                                                                      duration: duration,
                                                                      completion: { (_) in
             })
             
-            strongSelf1._lblMessageTimmer = Timer.scheduledTimer(timeInterval: 3, target: strongSelf1, selector: #selector(strongSelf1.hideTopMessage), userInfo: nil, repeats: false)
+            self1._lblMessageTimmer = Timer.scheduledTimer(timeInterval: 3, target: self1, selector: #selector(self1.hideTopMessage), userInfo: nil, repeats: false)
 
         }
     }

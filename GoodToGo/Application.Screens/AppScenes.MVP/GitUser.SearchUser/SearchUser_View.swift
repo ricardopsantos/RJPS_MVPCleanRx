@@ -47,15 +47,15 @@ public extension AppView {
                 .orEmpty
                 .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
                 .subscribe(onNext: { [weak self] _ in
-                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                    strongSelf.presenter.searchUserWith(username: some.text ?? "")
+                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    self.presenter.searchUserWith(username: some.text ?? "")
                 })
                 .disposed(by: disposeBag)
             some.rx.textDidEndEditing
                 .subscribe(onNext: { [weak self] (_) in
-                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                    if strongSelf._searchBar.text!.count>0 {
-                        strongSelf.presenter.searchUserWith(username: some.text ?? "")
+                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    if self._searchBar.text!.count>0 {
+                        self.presenter.searchUserWith(username: some.text ?? "")
                     }
                 })
                 .disposed(by: self.disposeBag)

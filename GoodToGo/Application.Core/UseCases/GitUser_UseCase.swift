@@ -40,12 +40,12 @@ extension UseCases {
             }
             
             repositoryNetwork.getInfoOfUserWith(userName: userName, canUseCache: true, completionHandler: { [weak self] result in
-                guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
+                guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                 switch result {
                 case .success(let some):
                     let user: E.GitHubUser = some.entity
                     completionHandler(Result.success(user))
-                    strongSelf.generic_CacheRepositoryProtocol.add(object: some.entity as AnyObject, withKey: cacheKey)
+                    self.generic_CacheRepositoryProtocol.add(object: some.entity as AnyObject, withKey: cacheKey)
                 case .failure(let error):
                     completionHandler(Result.failure(error))
                 }
@@ -71,12 +71,12 @@ extension UseCases {
             }
             
             repositoryNetwork.getFriendsOfUserWith(userName: userName, canUseCache: true, completionHandler: { [weak self] result in
-                guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
+                guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                 switch result {
                 case .success(let some):
                     let friends: [E.GitHubUser] = some.entity
                     completionHandler(Result.success(friends))
-                    strongSelf.generic_CacheRepositoryProtocol.add(object: some.entity as AnyObject, withKey: cacheKey)
+                    self.generic_CacheRepositoryProtocol.add(object: some.entity as AnyObject, withKey: cacheKey)
                 case .failure(let error):
                     completionHandler(Result.failure(error))
                 }

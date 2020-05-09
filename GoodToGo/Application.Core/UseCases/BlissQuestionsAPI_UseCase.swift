@@ -47,8 +47,8 @@ extension UseCases {
         
         func shareQuestionBy(email: String, url: String, checkHealth: Bool, completionHandler: @escaping (Result<E.Bliss.ShareByEmail>) -> Void) {
             let doWork = { [weak self] in
-                guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                strongSelf.repositoryNetwork.shareQuestionBy(email: email, url: url, completionHandler: { (result) in
+                guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                self.repositoryNetwork.shareQuestionBy(email: email, url: url, completionHandler: { (result) in
                     switch result {
                     case .success(let some): completionHandler(Result.success(some.entity))
                     case .failure(let error): completionHandler(Result.failure(error))
@@ -73,8 +73,8 @@ extension UseCases {
         func updateQuestion(question: E.Bliss.QuestionElement, checkHealth: Bool, completionHandler: @escaping (Result<E.Bliss.QuestionElement>) -> Void) {
             
             let doWork = { [weak self] in
-                guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                strongSelf.repositoryNetwork.updateQuestion(question: question, completionHandler: { (result) in
+                guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                self.repositoryNetwork.updateQuestion(question: question, completionHandler: { (result) in
                     switch result {
                     case .success(let some) : completionHandler(Result.success(some.entity))
                     case .failure(let error): completionHandler(Result.failure(error))
@@ -99,8 +99,8 @@ extension UseCases {
         func getQuestions(limit: Int, filter: String, offSet: Int, checkHealth: Bool=true, completionHandler: @escaping (Result<[E.Bliss.QuestionElement]>) -> Void) {
             
             let doWork = { [weak self] in
-                guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                strongSelf.repositoryNetwork.getQuestions(limit: limit, filter: filter, offSet: offSet, completionHandler: { (result) in
+                guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                self.repositoryNetwork.getQuestions(limit: limit, filter: filter, offSet: offSet, completionHandler: { (result) in
                     switch result {
                     case .success(let some): completionHandler(Result.success(some.entity))
                     case .failure(let error): completionHandler(Result.failure(error))
@@ -127,8 +127,8 @@ extension UseCases {
         func getQuestionBy(id: Int, checkHealth: Bool=true, completionHandler: @escaping (Result<E.Bliss.QuestionElement>) -> Void) {
             
             let doWork = { [weak self] in
-                guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                strongSelf.repositoryNetwork.getQuestionBy(id: id, completionHandler: { (result) in
+                guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                self.repositoryNetwork.getQuestionBy(id: id, completionHandler: { (result) in
                     switch result {
                     case .success(let some): completionHandler(Result.success(some.entity))
                     case .failure(let error): completionHandler(Result.failure(error))
@@ -154,8 +154,8 @@ extension UseCases {
         func makeQuestion(question: E.Bliss.QuestionElement, checkHealth: Bool=true, completionHandler: @escaping (Result<E.Bliss.QuestionElement>) -> Void) {
             
             let doWork = { [weak self] in
-                guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                strongSelf.repositoryNetwork.makeQuestion(question: question, completionHandler: { (result) in
+                guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                self.repositoryNetwork.makeQuestion(question: question, completionHandler: { (result) in
                     switch result {
                     case .success(let some): completionHandler(Result.success(some.entity))
                     case .failure(let error): completionHandler(Result.failure(error))

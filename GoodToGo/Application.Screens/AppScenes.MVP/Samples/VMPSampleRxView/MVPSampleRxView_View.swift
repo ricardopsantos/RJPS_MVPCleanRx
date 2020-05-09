@@ -87,8 +87,8 @@ extension AppView {
             some.rx.tap
                 .subscribe({ [weak self] _ in
                     some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                        guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                        strongSelf.presenter.userDidTryToLoginWith(user: strongSelf._txtUser.text!, password: strongSelf._txtPass.text!)
+                        guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                        self.presenter.userDidTryToLoginWith(user: self._txtUser.text!, password: self._txtPass.text!)
                     })
                 })
                 .disposed(by: disposeBag)
@@ -109,10 +109,10 @@ extension AppView {
             some.rjsALayouts.setHeight(_margin*2)
             some.rx.tap.subscribe({ [weak self] _ in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                    let someString = "[\(strongSelf._txtUser.text ?? "")][\(strongSelf._txtPass.text ?? "")]"
+                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    let someString = "[\(self._txtUser.text ?? "")][\(self._txtPass.text ?? "")]"
                     let vm = VM.MVPSampleRxView_ViewModel(someString: someString )
-                    strongSelf.presenter.router.presentControllerWith(vm: vm)
+                    self.presenter.router.presentControllerWith(vm: vm)
                 })
             })
             .disposed(by: disposeBag)
@@ -127,8 +127,8 @@ extension AppView {
             some.rjsALayouts.setHeight(_margin*2)
             some.rx.tap.subscribe({ [weak self] _ in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                    strongSelf.presenter.router.dismissView()
+                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    self.presenter.router.dismissView()
                 })
             })
             .disposed(by: disposeBag)

@@ -67,8 +67,8 @@ extension AppView {
             some.rjsALayouts.setHeight(50)
             some.rx.tap.subscribe({ [weak self] _ in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                    strongSelf.presenter.userDidPretendToShareInApp()
+                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    self.presenter.userDidPretendToShareInApp()
                 })
             })
             .disposed(by: disposeBag)
@@ -84,8 +84,8 @@ extension AppView {
             some.rx.tap
                     .subscribe({ [weak self] _ in
                     some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                        guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                        strongSelf.presenter.userDidPretendToShareByEmail()
+                        guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                        self.presenter.userDidPretendToShareByEmail()
                     })
                 })
                 .disposed(by: disposeBag)
@@ -121,9 +121,9 @@ extension AppView {
             some.register(Sample_TableViewCell.self, forCellReuseIdentifier: Sample_TableViewCell.reuseIdentifier)
             some.rx.modelSelected(E.Bliss.ChoiceElement.self)
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)                  .subscribe(onNext: { [weak self]  item in
-                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
+                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                     AppLogger.log("Tapped [\(item)]")
-                    strongSelf.presenter.tableView.didSelect(object: item)
+                    self.presenter.tableView.didSelect(object: item)
                     if let index = some.indexPathForSelectedRow {
                         some.deselectRow(at: index, animated: true)
                     }
@@ -131,9 +131,9 @@ extension AppView {
                 .disposed(by: disposeBag)
             _rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
                 _ = element
-                guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
+                guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                 cell.set(textColor: AppColors.lblTextColor)
-                strongSelf.presenter.tableView.configure(cell: cell, indexPath: NSIndexPath(row: row, section: 0) as IndexPath)
+                self.presenter.tableView.configure(cell: cell, indexPath: NSIndexPath(row: row, section: 0) as IndexPath)
                 }.disposed(by: disposeBag)
             return some
         }()

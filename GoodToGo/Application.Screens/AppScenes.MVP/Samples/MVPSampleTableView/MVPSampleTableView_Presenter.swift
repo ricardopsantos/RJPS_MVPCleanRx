@@ -149,20 +149,20 @@ extension P.MVPSampleTableView_Presenter {
         
         reachabilityService.reachability.subscribe(
             onNext: { [weak self] some in
-                guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                strongSelf.view.setNetworkViewVisibilityTo(some.reachable)
+                guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                self.view.setNetworkViewVisibilityTo(some.reachable)
             }
             ).disposed(by: disposeBag)
         
         rxObservable_GetEmployees()
             .subscribe(
                 onNext: { [weak self] employeeList in
-                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                    strongSelf.viewModel?.employeesList = employeeList
+                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    self.viewModel?.employeesList = employeeList
                 },
                 onError: { [weak self] error in
-                    guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                    strongSelf.genericView?.displayMessage(error.localizedDescription, type: .error)
+                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    self.genericView?.displayMessage(error.localizedDescription, type: .error)
                 }
             )
             .disposed(by: disposeBag)

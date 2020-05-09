@@ -60,8 +60,8 @@ extension P.BlissRoot_Presenter: BlissRoot_PresenterProtocol {
     
     func userDidReadBadServerHealthMessage() {
         DispatchQueue.executeWithDelay(delay: AppConstants.defaultAnimationsTime) { [weak self] in
-            guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-            strongSelf.checkServerStatus()
+            guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+            self.checkServerStatus()
         }
     }
     
@@ -103,17 +103,17 @@ extension P.BlissRoot_Presenter {
         
         let delayToHaveTimeToEnjoyMainScreen: Double = 2
         DispatchQueue.executeWithDelay(delay: delayToHaveTimeToEnjoyMainScreen) { [weak self] in
-            guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
+            guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
 
-            let handleFail = { strongSelf.view.viewNeedsToDisplayBadServerMessage() }
+            let handleFail = { self.view.viewNeedsToDisplayBadServerMessage() }
             
             let handleSucess = { [weak self] in
-                guard let strongSelf = self else { AppLogger.log(appCode: .referenceLost); return }
-                strongSelf.router.goToList(asNavigationController: true)
+                guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                self.router.goToList(asNavigationController: true)
             }
-            strongSelf.genericView?.setActivityState(true)
-            strongSelf.blissQuestions_UseCase.getHealth { (some) in
-                strongSelf.genericView?.setActivityState(false)
+            self.genericView?.setActivityState(true)
+            self.blissQuestions_UseCase.getHealth { (some) in
+                self.genericView?.setActivityState(false)
                 switch some {
                 case .success(let some):
                     if some.isOK {
