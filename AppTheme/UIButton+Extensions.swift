@@ -30,14 +30,8 @@ public extension UIButton {
         self.isUserInteractionEnabled = enabled
         self.alpha = enabled ? 1.0 : 0.6
     }
-}
 
-//
-// Private
-//
-extension UIButton {
-    
-    private func apply(style: UIButton.LayoutStyle) {
+    func apply(style: UIButton.LayoutStyle) {
         let regular = {
             self.titleLabel?.font = UIFont.App.regular(size: .big)
             self.backgroundColor  = UIColor.App.btnBackgroundColor
@@ -58,12 +52,12 @@ extension UIButton {
             self.titleLabel?.font = UIFont.App.regular(size: .regular)
             self.backgroundColor  = UIColor.App.btnBackgroundColor
             self.setTextColorForAllStates(UIColor.App.btnTextColor)
-            self.setTitleForAllStates(AppResources.Messages.dismiss)
+            self.setTitleForAllStates(AppResources.Messages.dismiss.localised)
             self.setState(enabled: true)
             self.layer.cornerRadius = 4.0
             self.clipsToBounds      = true
         }
-                
+
         switch style {
         case .notApplied  : _ = 1
         case .regular     : regular()
@@ -71,5 +65,4 @@ extension UIButton {
         case .dismiss     : dismiss()
         }
     }
-    
 }

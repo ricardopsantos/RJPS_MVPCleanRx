@@ -116,7 +116,7 @@ open class GenericView: UIViewController {
         }
     }
     
-    open func setNoConnectionViewVisibity(to: Bool, withMessage: String = AppMessages.noInternet) {
+    open func setNoConnectionViewVisibility(to: Bool, withMessage: String = AppMessages.noInternet.localised) {
         RJS_Utils.executeInMainTread { [weak self] in
             guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
             let value = !to
@@ -151,7 +151,7 @@ open class GenericView: UIViewController {
     // ...
     //
     open func prepareLayoutCreateHierarchy() {
-        assert(false, message: "Override me! [prepareLayout.buildLayoutByAddingOrRemoveViews] function is deprecated!")
+        assert(false, message: "Override me!")
     }
 
     // What should this function be used for? Setup layout rules zone....
@@ -161,7 +161,7 @@ open class GenericView: UIViewController {
     // ...
     //
     open func prepareLayoutBySettingAutoLayoutsRules() {
-        assert(false, message: "Override me! [prepareLayout.setAutoLayoutsRules] function is deprecated!")
+        assert(false, message: "Override me!")
     }
 
     // What should this function be used for? Extra stuff zone (not included in [prepareLayoutCreateHierarchy]
@@ -172,11 +172,11 @@ open class GenericView: UIViewController {
     // label.textAlignment = .center
     // ...
     open func prepareLayoutByFinishingPrepareLayout() {
-        assert(false, message: "Override me! [prepareLayout.finishLayoutPrepare] function is deprecated!")
+        assert(false, message: "Override me!")
     }
 
     open func setupViewUIRx() {
-        assert(false, message: "Override me! [prepareLayout.finishLayoutPrepare] function is deprecated!")
+        assert(false, message: "Override me!")
     }
 
 }

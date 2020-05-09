@@ -39,7 +39,7 @@ extension AppView {
         private lazy var _topGenericView: TopBar = {
             let some = AppFactory.UIKit.topBar(baseController: self)
             some.setTitle(AppMessages.Bliss.appName)
-            some.setTitle(AppMessages.details)
+            some.setTitle(AppMessages.details.localised)
             some.addBackButton()
             some.rxSignal_btnDismissTapped
                 .asObservable()

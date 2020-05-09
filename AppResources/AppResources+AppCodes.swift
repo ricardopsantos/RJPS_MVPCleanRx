@@ -25,7 +25,7 @@ public extension AppResources {
         //
         // For Dev Team
         //
-        public var localizedMessageForDevTeam: String {
+        public var localisedMessageForDevTeam: String {
             switch self {
             case .noInternet              : return "Dev : No internet"
             case .invalidURL              : return "Dev : Invalid url"
@@ -34,8 +34,8 @@ public extension AppResources {
             case .parsingError            : return "Dev : Parse error"
             case .ignored                 : return "Dev : Ignored"
             case .vmChanged               : return "Dev : ViewModel changed"
-            case .dequeueReusableCellFail : return "Dev : Ignored"
-            case .unknownError            : return "Dev : Unknow error"
+            case .dequeueReusableCellFail : return "Dev : dequeueReusableCellFail"
+            case .unknownError            : return "Dev : Unknown error"
             case .referenceLost           : return "Dev : Reference lost"
             }
         }
@@ -43,19 +43,19 @@ public extension AppResources {
         //
         // For end users
         //
-        public var localizedMessageForView: String {
+        public var localisedMessageForView: String {
             switch self {
-            case .noInternet              : return AppResources.Messages.noInternet
-            case .invalidURL              : return AppResources.Messages.invalidURL
+            case .noInternet              : return AppResources.Messages.noInternet.localised
+            case .invalidURL              : return AppResources.Messages.invalidURL.localised
 
-            case .notImplemented          : return AppResources.Messages.pleaseTryAgainLater
-            case .notPredicted            : return AppResources.Messages.pleaseTryAgainLater
-            case .parsingError            : return AppResources.Messages.pleaseTryAgainLater
-            case .ignored                 : return AppResources.Messages.pleaseTryAgainLater
-            case .vmChanged               : return AppResources.Messages.pleaseTryAgainLater
-            case .dequeueReusableCellFail : return AppResources.Messages.pleaseTryAgainLater
-            case .unknownError            : return AppResources.Messages.pleaseTryAgainLater
-            case .referenceLost           : return AppResources.Messages.pleaseTryAgainLater
+            case .notImplemented          : return AppResources.Messages.pleaseTryAgainLater.localised
+            case .notPredicted            : return AppResources.Messages.pleaseTryAgainLater.localised
+            case .parsingError            : return AppResources.Messages.pleaseTryAgainLater.localised
+            case .ignored                 : return AppResources.Messages.pleaseTryAgainLater.localised
+            case .vmChanged               : return AppResources.Messages.pleaseTryAgainLater.localised
+            case .dequeueReusableCellFail : return AppResources.Messages.pleaseTryAgainLater.localised
+            case .unknownError            : return AppResources.Messages.pleaseTryAgainLater.localised
+            case .referenceLost           : return AppResources.Messages.pleaseTryAgainLater.localised
             }
         }
     }

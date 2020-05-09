@@ -107,11 +107,11 @@ extension P.BlissDetails_Presenter: BlissDetails_PresenterProtocol {
                 if some.sucess {
                     self.genericView?.displayMessage(AppMessages.Bliss.sharedWithSucess, type: .sucess)
                 } else {
-                    self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
+                    self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error)
                 }
             case .failure(let error):
                 AppLogger.error(error)
-                self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
+                self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error)
             }
         }
     }
@@ -151,11 +151,11 @@ extension P.BlissDetails_Presenter: GenericTableView_Protocol {
                 onNext: { [weak self] _ in
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                     self.genericView?.setActivityState(false)
-                    self.genericView?.displayMessage(AppMessages.success, type: .sucess)
+                    self.genericView?.displayMessage(AppMessages.success.localised, type: .sucess)
                 },
                 onError: { [weak self] error in
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-                    self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
+                    self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error)
                     self.genericView?.setActivityState(false)
                 }
             )
@@ -223,7 +223,7 @@ extension P.BlissDetails_Presenter {
                         guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                         switch result {
                         case .success(let some): self.viewModel!.question = some
-                        case .failure          : self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
+                        case .failure          : self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error)
                         }
                     }
                     return true
@@ -247,7 +247,7 @@ extension P.BlissDetails_Presenter {
         reachabilityService.reachability.subscribe(
             onNext: { [weak self] some in
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-                self.genericView?.setNoConnectionViewVisibity(to: !some.reachable)
+                self.genericView?.setNoConnectionViewVisibility(to: !some.reachable)
             }
             ).disposed(by: disposeBag)
     }

@@ -106,7 +106,7 @@ extension P.SearchUser_Presenter: GenericPresenter_Protocol {
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                 self.genericView?.setActivityState(false)
                 guard $0 != nil && $1 != nil else {
-                    self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
+                    self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error)
                     return
                 }
                 let vm = VM.UserDetais(user: $0!, friends: $1!)

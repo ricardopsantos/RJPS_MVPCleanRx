@@ -13,3 +13,4 @@ public struct AppResources {
 }
 
 public typealias AppCodes = AppResources.AppCodes
+public typealias AppMessages = AppResources.Messages

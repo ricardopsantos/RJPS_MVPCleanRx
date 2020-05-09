@@ -23,15 +23,8 @@ public extension UILabel {
         set { fadeTransition(); self.text = newValue ?? "" }
         get { return self.text }
     }
-}
 
-//
-// Private
-//
-
-extension UILabel {
-    
-    private func apply(style: UILabel.LayoutStyle) {
+    func apply(style: UILabel.LayoutStyle) {
         let title = {
             self.backgroundColor = .clear
             self.textColor       = UIColor.App.TopBar.titleColor
@@ -50,6 +43,13 @@ extension UILabel {
         case .value      : value()
         }
     }
+}
+
+//
+// Private
+//
+
+extension UILabel {
     
     private func fadeTransition(_ duration: CFTimeInterval=0.5) {
         let animation = CATransition()

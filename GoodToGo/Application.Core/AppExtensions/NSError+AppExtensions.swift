@@ -34,7 +34,7 @@ extension NSError {
         }
 
         if let appCode = AppCodes(rawValue: self.code) {
-            return appCode.localizedMessageForView
+            return appCode.localisedMessageForView
         }
         return self.localizedDescription + (self.localizedRecoverySuggestion ?? "")
     }

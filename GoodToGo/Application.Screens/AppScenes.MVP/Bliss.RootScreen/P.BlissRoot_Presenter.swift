@@ -133,7 +133,7 @@ extension P.BlissRoot_Presenter {
         reachabilityService.reachability.subscribe(
             onNext: { [weak self] some in
                     if some.reachable {
-                        self?.genericView?.setNoConnectionViewVisibity(to: false)
+                        self?.genericView?.setNoConnectionViewVisibility(to: false)
                         self?.rxObservableAssyncRequest
                             .subscribe(
                                 onNext: { [weak self] some in self?.view.set(image: some); self?.checkServerStatus() },
@@ -141,7 +141,7 @@ extension P.BlissRoot_Presenter {
                             )
                             .disposed(by: self!.disposeBag)
                     } else {
-                        self?.genericView?.setNoConnectionViewVisibity(to: true)
+                        self?.genericView?.setNoConnectionViewVisibility(to: true)
                         self?.view.set(image: AppImages.notInternet)
                     }
             }

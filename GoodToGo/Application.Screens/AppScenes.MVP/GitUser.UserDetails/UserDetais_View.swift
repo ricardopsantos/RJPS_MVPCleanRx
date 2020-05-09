@@ -65,7 +65,7 @@ extension AppView {
         
         private lazy var _topGenericBar: TopBar = {
             let some = AppFactory.UIKit.topBar(baseController: self)
-            some.setTitle(AppMessages.details)
+            some.setTitle(AppMessages.details.localised)
             some.addDismissButton()
             some.rxSignal_btnDismissTapped
                 .asObservable()

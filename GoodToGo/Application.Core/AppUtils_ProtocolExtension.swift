@@ -43,12 +43,12 @@ extension AppUtils_Protocol {
     }
     
     func assertExistsInternetConnection(sender: GenericView?,
-                                        message: String=AppMessages.noInternet,
+                                        message: String=AppMessages.noInternet.localised,
                                         block: @escaping () -> Void) {
 
         if !existsInternetConnection {
-            let title = AppResources.get("Alert")
-            let option = AppMessages.ok
+            let title  = AppMessages.alert.localised
+            let option = AppMessages.ok.localised
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: option, style: .default, handler: { action in
                 switch action.style {

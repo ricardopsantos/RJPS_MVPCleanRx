@@ -1,91 +1,37 @@
 //
-//  GoodToGo
+//  AppResources+Messages.swift
+//  AppResources
 //
-//  Created by Ricardo P Santos on 2019.
-//  Copyright © 2019 Ricardo P Santos. All rights reserved.
+//  Created by Ricardo Santos on 09/05/2020.
+//  Copyright © 2020 Ricardo P Santos. All rights reserved.
 //
 
-import UIKit
-//
-import RxSwift
-import RxCocoa
-import RJPSLib
-//
-import AppConstants
-import PointFreeFunctions
-import DevTools
+import Foundation
 
 public extension AppResources {
+    enum Messages: Int {
+        case noInternet = 0
+        case pleaseTryAgainLater
+        case dismiss
+        case alert
+        case ok
+        case success
+        case no
+        case details
+        case invalidURL
 
-    private init() {}
-
-    enum SelectedLanguage: Int { case en, pt }
-
-    static var selectedLanguage: SelectedLanguage = _storedLanguage {
-        didSet {
-            if selectedLanguage != _storedLanguage {
-                _currentLanguageBundle = nil
-                saveWith(key: AppConstants.Dev.keyCoreDataSaveLang, value: "\(selectedLanguage.rawValue)")
-                DevTools.AppLogger.warning("Language code changed to [\(selectedLanguage)]")
+        public var localised: String {
+            switch self {
+            case .noInternet: return get("NoInternetConnection")
+            case .pleaseTryAgainLater: return get("Please try again latter")
+            case .dismiss: return  get("Dismiss")
+            case .alert: return get("Alert")
+            case .ok: return get("OK")
+            case .success: return get("Success")
+            case .no: return get("NO")
+            case .details: return get("Details")
+            case .invalidURL: return get("Invalid URL")
             }
         }
-    }
-
-    static func get(_ code: String) -> String { return resource(code) }
-
-    struct Messages {
-        private init() {}
-        public static var noInternet: String { return get("NoInternetConnection") }
-        public static var pleaseTryAgainLater: String { return get("Please try again latter") }
-        public static var dismiss: String { return get("Dismiss") }
-        public static var alert: String { return get("Alert") }
-        public static var ok: String { return get("OK") }
-        public static var success: String { return get("Success") }
-        public static var no: String { return get("NO") }
-        public static var details: String { return get("Details") }
-        public static var invalidURL: String { return get("Invalid URL") }
-    }
-
-}
-
-// MARK:- Private
-
-public extension AppResources {
-
-    private static var _currentLanguageBundle: Bundle?
-    private static var _defaultLanguage: SelectedLanguage = .en
-    private static var _storedLanguage: SelectedLanguage {
-        if let storedLanguageString = getWith(key: AppConstants.Dev.keyCoreDataSaveLang) {
-            // We have a stored language!
-            if let storedLanguage = SelectedLanguage(rawValue: Int(storedLanguageString) ?? _defaultLanguage.rawValue ) {
-                return storedLanguage
-            }
-        }
-        return _defaultLanguage
-    }
-
-    private static func resource(_ code: String) -> String {
-        guard !code.isEmpty else { return "" }
-
-        if _currentLanguageBundle == nil {
-            var file = ""
-            switch selectedLanguage {
-            case .en: file = "en"
-            case .pt: file = "pt"
-            }
-            let path = Bundle.main.path(forResource: file, ofType: "lproj")
-            guard path != nil else {
-                assert(false, message: "Fail location resource")
-                return code
-            }
-
-            _currentLanguageBundle = Bundle(path: path!)
-            guard _currentLanguageBundle != nil else {
-                assert(false, message: "Fail location resource")
-                return code
-            }
-        }
-
-        return _currentLanguageBundle!.localizedString(forKey: code, value: nil, table: nil)
     }
 }

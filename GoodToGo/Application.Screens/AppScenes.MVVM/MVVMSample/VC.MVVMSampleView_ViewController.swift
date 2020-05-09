@@ -36,10 +36,9 @@ extension VC {
         public override func loadView() {
             super.loadView()
             view.accessibilityIdentifier = AppConstants_UITests.UIViewControllers.genericAccessibilityIdentifier(self)
-            rxSetup()
         }
         
-        func rxSetup() {
+        override func setupViewUIRx() {
             
             // Activity indicator
             viewModel?.rxPublishSubject_loading

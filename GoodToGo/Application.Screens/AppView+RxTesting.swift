@@ -268,11 +268,11 @@ extension AppView {
                     .subscribe(
                         onNext: { [weak self] _ in
                             self?.aux_log(message: "[Observable<T>][onNext]", showAlert: true, appendToTable: true)
-                            self?.displayMessage(AppMessages.ok, type: .sucess)
+                            self?.displayMessage(AppMessages.ok.localised, type: .sucess)
                         },
                         onError: { [weak self] error in
                             self?.aux_log(message: "[Observable<T>][onError]", showAlert: true, appendToTable: true)
-                            self?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
+                            self?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error)
                         }
                     )
                     .disposed(by: disposeBag)

@@ -16,6 +16,6 @@ import DevTools
 public extension DevTools.AppLogger {
     static func log(appCode: AppCodes, function: String = #function, file: String = #file, line: Int = #line) {
         guard enabled else { return }
-        RJS_Logs.DLog(appCode.localizedMessageForDevTeam, function: function, file: file, line: line)
+        RJS_Logs.DLog(appCode.localisedMessageForDevTeam, function: function, file: file, line: line)
     }
 }

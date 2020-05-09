@@ -77,7 +77,7 @@ extension P.MVPSampleRxView_Presenter: MVPSampleRxView_PresenterProtocol {
                     self?.viewModel! = VM.MVPSampleRxView_ViewModel(someString: some)
                 },
                 onError: { [weak self] error in
-                    self?.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
+                    self?.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error)
                 }
             )
             .disposed(by: disposeBag)

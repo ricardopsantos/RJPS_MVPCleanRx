@@ -202,7 +202,7 @@ extension P.BlissQuestionsList_Presenter {
                 },
                 onError: { [weak self] error in
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-                    self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater, type: .error)
+                    self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error)
                     self.genericView?.setActivityState(false)
                 }
             )
@@ -238,7 +238,7 @@ extension P.BlissQuestionsList_Presenter {
         reachabilityService.reachability.subscribe(
             onNext: { [weak self] some in
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-                self.genericView?.setNoConnectionViewVisibity(to: !some.reachable)
+                self.genericView?.setNoConnectionViewVisibility(to: !some.reachable)
             }
             ).disposed(by: disposeBag)
     }

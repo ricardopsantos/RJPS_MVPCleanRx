@@ -159,7 +159,7 @@
 		D72923652466B80B00DAD480 /* AppResources+AppCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F15CF2C22BFA56F00FB402A /* AppResources+AppCodes.swift */; };
 		D72923672466B84100DAD480 /* typealias.AppResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923662466B84100DAD480 /* typealias.AppResources.swift */; };
 		D72923692466B8EA00DAD480 /* AppLogger+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923682466B8EA00DAD480 /* AppLogger+Extension.swift */; };
-		D72923732466BB8600DAD480 /* AppResources+Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8AE14A2205DD0300DF75F6 /* AppResources+Messages.swift */; };
+		D72923732466BB8600DAD480 /* AppResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8AE14A2205DD0300DF75F6 /* AppResources.swift */; };
 		D72923752466BC7F00DAD480 /* typealias.AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923742466BC7E00DAD480 /* typealias.AppTheme.swift */; };
 		D72923782466BDE900DAD480 /* typealias.Designables.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923772466BDE900DAD480 /* typealias.Designables.swift */; };
 		D72923892466BF4700DAD480 /* AppView+TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1622BE5DE700042A8C /* AppView+TabBarController.swift */; };
@@ -180,6 +180,8 @@
 		D72923AA2466EA4100DAD480 /* DevTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923A92466EA4100DAD480 /* DevTools.swift */; };
 		D72923AC2466EE9400DAD480 /* ToastSwiftFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72923AB2466EE9400DAD480 /* ToastSwiftFramework.framework */; };
 		D72923AD2466EE9400DAD480 /* ToastSwiftFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D72923AB2466EE9400DAD480 /* ToastSwiftFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D72923B62467076000DAD480 /* AppResources+SelectedLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923B52467076000DAD480 /* AppResources+SelectedLanguage.swift */; };
+		D72923B82467089700DAD480 /* AppResources+Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923B72467089700DAD480 /* AppResources+Messages.swift */; };
 		D779A5EF234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5E9234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift */; };
 		D779A5F0234FE3A500D3D6F7 /* W.SampleVIP_Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5EA234FE3A500D3D6F7 /* W.SampleVIP_Worker.swift */; };
 		D779A5F1234FE3A500D3D6F7 /* R.SampleVIP_Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5EB234FE3A500D3D6F7 /* R.SampleVIP_Router.swift */; };
@@ -258,6 +260,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = D729228C2466A04200DAD480;
 			remoteInfo = UIBase;
+		};
+		D72923B924670A3600DAD480 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F288F1C20F8089F008A9539 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D72922AE2466A0CA00DAD480;
+			remoteInfo = DevTools;
+		};
+		D72923BB24670A4C00DAD480 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F288F1C20F8089F008A9539 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D72922AE2466A0CA00DAD480;
+			remoteInfo = DevTools;
+		};
+		D72923BD24670A6800DAD480 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F288F1C20F8089F008A9539 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D729233D2466B78300DAD480;
+			remoteInfo = AppResources;
 		};
 		D7E25A7F246699FC003BBEA0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -395,7 +418,7 @@
 		9F8666EF22E7C5CA00A1B9A0 /* GenericTableViewCell_Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericTableViewCell_Protocol.swift; sourceTree = "<group>"; };
 		9F8666F322E7D31D00A1B9A0 /* RP.Network.Bliss.APIRequests.apib */ = {isa = PBXFileReference; lastKnownFileType = text; path = RP.Network.Bliss.APIRequests.apib; sourceTree = "<group>"; };
 		9F8AE1442205DD0300DF75F6 /* AppManagers+AppCan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppManagers+AppCan.swift"; sourceTree = "<group>"; };
-		9F8AE14A2205DD0300DF75F6 /* AppResources+Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppResources+Messages.swift"; sourceTree = "<group>"; };
+		9F8AE14A2205DD0300DF75F6 /* AppResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppResources.swift; sourceTree = "<group>"; };
 		9F8AE14B2205DD0300DF75F6 /* AppManagers+Layouts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppManagers+Layouts.swift"; sourceTree = "<group>"; };
 		9F8D4AA222386DCF00777976 /* Samples_RepositoriesProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Samples_RepositoriesProtocol.swift; sourceTree = "<group>"; };
 		9F8D4AB2223873CD00777976 /* RelatedToSamples_UseCase1Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedToSamples_UseCase1Protocol.swift; sourceTree = "<group>"; };
@@ -502,6 +525,8 @@
 		D72923A72466EA0100DAD480 /* DevTools+FeatureFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DevTools+FeatureFlag.swift"; sourceTree = "<group>"; };
 		D72923A92466EA4100DAD480 /* DevTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevTools.swift; sourceTree = "<group>"; };
 		D72923AB2466EE9400DAD480 /* ToastSwiftFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ToastSwiftFramework.framework; path = Carthage/Build/iOS/ToastSwiftFramework.framework; sourceTree = "<group>"; };
+		D72923B52467076000DAD480 /* AppResources+SelectedLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppResources+SelectedLanguage.swift"; sourceTree = "<group>"; };
+		D72923B72467089700DAD480 /* AppResources+Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppResources+Messages.swift"; sourceTree = "<group>"; };
 		D779A5E9234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.SampleVIP_Presenter.swift; sourceTree = "<group>"; };
 		D779A5EA234FE3A500D3D6F7 /* W.SampleVIP_Worker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W.SampleVIP_Worker.swift; sourceTree = "<group>"; };
 		D779A5EB234FE3A500D3D6F7 /* R.SampleVIP_Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.SampleVIP_Router.swift; sourceTree = "<group>"; };
@@ -1127,8 +1152,10 @@
 			isa = PBXGroup;
 			children = (
 				D72923662466B84100DAD480 /* typealias.AppResources.swift */,
-				9F8AE14A2205DD0300DF75F6 /* AppResources+Messages.swift */,
+				9F8AE14A2205DD0300DF75F6 /* AppResources.swift */,
+				D72923B72467089700DAD480 /* AppResources+Messages.swift */,
 				9F15CF2C22BFA56F00FB402A /* AppResources+AppCodes.swift */,
+				D72923B52467076000DAD480 /* AppResources+SelectedLanguage.swift */,
 				D72923402466B78300DAD480 /* AppResources.h */,
 				D72923682466B8EA00DAD480 /* AppLogger+Extension.swift */,
 				D72923412466B78300DAD480 /* Info.plist */,
@@ -1307,6 +1334,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D72923BA24670A3600DAD480 /* PBXTargetDependency */,
 				D72923B42467041800DAD480 /* PBXTargetDependency */,
 				D72923B2246703FA00DAD480 /* PBXTargetDependency */,
 			);
@@ -1366,6 +1394,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D72923BE24670A6800DAD480 /* PBXTargetDependency */,
 			);
 			name = AppTheme;
 			productName = AppTheme;
@@ -1403,6 +1432,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D72923BC24670A4C00DAD480 /* PBXTargetDependency */,
 			);
 			name = AppResources;
 			productName = AppResources;
@@ -1945,9 +1975,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D72923692466B8EA00DAD480 /* AppLogger+Extension.swift in Sources */,
+				D72923B62467076000DAD480 /* AppResources+SelectedLanguage.swift in Sources */,
 				D72923652466B80B00DAD480 /* AppResources+AppCodes.swift in Sources */,
 				D72923672466B84100DAD480 /* typealias.AppResources.swift in Sources */,
-				D72923732466BB8600DAD480 /* AppResources+Messages.swift in Sources */,
+				D72923B82467089700DAD480 /* AppResources+Messages.swift in Sources */,
+				D72923732466BB8600DAD480 /* AppResources.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2021,6 +2053,21 @@
 			isa = PBXTargetDependency;
 			target = D729228C2466A04200DAD480 /* UIBase */;
 			targetProxy = D72923B32467041800DAD480 /* PBXContainerItemProxy */;
+		};
+		D72923BA24670A3600DAD480 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D72922AE2466A0CA00DAD480 /* DevTools */;
+			targetProxy = D72923B924670A3600DAD480 /* PBXContainerItemProxy */;
+		};
+		D72923BC24670A4C00DAD480 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D72922AE2466A0CA00DAD480 /* DevTools */;
+			targetProxy = D72923BB24670A4C00DAD480 /* PBXContainerItemProxy */;
+		};
+		D72923BE24670A6800DAD480 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D729233D2466B78300DAD480 /* AppResources */;
+			targetProxy = D72923BD24670A6800DAD480 /* PBXContainerItemProxy */;
 		};
 		D7E25A80246699FC003BBEA0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
