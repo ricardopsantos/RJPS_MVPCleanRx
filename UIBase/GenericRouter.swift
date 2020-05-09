@@ -13,21 +13,21 @@ import RxSwift
 import RxCocoa
 //
 import AppResources
-import UIBase
 import AppTheme
 import AppConstants
 import Extensions
 import DevTools
 import PointFreeFunctions
 
-class GenericRouter {
+open class GenericRouter {
     deinit {
         AppLogger.log("\(self) was killed")
         NotificationCenter.default.removeObserver(self)
     }
-    
-    var reachabilityService: ReachabilityService! = try! DefaultReachabilityService() // try! is only for simplicity sake
-    var disposeBag: DisposeBag = DisposeBag()
-    var rxPublishRelay_dismissView = PublishRelay<Void>() // PublishRelay model Events
+
+    public init() { }
+    public var reachabilityService: ReachabilityService! = try! DefaultReachabilityService() // try! is only for simplicity sake
+    public var disposeBag: DisposeBag = DisposeBag()
+    public var rxPublishRelay_dismissView = PublishRelay<Void>() // PublishRelay model Events
 
 }

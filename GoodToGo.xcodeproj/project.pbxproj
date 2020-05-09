@@ -29,7 +29,6 @@
 		9F58FB4B22BE5DE700042A8C /* P.SearchUser_Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB2222BE5DE700042A8C /* P.SearchUser_Presenter.swift */; };
 		9F58FB4C22BE5DE700042A8C /* V.SearchUser_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB2322BE5DE700042A8C /* V.SearchUser_View.swift */; };
 		9F58FB4D22BE5DE700042A8C /* AS.SearchUser_AssemblyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB2422BE5DE700042A8C /* AS.SearchUser_AssemblyContainer.swift */; };
-		9F5D1CF222E5DC8700C0AF38 /* GenericRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5D1CF122E5DC8700C0AF38 /* GenericRouter.swift */; };
 		9F5D1CF422E5E45700C0AF38 /* OptionalType+Rx+AppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5D1CF322E5E45700C0AF38 /* OptionalType+Rx+AppExtensions.swift */; };
 		9F69CB1422BE8544008D305D /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F69CB1322BE8544008D305D /* AVKit.framework */; };
 		9F6BB2BD22E3287B00829A6F /* RP.Network.Bliss.APIRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2BC22E3287B00829A6F /* RP.Network.Bliss.APIRequests.swift */; };
@@ -200,6 +199,7 @@
 		D7AB24B12467374A000142C4 /* GenericPresenter_Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80AC22BFB68D003C4562 /* GenericPresenter_Protocol.swift */; };
 		D7AB24B324673780000142C4 /* GenericViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AB24B22467377F000142C4 /* GenericViewProtocol.swift */; };
 		D7AB24B4246737A1000142C4 /* AppUtils_Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80AF22BFB68D003C4562 /* AppUtils_Protocol.swift */; };
+		D7AB24B82467402A000142C4 /* GenericRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5D1CF122E5DC8700C0AF38 /* GenericRouter.swift */; };
 		D7E25A7E246699FC003BBEA0 /* PointFreeFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = D7E25A7C246699FC003BBEA0 /* PointFreeFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D7E25A8E24669B02003BBEA0 /* PointFreeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E25A8D24669B02003BBEA0 /* PointFreeFunctions.swift */; };
 		D7E25A9824669B9B003BBEA0 /* AppConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D7E25A9624669B9B003BBEA0 /* AppConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -620,6 +620,7 @@
 		D7AB245024671CBF000142C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7AB247824672405000142C4 /* typealias.Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = typealias.Domain.swift; sourceTree = "<group>"; };
 		D7AB24B22467377F000142C4 /* GenericViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericViewProtocol.swift; sourceTree = "<group>"; };
+		D7AB24B724673F00000142C4 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7E25A6C2465E5A6003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7E25A6D2465E5B5003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7E25A6F2465E5CF003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -866,7 +867,6 @@
 		9F574F8922369187007DAA58 /* Application.Domain */ = {
 			isa = PBXGroup;
 			children = (
-				9F5D1CF122E5DC8700C0AF38 /* GenericRouter.swift */,
 				9FCF332222EF53890074DAB9 /* GenericUseCase.swift */,
 				9F9BED9D22E5C9620018BD4C /* GenericPresenter.swift */,
 			);
@@ -1177,7 +1177,9 @@
 		D729228E2466A04200DAD480 /* UIBase */ = {
 			isa = PBXGroup;
 			children = (
+				D7AB24B724673F00000142C4 /* README.md */,
 				9F15CF2722BFA0A300FB402A /* AppConstants+UIBase.swift */,
+				9F5D1CF122E5DC8700C0AF38 /* GenericRouter.swift */,
 				D72922D82466AFC600DAD480 /* typealias.UIBase.swift */,
 				9FE1437721AF1ADC0026BDFC /* GenericView.swift */,
 				D729228F2466A04200DAD480 /* UIBase.h */,
@@ -1963,7 +1965,6 @@
 				9FE0572522E8D75400802747 /* MVPSampleRxView_AssemblyContainer.swift in Sources */,
 				9F3ED4BC22E618C80020A50A /* AppView+RxTesting.swift in Sources */,
 				9FCF332A22EF66CB0074DAB9 /* Repository.Network.swift in Sources */,
-				9F5D1CF222E5DC8700C0AF38 /* GenericRouter.swift in Sources */,
 				9F6BB2D522E3474F00829A6F /* BlissQuestionsAPI_UseCase.swift in Sources */,
 				9F20554C22F25C1F006B9DB7 /* D.MVVMSampleView_ViewModel.swift in Sources */,
 				9F8AE14C2205DD0400DF75F6 /* AppManagers+AppCan.swift in Sources */,
@@ -2071,6 +2072,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D72922D92466AFC600DAD480 /* typealias.UIBase.swift in Sources */,
+				D7AB24B82467402A000142C4 /* GenericRouter.swift in Sources */,
 				D72922CD2466A36C00DAD480 /* typealias.encaplulate.swift in Sources */,
 				D72922A92466A0B100DAD480 /* GenericView.swift in Sources */,
 				D729238D2466C67800DAD480 /* AppConstants+UIBase.swift in Sources */,
