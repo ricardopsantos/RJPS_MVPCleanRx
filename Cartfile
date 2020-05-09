@@ -32,6 +32,12 @@
     #github "RxSwiftCommunity/RxReachability"
 
 ####################################################################
+# A Swift extension that adds toast notifications to the UIView object class.
+# https://github.com/scalessec/Toast-Swift
+
+github "scalessec/Toast-Swift" ~> 5.0.1
+
+####################################################################
 
 # A Swift Autolayout DSL for iOS & OS X http://snapkit.io
 # https://github.com/SnapKit/SnapKit

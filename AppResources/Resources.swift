@@ -36,7 +36,7 @@ public extension AppResources {
                 if selectedLanguage != _storedLanguage {
                     _currentLanguageBundle = nil
                     saveWith(key: AppConstants.Dev.keyCoreDataSaveLang, value: "\(selectedLanguage.rawValue)")
-                    AppLogger.warning("Language code changed to [\(selectedLanguage)]")
+                    DevTools.AppLogger.warning("Language code changed to [\(selectedLanguage)]")
                 }
             }
         }

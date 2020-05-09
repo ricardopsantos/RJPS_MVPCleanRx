@@ -91,6 +91,7 @@ public extension AppView {
         open override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             presenter.generic?.viewWillAppear()
+            AppLogger.error("Error")
         }
         
         open override func viewDidAppear(_ animated: Bool) {
