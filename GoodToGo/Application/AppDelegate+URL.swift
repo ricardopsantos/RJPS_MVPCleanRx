@@ -7,6 +7,7 @@
 
 import UIKit
 import RJPSLib
+import AppDomain
 
 extension AppDelegate {
     

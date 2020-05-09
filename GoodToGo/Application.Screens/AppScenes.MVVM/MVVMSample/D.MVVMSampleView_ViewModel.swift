@@ -19,6 +19,7 @@ import AppConstants
 import Extensions
 import DevTools
 import PointFreeFunctions
+import AppDomain
 
 //
 // MARK: - MVVMSampleView_ViewModelProtocol

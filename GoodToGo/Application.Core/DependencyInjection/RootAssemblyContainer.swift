@@ -7,6 +7,8 @@
 
 import Swinject
 import RJPSLib
+import AppDomain
+import AppDomain
 
 struct RootAssemblyContainerProtocols {
 

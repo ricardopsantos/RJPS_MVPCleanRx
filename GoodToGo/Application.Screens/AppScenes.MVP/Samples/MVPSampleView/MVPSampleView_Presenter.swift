@@ -20,6 +20,7 @@ import AppConstants
 import Extensions
 import DevTools
 import PointFreeFunctions
+import AppDomain
 
 /*
  * Needs to added AS.Sample_AssemblyContainer() to DependencyInjectionManager.swift

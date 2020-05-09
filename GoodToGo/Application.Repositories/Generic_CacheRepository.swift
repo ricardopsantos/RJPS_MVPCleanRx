@@ -9,6 +9,7 @@ import Foundation
 import RJPSLib
 import UIKit
 import AVFoundation
+import AppDomain
 
 extension RP {
     struct Cache {

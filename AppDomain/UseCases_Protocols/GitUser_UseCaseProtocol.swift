@@ -8,12 +8,11 @@
 import Foundation
 import UIKit
 import RJPSLib
-import AppDomain
 
-typealias GitUser_Single_UseCaseCompletionHandler = (_ result: Result<GitHub.UserResponseDto>) -> Void
-typealias GitUser_Friends_UseCaseCompletionHandler = (_ result: Result<[GitHub.UserResponseDto]>) -> Void
+public typealias GitUser_Single_UseCaseCompletionHandler = (_ result: Result<GitHub.UserResponseDto>) -> Void
+public typealias GitUser_Friends_UseCaseCompletionHandler = (_ result: Result<[GitHub.UserResponseDto]>) -> Void
 
-protocol GitUser_UseCaseProtocol: class {
+public protocol GitUser_UseCaseProtocol: class {
     func getInfoOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitUser_Single_UseCaseCompletionHandler)
     func getFriendsOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitUser_Friends_UseCaseCompletionHandler)
 }

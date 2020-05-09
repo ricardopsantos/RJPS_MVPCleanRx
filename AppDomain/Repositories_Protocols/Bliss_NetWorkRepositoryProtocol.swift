@@ -8,9 +8,8 @@
 import Foundation
 import UIKit
 import RJPSLib
-import AppDomain
 
-protocol Bliss_NetWorkRepositoryProtocol: class {
+public protocol Bliss_NetWorkRepositoryProtocol: class {
     func getHealth(completionHandler: @escaping (_ result: Result<NetworkClientResponse<Bliss.ServerHealth>>) -> Void)
     func getQuestions(limit: Int, filter: String, offSet: Int, completionHandler: @escaping (_ result: Result<NetworkClientResponse<[Bliss.QuestionElementResponseDto]>>) -> Void)
     func getQuestionBy(id: Int, completionHandler: @escaping (_ result: Result<NetworkClientResponse<Bliss.QuestionElementResponseDto>>) -> Void)

@@ -7,6 +7,7 @@
 
 import Foundation
 import RJPSLib
+import AppDomain
 
 extension RP {
     struct LocalStorage {

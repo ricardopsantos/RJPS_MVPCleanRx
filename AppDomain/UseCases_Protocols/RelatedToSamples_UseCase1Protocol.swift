@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 import RJPSLib
 
-typealias Sample_UseCaseCompletionHandler = (_ result: Result<[String]>) -> Void
-protocol Sample_UseCaseProtocol: class {
+public typealias Sample_UseCaseCompletionHandler = (_ result: Result<[String]>) -> Void
+public protocol Sample_UseCaseProtocol: class {
     
     var generic_LocalStorageRepository: Generic_LocalStorageRepositoryProtocol! { get set }
 
