@@ -47,6 +47,8 @@ typealias AppLogger = DevTools.AppLogger
 typealias GenericView = UIBase.GenericView
 //typealias GenericTableView_Protocol = UIBase.GenericTableView_Protocol
 
+typealias GenericTableViewCell_Protocol = Designables.GenericTableViewCell_Protocol
+typealias GenericTableView_Protocol = Designables.GenericTableView_Protocol
 typealias AppFactory = Designables.Factory
 typealias TopBar = Designables.V.TopBar
 typealias BottomBar = Designables.V.BottomBar

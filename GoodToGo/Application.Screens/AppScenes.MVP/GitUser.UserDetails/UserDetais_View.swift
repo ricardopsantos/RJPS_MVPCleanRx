@@ -19,6 +19,7 @@ import AppConstants
 import Extensions
 import DevTools
 import PointFreeFunctions
+import Designables
 
 extension AppView {
     class UserDetais_View: GenericView {

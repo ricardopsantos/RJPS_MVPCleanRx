@@ -213,8 +213,6 @@
 		D729238B2466C16300DAD480 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD387C7223F0CF3001D2F4E /* UILabel+Extensions.swift */; };
 		D729238C2466C16300DAD480 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD387CC223F0CF4001D2F4E /* UIFont+Extensions.swift */; };
 		D729238D2466C67800DAD480 /* AppConstants_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F15CF2722BFA0A300FB402A /* AppConstants_UITests.swift */; };
-		D729238E2466CFA500DAD480 /* GenericTableView_Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80AB22BFB68C003C4562 /* GenericTableView_Protocol.swift */; };
-		D729238F2466CFA500DAD480 /* GenericTableViewCell_Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8666EF22E7C5CA00A1B9A0 /* GenericTableViewCell_Protocol.swift */; };
 		D72923922466CFA500DAD480 /* AppView+UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1522BE5DE700042A8C /* AppView+UserTableViewCell.swift */; };
 		D72923932466CFA500DAD480 /* Sample_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80BD22BFBBB5003C4562 /* Sample_TableViewCell.swift */; };
 		D72923982466D5BB00DAD480 /* AppView+TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1122BE5DE700042A8C /* AppView+TopBar.swift */; };
@@ -224,6 +222,8 @@
 		D729239F2466D62C00DAD480 /* AppManagers+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F574EFD22356CA6007DAA58 /* AppManagers+Factory.swift */; };
 		D72923A02466D91700DAD480 /* AppConstants+Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E25A71246695EE003BBEA0 /* AppConstants+Mocks.swift */; };
 		D72923A12466D9E500DAD480 /* AppConstants+Bliss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2DE22E390B600829A6F /* AppConstants+Bliss.swift */; };
+		D72923A22466DB7900DAD480 /* GenericTableView_Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80AB22BFB68C003C4562 /* GenericTableView_Protocol.swift */; };
+		D72923A32466DB8E00DAD480 /* GenericTableViewCell_Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8666EF22E7C5CA00A1B9A0 /* GenericTableViewCell_Protocol.swift */; };
 		D779A5EF234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5E9234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift */; };
 		D779A5F0234FE3A500D3D6F7 /* W.SampleVIP_Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5EA234FE3A500D3D6F7 /* W.SampleVIP_Worker.swift */; };
 		D779A5F1234FE3A500D3D6F7 /* R.SampleVIP_Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5EB234FE3A500D3D6F7 /* R.SampleVIP_Router.swift */; };
@@ -680,7 +680,6 @@
 		D7E25A692465E580003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7E25A6C2465E5A6003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7E25A6D2465E5B5003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		D7E25A6E2465E5C1003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7E25A6F2465E5CF003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7E25A702465E5F1003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7E25A71246695EE003BBEA0 /* AppConstants+Mocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppConstants+Mocks.swift"; sourceTree = "<group>"; };
@@ -905,7 +904,6 @@
 			isa = PBXGroup;
 			children = (
 				9FFF99A42247B1FA00783EE2 /* Application */,
-				9F346E9222BFB3C8008A22C4 /* Application.Global */,
 				9F58FB0F22BE5DE700042A8C /* Application.Screens */,
 				9F574F8922369187007DAA58 /* Application.Domain */,
 				9FB8DFCD2233E7B400095420 /* Application.Core */,
@@ -924,14 +922,6 @@
 				9F6BB2C022E32A3C00829A6F /* Bliss.swift */,
 			);
 			path = Enteties;
-			sourceTree = "<group>";
-		};
-		9F346E9222BFB3C8008A22C4 /* Application.Global */ = {
-			isa = PBXGroup;
-			children = (
-				D7E25A6E2465E5C1003BBEA0 /* README.md */,
-			);
-			path = Application.Global;
 			sourceTree = "<group>";
 		};
 		9F36ADE321B1612600FADBB1 /* Docs */ = {
@@ -1012,9 +1002,8 @@
 		9F58FB0F22BE5DE700042A8C /* Application.Screens */ = {
 			isa = PBXGroup;
 			children = (
-				D729237E2466BE6E00DAD480 /* Designables */,
-				D72923812466BF1000DAD480 /* Designables */,
 				D7E25A702465E5F1003BBEA0 /* README.md */,
+				D72923812466BF1000DAD480 /* Designables */,
 				9F58FB1022BE5DE700042A8C /* AppViews */,
 				D779A5F5234FE43900D3D6F7 /* AppScenes.VIP */,
 				9F20554922F25B5F006B9DB7 /* AppScenes.MVVM */,
@@ -1284,6 +1273,8 @@
 		D729226724669F3700DAD480 /* Designables */ = {
 			isa = PBXGroup;
 			children = (
+				9F8666EF22E7C5CA00A1B9A0 /* GenericTableViewCell_Protocol.swift */,
+				9FFF80AB22BFB68C003C4562 /* GenericTableView_Protocol.swift */,
 				9F58FB1122BE5DE700042A8C /* AppView+TopBar.swift */,
 				9F58FB1422BE5DE700042A8C /* AppView+BottomBar.swift */,
 				9F574EFD22356CA6007DAA58 /* AppManagers+Factory.swift */,
@@ -1360,19 +1351,10 @@
 			path = AppResources;
 			sourceTree = "<group>";
 		};
-		D729237E2466BE6E00DAD480 /* Designables */ = {
-			isa = PBXGroup;
-			children = (
-				9F58FB1622BE5DE700042A8C /* AppView+TabBarController.swift */,
-			);
-			path = Designables;
-			sourceTree = "<group>";
-		};
 		D72923812466BF1000DAD480 /* Designables */ = {
 			isa = PBXGroup;
 			children = (
-				9FFF80AB22BFB68C003C4562 /* GenericTableView_Protocol.swift */,
-				9F8666EF22E7C5CA00A1B9A0 /* GenericTableViewCell_Protocol.swift */,
+				9F58FB1622BE5DE700042A8C /* AppView+TabBarController.swift */,
 				9F58FB1522BE5DE700042A8C /* AppView+UserTableViewCell.swift */,
 				9FFF80BD22BFBBB5003C4562 /* Sample_TableViewCell.swift */,
 			);
@@ -2108,7 +2090,6 @@
 				9FFF80BC22BFB9A6003C4562 /* UIImage+AppExtensions.swift in Sources */,
 				9F58FB4D22BE5DE700042A8C /* SearchUser_AssemblyContainer.swift in Sources */,
 				9FE143D421AF2F520026BDFC /* GitHubUser.swift in Sources */,
-				D729238E2466CFA500DAD480 /* GenericTableView_Protocol.swift in Sources */,
 				9F6BB2BD22E3287B00829A6F /* RP.Network.Bliss.APIRequests.swift in Sources */,
 				D779A5F0234FE3A500D3D6F7 /* W.SampleVIP_Worker.swift in Sources */,
 				9FCF332622EF552E0074DAB9 /* Generic_CacheRepository.swift in Sources */,
@@ -2119,7 +2100,6 @@
 				9FA0DCC922BE5E45003ADF99 /* GitUser_UseCase.swift in Sources */,
 				9F5D1CF422E5E45700C0AF38 /* OptionalType+Rx+AppExtensions.swift in Sources */,
 				9F8AE1682205DD0400DF75F6 /* AppManagers+Layouts.swift in Sources */,
-				D729238F2466CFA500DAD480 /* GenericTableViewCell_Protocol.swift in Sources */,
 				9F98294C22398DF700ACA6B7 /* RP.Network.GitUser.APIRequests.swift in Sources */,
 				9FB8DFCA2233E67100095420 /* typealias.encaplulate.swift in Sources */,
 				9F58FB4422BE5DE700042A8C /* UserDetais_View.swift in Sources */,
@@ -2136,8 +2116,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D729228424669FFD00DAD480 /* typealias.encaplulate.swift in Sources */,
+				D72923A32466DB8E00DAD480 /* GenericTableViewCell_Protocol.swift in Sources */,
 				D72923982466D5BB00DAD480 /* AppView+TopBar.swift in Sources */,
 				D729239F2466D62C00DAD480 /* AppManagers+Factory.swift in Sources */,
+				D72923A22466DB7900DAD480 /* GenericTableView_Protocol.swift in Sources */,
 				D72923782466BDE900DAD480 /* typealias.Designables.swift in Sources */,
 				D729239E2466D62900DAD480 /* AppView+BottomBar.swift in Sources */,
 			);
