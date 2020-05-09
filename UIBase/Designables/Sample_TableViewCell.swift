@@ -69,7 +69,7 @@ public extension AppView {
         private let _disposeBag: DisposeBag = DisposeBag()
         
         private lazy var _lblTitle: UILabel = {
-            let some = Factory.UIKit.label(baseView: self, style: .value)
+            let some = AppFactory.UIKit.label(baseView: self, style: .value)
             some.rjsALayouts.setMargin(_marginH, on: .left)
             some.rjsALayouts.setMargin(_marginH*2+_imageSize, on: .right)
             some.rjsALayouts.setMargin(_marginV, on: .top)
@@ -78,7 +78,7 @@ public extension AppView {
         }()
         
         private lazy var _image: UIImageView = {
-            let some = Factory.UIKit.imageView(baseView: self)
+            let some = AppFactory.UIKit.imageView(baseView: self)
             some.rjsALayouts.setMargin(_marginH, on: .right)
             some.rjsALayouts.setMargin(_marginV, on: .top)
             some.rjsALayouts.setSize(CGSize(width: _imageSize, height: _imageSize))

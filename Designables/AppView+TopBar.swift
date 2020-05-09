@@ -6,14 +6,19 @@
 //
 
 import Foundation
-//
 import UIKit
+//
 import RxSwift
 import RxCocoa
 import RxGesture
+//
+import UIBase
+import AppConstants
+import DevTools
+import PointFreeFunctions
 
 public extension AppView {
-   public  class TopBar: GenericView {
+    class TopBar: GenericView {
 
         deinit {
             AppLogger.log("\(self.className) was killed")

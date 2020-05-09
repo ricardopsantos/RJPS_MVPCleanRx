@@ -10,11 +10,12 @@ import UIKit
 //
 import RxSwift
 import RxCocoa
-import RJPSLib
+import RxGesture
 //
+import UIBase
 import AppConstants
+import DevTools
 import PointFreeFunctions
-import Designables
 
 public protocol BottomBar_Delegate: AnyObject {
     func btnTappedWith(identifier: String)

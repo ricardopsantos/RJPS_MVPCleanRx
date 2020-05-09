@@ -31,7 +31,7 @@ public extension AppView {
         }
         var presenter: SearchUser_PresenterProtocol!
         
-        private lazy var _topGenericView: UIBase.V.TopBar = {
+        private lazy var _topGenericView: TopBar = {
             let some = AppFactory.UIKit.topBar(baseController: self)
             some.setTitle("Search GitHub user")
             return some

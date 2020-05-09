@@ -37,7 +37,7 @@ extension AppView {
         private let _margin: CGFloat = 15
         private let _imageSize: Int = 100
         
-        private lazy var _topGenericView: UIBase.V.TopBar = {
+        private lazy var _topGenericView: TopBar = {
             let some = AppFactory.UIKit.topBar(baseController: self)
             some.setTitle(AppMessages.Bliss.appName)
             some.setTitle(AppMessages.details)

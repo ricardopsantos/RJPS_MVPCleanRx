@@ -54,7 +54,7 @@ open class GenericView: UIViewController {
     private var _lblMessageTimmer: Timer?
 
     private lazy var _lblReachability: UILabel = {
-        let some             = Factory.UIKit.label(baseView: self.view, style: .title)
+        let some             = label(baseView: self.view, style: .title)
         some.textColor       = UIColor.App.TopBar.titleColor
         some.textAlignment   = .center
         some.backgroundColor = UIColor.App.error
@@ -67,7 +67,7 @@ open class GenericView: UIViewController {
     }()
     
     private lazy var _lblMessage: UILabel = {
-        let some           = Factory.UIKit.label(baseView: self.view, style: .title)
+        let some           = label(baseView: self.view, style: .title)
         some.textColor     = UIColor.App.TopBar.titleColor
         some.textAlignment = .center
         some.alpha         = 0
@@ -154,7 +154,17 @@ public extension GenericView {
 //
 
 extension GenericView {
-    
+
+    private func label(baseView: UIView? = nil, title: String="", style: UILabel.LayoutStyle, tag: Int=0) -> UILabel {
+        let some = UILabel()
+        some.text = title
+        some.numberOfLines = 0
+        some.tag = tag
+        some.layoutStyle = style
+        baseView?.addSubview(some)
+        return some
+    }
+
     @objc func hideTopMessage() {
         setTopMessageVisibityTo(state: false, message: "", type: .sucess)
     }

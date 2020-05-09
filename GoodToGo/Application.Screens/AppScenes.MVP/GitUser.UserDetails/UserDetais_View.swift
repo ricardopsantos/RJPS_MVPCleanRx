@@ -52,7 +52,7 @@ extension AppView {
             some.rjsALayouts.setMargin(_margin, on: .top, from: _imgAvatar)
             some.rjsALayouts.setMargin(_margin, on: .left)
             some.rjsALayouts.setMargin(_margin, on: .right)
-            some.rjsALayouts.setMargin(_margin+UIBase.V.TopBar.defaultHeight, on: .bottom)
+            some.rjsALayouts.setMargin(_margin + TopBar.defaultHeight, on: .bottom)
             V.UserTableViewCell.prepare(tableView: some)
             return some
         }()
@@ -65,7 +65,7 @@ extension AppView {
             return some
         }()
         
-        private lazy var _topGenericBar: UIBase.V.TopBar = {
+        private lazy var _topGenericBar: TopBar = {
             let some = AppFactory.UIKit.topBar(baseController: self)
             some.setTitle(AppMessages.details)
             some.addDismissButton()

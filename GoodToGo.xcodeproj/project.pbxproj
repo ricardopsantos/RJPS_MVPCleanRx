@@ -219,9 +219,11 @@
 		D729238F2466CFA500DAD480 /* GenericTableViewCell_Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8666EF22E7C5CA00A1B9A0 /* GenericTableViewCell_Protocol.swift */; };
 		D72923922466CFA500DAD480 /* AppView+UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1522BE5DE700042A8C /* AppView+UserTableViewCell.swift */; };
 		D72923932466CFA500DAD480 /* Sample_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80BD22BFBBB5003C4562 /* Sample_TableViewCell.swift */; };
-		D72923952466D06D00DAD480 /* AppManagers+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F574EFD22356CA6007DAA58 /* AppManagers+Factory.swift */; };
-		D72923962466D08C00DAD480 /* AppView+TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1122BE5DE700042A8C /* AppView+TopBar.swift */; };
-		D72923972466D0AB00DAD480 /* AppView+BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1422BE5DE700042A8C /* AppView+BottomBar.swift */; };
+		D72923982466D5BB00DAD480 /* AppView+TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1122BE5DE700042A8C /* AppView+TopBar.swift */; };
+		D72923992466D60500DAD480 /* UIBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729228D2466A04200DAD480 /* UIBase.framework */; };
+		D729239A2466D60500DAD480 /* UIBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D729228D2466A04200DAD480 /* UIBase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D729239E2466D62900DAD480 /* AppView+BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1422BE5DE700042A8C /* AppView+BottomBar.swift */; };
+		D729239F2466D62C00DAD480 /* AppManagers+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F574EFD22356CA6007DAA58 /* AppManagers+Factory.swift */; };
 		D779A5EF234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5E9234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift */; };
 		D779A5F0234FE3A500D3D6F7 /* W.SampleVIP_Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5EA234FE3A500D3D6F7 /* W.SampleVIP_Worker.swift */; };
 		D779A5F1234FE3A500D3D6F7 /* R.SampleVIP_Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5EB234FE3A500D3D6F7 /* R.SampleVIP_Router.swift */; };
@@ -394,6 +396,13 @@
 			remoteGlobalIDString = D729233D2466B78300DAD480;
 			remoteInfo = AppResources;
 		};
+		D729239B2466D60500DAD480 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F288F1C20F8089F008A9539 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D729228C2466A04200DAD480;
+			remoteInfo = UIBase;
+		};
 		D7E25A7F246699FC003BBEA0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9F288F1C20F8089F008A9539 /* Project object */;
@@ -467,6 +476,17 @@
 				D72923592466B79C00DAD480 /* PointFreeFunctions.framework in Embed Frameworks */,
 				D729234D2466B79C00DAD480 /* AppConstants.framework in Embed Frameworks */,
 				D72923552466B79C00DAD480 /* Extensions.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D729239D2466D60500DAD480 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D729239A2466D60500DAD480 /* UIBase.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -710,6 +730,7 @@
 				D729227624669F5100DAD480 /* RxCocoa.framework in Frameworks */,
 				D729227424669F5100DAD480 /* RJPSLib.framework in Frameworks */,
 				D729227824669F5200DAD480 /* RxGesture.framework in Frameworks */,
+				D72923992466D60500DAD480 /* UIBase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1268,6 +1289,9 @@
 		D729226724669F3700DAD480 /* Designables */ = {
 			isa = PBXGroup;
 			children = (
+				9F58FB1122BE5DE700042A8C /* AppView+TopBar.swift */,
+				9F58FB1422BE5DE700042A8C /* AppView+BottomBar.swift */,
+				9F574EFD22356CA6007DAA58 /* AppManagers+Factory.swift */,
 				D7E25A7424669995003BBEA0 /* README.md */,
 				D729226824669F3700DAD480 /* Designables.h */,
 				D729226924669F3700DAD480 /* Info.plist */,
@@ -1279,10 +1303,7 @@
 		D729228E2466A04200DAD480 /* UIBase */ = {
 			isa = PBXGroup;
 			children = (
-				9F58FB1422BE5DE700042A8C /* AppView+BottomBar.swift */,
-				9F58FB1122BE5DE700042A8C /* AppView+TopBar.swift */,
 				9F15CF2722BFA0A300FB402A /* AppConstants_UITests.swift */,
-				9F574EFD22356CA6007DAA58 /* AppManagers+Factory.swift */,
 				D72922D82466AFC600DAD480 /* typealias.UIBase.swift */,
 				9FE1437721AF1ADC0026BDFC /* GenericView.swift */,
 				D729228F2466A04200DAD480 /* UIBase.h */,
@@ -1520,10 +1541,12 @@
 				D729226324669F3700DAD480 /* Frameworks */,
 				D729226424669F3700DAD480 /* Resources */,
 				D729227D24669F6500DAD480 /* ShellScript */,
+				D729239D2466D60500DAD480 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D729239C2466D60500DAD480 /* PBXTargetDependency */,
 			);
 			name = Designables;
 			productName = Designables;
@@ -2119,7 +2142,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D729228424669FFD00DAD480 /* typealias.encaplulate.swift in Sources */,
+				D72923982466D5BB00DAD480 /* AppView+TopBar.swift in Sources */,
+				D729239F2466D62C00DAD480 /* AppManagers+Factory.swift in Sources */,
 				D72923782466BDE900DAD480 /* typealias.Designables.swift in Sources */,
+				D729239E2466D62900DAD480 /* AppView+BottomBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2127,12 +2153,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D72923972466D0AB00DAD480 /* AppView+BottomBar.swift in Sources */,
 				D72922D92466AFC600DAD480 /* typealias.UIBase.swift in Sources */,
 				D72922CD2466A36C00DAD480 /* typealias.encaplulate.swift in Sources */,
-				D72923952466D06D00DAD480 /* AppManagers+Factory.swift in Sources */,
 				D72922A92466A0B100DAD480 /* GenericView.swift in Sources */,
-				D72923962466D08C00DAD480 /* AppView+TopBar.swift in Sources */,
 				D729238D2466C67800DAD480 /* AppConstants_UITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2316,6 +2339,11 @@
 			isa = PBXTargetDependency;
 			target = D729233D2466B78300DAD480 /* AppResources */;
 			targetProxy = D72923702466BA5200DAD480 /* PBXContainerItemProxy */;
+		};
+		D729239C2466D60500DAD480 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D729228C2466A04200DAD480 /* UIBase */;
+			targetProxy = D729239B2466D60500DAD480 /* PBXContainerItemProxy */;
 		};
 		D7E25A80246699FC003BBEA0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

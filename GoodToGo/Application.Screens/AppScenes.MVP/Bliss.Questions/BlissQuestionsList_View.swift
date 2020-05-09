@@ -37,7 +37,7 @@ extension AppView {
         private let _tableViewThreshold: CGFloat = 100.0 // threshold from bottom of tableView
         private var _tableViewIsLoadingMoreData = false // flag
     
-        private lazy var _topGenericView: UIBase.V.TopBar = {
+        private lazy var _topGenericView: TopBar = {
             let some = AppFactory.UIKit.topBar(baseController: self)
             some.setTitle(AppMessages.Bliss.appName)
             some.rxSignal_viewTapped

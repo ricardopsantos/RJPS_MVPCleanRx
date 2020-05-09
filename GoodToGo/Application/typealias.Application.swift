@@ -15,6 +15,7 @@ import AppTheme
 import AppResources
 import UIBase
 import DevTools
+import Designables
 
 typealias SequenceBlock          = RJS_Sequence
 typealias CustomSearchBar        = RJS_CustomSearchBar
@@ -45,4 +46,7 @@ typealias AppProtocols           = RootAssemblyContainerProtocols
 typealias AppLogger = DevTools.AppLogger
 typealias GenericView = UIBase.GenericView
 //typealias GenericTableView_Protocol = UIBase.GenericTableView_Protocol
-typealias AppFactory = UIBase.Factory
+
+typealias AppFactory = Designables.Factory
+typealias TopBar = Designables.V.TopBar
+typealias BottomBar = Designables.V.BottomBar
