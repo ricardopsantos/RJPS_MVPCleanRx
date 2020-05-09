@@ -1,3 +1,5 @@
-#  UIBase
+#  UIBase/AppBase
 
-AppBase and UIBase
+## About
+
+Contains the app base classes (parent classes for the usual classes used on a VMP app)
