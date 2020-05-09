@@ -11,7 +11,6 @@ import Foundation
 import RJPSLib
 import RxSwift
 import RxCocoa
-import Swinject
 //
 import AppResources
 import UIBase
@@ -62,7 +61,7 @@ extension AppView {
         private lazy var _btnShare1: UIButton = {
             let some = AppFactory.UIKit.button(baseView: self.view, title: "Share in app", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .left)
-            some.rjsALayouts.setWidth(AppGlobal.screenWidth/2 - 2*_margin)
+            some.rjsALayouts.setWidth(screenWidth/2 - 2*_margin)
             some.rjsALayouts.setMargin(_margin, on: .bottom)
             some.rjsALayouts.setHeight(50)
             some.rx.tap.subscribe({ [weak self] _ in
@@ -78,7 +77,7 @@ extension AppView {
         private lazy var _btnShare2: UIButton = {
             let some = AppFactory.UIKit.button(baseView: self.view, title: "Share by Email", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .right)
-            some.rjsALayouts.setWidth(AppGlobal.screenWidth/2 - 2*_margin)
+            some.rjsALayouts.setWidth(screenWidth/2 - 2*_margin)
             some.rjsALayouts.setMargin(_margin, on: .bottom)
             some.rjsALayouts.setHeight(50)
             some.rx.tap
@@ -195,7 +194,7 @@ extension V.BlissDetails_View: BlissDetails_ViewProtocol {
     
     func set(image: UIImage) {
         let ratio = image.size.width / image.size.height
-        let imgCoverCurrentWidh = AppGlobal.screenWidth - 2 * _margin
+        let imgCoverCurrentWidh = screenWidth - 2 * _margin
         let newHeigth = imgCoverCurrentWidh / ratio
         _imgCover.image = image
         _imgCover.fadeTo(1)

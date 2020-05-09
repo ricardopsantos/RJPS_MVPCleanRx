@@ -11,7 +11,6 @@ import RxSwift
 import RxCocoa
 import RJPSLib
 //
-import AppConstants
 import PointFreeFunctions
 
 extension AppConstants {

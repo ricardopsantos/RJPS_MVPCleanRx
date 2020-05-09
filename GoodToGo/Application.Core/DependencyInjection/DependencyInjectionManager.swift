@@ -15,7 +15,7 @@ final class ApplicationAssembly {
         let assemblyList: [Assembly] = [
             RootAssemblyContainer(),
             AS.SearchUser_AssemblyContainer(),
-            AS.UserDetais_AssemblyContainer(),
+            AS.UserDetails_AssemblyContainer(),
             AS.MVPSampleView_AssemblyContainer(),
             AS.MVPSampleRxView_AssemblyContainer(),
             AS.MVPSampleTableView_AssemblyContainer(),

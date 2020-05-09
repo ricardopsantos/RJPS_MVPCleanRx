@@ -51,7 +51,7 @@ extension UseCases {
                     } else if kv.key == AppConstants.Bliss.DeepLinks.questionId {
                         setNeedToOpenScreen(screen: V.BlissDetails_View.className, key: kv.key, value: kv.value)
                     } else {
-                        AppGlobal.assert(false, message: RJS_Constants.notPredicted + "\(kv)")
+                        assert(false, message: RJS_Constants.notPredicted + "\(kv)")
                     }                    
                 }
                 rxPublishRelayAppicationDidReceivedData.accept(())
@@ -85,8 +85,8 @@ extension UseCases {
             _ = generic_LocalStorageRepository.save(key: storedKey, value: value, expireDate: RJS_DataModel.baseDate.add(minutes: 1))
             if AppEnvironments.isDev() {
                 let stored = screenHaveDataToHandle(screen: screen)
-                AppGlobal.assert(stored!.0 == key)
-                AppGlobal.assert(stored!.1 == value)
+                assert(stored!.0 == key)
+                assert(stored!.1 == value)
             }
         }
         

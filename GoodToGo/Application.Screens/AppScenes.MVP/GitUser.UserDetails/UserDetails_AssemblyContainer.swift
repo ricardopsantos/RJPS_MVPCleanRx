@@ -9,7 +9,7 @@ import Foundation
 import Swinject
 
 extension AssembyContainer {
-    final class UserDetais_AssemblyContainer: Assembly {
+    final class UserDetails_AssemblyContainer: Assembly {
         
         func assemble(container: Container) {
          

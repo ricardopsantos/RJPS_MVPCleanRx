@@ -104,7 +104,7 @@ extension AppView {
         private lazy var _btnPush: UIButton = {
             let some = AppFactory.UIKit.button(baseView: self.view, title: "Push", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .left)
-            some.rjsALayouts.setWidth((AppGlobal.screenWidth / 2) - (1.5 * _margin))
+            some.rjsALayouts.setWidth((screenWidth / 2) - (1.5 * _margin))
             some.rjsALayouts.setMargin(_margin*2, on: .top, from: _lblMessage)
             some.rjsALayouts.setHeight(_margin*2)
             some.rx.tap.subscribe({ [weak self] _ in
@@ -122,7 +122,7 @@ extension AppView {
         private lazy var _btnDismiss: UIButton = {
             let some = AppFactory.UIKit.button(baseView: self.view, title: "Dismiss", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .right)
-            some.rjsALayouts.setWidth((AppGlobal.screenWidth / 2) - (1.5 * _margin))
+            some.rjsALayouts.setWidth((screenWidth / 2) - (1.5 * _margin))
             some.rjsALayouts.setMargin(_margin*2, on: .top, from: _lblMessage)
             some.rjsALayouts.setHeight(_margin*2)
             some.rx.tap.subscribe({ [weak self] _ in

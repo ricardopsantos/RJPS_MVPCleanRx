@@ -5,15 +5,12 @@
 //  Copyright © 2019 Ricardo P Santos. All rights reserved.
 //
 
-import Swinject
-
 import UIKit
 import Foundation
 //
 import RJPSLib
 import RxSwift
 import RxCocoa
-import Swinject
 //
 import AppResources
 import UIBase

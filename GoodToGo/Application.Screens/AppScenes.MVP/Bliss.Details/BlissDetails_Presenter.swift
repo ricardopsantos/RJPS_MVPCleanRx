@@ -133,7 +133,7 @@ extension P.BlissDetails_Presenter: GenericTableView_Protocol {
             //someCell.set(title:"\(choice.choice) | \(choice.votes)")
             someCell.rxBehaviorRelay_title.accept(title)
         } else {
-            AppGlobal.assert(false, message: RJS_Constants.notPredicted + "\(cell)")
+            assert(false, message: RJS_Constants.notPredicted + "\(cell)")
         }
     }
     

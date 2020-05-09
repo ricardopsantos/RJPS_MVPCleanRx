@@ -81,7 +81,7 @@ extension P.BlissQuestionsList_Presenter: GenericTableView_Protocol {
                 someCell.rxBehaviorRelay_image.accept(image)
             }
         } else {
-            AppGlobal.assert(false, message: RJS_Constants.notPredicted + "\(cell)")
+            assert(false, message: RJS_Constants.notPredicted + "\(cell)")
         }
     }
     

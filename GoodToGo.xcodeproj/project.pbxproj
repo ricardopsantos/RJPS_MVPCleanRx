@@ -22,7 +22,7 @@
 		9F58FB4422BE5DE700042A8C /* UserDetais_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1A22BE5DE700042A8C /* UserDetais_View.swift */; };
 		9F58FB4522BE5DE700042A8C /* UserDetais_Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1B22BE5DE700042A8C /* UserDetais_Router.swift */; };
 		9F58FB4622BE5DE700042A8C /* UserDetais_Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1C22BE5DE700042A8C /* UserDetais_Presenter.swift */; };
-		9F58FB4722BE5DE700042A8C /* UserDetais_AssemblyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1D22BE5DE700042A8C /* UserDetais_AssemblyContainer.swift */; };
+		9F58FB4722BE5DE700042A8C /* UserDetails_AssemblyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1D22BE5DE700042A8C /* UserDetails_AssemblyContainer.swift */; };
 		9F58FB4822BE5DE700042A8C /* UserDetais_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1E22BE5DE700042A8C /* UserDetais_ViewModel.swift */; };
 		9F58FB4922BE5DE700042A8C /* SearchUser_Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB2022BE5DE700042A8C /* SearchUser_Router.swift */; };
 		9F58FB4A22BE5DE700042A8C /* SearchUser_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB2122BE5DE700042A8C /* SearchUser_ViewModel.swift */; };
@@ -97,7 +97,6 @@
 		9FCF332822EF55500074DAB9 /* Generic_CacheRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCF332722EF55500074DAB9 /* Generic_CacheRepositoryProtocol.swift */; };
 		9FCF332A22EF66CB0074DAB9 /* Repository.Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCF332922EF66CB0074DAB9 /* Repository.Network.swift */; };
 		9FD387C4223DCAF5001D2F4E /* Mappers+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD387C3223DCAF5001D2F4E /* Mappers+Utils.swift */; };
-		9FD387E8223F0EB2001D2F4E /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD387E7223F0EB2001D2F4E /* AppGlobal.swift */; };
 		9FE0572422E8D75400802747 /* MVPSampleRxView_Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0571F22E8D75400802747 /* MVPSampleRxView_Router.swift */; };
 		9FE0572522E8D75400802747 /* MVPSampleRxView_AssemblyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0572022E8D75400802747 /* MVPSampleRxView_AssemblyContainer.swift */; };
 		9FE0572622E8D75400802747 /* MVPSampleRxView_Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0572122E8D75400802747 /* MVPSampleRxView_Presenter.swift */; };
@@ -224,13 +223,13 @@
 		D729239A2466D60500DAD480 /* UIBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D729228D2466A04200DAD480 /* UIBase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D729239E2466D62900DAD480 /* AppView+BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1422BE5DE700042A8C /* AppView+BottomBar.swift */; };
 		D729239F2466D62C00DAD480 /* AppManagers+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F574EFD22356CA6007DAA58 /* AppManagers+Factory.swift */; };
+		D72923A02466D91700DAD480 /* AppConstants+Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E25A71246695EE003BBEA0 /* AppConstants+Mocks.swift */; };
 		D779A5EF234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5E9234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift */; };
 		D779A5F0234FE3A500D3D6F7 /* W.SampleVIP_Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5EA234FE3A500D3D6F7 /* W.SampleVIP_Worker.swift */; };
 		D779A5F1234FE3A500D3D6F7 /* R.SampleVIP_Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5EB234FE3A500D3D6F7 /* R.SampleVIP_Router.swift */; };
 		D779A5F2234FE3A500D3D6F7 /* D.SampleVIP_Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5EC234FE3A500D3D6F7 /* D.SampleVIP_Domain.swift */; };
 		D779A5F3234FE3A500D3D6F7 /* VC.SampleVIP_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5ED234FE3A500D3D6F7 /* VC.SampleVIP_ViewController.swift */; };
 		D779A5F4234FE3A500D3D6F7 /* I.SampleVIP_Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5EE234FE3A500D3D6F7 /* I.SampleVIP_Interactor.swift */; };
-		D7E25A72246695EE003BBEA0 /* AppConstants+Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E25A71246695EE003BBEA0 /* AppConstants+Mocks.swift */; };
 		D7E25A7E246699FC003BBEA0 /* PointFreeFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = D7E25A7C246699FC003BBEA0 /* PointFreeFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D7E25A8A24669ABB003BBEA0 /* RJPSLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBF4B0722BEBC3B00E0D1AB /* RJPSLib.framework */; };
 		D7E25A8E24669B02003BBEA0 /* PointFreeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E25A8D24669B02003BBEA0 /* PointFreeFunctions.swift */; };
@@ -524,7 +523,7 @@
 		9F58FB1A22BE5DE700042A8C /* UserDetais_View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetais_View.swift; sourceTree = "<group>"; };
 		9F58FB1B22BE5DE700042A8C /* UserDetais_Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetais_Router.swift; sourceTree = "<group>"; };
 		9F58FB1C22BE5DE700042A8C /* UserDetais_Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetais_Presenter.swift; sourceTree = "<group>"; };
-		9F58FB1D22BE5DE700042A8C /* UserDetais_AssemblyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetais_AssemblyContainer.swift; sourceTree = "<group>"; };
+		9F58FB1D22BE5DE700042A8C /* UserDetails_AssemblyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetails_AssemblyContainer.swift; sourceTree = "<group>"; };
 		9F58FB1E22BE5DE700042A8C /* UserDetais_ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetais_ViewModel.swift; sourceTree = "<group>"; };
 		9F58FB2022BE5DE700042A8C /* SearchUser_Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUser_Router.swift; sourceTree = "<group>"; };
 		9F58FB2122BE5DE700042A8C /* SearchUser_ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUser_ViewModel.swift; sourceTree = "<group>"; };
@@ -618,7 +617,6 @@
 		9FD387CB223F0CF3001D2F4E /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		9FD387CC223F0CF4001D2F4E /* UIFont+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		9FD387CD223F0CF4001D2F4E /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		9FD387E7223F0EB2001D2F4E /* AppGlobal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGlobal.swift; sourceTree = "<group>"; };
 		9FE0571F22E8D75400802747 /* MVPSampleRxView_Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSampleRxView_Router.swift; sourceTree = "<group>"; };
 		9FE0572022E8D75400802747 /* MVPSampleRxView_AssemblyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSampleRxView_AssemblyContainer.swift; sourceTree = "<group>"; };
 		9FE0572122E8D75400802747 /* MVPSampleRxView_Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSampleRxView_Presenter.swift; sourceTree = "<group>"; };
@@ -932,8 +930,6 @@
 			isa = PBXGroup;
 			children = (
 				D7E25A6E2465E5C1003BBEA0 /* README.md */,
-				9FD387E7223F0EB2001D2F4E /* AppGlobal.swift */,
-				D7E25A71246695EE003BBEA0 /* AppConstants+Mocks.swift */,
 				9F6BB2DE22E390B600829A6F /* AppConstants+Bliss.swift */,
 			);
 			path = Application.Global;
@@ -1058,7 +1054,7 @@
 				9F58FB1A22BE5DE700042A8C /* UserDetais_View.swift */,
 				9F58FB1B22BE5DE700042A8C /* UserDetais_Router.swift */,
 				9F58FB1C22BE5DE700042A8C /* UserDetais_Presenter.swift */,
-				9F58FB1D22BE5DE700042A8C /* UserDetais_AssemblyContainer.swift */,
+				9F58FB1D22BE5DE700042A8C /* UserDetails_AssemblyContainer.swift */,
 				9F58FB1E22BE5DE700042A8C /* UserDetais_ViewModel.swift */,
 			);
 			path = GitUser.UserDetails;
@@ -1421,6 +1417,7 @@
 			children = (
 				D72922D62466AD5D00DAD480 /* typealias.AppConstants.swift */,
 				9F02AE5B20F91E7B00AB5942 /* AppConstants.swift */,
+				D7E25A71246695EE003BBEA0 /* AppConstants+Mocks.swift */,
 				9F9829C8223A611E00ACA6B7 /* Enum.AlertType.swift */,
 				9F15CF2922BFA56E00FB402A /* Enum.AppMode.swift */,
 				D7E25A9624669B9B003BBEA0 /* AppConstants.h */,
@@ -2047,10 +2044,8 @@
 				9F6BB2BA22E3160E00829A6F /* Employee.swift in Sources */,
 				9F6BB2ED22E3A97F00829A6F /* BlissQuestionsList_ViewModel.swift in Sources */,
 				9F20554E22F25C83006B9DB7 /* MVVMSampleView_View.swift in Sources */,
-				9FD387E8223F0EB2001D2F4E /* AppGlobal.swift in Sources */,
 				9F6BB2D122E3470200829A6F /* MVPSampleTableView_View.swift in Sources */,
-				9F58FB4722BE5DE700042A8C /* UserDetais_AssemblyContainer.swift in Sources */,
-				D7E25A72246695EE003BBEA0 /* AppConstants+Mocks.swift in Sources */,
+				9F58FB4722BE5DE700042A8C /* UserDetails_AssemblyContainer.swift in Sources */,
 				9F20555022F25CED006B9DB7 /* MVVMSampleView_ViewController.swift in Sources */,
 				9F9829432239892D00ACA6B7 /* Generic_LocalStorageRepositoryProtocol.swift in Sources */,
 				9F6BB2FE22E3C0E400829A6F /* BlissDetails_AssemblyContainer.swift in Sources */,
@@ -2222,6 +2217,7 @@
 				D72922CF2466A3A300DAD480 /* Enum.AlertType.swift in Sources */,
 				D72922862466A00000DAD480 /* typealias.encaplulate.swift in Sources */,
 				D72922D12466A3A300DAD480 /* Enum.AppMode.swift in Sources */,
+				D72923A02466D91700DAD480 /* AppConstants+Mocks.swift in Sources */,
 				D72922D72466AD5D00DAD480 /* typealias.AppConstants.swift in Sources */,
 				D7E25AA624669BF4003BBEA0 /* AppConstants.swift in Sources */,
 			);
