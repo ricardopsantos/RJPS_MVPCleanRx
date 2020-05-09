@@ -174,7 +174,7 @@ extension RP.Network.Bliss {
         var responseType: NetworkClientResponseType
         var mockedData: String?
 
-        init(question: E.Bliss.QuestionElement) throws {
+        init(question: Bliss.QuestionElement) throws {
             if let url = URL(string: "\(AppConstants.Bliss.URLs.blissAPIBaseUrl)/questions") {
                 urlRequest = URLRequest(url: url)
                 urlRequest.httpMethod = "POST"
@@ -209,7 +209,7 @@ extension RP.Network.Bliss {
         var responseType: NetworkClientResponseType
         var mockedData: String?
 
-        init(question: E.Bliss.QuestionElement) throws {
+        init(question: Bliss.QuestionElement) throws {
             if let url = URL(string: "\(AppConstants.Bliss.URLs.blissAPIBaseUrl)/questions/\(question.id)") {
                 urlRequest = URLRequest(url: url)
                 urlRequest.httpMethod = "PUT"

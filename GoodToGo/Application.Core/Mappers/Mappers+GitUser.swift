@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+//
+import AppDomain
 
 //
 // The Brain Of The App
@@ -15,10 +17,10 @@ import UIKit
 extension Mappers {
     struct GitUser {
         private init() {}
-        static func toViewModelList(_ list: [E.GitHubUser]) -> [VM.GitHubUser] {
-            var result: [VM.GitHubUser] = []
+        static func toViewModelList(_ list: [GitHubUserResponseDto]) -> [GitHubUserViewModel] {
+            var result: [GitHubUserViewModel] = []
             for element in list {
-                result.append(VM.GitHubUser(some: element))
+                result.append(GitHubUserViewModel(some: element))
             }
             return result
         }

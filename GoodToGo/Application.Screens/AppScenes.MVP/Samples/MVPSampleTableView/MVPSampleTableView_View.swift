@@ -33,14 +33,14 @@ extension V {
         var presenter: MVPSampleTableView_PresenterProtocol!
 
         // BehaviorRelay model a State
-        private var _rxBehaviorRelay_tableDataSource = BehaviorRelay<[E.Employee]>(value: [])
+        private var _rxBehaviorRelay_tableDataSource = BehaviorRelay<[EmployeeResponseDto]>(value: [])
 
         private lazy var _tableView: UITableView = {
             let some = AppFactory.UIKit.tableView(baseView: self.view)
             some.backgroundColor = self.view.backgroundColor
             some.rjsALayouts.setMarginFromSuperview(top: 0, bottom: 0, left: 0, right: 0)
             some.register(Sample_TableViewCell.self, forCellReuseIdentifier: Sample_TableViewCell.reuseIdentifier)
-            some.rx.modelSelected(E.Employee.self)
+            some.rx.modelSelected(EmployeeResponseDto.self)
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
                 .subscribe(onNext: { [weak self]  item in
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
@@ -127,7 +127,7 @@ extension V.MVPSampleTableView_View: MVPSampleTableView_ViewProtocol {
 
     }
     
-    func viewNeedsToDisplay(list: [E.Employee]) {
+    func viewNeedsToDisplay(list: [EmployeeResponseDto]) {
         _rxBehaviorRelay_tableDataSource.accept(list)
     }
 }

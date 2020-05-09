@@ -34,7 +34,7 @@ extension UseCases {
             
             if canUseCache && !cachedValueIsOld(coreDatakey: coreDatakey, maxLifeSpam: cacheLifeSpam) {
                 if let cachedValue =  generic_CacheRepositoryProtocol.get(key: cacheKey) {
-                    completionHandler(Result.success(cachedValue as! E.GitHubUser))
+                    completionHandler(Result.success(cachedValue as! GitHubUserResponseDto))
                     return
                 }
             }
@@ -43,7 +43,7 @@ extension UseCases {
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                 switch result {
                 case .success(let some):
-                    let user: E.GitHubUser = some.entity
+                    let user: GitHubUserResponseDto = some.entity
                     completionHandler(Result.success(user))
                     self.generic_CacheRepositoryProtocol.add(object: some.entity as AnyObject, withKey: cacheKey)
                 case .failure(let error):
@@ -65,7 +65,7 @@ extension UseCases {
             
             if canUseCache && !cachedValueIsOld(coreDatakey: coreDatakey, maxLifeSpam: cacheLifeSpam) {
                 if let cachedValue =  generic_CacheRepositoryProtocol.get(key: cacheKey) {
-                    completionHandler(Result.success(cachedValue as! [E.GitHubUser]))
+                    completionHandler(Result.success(cachedValue as! [GitHubUserResponseDto]))
                     return
                 }
             }
@@ -74,7 +74,7 @@ extension UseCases {
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                 switch result {
                 case .success(let some):
-                    let friends: [E.GitHubUser] = some.entity
+                    let friends: [GitHubUserResponseDto] = some.entity
                     completionHandler(Result.success(friends))
                     self.generic_CacheRepositoryProtocol.add(object: some.entity as AnyObject, withKey: cacheKey)
                 case .failure(let error):

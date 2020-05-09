@@ -7,6 +7,7 @@
 
 import Foundation
 import RJPSLib
+import AppDomain
 
 /**
  * WE CANT HAVE BUSINESS RULES HERE! THE CLIENT JUST DO THE OPERATION AND LEAVE
@@ -24,7 +25,7 @@ extension RP.Network.Employees {
             do {
                 let apiRequest: WebAPIRequest_Protocol = try RP.Network.Employees.GetEmployees_APIRequest()
                 let apiClient: NetworkClient_Protocol = RJSLib.NetworkClient()
-                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<[E.Employee]>>) in
+                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<[EmployeeResponseDto]>>) in
                     completionHandler(result)
                 })
             } catch let error {

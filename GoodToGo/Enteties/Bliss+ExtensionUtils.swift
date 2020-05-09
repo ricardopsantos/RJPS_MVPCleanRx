@@ -7,36 +7,33 @@
 
 import Foundation
 import UIKit
-import RJPSLib
 
-extension Entity {
-    struct Bliss {
-        private init() {}
-    }
+public struct Bliss {
+    private init() {}
 }
 
-extension Entity.Bliss {
+public extension Bliss {
     struct ServerHealth: Codable {
-        let status: String
+        public let status: String
     }
 }
 
-extension E.Bliss.ServerHealth {
+public extension Bliss.ServerHealth {
     var isOK: Bool { return status == "OK" }
 }
 
-extension E.Bliss {
+public extension Bliss {
     struct ShareByEmail: Codable {
-        let status: String
+        public let status: String
     }
 }
 
-extension E.Bliss.ShareByEmail {
+public extension Bliss.ShareByEmail {
     var sucess: Bool { return status == "OK" }
 }
 
-extension E.Bliss.Question: CustomStringConvertible {
-    var description: String {
+extension Bliss.Question: CustomStringConvertible {
+    public var description: String {
         switch self {
         case .favouriteProgrammingLanguage: return "Favourite programming language?"
         }

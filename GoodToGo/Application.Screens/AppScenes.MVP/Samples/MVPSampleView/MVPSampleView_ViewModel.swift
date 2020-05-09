@@ -11,7 +11,7 @@ import UIKit
  * Needs to added AS.Sample_AssemblyContainer() to DependencyInjectionManager.swift
  */
 
-extension ViewModel {
+public extension VM {
     struct MVPSampleView_ViewModel {
         var someString = ""
     }

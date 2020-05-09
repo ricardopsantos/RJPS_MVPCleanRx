@@ -7,7 +7,10 @@
 
 import Foundation
 import UIKit
+//
 import RJPSLib
+//
+import AppDomain
 
 extension UseCases {
     
@@ -29,7 +32,7 @@ extension UseCases {
             }
         }
         
-        func getHealth(completionHandler: @escaping (Result<E.Bliss.ServerHealth>) -> Void) {
+        func getHealth(completionHandler: @escaping (Result<Bliss.ServerHealth>) -> Void) {
          
             guard existsInternetConnection else {
                 completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
@@ -45,7 +48,7 @@ extension UseCases {
 
         }
         
-        func shareQuestionBy(email: String, url: String, checkHealth: Bool, completionHandler: @escaping (Result<E.Bliss.ShareByEmail>) -> Void) {
+        func shareQuestionBy(email: String, url: String, checkHealth: Bool, completionHandler: @escaping (Result<Bliss.ShareByEmail>) -> Void) {
             let doWork = { [weak self] in
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                 self.repositoryNetwork.shareQuestionBy(email: email, url: url, completionHandler: { (result) in
@@ -70,7 +73,7 @@ extension UseCases {
             }
         }
         
-        func updateQuestion(question: E.Bliss.QuestionElement, checkHealth: Bool, completionHandler: @escaping (Result<E.Bliss.QuestionElement>) -> Void) {
+        func updateQuestion(question: Bliss.QuestionElement, checkHealth: Bool, completionHandler: @escaping (Result<Bliss.QuestionElement>) -> Void) {
             
             let doWork = { [weak self] in
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
@@ -96,7 +99,7 @@ extension UseCases {
             }
         }
         
-        func getQuestions(limit: Int, filter: String, offSet: Int, checkHealth: Bool=true, completionHandler: @escaping (Result<[E.Bliss.QuestionElement]>) -> Void) {
+        func getQuestions(limit: Int, filter: String, offSet: Int, checkHealth: Bool=true, completionHandler: @escaping (Result<[Bliss.QuestionElement]>) -> Void) {
             
             let doWork = { [weak self] in
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
@@ -124,7 +127,7 @@ extension UseCases {
         
         }
         
-        func getQuestionBy(id: Int, checkHealth: Bool=true, completionHandler: @escaping (Result<E.Bliss.QuestionElement>) -> Void) {
+        func getQuestionBy(id: Int, checkHealth: Bool=true, completionHandler: @escaping (Result<Bliss.QuestionElement>) -> Void) {
             
             let doWork = { [weak self] in
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
@@ -151,7 +154,7 @@ extension UseCases {
             }
         }
         
-        func makeQuestion(question: E.Bliss.QuestionElement, checkHealth: Bool=true, completionHandler: @escaping (Result<E.Bliss.QuestionElement>) -> Void) {
+        func makeQuestion(question: Bliss.QuestionElement, checkHealth: Bool=true, completionHandler: @escaping (Result<Bliss.QuestionElement>) -> Void) {
             
             let doWork = { [weak self] in
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }

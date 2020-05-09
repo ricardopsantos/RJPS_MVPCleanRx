@@ -11,9 +11,9 @@ import UIKit
  * Needs to added AS.Sample_AssemblyContainer() to DependencyInjectionManager.swift
  */
 
-extension ViewModel {
+public extension VM {
     struct BlissQuestionsList_ViewModel {
-        var questionsList: [E.Bliss.QuestionElement] = []
+        var questionsList: [Bliss.QuestionElement] = []
         var search: String = ""
     }
 }

@@ -32,7 +32,7 @@ extension V {
         var presenter: BlissDetails_PresenterProtocol!
         
         // BehaviorRelay model a State
-        private var _rxBehaviorRelay_tableDataSource = BehaviorRelay<[E.Bliss.ChoiceElement]>(value: [])
+        private var _rxBehaviorRelay_tableDataSource = BehaviorRelay<[Bliss.ChoiceElement]>(value: [])
         private var _imgCoverConstraintHeigth: NSLayoutConstraint?
         private let _margin: CGFloat = 15
         private let _imageSize: Int = 100
@@ -119,7 +119,7 @@ extension V {
             some.rjsALayouts.setMargin(_margin, on: .left)
             some.rjsALayouts.setMargin(_margin, on: .bottom, from: _btnShare1)
             some.register(Sample_TableViewCell.self, forCellReuseIdentifier: Sample_TableViewCell.reuseIdentifier)
-            some.rx.modelSelected(E.Bliss.ChoiceElement.self)
+            some.rx.modelSelected(Bliss.ChoiceElement.self)
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)                  .subscribe(onNext: { [weak self]  item in
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                     AppLogger.log("Tapped [\(item)]")
@@ -195,7 +195,7 @@ extension V.BlissDetails_View: BlissDetails_ViewProtocol {
         _topGenericView.setTitle(title)
     }
     
-    func viewNeedsToDisplay(list: [E.Bliss.ChoiceElement]) {
+    func viewNeedsToDisplay(list: [Bliss.ChoiceElement]) {
         _rxBehaviorRelay_tableDataSource.accept(list)
     }
     

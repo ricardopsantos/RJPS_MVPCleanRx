@@ -12,16 +12,16 @@ import UIKit
 // Generate by https://app.quicktype.io/
 //
 
-extension E.Bliss {
+public extension Bliss {
     
     // MARK: - ResponseElement
     struct QuestionElement: Codable {
-        let id: Int
-        let question: Question
-        let imageURL: String
-        let thumbURL: String
-        let publishedAt: PublishedAt
-        let choices: [ChoiceElement]
+        public let id: Int
+        public let question: Question
+        public let imageURL: String
+        public let thumbURL: String
+        public let publishedAt: PublishedAt
+        public let choices: [ChoiceElement]
         
         enum CodingKeys: String, CodingKey {
             case id, question
@@ -34,8 +34,8 @@ extension E.Bliss {
     
     // MARK: - ChoiceElement
     struct ChoiceElement: Codable {
-        let choice: ChoiceEnum
-        let votes: Int
+        public let choice: ChoiceEnum
+        public let votes: Int
     }
     
     enum ChoiceEnum: String, Codable {
@@ -54,27 +54,27 @@ extension E.Bliss {
     }
 }
 
-extension E.Bliss.QuestionElement {
-    static func make() -> E.Bliss.QuestionElement {
-        let question = E.Bliss.Question.favouriteProgrammingLanguage
-        let choices1 = E.Bliss.ChoiceElement(choice: E.Bliss.ChoiceEnum.python, votes: 0)
-        let choices2 = E.Bliss.ChoiceElement(choice: E.Bliss.ChoiceEnum.objectiveC, votes: 0)
+public extension Bliss.QuestionElement {
+    static func make() -> Bliss.QuestionElement {
+        let question = Bliss.Question.favouriteProgrammingLanguage
+        let choices1 = Bliss.ChoiceElement(choice: Bliss.ChoiceEnum.python, votes: 0)
+        let choices2 = Bliss.ChoiceElement(choice: Bliss.ChoiceEnum.objectiveC, votes: 0)
         let choices  = [choices1, choices2]
         let imageURL = "www.google.pt"
         let thumbURL = "www.google.pt"
-        let questionElement = E.Bliss.QuestionElement(id: 0, question: question, imageURL: imageURL, thumbURL: thumbURL, publishedAt: .the20150805T084051620Z, choices: choices)
+        let questionElement = Bliss.QuestionElement(id: 0, question: question, imageURL: imageURL, thumbURL: thumbURL, publishedAt: .the20150805T084051620Z, choices: choices)
         return questionElement
     }
 }
 
-extension E.Bliss {
+public extension Bliss {
 
     struct NewQuestionResponse: Codable {
-        let id: Int
-        let imageURL: String
-        let thumbURL: String
-        let question, publishedAt: String
-        let choices: [Choice]
+        public let id: Int
+        public let imageURL: String
+        public let thumbURL: String
+        public let question, publishedAt: String
+        public let choices: [Choice]
         
         enum CodingKeys: String, CodingKey {
             case id
@@ -88,7 +88,7 @@ extension E.Bliss {
     
     // MARK: - Choice
     struct Choice: Codable {
-        let choice: String
-        let votes: Int
+        public let choice: String
+        public let votes: Int
     }
 }

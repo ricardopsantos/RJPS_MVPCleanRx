@@ -16,7 +16,7 @@ public typealias M = Model
 public struct Model { private init() {} }
 
 public typealias E = Entity
-public struct Entity { private init() {} }
+public struct Entity { }
 
 // MARK: - Scenes
 

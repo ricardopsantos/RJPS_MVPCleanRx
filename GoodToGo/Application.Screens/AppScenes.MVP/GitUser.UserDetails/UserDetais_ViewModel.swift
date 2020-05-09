@@ -5,11 +5,16 @@
 //  Copyright © 2019 Ricardo P Santos. All rights reserved.
 //
 
+import Foundation
 import UIKit
+//
+import RJPSLib
+//
+import AppDomain
 
-extension ViewModel {
+public extension VM {
     struct UserDetais {
-        let user: E.GitHubUser
-        let friends: [E.GitHubUser]
+        public let user: GitHubUserResponseDto
+        public let friends: [GitHubUserResponseDto]
     }
 }

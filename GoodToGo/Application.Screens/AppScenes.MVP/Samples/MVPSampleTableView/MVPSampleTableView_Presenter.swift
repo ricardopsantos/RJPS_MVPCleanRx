@@ -37,7 +37,7 @@ protocol MVPSampleTableView_PresenterProtocol: class {
 }
 
 protocol MVPSampleTableView_ViewProtocol: class {
-    func viewNeedsToDisplay(list: [E.Employee])
+    func viewNeedsToDisplay(list: [EmployeeResponseDto])
     func setNetworkViewVisibilityTo(_ value: Bool)
 }
 
@@ -60,7 +60,7 @@ extension Presenter {
         var sampleB_UseCase: SampleB_UseCaseProtocol!
         
         // BehaviorRelay model a State
-        private var _rxBehaviorRelay_tableDataSource = BehaviorRelay<[E.Employee]>(value: [])
+        private var _rxBehaviorRelay_tableDataSource = BehaviorRelay<[EmployeeResponseDto]>(value: [])
 
         var disposeBag = DisposeBag()
         var reachabilityService = try! DefaultReachabilityService()
@@ -170,12 +170,12 @@ extension P.MVPSampleTableView_Presenter {
         
     }
     
-    func rxObservable_GetEmployees() -> Observable<[E.Employee]> {
+    func rxObservable_GetEmployees() -> Observable<[EmployeeResponseDto]> {
         return Observable.create { observer -> Disposable in
             do {
                 let apiRequest: WebAPIRequest_Protocol = try RP.Network.Employees.GetEmployees_APIRequest()
                 let apiClient: NetworkClient_Protocol = RJSLib.NetworkClient()
-                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<[E.Employee]>>) in
+                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<[EmployeeResponseDto]>>) in
                     switch result {
                     case .success(let some):
                         let employeeList = some.entity
