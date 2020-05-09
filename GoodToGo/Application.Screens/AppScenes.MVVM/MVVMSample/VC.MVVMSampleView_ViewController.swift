@@ -32,12 +32,11 @@ extension VC {
             some.rjsALayouts.setMarginFromSuperview(top: margin, bottom: margin, left: margin, right: margin) 
             return some
         }()
-  
+
         public override func loadView() {
             super.loadView()
             view.accessibilityIdentifier = AppConstants_UITests.UIViewControllers.genericAccessibilityIdentifier(self)
             rxSetup()
-            prepareLayout()
         }
         
         func rxSetup() {
@@ -63,12 +62,19 @@ extension VC {
                 })
                 .disposed(by: disposeBag)
         }
-        
-        override func prepareLayout() {
-            super.prepareLayout()
+
+        public override func prepareLayoutCreateHierarchy() {
             self.view.backgroundColor = AppColors.appDefaultBackgroundColor
             viewModel?.configure(view: viewModelView)
         }
+
+        public override func prepareLayoutBySettingAutoLayoutsRules() {
+
+        }
+
+        public override func prepareLayoutByFinishingPrepareLayout() {
+
+        }
     }
-   
+
 }

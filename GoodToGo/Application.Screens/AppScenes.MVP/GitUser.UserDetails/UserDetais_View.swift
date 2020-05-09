@@ -23,7 +23,7 @@ import Designables
 
 extension AppView {
     class UserDetais_View: GenericView {
-    
+        
         deinit {
             AppLogger.log("\(self.className) was killed")
             NotificationCenter.default.removeObserver(self)
@@ -90,7 +90,6 @@ extension AppView {
         override func viewDidLoad() {
             super.viewDidLoad()
             presenter.generic?.viewDidLoad()
-            prepareLayout()
         }
         
         override func viewWillAppear(_ animated: Bool) {
@@ -98,13 +97,20 @@ extension AppView {
             presenter.generic?.viewWillAppear()
         }
         
-        override func prepareLayout() {
-            super.prepareLayout()
+        public override func prepareLayoutCreateHierarchy() {
             self.view.backgroundColor = AppColors.appDefaultBackgroundColor
             _topGenericBar.lazyLoad()
             _imgAvatar.lazyLoad()
             _lblUserName.lazyLoad()
             _tableView.lazyLoad()
+        }
+        
+        public override func prepareLayoutBySettingAutoLayoutsRules() {
+            
+        }
+        
+        public override func prepareLayoutByFinishingPrepareLayout() {
+            
         }
     }
 }

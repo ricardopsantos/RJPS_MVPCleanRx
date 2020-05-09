@@ -30,7 +30,7 @@ extension AppView {
             presenter.generic?.view_deinit()
         }
         var presenter: MVPSampleTableView_PresenterProtocol!
-       
+
         // BehaviorRelay model a State
         private var _rxBehaviorRelay_tableDataSource = BehaviorRelay<[E.Employee]>(value: [])
 
@@ -77,7 +77,7 @@ extension AppView {
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                 var indexPath = NSIndexPath(row: row, section: 0)
                 self.presenter.tableView.configure(cell: cell, indexPath: indexPath as IndexPath)
-                }.disposed(by: disposeBag)
+            }.disposed(by: disposeBag)
             return some
         }()
         
@@ -85,7 +85,6 @@ extension AppView {
             super.loadView()
             presenter.generic?.loadView()
             view.accessibilityIdentifier = AppConstants_UITests.UIViewControllers.genericAccessibilityIdentifier(self)
-            prepareLayout()
         }
         
         override func viewDidLoad() {
@@ -102,11 +101,18 @@ extension AppView {
             super.viewWillAppear(animated)
             presenter.generic?.viewDidAppear()
         }
-        
-        override func prepareLayout() {
-            super.prepareLayout()
+
+        public override func prepareLayoutCreateHierarchy() {
             self.view.backgroundColor = .gray
             _tableView.lazyLoad()
+        }
+
+        public override func prepareLayoutBySettingAutoLayoutsRules() {
+            
+        }
+
+        public override func prepareLayoutByFinishingPrepareLayout() {
+
         }
     }
 }

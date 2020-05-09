@@ -115,7 +115,7 @@ extension AppView {
                     self.presenter.router.presentControllerWith(vm: vm)
                 })
             })
-            .disposed(by: disposeBag)
+                .disposed(by: disposeBag)
             return some
         }()
         
@@ -131,7 +131,7 @@ extension AppView {
                     self.presenter.router.dismissView()
                 })
             })
-            .disposed(by: disposeBag)
+                .disposed(by: disposeBag)
             return some
         }()
         
@@ -139,7 +139,6 @@ extension AppView {
             super.loadView()
             presenter.generic?.loadView()
             view.accessibilityIdentifier = AppConstants_UITests.UIViewControllers.genericAccessibilityIdentifier(self)
-            prepareLayout()
         }
         
         override func viewDidLoad() {
@@ -157,8 +156,7 @@ extension AppView {
             presenter.generic?.viewDidAppear()
         }
         
-        override func prepareLayout() {
-            super.prepareLayout()
+        public override func prepareLayoutCreateHierarchy() {
             self.view.backgroundColor = AppColors.appDefaultBackgroundColor
             _txtUser.lazyLoad()
             _txtPass.lazyLoad()
@@ -168,6 +166,14 @@ extension AppView {
             _btnDismiss.lazyLoad()
             _txtUser.text = "admin@admin.com"
             _txtPass.text = "admin"
+        }
+        
+        public override func prepareLayoutBySettingAutoLayoutsRules() {
+            
+        }
+        
+        public override func prepareLayoutByFinishingPrepareLayout() {
+            
         }
     }
 }

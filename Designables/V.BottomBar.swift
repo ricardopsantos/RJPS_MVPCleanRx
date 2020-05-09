@@ -87,7 +87,6 @@ public extension AppView {
         
         public override func loadView() {
             super.loadView()
-            prepareLayout()
         }
         
         public override func viewDidLoad() {
@@ -95,10 +94,8 @@ public extension AppView {
             view.accessibilityIdentifier = AppConstants_UITests.UIViewControllers.genericAccessibilityIdentifier(self)
             self.view.backgroundColor = UIColor.App.TopBar.background
         }
-        
-        public override func prepareLayout() {
-             super.prepareLayout()
 
+        public override func prepareLayoutCreateHierarchy() {
             let viewBack = UIView()
             viewBack.backgroundColor = .cyan
             self.view.addSubview(viewBack)
@@ -109,11 +106,16 @@ public extension AppView {
             viewBack.rjsALayouts.setMargin(viewBackMarginTop, on: .top)
 
             self.view.backgroundColor = .clear
+
+        }
+
+        public override func prepareLayoutBySettingAutoLayoutsRules() {
+
             let btns =  [_btn1, _btn2, _btn3, _btn4, _btn5]
             let k: CGFloat = 0.3
             let dimH = V.BottomBar.backgroundHeight()*(1.0-k)
             let dimW = (screenWidth / (CGFloat(btns.count+1)))
-            
+
             let margin: CGFloat = V.BottomBar.defaultHeight()*(k/2.0)
             let btnSize = CGSize(width: dimW, height: dimH)
             btns.forEach { (some) in
@@ -126,13 +128,18 @@ public extension AppView {
                 }
                 some.rjsALayouts.setMargin(margin, on: .bottom)
             }
-            
+
             _btn1.rjsALayouts.setMargin(margin, on: .left)
             _btn2.rjsALayouts.setMargin(margin, on: .left, from: _btn1)
             _btn3.rjsALayouts.setMargin(margin, on: .left, from: _btn2)
             _btn4.rjsALayouts.setMargin(margin, on: .left, from: _btn3)
             _btn5.rjsALayouts.setMargin(margin, on: .left, from: _btn4)
         }
+
+        public override func prepareLayoutByFinishingPrepareLayout() {
+
+        }
+
     }
 }
 

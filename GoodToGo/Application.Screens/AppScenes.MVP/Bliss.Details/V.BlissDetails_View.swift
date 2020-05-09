@@ -29,7 +29,7 @@ extension AppView {
             presenter.generic?.view_deinit()
         }
         var presenter: BlissDetails_PresenterProtocol!
-
+        
         // BehaviorRelay model a State
         private var _rxBehaviorRelay_tableDataSource = BehaviorRelay<[E.Bliss.ChoiceElement]>(value: [])
         private var _imgCoverConstraintHeigth: NSLayoutConstraint?
@@ -57,7 +57,7 @@ extension AppView {
                 .disposed(by: disposeBag)
             return some
         }()
-    
+        
         private lazy var _btnShare1: UIButton = {
             let some = AppFactory.UIKit.button(baseView: self.view, title: "Share in app", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .left)
@@ -70,10 +70,10 @@ extension AppView {
                     self.presenter.userDidPretendToShareInApp()
                 })
             })
-            .disposed(by: disposeBag)
+                .disposed(by: disposeBag)
             return some
         }()
-
+        
         private lazy var _btnShare2: UIButton = {
             let some = AppFactory.UIKit.button(baseView: self.view, title: "Share by Email", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .right)
@@ -81,7 +81,7 @@ extension AppView {
             some.rjsALayouts.setMargin(_margin, on: .bottom)
             some.rjsALayouts.setHeight(50)
             some.rx.tap
-                    .subscribe({ [weak self] _ in
+                .subscribe({ [weak self] _ in
                     some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
                         guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                         self.presenter.userDidPretendToShareByEmail()
@@ -133,7 +133,7 @@ extension AppView {
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                 cell.set(textColor: AppColors.lblTextColor)
                 self.presenter.tableView.configure(cell: cell, indexPath: NSIndexPath(row: row, section: 0) as IndexPath)
-                }.disposed(by: disposeBag)
+            }.disposed(by: disposeBag)
             return some
         }()
         
@@ -141,7 +141,6 @@ extension AppView {
             super.loadView()
             presenter.generic?.loadView()
             view.accessibilityIdentifier = AppConstants_UITests.UIViewControllers.genericAccessibilityIdentifier(self)
-            prepareLayout()
         }
         
         override func viewDidLoad() {
@@ -159,14 +158,21 @@ extension AppView {
             presenter.generic?.viewDidAppear()
         }
         
-        override func prepareLayout() {
-            super.prepareLayout()
+        public override func prepareLayoutCreateHierarchy() {
             self.view.backgroundColor = AppColors.appDefaultBackgroundColor
             _topGenericView.lazyLoad()
             _imgCover.lazyLoad()
             _btnShare1.lazyLoad()
             _btnShare2.lazyLoad()
             _tableView.lazyLoad()
+        }
+        
+        public override func prepareLayoutBySettingAutoLayoutsRules() {
+            
+        }
+        
+        public override func prepareLayoutByFinishingPrepareLayout() {
+            
         }
     }
 }
@@ -187,7 +193,7 @@ extension V.BlissDetails_View: BlissDetails_ViewProtocol {
     func set(title: String) {
         _topGenericView.setTitle(title)
     }
-
+    
     func viewNeedsToDisplay(list: [E.Bliss.ChoiceElement]) {
         _rxBehaviorRelay_tableDataSource.accept(list)
     }
@@ -199,11 +205,11 @@ extension V.BlissDetails_View: BlissDetails_ViewProtocol {
         _imgCover.image = image
         _imgCover.fadeTo(1)
         _imgCover.rjsALayouts.updateConstraint(_imgCoverConstraintHeigth!,
-                                                           toValue: newHeigth,
-                                                           duration: 0.3,
-                                                           completion: { (_) in
-                                                            
+                                               toValue: newHeigth,
+                                               duration: 0.3,
+                                               completion: { (_) in
+                                                
         })
     }
-
+    
 }

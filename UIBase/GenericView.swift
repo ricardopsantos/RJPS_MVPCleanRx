@@ -17,6 +17,7 @@ import Extensions
 import AppTheme
 import AppConstants
 import AppResources
+import PointFreeFunctions
 
 open class GenericView: UIViewController {
 
@@ -93,6 +94,7 @@ open class GenericView: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(self.keyboardWillHideNotification(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(self.keyboardDidShowNotification(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(self.keyboardDidHideNotification(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
+        doViewLifeCycle()
     }
     
     open override func viewWillAppear(_ animated: Bool) {
@@ -131,10 +133,53 @@ open class GenericView: UIViewController {
         }
     }
     
-    open func prepareLayout() { AppLogger.log(appCode: .notImplemented) }
+    //open func prepareLayout() { AppLogger.log(appCode: .notImplemented) }
     func keyboardDidShow() { }
     func keyboardDidHide() { }
     func dismissKeyboard() { }
+
+    private func doViewLifeCycle() {
+        prepareLayoutCreateHierarchy()           // DONT CHANGE ORDER
+        prepareLayoutBySettingAutoLayoutsRules() // DONT CHANGE ORDER
+        prepareLayoutByFinishingPrepareLayout()  // DONT CHANGE ORDER
+        setupViewUIRx()                          // DONT CHANGE ORDER
+    }
+
+    // What should this function be used for? Add stuff to the view zone....
+    // ...
+    // addSubview(scrollView)
+    // scrollView.addSubview(stackViewVLevel1)
+    // ...
+    //
+    open func prepareLayoutCreateHierarchy() {
+        assert(false, message: "Override me! [prepareLayout.buildLayoutByAddingOrRemoveViews] function is deprecated!")
+    }
+
+    // What should this function be used for? Setup layout rules zone....
+    // ...
+    // someView.autoLayout.widthToSuperview()
+    // someView.autoLayout.bottomToSuperview()
+    // ...
+    //
+    open func prepareLayoutBySettingAutoLayoutsRules() {
+        assert(false, message: "Override me! [prepareLayout.setAutoLayoutsRules] function is deprecated!")
+    }
+
+    // What should this function be used for? Extra stuff zone (not included in [prepareLayoutCreateHierarchy]
+    // and [prepareLayoutBySettingAutoLayoutsRules]
+    // ...
+    // table.separatorColor = .clear
+    // table.rx.setDelegate(self).disposed(by: disposeBag)
+    // label.textAlignment = .center
+    // ...
+    open func prepareLayoutByFinishingPrepareLayout() {
+        assert(false, message: "Override me! [prepareLayout.finishLayoutPrepare] function is deprecated!")
+    }
+
+    open func setupViewUIRx() {
+        assert(false, message: "Override me! [prepareLayout.finishLayoutPrepare] function is deprecated!")
+    }
+
 }
 
 //

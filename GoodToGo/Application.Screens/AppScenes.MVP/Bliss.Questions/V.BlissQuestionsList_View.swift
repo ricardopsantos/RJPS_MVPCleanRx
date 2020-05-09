@@ -29,13 +29,13 @@ extension AppView {
             presenter.generic?.view_deinit()
         }
         var presenter: BlissQuestionsList_PresenterProtocol!
-       
+
         // BehaviorRelay model a State
         private var _rxBehaviorRelay_tableDataSource = BehaviorRelay<[E.Bliss.QuestionElement]>(value: [])
 
         private let _tableViewThreshold: CGFloat = 100.0 // threshold from bottom of tableView
         private var _tableViewIsLoadingMoreData = false // flag
-    
+
         private lazy var _topGenericView: TopBar = {
             let some = AppFactory.UIKit.topBar(baseController: self)
             some.setTitle(AppMessages.Bliss.appName)
@@ -85,15 +85,15 @@ extension AppView {
             let animateCellsOnAppear = true
             if animateCellsOnAppear {
                 some.rx.willDisplayCell
-                .subscribe(onNext: ({ (cell, /*indexPath*/ _ ) in
-                    cell.alpha = 0
-                    let transform = CATransform3DTranslate(CATransform3DIdentity, -250, 0, 0)
-                    cell.layer.transform = transform
-                    UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-                        cell.alpha = 1
-                        cell.layer.transform = CATransform3DIdentity
-                    }, completion: nil)
-                })).disposed(by: disposeBag)
+                    .subscribe(onNext: ({ (cell, /*indexPath*/ _ ) in
+                        cell.alpha = 0
+                        let transform = CATransform3DTranslate(CATransform3DIdentity, -250, 0, 0)
+                        cell.layer.transform = transform
+                        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+                            cell.alpha = 1
+                            cell.layer.transform = CATransform3DIdentity
+                        }, completion: nil)
+                    })).disposed(by: disposeBag)
             }
             some.rx.modelSelected(E.Bliss.QuestionElement.self)
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
@@ -112,7 +112,7 @@ extension AppView {
                 var indexPath = NSIndexPath(row: row, section: 0)
                 cell.set(textColor: AppColors.lblTextColor)
                 self.presenter.tableView.configure(cell: cell, indexPath: indexPath as IndexPath)
-                }.disposed(by: disposeBag)
+            }.disposed(by: disposeBag)
             return some
         }()
         
@@ -120,7 +120,6 @@ extension AppView {
             super.loadView()
             presenter.generic?.loadView()
             view.accessibilityIdentifier = AppConstants_UITests.UIViewControllers.genericAccessibilityIdentifier(self)
-            prepareLayout()
         }
         
         override func viewDidLoad() {
@@ -137,13 +136,20 @@ extension AppView {
             super.viewWillAppear(animated)
             presenter.generic?.viewDidAppear()
         }
-        
-        override func prepareLayout() {
-            super.prepareLayout()
+
+        public override func prepareLayoutCreateHierarchy() {
             self.view.backgroundColor = AppColors.appDefaultBackgroundColor
             _topGenericView.lazyLoad()
             _searchBar.lazyLoad()
             _tableView.lazyLoad()
+        }
+
+        public override func prepareLayoutBySettingAutoLayoutsRules() {
+
+        }
+
+        public override func prepareLayoutByFinishingPrepareLayout() {
+
         }
     }
 }

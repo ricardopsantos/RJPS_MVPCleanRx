@@ -84,7 +84,6 @@ public extension AppView {
         
         open override func viewDidLoad() {
             super.viewDidLoad()
-            prepareLayout()
             presenter.generic?.viewDidLoad()
         }
         
@@ -100,14 +99,19 @@ public extension AppView {
             _searchBar.becomeFirstResponder()
         }
         
-        open override func prepareLayout() {
-            super.prepareLayout()
+        public override func prepareLayoutCreateHierarchy() {
             self.view.backgroundColor = AppColors.appDefaultBackgroundColor
             _topGenericView.lazyLoad()
             _searchBar.lazyLoad()
         }
         
-    }
+        public override func prepareLayoutBySettingAutoLayoutsRules() {
+            
+        }
+        
+        public override func prepareLayoutByFinishingPrepareLayout() {
+            
+        }    }
 }
 
 // MARK: - View Protocol

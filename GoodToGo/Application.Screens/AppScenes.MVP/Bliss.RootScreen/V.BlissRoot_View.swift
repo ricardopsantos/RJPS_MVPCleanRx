@@ -29,7 +29,7 @@ extension AppView {
             presenter.generic?.view_deinit()
         }
         var presenter: BlissRoot_PresenterProtocol!
-       
+        
         private var _imageSize: CGFloat = 200
         private var _imgConstraintHeigth: NSLayoutConstraint?
         private lazy var _imageView: UIImageView = {
@@ -49,7 +49,6 @@ extension AppView {
             super.loadView()
             presenter.generic?.loadView()
             view.accessibilityIdentifier = AppConstants_UITests.UIViewControllers.genericAccessibilityIdentifier(self)
-            prepareLayout()
         }
         
         override func viewDidLoad() {
@@ -67,10 +66,17 @@ extension AppView {
             presenter.generic?.viewDidAppear()
         }
         
-        override func prepareLayout() {
-            super.prepareLayout()
+        public override func prepareLayoutCreateHierarchy() {
             self.view.backgroundColor = AppColors.appDefaultBackgroundColor
             _imageView.lazyLoad()
+        }
+        
+        public override func prepareLayoutBySettingAutoLayoutsRules() {
+            
+        }
+        
+        public override func prepareLayoutByFinishingPrepareLayout() {
+            
         }
     }
 }
@@ -84,17 +90,17 @@ extension V.BlissRoot_View: BlissRoot_ViewProtocol {
             _imageView.fadeTo(0)
             return
         }
-
+        
         let ratio = image.size.width / image.size.height
         let imgCurrentWidh = _imageSize
         let newHeigth = imgCurrentWidh / ratio
         _imageView.image = image
         _imageView.fadeTo(1)
         _imageView.rjsALayouts.updateConstraint(_imgConstraintHeigth!,
-                                               toValue: newHeigth,
-                                               duration: 0.3,
-                                               completion: { (_) in
-                                                
+                                                toValue: newHeigth,
+                                                duration: 0.3,
+                                                completion: { (_) in
+                                                    
         })
     }
     
