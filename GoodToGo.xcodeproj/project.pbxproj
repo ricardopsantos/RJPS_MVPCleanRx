@@ -93,7 +93,6 @@
 		9FE143B821AF2F520026BDFC /* AppManagers+Environments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE1437021AF1ADC0026BDFC /* AppManagers+Environments.swift */; };
 		9FE143C021AF2F520026BDFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F288F2720F8089F008A9539 /* AppDelegate.swift */; };
 		9FE143F021AF2F520026BDFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F288F3120F808A2008A9539 /* Assets.xcassets */; };
-		9FFF80BA22BFB7CC003C4562 /* AppUtils_ProtocolExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80B922BFB7CC003C4562 /* AppUtils_ProtocolExtension.swift */; };
 		9FFF80BC22BFB9A6003C4562 /* UIImage+AppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80BB22BFB9A6003C4562 /* UIImage+AppExtensions.swift */; };
 		D729225E24669D5000DAD480 /* AppConstants.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7E25A9424669B9B003BBEA0 /* AppConstants.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D729226024669D5400DAD480 /* PointFreeFunctions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7E25A7A246699FC003BBEA0 /* PointFreeFunctions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -213,6 +212,7 @@
 		D7D9E7A724676FE6005B4313 /* API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7D9E7A024676FE6005B4313 /* API.framework */; };
 		D7D9E7A824676FE6005B4313 /* API.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7D9E7A024676FE6005B4313 /* API.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7D9E7B424677046005B4313 /* typealias.API.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E7B324677046005B4313 /* typealias.API.swift */; };
+		D7D9E7B5246771DB005B4313 /* AppUtils_ProtocolExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80B922BFB7CC003C4562 /* AppUtils_ProtocolExtension.swift */; };
 		D7E25A7E246699FC003BBEA0 /* PointFreeFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = D7E25A7C246699FC003BBEA0 /* PointFreeFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D7E25A8E24669B02003BBEA0 /* PointFreeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E25A8D24669B02003BBEA0 /* PointFreeFunctions.swift */; };
 		D7E25A9824669B9B003BBEA0 /* AppConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D7E25A9624669B9B003BBEA0 /* AppConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1144,7 +1144,6 @@
 			isa = PBXGroup;
 			children = (
 				D7E25A6D2465E5B5003BBEA0 /* README.md */,
-				9FFF80B922BFB7CC003C4562 /* AppUtils_ProtocolExtension.swift */,
 			);
 			path = Application.Core;
 			sourceTree = "<group>";
@@ -1445,6 +1444,7 @@
 		D7AB24C5246743BD000142C4 /* AppCore */ = {
 			isa = PBXGroup;
 			children = (
+				9FFF80B922BFB7CC003C4562 /* AppUtils_ProtocolExtension.swift */,
 				D7D9E79624676CD2005B4313 /* README.md */,
 				D7D9E7912467545D005B4313 /* typealias.AppCore.swift */,
 				9FA0DCC122BE5E45003ADF99 /* UseCases */,
@@ -2227,7 +2227,6 @@
 				9F58FB4722BE5DE700042A8C /* UserDetails_AssemblyContainer.swift in Sources */,
 				9F20555022F25CED006B9DB7 /* VC.MVVMSampleView_ViewController.swift in Sources */,
 				9F6BB2FE22E3C0E400829A6F /* AS.BlissDetails_AssemblyContainer.swift in Sources */,
-				9FFF80BA22BFB7CC003C4562 /* AppUtils_ProtocolExtension.swift in Sources */,
 				9F6BB30322E3CB2D00829A6F /* D.BlissRoot_ViewModel.swift in Sources */,
 				9F6BB2F122E3A97F00829A6F /* R.BlissQuestionsList_Router.swift in Sources */,
 				9F6BB2FA22E3C0E400829A6F /* R.BlissDetails_Router.swift in Sources */,
@@ -2404,6 +2403,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7D9E7B5246771DB005B4313 /* AppUtils_ProtocolExtension.swift in Sources */,
 				D7D9E79024675410005B4313 /* Mappers.swift in Sources */,
 				D7D9E7922467545D005B4313 /* typealias.AppCore.swift in Sources */,
 				D7D9E79524676CC1005B4313 /* UseCases.swift in Sources */,

@@ -35,7 +35,7 @@ public extension AppUtils_Protocol {
     }
     
     func downloadImage(imageURL: String, onFail: UIImage?=nil, completion: @escaping (UIImage?) -> Void) {
-        guard !imageURL.isEmpty else { return completion(AppImages.notFound) }
+        guard !imageURL.isEmpty else { return completion(onFail) }
         AppSimpleNetworkClient.downloadImageFrom(imageURL, caching: .fileSystem) { (image) in completion(image ?? onFail) }
     }
     

@@ -21,6 +21,7 @@ import DevTools
 import PointFreeFunctions
 import Designables
 import AppDomain
+import AppCore
 
 // swiftlint:disable all
 

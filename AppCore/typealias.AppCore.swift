@@ -7,9 +7,13 @@
 //
 
 import Foundation
+//
 import DevTools
+//
+import RJPSLib
 
 typealias AppLogger = DevTools.AppLogger
+typealias AppSimpleNetworkClient = RJS_SimpleNetworkClient
 
 public typealias UC = UseCases
 public class UseCases { private init() {} }
