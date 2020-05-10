@@ -38,6 +38,7 @@ open class BaseGenericView: StylableView {
         prepareLayoutBySettingAutoLayoutsRules() // DONT CHANGE ORDER
         prepareLayoutByFinishingPrepareLayout()  // DONT CHANGE ORDER
         setupViewUIRx()                          // DONT CHANGE ORDER
+        setupColorsAndStyles()
     }
 
     // What should this function be used for? Add stuff to the view zone....
@@ -68,6 +69,10 @@ open class BaseGenericView: StylableView {
     // label.textAlignment = .center
     // ...
     open func prepareLayoutByFinishingPrepareLayout() {
+        assert(false, message: "Override me")
+    }
+
+    open func setupColorsAndStyles() {
         assert(false, message: "Override me")
     }
 

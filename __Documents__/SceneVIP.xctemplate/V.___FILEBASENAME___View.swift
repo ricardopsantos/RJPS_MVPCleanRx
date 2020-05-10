@@ -57,15 +57,15 @@ extension V {
         }()
 
         private lazy var btnSample1: UIButton = {
-            UIKitFactory.button(style: .regular)
+            UIKitFactory.button(title: "btnSample1", style: .regular)
         }()
 
         private lazy var btnSample2: UIButton = {
-            UIKitFactory.button(style: .regular)
+            UIKitFactory.button(title: "btnSample2", style: .regular)
         }()
 
         private lazy var btnSample3: UIButton = {
-            UIKitFactory.button(style: .regular)
+            UIKitFactory.button(title: "btnSample3", style: .regular)
         }()
 
         // Naming convention: rxTbl[MeaningfulTableName]Items
@@ -73,7 +73,7 @@ extension V {
         var rxTableItems = BehaviorSubject<[Section]>(value: [])
 
         private lazy var tableView: UITableView = {
-            UITableView()
+            UIKitFactory.tableView()
         }()
 
         // MARK: - Mandatory
@@ -128,6 +128,10 @@ extension V {
             tableView.separatorColor = .clear
             tableView.rx.setDelegate(self).disposed(by: disposeBag)
             lblSample.textAlignment = .center
+        }
+
+        override func setupColorsAndStyles() {
+            self.backgroundColor = AppColors.appDefaultBackgroundColor
         }
 
         // Order in View life-cycle : 2
