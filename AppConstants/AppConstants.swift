@@ -30,7 +30,7 @@ public struct AppConstants {
 
     public struct URLs {
         private init() {}
-        public static let useMockedData = true
+        //public static let useMockedData = true
         public static var githubAPIBaseUrl: String {
             return "https://api.github.com"
         }

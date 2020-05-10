@@ -13,17 +13,20 @@ import AppDomain
  * WE CANT HAVE BUSINESS RULES HERE! THE CLIENT JUST DO THE OPERATION AND LEAVE
  */
 
-extension RP.Network {
+public extension Network {
     struct GitUser {
-        private init() {}
+        public init() {}
     }
 }
 
-extension RP.Network.GitUser {
+public extension Network.GitUser {
     class NetWorkRepository: GitUser_NetWorkRepositoryProtocol {
-        func getInfoOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitUser_Single_NetWorkRepositoryCompletionHandler) {
+
+        public init() { }
+        
+        public func getInfoOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitUser_Single_NetWorkRepositoryCompletionHandler) {
             do {
-                let apiRequest: WebAPIRequest_Protocol = try RP.Network.GitUser.GetUserInfo_APIRequest(userName: userName)
+                let apiRequest: WebAPIRequest_Protocol = try Network.GitUser.GetUserInfo_APIRequest(userName: userName)
                 let apiClient: NetworkClient_Protocol = RJSLib.NetworkClient()
                 apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<GitHub.UserResponseDto>>) in
                     completionHandler(result)
@@ -33,9 +36,9 @@ extension RP.Network.GitUser {
             }
         }
         
-        func getFriendsOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitUser_Friends_NetWorkRepositoryCompletionHandler) {
+        public func getFriendsOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitUser_Friends_NetWorkRepositoryCompletionHandler) {
             do {
-                let apiRequest: WebAPIRequest_Protocol = try RP.Network.GitUser.GetFriends_APIRequest(userName: userName)
+                let apiRequest: WebAPIRequest_Protocol = try Network.GitUser.GetFriends_APIRequest(userName: userName)
                 let apiClient: NetworkClient_Protocol = RJSLib.NetworkClient()
                 apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<[GitHub.UserResponseDto]>>) in
                     completionHandler(result)

@@ -12,14 +12,17 @@ import RJPSLib
 public extension DevTools {
     enum FeatureFlag: String, CaseIterable {
 
-        case statsTotalEnabled  = "statsTotalEnabled"       // Client
-        case devTeam_showToasts = "DEV: devTeam_showToasts" // Dev team
+        case statsTotalEnabled     = "statsTotalEnabled"       // Client
+        case devTeam_showToasts    = "DEV: devTeam_showToasts" // Dev team
+        case devTeam_useMockedData = "DEV: Use Mock Data" // Dev team
 
         public var defaultValue: Bool {
             switch self {
             case .statsTotalEnabled:
                 return true
             case .devTeam_showToasts:
+                return DevTools.devModeIsEnabled
+            case .devTeam_useMockedData:
                 return DevTools.devModeIsEnabled
             }
         }

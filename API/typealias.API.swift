@@ -7,3 +7,10 @@
 //
 
 import Foundation
+//
+import RJPSLib
+//
+import DevTools
+
+typealias WebAPIRequest_Protocol = RJSLibWebAPIRequest_Protocol
+typealias AppLogger   = DevTools.AppLogger

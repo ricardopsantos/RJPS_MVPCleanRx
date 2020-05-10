@@ -21,6 +21,7 @@ import DevTools
 import PointFreeFunctions
 import Designables
 import AppDomain
+import API
 
 //
 // MARK: - Presenter_Protocol & View_Protocol
@@ -174,7 +175,7 @@ extension P.MVPSampleTableView_Presenter {
     func rxObservable_GetEmployees() -> Observable<[Employee.ResponseDto]> {
         return Observable.create { observer -> Disposable in
             do {
-                let apiRequest: WebAPIRequest_Protocol = try RP.Network.Employees.GetEmployees_APIRequest()
+                let apiRequest: WebAPIRequest_Protocol = try Network.Employees.GetEmployees_APIRequest()
                 let apiClient: NetworkClient_Protocol = RJSLib.NetworkClient()
                 apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<[Employee.ResponseDto]>>) in
                     switch result {
@@ -191,7 +192,7 @@ extension P.MVPSampleTableView_Presenter {
                 observer.onError(error)
             }
             return Disposables.create()
-            }.retry(RP.Network.Employees.GetEmployees_APIRequest.maxNumberOfRetrys)
+            }.retry(Network.Employees.GetEmployees_APIRequest.maxNumberOfRetrys)
             .retryOnBecomesReachable([], reachabilityService: reachabilityService)
     }
 }

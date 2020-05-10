@@ -13,18 +13,20 @@ import AppDomain
  * WE CANT HAVE BUSINESS RULES HERE! THE CLIENT JUST DO THE OPERATION AND LEAVE
  */
 
-extension RP.Network {
+public extension Network {
     struct Bliss {
         private init() {}
     }
 }
 
-extension RP.Network.Bliss {
+public extension Network.Bliss {
     class NetWorkRepository: Bliss_NetWorkRepositoryProtocol {
- 
-        func shareQuestionBy(email: String, url: String, completionHandler: @escaping (Result<NetworkClientResponse<Bliss.ShareByEmail>>) -> Void) {
+
+        public init() { }
+
+        public func shareQuestionBy(email: String, url: String, completionHandler: @escaping (Result<NetworkClientResponse<Bliss.ShareByEmail>>) -> Void) {
             do {
-                let apiRequest: WebAPIRequest_Protocol = try RP.Network.Bliss.Share_APIRequest(email: email, url: url)
+                let apiRequest: WebAPIRequest_Protocol = try Network.Bliss.Share_APIRequest(email: email, url: url)
                 let apiClient: NetworkClient_Protocol = RJSLib.NetworkClient()
                 apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<Bliss.ShareByEmail>>) in
                     completionHandler(result)
@@ -34,9 +36,9 @@ extension RP.Network.Bliss {
             }
         }
         
-        func updateQuestion(question: Bliss.QuestionElementResponseDto, completionHandler: @escaping (Result<NetworkClientResponse<Bliss.QuestionElementResponseDto>>) -> Void) {
+        public func updateQuestion(question: Bliss.QuestionElementResponseDto, completionHandler: @escaping (Result<NetworkClientResponse<Bliss.QuestionElementResponseDto>>) -> Void) {
             do {
-                let apiRequest: WebAPIRequest_Protocol = try RP.Network.Bliss.UpdateQuestion_APIRequest(question: question)
+                let apiRequest: WebAPIRequest_Protocol = try Network.Bliss.UpdateQuestion_APIRequest(question: question)
                 let apiClient: NetworkClient_Protocol = RJSLib.NetworkClient()
                 apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<Bliss.QuestionElementResponseDto>>) in
                     completionHandler(result)
@@ -46,9 +48,9 @@ extension RP.Network.Bliss {
             }
         }
         
-        func makeQuestion(question: Bliss.QuestionElementResponseDto, completionHandler: @escaping (Result<NetworkClientResponse<Bliss.QuestionElementResponseDto>>) -> Void) {
+        public func makeQuestion(question: Bliss.QuestionElementResponseDto, completionHandler: @escaping (Result<NetworkClientResponse<Bliss.QuestionElementResponseDto>>) -> Void) {
             do {
-                let apiRequest: WebAPIRequest_Protocol = try RP.Network.Bliss.NewQuestion_APIRequest(question: question)
+                let apiRequest: WebAPIRequest_Protocol = try Network.Bliss.NewQuestion_APIRequest(question: question)
                 let apiClient: NetworkClient_Protocol = RJSLib.NetworkClient()
                 apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<Bliss.QuestionElementResponseDto>>) in
                     completionHandler(result)
@@ -58,9 +60,9 @@ extension RP.Network.Bliss {
             }
         }
         
-        func getQuestionBy(id: Int, completionHandler: @escaping (Result<NetworkClientResponse<Bliss.QuestionElementResponseDto>>) -> Void) {
+        public func getQuestionBy(id: Int, completionHandler: @escaping (Result<NetworkClientResponse<Bliss.QuestionElementResponseDto>>) -> Void) {
             do {
-                let apiRequest: WebAPIRequest_Protocol = try RP.Network.Bliss.QuestionById_APIRequest(id: id)
+                let apiRequest: WebAPIRequest_Protocol = try Network.Bliss.QuestionById_APIRequest(id: id)
                 let apiClient: NetworkClient_Protocol = RJSLib.NetworkClient()
                 apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<Bliss.QuestionElementResponseDto>>) in
                     completionHandler(result)
@@ -70,10 +72,10 @@ extension RP.Network.Bliss {
             }
         }
         
-        func getQuestions(limit: Int, filter: String, offSet: Int, completionHandler: @escaping (_ result: Result<NetworkClientResponse<[Bliss.QuestionElementResponseDto]>>) -> Void) {
+        public func getQuestions(limit: Int, filter: String, offSet: Int, completionHandler: @escaping (_ result: Result<NetworkClientResponse<[Bliss.QuestionElementResponseDto]>>) -> Void) {
             do {
              
-                let apiRequest: WebAPIRequest_Protocol = try RP.Network.Bliss.ListQuestions_APIRequest(limit: limit, filter: filter, offSet: offSet)
+                let apiRequest: WebAPIRequest_Protocol = try Network.Bliss.ListQuestions_APIRequest(limit: limit, filter: filter, offSet: offSet)
                 let apiClient: NetworkClient_Protocol = RJSLib.NetworkClient()
                 apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<[Bliss.QuestionElementResponseDto]>>) in
                     completionHandler(result)
@@ -83,9 +85,9 @@ extension RP.Network.Bliss {
             }
         }
         
-        func getHealth(completionHandler: @escaping (Result<NetworkClientResponse<Bliss.ServerHealth>>) -> Void) {
+        public func getHealth(completionHandler: @escaping (Result<NetworkClientResponse<Bliss.ServerHealth>>) -> Void) {
             do {
-                let apiRequest: WebAPIRequest_Protocol = try RP.Network.Bliss.GetHealthStatus_APIRequest()
+                let apiRequest: WebAPIRequest_Protocol = try Network.Bliss.GetHealthStatus_APIRequest()
                 let apiClient: NetworkClient_Protocol = RJSLib.NetworkClient()
                 apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<Bliss.ServerHealth>>) in
                     completionHandler(result)

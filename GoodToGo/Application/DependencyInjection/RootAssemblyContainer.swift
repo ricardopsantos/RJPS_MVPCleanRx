@@ -8,6 +8,7 @@
 import Swinject
 import RJPSLib
 import AppDomain
+import API
 
 struct RootAssemblyContainerProtocols {
 
@@ -42,10 +43,10 @@ final class RootAssemblyContainer: Assembly {
                                initializer: RP.LocalStorage.Generic_LocalStorageRepository.init).inObjectScope(.container)
         
         container.autoregister(AppProtocols.gitUser_NetWorkRepository,
-                               initializer: RP.Network.GitUser.NetWorkRepository.init).inObjectScope(.container)
+                               initializer: Network.GitUser.NetWorkRepository.init).inObjectScope(.container)
 
         container.autoregister(AppProtocols.bliss_NetWorkRepository,
-                               initializer: RP.Network.Bliss.NetWorkRepository.init).inObjectScope(.container)
+                               initializer: Network.Bliss.NetWorkRepository.init).inObjectScope(.container)
         
         container.register(AppProtocols.sample_UseCase) { resolver in
             let uc = Sample_UseCase()
