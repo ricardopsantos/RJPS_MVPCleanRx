@@ -15,20 +15,25 @@ import UIBase
 import Designables
 import DevTools
 
-class BaseViewControllerVIP: UIViewController, BaseDisplayLogicProtocol {
+class BaseViewControllerVIP: /* BaseViewControllerMVP*/ UIViewController, BaseDisplayLogicProtocol {
 
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
 
+    func displayStatus(viewModel: StatusModel) {
+        // no BaseViewControllerMVP
+        //self.displayMessage(_ message: viewModel.message, type: .error)
+    }
+
     func displayLoading(viewModel: LoadingModel) {
-        #warning("implementar")
-        DevTools.makeToast(viewModel.message, isError: false)
+        // no BaseViewControllerMVP
+        //setActivityState(viewModel.isLoading)
     }
 
     func displayError(viewModel: ErrorModel) {
-        #warning("implementar")
-        DevTools.makeToast(viewModel.message, isError: true)
+        // no BaseViewControllerMVP
+        //displayMessage(_ message: viewModel.message, type: .error)
     }
 
     func setupColorsAndStyles() {
@@ -48,13 +53,13 @@ class BaseGenericViewControllerVIP<T: StylableView>: BaseViewControllerVIP {
         setup()
     }
 
+    var disposeBag = DisposeBag()
     var firstAppearance: Bool = true
     var genericView: T { view as! T }
-    var disposeBag = DisposeBag()
     override func loadView() {
         super.loadView()
         view = T()
-        setupViewUIRx()
+        //setupViewUIRx()
     }
 
     func setup() {
@@ -77,10 +82,6 @@ class BaseGenericViewControllerVIP<T: StylableView>: BaseViewControllerVIP {
     }
 
     func setupViewIfNeed() {
-        fatalError("Override me")
-    }
-
-    func setupViewUIRx() {
         fatalError("Override me")
     }
 

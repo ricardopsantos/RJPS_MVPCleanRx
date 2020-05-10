@@ -17,22 +17,18 @@ public struct ErrorModel {
         self.title = title
         self.message = message
     }
+}
 
-    public init(error: Swift.Error) {
-        self.title = "Error"
-        self.message = error.localizedDescription
+public struct StatusModel {
+    public let message: String
+    public init(message: String) {
+        self.message = message
     }
 }
 
 public struct LoadingModel {
     public let isLoading: Bool
     public let message: String
-
-    public init(error: Error) {
-        self.isLoading = false
-        self.message = "\(error)"
-    }
-
     public init(isLoading: Bool, message: String) {
         self.isLoading = isLoading
         self.message = message
@@ -42,7 +38,7 @@ public struct LoadingModel {
 public protocol BaseDisplayLogicProtocol: class {
     func displayLoading(viewModel: LoadingModel)
     func displayError(viewModel: ErrorModel)
-    //func displayToast(viewModel: i9.Toast.ViewModel, position: ToastPosition, completion: ((Bool) -> Void)?)
+    func displayStatus(viewModel: StatusModel)
 }
 
 open class BasePresenterVIP {
