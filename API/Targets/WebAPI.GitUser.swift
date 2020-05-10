@@ -33,7 +33,7 @@ public extension WebAPI.GitUser {
         public func getFriendsOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitUser_Friends_NetWorkRepositoryCompletionHandler) {
             do {
                 let apiRequest: WebAPIRequest_Protocol = try WebAPI.GitUser.GetFriends_APIRequest(userName: userName)
-                let apiClient: NetworkClient_Protocol  = RJSLib.NetworkClient()
+                let apiClient: NetworkClient_Protocol = RJSLib.NetworkClient()
                 apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<[GitHub.UserResponseDto]>>) in
                     completionHandler(result)
                 })

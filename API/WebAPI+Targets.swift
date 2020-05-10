@@ -13,4 +13,5 @@ public struct WebAPI {
     public struct Employees { private init() {} }
     public struct GitUser { public init() {} }
     public struct Bliss { private init() {} }
+    public struct CarTrack { private init() {} }
 }

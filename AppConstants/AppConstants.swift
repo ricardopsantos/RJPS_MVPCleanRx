@@ -30,13 +30,8 @@ public struct AppConstants {
 
     public struct URLs {
         private init() {}
-        //public static let useMockedData = true
-        public static var githubAPIBaseUrl: String {
-            return "https://api.github.com"
-        }
        
         public static let getPostCodes = "https://github.com/centraldedados/codigos_postais/raw/master/data/codigos_postais.csv"
-        public static let getEmployees = "http://dummy.restapiexample.com/api/v1/employees"
     }
     
     public struct Cache {

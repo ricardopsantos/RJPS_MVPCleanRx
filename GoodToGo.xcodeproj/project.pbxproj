@@ -207,7 +207,7 @@
 		D7D9E7BB246773F8005B4313 /* WebAPI.GitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F98294F22398EDB00ACA6B7 /* WebAPI.GitUser.swift */; };
 		D7D9E7BC246773F8005B4313 /* WebAPI.Bliss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2BE22E3292C00829A6F /* WebAPI.Bliss.swift */; };
 		D7D9E7BE2467742C005B4313 /* RJPSLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBF4B0722BEBC3B00E0D1AB /* RJPSLib.framework */; };
-		D7D9E7C2246775C2005B4313 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E7C1246775C2005B4313 /* API.swift */; };
+		D7D9E7C2246775C2005B4313 /* WebAPI+Targets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E7C1246775C2005B4313 /* WebAPI+Targets.swift */; };
 		D7D9E7C4246777B4005B4313 /* DevTools+Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E7C3246777B4005B4313 /* DevTools+Strings.swift */; };
 		D7D9E7C624678344005B4313 /* AppConstants+Mocks+Employees.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E7C524678344005B4313 /* AppConstants+Mocks+Employees.swift */; };
 		D7D9E7C924678741005B4313 /* AppConstants+Mock+GitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E7C824678741005B4313 /* AppConstants+Mock+GitHub.swift */; };
@@ -229,6 +229,7 @@
 		D7D9E7F82467FEE3005B4313 /* E.LayoutStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E7F72467FEE3005B4313 /* E.LayoutStyle.swift */; };
 		D7D9E7FA2467FFBA005B4313 /* E.AppCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E7F92467FFBA005B4313 /* E.AppCodes.swift */; };
 		D7D9E7FE2468016D005B4313 /* E.AppMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F15CF2922BFA56E00FB402A /* E.AppMode.swift */; };
+		D7D9E80224681046005B4313 /* CarTrack.APIRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E80124681046005B4313 /* CarTrack.APIRequests.swift */; };
 		D7E25A7E246699FC003BBEA0 /* PointFreeFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = D7E25A7C246699FC003BBEA0 /* PointFreeFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D7E25A8E24669B02003BBEA0 /* PointFreeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E25A8D24669B02003BBEA0 /* PointFreeFunctions.swift */; };
 		D7E25A9824669B9B003BBEA0 /* AppConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D7E25A9624669B9B003BBEA0 /* AppConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -619,7 +620,6 @@
 		9F7B2F4421B9451C001F3FFA /* DevNotes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = DevNotes.txt; sourceTree = "<group>"; };
 		9F7CE25B22CE279700B1AC31 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		9F8666EF22E7C5CA00A1B9A0 /* GenericTableViewCell_Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericTableViewCell_Protocol.swift; sourceTree = "<group>"; };
-		9F8666F322E7D31D00A1B9A0 /* Bliss.APIRequests.api */ = {isa = PBXFileReference; lastKnownFileType = text; path = Bliss.APIRequests.api; sourceTree = "<group>"; };
 		9F8AE1442205DD0300DF75F6 /* AppManagers+AppCan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppManagers+AppCan.swift"; sourceTree = "<group>"; };
 		9F8AE14A2205DD0300DF75F6 /* AppResources+Private.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppResources+Private.swift"; sourceTree = "<group>"; };
 		9F8AE14B2205DD0300DF75F6 /* AppManagers+Layouts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppManagers+Layouts.swift"; sourceTree = "<group>"; };
@@ -760,7 +760,7 @@
 		D7D9E7A324676FE6005B4313 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7D9E7B224677039005B4313 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7D9E7B324677046005B4313 /* typealias.API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = typealias.API.swift; sourceTree = "<group>"; };
-		D7D9E7C1246775C2005B4313 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		D7D9E7C1246775C2005B4313 /* WebAPI+Targets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WebAPI+Targets.swift"; sourceTree = "<group>"; };
 		D7D9E7C3246777B4005B4313 /* DevTools+Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DevTools+Strings.swift"; sourceTree = "<group>"; };
 		D7D9E7C524678344005B4313 /* AppConstants+Mocks+Employees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppConstants+Mocks+Employees.swift"; sourceTree = "<group>"; };
 		D7D9E7C824678741005B4313 /* AppConstants+Mock+GitHub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppConstants+Mock+GitHub.swift"; sourceTree = "<group>"; };
@@ -775,6 +775,7 @@
 		D7D9E7F72467FEE3005B4313 /* E.LayoutStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E.LayoutStyle.swift; sourceTree = "<group>"; };
 		D7D9E7F92467FFBA005B4313 /* E.AppCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E.AppCodes.swift; sourceTree = "<group>"; };
 		D7D9E7FF24680753005B4313 /* CarTrack.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CarTrack.md; sourceTree = "<group>"; };
+		D7D9E80124681046005B4313 /* CarTrack.APIRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTrack.APIRequests.swift; sourceTree = "<group>"; };
 		D7E25A6C2465E5A6003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7E25A702465E5F1003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7E25A71246695EE003BBEA0 /* AppConstants+Mocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppConstants+Mocks.swift"; sourceTree = "<group>"; };
@@ -1163,10 +1164,10 @@
 		9F8D4ABC223877D400777976 /* APIRequests */ = {
 			isa = PBXGroup;
 			children = (
+				D7D9E80124681046005B4313 /* CarTrack.APIRequests.swift */,
 				9F98294B22398DF700ACA6B7 /* GitUser.APIRequests.swift */,
 				9F8D4ABD223877D400777976 /* Employees.APIRequests.swift */,
 				9F6BB2BC22E3287B00829A6F /* Bliss.APIRequests.swift */,
-				9F8666F322E7D31D00A1B9A0 /* Bliss.APIRequests.api */,
 			);
 			path = APIRequests;
 			sourceTree = "<group>";
@@ -1474,13 +1475,12 @@
 		D7D9E7A124676FE6005B4313 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				D7D9E7C1246775C2005B4313 /* API.swift */,
+				D7D9E7C1246775C2005B4313 /* WebAPI+Targets.swift */,
 				D7D9E7B324677046005B4313 /* typealias.API.swift */,
 				D7D9E7F124679A5E005B4313 /* APIErrors.swift */,
 				D7D9E7B224677039005B4313 /* README.md */,
 				D7D9E7CD246790C2005B4313 /* Targets */,
 				D7D9E7CC246790BD005B4313 /* Models */,
-				9F8D4ABC223877D400777976 /* APIRequests */,
 				D7D9E7A224676FE6005B4313 /* API.h */,
 				D7D9E7A324676FE6005B4313 /* Info.plist */,
 			);
@@ -1508,6 +1508,7 @@
 		D7D9E7CD246790C2005B4313 /* Targets */ = {
 			isa = PBXGroup;
 			children = (
+				9F8D4ABC223877D400777976 /* APIRequests */,
 				9F8D4ABB223877D400777976 /* WebAPI.Employees.swift */,
 				9F98294F22398EDB00ACA6B7 /* WebAPI.GitUser.swift */,
 				9F6BB2BE22E3292C00829A6F /* WebAPI.Bliss.swift */,
@@ -2544,8 +2545,9 @@
 				D7D9E7B7246773F8005B4313 /* GitUser.APIRequests.swift in Sources */,
 				D7D9E7BC246773F8005B4313 /* WebAPI.Bliss.swift in Sources */,
 				D7D9E7BB246773F8005B4313 /* WebAPI.GitUser.swift in Sources */,
+				D7D9E80224681046005B4313 /* CarTrack.APIRequests.swift in Sources */,
 				D7D9E7B424677046005B4313 /* typealias.API.swift in Sources */,
-				D7D9E7C2246775C2005B4313 /* API.swift in Sources */,
+				D7D9E7C2246775C2005B4313 /* WebAPI+Targets.swift in Sources */,
 				D7D9E7F224679A5E005B4313 /* APIErrors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
