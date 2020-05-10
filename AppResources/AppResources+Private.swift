@@ -33,7 +33,7 @@ public extension AppResources {
 
 }
 
-//MARK:- Private
+// MARK: - Private
 
 public extension AppResources {
 

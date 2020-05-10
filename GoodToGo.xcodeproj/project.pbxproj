@@ -143,7 +143,7 @@
 		D72923AA2466EA4100DAD480 /* DevTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923A92466EA4100DAD480 /* DevTools.swift */; };
 		D72923AC2466EE9400DAD480 /* ToastSwiftFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72923AB2466EE9400DAD480 /* ToastSwiftFramework.framework */; };
 		D72923AD2466EE9400DAD480 /* ToastSwiftFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D72923AB2466EE9400DAD480 /* ToastSwiftFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D72923B62467076000DAD480 /* AppResources+SelectedLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923B52467076000DAD480 /* AppResources+SelectedLanguage.swift */; };
+		D72923B62467076000DAD480 /* E.SelectedLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923B52467076000DAD480 /* E.SelectedLanguage.swift */; };
 		D72923B82467089700DAD480 /* E.Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923B72467089700DAD480 /* E.Messages.swift */; };
 		D72923C024670D5300DAD480 /* AppConstants+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923BF24670D5300DAD480 /* AppConstants+Testing.swift */; };
 		D72923C224670D7500DAD480 /* AppConstants+Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923C124670D7500DAD480 /* AppConstants+Strings.swift */; };
@@ -749,7 +749,7 @@
 		D72923A72466EA0100DAD480 /* DevTools+FeatureFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DevTools+FeatureFlag.swift"; sourceTree = "<group>"; };
 		D72923A92466EA4100DAD480 /* DevTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevTools.swift; sourceTree = "<group>"; };
 		D72923AB2466EE9400DAD480 /* ToastSwiftFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ToastSwiftFramework.framework; path = Carthage/Build/iOS/ToastSwiftFramework.framework; sourceTree = "<group>"; };
-		D72923B52467076000DAD480 /* AppResources+SelectedLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppResources+SelectedLanguage.swift"; sourceTree = "<group>"; };
+		D72923B52467076000DAD480 /* E.SelectedLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = E.SelectedLanguage.swift; sourceTree = "<group>"; };
 		D72923B72467089700DAD480 /* E.Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E.Messages.swift; sourceTree = "<group>"; };
 		D72923BF24670D5300DAD480 /* AppConstants+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppConstants+Testing.swift"; sourceTree = "<group>"; };
 		D72923C124670D7500DAD480 /* AppConstants+Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppConstants+Strings.swift"; sourceTree = "<group>"; };
@@ -1068,7 +1068,6 @@
 				9F103A2D2236C08900C57BC0 /* DependencyInjection */,
 				9F58FB0F22BE5DE700042A8C /* Application.Screens */,
 				D7AB24BC24674323000142C4 /* Application.Comom */,
-				9F574F8922369187007DAA58 /* Application.Domain */,
 				9FD971A420FF418A00F73FB9 /* SupportingFiles */,
 			);
 			path = GoodToGo;
@@ -1097,13 +1096,6 @@
 				9FACC16A223BA4CB00576498 /* Mappers+GitUser.swift */,
 			);
 			path = Mappers;
-			sourceTree = "<group>";
-		};
-		9F574F8922369187007DAA58 /* Application.Domain */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Application.Domain;
 			sourceTree = "<group>";
 		};
 		9F574F8E223691D8007DAA58 /* Protocol.UseCases */ = {
@@ -1427,7 +1419,7 @@
 				D72923B72467089700DAD480 /* E.Messages.swift */,
 				9F6BB2E022E39DF600829A6F /* E.Message+Bliss.swift */,
 				9F15CF2C22BFA56F00FB402A /* E.AppCodes+Extension.swift */,
-				D72923B52467076000DAD480 /* AppResources+SelectedLanguage.swift */,
+				D72923B52467076000DAD480 /* E.SelectedLanguage.swift */,
 				D72923402466B78300DAD480 /* AppResources.h */,
 				D72923682466B8EA00DAD480 /* AppLogger+Extension.swift */,
 				D72923412466B78300DAD480 /* Info.plist */,
@@ -1447,12 +1439,12 @@
 		D779A5F5234FE43900D3D6F7 /* AppScenes.VIP */ = {
 			isa = PBXGroup;
 			children = (
-				D779A5F6234FE44400D3D6F7 /* Sample */,
+				D779A5F6234FE44400D3D6F7 /* SampleVIP */,
 			);
 			path = AppScenes.VIP;
 			sourceTree = "<group>";
 		};
-		D779A5F6234FE44400D3D6F7 /* Sample */ = {
+		D779A5F6234FE44400D3D6F7 /* SampleVIP */ = {
 			isa = PBXGroup;
 			children = (
 				D779A5E9234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift */,
@@ -1462,7 +1454,7 @@
 				D779A5ED234FE3A500D3D6F7 /* VC.SampleVIP_ViewController.swift */,
 				D779A5EE234FE3A500D3D6F7 /* I.SampleVIP_Interactor.swift */,
 			);
-			path = Sample;
+			path = SampleVIP;
 			sourceTree = "<group>";
 		};
 		D7AB2444246716DE000142C4 /* Components */ = {
@@ -2636,7 +2628,7 @@
 				D72923692466B8EA00DAD480 /* AppLogger+Extension.swift in Sources */,
 				D7D9E870246827E3005B4313 /* E.Images.swift in Sources */,
 				D7D9E7F62467FE63005B4313 /* E.Message+Bliss.swift in Sources */,
-				D72923B62467076000DAD480 /* AppResources+SelectedLanguage.swift in Sources */,
+				D72923B62467076000DAD480 /* E.SelectedLanguage.swift in Sources */,
 				D72923652466B80B00DAD480 /* E.AppCodes+Extension.swift in Sources */,
 				D72923672466B84100DAD480 /* typealias.AppResources.swift in Sources */,
 				D73E05BF2467112500965E96 /* AppResources.swift in Sources */,

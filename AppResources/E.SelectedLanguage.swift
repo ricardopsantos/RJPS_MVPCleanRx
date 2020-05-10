@@ -15,11 +15,7 @@ import AppConstants
 import PointFreeFunctions
 import DevTools
 
-public extension AppResources {
-    private init() {}
-
-    enum SelectedLanguage: Int {
-        case en
-        case pt
-    }
+public enum SelectedLanguage: Int {
+    case en
+    case pt
 }
