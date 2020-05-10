@@ -7,14 +7,14 @@
 
 import Foundation
 import UIKit
-
+//
 import AppConstants
 
 extension AppManagers {
     
     struct Environments {
-        private static var _current: AppMode = .dev
-        static var current: AppMode { return _current }
+        private static var _current: E.AppMode = .dev
+        static var current: E.AppMode { return _current }
         
         private static func set_dev() { _current = .dev; AppLogger.log("Environment set \(String(describing: _current))".uppercased()) }
         private static func set_qa() { _current = .qa;  AppLogger.log("Environment set \(String(describing: _current))".uppercased()) }

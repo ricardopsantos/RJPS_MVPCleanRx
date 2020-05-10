@@ -7,9 +7,7 @@
 
 import Foundation
 
-public extension AppConstants {
-    private init() {}
-
+public extension E {
     enum AppMode: Int {
         case prod
         case qa

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public extension AppConstants {
+public extension E {
     private init() { }
 
     enum AlertType: Int {

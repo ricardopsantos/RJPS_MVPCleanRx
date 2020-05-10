@@ -109,7 +109,7 @@ open class BaseViewController: UIViewController, GenericViewProtocol {
         _lblMessage.superview?.bringSubviewToFront(_lblReachability)
     }
     
-    open func displayMessage(_ message: String, type: AlertType, asAlert: Bool=false) {
+    open func displayMessage(_ message: String, type: E.AlertType, asAlert: Bool=false) {
         if asAlert {
             (self as UIViewController).rjs.showAlert(title: "\(type)".uppercased(), message: message)
         } else {
@@ -214,31 +214,31 @@ extension BaseViewController {
         setTopMessageVisibilityTo(state: false, message: "", type: .sucess)
     }
     
-    private func setTopMessageVisibilityTo(state: Bool, message: String, type: AlertType) {
+    private func setTopMessageVisibilityTo(state: Bool, message: String, type: E.AlertType) {
         if state {
             _lblMessageTimmer?.invalidate()
             _lblMessageTimmer = nil
         }
         RJS_Utils.executeInMainTread { [weak self] in
-            guard let self1 = self else { AppLogger.log(appCode: .referenceLost); return }
+            guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
             let value = !state
             let duration = 0.5
             if state {
-                self1._lblMessage.text = message
+                self._lblMessage.text = message
                 switch type {
-                case .sucess : self1._lblMessage.backgroundColor = UIColor.App.success
-                case .warning: self1._lblMessage.backgroundColor = UIColor.App.warning
-                case .error  : self1._lblMessage.backgroundColor = UIColor.App.error
+                case .sucess : self._lblMessage.backgroundColor = UIColor.App.success
+                case .warning: self._lblMessage.backgroundColor = UIColor.App.warning
+                case .error  : self._lblMessage.backgroundColor = UIColor.App.error
                 }
             }
-            self1._lblMessage.fadeTo(value ? 0 : 0.95, duration: duration)
-            self1._lblMessage.rjsALayouts.updateConstraint(self1._lblMessageDistanceFromTop!,
-                                                                     toValue: value ? -self1._lblMessageHeight : self1._margin,
+            self._lblMessage.fadeTo(value ? 0 : 0.95, duration: duration)
+            self._lblMessage.rjsALayouts.updateConstraint(self._lblMessageDistanceFromTop!,
+                                                                     toValue: value ? -self._lblMessageHeight : self._margin,
                                                                      duration: duration,
                                                                      completion: { (_) in
             })
             
-            self1._lblMessageTimmer = Timer.scheduledTimer(timeInterval: 3, target: self1, selector: #selector(self1.hideTopMessage), userInfo: nil, repeats: false)
+            self._lblMessageTimmer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.hideTopMessage), userInfo: nil, repeats: false)
 
         }
     }
