@@ -23,7 +23,7 @@ struct RootAssemblyContainerProtocols {
     static let sample_UseCase                   = Sample_UseCaseProtocol.self
     static let sampleB_UseCase                  = SampleB_UseCaseProtocol.self
     static let blissQuestions_UseCase           = BlissQuestionsAPI_UseCaseProtocol.self
-    static let blissGenericAppBussiness_UseCase = BlissGenericAppBussiness_UseCaseProtocol.self
+    static let blissGenericAppBusiness_UseCase  = BlissGenericAppBussiness_UseCaseProtocol.self
     static let gitUser_UseCase                  = GitUser_UseCaseProtocol.self
 }
 
@@ -43,10 +43,10 @@ final class RootAssemblyContainer: Assembly {
                                initializer: RP.LocalStorage.Generic_LocalStorageRepository.init).inObjectScope(.container)
         
         container.autoregister(AppProtocols.gitUser_NetWorkRepository,
-                               initializer: Network.GitUser.NetWorkRepository.init).inObjectScope(.container)
+                               initializer: WebAPI.GitUser.NetWorkRepository.init).inObjectScope(.container)
 
         container.autoregister(AppProtocols.bliss_NetWorkRepository,
-                               initializer: Network.Bliss.NetWorkRepository.init).inObjectScope(.container)
+                               initializer: WebAPI.Bliss.NetWorkRepository.init).inObjectScope(.container)
         
         container.register(AppProtocols.sample_UseCase) { resolver in
             let uc = Sample_UseCase()
@@ -84,7 +84,7 @@ final class RootAssemblyContainer: Assembly {
             return uc
         }
         
-        container.register(AppProtocols.blissGenericAppBussiness_UseCase) { resolver in
+        container.register(AppProtocols.blissGenericAppBusiness_UseCase) { resolver in
             let uc = BlissGenericAppBussiness_UseCase()
             uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)

@@ -16,7 +16,7 @@ import PointFreeFunctions
 import AppDomain
 import DevTools
 
-extension Network.Bliss {
+extension WebAPI.Bliss {
     struct GetHealthStatus_APIRequest: WebAPIRequest_Protocol {
         var returnOnMainTread: Bool = true
         var debugRequest: Bool = DevTools.devModeIsEnabled
@@ -47,7 +47,7 @@ extension Network.Bliss {
     }
 }
 
-extension Network.Bliss {
+extension WebAPI.Bliss {
     struct ListQuestions_APIRequest: WebAPIRequest_Protocol {
         var returnOnMainTread: Bool = true
         var debugRequest: Bool = DevTools.devModeIsEnabled
@@ -74,7 +74,7 @@ extension Network.Bliss {
     }
 }
 
-extension Network.Bliss {
+extension WebAPI.Bliss {
     struct QuestionById_APIRequest: WebAPIRequest_Protocol {
         var returnOnMainTread: Bool = true
         var debugRequest: Bool = DevTools.devModeIsEnabled
@@ -100,7 +100,7 @@ extension Network.Bliss {
     }
 }
 
-extension Network.Bliss {
+extension WebAPI.Bliss {
     struct NewQuestion_APIRequest: WebAPIRequest_Protocol {
         var returnOnMainTread: Bool = true
         var debugRequest: Bool = DevTools.devModeIsEnabled
@@ -122,9 +122,6 @@ extension Network.Bliss {
                         return "\(some.choice)"
                     })
                 ]
-                //if AppCan.Logs.requests {
-                //    AppLogger.log("\(parameters)")
-                //}
                 urlRequest.httpBody = parameters.percentEscaped().data(using: .utf8)
                 responseType = .json
             } else {
@@ -136,7 +133,7 @@ extension Network.Bliss {
     }
 }
 
-extension Network.Bliss {
+extension WebAPI.Bliss {
     struct UpdateQuestion_APIRequest: WebAPIRequest_Protocol {
         var returnOnMainTread: Bool = true
         var debugRequest: Bool = DevTools.devModeIsEnabled
@@ -172,7 +169,7 @@ extension Network.Bliss {
     }
 }
 
-extension Network.Bliss {
+extension WebAPI.Bliss {
     struct Share_APIRequest: WebAPIRequest_Protocol {
         var returnOnMainTread: Bool = true
         var debugRequest: Bool = DevTools.devModeIsEnabled

@@ -8,6 +8,13 @@
 
 import Foundation
 
+public struct WebAPI {
+    private init() {}
+    public struct Employees { private init() {} }
+    public struct GitUser { public init() {} }
+    public struct Bliss { private init() {} }
+}
+
 public enum APIErrors: Error {
     case invalidURL(url: String)
     case notImplemented

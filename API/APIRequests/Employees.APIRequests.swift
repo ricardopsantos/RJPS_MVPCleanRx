@@ -13,9 +13,10 @@ import RJPSLib
 //
 import AppConstants
 import PointFreeFunctions
+import AppDomain
 import DevTools
 
-public extension Network.Employees {
+public extension WebAPI.Employees {
     struct GetEmployees_APIRequest: WebAPIRequest_Protocol {
         public var returnOnMainTread: Bool = true
         public var debugRequest: Bool = DevTools.devModeIsEnabled

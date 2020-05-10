@@ -34,7 +34,7 @@ extension AssembyContainer {
                 presenter.tableView   = presenter
                 presenter.router      = r.resolve(routerProtocol, argument: viewController)
                 presenter.blissQuestions_UseCase = r.resolve(AppProtocols.blissQuestions_UseCase)
-                presenter.blissGeneric_UseCase   = r.resolve(AppProtocols.blissGenericAppBussiness_UseCase)
+                presenter.blissGeneric_UseCase   = r.resolve(AppProtocols.blissGenericAppBusiness_UseCase)
                 return presenter
             }
     

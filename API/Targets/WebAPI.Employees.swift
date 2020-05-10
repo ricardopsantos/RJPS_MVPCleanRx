@@ -16,21 +16,15 @@ import DevTools
  * WE CANT HAVE BUSINESS RULES HERE! THE CLIENT JUST DO THE OPERATION AND LEAVE
  */
 
-public extension Network {
-    struct Employees {
-        private init() {}
-    }
-}
-
-public extension Network.Employees {
+public extension WebAPI.Employees {
     class NetworkRepository: Samples_NetWorkRepositoryProtocol {
 
         public init() { }
 
         public func netWork_OperationA(completionHandler: @escaping Samples_NetWorkRepositoryCompletionHandler) {
             do {
-                let apiRequest: WebAPIRequest_Protocol = try Network.Employees.GetEmployees_APIRequest()
-                let apiClient: NetworkClient_Protocol = RJSLib.NetworkClient()
+                let apiRequest: WebAPIRequest_Protocol = try WebAPI.Employees.GetEmployees_APIRequest()
+                let apiClient: NetworkClient_Protocol  = RJSLib.NetworkClient()
                 apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<[Employee.ResponseDto]>>) in
                     completionHandler(result)
                 })

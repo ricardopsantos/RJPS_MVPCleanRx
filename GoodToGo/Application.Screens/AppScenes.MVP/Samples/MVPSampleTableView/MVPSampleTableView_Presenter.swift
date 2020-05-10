@@ -175,8 +175,8 @@ extension P.MVPSampleTableView_Presenter {
     func rxObservable_GetEmployees() -> Observable<[Employee.ResponseDto]> {
         return Observable.create { observer -> Disposable in
             do {
-                let apiRequest: WebAPIRequest_Protocol = try Network.Employees.GetEmployees_APIRequest()
-                let apiClient: NetworkClient_Protocol = RJSLib.NetworkClient()
+                let apiRequest: WebAPIRequest_Protocol = try WebAPI.Employees.GetEmployees_APIRequest()
+                let apiClient: NetworkClient_Protocol  = RJSLib.NetworkClient()
                 apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<[Employee.ResponseDto]>>) in
                     switch result {
                     case .success(let some):
@@ -192,7 +192,7 @@ extension P.MVPSampleTableView_Presenter {
                 observer.onError(error)
             }
             return Disposables.create()
-            }.retry(Network.Employees.GetEmployees_APIRequest.maxNumberOfRetrys)
+            }.retry(WebAPI.Employees.GetEmployees_APIRequest.maxNumberOfRetrys)
             .retryOnBecomesReachable([], reachabilityService: reachabilityService)
     }
 }

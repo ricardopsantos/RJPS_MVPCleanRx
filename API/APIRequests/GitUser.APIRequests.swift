@@ -13,11 +13,10 @@ import RJPSLib
 //
 import AppConstants
 import PointFreeFunctions
+import AppDomain
 import DevTools
 
-// swiftlint:disable line_length
-
-extension Network.GitUser {
+extension WebAPI.GitUser {
     struct GetUserInfo_APIRequest: WebAPIRequest_Protocol {
         var returnOnMainTread: Bool
         var debugRequest: Bool
