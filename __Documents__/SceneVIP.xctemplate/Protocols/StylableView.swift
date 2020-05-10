@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  StylableView.swift
 //  UIBase
 //
 //  Created by Ricardo Santos on 10/05/2020.
@@ -13,7 +13,6 @@ import RxSwift
 //
 import Domain
 import UIBase
-
 
 public protocol StylableProtocol: class {
 

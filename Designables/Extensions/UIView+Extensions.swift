@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension UIView {
+public extension UIView {
     func subViewsOf(type: UIKitViewFactoryElementTag, recursive: Bool) -> [UIView] {
         return self.subViewsWith(tag: type.rawValue, recursive: recursive)
     }
