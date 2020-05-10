@@ -11,7 +11,7 @@ import AppDomain
 
 public class Generic_LocalStorageRepository: Generic_LocalStorageRepositoryProtocol {
 
-    public init () { }
+    public init () {}
     @discardableResult
     public func save(key: String, value: String, expireDate: Date?) -> Bool {
         return RJS_DataModel.save(key: key, value: value, expireDate: expireDate)

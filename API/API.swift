@@ -14,8 +14,3 @@ public struct WebAPI {
     public struct GitUser { public init() {} }
     public struct Bliss { private init() {} }
 }
-
-public enum APIErrors: Error {
-    case invalidURL(url: String)
-    case notImplemented
-}

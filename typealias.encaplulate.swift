@@ -15,8 +15,8 @@ import UIKit
 public typealias M = Model
 public struct Model { private init() {} }
 
-public typealias E = Entity
-public struct Entity { }
+//public typealias E = Entity
+//public struct Entity { }
 
 // MARK: - Scenes
 
