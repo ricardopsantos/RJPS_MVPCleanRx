@@ -16,7 +16,7 @@ import PointFreeFunctions
 import Extensions
 import AppResources
 import UIBase
-import AppDomain
+import Domain
 
 public typealias CustomSearchBar = RJS_CustomSearchBar
 

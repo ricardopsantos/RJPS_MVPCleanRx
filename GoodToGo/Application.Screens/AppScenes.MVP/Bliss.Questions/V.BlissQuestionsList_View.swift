@@ -20,7 +20,7 @@ import Extensions
 import DevTools
 import PointFreeFunctions
 import Designables
-import AppDomain
+import Domain
 
 extension V {
     class BlissQuestionsList_View: GenericView {
@@ -40,7 +40,7 @@ extension V {
 
         private lazy var _topGenericView: TopBar = {
             let some = AppFactory.UIKit.topBar(baseController: self)
-            some.setTitle(AppMessages.Bliss.appName)
+            some.setTitle(Messages.Bliss.appName)
             some.rxSignal_viewTapped
                 .emit(onNext: { [weak self] in
                     _ = $0

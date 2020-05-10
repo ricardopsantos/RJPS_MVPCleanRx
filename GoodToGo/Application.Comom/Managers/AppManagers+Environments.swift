@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 //
 import AppConstants
-import AppDomain
+import Domain
 
 extension AppManagers {
     

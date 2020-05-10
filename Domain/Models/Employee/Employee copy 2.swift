@@ -8,16 +8,6 @@
 import Foundation
 import UIKit
 
-public struct Employee {
-    private init() { }
-}
-
-extension Employee {
-    public struct ViewModel: Codable {
-        public let id, employeeName: String
-    }
-}
-
 extension Employee {
     public struct ResponseDto: Codable {
         public let id, employeeName, employeeSalary, employeeAge: String

@@ -20,7 +20,7 @@ import Extensions
 import DevTools
 import PointFreeFunctions
 import Designables
-import AppDomain
+import Domain
 import API
 
 //
@@ -81,7 +81,7 @@ extension P.MVPSampleTableView_Presenter: GenericTableView_Protocol {
             let employee = viewModel!.employeesList[indexPath.row]
             let title = "\(employee.employeeName) | \(employee.employeeSalary)"
             someCell.rxBehaviorRelay_title.accept(title)
-            downloadImage(imageURL: employee.profileImage, onFail: AppImages.notFound) { (image) in
+            downloadImage(imageURL: employee.profileImage, onFail: Images.notFound.image) { (image) in
                 someCell.rxBehaviorRelay_image.accept(image)
             }
         } else {

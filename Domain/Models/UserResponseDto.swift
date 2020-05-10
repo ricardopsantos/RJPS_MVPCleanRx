@@ -8,26 +8,6 @@
 import Foundation
 import UIKit
 
-public struct GitHub {
-    private init() { }
-}
-
-public extension GitHub {
-    struct UserViewModel {
-        private init() {}
-        public var name: String!
-        public init(some: UserResponseDto) {
-            name = some.name ?? ""
-        }
-        public func pretyDescription() -> String {
-            if let name = name {
-                return "\(name)"
-            }
-            return ""
-        }
-    }
-}
-
 public extension GitHub {
     struct UserResponseDto: Codable {
 

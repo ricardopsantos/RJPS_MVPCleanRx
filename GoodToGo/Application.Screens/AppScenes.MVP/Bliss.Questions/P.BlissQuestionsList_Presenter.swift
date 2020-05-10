@@ -20,7 +20,7 @@ import Extensions
 import DevTools
 import PointFreeFunctions
 import Designables
-import AppDomain
+import Domain
 
 //
 // MARK: - Presenter_Protocol & View_Protocol
@@ -57,7 +57,7 @@ extension Presenter {
         var router: BlissQuestionsList_RouterProtocol!
         var tableView: GenericTableView_Protocol!
         var blissQuestions_UseCase: BlissQuestionsAPI_UseCaseProtocol!
-        var blissGeneric_UseCase: BlissGenericAppBussiness_UseCaseProtocol!
+        var blissGeneric_UseCase: BlissGenericAppBusiness_UseCaseProtocol!
         var viewModel: VM.BlissQuestionsList_ViewModel? {
             didSet { AppLogger.log(appCode: .vmChanged); viewModelChanged() }
         }
@@ -79,7 +79,7 @@ extension P.BlissQuestionsList_Presenter: GenericTableView_Protocol {
             let question = viewModel!.questionsList[indexPath.row]
             let title = "\(question.question.description)"
             someCell.rxBehaviorRelay_title.accept(title)
-            downloadImage(imageURL: question.thumbURL, onFail: AppImages.notFound) { (image) in
+            downloadImage(imageURL: question.thumbURL, onFail: Images.notFound.image) { (image) in
                 someCell.rxBehaviorRelay_image.accept(image)
             }
         } else {
@@ -204,7 +204,7 @@ extension P.BlissQuestionsList_Presenter {
                 },
                 onError: { [weak self] error in
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-                    self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error)
+                    self.genericView?.displayMessage(Messages.pleaseTryAgainLater.localised, type: .error)
                     self.genericView?.setActivityState(false)
                 }
             )
@@ -233,7 +233,7 @@ extension P.BlissQuestionsList_Presenter {
             }
         }
         
-        blissGeneric_UseCase.rxPublishRelayAppicationDidReceivedData.asSignal()
+        blissGeneric_UseCase.rxPublishRelayApplicationDidReceivedData.asSignal()
             .emit(onNext: {
                 _ = checkDataToHandle()
             }).disposed(by: disposeBag)
@@ -241,7 +241,7 @@ extension P.BlissQuestionsList_Presenter {
         reachabilityService.reachability.subscribe(
             onNext: { [weak self] some in
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-                self.genericView?.setNoConnectionViewVisibility(to: !some.reachable, withMessage: AppMessages.noInternet.localised)
+                self.genericView?.setNoConnectionViewVisibility(to: !some.reachable, withMessage: Messages.noInternet.localised)
             }
             ).disposed(by: disposeBag)
     }

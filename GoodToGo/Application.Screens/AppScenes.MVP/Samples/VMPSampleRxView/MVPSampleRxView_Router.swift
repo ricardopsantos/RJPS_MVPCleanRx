@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 //
-import AppDomain
+import Domain
 import UIBase
 
 protocol MVPSampleRxView_RouterProtocol: class {

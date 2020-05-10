@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import AppDomain
+import Domain
 
 /*
  * Needs to added AS.Sample_AssemblyContainer() to DependencyInjectionManager.swift

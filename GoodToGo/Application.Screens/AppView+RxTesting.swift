@@ -20,7 +20,7 @@ import Extensions
 import DevTools
 import PointFreeFunctions
 import Designables
-import AppDomain
+import Domain
 import AppCore
 
 // swiftlint:disable all
@@ -271,11 +271,11 @@ extension V {
                     .subscribe(
                         onNext: { [weak self] _ in
                             self?.aux_log(message: "[Observable<T>][onNext]", showAlert: true, appendToTable: true)
-                            self?.displayMessage(AppMessages.ok.localised, type: .success)
+                            self?.displayMessage(Messages.ok.localised, type: .success)
                         },
                         onError: { [weak self] error in
                             self?.aux_log(message: "[Observable<T>][onError]", showAlert: true, appendToTable: true)
-                            self?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error)
+                            self?.displayMessage(Messages.pleaseTryAgainLater.localised, type: .error)
                         }
                     )
                     .disposed(by: disposeBag)
@@ -337,7 +337,7 @@ extension V {
 //
 extension AppView.RxTesting {
     
-    var rxReturnOnError: UIImage { return AppImages.notInternet }
+    var rxReturnOnError: UIImage { return Images.noInternet.image }
     var rxObservableAssyncRequest: Observable<UIImage> {
         return Observable.create { [weak self] observer -> Disposable in
             let adress = Bool.random() ? "https://image.shutterstock.com/image-photo/white-transparent-leaf-on-mirror-260nw-1029171697.jpg" : "lalal"

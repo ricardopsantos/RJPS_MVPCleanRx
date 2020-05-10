@@ -7,7 +7,7 @@
 
 import Foundation
 import RJPSLib
-import AppDomain
+import Domain
 
 public class LocalStorageRepository: LocalStorageRepositoryProtocol {
 

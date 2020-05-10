@@ -9,7 +9,7 @@ import Foundation
 import RJPSLib
 import UIKit
 import AVFoundation
-import AppDomain
+import Domain
 
 public class CacheRepository: CacheRepositoryProtocol {
     

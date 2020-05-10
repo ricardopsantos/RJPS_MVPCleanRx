@@ -20,7 +20,7 @@ import Extensions
 import DevTools
 import PointFreeFunctions
 import Designables
-import AppDomain
+import Domain
 
 /**
  * 1 - Declare : Presenter_Protocol & View_Protocol
@@ -79,7 +79,7 @@ extension P.UserDetais_Presenter: GenericTableView_Protocol {
     func configure(cell: GenericTableViewCell_Protocol, indexPath: IndexPath) {
         let user = viewModel!.friends[indexPath.row]
         cell.set(title: user.name ?? "unknown")
-        downloadImage(imageURL: user.avatarUrl!, onFail: AppImages.notFound) { (image) in
+        downloadImage(imageURL: user.avatarUrl!, onFail: Images.notFound.image) { (image) in
             cell.set(image: image)
         }
     }
@@ -109,7 +109,7 @@ extension P.UserDetais_Presenter {
     private func updateViewWith(vm: VM.UserDetais?) {
         guard vm != nil else { AppLogger.log(appCode: .ignored); return }
         view.viewDataToScreen(some: vm!)
-        downloadImage(imageURL: vm!.user.avatarUrl!, onFail: AppImages.notFound) { [weak self] (image) in
+        downloadImage(imageURL: vm!.user.avatarUrl!, onFail: Images.notFound.image) { [weak self] (image) in
             self?.view.setAvatarWith(image: image!)
         }
     }

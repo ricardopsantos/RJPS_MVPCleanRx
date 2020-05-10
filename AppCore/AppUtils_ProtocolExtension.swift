@@ -13,13 +13,12 @@ import RxSwift
 import RxCocoa
 //
 import AppResources
-import UIBase
 import AppTheme
 import AppConstants
 import Extensions
 import DevTools
 import PointFreeFunctions
-import AppDomain
+import Domain
 
 public extension AppUtils_Protocol {
     
@@ -44,12 +43,12 @@ public extension AppUtils_Protocol {
     }
     
     func assertExistsInternetConnection(sender: BaseViewProtocol?,
-                                        message: String=AppMessages.noInternet.localised,
+                                        message: String=Messages.noInternet.localised,
                                         block: @escaping () -> Void) {
 
         if !existsInternetConnection {
-            let title  = AppMessages.alert.localised
-            let option = AppMessages.ok.localised
+            let title  = Messages.alert.localised
+            let option = Messages.ok.localised
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: option, style: .default, handler: { action in
                 switch action.style {

@@ -19,7 +19,7 @@ import AppConstants
 import Extensions
 import DevTools
 import PointFreeFunctions
-import AppDomain
+import Domain
 
 //
 // MARK: - MVVMSampleView_ViewModelProtocol
@@ -100,8 +100,8 @@ extension VM.MVVMSampleView_ViewModel: MVVMSampleView_ViewModelProtocol {
         }
     }
     
-    func getTimage(success: ((UIImage) -> Void)?) {
-        success!(AppImages.notInternet)
+    func getImage(success: ((UIImage) -> Void)?) {
+        success!(Images.noInternet.image)
     }
     
     func userDidTapX() {

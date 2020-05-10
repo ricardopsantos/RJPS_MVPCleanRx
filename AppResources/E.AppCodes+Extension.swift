@@ -7,7 +7,7 @@
 
 import Foundation
 //
-import AppDomain
+import Domain
 
 public extension AppCodes {
 

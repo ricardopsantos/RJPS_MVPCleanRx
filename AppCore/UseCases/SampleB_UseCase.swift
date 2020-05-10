@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 import RJPSLib
-import AppDomain
+import Domain
 
 //public extension UseCases {
     

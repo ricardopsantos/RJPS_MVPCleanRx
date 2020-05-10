@@ -20,7 +20,7 @@ import Extensions
 import DevTools
 import PointFreeFunctions
 import Designables
-import AppDomain
+import Domain
 
 //
 // MARK: - Presenter_Protocol & View_Protocol
@@ -58,7 +58,7 @@ extension Presenter {
         weak var view: BlissDetails_ViewProtocol!
         var router: BlissDetails_RouterProtocol!
         var blissQuestions_UseCase: BlissQuestionsAPI_UseCaseProtocol!
-        var blissGeneric_UseCase: BlissGenericAppBussiness_UseCaseProtocol!
+        var blissGeneric_UseCase: BlissGenericAppBusiness_UseCaseProtocol!
         var tableView: GenericTableView_Protocol!
         var viewModel: VM.BlissDetails_ViewModel? { didSet { AppLogger.log(appCode: .vmChanged); viewModelChanged() } }
     }
@@ -107,13 +107,13 @@ extension P.BlissDetails_Presenter: BlissDetails_PresenterProtocol {
             switch result {
             case .success(let some):
                 if some.success {
-                    self.genericView?.displayMessage(AppMessages.Bliss.sharedWithSuccess, type: .success)
+                    self.genericView?.displayMessage(Messages.Bliss.sharedWithSuccess, type: .success)
                 } else {
-                    self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error)
+                    self.genericView?.displayMessage(Messages.pleaseTryAgainLater.localised, type: .error)
                 }
             case .failure(let error):
                 AppLogger.error(error)
-                self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error)
+                self.genericView?.displayMessage(Messages.pleaseTryAgainLater.localised, type: .error)
             }
         }
     }
@@ -153,11 +153,11 @@ extension P.BlissDetails_Presenter: GenericTableView_Protocol {
                 onNext: { [weak self] _ in
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                     self.genericView?.setActivityState(false)
-                    self.genericView?.displayMessage(AppMessages.success.localised, type: .success)
+                    self.genericView?.displayMessage(Messages.success.localised, type: .success)
                 },
                 onError: { [weak self] error in
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-                    self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error)
+                    self.genericView?.displayMessage(Messages.pleaseTryAgainLater.localised, type: .error)
                     self.genericView?.setActivityState(false)
                 }
             )
@@ -205,7 +205,7 @@ extension P.BlissDetails_Presenter {
         }
         view.set(title: (viewModel!.question!.question.description))
         view.viewNeedsToDisplay(list: viewModel!.question!.choices)
-        downloadImage(imageURL: viewModel!.question!.imageURL, onFail: AppImages.notFound) { [weak self] (image) in
+        downloadImage(imageURL: viewModel!.question!.imageURL, onFail: Images.notFound.image) { [weak self] (image) in
             self?.view.set(image: image!)
         }
     }
@@ -225,12 +225,12 @@ extension P.BlissDetails_Presenter {
                         guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                         switch result {
                         case .success(let some): self.viewModel!.question = some
-                        case .failure          : self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error)
+                        case .failure          : self.genericView?.displayMessage(Messages.pleaseTryAgainLater.localised, type: .error)
                         }
                     }
                     return true
                 } else {
-                    let message = "Invalid param\n\(AppMessages.pleaseTryAgainLater)"
+                    let message = "Invalid param\n\(Messages.pleaseTryAgainLater)"
                     genericView?.displayMessage(message, type: .error)
                 }
                 blissGeneric_UseCase.screenHaveHandledData(screen: V.BlissDetails_View.className)
@@ -240,16 +240,20 @@ extension P.BlissDetails_Presenter {
     }
     
     func rxSetup() {
-        
-        blissGeneric_UseCase.rxPublishRelayAppicationDidReceivedData.asSignal()
-            .emit(onNext: { [weak self] in
-                _ = self?.checkDataToHandle()
-            }).disposed(by: disposeBag)
+
+        blissGeneric_UseCase.rxPublishRelayApplicationDidReceivedData.asObservable().bind { [weak self] (_) in
+            _ = self?.checkDataToHandle()
+        }.disposed(by: disposeBag)
+
+        //blissGeneric_UseCase.rxPublishRelayApplicationDidReceivedData.asSignal()
+        //    .emit(onNext: { [weak self] in
+        //        _ = self?.checkDataToHandle()
+        //    }).disposed(by: disposeBag)
         
         reachabilityService.reachability.subscribe(
             onNext: { [weak self] some in
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-                self.genericView?.setNoConnectionViewVisibility(to: !some.reachable, withMessage: AppMessages.noInternet.localised)
+                self.genericView?.setNoConnectionViewVisibility(to: !some.reachable, withMessage: Messages.noInternet.localised)
             }
             ).disposed(by: disposeBag)
     }

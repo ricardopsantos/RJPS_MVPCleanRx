@@ -18,7 +18,7 @@ import AppTheme
 import AppConstants
 import AppResources
 import PointFreeFunctions
-import AppDomain
+import Domain
 
 open class BaseViewController: UIViewController, BaseViewProtocol {
 
@@ -118,7 +118,7 @@ open class BaseViewController: UIViewController, BaseViewProtocol {
         //}
     }
     
-    open func setNoConnectionViewVisibility(to: Bool, withMessage: String = AppMessages.noInternet.localised) {
+    open func setNoConnectionViewVisibility(to: Bool, withMessage: String = Messages.noInternet.localised) {
         RJS_Utils.executeInMainTread { [weak self] in
             guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
             let value = !to

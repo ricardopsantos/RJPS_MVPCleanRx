@@ -14,18 +14,18 @@ import RJPSLib
 //
 import AppConstants
 import PointFreeFunctions
-import AppDomain
+import Domain
 
 //public extension UseCases {
     
     /**
      * Brain. Where we can have business rules
      */
-public class BlissGenericAppBussiness_UseCase: GenericUseCase, BlissGenericAppBussiness_UseCaseProtocol {
+public class BlissGenericAppBusiness_UseCase: GenericUseCase, BlissGenericAppBusiness_UseCaseProtocol {
         
         var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
         var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
-    public var rxPublishRelayAppicationDidReceivedData: PublishRelay = PublishRelay<Void>() // PublishRelay model Events
+    public var rxPublishRelayApplicationDidReceivedData: PublishRelay = PublishRelay<Void>() // PublishRelay model Events
 
     public func handle(url: URL) {
             func getKeyValsFromURL(url: URL) -> [String: String]? {
@@ -55,7 +55,7 @@ public class BlissGenericAppBussiness_UseCase: GenericUseCase, BlissGenericAppBu
                         assert(false, message: RJS_Constants.notPredicted + "\(kv)")
                     }                    
                 }
-                rxPublishRelayAppicationDidReceivedData.accept(())
+                rxPublishRelayApplicationDidReceivedData.accept(())
             }
         }
         

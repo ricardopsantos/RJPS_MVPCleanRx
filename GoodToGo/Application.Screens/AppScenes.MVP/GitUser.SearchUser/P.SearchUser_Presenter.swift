@@ -19,7 +19,7 @@ import AppConstants
 import Extensions
 import DevTools
 import PointFreeFunctions
-import AppDomain
+import Domain
 
 /**
  * 1 - Declare : Presenter_Protocol & View_Protocol (RX WAY)
@@ -107,7 +107,7 @@ extension P.SearchUser_Presenter: BasePresenterProtocol {
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                 self.genericView?.setActivityState(false)
                 guard $0 != nil && $1 != nil else {
-                    self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error)
+                    self.genericView?.displayMessage(Messages.pleaseTryAgainLater.localised, type: .error)
                     return
                 }
                 let vm = VM.UserDetais(user: $0!, friends: $1!)

@@ -13,7 +13,7 @@ import RJPSLib
 //
 import AppConstants
 import PointFreeFunctions
-import AppDomain
+import Domain
 import AppResources
 import UIBase
 
@@ -48,7 +48,7 @@ extension Presenter {
         weak var view: BlissRoot_ViewProtocol!
         var router: BlissRoot_RouterProtocol!
         var blissQuestions_UseCase: BlissQuestionsAPI_UseCaseProtocol!
-        var blissGeneric_UseCase: BlissGenericAppBussiness_UseCaseProtocol!
+        var blissGeneric_UseCase: BlissGenericAppBusiness_UseCaseProtocol!
         var viewModel: VM.BlissRoot_ViewModel? {
             didSet { AppLogger.log(appCode: .vmChanged); viewModelChanged() }
         }
@@ -140,12 +140,12 @@ extension P.BlissRoot_Presenter {
                         self?.rxObservableAssyncRequest
                             .subscribe(
                                 onNext: { [weak self] some in self?.view.set(image: some); self?.checkServerStatus() },
-                                onError: { [weak self] _ in self?.view.set(image: AppImages.notFound) }
+                                onError: { [weak self] _ in self?.view.set(image: Images.notFound.image) }
                             )
                             .disposed(by: self!.disposeBag)
                     } else {
-                        self?.genericView?.setNoConnectionViewVisibility(to: true, withMessage: AppMessages.noInternet.localised)
-                        self?.view.set(image: AppImages.notInternet)
+                        self?.genericView?.setNoConnectionViewVisibility(to: true, withMessage: Messages.noInternet.localised)
+                        self?.view.set(image: Images.noInternet.image)
                     }
             }
             ).disposed(by: disposeBag)
@@ -157,7 +157,7 @@ extension P.BlissRoot_Presenter {
 // MARK: - RxRelated
 //
 extension P.BlissRoot_Presenter {
-    var rxReturnOnError: UIImage { return AppImages.notInternet }
+    var rxReturnOnError: UIImage { return Images.noInternet.image }
     var rxObservableAssyncRequest: Observable<UIImage> {
         return Observable.create { observer -> Disposable in
             self.downloadImage(imageURL: AppConstants.Bliss.logoURL, completion: { (image) in

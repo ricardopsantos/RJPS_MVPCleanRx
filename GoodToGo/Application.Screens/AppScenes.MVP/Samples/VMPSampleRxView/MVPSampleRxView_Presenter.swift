@@ -20,7 +20,7 @@ import AppConstants
 import Extensions
 import DevTools
 import PointFreeFunctions
-import AppDomain
+import Domain
 
 /*
  * Needs to added AS.Sample_AssemblyContainer() to DependencyInjectionManager.swift
@@ -78,7 +78,7 @@ extension P.MVPSampleRxView_Presenter: MVPSampleRxView_PresenterProtocol {
                     self?.viewModel! = VM.MVPSampleRxView_ViewModel(someString: some)
                 },
                 onError: { [weak self] error in
-                    self?.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error)
+                    self?.genericView?.displayMessage(Messages.pleaseTryAgainLater.localised, type: .error)
                 }
             )
             .disposed(by: disposeBag)

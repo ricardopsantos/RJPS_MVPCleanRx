@@ -20,7 +20,7 @@ import Extensions
 import DevTools
 import PointFreeFunctions
 import Designables
-import AppDomain
+import Domain
 
 extension V {
     class MVPSampleTableView_View: GenericView {

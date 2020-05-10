@@ -65,7 +65,7 @@ extension V {
         
         private lazy var _topGenericBar: TopBar = {
             let some = AppFactory.UIKit.topBar(baseController: self)
-            some.setTitle(AppMessages.details.localised)
+            some.setTitle(Messages.details.localised)
             some.addDismissButton()
             some.rxSignal_btnDismissTapped
                 .asObservable()

@@ -20,7 +20,7 @@ import Extensions
 import DevTools
 import PointFreeFunctions
 import Designables
-import AppDomain
+import Domain
 
 extension V {
     class BlissDetails_View: GenericView {
@@ -40,8 +40,8 @@ extension V {
         
         private lazy var _topGenericView: TopBar = {
             let some = AppFactory.UIKit.topBar(baseController: self)
-            some.setTitle(AppMessages.Bliss.appName)
-            some.setTitle(AppMessages.details.localised)
+            some.setTitle(Messages.Bliss.appName)
+            some.setTitle(Messages.details.localised)
             some.addBackButton()
             some.rxSignal_btnDismissTapped
                 .asObservable()

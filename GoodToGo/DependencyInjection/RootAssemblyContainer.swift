@@ -8,7 +8,7 @@
 import Swinject
 import RJPSLib
 //
-import AppDomain
+import Domain
 import API
 import Repositories
 
@@ -28,7 +28,7 @@ struct RootAssemblyContainerProtocols {
     static let sample_UseCase                   = Sample_UseCaseProtocol.self
     static let sampleB_UseCase                  = SampleB_UseCaseProtocol.self
     static let blissQuestions_UseCase           = BlissQuestionsAPI_UseCaseProtocol.self
-    static let blissGenericAppBusiness_UseCase  = BlissGenericAppBussiness_UseCaseProtocol.self
+    static let blissGenericAppBusiness_UseCase  = BlissGenericAppBusiness_UseCaseProtocol.self
     static let gitUser_UseCase                  = GitUser_UseCaseProtocol.self
 }
 
@@ -90,7 +90,7 @@ final class RootAssemblyContainer: Assembly {
         }
         
         container.register(AppProtocols.blissGenericAppBusiness_UseCase) { resolver in
-            let uc = BlissGenericAppBussiness_UseCase()
+            let uc = BlissGenericAppBusiness_UseCase()
             uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
             return uc

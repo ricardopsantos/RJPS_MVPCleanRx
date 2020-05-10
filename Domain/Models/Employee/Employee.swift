@@ -7,11 +7,7 @@
 
 import Foundation
 import UIKit
-import RxSwift
-import RJPSLib
-import RxCocoa
-import AppDomain
 
-public class GenericUseCase: AppUtils_Protocol {
-    
+public struct Employee {
+    private init() { }
 }

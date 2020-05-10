@@ -37,7 +37,6 @@ typealias AppCan                 = AppManagers.AppCan
 typealias AppLayouts             = AppManagers.Layouts
 typealias AppColors              = UIColor.App
 typealias AppFonts               = UIFont.App
-typealias AppImages              = UIImage.App
 typealias AppProtocols           = RootAssemblyContainerProtocols
 
 // MARK: - DevTools

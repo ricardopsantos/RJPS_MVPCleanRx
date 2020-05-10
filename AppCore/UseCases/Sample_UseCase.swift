@@ -13,7 +13,7 @@ import RJPSLib
 //
 import AppConstants
 import PointFreeFunctions
-import AppDomain
+import Domain
 
 //public extension UseCases {
     

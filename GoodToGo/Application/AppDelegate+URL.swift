@@ -7,7 +7,7 @@
 
 import UIKit
 import RJPSLib
-import AppDomain
+import Domain
 
 extension AppDelegate {
     
@@ -20,9 +20,9 @@ extension AppDelegate {
         
         AppLogger.log("App is opening URL [\(url)] with option [\(options)]")
         
-        var blissGenericAppBussiness_UseCase: BlissGenericAppBussiness_UseCaseProtocol { return container.resolve(AppProtocols.blissGenericAppBusiness_UseCase)! }
+        var blissGenericAppBusiness_UseCase: BlissGenericAppBusiness_UseCaseProtocol { return container.resolve(AppProtocols.blissGenericAppBusiness_UseCase)! }
         
-        blissGenericAppBussiness_UseCase.handle(url: url)
+        blissGenericAppBusiness_UseCase.handle(url: url)
         return true
     }
 }

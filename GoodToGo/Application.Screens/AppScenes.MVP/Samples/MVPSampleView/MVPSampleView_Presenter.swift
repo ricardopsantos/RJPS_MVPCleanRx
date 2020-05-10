@@ -20,7 +20,7 @@ import AppConstants
 import Extensions
 import DevTools
 import PointFreeFunctions
-import AppDomain
+import Domain
 
 /*
  * Needs to added AS.Sample_AssemblyContainer() to DependencyInjectionManager.swift
@@ -73,7 +73,7 @@ extension P.MVPSampleView_Presenter: MVPSampleView_PresenterProtocol {
             self.genericView?.setActivityState(false)
             switch result {
             case .success(let some): self.viewModel = VM.MVPSampleView_ViewModel(someString: "\(some)")
-            case .failure          : self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error)
+            case .failure          : self.genericView?.displayMessage(Messages.pleaseTryAgainLater.localised, type: .error)
             }
         }
     }
