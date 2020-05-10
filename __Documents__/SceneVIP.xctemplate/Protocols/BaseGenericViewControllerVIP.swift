@@ -15,7 +15,7 @@ import UIBase
 import Designables
 import DevTools
 
-class BaseViewControllerVIP: /* BaseViewControllerMVP*/ UIViewController, BaseDisplayLogicProtocol {
+class BaseViewControllerVIP: UIViewController, BaseDisplayLogicProtocol {
 
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -55,11 +55,11 @@ class BaseGenericViewControllerVIP<T: StylableView>: BaseViewControllerVIP {
 
     var disposeBag = DisposeBag()
     var firstAppearance: Bool = true
-    var genericView: T { view as! T }
+    var genericView: T { return view as! T }
     override func loadView() {
         super.loadView()
         view = T()
-        //setupViewUIRx()
+        setupViewUIRx()
     }
 
     func setup() {
@@ -87,5 +87,9 @@ class BaseGenericViewControllerVIP<T: StylableView>: BaseViewControllerVIP {
 
     func setupNavigationUIRx() {
         fatalError("Override me")
+    }
+
+    func setupViewUIRx() {
+        fatalError("override me")
     }
 }

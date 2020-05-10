@@ -35,14 +35,6 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
     var reachabilityService: ReachabilityService! = try! DefaultReachabilityService() // try! is only for simplicity sake
     public var disposeBag: DisposeBag = DisposeBag()
 
-    static var onDarkMode: Bool {
-        if #available(iOS 12.0, *) {
-            return BaseViewControllerMVP().traitCollection.userInterfaceStyle == .dark
-        } else {
-            return false
-        }
-    }
-    
     private var _lblMessageDistanceFromTop: NSLayoutConstraint?
     private var _lblReachabilityDistanceFromTop: NSLayoutConstraint?
     private var _lblReachabilityHeight: CGFloat = 25
@@ -102,12 +94,7 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
     }
     
     open func displayMessage(_ message: String, type: AlertType) {
-        //let asAlert = false
-        //if asAlert {
-        //    (self as UIViewController).rjs.showAlert(title: "\(type)".uppercased(), message: message)
-        //} else {
-            setTopMessageVisibilityTo(state: true, message: message, type: type)
-        //}
+        setTopMessageVisibilityTo(state: true, message: message, type: type)
     }
     
     open func setNoConnectionViewVisibility(to: Bool, withMessage: String = Messages.noInternet.localised) {

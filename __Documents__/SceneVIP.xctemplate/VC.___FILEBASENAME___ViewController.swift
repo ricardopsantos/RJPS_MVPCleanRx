@@ -97,7 +97,7 @@ extension VC {
 
         // Order in View life-cycle : 3
         // This function is called automatically by super BaseGenericView
-        func setupViewUIRx() {
+        override func setupViewUIRx() {
 
             genericView.rxModelSelected
                 .subscribe(onNext: { /* [router] */ (some) in
