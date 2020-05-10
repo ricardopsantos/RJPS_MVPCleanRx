@@ -158,7 +158,6 @@
 		D761FEC22468387E00BD41A5 /* ModelEntityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEC12468387E00BD41A5 /* ModelEntityProtocol.swift */; };
 		D761FEC924683D8700BD41A5 /* BaseGenericViewControllerVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEC624683CF000BD41A5 /* BaseGenericViewControllerVIP.swift */; };
 		D761FECA24683D9400BD41A5 /* BaseDisplayLogicProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEC42468394200BD41A5 /* BaseDisplayLogicProtocol.swift */; };
-		D761FECD24683F8D00BD41A5 /* StylableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FECB24683F8900BD41A5 /* StylableView.swift */; };
 		D761FECE2468403E00BD41A5 /* BaseGenericViewVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEBD246837CE00BD41A5 /* BaseGenericViewVIP.swift */; };
 		D761FED32468421C00BD41A5 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FED22468421C00BD41A5 /* File.swift */; };
 		D761FED5246845FD00BD41A5 /* TitleTableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FED4246845FD00BD41A5 /* TitleTableSection.swift */; };
@@ -776,7 +775,6 @@
 		D761FEC12468387E00BD41A5 /* ModelEntityProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEntityProtocol.swift; sourceTree = "<group>"; };
 		D761FEC42468394200BD41A5 /* BaseDisplayLogicProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDisplayLogicProtocol.swift; sourceTree = "<group>"; };
 		D761FEC624683CF000BD41A5 /* BaseGenericViewControllerVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseGenericViewControllerVIP.swift; sourceTree = "<group>"; };
-		D761FECB24683F8900BD41A5 /* StylableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylableView.swift; sourceTree = "<group>"; };
 		D761FECF2468412100BD41A5 /* UIView+Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
 		D761FED22468421C00BD41A5 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		D761FED4246845FD00BD41A5 /* TitleTableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableSection.swift; sourceTree = "<group>"; };
@@ -1471,7 +1469,6 @@
 				D761FEBD246837CE00BD41A5 /* BaseGenericViewVIP.swift */,
 				D761FEC624683CF000BD41A5 /* BaseGenericViewControllerVIP.swift */,
 				D761FEC42468394200BD41A5 /* BaseDisplayLogicProtocol.swift */,
-				D761FECB24683F8900BD41A5 /* StylableView.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -2570,7 +2567,6 @@
 				9F6BB2D022E3470200829A6F /* MVPSampleTableView_AssemblyContainer.swift in Sources */,
 				D779A5F4234FE3A500D3D6F7 /* I.SampleVIP_Interactor.swift in Sources */,
 				9FE143B821AF2F520026BDFC /* AppManagers+Environments.swift in Sources */,
-				D761FECD24683F8D00BD41A5 /* StylableView.swift in Sources */,
 				9F58FB4C22BE5DE700042A8C /* V.SearchUser_View.swift in Sources */,
 				9F6BB2EE22E3A97F00829A6F /* AS.BlissQuestionsList_AssemblyContainer.swift in Sources */,
 				D761FEAF2468304A00BD41A5 /* I.___FILEBASENAME___Interactor.swift in Sources */,

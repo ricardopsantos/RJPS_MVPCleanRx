@@ -15,14 +15,6 @@ import AppResources
 import Domain
 import UIBase
 
-public enum ErrorType {
-    case someError
-}
-
-public protocol BaseDataStoreProtocol {
-    var errorType: ErrorType? { get }
-}
-
 // All interators must implement this
 public protocol InteratorMandatoryBusinessLogicProtocol {
     func requestScreenInitialState()
