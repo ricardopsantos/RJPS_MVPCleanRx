@@ -2,7 +2,4 @@
 #warning("improve alerts top message (have messages colision)")
 #warning("add debug label/screen/html report")
 #warning("adicionar image a mostrar os ecran os tipo de botoes e labels")
-#warning("separar por frameworks")
-#warning("apagar isto -> asAlert: false)")
 #warning("colocar uma cache decente")
-#warning("presenter.genericView = viewController as! GenericViewProtocol")

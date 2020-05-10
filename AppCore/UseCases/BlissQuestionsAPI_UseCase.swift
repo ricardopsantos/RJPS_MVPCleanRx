@@ -20,8 +20,8 @@ import AppDomain
 public class BlissQuestionsAPI_UseCase: GenericUseCase, BlissQuestionsAPI_UseCaseProtocol {
 
         var repositoryNetwork: Bliss_NetWorkRepositoryProtocol!
-        var generic_CacheRepositoryProtocol: Generic_CacheRepositoryProtocol!
-        var generic_LocalStorageRepository: Generic_LocalStorageRepositoryProtocol!
+        var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
+        var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
         
         private func serverIsOK(completionHandler: @escaping (Bool) -> Void) {
             getHealth { (some) in

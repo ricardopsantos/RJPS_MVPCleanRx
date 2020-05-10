@@ -11,7 +11,7 @@ import UIKit
 import AVFoundation
 import AppDomain
 
-public class Generic_CacheRepository: Generic_CacheRepositoryProtocol {
+public class CacheRepository: Generic_CacheRepositoryProtocol {
     public init () {}
     public func add(object: AnyObject, withKey: String) { RJS_Cache.add(object: object, withKey: withKey) }
     public func get(key: String) -> AnyObject? { return RJS_Cache.get(key: key) }

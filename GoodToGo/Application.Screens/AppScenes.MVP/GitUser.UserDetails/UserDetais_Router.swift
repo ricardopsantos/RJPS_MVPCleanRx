@@ -18,7 +18,7 @@ protocol UserDetais_RouterProtocol: class {
 }
 
 extension Router {
-    class UserDetais_Router: BaseRouter, GenericRouter_Protocol, UserDetais_RouterProtocol {
+    class UserDetais_Router: BaseRouter, BaseRouterProtocol, UserDetais_RouterProtocol {
         
         private weak var baseView: V.UserDetais_View?
 

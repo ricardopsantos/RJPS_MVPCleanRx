@@ -43,10 +43,10 @@ protocol SearchUser_ProtocolPresenter_IO: SearchUser_PresenterProtocol_Input, Se
  */
 
 protocol SearchUser_PresenterProtocol: class, SearchUser_ProtocolPresenter_IO {
-    var generic: GenericPresenter_Protocol? { get }   // Mandatory in ALL Presenters
-    var genericView: GenericViewProtocol? { get }                 // Mandatory in ALL Presenters
-    var viewModel: VM.SearchUser? { get set }           // Mandatory in ALL Presenters
-    var router: SearchUser_RouterProtocol! { get }   // Mandatory in ALL Presenters
+    var generic: BasePresenterProtocol? { get }    // Mandatory in ALL Presenters
+    var genericView: BaseViewProtocol? { get }     // Mandatory in ALL Presenters
+    var viewModel: VM.SearchUser? { get set }      // Mandatory in ALL Presenters
+    var router: SearchUser_RouterProtocol! { get } // Mandatory in ALL Presenters
 
     func searchUserWith(username: String)
 }
@@ -61,8 +61,8 @@ protocol SearchUser_ViewProtocol: class {
 
 extension Presenter {
     class SearchUser_Presenter: BasePresenter {
-        weak var generic: GenericPresenter_Protocol?
-        weak var genericView: GenericViewProtocol?
+        weak var generic: BasePresenterProtocol?
+        weak var genericView: BaseViewProtocol?
         weak var view: SearchUser_ViewProtocol!
         var viewModel: VM.SearchUser? { didSet { AppLogger.log(appCode: .vmChanged); viewModelChanged() } }
         var router: SearchUser_RouterProtocol!
@@ -93,7 +93,7 @@ extension P.SearchUser_Presenter: SearchUser_PresenterProtocol {
  * 4 - Implementation : GenericPresenter_Protocol Protocol
  */
 
-extension P.SearchUser_Presenter: GenericPresenter_Protocol {
+extension P.SearchUser_Presenter: BasePresenterProtocol {
     func view_deinit() { }
     func loadView() { rxSetup() }
     func viewDidAppear() { }

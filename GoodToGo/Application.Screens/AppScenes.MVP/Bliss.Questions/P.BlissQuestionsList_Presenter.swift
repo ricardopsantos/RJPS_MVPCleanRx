@@ -27,8 +27,8 @@ import AppDomain
 //
 
 protocol BlissQuestionsList_PresenterProtocol: class {
-    var generic: GenericPresenter_Protocol? { get }             // Mandatory in ALL Presenters
-    var genericView: GenericViewProtocol? { get }               // Mandatory in ALL Presenters
+    var generic: BasePresenterProtocol? { get }                 // Mandatory in ALL Presenters
+    var genericView: BaseViewProtocol? { get }                  // Mandatory in ALL Presenters
     var viewModel: VM.BlissQuestionsList_ViewModel? { get set } // Mandatory in ALL Presenters
     var router: BlissQuestionsList_RouterProtocol! { get }      // Mandatory in ALL Presenters
     var tableView: GenericTableView_Protocol! { get }
@@ -51,8 +51,8 @@ protocol BlissQuestionsList_ViewProtocol: class {
 
 extension Presenter {
     class BlissQuestionsList_Presenter: BasePresenter {
-        weak var generic: GenericPresenter_Protocol?
-        weak var genericView: GenericViewProtocol?
+        weak var generic: BasePresenterProtocol?
+        weak var genericView: BaseViewProtocol?
         weak var view: BlissQuestionsList_ViewProtocol!
         var router: BlissQuestionsList_RouterProtocol!
         var tableView: GenericTableView_Protocol!
@@ -145,7 +145,7 @@ extension P.BlissQuestionsList_Presenter: BlissQuestionsList_PresenterProtocol {
 // MARK: - GenericPresenter_Protocol
 //
 
-extension P.BlissQuestionsList_Presenter: GenericPresenter_Protocol {
+extension P.BlissQuestionsList_Presenter: BasePresenterProtocol {
     func view_deinit() {
         NotificationCenter.default.removeObserver(self)
     }

@@ -26,13 +26,12 @@ public typealias CustomSearchBar = RJS_CustomSearchBar
         public struct Errors {
             private init() {}
             public static func with(appCode: AppCodes, info: String="") -> Error {
-                let domain: String = "\(Bundle.main.bundleIdentifier!)"//appCode.localizableString
+                let domain: String = "\(Bundle.main.bundleIdentifier!)"
                 let code: Int = appCode.rawValue
                 var userInfo: [String: Any] = [:]
-                #warning("uncoment")
-                //userInfo[NSError.AppKeys.userInfoDevMessageKey]  = appCode.localizedMessageForDevTeam
-                //userInfo[NSError.AppKeys.userInfoViewMessageKey] = appCode.localizedMessageForView
-                //userInfo[NSError.AppKeys.userInfoMoreInfoKey]    = info
+                userInfo["userInfo.dev"]  = appCode.localisedMessageForDevTeam
+                userInfo["userInfo.prod"] = appCode.localisedMessageForView
+                userInfo["extra.prod"]    = appCode.localisedMessageForView
                 return NSError(domain: domain, code: code, userInfo: userInfo)
             }
         }

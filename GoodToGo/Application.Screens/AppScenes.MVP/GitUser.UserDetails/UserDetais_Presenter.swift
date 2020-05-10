@@ -27,8 +27,8 @@ import AppDomain
  */
 
 protocol UserDetais_PresenterProtocol: class {
-    var generic: GenericPresenter_Protocol? { get }  // Mandatory in ALL Presenters
-    var genericView: GenericViewProtocol? { get }    // Mandatory in ALL Presenters
+    var generic: BasePresenterProtocol? { get }      // Mandatory in ALL Presenters
+    var genericView: BaseViewProtocol? { get }       // Mandatory in ALL Presenters
     var viewModel: VM.UserDetais? { get set }        // Mandatory in ALL Presenters
     var router: UserDetais_RouterProtocol! { get }   // Mandatory in ALL Presenters
     var tableView: GenericTableView_Protocol! { get }
@@ -48,8 +48,8 @@ protocol UserDetais_ViewProtocol: class {
 
 extension Presenter {
     class UserDetais_Presenter: BasePresenter {
-        var generic: GenericPresenter_Protocol?
-        var genericView: GenericViewProtocol?
+        var generic: BasePresenterProtocol?
+        var genericView: BaseViewProtocol?
         var viewModel: VM.UserDetais? { didSet { AppLogger.log(appCode: .vmChanged); viewModelChanged() } }
         weak var view: UserDetais_ViewProtocol!
         var router: UserDetais_RouterProtocol!
@@ -89,7 +89,7 @@ extension P.UserDetais_Presenter: GenericTableView_Protocol {
  * 4 - Implementation : GenericPresenter_Protocol Protocol
  */
 
-extension P.UserDetais_Presenter: GenericPresenter_Protocol {
+extension P.UserDetais_Presenter: BasePresenterProtocol {
     func view_deinit() { }
     func loadView() { rxSetup() }
     func viewDidAppear() { }

@@ -19,7 +19,7 @@ import AppDomain
 
 public class GitUser_UseCase: GenericUseCase, GitUser_UseCaseProtocol {
 
-        var generic_CacheRepositoryProtocol: Generic_CacheRepositoryProtocol!
+        var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
         var repositoryNetwork: GitUser_NetWorkRepositoryProtocol!
 
     public func getInfoOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitUser_Single_UseCaseCompletionHandler) {

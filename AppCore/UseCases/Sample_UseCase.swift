@@ -22,8 +22,8 @@ import AppDomain
      */
     class Sample_UseCase: GenericUseCase, Sample_UseCaseProtocol {
         
-        var generic_CacheRepositoryProtocol: Generic_CacheRepositoryProtocol!
-        var generic_LocalStorageRepository: Generic_LocalStorageRepositoryProtocol!
+        var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
+        var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
         
         func operation1(canUseCache: Bool, completionHandler: @escaping Sample_UseCaseCompletionHandler) {
             guard existsInternetConnection else {

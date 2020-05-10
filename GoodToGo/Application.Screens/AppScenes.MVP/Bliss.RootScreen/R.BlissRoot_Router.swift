@@ -22,7 +22,7 @@ protocol BlissRoot_RouterProtocol: class {
 }
 
 extension Router {
-    class BlissRoot_Router: BaseRouter, GenericRouter_Protocol, BlissRoot_RouterProtocol {
+    class BlissRoot_Router: BaseRouter, BaseRouterProtocol, BlissRoot_RouterProtocol {
         
         private weak var baseView: V.BlissRoot_View?
         // PublishRelay model Events

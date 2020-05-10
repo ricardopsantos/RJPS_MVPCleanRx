@@ -20,7 +20,7 @@ import AppResources
 import PointFreeFunctions
 import AppDomain
 
-open class BaseViewController: UIViewController, GenericViewProtocol {
+open class BaseViewController: UIViewController, BaseViewProtocol {
 
     deinit {
         AppLogger.log("\(self.className) was killed")
@@ -110,12 +110,12 @@ open class BaseViewController: UIViewController, GenericViewProtocol {
     }
     
     open func displayMessage(_ message: String, type: AlertType) {
-        let asAlert = false
-        if asAlert {
-            (self as UIViewController).rjs.showAlert(title: "\(type)".uppercased(), message: message)
-        } else {
+        //let asAlert = false
+        //if asAlert {
+        //    (self as UIViewController).rjs.showAlert(title: "\(type)".uppercased(), message: message)
+        //} else {
             setTopMessageVisibilityTo(state: true, message: message, type: type)
-        }
+        //}
     }
     
     open func setNoConnectionViewVisibility(to: Bool, withMessage: String = AppMessages.noInternet.localised) {

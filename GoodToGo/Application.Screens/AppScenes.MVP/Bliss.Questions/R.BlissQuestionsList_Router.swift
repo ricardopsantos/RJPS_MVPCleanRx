@@ -22,7 +22,7 @@ protocol BlissQuestionsList_RouterProtocol: class {
 }
 
 extension Router {
-    class BlissQuestionsList_Router: BaseRouter, GenericRouter_Protocol, BlissQuestionsList_RouterProtocol {
+    class BlissQuestionsList_Router: BaseRouter, BaseRouterProtocol, BlissQuestionsList_RouterProtocol {
 
         private weak var baseView: V.BlissQuestionsList_View?
         // PublishRelay model Events

@@ -9,11 +9,11 @@ import Foundation
 import RJPSLib
 import AppDomain
 
-public class LocalStorageRepository: Generic_LocalStorageRepositoryProtocol {
+public class LocalStorageRepository: LocalStorageRepositoryProtocol {
 
     public init () {}
-    @discardableResult
-    public func save(key: String, value: String, expireDate: Date?) -> Bool {
+
+    @discardableResult public func save(key: String, value: String, expireDate: Date?) -> Bool {
         return RJS_DataModel.save(key: key, value: value, expireDate: expireDate)
     }
 
@@ -37,8 +37,7 @@ public class LocalStorageRepository: Generic_LocalStorageRepositoryProtocol {
         return RJS_DataModel.allRecords()
     }
 
-    @discardableResult
-    public func deleteAll() -> Bool {
+    @discardableResult public func deleteAll() -> Bool {
         return RJS_DataModel.deleteAll()
     }
 

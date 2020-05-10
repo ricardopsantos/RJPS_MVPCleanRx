@@ -9,7 +9,7 @@
 import Foundation
 import AppConstants
 
-public protocol GenericViewProtocol: AnyObject {
+public protocol BaseViewProtocol: AnyObject {
     func setActivityState(_ state: Bool)
     func displayMessage(_ message: String, type: AlertType)
     func setNoConnectionViewVisibility(to: Bool, withMessage: String)

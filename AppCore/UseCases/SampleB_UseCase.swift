@@ -17,8 +17,8 @@ import AppDomain
      */
  public class SampleB_UseCase: GenericUseCase, SampleB_UseCaseProtocol {
 
-        var generic_CacheRepositoryProtocol: Generic_CacheRepositoryProtocol!
-        var generic_LocalStorageRepository: Generic_LocalStorageRepositoryProtocol!
+        var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
+        var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
         
     public func operation1(canUseCache: Bool, completionHandler: @escaping SampleB_UseCaseCompletionHandler) {
             AppLogger.log(appCode: .notImplemented)
