@@ -35,7 +35,7 @@ import UIBase
 //
 
 extension P {
-    class ___VARIABLE_sceneName___Presenter: BasePresenter {
+    class ___VARIABLE_sceneName___Presenter: BasePresenterVIP {
         weak var viewController: (___VARIABLE_sceneName___DisplayLogicProtocol)?
 
         override func baseDisplayLogicImpl() -> BaseDisplayLogicProtocol? {

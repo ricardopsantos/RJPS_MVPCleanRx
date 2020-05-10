@@ -31,8 +31,8 @@ import Domain
 //
 
 protocol MVPSampleRxView_PresenterProtocol: class {
-    var generic: BasePresenterProtocol? { get }                // Mandatory in ALL Presenters
-    var genericView: BaseViewProtocol? { get }                 // Mandatory in ALL Presenters
+    var generic: BasePresenterVMPProtocol? { get }             // Mandatory in ALL Presenters
+    var genericView: BaseViewControllerMVPProtocol? { get }    // Mandatory in ALL Presenters
     var viewModel: VM.MVPSampleRxView_ViewModel? { get set }   // Mandatory in ALL Presenters
     var router: MVPSampleRxView_RouterProtocol! { get }        // Mandatory in ALL Presenters
     
@@ -48,9 +48,9 @@ protocol MVPSampleRxView_ViewProtocol: class {
 //
 
 extension Presenter {
-    class MVPSampleRxView_Presenter: BasePresenter {
-        weak var generic: BasePresenterProtocol?
-        weak var genericView: BaseViewProtocol?
+    class MVPSampleRxView_Presenter: BasePresenterMVP {
+        weak var generic: BasePresenterVMPProtocol?
+        weak var genericView: BaseViewControllerMVPProtocol?
         weak var view: MVPSampleRxView_ViewProtocol!
         var viewModel: VM.MVPSampleRxView_ViewModel? { didSet { AppLogger.log(appCode: .vmChanged); viewModelChanged() } }
         var router: MVPSampleRxView_RouterProtocol!
@@ -107,7 +107,7 @@ extension P.MVPSampleRxView_Presenter: MVPSampleRxView_PresenterProtocol {
 // MARK: - GenericPresenter_Protocol
 //
 
-extension P.MVPSampleRxView_Presenter: BasePresenterProtocol {
+extension P.MVPSampleRxView_Presenter: BasePresenterVMPProtocol {
     func view_deinit() { }
     func loadView() { rxSetup() }
     func viewDidAppear() { }

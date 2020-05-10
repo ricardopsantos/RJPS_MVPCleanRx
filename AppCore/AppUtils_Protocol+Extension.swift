@@ -41,7 +41,7 @@ public extension AppUtils_Protocol {
         return RJS_Utils.existsInternetConnection()
     }
     
-    func assertExistsInternetConnection(sender: BaseViewProtocol?,
+    func assertExistsInternetConnection(sender: BaseViewControllerMVPProtocol?,
                                         message: String=Messages.noInternet.localised,
                                         block: @escaping () -> Void) {
 

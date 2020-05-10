@@ -24,7 +24,7 @@ import Domain
 // MARK: - Keyboard
 //
 
-extension BaseViewController {
+extension BaseViewControllerMVP {
 
     var keyboardHeigth: CGFloat {
         if _keyboardIsVisible {

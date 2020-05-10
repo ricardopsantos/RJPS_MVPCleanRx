@@ -27,10 +27,10 @@ import Domain
 //
 
 protocol BlissDetails_PresenterProtocol: class {
-    var generic: BasePresenterProtocol? { get }           // Mandatory in ALL Presenters
-    var genericView: BaseViewProtocol? { get }            // Mandatory in ALL Presenters
-    var viewModel: VM.BlissDetails_ViewModel? { get set } // Mandatory in ALL Presenters
-    var router: BlissDetails_RouterProtocol! { get }      // Mandatory in ALL Presenters
+    var generic: BasePresenterVMPProtocol? { get }          // Mandatory in ALL Presenters
+    var genericView: BaseViewControllerMVPProtocol? { get } // Mandatory in ALL Presenters
+    var viewModel: VM.BlissDetails_ViewModel? { get set }   // Mandatory in ALL Presenters
+    var router: BlissDetails_RouterProtocol! { get }        // Mandatory in ALL Presenters
     var tableView: GenericTableView_Protocol! { get }
     
     func userDidPretendToShareInApp()
@@ -52,9 +52,9 @@ protocol BlissDetails_ViewProtocol: class {
 //
 
 extension Presenter {
-    class BlissDetails_Presenter: BasePresenter {
-        weak var generic: BasePresenterProtocol?
-        weak var genericView: BaseViewProtocol?
+    class BlissDetails_Presenter: BasePresenterMVP {
+        weak var generic: BasePresenterVMPProtocol?
+        weak var genericView: BaseViewControllerMVPProtocol?
         weak var view: BlissDetails_ViewProtocol!
         var router: BlissDetails_RouterProtocol!
         var blissQuestions_UseCase: BlissQuestionsAPI_UseCaseProtocol!
@@ -171,7 +171,7 @@ extension P.BlissDetails_Presenter: GenericTableView_Protocol {
 // MARK: - GenericPresenter_Protocol
 //
 
-extension P.BlissDetails_Presenter: BasePresenterProtocol {
+extension P.BlissDetails_Presenter: BasePresenterVMPProtocol {
     func view_deinit() {
         NotificationCenter.default.removeObserver(self)
     }

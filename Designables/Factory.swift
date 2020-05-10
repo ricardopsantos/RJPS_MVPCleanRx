@@ -123,7 +123,7 @@ public struct UIKitFactory {
         return some
     }
 
-    public static func topBar(baseController: BaseViewController) -> TopBar {
+    public static func topBar(baseController: BaseViewControllerMVP) -> TopBar {
         let bar         = TopBar()
         let screenWidth = UIScreen.main.bounds.width
         let height      = TopBar.defaultHeight
@@ -143,7 +143,7 @@ public struct UIKitFactory {
         return bar
     }
 
-    public static func bottomBar(baseController: BaseViewController) -> BottomBar {
+    public static func bottomBar(baseController: BaseViewControllerMVP) -> BottomBar {
         let bar         = BottomBar()
         bar.view.backgroundColor = .clear
         let screenWidth = UIScreen.main.bounds.width

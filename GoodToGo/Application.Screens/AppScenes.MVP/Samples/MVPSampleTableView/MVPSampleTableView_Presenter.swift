@@ -28,8 +28,8 @@ import API
 //
 
 protocol MVPSampleTableView_PresenterProtocol: class {
-    var generic: BasePresenterProtocol? { get }                 // Mandatory in ALL Presenters
-    var genericView: BaseViewProtocol? { get }                  // Mandatory in ALL Presenters
+    var generic: BasePresenterVMPProtocol? { get }              // Mandatory in ALL Presenters
+    var genericView: BaseViewControllerMVPProtocol? { get }     // Mandatory in ALL Presenters
     var viewModel: VM.MVPSampleTableView_ViewModel? { get set } // Mandatory in ALL Presenters
     var router: MVPSampleTableView_RouterProtocol! { get }      // Mandatory in ALL Presenters
     var tableView: GenericTableView_Protocol! { get }
@@ -49,8 +49,8 @@ protocol MVPSampleTableView_ViewProtocol: class {
 
 extension Presenter {
     class MVPSampleTableView_Presenter {
-        weak var generic: BasePresenterProtocol?
-        weak var genericView: BaseViewProtocol?
+        weak var generic: BasePresenterVMPProtocol?
+        weak var genericView: BaseViewControllerMVPProtocol?
         weak var view: MVPSampleTableView_ViewProtocol!
         var viewModel: VM.MVPSampleTableView_ViewModel? {
             didSet { AppLogger.log(appCode: .vmChanged); viewModelChanged() }
@@ -117,7 +117,7 @@ extension P.MVPSampleTableView_Presenter: MVPSampleTableView_PresenterProtocol {
 // MARK: - GenericPresenter_Protocol
 //
 
-extension P.MVPSampleTableView_Presenter: BasePresenterProtocol {
+extension P.MVPSampleTableView_Presenter: BasePresenterVMPProtocol {
     func view_deinit() { }
     func loadView() { }
     func viewDidAppear() { }

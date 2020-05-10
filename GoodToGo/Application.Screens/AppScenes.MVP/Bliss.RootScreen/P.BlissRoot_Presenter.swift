@@ -22,10 +22,10 @@ import UIBase
 //
 
 protocol BlissRoot_PresenterProtocol: class {
-    var generic: BasePresenterProtocol? { get }         // Mandatory in ALL Presenters
-    var genericView: BaseViewProtocol? { get }          // Mandatory in ALL Presenters
-    var viewModel: VM.BlissRoot_ViewModel? { get set }  // Mandatory in ALL Presenters
-    var router: BlissRoot_RouterProtocol! { get }       // Mandatory in ALL Presenters
+    var generic: BasePresenterVMPProtocol? { get }          // Mandatory in ALL Presenters
+    var genericView: BaseViewControllerMVPProtocol? { get } // Mandatory in ALL Presenters
+    var viewModel: VM.BlissRoot_ViewModel? { get set }      // Mandatory in ALL Presenters
+    var router: BlissRoot_RouterProtocol! { get }           // Mandatory in ALL Presenters
     
     // PublishRelay model Events
     var rxPublishRelay_dismissView: PublishRelay<Void> { get }
@@ -42,9 +42,9 @@ protocol BlissRoot_ViewProtocol: class {
 //
 
 extension Presenter {
-    class BlissRoot_Presenter: BasePresenter {
-        weak var generic: BasePresenterProtocol?
-        weak var genericView: BaseViewProtocol?
+    class BlissRoot_Presenter: BasePresenterMVP {
+        weak var generic: BasePresenterVMPProtocol?
+        weak var genericView: BaseViewControllerMVPProtocol?
         weak var view: BlissRoot_ViewProtocol!
         var router: BlissRoot_RouterProtocol!
         var blissQuestions_UseCase: BlissQuestionsAPI_UseCaseProtocol!
@@ -80,7 +80,7 @@ extension P.BlissRoot_Presenter: BlissRoot_PresenterProtocol {
 // MARK: - GenericPresenter_Protocol
 //
 
-extension P.BlissRoot_Presenter: BasePresenterProtocol {
+extension P.BlissRoot_Presenter: BasePresenterVMPProtocol {
     func view_deinit() { }
     func loadView() { }
     func viewDidAppear() { }

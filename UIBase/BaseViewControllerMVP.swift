@@ -20,7 +20,7 @@ import AppResources
 import PointFreeFunctions
 import Domain
 
-open class BaseViewController: UIViewController, BaseViewProtocol {
+open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtocol {
 
     deinit {
         AppLogger.log("\(self.className) was killed")
@@ -37,7 +37,7 @@ open class BaseViewController: UIViewController, BaseViewProtocol {
 
     static var onDarkMode: Bool {
         if #available(iOS 12.0, *) {
-            return BaseViewController().traitCollection.userInterfaceStyle == .dark
+            return BaseViewControllerMVP().traitCollection.userInterfaceStyle == .dark
         } else {
             return false
         }
@@ -178,7 +178,7 @@ open class BaseViewController: UIViewController, BaseViewProtocol {
 // MARK: - loadingViewable
 //
 
-public extension BaseViewController {
+public extension BaseViewControllerMVP {
     func setActivityState(_ state: Bool) {
         if state {
             self.view.rjs.startActivityIndicator()
@@ -190,7 +190,7 @@ public extension BaseViewController {
 // MARK: - Private stuff
 //
 
-extension BaseViewController {
+extension BaseViewControllerMVP {
 
     private func label(baseView: UIView? = nil, title: String="", style: UILabel.LayoutStyle, tag: Int=0) -> UILabel {
         let some = UILabel()
@@ -240,7 +240,7 @@ extension BaseViewController {
 // MARK: - Keyboard
 //
 
-extension BaseViewController {
+extension BaseViewControllerMVP {
     
     @objc private func keyboardWillHideNotification(_ notification: Notification) { }
     @objc private func keyboardDidShowNotification(_ notification: Notification) { _keyboardIsVisible=true; self.keyboardDidShow() }

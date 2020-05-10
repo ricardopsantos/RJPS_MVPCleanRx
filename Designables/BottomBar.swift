@@ -21,7 +21,7 @@ public protocol BottomBar_Delegate: AnyObject {
     func btnTappedWith(identifier: String)
 }
 
-open class BottomBar: BaseViewController {
+open class BottomBar: BaseViewControllerMVP {
     
     deinit {
         AppLogger.log("\(self.className) was killed")
