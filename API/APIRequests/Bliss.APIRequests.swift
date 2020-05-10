@@ -39,7 +39,7 @@ extension WebAPI.Bliss {
                     """
                 }
             } else {
-                throw APIErrors.invalidURL(url: urlString)
+                throw E.APIErrors.invalidURL(url: urlString)
             }
         }
         
@@ -66,7 +66,7 @@ extension WebAPI.Bliss {
                     mockedData = AppConstants.Mocks.Bliss.getQuestions_200
                 }
             } else {
-                throw APIErrors.invalidURL(url: urlString)
+                throw E.APIErrors.invalidURL(url: urlString)
             }
         }
         
@@ -92,7 +92,7 @@ extension WebAPI.Bliss {
                     mockedData = AppConstants.Mocks.Bliss.getQuestions_200
                 }
             } else {
-                throw APIErrors.invalidURL(url: urlString)
+                throw E.APIErrors.invalidURL(url: urlString)
             }
         }
         
@@ -125,7 +125,7 @@ extension WebAPI.Bliss {
                 urlRequest.httpBody = parameters.percentEscaped().data(using: .utf8)
                 responseType = .json
             } else {
-                throw APIErrors.invalidURL(url: urlString)
+                throw E.APIErrors.invalidURL(url: urlString)
             }
         }
         
@@ -161,7 +161,7 @@ extension WebAPI.Bliss {
                 urlRequest.httpBody = parameters.percentEscaped().data(using: .utf8)
                 responseType = .json
             } else {
-                throw APIErrors.invalidURL(url: urlString)
+                throw E.APIErrors.invalidURL(url: urlString)
             }
         }
         
@@ -185,7 +185,7 @@ extension WebAPI.Bliss {
                 urlRequest.httpMethod = "POST"
                 responseType = .json
             } else {
-                throw APIErrors.invalidURL(url: urlString)
+                throw E.APIErrors.invalidURL(url: urlString)
             }
         }
         

@@ -35,7 +35,7 @@ extension WebAPI.GitUser {
                 if DevTools.FeatureFlag.getFlag(.devTeam_useMockedData) {
                      mockedData = AppConstants.Mocks.GitHub.getUser_200
                 }
-            } else { throw APIErrors.invalidURL(url: urlString) }
+            } else { throw E.APIErrors.invalidURL(url: urlString) }
         }
     }
     struct GetFriends_APIRequest: WebAPIRequest_Protocol {
@@ -57,7 +57,7 @@ extension WebAPI.GitUser {
                     mockedData = AppConstants.Mocks.GitHub.getUser_200
                 }
             } else {
-                throw APIErrors.invalidURL(url: urlString)
+                throw E.APIErrors.invalidURL(url: urlString)
             }
         }
     }
