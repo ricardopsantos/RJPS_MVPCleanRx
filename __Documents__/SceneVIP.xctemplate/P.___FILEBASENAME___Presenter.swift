@@ -38,7 +38,7 @@ extension P {
     class ___VARIABLE_sceneName___Presenter: BasePresenter {
         weak var viewController: (___VARIABLE_sceneName___DisplayLogicProtocol)?
 
-        override func baseDisplayLogicImpl() -> BaseDisplayLogic? {
+        override func baseDisplayLogicImpl() -> BaseDisplayLogicProtocol? {
             return viewController
         }
     }
@@ -48,9 +48,14 @@ extension P {
 
 extension P.___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___PresentationLogicProtocol {
 
-    // Used By Interactor (exclusively)
-    func presentError(response: VM.___VARIABLE_sceneName___.Error.Response) {
+    func presentError(response: ErrorModel.Response) {
+        let viewModel = ErrorModel.ViewModel(message: response.message)
+        baseDisplayLogicImpl()?.displayError(viewModel: viewModel)
+    }
 
+    func presentLoading(response: LoadingModel.Response) {
+        let viewModel = LoadingModel.ViewModel(isLoading: response.isLoading, message: response.message)
+        baseDisplayLogicImpl()?.displayLoading(viewModel: viewModel)
     }
 
     // Used By Interactor (exclusively)

@@ -85,12 +85,14 @@ extension I.___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___Business
     // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
     func requestSomeStuff(request: VM.___VARIABLE_sceneName___.SomeStuff.Request) {
 
+        presenter?.presentLoading(response: LoadingModel.Response(isLoading: true, message: ""))
         DispatchQueue.executeWithDelay(delay: 1) { [weak self] in
             let mockA1 = TemplateModel(id: "some id 1", state: "state_a - \(Date())")
             let response = VM.___VARIABLE_sceneName___.SomeStuff.Response(listA: [mockA1],
                                                                           listB: [mockA1],
                                                                           subTitle: "New subtitle \(Date())")
             self?.presenter?.presentSomeStuff(response: response)
+            self?.presenter?.presentLoading(response: LoadingModel.Response(isLoading: false, message: ""))
         }
     }
 

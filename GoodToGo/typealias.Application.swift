@@ -47,17 +47,6 @@ typealias AppLogger   = DevTools.AppLogger
 
 typealias GenericView = UIBase.BaseViewController
 
-// MARK: - Designables
-
-//typealias GenericTableViewCell_Protocol = Designables.GenericTableViewCell_Protocol
-//typealias GenericTableView_Protocol     = Designables.GenericTableView_Protocol
-//typealias AppFactory                    = Designables.Factory
-//typealias TopBar                        = Designables.TopBar
-//typealias BottomBar                     = Designables.BottomBar
-//typealias Sample_TableViewCell          = Designables.Sample_TableViewCell
-//typealias UserTableViewCell             = Designables.V.UserTableViewCell
-//typealias Sample_TableViewCellProtocol  = Designables.Sample_TableViewCellProtocol
-
 // MARK: - MISC
 
 typealias CustomSearchBar = RJS_CustomSearchBar

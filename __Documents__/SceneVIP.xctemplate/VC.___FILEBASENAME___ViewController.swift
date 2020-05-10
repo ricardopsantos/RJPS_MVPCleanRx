@@ -174,8 +174,5 @@ extension VC.___VARIABLE_sceneName___ViewController: ___VARIABLE_sceneName___Dis
         title = viewModel.title
         // Setting up the view, option 2 : setting the vars one by one
         genericView.subTitle = viewModel.subTitle
-        //let sectionA = Section(model: viewModel.someListSectionATitle, items: viewModel.someListSectionAElements)
-        //genericView.rxTableItems.onNext([sectionA])
-        //genericView.rxTableItems.accept(viewModel.someList)
     }
 }

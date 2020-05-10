@@ -15,10 +15,9 @@ import AppResources
 import Domain
 import UIBase
 
-typealias BaseBusinessLogic = BaseBusinessLogicProtocol
-typealias BaseDataStore = BaseDataStoreProtocol
-typealias BaseDisplayLogic = BaseDisplayLogicProtocol
-//typealias BasePresentationLogic = BasePresentationLogicProtocol
+//typealias BaseBusinessLogic = BaseBusinessLogicProtocol
+//typealias BaseDataStore = BaseDataStoreProtocol
+//typealias BaseDisplayLogic = BaseDisplayLogicProtocol
 
 public enum ErrorType {
     case someError
@@ -46,11 +45,11 @@ public protocol BasePresentationLogicProtocol: class {
     func presentLoading(response: LoadingModel.Response)
     func presentError(response: ErrorModel.Response)
 }
-
+/*
 extension BasePresentationLogicProtocol {
     func presentLoading(response: LoadingModel.Response) { print("not implemented") }
     func presentError(response: ErrorModel.Response) { print("not implemented") }
-}
+}*/
 
 public protocol BaseBusinessLogicProtocol {
 

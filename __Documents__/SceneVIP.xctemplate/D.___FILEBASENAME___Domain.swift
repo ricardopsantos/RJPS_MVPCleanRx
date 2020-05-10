@@ -90,22 +90,8 @@ protocol ___VARIABLE_sceneName___RoutingLogicProtocol: RouterUtilsProtocol {
 
 protocol ___VARIABLE_sceneName___PresentationLogicProtocol: BasePresentationLogicProtocol {
     // Naming convention : func present__XXX__(response: VM.___VARIABLE_sceneName___.__XXX__.Response)
-    func presentError(response: VM.___VARIABLE_sceneName___.Error.Response)
     func presentScreenInitialState(response: VM.___VARIABLE_sceneName___.ScreenInitialState.Response)
     func presentSomeStuff(response: VM.___VARIABLE_sceneName___.SomeStuff.Response)
-}
-
-extension ___VARIABLE_sceneName___PresentationLogicProtocol {
-    // Naming convention : func present__XXX__(response: VM.___VARIABLE_sceneName___.__XXX__.Response)
-    func presentError(response: VM.___VARIABLE_sceneName___.Error.Response) {
-        print("not implemented")
-    }
-    func presentScreenInitialState(response: VM.___VARIABLE_sceneName___.ScreenInitialState.Response) {
-        print("not implemented")
-    }
-    func presentSomeStuff(response: VM.___VARIABLE_sceneName___.SomeStuff.Response) {
-        print("not implemented")
-    }
 }
 
 //

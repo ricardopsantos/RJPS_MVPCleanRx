@@ -13,6 +13,7 @@ import RxCocoa
 import RxSwift
 import UIBase
 import Designables
+import DevTools
 
 protocol ErrorDisplayerProtocol {
 
@@ -22,13 +23,13 @@ protocol LoadingDisplayerProtocol {
 
 }
 
-class BaseViewController: UIViewController, BaseDisplayLogic, StylableProtocol {
+class BaseViewController: UIViewController, BaseDisplayLogicProtocol, StylableProtocol {
     func displayLoading(viewModel: LoadingModel.ViewModel) {
-
+        DevTools.makeToast(viewModel.message, isError: false)
     }
 
     func displayError(viewModel: ErrorModel.ViewModel) {
-
+        DevTools.makeToast(viewModel.message, isError: true)
     }
 
     deinit {
@@ -44,15 +45,11 @@ class BaseGenericViewController<T: StylableView>: BaseViewController {
 
         override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
             super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-            #warning("fix")
-    //        displayer = BaseDisplayer(viewController: self)
             setup()
         }
 
         required init?(coder aDecoder: NSCoder) {
             super.init(coder: aDecoder)
-                    #warning("fix")
-            //        displayer = BaseDisplayer(viewController: self)
             setup()
         }
 
