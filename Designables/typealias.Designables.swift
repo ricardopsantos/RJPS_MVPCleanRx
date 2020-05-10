@@ -9,4 +9,4 @@
 import Foundation
 import AppResources
 
-public typealias AppCodes = AppResources.AppCodes
+//public typealias AppCodes = AppResources.AppCodes

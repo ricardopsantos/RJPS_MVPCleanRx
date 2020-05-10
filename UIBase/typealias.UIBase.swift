@@ -14,4 +14,4 @@ import AppResources
 
 public typealias AppLogger = DevTools.AppLogger
 //public typealias AppColors = UIColor.App
-public typealias AppMessages = AppResources.Messages
+public typealias AppMessages = Messages

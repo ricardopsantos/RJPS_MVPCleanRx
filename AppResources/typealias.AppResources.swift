@@ -8,5 +8,4 @@
 
 import Foundation
 
-public typealias AppCodes = AppResources.AppCodes
-public typealias AppMessages = AppResources.Messages
+//public typealias AppMessages = AppResources.Messages

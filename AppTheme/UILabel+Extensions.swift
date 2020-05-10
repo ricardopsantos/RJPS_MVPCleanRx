@@ -10,11 +10,6 @@ import Foundation
 
 public extension UILabel {
     
-    enum LayoutStyle {
-        case notApplied /// not Applied
-        case title
-        case value
-    }
     var layoutStyle: UILabel.LayoutStyle {
         set { apply(style: newValue) }
         get { return .notApplied }

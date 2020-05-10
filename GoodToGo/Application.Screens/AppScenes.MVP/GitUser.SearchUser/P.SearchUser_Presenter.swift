@@ -119,8 +119,7 @@ extension P.SearchUser_Presenter: GenericPresenter_Protocol {
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                 self.genericView?.setActivityState(false)
-                let localizableMessageForView = ($0 as NSError).localizableMessageForView
-                self.genericView?.displayMessage(localizableMessageForView, type: .error, asAlert: false)
+                self.genericView?.displayMessage(Messages.messageWith(error: $0), type: .error, asAlert: false)
             })
             .disposed(by: disposeBag)
     }

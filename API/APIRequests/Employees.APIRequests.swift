@@ -34,7 +34,7 @@ public extension WebAPI.Employees {
                     mockedData = AppConstants.Mocks.Employees.getEmployees_200
                 }
             } else {
-                throw E.APIErrors.invalidURL(url: urlString)
+                throw APIErrors.invalidURL(url: urlString)
             }
         }
         

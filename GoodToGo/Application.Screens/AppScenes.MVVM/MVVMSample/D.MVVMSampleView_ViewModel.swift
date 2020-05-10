@@ -33,7 +33,7 @@ protocol MVVMSampleView_ViewModelProtocol {
     var adoptionFeeText: String { get }
     var rxPublishSubject_loading: PublishSubject<Bool> { get }
     var rxPublishRelay_needsToUpdate: PublishRelay<Void> { get }
-    var rxPublishRelay_genericMessages: PublishRelay<(String, E.AlertType)> { get }
+    var rxPublishRelay_genericMessages: PublishRelay<(String, AlertType)> { get }
 }
 
 protocol MVVMSampleView_ViewControllerProtocol {
@@ -63,7 +63,7 @@ extension VM {
         
         public var rxPublishSubject_loading: PublishSubject<Bool> = PublishSubject()
         public var rxPublishRelay_needsToUpdate: PublishRelay<Void>  = PublishRelay<Void>()
-        public var rxPublishRelay_genericMessages: PublishRelay<(String, E.AlertType)> = PublishRelay<(String, E.AlertType)>()
+        public var rxPublishRelay_genericMessages: PublishRelay<(String, AlertType)> = PublishRelay<(String, AlertType)>()
 
         public init() {
             _viewModel = nil

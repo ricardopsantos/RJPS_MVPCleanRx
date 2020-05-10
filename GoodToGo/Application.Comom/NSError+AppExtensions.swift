@@ -19,7 +19,7 @@ import AppConstants
 import Extensions
 import DevTools
 import PointFreeFunctions
-
+/*
 public extension NSError {
     
     struct AppKeys {
@@ -39,3 +39,4 @@ public extension NSError {
         return self.localizedDescription + (self.localizedRecoverySuggestion ?? "")
     }
 }
+*/

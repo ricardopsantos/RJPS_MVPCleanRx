@@ -14,5 +14,5 @@ extension AppConstants {
 //public typealias AlertType = AppConstants.AlertType
 //public typealias AppMode   = E.AppMode
 
-public typealias E = Enums
-public struct Enums { private init() {} }
+//public typealias E = Enums
+//public struct Enums { private init() {} }

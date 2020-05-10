@@ -8,9 +8,7 @@
 
 import Foundation
 
-public extension E {
-    enum APIErrors: Error {
-        case invalidURL(url: String)
-        case notImplemented
-    }
+enum APIErrors: Error {
+    case invalidURL(url: String)
+    case notImplemented
 }

@@ -15,5 +15,5 @@ import DevTools
 typealias WebAPIRequest_Protocol = RJSLibWebAPIRequest_Protocol
 typealias AppLogger   = DevTools.AppLogger
 
-public typealias E = Enums
-public struct Enums { private init() {} }
+//public typealias E = Enums
+//public struct Enums { private init() {} }

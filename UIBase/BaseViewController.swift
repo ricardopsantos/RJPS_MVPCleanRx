@@ -82,7 +82,7 @@ open class BaseViewController: UIViewController, GenericViewProtocol {
         some.addGestureRecognizer(tapGesture)
         tapGesture.rx.event.bind(onNext: { [weak self] _ in
             guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-            self.setTopMessageVisibilityTo(state: false, message: "", type: .sucess)
+            self.setTopMessageVisibilityTo(state: false, message: "", type: .success)
         }).disposed(by: disposeBag)
         return some
     }()
@@ -109,7 +109,7 @@ open class BaseViewController: UIViewController, GenericViewProtocol {
         _lblMessage.superview?.bringSubviewToFront(_lblReachability)
     }
     
-    open func displayMessage(_ message: String, type: E.AlertType, asAlert: Bool=false) {
+    open func displayMessage(_ message: String, type: AlertType, asAlert: Bool=false) {
         if asAlert {
             (self as UIViewController).rjs.showAlert(title: "\(type)".uppercased(), message: message)
         } else {
@@ -211,10 +211,10 @@ extension BaseViewController {
     }
 
     @objc func hideTopMessage() {
-        setTopMessageVisibilityTo(state: false, message: "", type: .sucess)
+        setTopMessageVisibilityTo(state: false, message: "", type: .success)
     }
     
-    private func setTopMessageVisibilityTo(state: Bool, message: String, type: E.AlertType) {
+    private func setTopMessageVisibilityTo(state: Bool, message: String, type: AlertType) {
         if state {
             _lblMessageTimmer?.invalidate()
             _lblMessageTimmer = nil
@@ -226,7 +226,7 @@ extension BaseViewController {
             if state {
                 self._lblMessage.text = message
                 switch type {
-                case .sucess : self._lblMessage.backgroundColor = UIColor.App.success
+                case .success : self._lblMessage.backgroundColor = UIColor.App.success
                 case .warning: self._lblMessage.backgroundColor = UIColor.App.warning
                 case .error  : self._lblMessage.backgroundColor = UIColor.App.error
                 }

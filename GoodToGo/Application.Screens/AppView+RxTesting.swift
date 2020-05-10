@@ -271,7 +271,7 @@ extension V {
                     .subscribe(
                         onNext: { [weak self] _ in
                             self?.aux_log(message: "[Observable<T>][onNext]", showAlert: true, appendToTable: true)
-                            self?.displayMessage(AppMessages.ok.localised, type: .sucess)
+                            self?.displayMessage(AppMessages.ok.localised, type: .success)
                         },
                         onError: { [weak self] error in
                             self?.aux_log(message: "[Observable<T>][onError]", showAlert: true, appendToTable: true)
@@ -387,7 +387,7 @@ extension AppView.RxTesting {
             _rxBehaviorRelay_tableDataSource.accept(["\(time) : \(message)"] + _rxBehaviorRelay_tableDataSource.value)
         }
         if showAlert {
-            displayMessage(message, type: .sucess)
+            displayMessage(message, type: .success)
         }
     }
 }

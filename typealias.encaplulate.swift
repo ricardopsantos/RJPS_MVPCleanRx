@@ -10,6 +10,9 @@ import UIKit
 
 // Common to all frameworks
 
+public typealias E = Enums
+public enum Enums { /*private init() {}*/ }
+
 // MARK: - Models
 
 public typealias M = Model

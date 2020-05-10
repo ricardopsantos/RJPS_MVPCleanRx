@@ -34,7 +34,7 @@ public extension WebAPI.Employees {
         }
         
         public func netWork_OperationB(completionHandler: @escaping Samples_NetWorkRepositoryCompletionHandler) {
-            completionHandler(Result.failure(E.APIErrors.notImplemented))
+            completionHandler(Result.failure(APIErrors.notImplemented))
         }
         
     }

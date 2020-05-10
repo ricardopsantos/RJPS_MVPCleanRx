@@ -14,12 +14,6 @@ import DevTools
 import PointFreeFunctions
 
 public extension UIButton {
-    enum LayoutStyle {
-        case notApplied
-        case regular
-        case dismiss
-        case alternative
-    }
     
     var layoutStyle: UIButton.LayoutStyle {
         set { apply(style: newValue) }
@@ -52,7 +46,7 @@ public extension UIButton {
             self.titleLabel?.font = UIFont.App.regular(size: .regular)
             self.backgroundColor  = UIColor.App.btnBackgroundColor
             self.setTextColorForAllStates(UIColor.App.btnTextColor)
-            self.setTitleForAllStates(AppResources.Messages.dismiss.localised)
+            self.setTitleForAllStates(Messages.dismiss.localised)
             self.setState(enabled: true)
             self.layer.cornerRadius = 4.0
             self.clipsToBounds      = true

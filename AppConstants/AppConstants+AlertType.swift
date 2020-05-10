@@ -7,12 +7,8 @@
 
 import Foundation
 
-public extension E {
-    private init() { }
-
-    enum AlertType: Int {
-        case sucess
-        case warning
-        case error
-    }
+public enum AlertType: Int {
+    case success
+    case warning
+    case error
 }

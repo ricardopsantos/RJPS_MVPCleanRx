@@ -19,6 +19,8 @@ public extension AppResources {
 
     private init() {}
 
+    static func get(_ code: String) -> String { return resource(code) }
+
     static var selectedLanguage: SelectedLanguage = _storedLanguage {
         didSet {
             if selectedLanguage != _storedLanguage {
@@ -29,7 +31,6 @@ public extension AppResources {
         }
     }
 
-    static func get(_ code: String) -> String { return resource(code) }
 }
 
 //MARK:- Private

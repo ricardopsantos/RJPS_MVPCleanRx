@@ -107,7 +107,7 @@ extension P.BlissDetails_Presenter: BlissDetails_PresenterProtocol {
             switch result {
             case .success(let some):
                 if some.success {
-                    self.genericView?.displayMessage(AppMessages.Bliss.sharedWithSucess, type: .sucess, asAlert: false)
+                    self.genericView?.displayMessage(AppMessages.Bliss.sharedWithSuccess, type: .success, asAlert: false)
                 } else {
                     self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error, asAlert: false)
                 }
@@ -153,7 +153,7 @@ extension P.BlissDetails_Presenter: GenericTableView_Protocol {
                 onNext: { [weak self] _ in
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                     self.genericView?.setActivityState(false)
-                    self.genericView?.displayMessage(AppMessages.success.localised, type: .sucess, asAlert: false)
+                    self.genericView?.displayMessage(AppMessages.success.localised, type: .success, asAlert: false)
                 },
                 onError: { [weak self] error in
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }

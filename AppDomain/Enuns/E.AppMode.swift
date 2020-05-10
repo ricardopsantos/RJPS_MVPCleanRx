@@ -7,10 +7,8 @@
 
 import Foundation
 
-public extension E {
-    enum AppMode: Int {
-        case prod
-        case qa
-        case dev
-    }
+public enum AppMode: Int {
+    case prod
+    case qa
+    case dev
 }

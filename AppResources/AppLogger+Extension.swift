@@ -11,6 +11,7 @@ import Foundation
 import RJPSLib
 //
 import DevTools
+import AppDomain
 //
 
 public extension DevTools.AppLogger {
