@@ -35,7 +35,7 @@ public class BlissQuestionsAPI_UseCase: GenericUseCase, BlissQuestionsAPI_UseCas
     public func getHealth(completionHandler: @escaping (Result<Bliss.ServerHealth>) -> Void) {
          
             guard existsInternetConnection else {
-                completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
+                completionHandler(Result.failure(ErrorsFactory.with(appCode: .noInternet)))
                 return
             }
             
@@ -60,7 +60,7 @@ public class BlissQuestionsAPI_UseCase: GenericUseCase, BlissQuestionsAPI_UseCas
             }
             if !checkHealth {
                 guard existsInternetConnection else {
-                    completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
+                    completionHandler(Result.failure(ErrorsFactory.with(appCode: .noInternet)))
                     return
                 }
                 doWork()
@@ -68,7 +68,7 @@ public class BlissQuestionsAPI_UseCase: GenericUseCase, BlissQuestionsAPI_UseCas
                 serverIsOK { (ok) in
                     if ok {
                         doWork()
-                    } else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
+                    } else { completionHandler(Result.failure(ErrorsFactory.with(appCode: .notPredicted))) }
                 }
             }
         }
@@ -86,7 +86,7 @@ public class BlissQuestionsAPI_UseCase: GenericUseCase, BlissQuestionsAPI_UseCas
             }
             if !checkHealth {
                 guard existsInternetConnection else {
-                    completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
+                    completionHandler(Result.failure(ErrorsFactory.with(appCode: .noInternet)))
                     return
                 }
                 doWork()
@@ -94,7 +94,7 @@ public class BlissQuestionsAPI_UseCase: GenericUseCase, BlissQuestionsAPI_UseCas
                 serverIsOK { (ok) in
                     if ok {
                         doWork()
-                    } else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
+                    } else { completionHandler(Result.failure(ErrorsFactory.with(appCode: .notPredicted))) }
                 }
             }
         }
@@ -113,7 +113,7 @@ public class BlissQuestionsAPI_UseCase: GenericUseCase, BlissQuestionsAPI_UseCas
             
             if !checkHealth {
                 guard existsInternetConnection else {
-                    completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
+                    completionHandler(Result.failure(ErrorsFactory.with(appCode: .noInternet)))
                     return
                 }
                 doWork()
@@ -121,7 +121,7 @@ public class BlissQuestionsAPI_UseCase: GenericUseCase, BlissQuestionsAPI_UseCas
                 serverIsOK { (ok) in
                     if ok {
                         doWork()
-                    } else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
+                    } else { completionHandler(Result.failure(ErrorsFactory.with(appCode: .notPredicted))) }
                 }
             }
         
@@ -141,7 +141,7 @@ public class BlissQuestionsAPI_UseCase: GenericUseCase, BlissQuestionsAPI_UseCas
             
             if !checkHealth {
                 guard existsInternetConnection else {
-                    completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
+                    completionHandler(Result.failure(ErrorsFactory.with(appCode: .noInternet)))
                     return
                 }
                 doWork()
@@ -149,7 +149,7 @@ public class BlissQuestionsAPI_UseCase: GenericUseCase, BlissQuestionsAPI_UseCas
                 serverIsOK { (ok) in
                     if ok {
                         doWork()
-                    } else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
+                    } else { completionHandler(Result.failure(ErrorsFactory.with(appCode: .notPredicted))) }
                 }
             }
         }
@@ -167,7 +167,7 @@ public class BlissQuestionsAPI_UseCase: GenericUseCase, BlissQuestionsAPI_UseCas
             }
             if !checkHealth {
                 guard existsInternetConnection else {
-                    completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
+                    completionHandler(Result.failure(ErrorsFactory.with(appCode: .noInternet)))
                     return
                 }
                 doWork()
@@ -175,7 +175,7 @@ public class BlissQuestionsAPI_UseCase: GenericUseCase, BlissQuestionsAPI_UseCas
                 serverIsOK { (ok) in
                     if ok {
                         doWork()
-                    } else { completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notPredicted))) }
+                    } else { completionHandler(Result.failure(ErrorsFactory.with(appCode: .notPredicted))) }
                 }
             }
         }

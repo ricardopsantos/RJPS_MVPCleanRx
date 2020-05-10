@@ -32,13 +32,13 @@ public extension V {
         var presenter: SearchUser_PresenterProtocol!
         
         private lazy var _topGenericView: TopBar = {
-            let some = AppFactory.UIKit.topBar(baseController: self)
+            let some = UIKitFactory.topBar(baseController: self)
             some.setTitle("Search GitHub user")
             return some
         }()
         
         private lazy var _searchBar: CustomSearchBar = {
-            let some = AppFactory.UIKit.searchBar(baseView: self.view)
+            let some = UIKitFactory.searchBar(baseView: self.view)
             some.rjsALayouts.setMargin(0, on: .top, from: _topGenericView.view)
             some.rjsALayouts.setMargin(0, on: .right)
             some.rjsALayouts.setMargin(0, on: .left)

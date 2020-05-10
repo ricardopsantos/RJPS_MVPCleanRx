@@ -36,7 +36,7 @@ extension V {
         private var _rxBehaviorRelay_tableDataSource = BehaviorRelay<[Employee.ResponseDto]>(value: [])
 
         private lazy var _tableView: UITableView = {
-            let some = AppFactory.UIKit.tableView(baseView: self.view)
+            let some = UIKitFactory.tableView(baseView: self.view)
             some.backgroundColor = self.view.backgroundColor
             some.rjsALayouts.setMarginFromSuperview(top: 0, bottom: 0, left: 0, right: 0)
             some.register(Sample_TableViewCell.self, forCellReuseIdentifier: Sample_TableViewCell.reuseIdentifier)

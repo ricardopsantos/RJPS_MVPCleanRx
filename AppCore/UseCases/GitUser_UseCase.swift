@@ -25,7 +25,7 @@ public class GitUser_UseCase: GenericUseCase, GitUser_UseCaseProtocol {
     public func getInfoOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitUser_Single_UseCaseCompletionHandler) {
             
             guard existsInternetConnection else {
-                completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
+                completionHandler(Result.failure(ErrorsFactory.with(appCode: .noInternet)))
                 return
             }
             
@@ -56,7 +56,7 @@ public class GitUser_UseCase: GenericUseCase, GitUser_UseCaseProtocol {
     public func getFriendsOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitUser_Friends_UseCaseCompletionHandler) {
             
             guard existsInternetConnection else {
-                completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
+                completionHandler(Result.failure(ErrorsFactory.with(appCode: .noInternet)))
                 return
             }
             

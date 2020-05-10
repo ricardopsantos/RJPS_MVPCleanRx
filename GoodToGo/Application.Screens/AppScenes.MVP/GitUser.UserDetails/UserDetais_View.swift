@@ -35,7 +35,7 @@ extension V {
         private let _imageSize: CGFloat = 100
         
         private lazy var _lblUserName: UILabel = {
-            let some = AppFactory.UIKit.label(baseView: self.view, style: .value)
+            let some = UIKitFactory.label(baseView: self.view, style: .value)
             some.rjsALayouts.setSame(.height, as: _imgAvatar)
             some.rjsALayouts.setSame(.top, as: _imgAvatar)
             some.rjsALayouts.setMargin(_margin, on: .left)
@@ -44,7 +44,7 @@ extension V {
         }()
         
         private lazy var _tableView: UITableView = {
-            let some = AppFactory.UIKit.tableView(baseView: self.view)
+            let some = UIKitFactory.tableView(baseView: self.view)
             some.delegate   = self as UITableViewDelegate
             some.dataSource = self as UITableViewDataSource
             some.rjsALayouts.setMargin(_margin, on: .top, from: _imgAvatar)
@@ -56,7 +56,7 @@ extension V {
         }()
         
         private lazy var _imgAvatar: UIImageView = {
-            let some = AppFactory.UIKit.imageView(baseView: self.view)
+            let some = UIKitFactory.imageView(baseView: self.view)
             some.rjsALayouts.setSize(CGSize(width: _imageSize, height: _imageSize))
             some.rjsALayouts.setMargin(_margin, on: .top, from: _topGenericBar.view)
             some.rjsALayouts.setMargin(_margin, on: .right)
@@ -64,7 +64,7 @@ extension V {
         }()
         
         private lazy var _topGenericBar: TopBar = {
-            let some = AppFactory.UIKit.topBar(baseController: self)
+            let some = UIKitFactory.topBar(baseController: self)
             some.setTitle(Messages.details.localised)
             some.addDismissButton()
             some.rxSignal_btnDismissTapped

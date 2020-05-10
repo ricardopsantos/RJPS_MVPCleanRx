@@ -39,7 +39,7 @@ extension V {
         private var _tableViewIsLoadingMoreData = false // flag
 
         private lazy var _topGenericView: TopBar = {
-            let some = AppFactory.UIKit.topBar(baseController: self)
+            let some = UIKitFactory.topBar(baseController: self)
             some.setTitle(Messages.Bliss.appName)
             some.rxSignal_viewTapped
                 .emit(onNext: { [weak self] in
@@ -51,7 +51,7 @@ extension V {
         }()
         
         private lazy var _searchBar: CustomSearchBar = {
-            let some = AppFactory.UIKit.searchBar(baseView: self.view)
+            let some = UIKitFactory.searchBar(baseView: self.view)
             some.rjsALayouts.setMargin(0, on: .top, from: _topGenericView.view)
             some.rjsALayouts.setMargin(0, on: .right)
             some.rjsALayouts.setMargin(0, on: .left)
@@ -75,7 +75,7 @@ extension V {
         }()
         
         private lazy var _tableView: UITableView = {
-            let some = AppFactory.UIKit.tableView(baseView: self.view)
+            let some = UIKitFactory.tableView(baseView: self.view)
             some.backgroundColor = .clear
             some.separatorColor  = .clear
             some.rjsALayouts.setMargin(0, on: .top, from: _searchBar)

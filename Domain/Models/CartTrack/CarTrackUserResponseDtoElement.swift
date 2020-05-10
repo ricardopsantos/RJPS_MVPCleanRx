@@ -10,7 +10,7 @@ import Foundation
 
 public extension CarTrack {
     // MARK: - CarTrackUserResponseDtoElement
-    struct CarTrackUserResponseDtoElement: Codable {
+    struct CarTrackUserResponseDtoElement: ModelEntityProtocol {
         let id: Int
         let name, username, email: String
         let address: Address

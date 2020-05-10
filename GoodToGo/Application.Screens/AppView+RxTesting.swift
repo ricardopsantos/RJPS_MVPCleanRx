@@ -34,7 +34,7 @@ extension V {
         private var _rxReachabilityService = try! DefaultReachabilityService()
         
         private lazy var _topGenericView: TopBar = {
-            let some = AppFactory.UIKit.topBar(baseController: self)
+            let some = UIKitFactory.topBar(baseController: self)
             some.setTitle("RxTesting")
             return some
         }()
@@ -44,7 +44,7 @@ extension V {
                 guard !filter.isEmpty else { return }
                 aux_log(message: "[_searchBar.][handle] from [\(sender)] : [\(filter)]", showAlert: true, appendToTable: true)
             }
-            let some = AppFactory.UIKit.searchBar(baseView: self.view)
+            let some = UIKitFactory.searchBar(baseView: self.view)
             some.rjsALayouts.setMargin(0, on: .top, from: _topGenericView.view)
             some.rjsALayouts.setMargin(0, on: .right)
             some.rjsALayouts.setMargin(0, on: .left)
@@ -72,7 +72,7 @@ extension V {
         
         private lazy var _btnThrottle: UIButton = {
             let throttle = 5
-            let some = AppFactory.UIKit.button(baseView: self.view, title: "Throttle \(throttle)s", style: .regular)
+            let some = UIKitFactory.button(baseView: self.view, title: "Throttle \(throttle)s", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .top, from: _searchBar)
             some.rjsALayouts.setMargin(_margin, on: .right)
             some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
@@ -91,7 +91,7 @@ extension V {
         
         private lazy var _btnDebounce: UIButton = {
             let debounce = 3
-            let some = AppFactory.UIKit.button(baseView: self.view, title: "Debounce \(debounce)s", style: .regular)
+            let some = UIKitFactory.button(baseView: self.view, title: "Debounce \(debounce)s", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .top, from: _searchBar)
             some.rjsALayouts.setMargin(_margin, on: .left)
             some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
@@ -182,7 +182,7 @@ extension V {
                 .subscribe(onNext: { self._searchBar.text = "\($0)" })
                 .disposed(by: disposeBag)
             
-            let some = AppFactory.UIKit.button(baseView: self.view, title: "[Publish|Behavior]Relay", style: .regular)
+            let some = UIKitFactory.button(baseView: self.view, title: "[Publish|Behavior]Relay", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .top, from: _btnDebounce)
             some.rjsALayouts.setMargin(_margin, on: .left)
             some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
@@ -211,7 +211,7 @@ extension V {
         }()
   
         private lazy var _btnZip: UIButton = {
-            let some = AppFactory.UIKit.button(baseView: self.view, title: "Zip vs combineLatest", style: .regular)
+            let some = UIKitFactory.button(baseView: self.view, title: "Zip vs combineLatest", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .top, from: _btnRxRelays)
             some.rjsALayouts.setMargin(_margin, on: .right)
             some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
@@ -280,7 +280,7 @@ extension V {
                     )
                     .disposed(by: disposeBag)
             }
-            let some = AppFactory.UIKit.button(baseView: self.view, title: "Observable<T>", style: .regular)
+            let some = UIKitFactory.button(baseView: self.view, title: "Observable<T>", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .top, from: _btnDebounce)
             some.rjsALayouts.setMargin(_margin, on: .right)
             some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
@@ -291,7 +291,7 @@ extension V {
         
         private var _rxBehaviorRelay_tableDataSource = BehaviorRelay<[String]>(value: [])
         private lazy var _tableView: UITableView = {
-            let some = AppFactory.UIKit.tableView(baseView: self.view)
+            let some = UIKitFactory.tableView(baseView: self.view)
             some.rjsALayouts.setMargin(_margin, on: .top, from: _btnZip)
             some.rjsALayouts.setMargin(_margin, on: .right)
             some.rjsALayouts.setMargin(_margin, on: .left)
@@ -347,7 +347,7 @@ extension AppView.RxTesting {
                     observer.onNext(image!)
                 } else {
                     self?.aux_log(message: "[rxObservableAssyncRequest][onError]", showAlert: false, appendToTable: true)
-                    observer.onError(AppFactory.Errors.with(appCode: .invalidURL))
+                    observer.onError(ErrorsFactory.with(appCode: .invalidURL))
                 }
             })
             return Disposables.create()

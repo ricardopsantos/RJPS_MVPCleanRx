@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension Employee {
-    public struct ViewModel: Codable {
+    public struct ViewModel: ModelEntityProtocol {
         public let id, employeeName: String
     }
 }

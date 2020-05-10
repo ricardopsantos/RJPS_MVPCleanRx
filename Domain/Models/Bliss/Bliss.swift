@@ -15,7 +15,7 @@ import UIKit
 public extension Bliss {
     
     // MARK: - ResponseElement
-    struct QuestionElementResponseDto: Codable {
+    struct QuestionElementResponseDto: ModelEntityProtocol {
         public let id: Int
         public let question: Question
         public let imageURL: String
@@ -33,7 +33,7 @@ public extension Bliss {
     }
     
     // MARK: - ChoiceElement
-    struct ChoiceElementResponseDto: Codable {
+    struct ChoiceElementResponseDto: ModelEntityProtocol {
         public let choice: ChoiceEnum
         public let votes: Int
     }
@@ -69,7 +69,7 @@ public extension Bliss.QuestionElementResponseDto {
 
 public extension Bliss {
 
-    struct NewQuestionResponse: Codable {
+    struct NewQuestionResponse: ModelEntityProtocol {
         public let id: Int
         public let imageURL: String
         public let thumbURL: String
@@ -87,7 +87,7 @@ public extension Bliss {
     }
     
     // MARK: - Choice
-    struct Choice: Codable {
+    struct Choice: ModelEntityProtocol {
         public let choice: String
         public let votes: Int
     }

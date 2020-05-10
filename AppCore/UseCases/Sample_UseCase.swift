@@ -27,7 +27,7 @@ import Domain
         
         func operation1(canUseCache: Bool, completionHandler: @escaping Sample_UseCaseCompletionHandler) {
             guard existsInternetConnection else {
-                completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
+                completionHandler(Result.failure(ErrorsFactory.with(appCode: .noInternet)))
                 return
             }
             
@@ -51,7 +51,7 @@ import Domain
         
         func operation2(param: String, completionHandler: @escaping Sample_UseCaseCompletionHandler) {
             guard existsInternetConnection else {
-                completionHandler(Result.failure(AppFactory.Errors.with(appCode: .noInternet)))
+                completionHandler(Result.failure(ErrorsFactory.with(appCode: .noInternet)))
                 return
             }
             

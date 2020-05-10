@@ -26,19 +26,15 @@ open class BaseViewController: UIViewController, BaseViewProtocol {
         AppLogger.log("\(self.className) was killed")
         NotificationCenter.default.removeObserver(self)
     }
-    
+
+    // Keyboard related init
+    var _keyboardHeigth: CGFloat = 0
+    var _keyboardIsVisible = false
+    // Keyboard related end
+
     var reachabilityService: ReachabilityService! = try! DefaultReachabilityService() // try! is only for simplicity sake
     public var disposeBag: DisposeBag = DisposeBag()
-    private var _keyboardIsVisible = false
-    private var _keyboardHeigth: CGFloat = 0
-    var keyboardHeigth: CGFloat {
-        if _keyboardIsVisible {
-            let autoCorrectBarSize: CGFloat = 44; return _keyboardHeigth - autoCorrectBarSize
-        } else {
-            return 0
-        }
-    }
-    
+
     static var onDarkMode: Bool {
         if #available(iOS 12.0, *) {
             return BaseViewController().traitCollection.userInterfaceStyle == .dark
@@ -89,12 +85,8 @@ open class BaseViewController: UIViewController, BaseViewProtocol {
     
     open override func loadView() {
         super.loadView()
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(self.keyboardWillShowNotification(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(self.keyboardWillHideNotification(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(self.keyboardDidShowNotification(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(self.keyboardDidHideNotification(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
         doViewLifeCycle()
+        setupKeyboard()
     }
     
     open override func viewWillAppear(_ animated: Bool) {
@@ -134,7 +126,6 @@ open class BaseViewController: UIViewController, BaseViewProtocol {
         }
     }
     
-    //open func prepareLayout() { AppLogger.log(appCode: .notImplemented) }
     func keyboardDidShow() { }
     func keyboardDidHide() { }
     func dismissKeyboard() { }

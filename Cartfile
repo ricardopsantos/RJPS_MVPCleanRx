@@ -18,18 +18,18 @@
 #github "Alamofire/Alamofire"
 
 ####################################################################
-
 # Reactive Programming in Swift
 # https://github.com/ReactiveX/RxSwift
 
-## Swift 4.2.1
-    #github "ReactiveX/RxSwift" "4.4.0"
-    #github "RxSwiftCommunity/RxGesture" ~> 1.1.1
+github "ReactiveX/RxSwift"
+github "RxSwiftCommunity/RxGesture"
+github "RxSwiftCommunity/RxDataSources" ~> 4.0
+binary "https://raw.githubusercontent.com/RxSwiftCommunity/RxKeyboard/master/RxKeyboard.json"
 
-## Swift 5.0.1
-    github "ReactiveX/RxSwift"
-    github "RxSwiftCommunity/RxGesture"
-    #github "RxSwiftCommunity/RxReachability"
+####################################################################
+# Nothing but sugar.
+# https://github.com/roberthein/TinyConstraints
+github "roberthein/TinyConstraints"
 
 ####################################################################
 # A Swift extension that adds toast notifications to the UIView object class.
@@ -50,15 +50,9 @@ github "scalessec/Toast-Swift" ~> 5.0.1
 # Dependency injection framework for Swift with iOS/macOS/Linux
 # https://github.com/Swinject/Swinject
 
-## Swift 4.2.1
-    #github "Swinject/Swinject"
-    #github "Swinject/SwinjectAutoregistration" "2.5.0"
-    #github "Swinject/SwinjectStoryboard"
-
-## Swift 5.0.1
-    github "Swinject/Swinject"
-    github "Swinject/SwinjectAutoregistration"
-    #github "Swinject/SwinjectStoryboard"
+github "Swinject/Swinject"
+github "Swinject/SwinjectAutoregistration"
+#github "Swinject/SwinjectStoryboard"
 
 ####################################################################
 

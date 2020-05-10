@@ -13,7 +13,7 @@ public struct Bliss {
 }
 
 public extension Bliss {
-    struct ServerHealth: Codable {
+    struct ServerHealth: ModelEntityProtocol {
         public let status: String
     }
 }
@@ -23,7 +23,7 @@ public extension Bliss.ServerHealth {
 }
 
 public extension Bliss {
-    struct ShareByEmail: Codable {
+    struct ShareByEmail: ModelEntityProtocol {
         public let status: String
     }
 }

@@ -24,6 +24,7 @@ import AppConstants
 import Extensions
 import DevTools
 import PointFreeFunctions
+import Designables
 
 //
 // Add
@@ -51,7 +52,7 @@ class SampleVIP_ViewController: GenericView, SampleVIP_DisplayLogic {
     }
 
     private lazy var _searchBar: CustomSearchBar = {
-        let some = AppFactory.UIKit.searchBar(baseView: self.view)
+        let some = UIKitFactory.searchBar(baseView: self.view)
         some.rjsALayouts.setMargin(0, on: .top)
         some.rjsALayouts.setMargin(0, on: .right)
         some.rjsALayouts.setMargin(0, on: .left)

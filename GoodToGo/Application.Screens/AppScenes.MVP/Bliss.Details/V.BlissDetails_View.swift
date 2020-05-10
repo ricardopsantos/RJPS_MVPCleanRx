@@ -39,7 +39,7 @@ extension V {
         private let _imageSize: Int = 100
         
         private lazy var _topGenericView: TopBar = {
-            let some = AppFactory.UIKit.topBar(baseController: self)
+            let some = UIKitFactory.topBar(baseController: self)
             some.setTitle(Messages.Bliss.appName)
             some.setTitle(Messages.details.localised)
             some.addBackButton()
@@ -61,7 +61,7 @@ extension V {
         }()
         
         private lazy var _btnShare1: UIButton = {
-            let some = AppFactory.UIKit.button(baseView: self.view, title: "Share in app", style: .regular)
+            let some = UIKitFactory.button(baseView: self.view, title: "Share in app", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .left)
             some.rjsALayouts.setWidth(screenWidth/2 - 2*_margin)
             some.rjsALayouts.setMargin(_margin, on: .bottom)
@@ -77,7 +77,7 @@ extension V {
         }()
         
         private lazy var _btnShare2: UIButton = {
-            let some = AppFactory.UIKit.button(baseView: self.view, title: "Share by Email", style: .regular)
+            let some = UIKitFactory.button(baseView: self.view, title: "Share by Email", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .right)
             some.rjsALayouts.setWidth(screenWidth/2 - 2*_margin)
             some.rjsALayouts.setMargin(_margin, on: .bottom)
@@ -94,7 +94,7 @@ extension V {
         }()
         
         private lazy var _imgCover: UIImageView = {
-            let some = AppFactory.UIKit.imageView(baseView: self.view)
+            let some = UIKitFactory.imageView(baseView: self.view)
             some.rjsALayouts.setMargin(_margin, on: .left)
             some.rjsALayouts.setMargin(_margin, on: .right)
             _imgCoverConstraintHeigth = some.rjsALayouts.setHeight(0, method: .constraints)
@@ -108,7 +108,7 @@ extension V {
         }()
         
         private lazy var _tableView: UITableView = {
-            let some = AppFactory.UIKit.tableView(baseView: self.view)
+            let some = UIKitFactory.tableView(baseView: self.view)
             some.backgroundColor    = .clear
             some.separatorColor     = .clear
             some.estimatedRowHeight = Sample_TableViewCell.cellSize()

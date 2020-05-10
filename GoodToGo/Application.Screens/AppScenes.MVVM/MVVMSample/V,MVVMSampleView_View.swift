@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Designables
 //
 // MARK: - MVVMSampleView_View
 //
@@ -27,7 +27,7 @@ extension V {
         }()
         
         lazy var lblName: UILabel = {
-            let some = AppFactory.UIKit.label(baseView: self, style: .title)
+            let some = UIKitFactory.label(baseView: self, style: .title)
             some.rjsALayouts.setMargin(margim, on: .top, from: imageView)
             some.rjsALayouts.setMargin(margim, on: .left)
             some.rjsALayouts.setMargin(margim, on: .right)
@@ -38,7 +38,7 @@ extension V {
         }()
         
         lazy var lblAge: UILabel = {
-            let some = AppFactory.UIKit.label(baseView: self, style: .title)
+            let some = UIKitFactory.label(baseView: self, style: .title)
             some.rjsALayouts.setMargin(margim, on: .top, from: lblName)
             some.rjsALayouts.setMargin(margim, on: .left)
             some.rjsALayouts.setMargin(margim, on: .right)
@@ -49,7 +49,7 @@ extension V {
         }()
         
         lazy var lblAdoptionFee: UILabel = {
-            let some = AppFactory.UIKit.label(baseView: self, style: .title)
+            let some = UIKitFactory.label(baseView: self, style: .title)
             some.rjsALayouts.setMargin(margim, on: .top, from: lblAge)
             some.rjsALayouts.setMargin(margim, on: .left)
             some.rjsALayouts.setMargin(margim, on: .right)

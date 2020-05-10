@@ -19,6 +19,7 @@ import AppConstants
 import Extensions
 import DevTools
 import PointFreeFunctions
+import Designables
 
 /*
  * Needs to added AS.Sample_AssemblyContainer() to DependencyInjectionManager.swift
@@ -37,7 +38,7 @@ extension V {
         private let _margin: CGFloat = 25
         
         private lazy var _txtUser: UITextField = {
-            let some = AppFactory.UIKit.textField(baseView: self.view)
+            let some = UIKitFactory.textField(baseView: self.view)
             some.font      = AppFonts.regular
             some.textColor = AppColors.lblTextColor
             some.backgroundColor      = AppColors.lblBackgroundColor
@@ -51,7 +52,7 @@ extension V {
         }()
         
         private lazy var _txtPass: UITextField = {
-            let some = AppFactory.UIKit.textField(baseView: self.view)
+            let some = UIKitFactory.textField(baseView: self.view)
             some.font = AppFonts.regular
             some.backgroundColor      = AppColors.lblBackgroundColor
             some.isSecureTextEntry    = true
@@ -65,7 +66,7 @@ extension V {
         }()
         
         private lazy var _lblMessage: UILabel = {
-            let some = AppFactory.UIKit.label(baseView: self.view, style: .value)
+            let some = UIKitFactory.label(baseView: self.view, style: .value)
             some.font = AppFonts.regular
             some.backgroundColor      = AppColors.lblBackgroundColor
             some.layer.masksToBounds  = false
@@ -79,7 +80,7 @@ extension V {
         }()
         
         private lazy var _btnLogin: UIButton = {
-            let some = AppFactory.UIKit.button(baseView: self.view, title: "Login", style: .regular)
+            let some = UIKitFactory.button(baseView: self.view, title: "Login", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .left)
             some.rjsALayouts.setMargin(_margin, on: .right)
             some.rjsALayouts.setMargin(_margin*2, on: .top, from: _txtPass)
@@ -102,7 +103,7 @@ extension V {
         }()
         
         private lazy var _btnPush: UIButton = {
-            let some = AppFactory.UIKit.button(baseView: self.view, title: "Push", style: .regular)
+            let some = UIKitFactory.button(baseView: self.view, title: "Push", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .left)
             some.rjsALayouts.setWidth((screenWidth / 2) - (1.5 * _margin))
             some.rjsALayouts.setMargin(_margin*2, on: .top, from: _lblMessage)
@@ -120,7 +121,7 @@ extension V {
         }()
         
         private lazy var _btnDismiss: UIButton = {
-            let some = AppFactory.UIKit.button(baseView: self.view, title: "Dismiss", style: .regular)
+            let some = UIKitFactory.button(baseView: self.view, title: "Dismiss", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .right)
             some.rjsALayouts.setWidth((screenWidth / 2) - (1.5 * _margin))
             some.rjsALayouts.setMargin(_margin*2, on: .top, from: _lblMessage)

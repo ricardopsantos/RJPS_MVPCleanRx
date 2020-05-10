@@ -38,7 +38,7 @@ open class Sample_TableViewCell: UITableViewCell, GenericTableViewCell_Protocol 
     public var rxBehaviorRelay_title     = BehaviorRelay<String>(value: "")
     public var rxBehaviorRelay_image     = BehaviorRelay<UIImage?>(value: nil)
     public var rxBehaviorRelay_textColor = BehaviorRelay<UIColor>(value: UIColor.App.lblTextColor)
-    
+
     open class func cellSize() -> CGFloat { return 60 }
     public static func prepare(tableView: UITableView) {
         tableView.register(classForCoder(), forCellReuseIdentifier: reuseIdentifier)
@@ -69,7 +69,7 @@ open class Sample_TableViewCell: UITableViewCell, GenericTableViewCell_Protocol 
     private let _disposeBag: DisposeBag = DisposeBag()
     
     private lazy var _lblTitle: UILabel = {
-        let some = Factory.UIKit.label(baseView: self, style: .value)
+        let some = UIKitFactory.label(baseView: self, style: .value)
         some.rjsALayouts.setMargin(_marginH, on: .left)
         some.rjsALayouts.setMargin(_marginH*2+_imageSize, on: .right)
         some.rjsALayouts.setMargin(_marginV, on: .top)
@@ -78,7 +78,7 @@ open class Sample_TableViewCell: UITableViewCell, GenericTableViewCell_Protocol 
     }()
     
     private lazy var _image: UIImageView = {
-        let some = Factory.UIKit.imageView(baseView: self)
+        let some = UIKitFactory.imageView(baseView: self)
         some.rjsALayouts.setMargin(_marginH, on: .right)
         some.rjsALayouts.setMargin(_marginV, on: .top)
         some.rjsALayouts.setSize(CGSize(width: _imageSize, height: _imageSize))

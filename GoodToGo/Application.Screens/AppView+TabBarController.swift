@@ -26,14 +26,16 @@ extension V {
             let c4 = createControllers(tabName: "Bliss", vc: container.resolve(V.BlissRoot_View.self)!)
             let c5 = createControllers(tabName: "MVPRxTable", vc: container.resolve(V.MVPSampleTableView_View.self)!)
             let c6 = createControllers(tabName: "RxTesting", vc: RxTesting())
-            let vip = createControllers(tabName: "VIP", vc: SampleVIP_ViewController())
 
             let mvvmVC = container.resolve(VC.MVVMSampleView_ViewController.self)!
             mvvmVC.viewModel = VM.MVVMSampleView_ViewModel(viewModel: M.MVVMSampleView.makeOne(name: "Dog_A"))
             let mvvm = createControllers(tabName: "MVVM", vc: mvvmVC)
-            
+
+            let vip1 = createControllers(tabName: "VIP", vc: SampleVIP_ViewController())
+            let vip2 = VC.___VARIABLE_sceneName___ViewController()
+
             if true {
-                viewControllers = [vip, c1, c2, c3, c4, c5, c6]
+                viewControllers = [vip2, c1, c2, c3, c4, c5, c6]
             } else {
                 viewControllers = [mvvm]
             }

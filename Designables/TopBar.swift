@@ -27,7 +27,7 @@ open class TopBar: BaseViewController {
     private var _btnSize: CGFloat { return TopBar.defaultHeight / 2.0 }
 
     private lazy var _btnBack: UIButton = {
-        let some = Factory.UIKit.button(baseView: self.view, style: .dismiss)
+        let some = UIKitFactory.button(baseView: self.view, style: .dismiss)
         some.rjsALayouts.setMargin(_btnSize/2, on: .left)
         some.rjsALayouts.setMargin(_btnSize/2, on: .top)
         some.rjsALayouts.setSize(CGSize(width: _btnSize, height: _btnSize))
@@ -38,7 +38,7 @@ open class TopBar: BaseViewController {
     }()
 
     private lazy var _btnClose: UIButton = {
-        let some = Factory.UIKit.button(baseView: self.view, style: .dismiss)
+        let some = UIKitFactory.button(baseView: self.view, style: .dismiss)
         some.rjsALayouts.setMargin(_btnSize/2, on: .right)
         some.rjsALayouts.setMargin(_btnSize/2, on: .top)
         some.rjsALayouts.setSize(CGSize(width: _btnSize, height: _btnSize))
@@ -49,7 +49,7 @@ open class TopBar: BaseViewController {
     }()
 
     private lazy var _lblTitle: UILabel = {
-        let some = Factory.UIKit.label(baseView: self.view, style: .title)
+        let some = UIKitFactory.label(baseView: self.view, style: .title)
         some.textAlignment = .center
         some.rjsALayouts.setMargin(_btnSize*2, on: .left)
         some.rjsALayouts.setMargin(_btnSize*2, on: .right)

@@ -163,7 +163,7 @@ extension P.BlissRoot_Presenter {
             self.downloadImage(imageURL: AppConstants.Bliss.logoURL, completion: { (image) in
                 if image != nil {
                     observer.onNext(image!)
-                } else { observer.onError(AppFactory.Errors.with(appCode: .unknownError)) }
+                } else { observer.onError(ErrorsFactory.with(appCode: .unknownError)) }
             })
             return Disposables.create() }
             .retry(3)

@@ -10,7 +10,7 @@ import Foundation
 
 public extension CarTrack {
 
-    struct UserModel: Codable {
+    struct UserModel: ModelEntityProtocol {
         let id: Int
         let name, username, email: String
         let address: AddressModel
@@ -18,16 +18,16 @@ public extension CarTrack {
         let company: CompanyModel
     }
 
-    struct AddressModel: Codable {
+    struct AddressModel: ModelEntityProtocol {
         let street, suite, city, zipcode: String
         let geo: GeoModel
     }
 
-    struct GeoModel: Codable {
+    struct GeoModel: ModelEntityProtocol {
         let lat, lng: String
     }
 
-    struct CompanyModel: Codable {
+    struct CompanyModel: ModelEntityProtocol {
         let name, catchPhrase, bs: String
     }
 }

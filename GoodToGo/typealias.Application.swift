@@ -51,7 +51,7 @@ typealias GenericView = UIBase.BaseViewController
 
 //typealias GenericTableViewCell_Protocol = Designables.GenericTableViewCell_Protocol
 //typealias GenericTableView_Protocol     = Designables.GenericTableView_Protocol
-typealias AppFactory                    = Designables.Factory
+//typealias AppFactory                    = Designables.Factory
 //typealias TopBar                        = Designables.TopBar
 //typealias BottomBar                     = Designables.BottomBar
 //typealias Sample_TableViewCell          = Designables.Sample_TableViewCell

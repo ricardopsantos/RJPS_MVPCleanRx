@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension Employee {
-    public struct ResponseDto: Codable {
+    public struct ResponseDto: ModelEntityProtocol {
         public let id, employeeName, employeeSalary, employeeAge: String
         public let profileImage: String
         enum CodingKeys: String, CodingKey {

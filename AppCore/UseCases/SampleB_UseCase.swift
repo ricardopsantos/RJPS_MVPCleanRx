@@ -22,12 +22,12 @@ import Domain
         
     public func operation1(canUseCache: Bool, completionHandler: @escaping SampleB_UseCaseCompletionHandler) {
             AppLogger.log(appCode: .notImplemented)
-            completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notImplemented)))
+            completionHandler(Result.failure(ErrorsFactory.with(appCode: .notImplemented)))
         }
         
     public func operation2(param: String, completionHandler: @escaping SampleB_UseCaseCompletionHandler) {
             AppLogger.log(appCode: .notImplemented)
-            completionHandler(Result.failure(AppFactory.Errors.with(appCode: .notImplemented)))
+            completionHandler(Result.failure(ErrorsFactory.with(appCode: .notImplemented)))
         }
         
     }
