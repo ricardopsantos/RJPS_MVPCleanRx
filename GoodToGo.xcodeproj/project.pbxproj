@@ -214,6 +214,9 @@
 		D7D9E7BE2467742C005B4313 /* RJPSLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBF4B0722BEBC3B00E0D1AB /* RJPSLib.framework */; };
 		D7D9E7C2246775C2005B4313 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E7C1246775C2005B4313 /* API.swift */; };
 		D7D9E7C4246777B4005B4313 /* DevTools+Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E7C3246777B4005B4313 /* DevTools+Strings.swift */; };
+		D7D9E7C624678344005B4313 /* AppConstants+Mocks+Employees.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E7C524678344005B4313 /* AppConstants+Mocks+Employees.swift */; };
+		D7D9E7C924678741005B4313 /* AppConstants+Mock+GitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E7C824678741005B4313 /* AppConstants+Mock+GitHub.swift */; };
+		D7D9E7CB24678AC1005B4313 /* AppConstants+Mock+Bliss.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E7CA24678AC1005B4313 /* AppConstants+Mock+Bliss.swift */; };
 		D7E25A7E246699FC003BBEA0 /* PointFreeFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = D7E25A7C246699FC003BBEA0 /* PointFreeFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D7E25A8E24669B02003BBEA0 /* PointFreeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E25A8D24669B02003BBEA0 /* PointFreeFunctions.swift */; };
 		D7E25A9824669B9B003BBEA0 /* AppConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D7E25A9624669B9B003BBEA0 /* AppConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -701,6 +704,9 @@
 		D7D9E7B324677046005B4313 /* typealias.API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = typealias.API.swift; sourceTree = "<group>"; };
 		D7D9E7C1246775C2005B4313 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		D7D9E7C3246777B4005B4313 /* DevTools+Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DevTools+Strings.swift"; sourceTree = "<group>"; };
+		D7D9E7C524678344005B4313 /* AppConstants+Mocks+Employees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppConstants+Mocks+Employees.swift"; sourceTree = "<group>"; };
+		D7D9E7C824678741005B4313 /* AppConstants+Mock+GitHub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppConstants+Mock+GitHub.swift"; sourceTree = "<group>"; };
+		D7D9E7CA24678AC1005B4313 /* AppConstants+Mock+Bliss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppConstants+Mock+Bliss.swift"; sourceTree = "<group>"; };
 		D7E25A6C2465E5A6003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7E25A6D2465E5B5003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7E25A6F2465E5CF003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -1450,6 +1456,17 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		D7D9E7C724678465005B4313 /* AppMocks */ = {
+			isa = PBXGroup;
+			children = (
+				D7E25A71246695EE003BBEA0 /* AppConstants+Mocks.swift */,
+				D7D9E7C524678344005B4313 /* AppConstants+Mocks+Employees.swift */,
+				D7D9E7C824678741005B4313 /* AppConstants+Mock+GitHub.swift */,
+				D7D9E7CA24678AC1005B4313 /* AppConstants+Mock+Bliss.swift */,
+			);
+			path = AppMocks;
+			sourceTree = "<group>";
+		};
 		D7E25A7B246699FC003BBEA0 /* PointFreeFunctions */ = {
 			isa = PBXGroup;
 			children = (
@@ -1463,13 +1480,13 @@
 		D7E25A9524669B9B003BBEA0 /* AppConstants */ = {
 			isa = PBXGroup;
 			children = (
+				D7D9E7C724678465005B4313 /* AppMocks */,
 				D7D9E79824676D90005B4313 /* README.md */,
 				D72922D62466AD5D00DAD480 /* typealias.AppConstants.swift */,
 				9F02AE5B20F91E7B00AB5942 /* AppConstants.swift */,
 				D72923C124670D7500DAD480 /* AppConstants+Strings.swift */,
 				D72923BF24670D5300DAD480 /* AppConstants+Testing.swift */,
 				9F6BB2DE22E390B600829A6F /* AppConstants+Bliss.swift */,
-				D7E25A71246695EE003BBEA0 /* AppConstants+Mocks.swift */,
 				9F9829C8223A611E00ACA6B7 /* AppConstants+AlertType.swift */,
 				9F15CF2922BFA56E00FB402A /* AppConstants+AppMode.swift */,
 				D7E25A9624669B9B003BBEA0 /* AppConstants.h */,
@@ -2420,7 +2437,10 @@
 				D72922CF2466A3A300DAD480 /* AppConstants+AlertType.swift in Sources */,
 				D72922862466A00000DAD480 /* typealias.encaplulate.swift in Sources */,
 				D72922D12466A3A300DAD480 /* AppConstants+AppMode.swift in Sources */,
+				D7D9E7C924678741005B4313 /* AppConstants+Mock+GitHub.swift in Sources */,
+				D7D9E7C624678344005B4313 /* AppConstants+Mocks+Employees.swift in Sources */,
 				D72923A12466D9E500DAD480 /* AppConstants+Bliss.swift in Sources */,
+				D7D9E7CB24678AC1005B4313 /* AppConstants+Mock+Bliss.swift in Sources */,
 				D72923C024670D5300DAD480 /* AppConstants+Testing.swift in Sources */,
 				D72923A02466D91700DAD480 /* AppConstants+Mocks.swift in Sources */,
 				D72922D72466AD5D00DAD480 /* typealias.AppConstants.swift in Sources */,

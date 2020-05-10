@@ -63,54 +63,7 @@ extension Network.Bliss {
                 urlRequest.httpMethod = "GET"
                 responseType = .json
                 if DevTools.FeatureFlag.getFlag(.devTeam_useMockedData) {
-                    mockedData =
-                    """
-                    [
-                    {
-                    "id": 1,
-                    "question": "Favourite programming language?",
-                    "image_url": "https://dummyimage.com/600x400/000/fff.png&text=question+1+image+(600x400)",
-                    "thumb_url": "https://dummyimage.com/120x120/000/fff.png&text=question+1+image+(120x120)",
-                    "published_at": "2015-08-05T08:40:51.620Z",
-                    "choices": [
-                    {
-                    "choice": "Swift",
-                    "votes": 1
-                    }, {
-                    "choice": "Python",
-                    "votes": 2
-                    }, {
-                    "choice": "Objective-C",
-                    "votes": 3
-                    }, {
-                    "choice": "Ruby",
-                    "votes": 4
-                    }
-                    ]
-                    },
-                    {
-                    "id": 2,
-                    "question": "Favourite programming language?",
-                    "image_url": "https://dummyimage.com/600x400/000/fff.png&text=question+1+image+(600x400)",
-                    "thumb_url": "https://dummyimage.com/120x120/000/fff.png&text=question+1+image+(120x120)",
-                    "published_at": "2015-08-05T08:40:51.620Z",
-                    "choices": [
-                    {
-                    "choice": "Swift",
-                    "votes": 2048
-                    }, {
-                    "choice": "Python",
-                    "votes": 1024
-                    }, {
-                    "choice": "Objective-C",
-                    "votes": 512
-                    }, {
-                    "choice": "Ruby",
-                    "votes": 256
-                    }
-                    ]
-                    }]
-                    """
+                    mockedData = AppConstants.Mocks.Bliss.getQuestions_200
                 }
             } else {
                 throw APIErrors.invalidURL(url: urlString)
@@ -136,31 +89,7 @@ extension Network.Bliss {
                 urlRequest.httpMethod = "GET"
                 responseType = .json
                 if DevTools.FeatureFlag.getFlag(.devTeam_useMockedData) {
-                    mockedData =
-                    """
-                    {
-                    "id": 1,
-                    "image_url": "https://dummyimage.com/600x400/000/fff.png&text=question+1+image+(600x400)",
-                    "thumb_url": "https://dummyimage.com/120x120/000/fff.png&text=question+1+image+(120x120)",
-                    "question": "Favourite programming language?",
-                    "published_at": "2015-08-05T08:40:51.620Z",
-                    "choices": [
-                    {
-                    "choice": "Swift",
-                    "votes": 1
-                    }, {
-                    "choice": "Python",
-                    "votes": 0
-                    }, {
-                    "choice": "Objective-C",
-                    "votes": 0
-                    }, {
-                    "choice": "Ruby",
-                    "votes": 0
-                    }
-                    ]
-                    }
-                    """
+                    mockedData = AppConstants.Mocks.Bliss.getQuestions_200
                 }
             } else {
                 throw APIErrors.invalidURL(url: urlString)

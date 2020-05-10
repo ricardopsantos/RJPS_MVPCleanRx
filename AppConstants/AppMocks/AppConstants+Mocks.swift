@@ -13,8 +13,8 @@ import RJPSLib
 
 extension AppConstants {
 
-    struct Mocks {
-        
+    public struct Mocks {
+        private init() { }
     }
 
 }
