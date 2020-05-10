@@ -36,7 +36,7 @@ import AppResources
 //
 
 extension V {
-    class ___VARIABLE_sceneName___View: BaseGenericView {
+    class ___VARIABLE_sceneName___View: BaseGenericViewVIP {
 
         deinit {
 

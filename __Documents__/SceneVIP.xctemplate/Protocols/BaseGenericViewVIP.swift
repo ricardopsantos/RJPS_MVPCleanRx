@@ -15,7 +15,7 @@ import DevTools
 import PointFreeFunctions
 
 // MARK: - BaseGenericView
-open class BaseGenericView: StylableView {
+open class BaseGenericViewVIP: StylableView {
     public var disposeBag = DisposeBag()
 
     public init() {

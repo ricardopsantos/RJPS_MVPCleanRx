@@ -26,7 +26,7 @@ import UIBase
 
 extension VC {
 
-    class ___VARIABLE_sceneName___ViewController: BaseGenericViewController<V.___VARIABLE_sceneName___View> {
+    class ___VARIABLE_sceneName___ViewController: BaseGenericViewControllerVIP<V.___VARIABLE_sceneName___View> {
         private var interactor: ___VARIABLE_sceneName___BusinessLogicProtocol?
         var router: (___VARIABLE_sceneName___RoutingLogicProtocol &
             ___VARIABLE_sceneName___DataPassingProtocol &

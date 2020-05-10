@@ -156,10 +156,10 @@
 		D761FEBC2468358B00BD41A5 /* BaseViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEBB2468358B00BD41A5 /* BaseViewController+Keyboard.swift */; };
 		D761FEC02468385100BD41A5 /* TemplateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEBF2468385100BD41A5 /* TemplateModel.swift */; };
 		D761FEC22468387E00BD41A5 /* ModelEntityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEC12468387E00BD41A5 /* ModelEntityProtocol.swift */; };
-		D761FEC924683D8700BD41A5 /* BaseGenericViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEC624683CF000BD41A5 /* BaseGenericViewController.swift */; };
+		D761FEC924683D8700BD41A5 /* BaseGenericViewControllerVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEC624683CF000BD41A5 /* BaseGenericViewControllerVIP.swift */; };
 		D761FECA24683D9400BD41A5 /* BaseDisplayLogicProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEC42468394200BD41A5 /* BaseDisplayLogicProtocol.swift */; };
 		D761FECD24683F8D00BD41A5 /* StylableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FECB24683F8900BD41A5 /* StylableView.swift */; };
-		D761FECE2468403E00BD41A5 /* BaseGenericView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEBD246837CE00BD41A5 /* BaseGenericView.swift */; };
+		D761FECE2468403E00BD41A5 /* BaseGenericViewVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEBD246837CE00BD41A5 /* BaseGenericViewVIP.swift */; };
 		D761FED32468421C00BD41A5 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FED22468421C00BD41A5 /* File.swift */; };
 		D761FED5246845FD00BD41A5 /* TitleTableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FED4246845FD00BD41A5 /* TitleTableSection.swift */; };
 		D761FED72468462F00BD41A5 /* UIButton+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FED62468462F00BD41A5 /* UIButton+Rx.swift */; };
@@ -771,11 +771,11 @@
 		D761FEB62468334D00BD41A5 /* UIKitViewFactoryElementTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitViewFactoryElementTag.swift; sourceTree = "<group>"; };
 		D761FEB82468339F00BD41A5 /* TinyConstraints.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyConstraints.framework; path = Carthage/Build/iOS/TinyConstraints.framework; sourceTree = "<group>"; };
 		D761FEBB2468358B00BD41A5 /* BaseViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BaseViewController+Keyboard.swift"; sourceTree = "<group>"; };
-		D761FEBD246837CE00BD41A5 /* BaseGenericView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGenericView.swift; sourceTree = "<group>"; };
+		D761FEBD246837CE00BD41A5 /* BaseGenericViewVIP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGenericViewVIP.swift; sourceTree = "<group>"; };
 		D761FEBF2468385100BD41A5 /* TemplateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateModel.swift; sourceTree = "<group>"; };
 		D761FEC12468387E00BD41A5 /* ModelEntityProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEntityProtocol.swift; sourceTree = "<group>"; };
 		D761FEC42468394200BD41A5 /* BaseDisplayLogicProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDisplayLogicProtocol.swift; sourceTree = "<group>"; };
-		D761FEC624683CF000BD41A5 /* BaseGenericViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseGenericViewController.swift; sourceTree = "<group>"; };
+		D761FEC624683CF000BD41A5 /* BaseGenericViewControllerVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseGenericViewControllerVIP.swift; sourceTree = "<group>"; };
 		D761FECB24683F8900BD41A5 /* StylableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylableView.swift; sourceTree = "<group>"; };
 		D761FECF2468412100BD41A5 /* UIView+Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
 		D761FED22468421C00BD41A5 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
@@ -1468,8 +1468,8 @@
 		D761FEC32468393300BD41A5 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				D761FEBD246837CE00BD41A5 /* BaseGenericView.swift */,
-				D761FEC624683CF000BD41A5 /* BaseGenericViewController.swift */,
+				D761FEBD246837CE00BD41A5 /* BaseGenericViewVIP.swift */,
+				D761FEC624683CF000BD41A5 /* BaseGenericViewControllerVIP.swift */,
 				D761FEC42468394200BD41A5 /* BaseDisplayLogicProtocol.swift */,
 				D761FECB24683F8900BD41A5 /* StylableView.swift */,
 			);
@@ -2566,7 +2566,7 @@
 				D761FEAC2468304A00BD41A5 /* V.___FILEBASENAME___TableViewCell.swift in Sources */,
 				9F58FB4B22BE5DE700042A8C /* P.SearchUser_Presenter.swift in Sources */,
 				9F103A302236C08900C57BC0 /* DependencyInjectionManager.swift in Sources */,
-				D761FEC924683D8700BD41A5 /* BaseGenericViewController.swift in Sources */,
+				D761FEC924683D8700BD41A5 /* BaseGenericViewControllerVIP.swift in Sources */,
 				9F6BB2D022E3470200829A6F /* MVPSampleTableView_AssemblyContainer.swift in Sources */,
 				D779A5F4234FE3A500D3D6F7 /* I.SampleVIP_Interactor.swift in Sources */,
 				9FE143B821AF2F520026BDFC /* AppManagers+Environments.swift in Sources */,
@@ -2575,7 +2575,7 @@
 				9F6BB2EE22E3A97F00829A6F /* AS.BlissQuestionsList_AssemblyContainer.swift in Sources */,
 				D761FEAF2468304A00BD41A5 /* I.___FILEBASENAME___Interactor.swift in Sources */,
 				9FE0572C22E8D8F000802747 /* MVPSampleView_ViewModel.swift in Sources */,
-				D761FECE2468403E00BD41A5 /* BaseGenericView.swift in Sources */,
+				D761FECE2468403E00BD41A5 /* BaseGenericViewVIP.swift in Sources */,
 				9FE0572722E8D75400802747 /* MVPSampleRxView_ViewModel.swift in Sources */,
 				D761FEAA2468304A00BD41A5 /* D.___FILEBASENAME___Domain.swift in Sources */,
 				9F6BB2FF22E3CB2D00829A6F /* P.BlissRoot_Presenter.swift in Sources */,
