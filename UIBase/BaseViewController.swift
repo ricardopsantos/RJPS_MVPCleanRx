@@ -109,7 +109,8 @@ open class BaseViewController: UIViewController, GenericViewProtocol {
         _lblMessage.superview?.bringSubviewToFront(_lblReachability)
     }
     
-    open func displayMessage(_ message: String, type: AlertType, asAlert: Bool=false) {
+    open func displayMessage(_ message: String, type: AlertType) {
+        let asAlert = false
         if asAlert {
             (self as UIViewController).rjs.showAlert(title: "\(type)".uppercased(), message: message)
         } else {

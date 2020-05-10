@@ -204,7 +204,7 @@ extension P.BlissQuestionsList_Presenter {
                 },
                 onError: { [weak self] error in
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-                    self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error, asAlert: false)
+                    self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error)
                     self.genericView?.setActivityState(false)
                 }
             )

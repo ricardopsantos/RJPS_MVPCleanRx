@@ -107,7 +107,7 @@ extension P.SearchUser_Presenter: GenericPresenter_Protocol {
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                 self.genericView?.setActivityState(false)
                 guard $0 != nil && $1 != nil else {
-                    self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error, asAlert: false)
+                    self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error)
                     return
                 }
                 let vm = VM.UserDetais(user: $0!, friends: $1!)
@@ -119,7 +119,7 @@ extension P.SearchUser_Presenter: GenericPresenter_Protocol {
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                 self.genericView?.setActivityState(false)
-                self.genericView?.displayMessage(Messages.messageWith(error: $0), type: .error, asAlert: false)
+                self.genericView?.displayMessage(Messages.messageWith(error: $0), type: .error)
             })
             .disposed(by: disposeBag)
     }

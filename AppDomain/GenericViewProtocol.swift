@@ -11,6 +11,6 @@ import AppConstants
 
 public protocol GenericViewProtocol: AnyObject {
     func setActivityState(_ state: Bool)
-    func displayMessage(_ message: String, type: AlertType, asAlert: Bool)
+    func displayMessage(_ message: String, type: AlertType)
     func setNoConnectionViewVisibility(to: Bool, withMessage: String)
 }

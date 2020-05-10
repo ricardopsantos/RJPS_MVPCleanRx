@@ -73,7 +73,7 @@ extension P.MVPSampleView_Presenter: MVPSampleView_PresenterProtocol {
             self.genericView?.setActivityState(false)
             switch result {
             case .success(let some): self.viewModel = VM.MVPSampleView_ViewModel(someString: "\(some)")
-            case .failure          : self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error, asAlert: false)
+            case .failure          : self.genericView?.displayMessage(AppMessages.pleaseTryAgainLater.localised, type: .error)
             }
         }
     }

@@ -165,7 +165,7 @@ extension P.MVPSampleTableView_Presenter {
                 },
                 onError: { [weak self] error in
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-                    self.genericView?.displayMessage(error.localizedDescription, type: .error, asAlert: false)
+                    self.genericView?.displayMessage(error.localizedDescription, type: .error)
                 }
             )
             .disposed(by: disposeBag)
