@@ -15,8 +15,6 @@ import AppConstants
 import PointFreeFunctions
 import DevTools
 
-// swiftlint:disable line_length
-
 public extension Network.Employees {
     struct GetEmployees_APIRequest: WebAPIRequest_Protocol {
         public var returnOnMainTread: Bool = true

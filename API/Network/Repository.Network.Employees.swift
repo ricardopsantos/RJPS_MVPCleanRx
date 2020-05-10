@@ -40,7 +40,6 @@ public extension Network.Employees {
         }
         
         public func netWork_OperationB(completionHandler: @escaping Samples_NetWorkRepositoryCompletionHandler) {
-            //AppLogger.log(appCode: .notImplemented)
             completionHandler(Result.failure(APIErrors.notImplemented))
         }
         

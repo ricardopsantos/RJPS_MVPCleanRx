@@ -12,8 +12,6 @@ import RJPSLib
  * WE CANT HAVE BUSINESS RULES HERE! THE CLIENT JUST DO THE OPERATION AND LEAVE
  */
 
-//extension RP {
-    public struct Network {
-        private init() {}
-    }
-//}
+public struct Network {
+    private init() {}
+}
