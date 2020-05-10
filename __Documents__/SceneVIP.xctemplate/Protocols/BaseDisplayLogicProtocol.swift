@@ -34,8 +34,8 @@ open class BaseInteractorWithWorkers: BaseInteractor {
 }
 
 public protocol BasePresentationLogicProtocol: class {
-    func presentLoading(response: LoadingModel.Response)
-    func presentError(response: ErrorModel.Response)
+    func presentLoading(response: LoadingModel)
+    func presentError(response: ErrorModel)
 }
 
 public protocol BaseBusinessLogicProtocol {
@@ -54,12 +54,12 @@ open class BaseInteractor {
     }
 
     open func presentError(error: Error) {
-        let response = ErrorModel.Response(error: error)
+        let response = ErrorModel(error: error)
         basePresentationLogicImpl()?.presentError(response: response)
     }
 
     open func presentLoading(isLoading: Bool, message: String = "") {
-        let response = LoadingModel.Response(isLoading: isLoading, message: message)
+        let response = LoadingModel(isLoading: isLoading, message: message)
         basePresentationLogicImpl()?.presentLoading(response: response)
     }
 }

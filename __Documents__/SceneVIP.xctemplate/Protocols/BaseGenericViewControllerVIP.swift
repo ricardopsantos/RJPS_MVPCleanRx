@@ -15,17 +15,19 @@ import UIBase
 import Designables
 import DevTools
 
-class BaseViewController: UIViewController, BaseDisplayLogicProtocol {
+class BaseViewControllerVIP: UIViewController, BaseDisplayLogicProtocol {
 
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
 
-    func displayLoading(viewModel: LoadingModel.ViewModel) {
+    func displayLoading(viewModel: LoadingModel) {
+        #warning("implementar")
         DevTools.makeToast(viewModel.message, isError: false)
     }
 
-    func displayError(viewModel: ErrorModel.ViewModel) {
+    func displayError(viewModel: ErrorModel) {
+        #warning("implementar")
         DevTools.makeToast(viewModel.message, isError: true)
     }
 
@@ -34,7 +36,7 @@ class BaseViewController: UIViewController, BaseDisplayLogicProtocol {
     }
 }
 
-class BaseGenericViewControllerVIP<T: StylableView>: BaseViewController {
+class BaseGenericViewControllerVIP<T: StylableView>: BaseViewControllerVIP {
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)

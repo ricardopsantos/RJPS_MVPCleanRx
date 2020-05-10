@@ -16,68 +16,40 @@ import DevTools
 
 #warning("no lugar errado")
 
-public enum ErrorModel {
-    public struct Response {
-        public let title: String
-        public let message: String
-        public var shouldDisplay: Bool = true
+public struct ErrorModel {
+    public let title: String
+    public let message: String
+    public var shouldDisplay: Bool = true
 
-        public init(title: String, message: String) {
-            self.title = title
-            self.message = message
-        }
-
-        public init(error: Swift.Error) {
-            self.title = "Error"
-            self.message = error.localizedDescription
-        }
+    public init(title: String, message: String) {
+        self.title = title
+        self.message = message
     }
 
-    public struct ViewModel {
-        public let message: String
-        public init(message: String) {
-            self.message = message
-        }
+    public init(error: Swift.Error) {
+        self.title = "Error"
+        self.message = error.localizedDescription
     }
 }
 
-public enum LoadingModel {
-    public struct Response {
-        public let isLoading: Bool
-        public let message: String
+public struct LoadingModel {
+    public let isLoading: Bool
+    public let message: String
 
-        public init(error: Error) {
-            self.isLoading = false
-            self.message = "\(error)"
-        }
-
-        public init(isLoading: Bool, message: String) {
-            self.isLoading = isLoading
-            self.message = message
-        }
+    public init(error: Error) {
+        self.isLoading = false
+        self.message = "\(error)"
     }
 
-    public struct ViewModel {
-        public let isLoading: Bool
-        public let message: String
-
-        public init(isLoading: Bool, message: String = "") {
-            self.isLoading = isLoading
-            self.message = message
-        }
-
-        public static var isLoading: ViewModel {
-            ViewModel(isLoading: true)
-        }
-        public static var isNotLoading: ViewModel {
-            ViewModel(isLoading: false)
-        }
+    public init(isLoading: Bool, message: String) {
+        self.isLoading = isLoading
+        self.message = message
     }
 }
 
 public protocol BaseDisplayLogicProtocol: class {
-    func displayLoading(viewModel: LoadingModel.ViewModel)
-    func displayError(viewModel: ErrorModel.ViewModel)
+    func displayLoading(viewModel: LoadingModel)
+    func displayError(viewModel: ErrorModel)
     //func displayToast(viewModel: i9.Toast.ViewModel, position: ToastPosition, completion: ((Bool) -> Void)?)
 }
 
