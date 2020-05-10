@@ -37,13 +37,3 @@ public struct Interactor { private init() {} }
 
 public typealias R = Router
 public struct Router { private init() {} }
-
-// MARK: - DDD & Clean
-
-public typealias RP = Repository
-public struct Repository { private init() {} }
-
-// MARK: - Utils
-
-public typealias AS = AssembyContainer
-public struct AssembyContainer { private init() {} }

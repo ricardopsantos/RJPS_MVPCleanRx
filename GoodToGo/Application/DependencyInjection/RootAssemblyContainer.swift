@@ -7,8 +7,13 @@
 
 import Swinject
 import RJPSLib
+//
 import AppDomain
 import API
+import Repositories
+
+public typealias AS = AssembyContainer
+public struct AssembyContainer { private init() {} }
 
 struct RootAssemblyContainerProtocols {
 
@@ -34,13 +39,13 @@ final class RootAssemblyContainer: Assembly {
     func assemble(container: Container) {
         
         container.autoregister(AppProtocols.generic_CacheRepository,
-                               initializer: RP.Cache.Generic_CacheRepository.init).inObjectScope(.container)
+                               initializer: Generic_CacheRepository.init).inObjectScope(.container)
         
         container.autoregister(AppProtocols.networkClient,
                                initializer: RJSLib.NetworkClient.init).inObjectScope(.container)
         
         container.autoregister(AppProtocols.generic_LocalStorageRepository,
-                               initializer: RP.LocalStorage.Generic_LocalStorageRepository.init).inObjectScope(.container)
+                               initializer: Generic_LocalStorageRepository.init).inObjectScope(.container)
         
         container.autoregister(AppProtocols.gitUser_NetWorkRepository,
                                initializer: WebAPI.GitUser.NetWorkRepository.init).inObjectScope(.container)
