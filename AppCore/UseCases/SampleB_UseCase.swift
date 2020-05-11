@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import RJPSLib
 import Domain
+import Factory
 
 //public extension UseCases {
     
@@ -22,12 +23,12 @@ import Domain
         
     public func operation1(canUseCache: Bool, completionHandler: @escaping SampleB_UseCaseCompletionHandler) {
             AppLogger.log(appCode: .notImplemented)
-            completionHandler(Result.failure(ErrorsFactory.with(appCode: .notImplemented)))
+            completionHandler(Result.failure(Factory.Errors.with(appCode: .notImplemented)))
         }
         
     public func operation2(param: String, completionHandler: @escaping SampleB_UseCaseCompletionHandler) {
             AppLogger.log(appCode: .notImplemented)
-            completionHandler(Result.failure(ErrorsFactory.with(appCode: .notImplemented)))
+            completionHandler(Result.failure(Factory.Errors.with(appCode: .notImplemented)))
         }
         
     }

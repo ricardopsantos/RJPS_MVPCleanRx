@@ -16,6 +16,7 @@ import PointFreeFunctions
 import Domain
 import AppResources
 import UIBase
+import Factory
 
 //
 // MARK: - Presenter_Protocol & View_Protocol
@@ -163,7 +164,7 @@ extension P.BlissRoot_Presenter {
             self.downloadImage(imageURL: AppConstants.Bliss.logoURL, completion: { (image) in
                 if image != nil {
                     observer.onNext(image!)
-                } else { observer.onError(ErrorsFactory.with(appCode: .unknownError)) }
+                } else { observer.onError(Factory.Errors.with(appCode: .unknownError)) }
             })
             return Disposables.create() }
             .retry(3)

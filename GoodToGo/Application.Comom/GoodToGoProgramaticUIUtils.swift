@@ -26,12 +26,12 @@ public protocol GoodToGoProgramaticUIUtilsCompatible {
 }
 
 public extension GoodToGoProgramaticUIUtilsCompatible {
-    var uiUtils: MoeyProgramaticUIUtils<Self> { return MoeyProgramaticUIUtils(self) }
+    var uiUtils: GoodToGoProgramaticUIUtils<Self> { return GoodToGoProgramaticUIUtils(self) }
 }
 
-public struct MoeyProgramaticUIUtils<MoeyBase> {
-    let base: MoeyBase
-    init(_ base: MoeyBase) {
+public struct GoodToGoProgramaticUIUtils<GoodToGoBase> {
+    let base: GoodToGoBase
+    init(_ base: GoodToGoBase) {
         self.base = base
     }
 }
@@ -40,7 +40,7 @@ extension UIView: GoodToGoProgramaticUIUtilsCompatible { }
 
 // MARK: - UIScrollView Utils
 
-public extension MoeyProgramaticUIUtils where MoeyBase: UIScrollView {
+public extension GoodToGoProgramaticUIUtils where GoodToGoBase: UIScrollView {
 
     func edgeScrollViewToSuperView() {
         let target = self.base
@@ -76,7 +76,7 @@ public extension MoeyProgramaticUIUtils where MoeyBase: UIScrollView {
 
 // MARK: - StackView Utils
 
-public extension MoeyProgramaticUIUtils where MoeyBase: UIStackView {
+public extension GoodToGoProgramaticUIUtils where GoodToGoBase: UIStackView {
 
     func edgeStackViewToSuperView() {
         let target = self.base
@@ -142,7 +142,7 @@ public extension MoeyProgramaticUIUtils where MoeyBase: UIStackView {
     }
 }
 
-public extension MoeyProgramaticUIUtils where MoeyBase: UIImageView {
+public extension GoodToGoProgramaticUIUtils where GoodToGoBase: UIImageView {
 
     func setImage(_ image: UIImage, with color: UIColor) {
         let target = self.base
@@ -160,7 +160,7 @@ public extension MoeyProgramaticUIUtils where MoeyBase: UIImageView {
 
 // MARK: - UIView Utils
 
-public extension MoeyProgramaticUIUtils where MoeyBase: UIView {
+public extension GoodToGoProgramaticUIUtils where GoodToGoBase: UIView {
 
     func setVisibilityToState(_ value: Bool) {
         let target = self.base

@@ -22,6 +22,7 @@ import PointFreeFunctions
 import Designables
 import Domain
 import AppCore
+import Factory
 
 // swiftlint:disable all
 
@@ -347,7 +348,7 @@ extension AppView.RxTesting {
                     observer.onNext(image!)
                 } else {
                     self?.aux_log(message: "[rxObservableAssyncRequest][onError]", showAlert: false, appendToTable: true)
-                    observer.onError(ErrorsFactory.with(appCode: .invalidURL))
+                    observer.onError(Factory.Errors.with(appCode: .invalidURL))
                 }
             })
             return Disposables.create()

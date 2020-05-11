@@ -34,7 +34,6 @@ typealias WebAPIRequest_Protocol = RJSLibWebAPIRequest_Protocol
 
 typealias AppEnvironments        = AppManagers.Environments
 typealias AppCan                 = AppManagers.AppCan
-typealias AppLayouts             = AppManagers.Layouts
 typealias AppColors              = UIColor.App
 typealias AppFonts               = UIFont.App
 typealias AppProtocols           = RootAssemblyContainerProtocols

@@ -14,6 +14,7 @@ import RJPSLib
 import AppConstants
 import PointFreeFunctions
 import Domain
+import Factory
 
 //public extension UseCases {
 
@@ -25,7 +26,7 @@ public class GitUser_UseCase: GenericUseCase, GitUser_UseCaseProtocol {
     public func getInfoOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitUser_Single_UseCaseCompletionHandler) {
             
             guard existsInternetConnection else {
-                completionHandler(Result.failure(ErrorsFactory.with(appCode: .noInternet)))
+                completionHandler(Result.failure(Factory.Errors.with(appCode: .noInternet)))
                 return
             }
             
@@ -56,10 +57,11 @@ public class GitUser_UseCase: GenericUseCase, GitUser_UseCaseProtocol {
     public func getFriendsOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitUser_Friends_UseCaseCompletionHandler) {
             
             guard existsInternetConnection else {
-                completionHandler(Result.failure(ErrorsFactory.with(appCode: .noInternet)))
+                completionHandler(Result.failure(Factory.Errors.with(appCode: .noInternet)))
                 return
             }
-            
+
+        #warning("lame cache. improve it")
             let cacheKey      = "\(AppConstants.Cache.servicesCache).\(GitUser_UseCase.self).getFriendsOfUserWith\(userName)"
             let coreDatakey   = "\(cacheKey).lastUpdate"
             let cacheLifeSpam = AppConstants.Cache.serverRequestCacheLifeSpam

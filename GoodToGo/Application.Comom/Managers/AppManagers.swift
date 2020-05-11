@@ -8,4 +8,7 @@
 
 import Foundation
 
-public struct AppManagers { private init() {} }
+public class AppManagers {
+    private init() {}
+    public static var shared = AppManagers()
+}

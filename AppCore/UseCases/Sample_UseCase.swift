@@ -14,6 +14,7 @@ import RJPSLib
 import AppConstants
 import PointFreeFunctions
 import Domain
+import Factory
 
 //public extension UseCases {
     
@@ -27,7 +28,7 @@ import Domain
         
         func operation1(canUseCache: Bool, completionHandler: @escaping Sample_UseCaseCompletionHandler) {
             guard existsInternetConnection else {
-                completionHandler(Result.failure(ErrorsFactory.with(appCode: .noInternet)))
+                completionHandler(Result.failure(Factory.Errors.with(appCode: .noInternet)))
                 return
             }
             
@@ -51,7 +52,7 @@ import Domain
         
         func operation2(param: String, completionHandler: @escaping Sample_UseCaseCompletionHandler) {
             guard existsInternetConnection else {
-                completionHandler(Result.failure(ErrorsFactory.with(appCode: .noInternet)))
+                completionHandler(Result.failure(Factory.Errors.with(appCode: .noInternet)))
                 return
             }
             
