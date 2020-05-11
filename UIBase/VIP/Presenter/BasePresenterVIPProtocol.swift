@@ -15,14 +15,15 @@ import AppResources
 import Domain
 
 // [BasePresentationLogicProtocol] && [BaseDisplayLogicProtocol] must match
-public protocol BasePresentationLogicProtocol: class {
-    var baseDisplayLogic: BaseDisplayLogicProtocol? { get }
+public protocol BasePresenterVIPProtocol: class {
+    var baseDisplayLogic: BaseDisplayLogicProtocol? { get }
     func presentLoading(response: BaseDisplayLogicModels.Loading)
     func presentError(response: BaseDisplayLogicModels.Error)
     func presenStatus(response: BaseDisplayLogicModels.Status)
 }
 
-public extension BasePresentationLogicProtocol {
+// Default implementation....
+public extension BasePresenterVIPProtocol {
     func presenStatus(response: BaseDisplayLogicModels.Status) {
         let viewModel = response
         baseDisplayLogic?.displayStatus(viewModel: viewModel)

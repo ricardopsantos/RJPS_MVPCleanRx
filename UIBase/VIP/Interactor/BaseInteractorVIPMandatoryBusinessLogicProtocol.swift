@@ -9,6 +9,7 @@
 import Foundation
 
 // All interactors must implement this
-public protocol InteratorMandatoryBusinessLogicProtocol {
+public protocol BaseInteractorVIPMandatoryBusinessLogicProtocol {
+    var basePresenter: BasePresenterVIPProtocol! { get }
     func requestScreenInitialState()
 }
