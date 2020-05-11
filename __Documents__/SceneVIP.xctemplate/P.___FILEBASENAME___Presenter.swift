@@ -48,7 +48,7 @@ extension P {
 
 extension P.___VARIABLE_sceneName___Presenter {
 
-    func displayStatus(response: BaseDisplayLogicModels.Status) {
+    func presenStatus(response: BaseDisplayLogicModels.Status) {
         let viewModel = response
         baseDisplayLogicImpl()?.displayStatus(viewModel: viewModel)
     }

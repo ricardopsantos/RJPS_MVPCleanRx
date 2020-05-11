@@ -23,5 +23,5 @@ public protocol InteratorMandatoryBusinessLogicProtocol {
 public protocol BasePresentationLogicProtocol: class {
     func presentLoading(response: BaseDisplayLogicModels.Loading)
     func presentError(response: BaseDisplayLogicModels.Error)
-    func displayStatus(response: BaseDisplayLogicModels.Status)
+    func presenStatus(response: BaseDisplayLogicModels.Status)
 }

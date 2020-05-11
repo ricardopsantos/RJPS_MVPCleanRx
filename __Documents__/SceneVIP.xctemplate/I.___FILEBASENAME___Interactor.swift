@@ -87,7 +87,7 @@ extension I.___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___Business
 
         presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true, message: ""))
         presenter?.presentError(response: BaseDisplayLogicModels.Error(title: "asd", message: "asd"))
-        presenter?.displayStatus(response: BaseDisplayLogicModels.Status(message: "123123"))
+        presenter?.presenStatus(response: BaseDisplayLogicModels.Status(message: "123123"))
         presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true, message: ""))
         DispatchQueue.executeWithDelay(delay: 1) { [weak self] in
             let mockA1 = TemplateModel(id: "some id 1", state: "state_a - \(Date())")
