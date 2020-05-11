@@ -32,7 +32,7 @@ import UIBase
 //
 
 extension I {
-    class ___VARIABLE_sceneName___Interactor: BaseInteractor, ___VARIABLE_sceneName___DataStoreProtocol {
+    class ___VARIABLE_sceneName___Interactor: BaseInteractorVIP, ___VARIABLE_sceneName___DataStoreProtocol {
 
         var presenter: ___VARIABLE_sceneName___PresentationLogicProtocol?
         var basePresenter: BasePresentationLogicProtocol! { return presenter }

@@ -157,7 +157,6 @@
 		D761FEC02468385100BD41A5 /* TemplateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEBF2468385100BD41A5 /* TemplateModel.swift */; };
 		D761FEC22468387E00BD41A5 /* ModelEntityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEC12468387E00BD41A5 /* ModelEntityProtocol.swift */; };
 		D761FEC924683D8700BD41A5 /* BaseGenericViewControllerVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEC624683CF000BD41A5 /* BaseGenericViewControllerVIP.swift */; };
-		D761FECA24683D9400BD41A5 /* BaseDisplayLogicProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEC42468394200BD41A5 /* BaseDisplayLogicProtocol.swift */; };
 		D761FECE2468403E00BD41A5 /* BaseGenericViewVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEBD246837CE00BD41A5 /* BaseGenericViewVIP.swift */; };
 		D761FED32468421C00BD41A5 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FED22468421C00BD41A5 /* File.swift */; };
 		D761FED5246845FD00BD41A5 /* TitleTableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FED4246845FD00BD41A5 /* TitleTableSection.swift */; };
@@ -171,6 +170,8 @@
 		D779A5F3234FE3A500D3D6F7 /* VC.SampleVIP_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5ED234FE3A500D3D6F7 /* VC.SampleVIP_ViewController.swift */; };
 		D779A5F4234FE3A500D3D6F7 /* I.SampleVIP_Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5EE234FE3A500D3D6F7 /* I.SampleVIP_Interactor.swift */; };
 		D788BD76246892B3007C59D0 /* BasePresenterVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788BD75246892B3007C59D0 /* BasePresenterVIP.swift */; };
+		D788BD7A24694390007C59D0 /* BaseDisplayLogicProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEC42468394200BD41A5 /* BaseDisplayLogicProtocol.swift */; };
+		D788BD7C246943AB007C59D0 /* BaseInteractorVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788BD7B246943AB007C59D0 /* BaseInteractorVIP.swift */; };
 		D7AB2443246716C6000142C4 /* V.UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1522BE5DE700042A8C /* V.UserTableViewCell.swift */; };
 		D7AB2445246718A9000142C4 /* typealias.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.encaplulate.swift */; };
 		D7AB2446246718AA000142C4 /* typealias.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.encaplulate.swift */; };
@@ -787,6 +788,7 @@
 		D779A5ED234FE3A500D3D6F7 /* VC.SampleVIP_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.SampleVIP_ViewController.swift; sourceTree = "<group>"; };
 		D779A5EE234FE3A500D3D6F7 /* I.SampleVIP_Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.SampleVIP_Interactor.swift; sourceTree = "<group>"; };
 		D788BD75246892B3007C59D0 /* BasePresenterVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenterVIP.swift; sourceTree = "<group>"; };
+		D788BD7B246943AB007C59D0 /* BaseInteractorVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInteractorVIP.swift; sourceTree = "<group>"; };
 		D7A620B0246556A1008B1722 /* _script_installPackages.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = _script_installPackages.sh; sourceTree = SOURCE_ROOT; };
 		D7AB244D24671CBF000142C4 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7AB245024671CBF000142C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1357,9 +1359,13 @@
 		D729228E2466A04200DAD480 /* UIBase */ = {
 			isa = PBXGroup;
 			children = (
+				D788BD7E246943D0007C59D0 /* VIP */,
+				D788BD7D246943C9007C59D0 /* MVP */,
 				D7AB24B724673F00000142C4 /* README.md */,
 				D72922D82466AFC600DAD480 /* typealias.UIBase.swift */,
 				9F15CF2722BFA0A300FB402A /* AppConstants+UIBase.swift */,
+				D761FEC42468394200BD41A5 /* BaseDisplayLogicProtocol.swift */,
+				D788BD7B246943AB007C59D0 /* BaseInteractorVIP.swift */,
 				9F9BED9D22E5C9620018BD4C /* BasePresenterMVP.swift */,
 				D788BD75246892B3007C59D0 /* BasePresenterVIP.swift */,
 				9F5D1CF122E5DC8700C0AF38 /* BaseRouter.swift */,
@@ -1471,7 +1477,6 @@
 			children = (
 				D761FEBD246837CE00BD41A5 /* BaseGenericViewVIP.swift */,
 				D761FEC624683CF000BD41A5 /* BaseGenericViewControllerVIP.swift */,
-				D761FEC42468394200BD41A5 /* BaseDisplayLogicProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1495,6 +1500,20 @@
 				D779A5EE234FE3A500D3D6F7 /* I.SampleVIP_Interactor.swift */,
 			);
 			path = SampleVIP;
+			sourceTree = "<group>";
+		};
+		D788BD7D246943C9007C59D0 /* MVP */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MVP;
+			sourceTree = "<group>";
+		};
+		D788BD7E246943D0007C59D0 /* VIP */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = VIP;
 			sourceTree = "<group>";
 		};
 		D7AB2444246716DE000142C4 /* Components */ = {
@@ -2596,7 +2615,6 @@
 				9F58FB4922BE5DE700042A8C /* R.SearchUser_Router.swift in Sources */,
 				9FCF332322EF53890074DAB9 /* GenericUseCase.swift in Sources */,
 				D7FCAC232468697000DBECA2 /* FactoryErrors.swift in Sources */,
-				D761FECA24683D9400BD41A5 /* BaseDisplayLogicProtocol.swift in Sources */,
 				9F58FB4522BE5DE700042A8C /* UserDetais_Router.swift in Sources */,
 				D779A5EF234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift in Sources */,
 				D72923892466BF4700DAD480 /* AppView+TabBarController.swift in Sources */,
@@ -2644,10 +2662,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7AB24BB2467424A000142C4 /* BasePresenterMVP.swift in Sources */,
+				D788BD7C246943AB007C59D0 /* BaseInteractorVIP.swift in Sources */,
 				D72922D92466AFC600DAD480 /* typealias.UIBase.swift in Sources */,
 				D7AB24B82467402A000142C4 /* BaseRouter.swift in Sources */,
 				D788BD76246892B3007C59D0 /* BasePresenterVIP.swift in Sources */,
 				D72922CD2466A36C00DAD480 /* typealias.encaplulate.swift in Sources */,
+				D788BD7A24694390007C59D0 /* BaseDisplayLogicProtocol.swift in Sources */,
 				D72922A92466A0B100DAD480 /* BaseViewControllerMVP.swift in Sources */,
 				D729238D2466C67800DAD480 /* AppConstants+UIBase.swift in Sources */,
 				D761FEBC2468358B00BD41A5 /* BaseViewController+Keyboard.swift in Sources */,

@@ -13,9 +13,8 @@ import RxCocoa
 //
 import AppResources
 import Domain
-import UIBase
 
-// All interators must implement this
+// All interactors must implement this
 public protocol InteratorMandatoryBusinessLogicProtocol {
     func requestScreenInitialState()
 }
@@ -23,9 +22,4 @@ public protocol InteratorMandatoryBusinessLogicProtocol {
 public protocol BasePresentationLogicProtocol: class {
     func presentLoading(response: LoadingModel)
     func presentError(response: ErrorModel)
-}
-
-open class BaseInteractor {
-    public var disposeBag = DisposeBag()
-    public init() { }
 }
