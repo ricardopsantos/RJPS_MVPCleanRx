@@ -9,7 +9,7 @@
 import Foundation
 
 open class BasePresenterVIP {
-    open func baseDisplayLogicImpl() -> BaseDisplayLogicProtocol? {
+    open var baseDisplayLogic: BaseDisplayLogicProtocol? {
         assert(false)
         return nil
     }

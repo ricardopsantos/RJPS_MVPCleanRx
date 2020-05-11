@@ -38,7 +38,7 @@ extension P {
     class ___VARIABLE_sceneName___Presenter: BasePresenterVIP {
         weak var viewController: (___VARIABLE_sceneName___DisplayLogicProtocol)?
 
-        override func baseDisplayLogicImpl() -> BaseDisplayLogicProtocol? {
+        override var baseDisplayLogic: BaseDisplayLogicProtocol? {
             return viewController
         }
     }
@@ -48,19 +48,20 @@ extension P {
 
 extension P.___VARIABLE_sceneName___Presenter {
 
+    #warning("colocar em extensao")
     func presenStatus(response: BaseDisplayLogicModels.Status) {
         let viewModel = response
-        baseDisplayLogicImpl()?.displayStatus(viewModel: viewModel)
+        baseDisplayLogic?.displayStatus(viewModel: viewModel)
     }
 
     func presentError(response: BaseDisplayLogicModels.Error) {
         let viewModel = response
-        baseDisplayLogicImpl()?.displayError(viewModel: viewModel)
+        baseDisplayLogic?.displayError(viewModel: viewModel)
     }
 
     func presentLoading(response: BaseDisplayLogicModels.Loading) {
         let viewModel = response
-        baseDisplayLogicImpl()?.displayLoading(viewModel: viewModel)
+        baseDisplayLogic?.displayLoading(viewModel: viewModel)
     }
 }
 
