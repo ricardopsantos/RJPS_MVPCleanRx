@@ -10,27 +10,29 @@ import Foundation
 
 public struct BaseDisplayLogicModels {
 
-    public struct ErrorModel {
+    public struct Error {
         public let title: String
         public let message: String
         public var shouldDisplay: Bool = true
-        public init(title: String, message: String) {
+        public init(title: String, message: String="") {
             self.title = title
             self.message = message
         }
     }
 
-    public struct StatusModel {
+    public struct Status {
+        public let title: String
         public let message: String
-        public init(message: String) {
+        public init(title: String="", message: String="") {
+            self.title = title
             self.message = message
         }
     }
 
-    public struct LoadingModel {
+    public struct Loading {
         public let isLoading: Bool
         public let message: String
-        public init(isLoading: Bool, message: String) {
+        public init(isLoading: Bool, message: String="") {
             self.isLoading = isLoading
             self.message = message
         }
@@ -38,9 +40,9 @@ public struct BaseDisplayLogicModels {
 }
 
 public protocol BaseDisplayLogicProtocol: class {
-    func displayLoading(viewModel: BaseDisplayLogicModels.LoadingModel)
-    func displayError(viewModel: BaseDisplayLogicModels.ErrorModel)
-    func displayStatus(viewModel: BaseDisplayLogicModels.StatusModel)
+    func displayLoading(viewModel: BaseDisplayLogicModels.Loading)
+    func displayError(viewModel: BaseDisplayLogicModels.Error)
+    func displayStatus(viewModel: BaseDisplayLogicModels.Status)
 }
 
 open class BasePresenterVIP {

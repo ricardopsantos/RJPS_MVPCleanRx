@@ -46,17 +46,27 @@ extension P {
 
 // MARK: PresentationLogicProtocol
 
-extension P.___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___PresentationLogicProtocol {
+extension P.___VARIABLE_sceneName___Presenter {
 
-    #warning("colocar num protocol extension")
-    func presentError(response: BaseDisplayLogicModels.ErrorModel) {
-        baseDisplayLogicImpl()?.displayError(viewModel: response)
+    func displayStatus(response: BaseDisplayLogicModels.Status) {
+        let viewModel = response
+        baseDisplayLogicImpl()?.displayStatus(viewModel: viewModel)
     }
 
-    func presentLoading(response: BaseDisplayLogicModels.LoadingModel) {
-        let viewModel = BaseDisplayLogicModels.LoadingModel(isLoading: response.isLoading, message: response.message)
+    func presentError(response: BaseDisplayLogicModels.Error) {
+        let viewModel = response
+        baseDisplayLogicImpl()?.displayError(viewModel: viewModel)
+    }
+
+    func presentLoading(response: BaseDisplayLogicModels.Loading) {
+        let viewModel = response
         baseDisplayLogicImpl()?.displayLoading(viewModel: viewModel)
     }
+}
+
+// MARK: PresentationLogicProtocol
+
+extension P.___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___PresentationLogicProtocol {
 
     // Used By Interactor (exclusively)
     func presentScreenInitialState(response: VM.___VARIABLE_sceneName___.ScreenInitialState.Response) {

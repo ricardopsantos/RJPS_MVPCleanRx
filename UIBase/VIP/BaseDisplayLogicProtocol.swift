@@ -19,8 +19,9 @@ public protocol InteratorMandatoryBusinessLogicProtocol {
     func requestScreenInitialState()
 }
 
+// [BasePresentationLogicProtocol] && [BaseDisplayLogicProtocol] must match
 public protocol BasePresentationLogicProtocol: class {
-    func presentLoading(response: BaseDisplayLogicModels.LoadingModel)
-    func presentError(response: BaseDisplayLogicModels.ErrorModel)
-    #warning("falta 1")
+    func presentLoading(response: BaseDisplayLogicModels.Loading)
+    func presentError(response: BaseDisplayLogicModels.Error)
+    func displayStatus(response: BaseDisplayLogicModels.Status)
 }
