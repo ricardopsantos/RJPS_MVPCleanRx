@@ -85,13 +85,13 @@ extension V {
         override func prepareLayoutCreateHierarchy() {
             addSubview(scrollView)
             scrollView.addSubview(stackViewVLevel1)
-            stackViewVLevel1.I9UI.safeAddArrangedSubview(lblSample)
-            stackViewVLevel1.I9UI.addArrangedSeparator()
-            stackViewVLevel1.I9UI.addArrangedSeparator()
-            stackViewVLevel1.I9UI.safeAddArrangedSubview(btnSample1)
-            stackViewVLevel1.I9UI.addArrangedSeparator()
-            stackViewVLevel1.I9UI.safeAddArrangedSubview(btnSample2)
-            stackViewVLevel1.I9UI.safeAddArrangedSubview(btnSample3)
+            stackViewVLevel1.uiUtils.safeAddArrangedSubview(lblSample)
+            stackViewVLevel1.uiUtils.addArrangedSeparator()
+            stackViewVLevel1.uiUtils.addArrangedSeparator()
+            stackViewVLevel1.uiUtils.safeAddArrangedSubview(btnSample1)
+            stackViewVLevel1.uiUtils.addArrangedSeparator()
+            stackViewVLevel1.uiUtils.safeAddArrangedSubview(btnSample2)
+            stackViewVLevel1.uiUtils.safeAddArrangedSubview(btnSample3)
             addSubview(tableView)
         }
 
@@ -107,7 +107,7 @@ extension V {
                 some.autoLayout.height(40)
             }
 
-            stackViewVLevel1.I9UI.edgeStackViewToSuperView()
+            stackViewVLevel1.uiUtils.edgeStackViewToSuperView()
             let scrollViewHeight = screenHeight/2
             scrollView.autoLayout.edgesToSuperview(excluding: .bottom, insets: .zero)
             scrollView.autoLayout.height(scrollViewHeight)

@@ -18,15 +18,15 @@ import UIBase
 import PointFreeFunctions
 import RJPSLib
 
-// MARK: - MoeyProgramaticUIUtilsCompatible
+// MARK: - GoodToGoProgramaticUIUtilsCompatible
 
-public protocol MoeyProgramaticUIUtilsCompatible {
+public protocol GoodToGoProgramaticUIUtilsCompatible {
     associatedtype T
-    var I9UI: T { get }
+    var uiUtils: T { get }
 }
 
-public extension MoeyProgramaticUIUtilsCompatible {
-    var I9UI: MoeyProgramaticUIUtils<Self> { return MoeyProgramaticUIUtils(self) }
+public extension GoodToGoProgramaticUIUtilsCompatible {
+    var uiUtils: MoeyProgramaticUIUtils<Self> { return MoeyProgramaticUIUtils(self) }
 }
 
 public struct MoeyProgramaticUIUtils<MoeyBase> {
@@ -36,7 +36,7 @@ public struct MoeyProgramaticUIUtils<MoeyBase> {
     }
 }
 
-extension UIView: MoeyProgramaticUIUtilsCompatible { }
+extension UIView: GoodToGoProgramaticUIUtilsCompatible { }
 
 // MARK: - UIScrollView Utils
 
@@ -68,9 +68,9 @@ public extension MoeyProgramaticUIUtils where MoeyBase: UIScrollView {
 
     func addStackView(_ statckView: UIStackView) {
         let target = self.base
-        let contentView = target.I9UI.addContentView()
+        let contentView = target.uiUtils.addContentView()
         contentView.addSubview(statckView)
-        statckView.I9UI.edgeStackViewToSuperView()
+        statckView.uiUtils.edgeStackViewToSuperView()
     }
 }
 

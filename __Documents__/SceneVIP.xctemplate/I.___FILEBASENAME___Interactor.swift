@@ -35,7 +35,7 @@ extension I {
     class ___VARIABLE_sceneName___Interactor: BaseInteractorVIP, ___VARIABLE_sceneName___DataStoreProtocol {
 
         var presenter: ___VARIABLE_sceneName___PresentationLogicProtocol?
-        var basePresenter: BasePresenterVIPProtocol! { return presenter }
+        weak var basePresenter: BasePresenterVIPProtocol? { return presenter }
 
         // DataStoreProtocol Protocol vars...
         var dsSomeEntityModel: ___VARIABLE_sceneName___Auxiliary__SomeEntityModel?

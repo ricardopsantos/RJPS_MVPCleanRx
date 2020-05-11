@@ -11,7 +11,7 @@ import DevTools
 
 open class BasePresenterVIP: BasePresenterVIPProtocol {
     public init () {}
-    open var baseViewController: BaseViewControllerVIPProtocol? {
+    open weak var baseViewController: BaseViewControllerVIPProtocol? {
         fatalError("Override me on pressenter")
     }
     deinit {
