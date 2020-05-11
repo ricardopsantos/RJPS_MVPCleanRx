@@ -153,11 +153,9 @@
 		D761FEB02468304A00BD41A5 /* P.___FILEBASENAME___Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEA52468304A00BD41A5 /* P.___FILEBASENAME___Presenter.swift */; };
 		D761FEB52468330600BD41A5 /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEB42468330600BD41A5 /* UI.swift */; };
 		D761FEB72468334D00BD41A5 /* UIKitViewFactoryElementTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEB62468334D00BD41A5 /* UIKitViewFactoryElementTag.swift */; };
-		D761FEBC2468358B00BD41A5 /* BaseViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEBB2468358B00BD41A5 /* BaseViewController+Keyboard.swift */; };
+		D761FEBC2468358B00BD41A5 /* BaseViewControllerMVP+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEBB2468358B00BD41A5 /* BaseViewControllerMVP+Keyboard.swift */; };
 		D761FEC02468385100BD41A5 /* TemplateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEBF2468385100BD41A5 /* TemplateModel.swift */; };
 		D761FEC22468387E00BD41A5 /* ModelEntityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEC12468387E00BD41A5 /* ModelEntityProtocol.swift */; };
-		D761FEC924683D8700BD41A5 /* BaseGenericViewControllerVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEC624683CF000BD41A5 /* BaseGenericViewControllerVIP.swift */; };
-		D761FECE2468403E00BD41A5 /* BaseGenericViewVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEBD246837CE00BD41A5 /* BaseGenericViewVIP.swift */; };
 		D761FED32468421C00BD41A5 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FED22468421C00BD41A5 /* File.swift */; };
 		D761FED5246845FD00BD41A5 /* TitleTableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FED4246845FD00BD41A5 /* TitleTableSection.swift */; };
 		D761FED72468462F00BD41A5 /* UIButton+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FED62468462F00BD41A5 /* UIButton+Rx.swift */; };
@@ -172,6 +170,9 @@
 		D788BD76246892B3007C59D0 /* BasePresenterVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788BD75246892B3007C59D0 /* BasePresenterVIP.swift */; };
 		D788BD7A24694390007C59D0 /* BaseDisplayLogicProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEC42468394200BD41A5 /* BaseDisplayLogicProtocol.swift */; };
 		D788BD7C246943AB007C59D0 /* BaseInteractorVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788BD7B246943AB007C59D0 /* BaseInteractorVIP.swift */; };
+		D788BD8124694448007C59D0 /* BaseViewControllerVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788BD7F24694439007C59D0 /* BaseViewControllerVIP.swift */; };
+		D788BD83246944A9007C59D0 /* BaseGenericViewControllerVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788BD82246944A9007C59D0 /* BaseGenericViewControllerVIP.swift */; };
+		D788BD842469453E007C59D0 /* BaseGenericViewVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEBD246837CE00BD41A5 /* BaseGenericViewVIP.swift */; };
 		D7AB2443246716C6000142C4 /* V.UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1522BE5DE700042A8C /* V.UserTableViewCell.swift */; };
 		D7AB2445246718A9000142C4 /* typealias.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.encaplulate.swift */; };
 		D7AB2446246718AA000142C4 /* typealias.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.encaplulate.swift */; };
@@ -771,12 +772,11 @@
 		D761FEB42468330600BD41A5 /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
 		D761FEB62468334D00BD41A5 /* UIKitViewFactoryElementTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitViewFactoryElementTag.swift; sourceTree = "<group>"; };
 		D761FEB82468339F00BD41A5 /* TinyConstraints.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyConstraints.framework; path = Carthage/Build/iOS/TinyConstraints.framework; sourceTree = "<group>"; };
-		D761FEBB2468358B00BD41A5 /* BaseViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BaseViewController+Keyboard.swift"; sourceTree = "<group>"; };
+		D761FEBB2468358B00BD41A5 /* BaseViewControllerMVP+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BaseViewControllerMVP+Keyboard.swift"; sourceTree = "<group>"; };
 		D761FEBD246837CE00BD41A5 /* BaseGenericViewVIP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGenericViewVIP.swift; sourceTree = "<group>"; };
 		D761FEBF2468385100BD41A5 /* TemplateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateModel.swift; sourceTree = "<group>"; };
 		D761FEC12468387E00BD41A5 /* ModelEntityProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEntityProtocol.swift; sourceTree = "<group>"; };
 		D761FEC42468394200BD41A5 /* BaseDisplayLogicProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDisplayLogicProtocol.swift; sourceTree = "<group>"; };
-		D761FEC624683CF000BD41A5 /* BaseGenericViewControllerVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseGenericViewControllerVIP.swift; sourceTree = "<group>"; };
 		D761FECF2468412100BD41A5 /* UIView+Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
 		D761FED22468421C00BD41A5 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		D761FED4246845FD00BD41A5 /* TitleTableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableSection.swift; sourceTree = "<group>"; };
@@ -789,6 +789,8 @@
 		D779A5EE234FE3A500D3D6F7 /* I.SampleVIP_Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.SampleVIP_Interactor.swift; sourceTree = "<group>"; };
 		D788BD75246892B3007C59D0 /* BasePresenterVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenterVIP.swift; sourceTree = "<group>"; };
 		D788BD7B246943AB007C59D0 /* BaseInteractorVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInteractorVIP.swift; sourceTree = "<group>"; };
+		D788BD7F24694439007C59D0 /* BaseViewControllerVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewControllerVIP.swift; sourceTree = "<group>"; };
+		D788BD82246944A9007C59D0 /* BaseGenericViewControllerVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseGenericViewControllerVIP.swift; sourceTree = "<group>"; };
 		D7A620B0246556A1008B1722 /* _script_installPackages.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = _script_installPackages.sh; sourceTree = SOURCE_ROOT; };
 		D7AB244D24671CBF000142C4 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7AB245024671CBF000142C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1364,13 +1366,6 @@
 				D7AB24B724673F00000142C4 /* README.md */,
 				D72922D82466AFC600DAD480 /* typealias.UIBase.swift */,
 				9F15CF2722BFA0A300FB402A /* AppConstants+UIBase.swift */,
-				D761FEC42468394200BD41A5 /* BaseDisplayLogicProtocol.swift */,
-				D788BD7B246943AB007C59D0 /* BaseInteractorVIP.swift */,
-				9F9BED9D22E5C9620018BD4C /* BasePresenterMVP.swift */,
-				D788BD75246892B3007C59D0 /* BasePresenterVIP.swift */,
-				9F5D1CF122E5DC8700C0AF38 /* BaseRouter.swift */,
-				9FE1437721AF1ADC0026BDFC /* BaseViewControllerMVP.swift */,
-				D761FEBB2468358B00BD41A5 /* BaseViewController+Keyboard.swift */,
 				D729228F2466A04200DAD480 /* UIBase.h */,
 				D72922902466A04200DAD480 /* Info.plist */,
 			);
@@ -1475,8 +1470,6 @@
 		D761FEC32468393300BD41A5 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				D761FEBD246837CE00BD41A5 /* BaseGenericViewVIP.swift */,
-				D761FEC624683CF000BD41A5 /* BaseGenericViewControllerVIP.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1505,6 +1498,10 @@
 		D788BD7D246943C9007C59D0 /* MVP */ = {
 			isa = PBXGroup;
 			children = (
+				9F5D1CF122E5DC8700C0AF38 /* BaseRouter.swift */,
+				D761FEBB2468358B00BD41A5 /* BaseViewControllerMVP+Keyboard.swift */,
+				9FE1437721AF1ADC0026BDFC /* BaseViewControllerMVP.swift */,
+				9F9BED9D22E5C9620018BD4C /* BasePresenterMVP.swift */,
 			);
 			path = MVP;
 			sourceTree = "<group>";
@@ -1512,6 +1509,12 @@
 		D788BD7E246943D0007C59D0 /* VIP */ = {
 			isa = PBXGroup;
 			children = (
+				D761FEC42468394200BD41A5 /* BaseDisplayLogicProtocol.swift */,
+				D788BD75246892B3007C59D0 /* BasePresenterVIP.swift */,
+				D788BD7B246943AB007C59D0 /* BaseInteractorVIP.swift */,
+				D761FEBD246837CE00BD41A5 /* BaseGenericViewVIP.swift */,
+				D788BD7F24694439007C59D0 /* BaseViewControllerVIP.swift */,
+				D788BD82246944A9007C59D0 /* BaseGenericViewControllerVIP.swift */,
 			);
 			path = VIP;
 			sourceTree = "<group>";
@@ -2585,7 +2588,6 @@
 				D761FEAC2468304A00BD41A5 /* V.___FILEBASENAME___TableViewCell.swift in Sources */,
 				9F58FB4B22BE5DE700042A8C /* P.SearchUser_Presenter.swift in Sources */,
 				9F103A302236C08900C57BC0 /* DependencyInjectionManager.swift in Sources */,
-				D761FEC924683D8700BD41A5 /* BaseGenericViewControllerVIP.swift in Sources */,
 				9F6BB2D022E3470200829A6F /* MVPSampleTableView_AssemblyContainer.swift in Sources */,
 				D779A5F4234FE3A500D3D6F7 /* I.SampleVIP_Interactor.swift in Sources */,
 				9FE143B821AF2F520026BDFC /* AppManagers+Environments.swift in Sources */,
@@ -2593,7 +2595,6 @@
 				9F6BB2EE22E3A97F00829A6F /* AS.BlissQuestionsList_AssemblyContainer.swift in Sources */,
 				D761FEAF2468304A00BD41A5 /* I.___FILEBASENAME___Interactor.swift in Sources */,
 				9FE0572C22E8D8F000802747 /* MVPSampleView_ViewModel.swift in Sources */,
-				D761FECE2468403E00BD41A5 /* BaseGenericViewVIP.swift in Sources */,
 				9FE0572722E8D75400802747 /* MVPSampleRxView_ViewModel.swift in Sources */,
 				D761FEAA2468304A00BD41A5 /* D.___FILEBASENAME___Domain.swift in Sources */,
 				9F6BB2FF22E3CB2D00829A6F /* P.BlissRoot_Presenter.swift in Sources */,
@@ -2666,11 +2667,14 @@
 				D72922D92466AFC600DAD480 /* typealias.UIBase.swift in Sources */,
 				D7AB24B82467402A000142C4 /* BaseRouter.swift in Sources */,
 				D788BD76246892B3007C59D0 /* BasePresenterVIP.swift in Sources */,
+				D788BD842469453E007C59D0 /* BaseGenericViewVIP.swift in Sources */,
+				D788BD8124694448007C59D0 /* BaseViewControllerVIP.swift in Sources */,
 				D72922CD2466A36C00DAD480 /* typealias.encaplulate.swift in Sources */,
 				D788BD7A24694390007C59D0 /* BaseDisplayLogicProtocol.swift in Sources */,
 				D72922A92466A0B100DAD480 /* BaseViewControllerMVP.swift in Sources */,
 				D729238D2466C67800DAD480 /* AppConstants+UIBase.swift in Sources */,
-				D761FEBC2468358B00BD41A5 /* BaseViewController+Keyboard.swift in Sources */,
+				D761FEBC2468358B00BD41A5 /* BaseViewControllerMVP+Keyboard.swift in Sources */,
+				D788BD83246944A9007C59D0 /* BaseGenericViewControllerVIP.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,9 +14,13 @@ import RxSwift
 import DevTools
 import PointFreeFunctions
 
-public protocol StylableProtocol: class { }
+public protocol StylableProtocol: class {
+    
+}
 
-open class StylableView: UIView, StylableProtocol { }
+open class StylableView: UIView, StylableProtocol {
+
+}
 
 // MARK: - BaseGenericView
 open class BaseGenericViewVIP: StylableView {
