@@ -20,6 +20,7 @@ public protocol InteratorMandatoryBusinessLogicProtocol {
 }
 
 public protocol BasePresentationLogicProtocol: class {
-    func presentLoading(response: LoadingModel)
-    func presentError(response: ErrorModel)
+    func presentLoading(response: BaseDisplayLogicModels.LoadingModel)
+    func presentError(response: BaseDisplayLogicModels.ErrorModel)
+    #warning("falta 1")
 }

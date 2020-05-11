@@ -49,12 +49,12 @@ extension P {
 extension P.___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___PresentationLogicProtocol {
 
     #warning("colocar num protocol extension")
-    func presentError(response: ErrorModel) {
+    func presentError(response: BaseDisplayLogicModels.ErrorModel) {
         baseDisplayLogicImpl()?.displayError(viewModel: response)
     }
 
-    func presentLoading(response: LoadingModel) {
-        let viewModel = LoadingModel(isLoading: response.isLoading, message: response.message)
+    func presentLoading(response: BaseDisplayLogicModels.LoadingModel) {
+        let viewModel = BaseDisplayLogicModels.LoadingModel(isLoading: response.isLoading, message: response.message)
         baseDisplayLogicImpl()?.displayLoading(viewModel: viewModel)
     }
 

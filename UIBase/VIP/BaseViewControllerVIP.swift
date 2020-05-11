@@ -19,18 +19,19 @@ open class BaseViewControllerVIP: UIViewController, BaseDisplayLogicProtocol {
         NotificationCenter.default.removeObserver(self)
     }
 
-    open func displayStatus(viewModel: StatusModel) {
+    open func displayStatus(viewModel: BaseDisplayLogicModels.StatusModel) {
         DevTools.makeToast(viewModel.message, isError: false)
     }
 
-    open func displayLoading(viewModel: LoadingModel) {
+    open func displayLoading(viewModel: BaseDisplayLogicModels.LoadingModel) {
         DevTools.makeToast(viewModel.message, isError: false)
     }
 
-    open func displayError(viewModel: ErrorModel) {
+    open func displayError(viewModel: BaseDisplayLogicModels.ErrorModel) {
         DevTools.makeToast(viewModel.message, isError: true)
     }
 
+    #warning("isto é preciso=?")
     open func setupColorsAndStyles() {
 
     }

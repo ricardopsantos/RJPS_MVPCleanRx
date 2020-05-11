@@ -1451,7 +1451,6 @@
 		D761FE9A2468304A00BD41A5 /* SceneVIP.xctemplate */ = {
 			isa = PBXGroup;
 			children = (
-				D761FEC32468393300BD41A5 /* Protocols */,
 				D761FE9C2468304A00BD41A5 /* V.___FILEBASENAME___View.swift */,
 				D761FE9D2468304A00BD41A5 /* VC.___FILEBASENAME___ViewController.swift */,
 				D761FE9E2468304A00BD41A5 /* R.___FILEBASENAME___Router.swift */,
@@ -1465,13 +1464,6 @@
 				D761FEA32468304A00BD41A5 /* TemplateInfo.plist */,
 			);
 			path = SceneVIP.xctemplate;
-			sourceTree = "<group>";
-		};
-		D761FEC32468393300BD41A5 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 		D779A5F5234FE43900D3D6F7 /* AppScenes.VIP */ = {
