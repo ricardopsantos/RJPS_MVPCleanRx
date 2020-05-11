@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class BasePresenterVIP {
+open class BasePresenterVIP: BasePresentationLogicProtocol {
     open var baseDisplayLogic: BaseDisplayLogicProtocol? {
         assert(false)
         return nil

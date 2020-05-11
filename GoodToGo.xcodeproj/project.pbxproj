@@ -1519,7 +1519,6 @@
 			isa = PBXGroup;
 			children = (
 				D788BD7B246943AB007C59D0 /* BaseInteractorVIP.swift */,
-				D761FEC42468394200BD41A5 /* BasePresentationLogicProtocol.swift */,
 				D788BD8A246959B2007C59D0 /* InteratorMandatoryBusinessLogicProtocol.swift */,
 			);
 			path = Interactor;
@@ -1528,6 +1527,7 @@
 		D788BD9124695A1D007C59D0 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				D761FEC42468394200BD41A5 /* BasePresentationLogicProtocol.swift */,
 				D788BD75246892B3007C59D0 /* BasePresenterVIP.swift */,
 			);
 			path = Presenter;

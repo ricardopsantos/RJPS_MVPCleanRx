@@ -47,7 +47,7 @@ extension P {
 // MARK: PresentationLogicProtocol
 
 extension P.___VARIABLE_sceneName___Presenter {
-
+/*
     #warning("colocar em extensao")
     func presenStatus(response: BaseDisplayLogicModels.Status) {
         let viewModel = response
@@ -62,7 +62,7 @@ extension P.___VARIABLE_sceneName___Presenter {
     func presentLoading(response: BaseDisplayLogicModels.Loading) {
         let viewModel = response
         baseDisplayLogic?.displayLoading(viewModel: viewModel)
-    }
+    }*/
 }
 
 // MARK: PresentationLogicProtocol
