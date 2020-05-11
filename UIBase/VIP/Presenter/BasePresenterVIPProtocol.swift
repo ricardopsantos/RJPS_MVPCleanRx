@@ -16,7 +16,7 @@ import Domain
 
 // [BasePresentationLogicProtocol] && [BaseDisplayLogicProtocol] must match
 public protocol BasePresenterVIPProtocol: class {
-    var baseDisplayLogic: BaseDisplayLogicProtocol? { get }
+    var baseViewController: BaseViewControllerVIPProtocol? { get }
     func presentLoading(response: BaseDisplayLogicModels.Loading)
     func presentError(response: BaseDisplayLogicModels.Error)
     func presenStatus(response: BaseDisplayLogicModels.Status)
@@ -26,16 +26,16 @@ public protocol BasePresenterVIPProtocol: class {
 public extension BasePresenterVIPProtocol {
     func presenStatus(response: BaseDisplayLogicModels.Status) {
         let viewModel = response
-        baseDisplayLogic?.displayStatus(viewModel: viewModel)
+        baseViewController?.displayStatus(viewModel: viewModel)
     }
 
     func presentError(response: BaseDisplayLogicModels.Error) {
         let viewModel = response
-        baseDisplayLogic?.displayError(viewModel: viewModel)
+        baseViewController?.displayError(viewModel: viewModel)
     }
 
     func presentLoading(response: BaseDisplayLogicModels.Loading) {
         let viewModel = response
-        baseDisplayLogic?.displayLoading(viewModel: viewModel)
+        baseViewController?.displayLoading(viewModel: viewModel)
     }
 }

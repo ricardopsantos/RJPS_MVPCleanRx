@@ -7,15 +7,15 @@
 //
 
 import Foundation
+import DevTools
 
-open class BasePresenterVIP: BasePresentationLogicProtocol {
-    open var baseDisplayLogic: BaseDisplayLogicProtocol? {
-        assert(false)
-        return nil
+open class BasePresenterVIP: BasePresenterVIPProtocol {
+    public init () {}
+    open var baseViewController: BaseViewControllerVIPProtocol? {
+        fatalError("Override me on pressenter")
     }
     deinit {
         AppLogger.log("\(self) was killed")
         NotificationCenter.default.removeObserver(self)
     }
-    public init () {}
 }

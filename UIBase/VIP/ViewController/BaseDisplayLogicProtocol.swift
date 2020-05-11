@@ -39,7 +39,7 @@ public struct BaseDisplayLogicModels {
     }
 }
 
-public protocol BaseDisplayLogicProtocol: class {
+public protocol BaseViewControllerVIPProtocol: class {
     func displayLoading(viewModel: BaseDisplayLogicModels.Loading)
     func displayError(viewModel: BaseDisplayLogicModels.Error)
     func displayStatus(viewModel: BaseDisplayLogicModels.Status)

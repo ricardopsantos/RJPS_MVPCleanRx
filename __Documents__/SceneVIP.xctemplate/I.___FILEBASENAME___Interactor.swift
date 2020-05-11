@@ -35,7 +35,7 @@ extension I {
     class ___VARIABLE_sceneName___Interactor: BaseInteractorVIP, ___VARIABLE_sceneName___DataStoreProtocol {
 
         var presenter: ___VARIABLE_sceneName___PresentationLogicProtocol?
-        var basePresenter: BasePresentationLogicProtocol! { return presenter }
+        var basePresenter: BasePresenterVIPProtocol! { return presenter }
 
         // DataStoreProtocol Protocol vars...
         var dsSomeEntityModel: ___VARIABLE_sceneName___Auxiliary__SomeEntityModel?
@@ -44,7 +44,7 @@ extension I {
 
 // MARK: Interator Mandatory BusinessLogicProtocol
 
-extension I.___VARIABLE_sceneName___Interactor: InteratorMandatoryBusinessLogicProtocol {
+extension I.___VARIABLE_sceneName___Interactor: BaseInteractorVIPMandatoryBusinessLogicProtocol {
 
     /// When the screen is loaded, this function is responsible to bind the View with some (temporary or final) data
     /// till the user have all the data loaded on the view. This will improve user experience.

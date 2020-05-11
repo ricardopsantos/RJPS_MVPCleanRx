@@ -13,7 +13,7 @@ import RxCocoa
 import RxSwift
 import DevTools
 
-open class BaseViewControllerVIP: UIViewController, BaseDisplayLogicProtocol {
+open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtocol {
 
     deinit {
         NotificationCenter.default.removeObserver(self)

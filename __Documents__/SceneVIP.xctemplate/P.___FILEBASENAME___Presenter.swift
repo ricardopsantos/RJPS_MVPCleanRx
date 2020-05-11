@@ -38,7 +38,7 @@ extension P {
     class ___VARIABLE_sceneName___Presenter: BasePresenterVIP {
         weak var viewController: (___VARIABLE_sceneName___DisplayLogicProtocol)?
 
-        override var baseDisplayLogic: BaseDisplayLogicProtocol? {
+        override var baseViewController: BaseViewControllerVIPProtocol? {
             return viewController
         }
     }

@@ -45,7 +45,7 @@ extension E {
 // MARK: - ViewController
 //
 
-protocol ___VARIABLE_sceneName___DisplayLogicProtocol: BaseDisplayLogicProtocol {
+protocol ___VARIABLE_sceneName___DisplayLogicProtocol: BaseViewControllerVIPProtocol {
     // Naming convention : func display__XXX__(viewModel: VM.___VARIABLE_sceneName___.__XXX__.ViewModel)
     func displayScreenInitialState(viewModel: VM.___VARIABLE_sceneName___.ScreenInitialState.ViewModel)
     func displaySomeStuff(viewModel: VM.___VARIABLE_sceneName___.SomeStuff.ViewModel)
@@ -55,7 +55,7 @@ protocol ___VARIABLE_sceneName___DisplayLogicProtocol: BaseDisplayLogicProtocol 
 // MARK: - Interactor
 //
 
-protocol ___VARIABLE_sceneName___BusinessLogicProtocol: InteratorMandatoryBusinessLogicProtocol {
+protocol ___VARIABLE_sceneName___BusinessLogicProtocol: BaseInteractorVIPMandatoryBusinessLogicProtocol {
     // Naming convention : func request__XXX__(viewModel: VM.___VARIABLE_sceneName___.__XXX__.Request)
     func requestScreenInitialState()
     func requestSomeStuff(request: VM.___VARIABLE_sceneName___.SomeStuff.Request)
@@ -88,7 +88,7 @@ protocol ___VARIABLE_sceneName___RoutingLogicProtocol {
 // MARK: - Presenter
 //
 
-protocol ___VARIABLE_sceneName___PresentationLogicProtocol: BasePresentationLogicProtocol {
+protocol ___VARIABLE_sceneName___PresentationLogicProtocol: BasePresenterVIPProtocol {
     // Naming convention : func present__XXX__(response: VM.___VARIABLE_sceneName___.__XXX__.Response)
     func presentScreenInitialState(response: VM.___VARIABLE_sceneName___.ScreenInitialState.Response)
     func presentSomeStuff(response: VM.___VARIABLE_sceneName___.SomeStuff.Response)
