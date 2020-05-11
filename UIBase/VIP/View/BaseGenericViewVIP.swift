@@ -14,14 +14,6 @@ import RxSwift
 import DevTools
 import PointFreeFunctions
 
-public protocol StylableProtocol: class {
-    
-}
-
-open class StylableView: UIView, StylableProtocol {
-
-}
-
 // MARK: - BaseGenericView
 open class BaseGenericViewVIP: StylableView {
     public var disposeBag = DisposeBag()

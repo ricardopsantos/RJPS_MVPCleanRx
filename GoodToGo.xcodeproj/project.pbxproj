@@ -168,11 +168,14 @@
 		D779A5F3234FE3A500D3D6F7 /* VC.SampleVIP_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5ED234FE3A500D3D6F7 /* VC.SampleVIP_ViewController.swift */; };
 		D779A5F4234FE3A500D3D6F7 /* I.SampleVIP_Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5EE234FE3A500D3D6F7 /* I.SampleVIP_Interactor.swift */; };
 		D788BD76246892B3007C59D0 /* BasePresenterVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788BD75246892B3007C59D0 /* BasePresenterVIP.swift */; };
-		D788BD7A24694390007C59D0 /* BaseDisplayLogicProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEC42468394200BD41A5 /* BaseDisplayLogicProtocol.swift */; };
+		D788BD7A24694390007C59D0 /* BasePresentationLogicProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEC42468394200BD41A5 /* BasePresentationLogicProtocol.swift */; };
 		D788BD7C246943AB007C59D0 /* BaseInteractorVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788BD7B246943AB007C59D0 /* BaseInteractorVIP.swift */; };
 		D788BD8124694448007C59D0 /* BaseViewControllerVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788BD7F24694439007C59D0 /* BaseViewControllerVIP.swift */; };
 		D788BD83246944A9007C59D0 /* BaseGenericViewControllerVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788BD82246944A9007C59D0 /* BaseGenericViewControllerVIP.swift */; };
 		D788BD842469453E007C59D0 /* BaseGenericViewVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEBD246837CE00BD41A5 /* BaseGenericViewVIP.swift */; };
+		D788BD8B246959B2007C59D0 /* InteratorMandatoryBusinessLogicProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788BD8A246959B2007C59D0 /* InteratorMandatoryBusinessLogicProtocol.swift */; };
+		D788BD8D246959CF007C59D0 /* BaseDisplayLogicProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788BD8C246959CF007C59D0 /* BaseDisplayLogicProtocol.swift */; };
+		D788BD8F246959F2007C59D0 /* StylableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788BD8E246959F2007C59D0 /* StylableView.swift */; };
 		D7AB2443246716C6000142C4 /* V.UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1522BE5DE700042A8C /* V.UserTableViewCell.swift */; };
 		D7AB2445246718A9000142C4 /* typealias.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.encaplulate.swift */; };
 		D7AB2446246718AA000142C4 /* typealias.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.encaplulate.swift */; };
@@ -776,7 +779,7 @@
 		D761FEBD246837CE00BD41A5 /* BaseGenericViewVIP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGenericViewVIP.swift; sourceTree = "<group>"; };
 		D761FEBF2468385100BD41A5 /* TemplateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateModel.swift; sourceTree = "<group>"; };
 		D761FEC12468387E00BD41A5 /* ModelEntityProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEntityProtocol.swift; sourceTree = "<group>"; };
-		D761FEC42468394200BD41A5 /* BaseDisplayLogicProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDisplayLogicProtocol.swift; sourceTree = "<group>"; };
+		D761FEC42468394200BD41A5 /* BasePresentationLogicProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresentationLogicProtocol.swift; sourceTree = "<group>"; };
 		D761FECF2468412100BD41A5 /* UIView+Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
 		D761FED22468421C00BD41A5 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		D761FED4246845FD00BD41A5 /* TitleTableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableSection.swift; sourceTree = "<group>"; };
@@ -791,6 +794,9 @@
 		D788BD7B246943AB007C59D0 /* BaseInteractorVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInteractorVIP.swift; sourceTree = "<group>"; };
 		D788BD7F24694439007C59D0 /* BaseViewControllerVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewControllerVIP.swift; sourceTree = "<group>"; };
 		D788BD82246944A9007C59D0 /* BaseGenericViewControllerVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseGenericViewControllerVIP.swift; sourceTree = "<group>"; };
+		D788BD8A246959B2007C59D0 /* InteratorMandatoryBusinessLogicProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteratorMandatoryBusinessLogicProtocol.swift; sourceTree = "<group>"; };
+		D788BD8C246959CF007C59D0 /* BaseDisplayLogicProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDisplayLogicProtocol.swift; sourceTree = "<group>"; };
+		D788BD8E246959F2007C59D0 /* StylableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylableView.swift; sourceTree = "<group>"; };
 		D7A620B0246556A1008B1722 /* _script_installPackages.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = _script_installPackages.sh; sourceTree = SOURCE_ROOT; };
 		D7AB244D24671CBF000142C4 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7AB245024671CBF000142C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1490,10 +1496,9 @@
 		D788BD7D246943C9007C59D0 /* MVP */ = {
 			isa = PBXGroup;
 			children = (
-				9F5D1CF122E5DC8700C0AF38 /* BaseRouter.swift */,
-				D761FEBB2468358B00BD41A5 /* BaseViewControllerMVP+Keyboard.swift */,
-				9FE1437721AF1ADC0026BDFC /* BaseViewControllerMVP.swift */,
-				9F9BED9D22E5C9620018BD4C /* BasePresenterMVP.swift */,
+				D788BD9624695A8C007C59D0 /* Presenter */,
+				D788BD9524695A85007C59D0 /* ViewController */,
+				D788BD9424695A80007C59D0 /* Router */,
 			);
 			path = MVP;
 			sourceTree = "<group>";
@@ -1501,14 +1506,74 @@
 		D788BD7E246943D0007C59D0 /* VIP */ = {
 			isa = PBXGroup;
 			children = (
-				D761FEC42468394200BD41A5 /* BaseDisplayLogicProtocol.swift */,
-				D788BD75246892B3007C59D0 /* BasePresenterVIP.swift */,
-				D788BD7B246943AB007C59D0 /* BaseInteractorVIP.swift */,
-				D761FEBD246837CE00BD41A5 /* BaseGenericViewVIP.swift */,
-				D788BD7F24694439007C59D0 /* BaseViewControllerVIP.swift */,
-				D788BD82246944A9007C59D0 /* BaseGenericViewControllerVIP.swift */,
+				D788BD8E246959F2007C59D0 /* StylableView.swift */,
+				D788BD9324695A3F007C59D0 /* View */,
+				D788BD9224695A22007C59D0 /* ViewController */,
+				D788BD9124695A1D007C59D0 /* Presenter */,
+				D788BD9024695A16007C59D0 /* Interactor */,
 			);
 			path = VIP;
+			sourceTree = "<group>";
+		};
+		D788BD9024695A16007C59D0 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				D788BD7B246943AB007C59D0 /* BaseInteractorVIP.swift */,
+				D761FEC42468394200BD41A5 /* BasePresentationLogicProtocol.swift */,
+				D788BD8A246959B2007C59D0 /* InteratorMandatoryBusinessLogicProtocol.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		D788BD9124695A1D007C59D0 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				D788BD75246892B3007C59D0 /* BasePresenterVIP.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		D788BD9224695A22007C59D0 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D788BD8C246959CF007C59D0 /* BaseDisplayLogicProtocol.swift */,
+				D788BD82246944A9007C59D0 /* BaseGenericViewControllerVIP.swift */,
+				D788BD7F24694439007C59D0 /* BaseViewControllerVIP.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		D788BD9324695A3F007C59D0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D761FEBD246837CE00BD41A5 /* BaseGenericViewVIP.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D788BD9424695A80007C59D0 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				9F5D1CF122E5DC8700C0AF38 /* BaseRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		D788BD9524695A85007C59D0 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9FE1437721AF1ADC0026BDFC /* BaseViewControllerMVP.swift */,
+				D761FEBB2468358B00BD41A5 /* BaseViewControllerMVP+Keyboard.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		D788BD9624695A8C007C59D0 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				9F9BED9D22E5C9620018BD4C /* BasePresenterMVP.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		D7AB2444246716DE000142C4 /* Components */ = {
@@ -2662,11 +2727,14 @@
 				D788BD842469453E007C59D0 /* BaseGenericViewVIP.swift in Sources */,
 				D788BD8124694448007C59D0 /* BaseViewControllerVIP.swift in Sources */,
 				D72922CD2466A36C00DAD480 /* typealias.encaplulate.swift in Sources */,
-				D788BD7A24694390007C59D0 /* BaseDisplayLogicProtocol.swift in Sources */,
+				D788BD8F246959F2007C59D0 /* StylableView.swift in Sources */,
+				D788BD8D246959CF007C59D0 /* BaseDisplayLogicProtocol.swift in Sources */,
+				D788BD7A24694390007C59D0 /* BasePresentationLogicProtocol.swift in Sources */,
 				D72922A92466A0B100DAD480 /* BaseViewControllerMVP.swift in Sources */,
 				D729238D2466C67800DAD480 /* AppConstants+UIBase.swift in Sources */,
 				D761FEBC2468358B00BD41A5 /* BaseViewControllerMVP+Keyboard.swift in Sources */,
 				D788BD83246944A9007C59D0 /* BaseGenericViewControllerVIP.swift in Sources */,
+				D788BD8B246959B2007C59D0 /* InteratorMandatoryBusinessLogicProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,11 +14,6 @@ import RxCocoa
 import AppResources
 import Domain
 
-// All interactors must implement this
-public protocol InteratorMandatoryBusinessLogicProtocol {
-    func requestScreenInitialState()
-}
-
 // [BasePresentationLogicProtocol] && [BaseDisplayLogicProtocol] must match
 public protocol BasePresentationLogicProtocol: class {
     func presentLoading(response: BaseDisplayLogicModels.Loading)
