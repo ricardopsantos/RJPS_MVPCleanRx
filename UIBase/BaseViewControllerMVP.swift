@@ -35,12 +35,12 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
     var reachabilityService: ReachabilityService! = try! DefaultReachabilityService() // try! is only for simplicity sake
     public var disposeBag: DisposeBag = DisposeBag()
 
-    private var _lblMessageDistanceFromTop: NSLayoutConstraint?
+   // private var _lblMessageDistanceFromTop: NSLayoutConstraint?
     private var _lblReachabilityDistanceFromTop: NSLayoutConstraint?
     private var _lblReachabilityHeight: CGFloat = 25
-    private var _lblMessageHeight: CGFloat = 60// TopBar.defaultHeight
+    //private var _lblMessageHeight: CGFloat = 60// TopBar.defaultHeight
     private var _margin: CGFloat = 20
-    private var _lblMessageTimmer: Timer?
+    //private var _lblMessageTimmer: Timer?
 
     private lazy var _lblReachability: UILabel = {
         let some             = label(baseView: self.view, style: .title)
@@ -54,7 +54,7 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
         some.rjsALayouts.setHeight(_lblReachabilityHeight)
         return some
     }()
-    
+    /*
     private lazy var _lblMessage: UILabel = {
         let some           = label(baseView: self.view, style: .title)
         some.textColor     = UIColor.App.TopBar.titleColor
@@ -74,7 +74,7 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
         }).disposed(by: disposeBag)
         return some
     }()
-    
+    */
     open override func loadView() {
         super.loadView()
         doViewLifeCycle()
@@ -89,12 +89,12 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
         super.viewDidAppear(animated)
         _lblReachability.lazyLoad()
         _lblReachability.superview?.bringSubviewToFront(_lblReachability)
-        _lblMessage.lazyLoad()
-        _lblMessage.superview?.bringSubviewToFront(_lblReachability)
+        //_lblMessage.lazyLoad()
+        //_lblMessage.superview?.bringSubviewToFront(_lblReachability)
     }
     
     open func displayMessage(_ message: String, type: AlertType) {
-        setTopMessageVisibilityTo(state: true, message: message, type: type)
+        DevTools.makeToast(message, isError: type == .error)
     }
     
     open func setNoConnectionViewVisibility(to: Bool, withMessage: String = Messages.noInternet.localised) {
@@ -189,10 +189,10 @@ extension BaseViewControllerMVP {
         return some
     }
 
-    @objc func hideTopMessage() {
-        setTopMessageVisibilityTo(state: false, message: "", type: .success)
-    }
-    
+    //@objc func hideTopMessage() {
+    //    setTopMessageVisibilityTo(state: false, message: "", type: .success)
+    //}
+    /*
     private func setTopMessageVisibilityTo(state: Bool, message: String, type: AlertType) {
         if state {
             _lblMessageTimmer?.invalidate()
@@ -220,7 +220,7 @@ extension BaseViewControllerMVP {
             self._lblMessageTimmer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.hideTopMessage), userInfo: nil, repeats: false)
 
         }
-    }
+    }*/
 }
 
 //

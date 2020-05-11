@@ -22,18 +22,15 @@ class BaseViewControllerVIP: UIViewController, BaseDisplayLogicProtocol {
     }
 
     func displayStatus(viewModel: StatusModel) {
-        // no BaseViewControllerMVP
-        //self.displayMessage(_ message: viewModel.message, type: .error)
+        DevTools.makeToast(viewModel.message, isError: false)
     }
 
     func displayLoading(viewModel: LoadingModel) {
-        // no BaseViewControllerMVP
-        //setActivityState(viewModel.isLoading)
+        DevTools.makeToast(viewModel.message, isError: false)
     }
 
     func displayError(viewModel: ErrorModel) {
-        // no BaseViewControllerMVP
-        //displayMessage(_ message: viewModel.message, type: .error)
+        DevTools.makeToast(viewModel.message, isError: true)
     }
 
     func setupColorsAndStyles() {
