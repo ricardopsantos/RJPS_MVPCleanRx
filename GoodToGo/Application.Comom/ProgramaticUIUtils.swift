@@ -164,6 +164,16 @@ public extension GoodToGoProgramaticUIUtils where GoodToGoBase: UIImageView {
 
 public extension GoodToGoProgramaticUIUtils where GoodToGoBase: UIView {
 
+    func leadingToSuperStackView(offset: CGFloat) {
+        let target = self.base
+        target.autoLayout.leadingToSuperStackView(offset: offset)
+    }
+
+    func trailingToSuperStackView(offset: CGFloat) {
+        let target = self.base
+        target.autoLayout.trailingToSuperStackView(offset: offset)
+    }
+
     func setVisibilityTo(_ value: Bool) {
         let target = self.base
         target.isUserInteractionEnabled = value ? true : false

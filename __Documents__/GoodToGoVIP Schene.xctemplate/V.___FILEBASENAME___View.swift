@@ -85,15 +85,15 @@ extension V {
         override func prepareLayoutCreateHierarchy() {
             addSubview(scrollView)
             scrollView.addSubview(stackViewVLevel1)
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(lblSample)
             stackViewVLevel1.uiUtils.addArrangedSeparator()
+            stackViewVLevel1.uiUtils.safeAddArrangedSubview(lblSample)
             stackViewVLevel1.uiUtils.addArrangedSeparator()
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(btnSample1)
             stackViewVLevel1.uiUtils.addArrangedSeparator()
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(btnSample2)
             stackViewVLevel1.uiUtils.addArrangedSeparator()
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(btnSample3)
-            //addSubview(tableView)
+            addSubview(tableView)
         }
 
         // This function is called automatically by super BaseGenericViewVIP
@@ -112,12 +112,9 @@ extension V {
 
             self.subViewsOf(types: [.button, .label], recursive: true).forEach { (some) in
                 some.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
-                //some.rjsALayouts.setMargin(defaultMargin, on: .right)
-                //some.rjsALayouts.setMargin(defaultMargin, on: .left)
-                //some.autoLayout.trailingToSuperview(offset: defaultMargin)
-                //some.autoLayout.leadingToSuperview(offset: defaultMargin)
+               //some.autoLayout.leadingToSuperStackView(offset: defaultMargin)
+               // some.autoLayout.trailingToSuperStackView(offset: defaultMargin)
             }
-
 /*
             tableView.autoLayout.topToBottom(of: scrollView, offset: Designables.Sizes.Margins.defaultMargin)
             tableView.autoLayout.leadingToSuperview()

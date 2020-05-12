@@ -14,7 +14,7 @@ public struct Designables {
 
         public struct Margins {
             private init() {}
-            public static var defaultMargin: CGFloat = 24
+            public static var defaultMargin: CGFloat = 16
         }
 
         public struct Button {

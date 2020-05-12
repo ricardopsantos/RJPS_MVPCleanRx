@@ -96,12 +96,19 @@ public struct UIKitFactory {
     // https://docs-assets.developer.apple.com/published/82128953f6/uistack_hero_2x_04e50947-5aa0-4403-825b-26ba4c1662bd.png
     // https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/LayoutUsingStackViews.html
     // https://spin.atomicobject.com/2016/06/22/uistackview-distribution/
+    public static var stackViewDefaultLayoutMargins: UIEdgeInsets {
+        let spacing: CGFloat = 0 // Is [ZERO] because [stackViewDefaultSpacing] will do the vertical space (if vertical stack-view)
+        return UIEdgeInsets(top: spacing, left: Designables.Sizes.Margins.defaultMargin, bottom: spacing, right: Designables.Sizes.Margins.defaultMargin)
+    }
+    public static var stackViewDefaultSpacing: CGFloat {
+        return 10
+    }
     public static func stackView(arrangedSubviews: [UIView] = [],
-                                 spacing: CGFloat = 5,
+                                 spacing: CGFloat = UIKitFactory.stackViewDefaultSpacing,
                                  axis: NSLayoutConstraint.Axis,
                                  distribution: UIStackView.Distribution = .fill,
                                  alignment: UIStackView.Alignment = .fill,
-                                 addLayoutMargin: Bool = true) -> UIStackView {
+                                 layoutMargins: UIEdgeInsets? = UIKitFactory.stackViewDefaultLayoutMargins) -> UIStackView {
         // Distribution: Fill - makes one subview take up most of the space, while the others remain at their natural size.
         //               It decides which view to stretch by examining the content hugging priority for each of the subviews.
         // Distribution: Fill Equally - adjusts each subview so that it takes up equal amount of space in the stack view.
@@ -116,11 +123,15 @@ public struct UIKitFactory {
 
         let some = UIStackView(arrangedSubviews: arrangedSubviews)
         some.tag     = UIKitViewFactoryElementTag.stackView.rawValue
-        some.isLayoutMarginsRelativeArrangement = true
-        some.autoresizesSubviews = false
-        if addLayoutMargin {
-            some.layoutMargins = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        some.isLayoutMarginsRelativeArrangement = layoutMargins != nil
+        if layoutMargins != nil {
+            // When isLayoutMarginsRelativeArrangement property is true, the stack view will layout its arranged views relative to its layout margins.
+            // Margins of the content views related to each other on the scroll view
+            some.autoresizesSubviews = false
+            some.layoutMargins = layoutMargins!
         }
+
+        // Note
         some.axis         = axis         // determines the stack’s orientation, either vertically or horizontally.
         some.distribution = distribution // determines the layout of the arranged views along the stack’s axis.
         some.spacing      = spacing      // determines the minimum spacing between arranged views.
