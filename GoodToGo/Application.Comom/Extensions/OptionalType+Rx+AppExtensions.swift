@@ -63,6 +63,3 @@ public extension ObservableType {
  */
     }
 }
-
-
-

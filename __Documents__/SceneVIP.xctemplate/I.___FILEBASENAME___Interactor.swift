@@ -38,7 +38,8 @@ extension I {
         weak var basePresenter: BasePresenterVIPProtocol? { return presenter }
 
         // DataStoreProtocol Protocol vars...
-        var dsSomeEntityModel: ___VARIABLE_sceneName___Auxiliary__SomeEntityModel?
+        var dsSomeKindOfModelA: ___VARIABLE_sceneName___DataStoreModelA?
+        var dsSomeKindOfModelB: ___VARIABLE_sceneName___DataStoreModelB?
     }
 }
 
@@ -50,7 +51,7 @@ extension I.___VARIABLE_sceneName___Interactor: BaseInteractorVIPMandatoryBusine
     /// till the user have all the data loaded on the view. This will improve user experience.
     func requestScreenInitialState() {
         var response: VM.___VARIABLE_sceneName___.ScreenInitialState.Response!
-        if let dataPassing = dsSomeEntityModel {
+        if let dataPassing = dsSomeKindOfModelA {
             // Some data was passed via Router, lets use it...
             let title = "Template Scene 2"
             let subTitle = "Some data was passed!\nScroll me\n\n\n\n\n\(dataPassing)\n\n\n"
@@ -63,7 +64,7 @@ extension I.___VARIABLE_sceneName___Interactor: BaseInteractorVIPMandatoryBusine
         presenter?.presentScreenInitialState(response: response)
 
         // Update Model for future use
-        dsSomeEntityModel = ___VARIABLE_sceneName___Auxiliary__SomeEntityModel(value: "Passed via DataStoreProtocol @ \(Date())")
+        dsSomeKindOfModelA = ___VARIABLE_sceneName___DataStoreModelA(aString: "Passed via DataStoreProtocol @ \(Date())")
 
         requestSomeStuff(request: VM.___VARIABLE_sceneName___.SomeStuff.Request(userId: ""))
     }

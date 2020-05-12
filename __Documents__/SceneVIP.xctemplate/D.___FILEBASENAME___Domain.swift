@@ -27,10 +27,6 @@ import UIBase
 // MARK: - Enums & Other Models
 //
 
-struct ___VARIABLE_sceneName___Auxiliary__SomeEntityModel {
-    let value: String
-}
-
 extension E {
     struct ___VARIABLE_sceneName___View {
         enum ScreenLayout {
@@ -42,17 +38,7 @@ extension E {
 }
 
 //
-// MARK: - ViewController
-//
-
-protocol ___VARIABLE_sceneName___DisplayLogicProtocol: BaseViewControllerVIPProtocol {
-    // Naming convention : func display__XXX__(viewModel: VM.___VARIABLE_sceneName___.__XXX__.ViewModel)
-    func displayScreenInitialState(viewModel: VM.___VARIABLE_sceneName___.ScreenInitialState.ViewModel)
-    func displaySomeStuff(viewModel: VM.___VARIABLE_sceneName___.SomeStuff.ViewModel)
-}
-
-//
-// MARK: - Interactor
+// MARK: - Interactor (Business Logic)
 //
 
 protocol ___VARIABLE_sceneName___BusinessLogicProtocol: BaseInteractorVIPMandatoryBusinessLogicProtocol {
@@ -61,31 +47,8 @@ protocol ___VARIABLE_sceneName___BusinessLogicProtocol: BaseInteractorVIPMandato
     func requestSomeStuff(request: VM.___VARIABLE_sceneName___.SomeStuff.Request)
 }
 
-protocol ___VARIABLE_sceneName___DataStoreProtocol {
-    // Implemented by the Interactor, and the Router must have a reference like [var dataStore: ___VARIABLE_sceneName___DataStoreProtocol?]
-    var dsSomeEntityModel: ___VARIABLE_sceneName___Auxiliary__SomeEntityModel? { get set }
-}
-
 //
-// MARK: - Router
-//
-
-// Data Passing Protocol - a protocol that contains the data that needs to be passed to the destination controller.
-protocol ___VARIABLE_sceneName___DataPassingProtocol {
-
-    #warning("DEV - After using template, change [dataStore___VARIABLE_sceneName___] to [dataStore]")
-    var dataStore___VARIABLE_sceneName___: ___VARIABLE_sceneName___DataStoreProtocol? { get }
-}
-
-// Routing Logic Protocol - all the methods used for routing are kept under this protocol.
-protocol ___VARIABLE_sceneName___RoutingLogicProtocol {
-    // Naming convention : func routeTo__XXX__MaybeSomeExtraInfo()
-    func routeToTemplateWithParentDataStore()
-    func routeToTemplateWithDataStore()
-}
-
-//
-// MARK: - Presenter
+// MARK: - Presenter (Presentation Logic)
 //
 
 protocol ___VARIABLE_sceneName___PresentationLogicProtocol: BasePresenterVIPProtocol {
@@ -95,8 +58,60 @@ protocol ___VARIABLE_sceneName___PresentationLogicProtocol: BasePresenterVIPProt
 }
 
 //
-// MARK: - Model
+// MARK: - ViewController (Display Logic)
 //
+
+protocol ___VARIABLE_sceneName___DisplayLogicProtocol: BaseViewControllerVIPProtocol {
+    // Naming convention : func display__XXX__(viewModel: VM.___VARIABLE_sceneName___.__XXX__.ViewModel)
+    func displayScreenInitialState(viewModel: VM.___VARIABLE_sceneName___.ScreenInitialState.ViewModel)
+    func displaySomeStuff(viewModel: VM.___VARIABLE_sceneName___.SomeStuff.ViewModel)
+}
+
+//
+// MARK: - Router (Routing Logic)
+//
+
+// Routing Logic Protocol - all the methods used for routing are kept under this protocol.
+protocol ___VARIABLE_sceneName___RoutingLogicProtocol {
+    // Naming convention : func routeTo__XXX__MaybeSomeExtraInfo()
+    func routeToTemplateWithParentDataStore()
+    func routeToTemplateWithDataStore()
+}
+
+//
+// MARK: - DataStore
+//
+
+// DataStore : Data Passing Protocol - a protocol that contains the data that needs to be passed to the destination controller.
+protocol ___VARIABLE_sceneName___DataPassingProtocol {
+
+    // DataStore
+    var ds___VARIABLE_sceneName___: ___VARIABLE_sceneName___DataStoreProtocol? { get }
+}
+
+// DataStore : Implemented by the Interactor, and the Router
+protocol ___VARIABLE_sceneName___DataStoreProtocol {
+    // must have a reference like [var dataStore: ___VARIABLE_sceneName___DataStoreProtocol?]
+    var dsSomeKindOfModelA: ___VARIABLE_sceneName___DataStoreModelA? { get set }
+    var dsSomeKindOfModelB: ___VARIABLE_sceneName___DataStoreModelB? { get set }
+
+}
+
+//
+// MARK: - Models
+//
+
+// DataStore
+
+struct ___VARIABLE_sceneName___DataStoreModelA {
+    let aString: String
+}
+
+struct ___VARIABLE_sceneName___DataStoreModelB {
+    let aString: String
+}
+
+// Other Models
 
 extension VM {
     enum ___VARIABLE_sceneName___ {

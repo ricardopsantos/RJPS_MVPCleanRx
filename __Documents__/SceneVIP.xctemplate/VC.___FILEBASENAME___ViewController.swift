@@ -85,7 +85,7 @@ extension VC {
             interactor.presenter  = presenter
             presenter.viewController = viewController
             router.viewController = viewController
-            router.dataStore___VARIABLE_sceneName___ = interactor
+            router.ds___VARIABLE_sceneName___ = interactor
         }
 
         // Order in View life-cycle : 5

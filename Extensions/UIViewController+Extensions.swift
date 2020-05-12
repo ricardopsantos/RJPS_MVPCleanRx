@@ -10,4 +10,12 @@ import Foundation
 
 public extension UIViewController {
 
+    func dismissMe(animated: Bool=true) {
+        let navigationController = self.navigationController != nil
+        if navigationController {
+            self.dismiss(animated: animated, completion: nil)
+        } else {
+            self.navigationController?.popViewController(animated: animated)
+        }
+    }
 }

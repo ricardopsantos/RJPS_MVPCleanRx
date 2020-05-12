@@ -11,16 +11,16 @@ import UIKit
 //
 import RJPSLib
 
-// MARK: - Interactor
+// MARK: - Interactor - Business Logic
 
 public protocol BaseInteractorVIPMandatoryBusinessLogicProtocol {
     var basePresenter: BasePresenterVIPProtocol? { get }
     func requestScreenInitialState()
 }
 
-// MARK: - Presenter
+// MARK: - Presenter - PresentationLogic
 
-// [BasePresentationLogicProtocol] && [BaseDisplayLogicProtocol] must match
+/// [BasePresentationLogicProtocol] && [BaseDisplayLogicProtocol] must match
 public protocol BasePresenterVIPProtocol: class {
     var baseViewController: BaseViewControllerVIPProtocol? { get }
     func presentLoading(response: BaseDisplayLogicModels.Loading)
@@ -28,7 +28,7 @@ public protocol BasePresenterVIPProtocol: class {
     func presenStatus(response: BaseDisplayLogicModels.Status)
 }
 
-// Default implementation....
+/// Default implementation....
 public extension BasePresenterVIPProtocol {
     func presenStatus(response: BaseDisplayLogicModels.Status) {
         let viewModel = response
@@ -53,7 +53,15 @@ public extension BasePresenterVIPProtocol {
     }
 }
 
-// MARK: ViewController
+// MARK: - ViewController - DisplayLogic
+
+public protocol BaseViewControllerVIPProtocol: class {
+    func displayLoading(viewModel: BaseDisplayLogicModels.Loading)
+    func displayError(viewModel: BaseDisplayLogicModels.Error)
+    func displayStatus(viewModel: BaseDisplayLogicModels.Status)
+}
+
+// MARK: Models
 
 public struct BaseDisplayLogicModels {
 
@@ -84,10 +92,4 @@ public struct BaseDisplayLogicModels {
             self.message = message
         }
     }
-}
-
-public protocol BaseViewControllerVIPProtocol: class {
-    func displayLoading(viewModel: BaseDisplayLogicModels.Loading)
-    func displayError(viewModel: BaseDisplayLogicModels.Error)
-    func displayStatus(viewModel: BaseDisplayLogicModels.Status)
 }

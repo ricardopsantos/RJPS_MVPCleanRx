@@ -28,7 +28,7 @@ extension R {
         weak var viewController: VC.___VARIABLE_sceneName___ViewController?
 
         // DataPassingProtocol Protocol vars...
-        var dataStore___VARIABLE_sceneName___: ___VARIABLE_sceneName___DataStoreProtocol? { didSet { AppLogger.log("DataStore changed") } }
+        var ds___VARIABLE_sceneName___: ___VARIABLE_sceneName___DataStoreProtocol? { didSet { AppLogger.log("DataStore changed") } }
      }
 }
 
@@ -36,16 +36,17 @@ extension R {
 
 extension R.___VARIABLE_sceneName___Router: ___VARIABLE_sceneName___RoutingLogicProtocol {
     func dismissMe() {
-
+        viewController?.dismissMe()
     }
 
     func routeToTemplateWithDataStore() {
         func passDataToSomewhere(source: ___VARIABLE_sceneName___DataStoreProtocol, destination: inout ___VARIABLE_sceneName___DataStoreProtocol) {
-            destination.dsSomeEntityModel = source.dsSomeEntityModel
+            destination.dsSomeKindOfModelA = source.dsSomeKindOfModelA
+            destination.dsSomeKindOfModelB = source.dsSomeKindOfModelB
         }
         let destinationVC = VC.___VARIABLE_sceneName___ViewController()
-        if var destinationDS = destinationVC.router?.dataStore___VARIABLE_sceneName___ {
-            passDataToSomewhere(source: dataStore___VARIABLE_sceneName___!, destination: &destinationDS)
+        if var destinationDS = destinationVC.router?.ds___VARIABLE_sceneName___ {
+            passDataToSomewhere(source: ds___VARIABLE_sceneName___!, destination: &destinationDS)
         }
         viewController?.navigationController?.present(destinationVC, animated: true, completion: nil)
     }
