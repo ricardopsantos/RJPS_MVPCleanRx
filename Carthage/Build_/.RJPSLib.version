@@ -1,0 +1,10 @@
+{
+  "commitish" : "2059257fe322ef1dfc14b60586df6c302706780e",
+  "iOS" : [
+    {
+      "name" : "RJPSLib",
+      "hash" : "3dea7ea60bda389b9c1d27e2a3ce2ef3365db167556ad042e32029848b78c232",
+      "swiftToolchainVersion" : "5.2 (swiftlang-1103.0.32.1 clang-1103.0.32.29)"
+    }
+  ]
+}

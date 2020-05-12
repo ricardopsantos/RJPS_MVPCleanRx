@@ -44,7 +44,7 @@ import Factory
             }
             
             DispatchQueue.executeWithDelay(delay: 1) { [weak self] in
-                let response = ["\(Date.utcNow())"]
+                let response = ["\(Date.utcNow)"]
                 completionHandler(Result.success(response))
                 self?.generic_CacheRepositoryProtocol.add(object: response as AnyObject, withKey: cacheKey)
             }
@@ -57,7 +57,7 @@ import Factory
             }
             
             DispatchQueue.executeWithDelay(delay: 1) {
-                let response = ["\(Date.utcNow())"]
+                let response = ["\(Date.utcNow)"]
                 completionHandler(Result.success(response))
             }
         }

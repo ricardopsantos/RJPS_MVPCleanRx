@@ -23,7 +23,7 @@ public extension AppUtils_Protocol {
     
     func cachedValueIsOld(coreDatakey: String, maxLifeSpam: Int) -> Bool {
         var cachedValueIsOld = false
-        if let lastTime = RJS_DataModel.dateWith(key: coreDatakey) {
+        if let lastTime = RJS_DataModel.StorableKeyValue.dateWith(key: coreDatakey) {
             let cacheLifeSpam = maxLifeSpam//5 * 60 // 5m cache
             if let secondsSinceLastUpdate = Calendar.current.dateComponents(Set<Calendar.Component>([.second]), from: lastTime, to: RJS_DataModel.baseDate).second {
                 cachedValueIsOld = secondsSinceLastUpdate >= cacheLifeSpam

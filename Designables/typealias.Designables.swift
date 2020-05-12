@@ -8,5 +8,6 @@
 
 import Foundation
 import AppResources
+import RJPSLib
 
-//public typealias AppCodes = AppResources.AppCodes
+public typealias CustomSearchBar = RJS_Designables_SearchBar

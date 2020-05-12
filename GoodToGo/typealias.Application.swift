@@ -19,13 +19,12 @@ import Designables
 
 // MARK: - RJPSLib Shortcuts
 
-typealias AppStorages            = RJS_Storages
 typealias AppInfo                = RJS_AppInfo
 typealias AppCoreDataManager     = RJS_DataModel
 typealias AppSimpleNetworkClient = RJS_SimpleNetworkClient
 typealias AppUtils               = RJS_Utils
-typealias AppCache               = RJS_Cache
-typealias AppFileSystem          = RJS_Files
+//typealias AppCache               = RJS_CacheLive
+//typealias AppFileSystem          = RJS_Files
 typealias AppUserDefaultsVars    = RJS_UserDefaultsVars
 typealias AppUserDefaults        = RJS_UserDefaults
 typealias WebAPIRequest_Protocol = RJSLibWebAPIRequest_Protocol
@@ -47,5 +46,3 @@ typealias AppLogger   = DevTools.AppLogger
 typealias GenericView = UIBase.BaseViewControllerMVP
 
 // MARK: - MISC
-
-typealias CustomSearchBar = RJS_CustomSearchBar

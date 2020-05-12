@@ -189,7 +189,7 @@ extension V {
             some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
             some.rjsALayouts.setHeight(_btnHeight)
             some.onTouchUpInside {
-                let someInt = (Date.utcNow().seconds)
+                let someInt = (Date.utcNow.seconds)
                 let random = Int.random(in: 0 ... 5)
                 if random==1 {
                     self.aux_log(message: "[_rxBehaviorRelay_a]", showAlert: false, appendToTable: true)

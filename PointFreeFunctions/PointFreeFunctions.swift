@@ -24,11 +24,11 @@ public func assert(_ value: @autoclosure() -> Bool,
 public func saveWith(key: String,
                      value: String,
                      expireDate: Date?=nil) {
-    _ = RJS_DataModel.save(key: key, value: value, expireDate: expireDate)
+    _ = RJS_StorableKeyValue.save(key: key, value: value, expireDate: expireDate)
 }
 
 public func getWith(key: String) -> String? {
-    if let obj = RJS_DataModel.with(key: key) {
+    if let obj = RJS_StorableKeyValue.with(key: key) {
         return obj.value
     } else {
         return nil

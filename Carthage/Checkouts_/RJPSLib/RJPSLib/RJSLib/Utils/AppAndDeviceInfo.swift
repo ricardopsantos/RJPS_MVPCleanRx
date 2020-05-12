@@ -1,0 +1,96 @@
+//
+//  GoodToGo
+//
+//  Created by Ricardo P Santos on 2019.
+//  Copyright © 2019 Ricardo P Santos. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+extension RJSLib {
+    
+    public struct AppAndDeviceInfo {
+        private init() {}
+
+        public enum ScreenType: String {
+            case iPhones_4_4S = "iPhone 4 or iPhone 4S"
+            case iPhones_5_5s_5c_SE = "iPhone 5, iPhone 5s, iPhone 5c or iPhone SE"
+            case iPhones_6_6s_7_8 = "iPhone 6, iPhone 6S, iPhone 7 or iPhone 8"
+            case iPhones_6Plus_6sPlus_7Plus_8Plus = "iPhone 6 Plus, iPhone 6S Plus, iPhone 7 Plus or iPhone 8 Plus"
+            case iPhones_X_XS = "iPhone X or iPhone XS"
+            case iPhone_XR    = "iPhone XR"
+            case iPhone_XSMax = "iPhone XS Max"
+            case unknown
+        }
+
+        public static var appOnBackground: Bool {
+            let appState = UIApplication.shared.applicationState
+            if appState == .background || appState == .inactive {
+                // Inactive - Quando temo o menu das pushnotifications aberto (por exemplo)
+                return true
+            }
+            return false
+        }
+        
+        public static var isSimulator: Bool {
+            #if targetEnvironment(simulator)
+            return true
+            #else
+            return false
+            #endif
+        }
+        
+        public static var iPhoneX: Bool { return iPhoneType == .iPhones_X_XS || iPhoneType == .iPhone_XSMax }
+        
+        public static var iPadDevice: Bool { return UIDevice.current.userInterfaceIdiom == .pad }
+
+        public static var iPhoneDevice: Bool { return UIDevice.current.userInterfaceIdiom == .phone }
+        
+        public static var iPhoneType: ScreenType {
+            switch UIScreen.main.nativeBounds.height {
+            case 960 : return .iPhones_4_4S
+            case 1136: return .iPhones_5_5s_5c_SE
+            case 1334: return .iPhones_6_6s_7_8
+            case 1792: return .iPhone_XR
+            case 1920, 2208: return .iPhones_6Plus_6sPlus_7Plus_8Plus
+            case 2436: return .iPhones_X_XS
+            case 2688: return .iPhone_XSMax
+            default  : return .unknown
+            }
+        }
+    
+        public static var isInLowPower: Bool {
+            let processInfo = ProcessInfo.processInfo
+            if #available(iOS 9.0, *) {
+                if processInfo.isLowPowerModeEnabled {
+                    return true
+                }
+            }
+            return false
+        }
+        
+        public static var deviceID: String {
+            return UIDevice.current.identifierForVendor!.uuidString
+        }
+        
+        public static var appInfo: [String: String] {
+            var result = [String: String]()
+            result["version"]    = "\(Bundle.main.infoDictionary!["CFBundleShortVersionString"]!)"
+            result["identifier"] = "\(Bundle.main.bundleIdentifier!)"
+            return result
+        }
+        
+        public static var deviceInfo: [String: String] {
+            var result = [String: String]()
+            result["deviceID"]          = "\(deviceID)"
+            result["model"]             = "\(UIDevice.current.model)"
+            result["systemVersion"]     = "\(UIDevice.current.systemVersion)"
+            result["OperatingSystem"]   = "\(ProcessInfo().operatingSystemVersionString)"
+            result["Screen"]            = "\(UIScreen.main.nativeBounds.height)x\(UIScreen.main.nativeBounds.height)"
+            result["iPhoneType"]        = "\(iPhoneType)"
+            return result
+        }
+        
+    }
+}

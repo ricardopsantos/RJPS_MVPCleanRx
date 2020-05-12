@@ -40,7 +40,7 @@ extension M {
 
 extension M.MVVMSampleView {
     static func makeOne(name: String) -> M.MVVMSampleView {
-        let birthday = Date.utcNow().add(days: -2*360)
+        let birthday = Date.utcNow.add(days: -2*360)
         let image    = UIImage(named: "notInternet")!
         return M.MVVMSampleView(name: name, birthday: birthday, rarity: .veryRare, image: image)
     }

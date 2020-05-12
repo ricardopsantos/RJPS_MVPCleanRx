@@ -18,8 +18,6 @@ import AppResources
 import UIBase
 import Domain
 
-public typealias CustomSearchBar = RJS_CustomSearchBar
-
 public struct UIKitFactory {
     private init() {}
 

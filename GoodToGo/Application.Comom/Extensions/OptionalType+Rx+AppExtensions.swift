@@ -61,11 +61,6 @@ public extension ObservableType {
     }
 }
 
-protocol loadingViewable_Protocol {
-    func startAnimating()
-    func stopAnimating()
-}
-
 extension Reactive where Base: GenericView {
     
     /// Bindable sink for `startAnimating()`, `stopAnimating()` methods.

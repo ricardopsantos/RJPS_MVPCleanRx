@@ -19,5 +19,6 @@ extension AppDelegate {
         AppEnvironments.setup()
         AppLogger.enabled = AppCan.Logs.doLogs
         AppLogger.log("Number of logins : \(AppUserDefaultsVars.incrementIntWithKey(AppConstants.Dev.numberOfLogins))")
+      //  AppLogger.log("RJPSLib Version : \(RJSLib.version)")
     }
 }

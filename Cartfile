@@ -24,7 +24,7 @@
 github "ReactiveX/RxSwift"
 github "RxSwiftCommunity/RxGesture"
 github "RxSwiftCommunity/RxDataSources" ~> 4.0
-binary "https://raw.githubusercontent.com/RxSwiftCommunity/RxKeyboard/master/RxKeyboard.json"
+#binary "https://raw.githubusercontent.com/RxSwiftCommunity/RxKeyboard/master/RxKeyboard.json"
 
 ####################################################################
 # Nothing but sugar.
@@ -60,7 +60,7 @@ github "Swinject/SwinjectAutoregistration"
     #github "ricardopsantos/RJPSLib" "v1.0.1"
 
 ## Swift 5.0.1
-    #github "ricardopsantos/RJPSLib" "V1.0.4"
+    #github "ricardopsantos/RJPSLib" "1.1"
     github "ricardopsantos/RJPSLib" "master"
 
 ####################################################################
@@ -80,11 +80,17 @@ github "Swinject/SwinjectAutoregistration"
 
 # Drag from "/Carthage/Build/iOS/Alamofire.framework" to "General/Linked Frameworks and Librarys"
 
-# $(SRCROOT)/Carthage/Build/iOS/Alamofire.framework
-# $(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework
-# $(SRCROOT)/Carthage/Build/iOS/Whisper.framework
-# $(SRCROOT)/Carthage/Build/iOS/Eureka.framework
-# $(SRCROOT)/Carthage/Build/iOS/CryptoSwift.framework
+# $(SRCROOT)/Carthage/Build/iOS/Swinject.framework
+# $(SRCROOT)/Carthage/Build/iOS/SwinjectAutoregistration.framework
+# $(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework
+# $(SRCROOT)/Carthage/Build/iOS/RxSwift.framework
+# $(SRCROOT)/Carthage/Build/iOS/RJPSLib.framework
+# $(SRCROOT)/Carthage/Build/iOS/RxRelay.framework
+# $(SRCROOT)/Carthage/Build/iOS/RxGesture.framework
+# $(SRCROOT)/Carthage/Build/iOS/TinyConstraints.framework
+# $(SRCROOT)/Carthage/Build/iOS/ToastSwiftFramework.framework
+# $(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework
+# $(SRCROOT)/Carthage/Build/iOS/Differentiator.framework
 
 # *** Fetching Swinject
 # *** Fetching RxGesture
