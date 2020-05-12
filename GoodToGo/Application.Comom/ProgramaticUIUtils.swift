@@ -6,6 +6,8 @@
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
 //
 
+// swiftlint:disable no_prints
+
 import Foundation
 import UIKit
 //
@@ -162,7 +164,7 @@ public extension GoodToGoProgramaticUIUtils where GoodToGoBase: UIImageView {
 
 public extension GoodToGoProgramaticUIUtils where GoodToGoBase: UIView {
 
-    func setVisibilityToState(_ value: Bool) {
+    func setVisibilityTo(_ value: Bool) {
         let target = self.base
         target.isUserInteractionEnabled = value ? true : false
         target.alpha = value ? 1 : 0

@@ -107,23 +107,24 @@ type_name:
     allowed_symbols: "_"
     excluded:
         - iPhone
-        - R
         - RP
         - AC
         - UC
         - MP
-        - V
         - VM
         - VC
         - AS
         - Rx
+        - MD
+        - Id
+        - R
+        - V
+        - T
         - W
         - P
         - I
         - E
-        - MD
         - M
-        - Id
 
 identifier_name:
     max_length: 60

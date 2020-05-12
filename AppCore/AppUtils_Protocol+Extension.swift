@@ -62,7 +62,7 @@ public extension AppUtils_Protocol {
                 @unknown default: break
                 }}))
             if let sender = sender {
-                (sender as! UIViewController).present(alert, animated: true, completion: nil)
+                (sender as? UIViewController)?.present(alert, animated: true, completion: nil)
             }
         } else {
             block()

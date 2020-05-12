@@ -9,7 +9,8 @@
 import Foundation
 
 public extension DevTools {
-    struct Strings {
-        public static var notImplemented = "notImplemented"
+    enum `Strings`: String {
+        case notImplemented
+        case overrideMe
     }
 }

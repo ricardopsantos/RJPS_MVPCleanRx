@@ -19,6 +19,11 @@ open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtoco
         NotificationCenter.default.removeObserver(self)
     }
 
+    open override func loadView() {
+        super.loadView()
+        setupColorsAndStyles()
+    }
+
     open func displayStatus(viewModel: BaseDisplayLogicModels.Status) {
         DevTools.makeToast(viewModel.message, isError: false)
     }
@@ -31,8 +36,7 @@ open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtoco
         DevTools.makeToast(viewModel.message, isError: true)
     }
 
-    #warning("isto é preciso=?")
     open func setupColorsAndStyles() {
-
+        AppLogger.error(DevTools.Strings.notImplemented)
     }
 }

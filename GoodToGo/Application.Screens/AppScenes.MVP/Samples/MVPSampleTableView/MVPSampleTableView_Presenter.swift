@@ -65,7 +65,7 @@ extension Presenter {
         private var _rxBehaviorRelay_tableDataSource = BehaviorRelay<[Employee.ResponseDto]>(value: [])
 
         var disposeBag = DisposeBag()
-        var reachabilityService = try! DefaultReachabilityService()
+        public var reachabilityService: ReachabilityService! = DevTools.reachabilityService
 
     }
 }

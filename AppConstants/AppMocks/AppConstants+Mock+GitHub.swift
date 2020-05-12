@@ -11,8 +11,6 @@ import RxSwift
 import RxCocoa
 import RJPSLib
 
-// swiftlint:disable line_length
-
 extension AppConstants.Mocks {
 
     public struct GitHub {

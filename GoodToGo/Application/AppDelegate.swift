@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     static var shared: AppDelegate { return UIApplication.shared.delegate as! AppDelegate }
+    public var reachabilityService: ReachabilityService? = try! DefaultReachabilityService() // try! is only for simplicity sake
 
     // Where we have all the dependencies
     let container: Container = { return ApplicationAssembly.assembler.resolver as! Container }()

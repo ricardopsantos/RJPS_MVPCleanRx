@@ -79,8 +79,8 @@ extension V {
         // MARK: - Mandatory
 
         // Order in View life-cycle : 1
-        // This function is called automatically by super BaseGenericView
-        // There are 3 functions specialized according to what we are doing. Please use them accordingly
+        // This function is called automatically by super BaseGenericViewVIP
+        // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 1/3 : JUST to add stuff to the view....
         override func prepareLayoutCreateHierarchy() {
             addSubview(scrollView)
@@ -95,8 +95,8 @@ extension V {
             addSubview(tableView)
         }
 
-        // This function is called automatically by super BaseGenericView
-        // There are 3 functions specialized according to what we are doing. Please use them accordingly
+        // This function is called automatically by super BaseGenericViewVIP
+        // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 2/3 : JUST to setup layout rules zone....
         override func prepareLayoutBySettingAutoLayoutsRules() {
             let edgesToExclude: LayoutEdge = .init([.top, .bottom])
@@ -104,7 +104,7 @@ extension V {
             lblSample.autoLayout.edgesToSuperview(excluding: edgesToExclude, insets: insets)
             self.subViewsOf(type: .button, recursive: true).forEach { (some) in
                 some.autoLayout.edgesToSuperview(excluding: edgesToExclude, insets: insets)
-                some.autoLayout.height(40)
+                some.autoLayout.height(LayoutsSizes.Button.defaultSize.height)
             }
 
             stackViewVLevel1.uiUtils.edgeStackViewToSuperView()
@@ -118,7 +118,7 @@ extension V {
 
         }
 
-        // This function is called automatically by super BaseGenericView
+        // This function is called automatically by super BaseGenericViewVIP
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 3/3 : Stuff that is not included in [prepareLayoutCreateHierarchy] and [prepareLayoutBySettingAutoLayoutsRules]
         override func prepareLayoutByFinishingPrepareLayout() {
@@ -224,16 +224,15 @@ extension V.___VARIABLE_sceneName___View: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        #warning("hardcoded")
-        return 20
+        return LayoutsSizes.TableView.defaultHeightForHeaderInSection
     }
 
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let sectionItem = try? rxTableItems.value() {
             let item = sectionItem[indexPath.section].items[indexPath.row]
             switch item.cellType {
-            case .cellType1: return V.___VARIABLE_sceneName___TableViewCell.cellSize()
-            case .cellType2: return V.___VARIABLE_sceneName___TableViewCell.cellSize()
+            case .cellType1: return V.___VARIABLE_sceneName___TableViewCell.cellSize
+            case .cellType2: return V.___VARIABLE_sceneName___TableViewCell.cellSize
             }
         }
         return 0

@@ -21,7 +21,7 @@ open class BasePresenterMVP {
     }
     public init () {}
     public var rxPublishRelay_error = PublishRelay<Error>()
-    public var reachabilityService: ReachabilityService! = try! DefaultReachabilityService() // try! is only for simplicity sake
+    public var reachabilityService: ReachabilityService! = DevTools.reachabilityService
     public var disposeBag: DisposeBag = DisposeBag()
    
 }

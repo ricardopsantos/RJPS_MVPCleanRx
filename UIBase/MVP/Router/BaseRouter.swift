@@ -26,7 +26,7 @@ open class BaseRouter {
     }
 
     public init() { }
-    public var reachabilityService: ReachabilityService! = try! DefaultReachabilityService() // try! is only for simplicity sake
+    public var reachabilityService: ReachabilityService! = DevTools.reachabilityService
     public var disposeBag: DisposeBag = DisposeBag()
     public var rxPublishRelay_dismissView = PublishRelay<Void>() // PublishRelay model Events
 

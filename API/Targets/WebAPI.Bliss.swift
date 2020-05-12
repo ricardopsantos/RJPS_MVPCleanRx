@@ -30,7 +30,8 @@ public extension WebAPI.Bliss {
             }
         }
         
-        public func updateQuestion(question: Bliss.QuestionElementResponseDto, completionHandler: @escaping (Result<NetworkClientResponse<Bliss.QuestionElementResponseDto>>) -> Void) {
+        public func updateQuestion(question: Bliss.QuestionElementResponseDto,
+                                   completionHandler: @escaping (Result<NetworkClientResponse<Bliss.QuestionElementResponseDto>>) -> Void) {
             do {
                 let apiRequest: WebAPIRequest_Protocol = try WebAPI.Bliss.UpdateQuestion_APIRequest(question: question)
                 let apiClient: NetworkClient_Protocol  = RJSLib.NetworkClient()

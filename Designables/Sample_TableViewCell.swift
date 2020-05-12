@@ -39,7 +39,7 @@ open class Sample_TableViewCell: UITableViewCell, GenericTableViewCell_Protocol 
     public var rxBehaviorRelay_image     = BehaviorRelay<UIImage?>(value: nil)
     public var rxBehaviorRelay_textColor = BehaviorRelay<UIColor>(value: UIColor.App.lblTextColor)
 
-    open class func cellSize() -> CGFloat { return 60 }
+    open class var cellSize: CGFloat { return LayoutsSizes.TableViewCell.defaultSize }
     public static func prepare(tableView: UITableView) {
         tableView.register(classForCoder(), forCellReuseIdentifier: reuseIdentifier)
     }
@@ -65,7 +65,7 @@ open class Sample_TableViewCell: UITableViewCell, GenericTableViewCell_Protocol 
     
     private var _marginH: CGFloat { return 10 }
     private var _marginV: CGFloat { return _marginH }
-    private var _imageSize: CGFloat { return Sample_TableViewCell.cellSize() - 2 * _marginV }
+    private var _imageSize: CGFloat { return Sample_TableViewCell.cellSize - 2 * _marginV }
     private let _disposeBag: DisposeBag = DisposeBag()
     
     private lazy var _lblTitle: UILabel = {

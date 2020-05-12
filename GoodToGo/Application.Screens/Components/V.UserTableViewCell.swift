@@ -6,6 +6,7 @@
 //
 
 import UIKit
+//
 import Designables
 
 //
@@ -14,6 +15,7 @@ import Designables
 
 extension V {
     class UserTableViewCell: Sample_TableViewCell {
-        public override class func cellSize() -> CGFloat { return 40 }
+        public override class var cellSize: CGFloat { return LayoutsSizes.TableViewCell.defaultSize
+        }
     }
 }

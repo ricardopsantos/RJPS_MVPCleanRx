@@ -32,15 +32,12 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
     var _keyboardIsVisible = false
     // Keyboard related end
 
-    var reachabilityService: ReachabilityService! = try! DefaultReachabilityService() // try! is only for simplicity sake
+    public var reachabilityService: ReachabilityService! = DevTools.reachabilityService
     public var disposeBag: DisposeBag = DisposeBag()
 
-   // private var _lblMessageDistanceFromTop: NSLayoutConstraint?
     private var _lblReachabilityDistanceFromTop: NSLayoutConstraint?
     private var _lblReachabilityHeight: CGFloat = 25
-    //private var _lblMessageHeight: CGFloat = 60// TopBar.defaultHeight
     private var _margin: CGFloat = 20
-    //private var _lblMessageTimmer: Timer?
 
     private lazy var _lblReachability: UILabel = {
         let some             = label(baseView: self.view, style: .title)
@@ -54,27 +51,7 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
         some.rjsALayouts.setHeight(_lblReachabilityHeight)
         return some
     }()
-    /*
-    private lazy var _lblMessage: UILabel = {
-        let some           = label(baseView: self.view, style: .title)
-        some.textColor     = UIColor.App.TopBar.titleColor
-        some.textAlignment = .center
-        some.alpha         = 0
-        some.numberOfLines = 0
-        some.rjsALayouts.setMargin(0, on: .left)
-        some.rjsALayouts.setMargin(0, on: .right)
-        _lblMessageDistanceFromTop = some.rjsALayouts.setMargin(0, on: .top, method: .constraints)
-        some.rjsALayouts.setHeight(_lblMessageHeight)
-        some.isUserInteractionEnabled = true
-        let tapGesture = UITapGestureRecognizer()
-        some.addGestureRecognizer(tapGesture)
-        tapGesture.rx.event.bind(onNext: { [weak self] _ in
-            guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-            self.setTopMessageVisibilityTo(state: false, message: "", type: .success)
-        }).disposed(by: disposeBag)
-        return some
-    }()
-    */
+
     open override func loadView() {
         super.loadView()
         doViewLifeCycle()
@@ -89,8 +66,6 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
         super.viewDidAppear(animated)
         _lblReachability.lazyLoad()
         _lblReachability.superview?.bringSubviewToFront(_lblReachability)
-        //_lblMessage.lazyLoad()
-        //_lblMessage.superview?.bringSubviewToFront(_lblReachability)
     }
     
     open func displayMessage(_ message: String, type: AlertType) {
@@ -131,7 +106,7 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
     // ...
     //
     open func prepareLayoutCreateHierarchy() {
-        assert(false, message: "Override me!")
+        assert(false, message: DevTools.Strings.overrideMe.rawValue)
     }
 
     // What should this function be used for? Setup layout rules zone....
@@ -141,7 +116,7 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
     // ...
     //
     open func prepareLayoutBySettingAutoLayoutsRules() {
-        assert(false, message: "Override me!")
+        assert(false, message: DevTools.Strings.overrideMe.rawValue)
     }
 
     // What should this function be used for? Extra stuff zone (not included in [prepareLayoutCreateHierarchy]
@@ -152,11 +127,11 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
     // label.textAlignment = .center
     // ...
     open func prepareLayoutByFinishingPrepareLayout() {
-        assert(false, message: "Override me!")
+        assert(false, message: DevTools.Strings.overrideMe.rawValue)
     }
 
     open func setupViewUIRx() {
-        assert(false, message: "Override me!")
+        assert(false, message: DevTools.Strings.overrideMe.rawValue)
     }
 
 }
@@ -188,39 +163,6 @@ extension BaseViewControllerMVP {
         baseView?.addSubview(some)
         return some
     }
-
-    //@objc func hideTopMessage() {
-    //    setTopMessageVisibilityTo(state: false, message: "", type: .success)
-    //}
-    /*
-    private func setTopMessageVisibilityTo(state: Bool, message: String, type: AlertType) {
-        if state {
-            _lblMessageTimmer?.invalidate()
-            _lblMessageTimmer = nil
-        }
-        RJS_Utils.executeInMainTread { [weak self] in
-            guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-            let value = !state
-            let duration = 0.5
-            if state {
-                self._lblMessage.text = message
-                switch type {
-                case .success : self._lblMessage.backgroundColor = UIColor.App.success
-                case .warning: self._lblMessage.backgroundColor = UIColor.App.warning
-                case .error  : self._lblMessage.backgroundColor = UIColor.App.error
-                }
-            }
-            self._lblMessage.fadeTo(value ? 0 : 0.95, duration: duration)
-            self._lblMessage.rjsALayouts.updateConstraint(self._lblMessageDistanceFromTop!,
-                                                                     toValue: value ? -self._lblMessageHeight : self._margin,
-                                                                     duration: duration,
-                                                                     completion: { (_) in
-            })
-            
-            self._lblMessageTimmer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.hideTopMessage), userInfo: nil, repeats: false)
-
-        }
-    }*/
 }
 
 //

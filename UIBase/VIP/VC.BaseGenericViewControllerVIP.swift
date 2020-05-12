@@ -12,6 +12,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 import DevTools
+import PointFreeFunctions
 
 open class BaseGenericViewControllerVIP<T: StylableView>: BaseViewControllerVIP {
 
@@ -35,7 +36,7 @@ open class BaseGenericViewControllerVIP<T: StylableView>: BaseViewControllerVIP 
     }
 
     open func setup() {
-        fatalError("override me")
+        assert(false, message: DevTools.Strings.overrideMe.rawValue)
     }
 
     open override func viewDidLoad() {
@@ -54,14 +55,14 @@ open class BaseGenericViewControllerVIP<T: StylableView>: BaseViewControllerVIP 
     }
 
     open func setupViewIfNeed() {
-        fatalError("Override me")
+        assert(false, message: DevTools.Strings.overrideMe.rawValue)
     }
 
     open func setupNavigationUIRx() {
-        fatalError("Override me")
+        assert(false, message: DevTools.Strings.overrideMe.rawValue)
     }
 
     open func setupViewUIRx() {
-        fatalError("override me")
+        assert(false, message: DevTools.Strings.overrideMe.rawValue)
     }
 }

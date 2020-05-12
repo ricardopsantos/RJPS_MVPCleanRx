@@ -6,6 +6,8 @@
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
 //
 
+// swiftlint:disable no_print
+
 import Foundation
 import UIKit
 import RJPSLib

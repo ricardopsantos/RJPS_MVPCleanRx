@@ -19,9 +19,9 @@ open class BasePresenter {
         AppLogger.log("\(self) was killed")
         NotificationCenter.default.removeObserver(self)
     }
-    public init () { }
+    public init () { }
     public var rxPublishRelay_error = PublishRelay<Error>()
-    public var reachabilityService: ReachabilityService! = try! DefaultReachabilityService() // try! is only for simplicity sake
+    public var reachabilityService: ReachabilityService! = DevTools.reachabilityService
     public var disposeBag: DisposeBag = DisposeBag()
    
 }

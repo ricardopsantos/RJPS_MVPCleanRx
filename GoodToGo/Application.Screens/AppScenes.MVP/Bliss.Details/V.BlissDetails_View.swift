@@ -111,7 +111,7 @@ extension V {
             let some = UIKitFactory.tableView(baseView: self.view)
             some.backgroundColor    = .clear
             some.separatorColor     = .clear
-            some.estimatedRowHeight = Sample_TableViewCell.cellSize()
+            some.estimatedRowHeight = Sample_TableViewCell.cellSize
             some.isScrollEnabled    = false
             some.layer.cornerRadius = 10.0
             some.clipsToBounds      = true

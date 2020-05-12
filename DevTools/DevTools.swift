@@ -16,6 +16,8 @@ import PointFreeFunctions
 public struct DevTools {
     private init() { }
 
+    public static var reachabilityService: ReachabilityService! = try! DefaultReachabilityService()
+
     private static var appMode: String? {
         return (Bundle.main.infoDictionary?["BuildConfig_AppMode"] as? String)?.replacingOccurrences(of: "\\", with: "")
     }
