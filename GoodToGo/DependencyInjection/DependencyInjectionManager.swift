@@ -22,9 +22,8 @@ final class ApplicationAssembly {
             
             AS.BlissQuestionsList_AssemblyContainer(),
             AS.BlissRoot_AssemblyContainer(),
-            AS.BlissDetails_AssemblyContainer(),
-            
-            AS.MVVMSampleView_AssemblyContainer()
+            AS.BlissDetails_AssemblyContainer()
+
         ]
         return Assembler(assemblyList)
     }

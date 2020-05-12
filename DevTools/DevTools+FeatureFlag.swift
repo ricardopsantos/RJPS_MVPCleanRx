@@ -14,7 +14,8 @@ public extension DevTools {
 
         case statsTotalEnabled     = "statsTotalEnabled"       // Client
         case devTeam_showToasts    = "DEV: devTeam_showToasts" // Dev team
-        case devTeam_useMockedData = "DEV: Use Mock Data" // Dev team
+        case devTeam_useMockedData = "DEV: Use Mock Data"      // Dev team
+        case devTeam_doLogs        = "DEV: App can do logs"    // Dev team
 
         public var defaultValue: Bool {
             switch self {
@@ -24,7 +25,13 @@ public extension DevTools {
                 return DevTools.devModeIsEnabled
             case .devTeam_useMockedData:
                 return DevTools.devModeIsEnabled
+            case .devTeam_doLogs:
+                return DevTools.devModeIsEnabled
             }
+        }
+
+        public var isTrue: Bool {
+            return FeatureFlag.getFlag(self) == true
         }
 
         public static func getFlag(_ flagName: FeatureFlag) -> Bool {

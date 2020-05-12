@@ -84,7 +84,7 @@ public class BlissGenericAppBusiness_UseCase: GenericUseCase, BlissGenericAppBus
     public func setNeedToOpenScreen(screen: String, key: String, value: String) {
             let storedKey = "\(screen).\(key)"
             _ = generic_LocalStorageRepository.save(key: storedKey, value: value, expireDate: RJS_DataModel.baseDate.add(minutes: 1))
-            if AppEnvironments.isDev() {
+            if AppEnvironments.isDev {
                 let stored = screenHaveDataToHandle(screen: screen)
                 assert(stored!.0 == key)
                 assert(stored!.1 == value)

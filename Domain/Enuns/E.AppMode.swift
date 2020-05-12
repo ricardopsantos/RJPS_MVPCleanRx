@@ -6,9 +6,3 @@
 //
 
 import Foundation
-
-public enum AppMode: Int {
-    case prod
-    case qa
-    case dev
-}

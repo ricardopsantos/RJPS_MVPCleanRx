@@ -13,12 +13,13 @@ import RJPSLib
 //
 import AppConstants
 import PointFreeFunctions
+import DevTools
 
 extension AppDelegate {
     func setup(application: UIApplication) {
+        AppLogger.enabled = DevTools.FeatureFlag.getFlag(.devTeam_doLogs)
         AppEnvironments.setup()
-        AppLogger.enabled = AppCan.Logs.doLogs
+        AppLogger.log("RJPSLib Version : \(RJSLib.version)")
         AppLogger.log("Number of logins : \(AppUserDefaultsVars.incrementIntWithKey(AppConstants.Dev.numberOfLogins))")
-      //  AppLogger.log("RJPSLib Version : \(RJSLib.version)")
     }
 }

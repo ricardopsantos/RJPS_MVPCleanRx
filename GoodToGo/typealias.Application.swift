@@ -31,8 +31,6 @@ typealias WebAPIRequest_Protocol = RJSLibWebAPIRequest_Protocol
 
 // MARK: - App Shortcuts
 
-typealias AppEnvironments        = AppManagers.Environments
-typealias AppCan                 = AppManagers.AppCan
 typealias AppColors              = UIColor.App
 typealias AppFonts               = UIFont.App
 typealias AppProtocols           = RootAssemblyContainerProtocols
