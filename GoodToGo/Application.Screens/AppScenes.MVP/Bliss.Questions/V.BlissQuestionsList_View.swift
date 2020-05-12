@@ -23,7 +23,7 @@ import Designables
 import Domain
 
 extension V {
-    class BlissQuestionsList_View: GenericView {
+    class BlissQuestionsList_View: BaseViewControllerMVP {
         
         deinit {
             AppLogger.log("\(self.className) was killed")

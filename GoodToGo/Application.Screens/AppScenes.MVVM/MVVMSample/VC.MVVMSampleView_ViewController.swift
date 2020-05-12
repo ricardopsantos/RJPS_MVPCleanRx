@@ -22,7 +22,7 @@ import PointFreeFunctions
 
 extension VC {
 
-    class MVVMSampleView_ViewController: GenericView, MVVMSampleView_ViewControllerProtocol {
+    class MVVMSampleView_ViewController: BaseViewControllerMVP, MVVMSampleView_ViewControllerProtocol {
 
         var viewModel: MVVMSampleView_ViewModelProtocol?
         lazy var viewModelView: MVVMSampleView_ViewProtocol = {

@@ -7,9 +7,12 @@
 
 import UIKit
 import Foundation
+//
 import RxSwift
 import RxCocoa
 import RJPSLib
+//
+import UIBase
 
 public protocol OptionalType {
     associatedtype Wrapped
@@ -61,22 +64,5 @@ public extension ObservableType {
     }
 }
 
-extension Reactive where Base: GenericView {
-    
-    /// Bindable sink for `startAnimating()`, `stopAnimating()` methods.
-    var isAnimating: Binder<Bool> {
-        
-        /*
-         public var rxPublishSubject_loading     : PublishSubject<Bool> = PublishSubject()
-         ...
-         viewModel?.rxPublishSubject_loading.bind(to: self.rx.isAnimating).disposed(by: disposeBag)
- */
-        return Binder(self.base, binding: { (vc, active) in
-            if active {
-                vc.view.rjs.startActivityIndicator()
-            } else {
-                vc.view.rjs.stopActivityIndicator()
-            }
-        })
-    }
-}
+
+

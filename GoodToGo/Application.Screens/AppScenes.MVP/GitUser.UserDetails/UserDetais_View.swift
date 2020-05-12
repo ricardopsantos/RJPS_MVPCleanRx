@@ -22,7 +22,7 @@ import PointFreeFunctions
 import Designables
 
 extension V {
-    class UserDetais_View: GenericView {
+    class UserDetais_View: BaseViewControllerMVP {
         
         deinit {
             AppLogger.log("\(self.className) was killed")

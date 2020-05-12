@@ -27,7 +27,7 @@ import Designables
  */
 
 extension V {
-    class MVPSampleView_View: GenericView {
+    class MVPSampleView_View: BaseViewControllerMVP {
         
         deinit {
             AppLogger.log("\(self.className) was killed")

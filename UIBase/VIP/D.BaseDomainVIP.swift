@@ -49,6 +49,7 @@ public extension BasePresenterVIPProtocol {
                 viewController.view.rjs.stopActivityIndicator()
             }
         }
+        baseViewController?.displayLoading(viewModel: viewModel)
     }
 }
 

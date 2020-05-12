@@ -22,7 +22,7 @@ import PointFreeFunctions
 import Designables
 
 public extension V {
-    internal class SearchUser_View: GenericView {
+    internal class SearchUser_View: BaseViewControllerMVP {
         
         deinit {
             AppLogger.log("\(self.className) was killed")

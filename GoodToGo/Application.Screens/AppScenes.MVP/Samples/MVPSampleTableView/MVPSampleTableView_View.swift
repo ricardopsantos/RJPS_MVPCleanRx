@@ -23,7 +23,7 @@ import Designables
 import Domain
 
 extension V {
-    class MVPSampleTableView_View: GenericView {
+    class MVPSampleTableView_View: BaseViewControllerMVP {
         
         deinit {
             AppLogger.log("\(self.className) was killed")

@@ -21,7 +21,7 @@ import DevTools
 import PointFreeFunctions
 
 extension V {
-    class BlissRoot_View: GenericView {
+    class BlissRoot_View: BaseViewControllerMVP {
         
         deinit {
             AppLogger.log("\(self.className) was killed")

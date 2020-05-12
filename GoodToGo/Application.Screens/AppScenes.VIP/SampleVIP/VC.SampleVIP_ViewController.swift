@@ -41,7 +41,7 @@ protocol SampleVIP_DisplayLogic: class {
     func displaySomething(viewModel: SampleVIP.SearchView.ViewModel)
 }
 
-class SampleVIP_ViewController: GenericView, SampleVIP_DisplayLogic {
+class SampleVIP_ViewController: BaseViewControllerMVP, SampleVIP_DisplayLogic {
     var interactor: SampleVIP_BusinessLogic?
     var router: (NSObjectProtocol & SampleVIP_RoutingLogic & SampleVIP_DataPassing)?
 
