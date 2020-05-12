@@ -26,7 +26,7 @@ extension V {
     class BlissDetails_View: BaseViewControllerMVP {
         
         deinit {
-            AppLogger.log("\(self.className) was killed")
+            //AppLogger.log("\(self.className) was killed")
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
@@ -35,7 +35,7 @@ extension V {
         // BehaviorRelay model a State
         private var _rxBehaviorRelay_tableDataSource = BehaviorRelay<[Bliss.ChoiceElementResponseDto]>(value: [])
         private var _imgCoverConstraintHeigth: NSLayoutConstraint?
-        private let _margin: CGFloat = 15
+        private let _margin: CGFloat = Designables.Sizes.Margins.defaultMargin
         private let _imageSize: Int = 100
         
         private lazy var _topGenericView: TopBar = {

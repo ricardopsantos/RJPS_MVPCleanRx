@@ -15,7 +15,7 @@ open class BasePresenterVIP: BasePresenterVIPProtocol {
         fatalError("Override me on pressenter")
     }
     deinit {
-        AppLogger.log("\(self) was killed")
+        //AppLogger.log("\(self.className) was killed")
         NotificationCenter.default.removeObserver(self)
     }
 }

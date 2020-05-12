@@ -23,7 +23,7 @@ import Domain
 open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtocol {
 
     deinit {
-        AppLogger.log("\(self.className) was killed")
+        //AppLogger.log("\(self.className) was killed")
         NotificationCenter.default.removeObserver(self)
     }
 

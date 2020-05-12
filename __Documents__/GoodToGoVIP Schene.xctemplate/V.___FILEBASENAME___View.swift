@@ -91,8 +91,9 @@ extension V {
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(btnSample1)
             stackViewVLevel1.uiUtils.addArrangedSeparator()
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(btnSample2)
+            stackViewVLevel1.uiUtils.addArrangedSeparator()
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(btnSample3)
-            addSubview(tableView)
+            //addSubview(tableView)
         }
 
         // This function is called automatically by super BaseGenericViewVIP
@@ -100,22 +101,29 @@ extension V {
         // Function 2/3 : JUST to setup layout rules zone....
         override func prepareLayoutBySettingAutoLayoutsRules() {
             let edgesToExclude: LayoutEdge = .init([.top, .bottom])
-            let insets: TinyEdgeInsets = TinyEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-            lblSample.autoLayout.edgesToSuperview(excluding: edgesToExclude, insets: insets)
-            self.subViewsOf(type: .button, recursive: true).forEach { (some) in
-                some.autoLayout.edgesToSuperview(excluding: edgesToExclude, insets: insets)
-                some.autoLayout.height(LayoutsSizes.Button.defaultSize.height)
-            }
+            let defaultMargin = Designables.Sizes.Margins.defaultMargin
+            let insets: TinyEdgeInsets = TinyEdgeInsets(top: defaultMargin, left: defaultMargin, bottom: defaultMargin, right: defaultMargin)
+         //   lblSample.autoLayout.edgesToSuperview(excluding: edgesToExclude, insets: insets)
 
             stackViewVLevel1.uiUtils.edgeStackViewToSuperView()
             let scrollViewHeight = screenHeight/2
             scrollView.autoLayout.edgesToSuperview(excluding: .bottom, insets: .zero)
             scrollView.autoLayout.height(scrollViewHeight)
 
-            tableView.autoLayout.topToBottom(of: scrollView, offset: 24)
-            tableView.autoLayout.widthToSuperview()
-            tableView.autoLayout.bottomToSuperview()
+            self.subViewsOf(types: [.button, .label], recursive: true).forEach { (some) in
+                some.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
+                //some.rjsALayouts.setMargin(defaultMargin, on: .right)
+                //some.rjsALayouts.setMargin(defaultMargin, on: .left)
+                //some.autoLayout.trailingToSuperview(offset: defaultMargin)
+                //some.autoLayout.leadingToSuperview(offset: defaultMargin)
+            }
 
+/*
+            tableView.autoLayout.topToBottom(of: scrollView, offset: Designables.Sizes.Margins.defaultMargin)
+            tableView.autoLayout.leadingToSuperview()
+            tableView.autoLayout.trailingToSuperview()
+            tableView.autoLayout.bottomToSuperview()
+*/
         }
 
         // This function is called automatically by super BaseGenericViewVIP
@@ -123,7 +131,7 @@ extension V {
         // Function 3/3 : Stuff that is not included in [prepareLayoutCreateHierarchy] and [prepareLayoutBySettingAutoLayoutsRules]
         override func prepareLayoutByFinishingPrepareLayout() {
             V.___VARIABLE_sceneName___TableViewCell.prepare(tableView: tableView)
-            tableView.estimatedRowHeight = 40
+            tableView.estimatedRowHeight = Designables.Sizes.TableViewCell.defaultSize
             tableView.rowHeight = UITableView.automaticDimension
             tableView.separatorColor = .clear
             tableView.rx.setDelegate(self).disposed(by: disposeBag)
@@ -224,7 +232,7 @@ extension V.___VARIABLE_sceneName___View: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return LayoutsSizes.TableView.defaultHeightForHeaderInSection
+        return Designables.Sizes.TableView.defaultHeightForHeaderInSection
     }
 
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

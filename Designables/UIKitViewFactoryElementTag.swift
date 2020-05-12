@@ -16,6 +16,7 @@ public enum UIKitViewFactoryElementTag: Int {
     case stackView
     case imageView
     case textField
+    case searchBar
     case label
     case tableView
     case `switch`

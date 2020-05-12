@@ -30,7 +30,7 @@ public protocol Sample_TableViewCellProtocol: GenericTableViewCell_Protocol {
 
 open class Sample_TableViewCell: UITableViewCell, GenericTableViewCell_Protocol {
     deinit {
-        AppLogger.log("\(self.className) was killed")
+        //AppLogger.log("\(self.className) was killed")
         NotificationCenter.default.removeObserver(self)
     }
     
@@ -39,7 +39,7 @@ open class Sample_TableViewCell: UITableViewCell, GenericTableViewCell_Protocol 
     public var rxBehaviorRelay_image     = BehaviorRelay<UIImage?>(value: nil)
     public var rxBehaviorRelay_textColor = BehaviorRelay<UIColor>(value: UIColor.App.lblTextColor)
 
-    open class var cellSize: CGFloat { return LayoutsSizes.TableViewCell.defaultSize }
+    open class var cellSize: CGFloat { return Designables.Sizes.TableViewCell.defaultSize }
     public static func prepare(tableView: UITableView) {
         tableView.register(classForCoder(), forCellReuseIdentifier: reuseIdentifier)
     }

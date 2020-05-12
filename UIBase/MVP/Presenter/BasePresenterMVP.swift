@@ -16,7 +16,7 @@ import DevTools
 
 open class BasePresenterMVP {
     deinit {
-        AppLogger.log("\(self) was killed")
+        //AppLogger.log("\(self.className) was killed")
         NotificationCenter.default.removeObserver(self)
     }
     public init () {}

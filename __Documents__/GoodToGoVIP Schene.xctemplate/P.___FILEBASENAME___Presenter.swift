@@ -47,9 +47,12 @@ extension P {
 // MARK: PresentationLogicProtocol
 
 extension P.___VARIABLE_sceneName___Presenter {
-/*
-    #warning("colocar em extensao")
-    func presenStatus(response: BaseDisplayLogicModels.Status) {
+
+    //
+    // Do you need to override this? Its allready implemented on a Protocol Extension
+    //
+    /*
+    func presentStatus(response: BaseDisplayLogicModels.Status) {
         let viewModel = response
         baseDisplayLogic?.displayStatus(viewModel: viewModel)
     }

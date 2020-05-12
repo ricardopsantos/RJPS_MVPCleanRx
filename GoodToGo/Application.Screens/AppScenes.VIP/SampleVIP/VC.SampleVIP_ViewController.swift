@@ -47,7 +47,7 @@ class SampleVIP_ViewController: BaseViewControllerMVP, SampleVIP_DisplayLogic {
 
     // Added to template
     deinit {
-        AppLogger.log("\(self.className) was killed")
+        //AppLogger.log("\(self.className) was killed")
         NotificationCenter.default.removeObserver(self)
     }
 

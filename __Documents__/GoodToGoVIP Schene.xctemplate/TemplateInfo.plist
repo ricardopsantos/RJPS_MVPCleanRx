@@ -5,7 +5,7 @@
 	<key>DefaultCompletionName</key>
 	<string>MyScene</string>
 	<key>Description</key>
-	<string>moey! VIP Schene</string>
+	<string>GoodToGoVIP Schene</string>
 	<key>Kind</key>
 	<string>Xcode.IDEKit.TextSubstitutionFileTemplateKind</string>
 	<key>Options</key>
@@ -124,6 +124,6 @@
 	<key>SortOrder</key>
 	<string>0</string>
 	<key>Summary</key>
-	<string>moey! VIP Schene</string>
+	<string>GoodToGoVIP Schene</string>
 </dict>
 </plist>

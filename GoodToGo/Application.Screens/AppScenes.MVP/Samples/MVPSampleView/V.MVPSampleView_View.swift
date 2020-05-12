@@ -30,14 +30,14 @@ extension V {
     class MVPSampleView_View: BaseViewControllerMVP {
         
         deinit {
-            AppLogger.log("\(self.className) was killed")
+            //AppLogger.log("\(self.className) was killed")
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
         var presenter: MVPSampleView_PresenterProtocol!
         
-        private let _margin: CGFloat = 25
-        
+        private let _margin: CGFloat = Designables.Sizes.Margins.defaultMargin
+
         private lazy var _txtUser: UITextField = {
             let some = UIKitFactory.textField(baseView: self.view)
             some.font      = AppFonts.regular

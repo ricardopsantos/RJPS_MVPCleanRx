@@ -25,13 +25,13 @@ extension V {
     class UserDetais_View: BaseViewControllerMVP {
         
         deinit {
-            AppLogger.log("\(self.className) was killed")
+            //AppLogger.log("\(self.className) was killed")
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
         var presenter: UserDetais_PresenterProtocol!
         
-        private let _margin: CGFloat = 25
+        private let _margin: CGFloat = Designables.Sizes.Margins.defaultMargin
         private let _imageSize: CGFloat = 100
         
         private lazy var _lblUserName: UILabel = {

@@ -397,7 +397,7 @@ extension AppView.RxTesting {
 
 extension AppView.RxTesting: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return LayoutsSizes.TableViewCell.defaultSize
+        return Designables.Sizes.TableViewCell.defaultSize
     }
 }
 

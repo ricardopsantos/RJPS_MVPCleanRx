@@ -21,29 +21,74 @@ import Domain
 public struct UIKitFactory {
     private init() {}
 
-    public static func textField(baseView: UIView? = nil, title: String="", tag: Int=0) -> UITextField {
+    public static func textField(baseView: UIView? = nil,
+                                 title: String = "") -> UITextField {
         let some = UITextField()
         some.text = title
-        some.tag = tag
+        some.tag = UIKitViewFactoryElementTag.textField.rawValue
         baseView?.addSubview(some)
         return some
     }
 
-    public static func label(baseView: UIView? = nil, title: String="", style: UILabel.LayoutStyle, tag: Int=0) -> UILabel {
+    public static func label(baseView: UIView? = nil,
+                             title: String = "",
+                             style: UILabel.LayoutStyle) -> UILabel {
         let some = UILabel()
         some.text = title
         some.numberOfLines = 0
-        some.tag = tag
+        some.tag =  UIKitViewFactoryElementTag.label.rawValue
         some.layoutStyle = style
         baseView?.addSubview(some)
         return some
     }
 
-    public static func button(baseView: UIView? = nil, title: String="", style: UIButton.LayoutStyle, tag: Int=0) -> UIButton {
+    public static func button(baseView: UIView? = nil,
+                              title: String = "",
+                              style: UIButton.LayoutStyle) -> UIButton {
         let some = UIButton()
-        some.tag = tag
+        some.tag =  UIKitViewFactoryElementTag.button.rawValue
         some.setTitleForAllStates(title)
         some.layoutStyle = style
+        baseView?.addSubview(some)
+        return some
+    }
+
+    public static func scrollView() -> UIScrollView {
+        let some = UIScrollView()
+        some.tag = UIKitViewFactoryElementTag.scrollView.rawValue
+        some.isUserInteractionEnabled = true
+        some.isScrollEnabled = true
+        some.autoresizesSubviews = false
+        some.translatesAutoresizingMaskIntoConstraints = false
+        return some
+    }
+    public static func searchBar(baseView: UIView? = nil) -> CustomSearchBar {
+        let some = CustomSearchBar()
+        baseView?.addSubview(some)
+        some.tintColor = UIColor.App.TopBar.background
+        some.tag =  UIKitViewFactoryElementTag.searchBar.rawValue
+        some.barStyle = .default
+        return some
+    }
+
+    public static func imageView(baseView: UIView? = nil,
+                                 image: UIImage? = nil) -> UIImageView {
+        let some = UIImageView()
+        some.tag =  UIKitViewFactoryElementTag.imageView.rawValue
+        if image != nil {
+            some.image = image
+        }
+        baseView?.addSubview(some)
+        return some
+    }
+
+    public static func tableView(baseView: UIView? = nil,
+                                 cellIdentifier: String = AppConstants.Dev.cellIdentifier) -> UITableView {
+        let some = UITableView()
+        some.tag = UIKitViewFactoryElementTag.tableView.rawValue
+        if !cellIdentifier.trim.isEmpty {
+            some.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        }
         baseView?.addSubview(some)
         return some
     }
@@ -80,44 +125,6 @@ public struct UIKitFactory {
         some.distribution = distribution // determines the layout of the arranged views along the stack’s axis.
         some.spacing      = spacing      // determines the minimum spacing between arranged views.
         some.alignment    = alignment    // determines the layout of the arranged views perpendicular to the stack’s axis.
-        return some
-    }
-
-    public static func scrollView() -> UIScrollView {
-        let some = UIScrollView()
-        some.tag = UIKitViewFactoryElementTag.scrollView.rawValue
-        some.isUserInteractionEnabled = true
-        some.isScrollEnabled = true
-        some.autoresizesSubviews = false
-        some.translatesAutoresizingMaskIntoConstraints = false
-        return some
-    }
-    public static func searchBar(baseView: UIView? = nil, tag: Int=0) -> CustomSearchBar {
-        let some = CustomSearchBar()
-        baseView?.addSubview(some)
-        some.tintColor = UIColor.App.TopBar.background
-        some.tag = tag
-        some.barStyle = .default
-        return some
-    }
-
-    public static func imageView(baseView: UIView? = nil, image: UIImage?=nil, tag: Int=0) -> UIImageView {
-        let some = UIImageView()
-        some.tag = tag
-        if image != nil {
-            some.image = image
-        }
-        baseView?.addSubview(some)
-        return some
-    }
-
-    public static func tableView(baseView: UIView? = nil, tag: Int=0, cellIdentifier: String=AppConstants.Dev.cellIdentifier) -> UITableView {
-        let some = UITableView()
-        some.tag = tag
-        if !cellIdentifier.trim.isEmpty {
-            some.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
-        }
-        baseView?.addSubview(some)
         return some
     }
 
@@ -162,6 +169,4 @@ public struct UIKitFactory {
         bar.view.rjsALayouts.setHeight(BottomBar.defaultHeight())
         return bar
     }
-
 }
-//}

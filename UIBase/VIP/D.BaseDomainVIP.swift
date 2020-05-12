@@ -25,12 +25,12 @@ public protocol BasePresenterVIPProtocol: class {
     var baseViewController: BaseViewControllerVIPProtocol? { get }
     func presentLoading(response: BaseDisplayLogicModels.Loading)
     func presentError(response: BaseDisplayLogicModels.Error)
-    func presenStatus(response: BaseDisplayLogicModels.Status)
+    func presentStatus(response: BaseDisplayLogicModels.Status)
 }
 
 /// Default implementation....
 public extension BasePresenterVIPProtocol {
-    func presenStatus(response: BaseDisplayLogicModels.Status) {
+    func presentStatus(response: BaseDisplayLogicModels.Status) {
         let viewModel = response
         baseViewController?.displayStatus(viewModel: viewModel)
     }
@@ -41,7 +41,6 @@ public extension BasePresenterVIPProtocol {
     }
 
     func presentLoading(response: BaseDisplayLogicModels.Loading) {
-        let viewModel = response
         if let viewController = baseViewController as? UIViewController {
             if response.isLoading {
                 viewController.view.rjs.startActivityIndicator()
@@ -49,7 +48,6 @@ public extension BasePresenterVIPProtocol {
                 viewController.view.rjs.stopActivityIndicator()
             }
         }
-        baseViewController?.displayLoading(viewModel: viewModel)
     }
 }
 

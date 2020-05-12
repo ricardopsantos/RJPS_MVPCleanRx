@@ -25,7 +25,7 @@ public extension V {
     internal class SearchUser_View: BaseViewControllerMVP {
         
         deinit {
-            AppLogger.log("\(self.className) was killed")
+            //AppLogger.log("\(self.className) was killed")
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }

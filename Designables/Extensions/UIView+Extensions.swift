@@ -10,6 +10,15 @@ import Foundation
 import UIKit
 
 public extension UIView {
+
+    func subViewsOf(types: [UIKitViewFactoryElementTag], recursive: Bool) -> [UIView] {
+        var acc: [UIView] = []
+        types.forEach { (some) in
+            acc.append(contentsOf: self.subViewsWith(tag: some.rawValue, recursive: recursive))
+        }
+        return acc
+    }
+
     func subViewsOf(type: UIKitViewFactoryElementTag, recursive: Bool) -> [UIView] {
         return self.subViewsWith(tag: type.rawValue, recursive: recursive)
     }
