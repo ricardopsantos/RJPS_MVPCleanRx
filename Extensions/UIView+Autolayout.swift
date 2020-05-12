@@ -41,26 +41,23 @@ extension AutoLayout {
 
     @available(tvOS 10.0, iOS 10.0, *)
     @discardableResult
-    public func leadingToSuperStackView(offset: CGFloat, priority: UILayoutPriority = .required)  -> TinyConstraints.Constraint? {
-        guard let superView = target.superview as? UIStackView else {
+    public func marginToSuperVerticalStackView(trailing: CGFloat, leading: CGFloat) -> TinyConstraints.Constraints? {
+        guard let maybeStackView = target.superview as? UIStackView, maybeStackView.axis == .vertical else {
             DevTools.AppLogger.warning("Invalid supper view [target.superview]")
             return nil
         }
-        _ = superView
-        //target.setCompressionResistance(.defaultLow, for: .horizontal)
-        return target.autoLayout.leadingToSuperview(offset: offset, priority: priority)
+        let insets: TinyEdgeInsets = TinyEdgeInsets(top: 0, left: trailing, bottom: 0, right: leading)
+        return target.autoLayout.edgesToSuperview(excluding: .init([.top, .bottom]), insets: insets)
     }
 
-    @available(tvOS 10.0, iOS 10.0, *)
     @discardableResult
-    public func trailingToSuperStackView(offset: CGFloat, priority: UILayoutPriority = .required)  -> TinyConstraints.Constraint? {
-        guard let superView = target.superview as? UIStackView else {
+    public func marginToSuperHorizontalStackView(top: CGFloat, bottom: CGFloat) -> TinyConstraints.Constraints? {
+        guard let maybeStackView = target.superview as? UIStackView, maybeStackView.axis == .horizontal else {
             DevTools.AppLogger.warning("Invalid supper view [target.superview]")
             return nil
         }
-        _ = superView
-        //target.setCompressionResistance(.defaultLow, for: .horizontal)
-        return target.autoLayout.trailingToSuperview(offset: offset, priority: priority)
+        let insets: TinyEdgeInsets = TinyEdgeInsets(top: top, left: 0, bottom: bottom, right: 0)
+        return target.autoLayout.edgesToSuperview(excluding: .init([.leading, .trailing]), insets: insets)
     }
 
     @available(tvOS 10.0, iOS 10.0, *)

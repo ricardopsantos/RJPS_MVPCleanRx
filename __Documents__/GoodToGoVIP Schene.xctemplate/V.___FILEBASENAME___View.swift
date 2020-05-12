@@ -112,15 +112,14 @@ extension V {
 
             self.subViewsOf(types: [.button, .label], recursive: true).forEach { (some) in
                 some.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
-               //some.autoLayout.leadingToSuperStackView(offset: defaultMargin)
-               // some.autoLayout.trailingToSuperStackView(offset: defaultMargin)
+                some.autoLayout.marginToSuperVerticalStackView(trailing: defaultMargin, leading: defaultMargin)
             }
-/*
+
             tableView.autoLayout.topToBottom(of: scrollView, offset: Designables.Sizes.Margins.defaultMargin)
             tableView.autoLayout.leadingToSuperview()
             tableView.autoLayout.trailingToSuperview()
             tableView.autoLayout.bottomToSuperview()
-*/
+
         }
 
         // This function is called automatically by super BaseGenericViewVIP
@@ -167,7 +166,7 @@ extension V {
             })
             dataSource.animationConfiguration = AnimationConfiguration(insertAnimation: .fade, reloadAnimation: .fade, deleteAnimation: .fade)
 
-            rxTableItems.asObserver().bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+            //rxTableItems.asObserver().bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
 
             tableView.rx.modelSelected(VM.___VARIABLE_sceneName___.TableItem.self)
                 .observeOn(MainScheduler.instance).subscribe(onNext: { [weak self] some in
@@ -223,6 +222,7 @@ extension V.___VARIABLE_sceneName___View: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionView = TitleTableSectionView(frame: .zero)
         if let sectionItem = try? rxTableItems.value() {
+            guard sectionItem.count > section else { return nil }
             sectionView.title = sectionItem[section].model
         }
         return sectionView

@@ -164,14 +164,14 @@ public extension GoodToGoProgramaticUIUtils where GoodToGoBase: UIImageView {
 
 public extension GoodToGoProgramaticUIUtils where GoodToGoBase: UIView {
 
-    func leadingToSuperStackView(offset: CGFloat) {
+    func marginToSuperVerticalStackView(trailing: CGFloat, leading: CGFloat) {
         let target = self.base
-        target.autoLayout.leadingToSuperStackView(offset: offset)
+        target.autoLayout.marginToSuperVerticalStackView(trailing: trailing, leading: leading)
     }
 
-    func trailingToSuperStackView(offset: CGFloat) {
+    func marginToSuperHorizontalStackView(top: CGFloat, bottom: CGFloat) {
         let target = self.base
-        target.autoLayout.trailingToSuperStackView(offset: offset)
+        target.autoLayout.marginToSuperHorizontalStackView(top: top, bottom: bottom)
     }
 
     func setVisibilityTo(_ value: Bool) {
