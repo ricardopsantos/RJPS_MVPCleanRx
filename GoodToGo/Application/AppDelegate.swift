@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         setup(application: application)
-        self.window?.rootViewController = V.TabBarController()
+        self.window?.rootViewController = VC.TabBarController()
         return true
     }
 

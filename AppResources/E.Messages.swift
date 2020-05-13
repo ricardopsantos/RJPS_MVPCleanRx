@@ -13,10 +13,12 @@ public enum Messages: Int {
     case alert = 0
     case noInternet
     case pleaseTryAgainLater
+    case pleaseWait
     case dismiss
     case ok
     case success
     case no
+    case yes
     case details
     case invalidURL
     case userName
@@ -30,9 +32,10 @@ public enum Messages: Int {
 
     public var localised: String {
         switch self {
+        case .pleaseWait: return AppResources.get("Please wait")
         case .email: return AppResources.get("Email")
         case .welcome: return AppResources.get("Welcome")
-        case .userName: return AppResources.get("Usernames")
+        case .userName: return AppResources.get("Username")
         case .password: return AppResources.get("Password")
         case .invalidPassword: return AppResources.get("Invalid password")
         case .login: return AppResources.get("Login")
@@ -41,6 +44,7 @@ public enum Messages: Int {
         case .dismiss: return  AppResources.get("Dismiss")
         case .alert: return AppResources.get("Alert")
         case .ok: return AppResources.get("OK")
+        case .yes: return AppResources.get("Yes")
         case .success: return AppResources.get("Success")
         case .no: return AppResources.get("NO")
         case .details: return AppResources.get("Details")

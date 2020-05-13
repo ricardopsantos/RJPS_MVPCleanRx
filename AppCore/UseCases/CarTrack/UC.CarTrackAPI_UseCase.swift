@@ -1,8 +1,8 @@
 //
-//  UseCases.swift
+//  CartTrack.swift
 //  AppCore
 //
-//  Created by Ricardo Santos on 09/05/2020.
+//  Created by Ricardo Santos on 13/05/2020.
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
 //
 
@@ -17,24 +17,15 @@ import AppConstants
 import PointFreeFunctions
 import Domain
 
-//
-// Naming convention
-//
-
-// Protocol defined @ Domain
-public protocol SomeProtocolXXXX_UseCaseProtocol {
-    func sayHi()
-}
-
 extension UC {
-    public class SomeProtocolXXXX_UseCase: GenericUseCase, SomeProtocolXXXX_UseCaseProtocol {
+    public class CarTrackAPI_UseCase: GenericUseCase, CarTrackAPI_UseCaseProtocol {
 
         public override init() { super.init() }
 
         public var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
         public var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
 
-        public func sayHi() {
+        public func getUserDetail(userName: String, canUseCache: Bool, completionHandler: @escaping CarTrackAPI_UseCaseCompletionHandler) {
 
         }
     }

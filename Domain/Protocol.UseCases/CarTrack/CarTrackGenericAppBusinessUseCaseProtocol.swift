@@ -7,7 +7,11 @@
 //
 
 import Foundation
+//
+import RJPSLib
+//
 
+public typealias CarTrackGenericAppBusinessUseCaseCompletionHandler = (_ result: Result<Bool>) -> ()
 public protocol CarTrackGenericAppBusinessUseCaseProtocol: class {
-    func validate(user: String, password: String)
+    func validate(user: String, password: String, completionHandler: @escaping CarTrackGenericAppBusinessUseCaseCompletionHandler)
 }

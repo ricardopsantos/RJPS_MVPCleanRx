@@ -1,9 +1,0 @@
-
-
---
--- Releases
---
-
-$ git tag -a V1.0.4 -m "V1.0.4"
-
-$ git push --tags
