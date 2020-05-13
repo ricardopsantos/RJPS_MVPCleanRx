@@ -91,13 +91,6 @@ final class RootAssemblyContainer: Assembly {
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
             return uc
         }
-/*
-        container.register(AppProtocols.someProtocolXXXX_UseCase) { resolver in
-            let uc = CarTrackGenericAppBusinessUseCase()
-            uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
-            uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
-            return uc
-        }*/
 
         //
         // Sample (min)

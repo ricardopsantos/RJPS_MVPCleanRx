@@ -46,7 +46,7 @@ extension WebAPI.GitUser {
         var debugRequest: Bool
         var urlRequest: URLRequest
         var responseType: NetworkClientResponseType
-        var mockedData: String?
+        var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.GitHub.getUser_200 : nil }
 
         init(userName: String) throws {
             let urlString = Target.getUser(userName: userName).endpoint
@@ -58,9 +58,6 @@ extension WebAPI.GitUser {
             responseType      = .json
             debugRequest      = DevTools.devModeIsEnabled
             returnOnMainTread = false
-            if DevTools.FeatureFlag.getFlag(.devTeam_useMockedData) {
-                 mockedData = AppConstants.Mocks.GitHub.getUser_200
-            }
         }
     }
 
@@ -69,7 +66,7 @@ extension WebAPI.GitUser {
         var debugRequest: Bool
         var urlRequest: URLRequest
         var responseType: NetworkClientResponseType
-        var mockedData: String? 
+        var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.GitHub.getUser_200 : nil }
 
         init(userName: String) throws {
             let urlString = Target.getFriends(userName: userName).endpoint
@@ -81,9 +78,6 @@ extension WebAPI.GitUser {
             responseType      = .json
             debugRequest      = DevTools.devModeIsEnabled
             returnOnMainTread = false
-            if DevTools.FeatureFlag.getFlag(.devTeam_useMockedData) {
-                mockedData = AppConstants.Mocks.GitHub.getUser_200
-            }
         }
     }
 }

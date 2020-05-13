@@ -22,7 +22,7 @@ extension WebAPI.Bliss {
         var debugRequest: Bool = DevTools.devModeIsEnabled
         var urlRequest: URLRequest
         var responseType: NetworkClientResponseType
-        var mockedData: String?
+        var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? "{\"status\": \"OK\"}" : nil }
 
         init() throws {
             let urlString = "\(AppConstants.Bliss.URLs.blissAPIBaseUrl)/health"
@@ -32,14 +32,6 @@ extension WebAPI.Bliss {
             urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = "GET"
             responseType = .json
-            if DevTools.FeatureFlag.getFlag(.devTeam_useMockedData) {
-                mockedData =
-                """
-                {
-                "status": "OK"
-                }
-                """
-            }
         }
         
         static let maxNumberOfRetrys = 3
@@ -52,7 +44,7 @@ extension WebAPI.Bliss {
         var debugRequest: Bool = DevTools.devModeIsEnabled
         var urlRequest: URLRequest
         var responseType: NetworkClientResponseType
-        var mockedData: String?
+        var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.Bliss.getQuestions_200 : nil }
 
         init(limit: Int, filter: String, offSet: Int) throws {
             let escaped = filter.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
@@ -63,9 +55,6 @@ extension WebAPI.Bliss {
             urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = "GET"
             responseType = .json
-            if DevTools.FeatureFlag.getFlag(.devTeam_useMockedData) {
-                mockedData = AppConstants.Mocks.Bliss.getQuestions_200
-            }
         }
         
         static let maxNumberOfRetrys = 3
@@ -78,7 +67,7 @@ extension WebAPI.Bliss {
         var debugRequest: Bool = DevTools.devModeIsEnabled
         var urlRequest: URLRequest
         var responseType: NetworkClientResponseType
-        var mockedData: String?
+        var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.Bliss.getQuestions_200 : nil }
 
         init(id: Int) throws {
             let urlString = "\(AppConstants.Bliss.URLs.blissAPIBaseUrl)/questions/\(id)"
@@ -88,9 +77,6 @@ extension WebAPI.Bliss {
             urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = "GET"
             responseType = .json
-            if DevTools.FeatureFlag.getFlag(.devTeam_useMockedData) {
-                mockedData = AppConstants.Mocks.Bliss.getQuestions_200
-            }
         }
         
         static let maxNumberOfRetrys = 3

@@ -24,7 +24,7 @@ public extension DevTools {
             case .devTeam_showToasts:
                 return DevTools.devModeIsEnabled
             case .devTeam_useMockedData:
-                return DevTools.devModeIsEnabled
+                return false
             case .devTeam_doLogs:
                 return DevTools.devModeIsEnabled
             }

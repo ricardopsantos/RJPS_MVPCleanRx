@@ -43,7 +43,7 @@ public extension WebAPI.Employees {
         public var debugRequest: Bool = DevTools.devModeIsEnabled
         public var urlRequest: URLRequest
         public var responseType: NetworkClientResponseType
-        public var mockedData: String?
+        public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.Employees.getEmployees_200 : nil }
 
         public init() throws {
             let urlString = Target.getEmployees.endpoint
@@ -53,9 +53,6 @@ public extension WebAPI.Employees {
             urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = Target.getEmployees.httpMethod
             responseType = .json
-            if DevTools.FeatureFlag.getFlag(.devTeam_useMockedData) {
-                mockedData = AppConstants.Mocks.Employees.getEmployees_200
-            }
         }
         
         public static let maxNumberOfRetrys = 3

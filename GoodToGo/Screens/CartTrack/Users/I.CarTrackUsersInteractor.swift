@@ -68,7 +68,15 @@ extension I.CarTrackUsersInteractor: BaseInteractorVIPMandatoryBusinessLogicProt
         dsSomeKindOfModelA = CarTrackUsersDataStoreModelA(aString: "Passed via DataStoreProtocol @ \(Date())")
 
         requestSomeStuff(request: VM.CarTrackUsers.SomeStuff.Request(userId: ""))
-        
+
+        CarTrackResolver.shared.api?.getUserDetail(userName: "", canUseCache: true, completionHandler: { (result) in
+            switch result {
+            case .success(let results):
+                print(results)
+            case .failure(_):
+                _ = ()
+            }
+        })
     }
 
 }

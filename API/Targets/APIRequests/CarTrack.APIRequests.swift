@@ -43,7 +43,7 @@ extension WebAPI.CarTrack {
         var debugRequest: Bool
         var urlRequest: URLRequest
         var responseType: NetworkClientResponseType
-        var mockedData: String?
+        var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.GitHub.getUser_200 : nil }
 
         init(userName: String) throws {
             let urlString = Target.getUsers.endpoint
@@ -55,9 +55,6 @@ extension WebAPI.CarTrack {
             responseType      = .json
             debugRequest      = DevTools.devModeIsEnabled
             returnOnMainTread = false
-            if DevTools.FeatureFlag.getFlag(.devTeam_useMockedData) {
-                 mockedData = AppConstants.Mocks.GitHub.getUser_200
-            }
         }
     }
 }
