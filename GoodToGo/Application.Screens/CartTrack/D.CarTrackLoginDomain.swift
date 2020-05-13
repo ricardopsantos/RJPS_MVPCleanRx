@@ -29,9 +29,11 @@ import UIBase
 extension E {
     struct CarTrackLoginView {
         enum ScreenLayout {
-            case wrongPassword
-            case canProceed
-            case cantProceed
+            case enterUserCredentials
+            case wrongPassword(errorMessage: String)
+            case invalidEmailFormat(errorMessage: String)
+            case invalidPasswordFormat(errorMessage: String)
+            case invalidEmailFormatAndPasswordFormat(errorMessage1: String, errorMessage2: String)
         }
     }
 }

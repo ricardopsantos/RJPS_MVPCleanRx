@@ -1,7 +1,7 @@
-github "Cokile/CCTextFieldEffects" "v0.1.3"
 github "ReactiveX/RxSwift" "5.1.1"
 github "RxSwiftCommunity/RxDataSources" "4.0.1"
 github "RxSwiftCommunity/RxGesture" "3.0.3"
+github "Skyscanner/SkyFloatingLabelTextField" "3.8.0"
 github "Swinject/Swinject" "2.7.1"
 github "Swinject/SwinjectAutoregistration" "2.7.0"
 github "ricardopsantos/RJPSLib" "03f8557cf9989bc68ca29a1c36297b484830e622"

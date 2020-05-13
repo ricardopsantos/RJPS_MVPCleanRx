@@ -97,7 +97,7 @@ extension VC {
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
 
-            Observable.combineLatest(genericView.rxPassword, genericView.rxPassword).bind { [weak self] (s1, s2) in
+            Observable.combineLatest(genericView.rxPassword, genericView.rxUserName).bind { [weak self] (s1, s2) in
                 guard let s1 = s1, let s2 = s2 else { return }
                 let request = VM.CarTrackLogin.ScreenState.Request(userName: s1, password: s2)
                 self?.interactor?.requestScreenState(request: request)

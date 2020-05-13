@@ -10,6 +10,11 @@
 # brew upgrade carthage
 
 ####################################################################
+# A beautiful and flexible text field control implementation of "Float Label Pattern". Written in Swift.
+# https://github.com/Skyscanner/SkyFloatingLabelTextField
+github "Skyscanner/SkyFloatingLabelTextField"
+
+####################################################################
 
 # Elegant HTTP Networking in Swift
 # https://github.com/Alamofire/Alamofire
@@ -41,7 +46,7 @@ github "scalessec/Toast-Swift" ~> 5.0.1
 # https://github.com/Cokile/CCTextFieldEffects
 # A simple replacement for UITextField.
 
-github "Cokile/CCTextFieldEffects"
+#github "Cokile/CCTextFieldEffects"
 
 ####################################################################
 
@@ -98,6 +103,7 @@ github "Swinject/SwinjectAutoregistration"
 # $(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework
 # $(SRCROOT)/Carthage/Build/iOS/Differentiator.framework
 # $(SRCROOT)/Carthage/Build/iOS/CCTextFieldEffects.framework
+# $(SRCROOT)/Carthage/Build/iOS/SkyFloatingLabelTextField.framework
 
 # *** Fetching Swinject
 # *** Fetching RxGesture

@@ -711,7 +711,6 @@
 		9FB9F97122E4B8CB00D64FD2 /* BlissGenericAppBussiness_UseCaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlissGenericAppBussiness_UseCaseProtocol.swift; sourceTree = "<group>"; };
 		9FB9F97222E4B8CB00D64FD2 /* Bliss_NetWorkRepositoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bliss_NetWorkRepositoryProtocol.swift; sourceTree = "<group>"; };
 		9FB9F97622E520DB00D64FD2 /* Debug.QA.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.QA.xcconfig; sourceTree = "<group>"; };
-		9FBF4B0522BEAE9600E0D1AB /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		9FBF4B0722BEBC3B00E0D1AB /* RJPSLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RJPSLib.framework; path = Carthage/Build/iOS/RJPSLib.framework; sourceTree = "<group>"; };
 		9FC6819A22F9907000D3F281 /* Notes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Notes.md; sourceTree = "<group>"; };
 		9FCF331E22EF18A90074DAB9 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
@@ -817,6 +816,7 @@
 		D7711F75246B5A3500B6963A /* I.CarTrackLoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.CarTrackLoginInteractor.swift; sourceTree = "<group>"; };
 		D7711F76246B5A3500B6963A /* P.CarTrackLoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.CarTrackLoginPresenter.swift; sourceTree = "<group>"; };
 		D7711F83246B697F00B6963A /* UIView+ExtentionShadows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ExtentionShadows.swift"; sourceTree = "<group>"; };
+		D7711F87246B862F00B6963A /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
 		D779A5E9234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.SampleVIP_Presenter.swift; sourceTree = "<group>"; };
 		D779A5EA234FE3A500D3D6F7 /* W.SampleVIP_Worker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W.SampleVIP_Worker.swift; sourceTree = "<group>"; };
 		D779A5EB234FE3A500D3D6F7 /* R.SampleVIP_Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.SampleVIP_Router.swift; sourceTree = "<group>"; };
@@ -1035,7 +1035,6 @@
 				9FACC172223BBD8600576498 /* RxCocoa.framework */,
 				9F103A3E2236C1FE00C57BC0 /* SwinjectAutoregistration.framework */,
 				9F103A0C2236BD1A00C57BC0 /* Swinject.framework */,
-				9FBF4B0522BEAE9600E0D1AB /* Cartfile */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1110,6 +1109,7 @@
 		9F36ADE321B1612600FADBB1 /* __Documents__ */ = {
 			isa = PBXGroup;
 			children = (
+				D7711F87246B862F00B6963A /* Cartfile */,
 				D761FE9A2468304A00BD41A5 /* GoodToGoVIP Schene.xctemplate */,
 				9F55525522E9A73D009364D1 /* README.md */,
 				9F7B2F4421B9451C001F3FFA /* DevNotes.txt */,
@@ -2521,6 +2521,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Differentiator.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CCTextFieldEffects.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SkyFloatingLabelTextField.framework",
 			);
 			outputFileListPaths = (
 			);

@@ -74,7 +74,7 @@ extension P.CarTrackLoginPresenter: CarTrackLoginPresentationLogicProtocol {
     func presentScreenInitialState(response: VM.CarTrackLogin.ScreenInitialState.Response) {
         let userName = response.userName
         let password = response.password
-        let screenLayout = E.CarTrackLoginView.ScreenLayout.cantProceed
+        let screenLayout = E.CarTrackLoginView.ScreenLayout.invalidEmailFormat(errorMessage: "errorMessage")
         let title = Messages.welcome.localised
         let viewModel = VM.CarTrackLogin.ScreenInitialState.ViewModel(title: title,
                                                                       userName: userName,

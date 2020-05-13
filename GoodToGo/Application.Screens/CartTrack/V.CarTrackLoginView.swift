@@ -14,6 +14,7 @@ import RxSwift
 import RxDataSources
 import TinyConstraints
 import CCTextFieldEffects
+import SkyFloatingLabelTextField
 //
 import AppConstants
 import AppTheme
@@ -65,21 +66,21 @@ extension V {
             UIKitFactory.button(title: Messages.login.localised, style: .regular)
         }()
 
-        private lazy var txtPassword: MadokaTextField = {
-            let some = MadokaTextField()
-            some.placeholder = Messages.password.localised
-            some.didEndEditingHandler = { [weak self] in
-                self?.rxUserName.onNext(some.text)
-            }
+        private lazy var txtPassword: SkyFloatingLabelTextField = {
+            let some = SkyFloatingLabelTextField(frame: CGRect(x: 10, y: 10, width: 120, height: 45))
+            some.placeholder = "Password"
+            some.title = "Your Password"
+            some.errorColor = UIColor.red
+            some.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
             return some
         }()
 
-        private lazy var txtUserName: MadokaTextField = {
-            let some = MadokaTextField()
-            some.placeholder = Messages.userName.localised
-            some.didEndEditingHandler = { [weak self] in
-                self?.rxPassword.onNext(some.text)
-            }
+        private lazy var txtUserName: SkyFloatingLabelTextField = {
+            let some = SkyFloatingLabelTextField(frame: CGRect(x: 10, y: 10, width: 120, height: 45))
+            some.placeholder = "Email"
+            some.title = "Email address"
+            some.errorColor = UIColor.red
+            some.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
             return some
         }()
 
@@ -129,14 +130,6 @@ extension V {
             self.subViewsOf(types: [.label], recursive: true).forEach { (some) in
                 (some as? UILabel)?.textAlignment = .center
             }
-            func layout(some: MadokaTextField) {
-                some.textColor = AppColors.lblTextColor.withAlphaComponent(1)
-                some.placeholderColor = some.textColor?.withAlphaComponent(0.8)
-                some.font = AppFonts.regular(size: .regular)
-                some.placeholderFontScale = 0.75
-            }
-            layout(some: txtUserName)
-            layout(some: txtPassword)
         }
 
         override func setupColorsAndStyles() {
@@ -146,7 +139,21 @@ extension V {
         // Order in View life-cycle : 2
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
+            let changed1 = txtPassword.rx.text.orEmpty.map { $0.count >= 1 }//.distinctUntilChanged()
+            let changed2    = txtUserName.rx.text.orEmpty.map({ $0.count >= 1 })//.distinctUntilChanged()
+            let isButtonEnabled = Observable.combineLatest(changed1, changed2) { $0 || $1 }
+            isButtonEnabled.asObservable().bind { (some) in
+                print("changed \(some)")
+            }.disposed(by: disposeBag)
+        }
 
+        // This will notify us when something has changed on the textfield
+        @objc func textFieldDidChange(_ textfield: UITextField) {
+            if let floatingLabelTextField = txtUserName as? SkyFloatingLabelTextField {
+                rxUserName.onNext(floatingLabelTextField.text)
+            } else if let floatingLabelTextField = txtPassword as? SkyFloatingLabelTextField {
+                rxPassword.onNext(floatingLabelTextField.text)
+            }
         }
 
         // MARK: - Custom Getter/Setters
@@ -166,21 +173,24 @@ extension V {
             screenLayout = viewModel.screenLayout
         }
 
-        var screenLayout: E.CarTrackLoginView.ScreenLayout = .cantProceed {
+        private func setErrorMessage(_ message: String, forField: SkyFloatingLabelTextField) {
+            forField.errorMessage = message
+        }
+
+        var screenLayout: E.CarTrackLoginView.ScreenLayout = .enterUserCredentials {
             didSet {
                 switch screenLayout {
-                case .canProceed:
-                    lblErrorMessage.fadeTo(0)
-                    btnLogin.fadeTo(1)
-                    btnLogin.isUserInteractionEnabled = true
-                case .wrongPassword:
-                    lblErrorMessage.fadeTo(1)
-                    btnLogin.fadeTo(1)
-                    btnLogin.isUserInteractionEnabled = true
-                case .cantProceed:
-                    lblErrorMessage.fadeTo(0)
-                    btnLogin.fadeTo(0.5)
-                    btnLogin.isUserInteractionEnabled = false
+                case .enterUserCredentials:
+                    btnLogin.fadeTo(0.8)
+                case .wrongPassword(errorMessage: let errorMessage):
+                    lblErrorMessage.text = errorMessage
+                case .invalidEmailFormat(errorMessage: let errorMessage):
+                    setErrorMessage(errorMessage, forField: txtUserName)
+                    setErrorMessage("", forField: txtPassword)
+                case .invalidPasswordFormat(errorMessage: let errorMessage):
+                    _ = 1
+                case .invalidEmailFormatAndPasswordFormat(errorMessage1: let errorMessage1, errorMessage2: let errorMessage2):
+                    _ = 1
                 }
             }
         }
