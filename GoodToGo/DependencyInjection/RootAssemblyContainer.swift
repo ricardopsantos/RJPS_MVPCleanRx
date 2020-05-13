@@ -21,11 +21,12 @@ struct RootAssemblyContainerProtocols {
     //
     // Repositories
     //
-    static let networkClient                    = NetworkClient_Protocol.self
-    static let generic_CacheRepository          = CacheRepositoryProtocol.self
-    static let generic_LocalStorageRepository   = LocalStorageRepositoryProtocol.self
-    static let bliss_NetWorkRepository          = Bliss_NetWorkRepositoryProtocol.self
-    static let gitUser_NetWorkRepository        = GitUser_NetWorkRepositoryProtocol.self
+    static let networkClient                      = NetworkClient_Protocol.self
+    static let generic_CacheRepository            = CacheRepositoryProtocol.self
+    static let generic_LocalStorageRepository     = LocalStorageRepositoryProtocol.self
+    static let bliss_NetWorkRepository            = Bliss_NetWorkRepositoryProtocol.self
+    static let gitUser_NetWorkRepository          = GitUser_NetWorkRepositoryProtocol.self
+    static let carTrack_NetWorkRepository         = CarTrack_NetWorkRepositoryProtocol.self
 
     //
     // Use Cases
@@ -69,9 +70,20 @@ final class RootAssemblyContainer: Assembly {
         container.autoregister(AppProtocols.bliss_NetWorkRepository,
                                initializer: WebAPI.Bliss.NetWorkRepository.init).inObjectScope(.container)
 
+        container.autoregister(AppProtocols.carTrack_NetWorkRepository,
+                               initializer: WebAPI.CarTrack.NetWorkRepository.init).inObjectScope(.container)
+
         //
         // CarTrack
         //
+
+        container.register(AppProtocols.carTrackAPI_UseCase) { resolver in
+            let uc = UC.CarTrackAPI_UseCase()
+            uc.repositoryNetwork               = resolver.resolve(AppProtocols.carTrack_NetWorkRepository)
+            uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
+            uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
+            return uc
+        }
 
         container.register(AppProtocols.carTrackGenericAppBusiness_UseCase) { resolver in
             let uc = UC.CarTrackGenericAppBusinessUseCase()

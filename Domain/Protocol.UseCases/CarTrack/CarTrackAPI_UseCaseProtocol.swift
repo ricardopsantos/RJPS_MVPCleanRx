@@ -9,7 +9,7 @@
 import Foundation
 import RJPSLib
 
-public typealias CarTrackAPI_UseCaseCompletionHandler = (_ result: Result<[GitHub.UserResponseDto]>) -> Void
+public typealias CarTrackAPI_UseCaseCompletionHandler = (_ result: Result<[Any]>) -> Void
 
 public protocol CarTrackAPI_UseCaseProtocol: class {
     func getUserDetail(userName: String, canUseCache: Bool, completionHandler: @escaping CarTrackAPI_UseCaseCompletionHandler)

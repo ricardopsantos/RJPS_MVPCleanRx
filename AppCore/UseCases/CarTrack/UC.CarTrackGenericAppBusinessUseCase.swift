@@ -30,7 +30,7 @@ extension UC {
                              completionHandler: @escaping CarTrackGenericAppBusinessUseCaseCompletionHandler) {
             // Simulate some kind of API call
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            DispatchQueue.executeWithDelay(delay: 3) { 
+            DispatchQueue.executeWithDelay(delay: 1) { 
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 let kUserName = "ricardo@gmail.com" //RJSLib.Storages.Keychain.readFromKeychain("username")
                 let kPassword = "12345"             // RJSLib.Storages.Keychain.readFromKeychain("password")

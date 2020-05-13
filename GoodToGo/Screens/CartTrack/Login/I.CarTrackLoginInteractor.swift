@@ -85,8 +85,9 @@ extension I.CarTrackLoginInteractor: CarTrackLoginBusinessLogicProtocol {
             presenter?.presentLogin(response: response)
         }
         func presentError() {
+            // This logic message should be on the presenter!
             presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
-            let response = BaseDisplayLogicModels.Error(title: Messages.invalidUserCrededentials.localised)
+            let response = BaseDisplayLogicModels.Error(title: "", message: Messages.invalidUserCrededentials.localised)
             presenter?.presentError(response: response)
         }
         presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true, message: Messages.alert.localised))
@@ -94,7 +95,7 @@ extension I.CarTrackLoginInteractor: CarTrackLoginBusinessLogicProtocol {
                                                           password: password,
                                                           completionHandler: { (result) in
                                                             switch result {
-                                                            case .success: routeToNext()
+                                                            case .success(let isValid): if isValid { routeToNext() } else { presentError() }
                                                             case .failure: presentError()
                                                             }
         })
