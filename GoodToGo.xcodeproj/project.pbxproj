@@ -2520,7 +2520,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/ToastSwiftFramework.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Differentiator.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/CCTextFieldEffects.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SkyFloatingLabelTextField.framework",
 			);
 			outputFileListPaths = (

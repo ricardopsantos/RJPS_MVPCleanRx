@@ -53,8 +53,9 @@ extension I.CarTrackLoginInteractor: BaseInteractorVIPMandatoryBusinessLogicProt
     /// When the screen is loaded, this function is responsible to bind the View with some (temporary or final) data
     /// till the user have all the data loaded on the view. This will improve user experience.
     func requestScreenInitialState() {
-        let storedUsername = "ricardo"
-        let response = VM.CarTrackLogin.ScreenInitialState.Response(userName: storedUsername, password: "")
+        let storedUsername = ""
+        let password = ""
+        let response = VM.CarTrackLogin.ScreenInitialState.Response(userName: storedUsername, password: password)
         presenter?.presentScreenInitialState(response: response)
         presenter?.presentNextButtonState(response: VM.CarTrackLogin.NextButtonState.Response(isEnabled: false))
     }
@@ -64,7 +65,13 @@ extension I.CarTrackLoginInteractor: BaseInteractorVIPMandatoryBusinessLogicProt
 // MARK: Private Stuff
 
 extension I.CarTrackLoginInteractor {
-
+    private func presentNextButtonState() {
+        guard let password = password, let userName = userName else { return }
+        let passwordIsValidInShape = password.count >= 5
+        let emailIsValidInShape    = userName.isValidEmail
+        let userCanTryToContinue   = emailIsValidInShape && passwordIsValidInShape
+        self.presenter?.presentNextButtonState(response: VM.CarTrackLogin.NextButtonState.Response(isEnabled: userCanTryToContinue))
+    }
 }
 
 // MARK: BusinessLogicProtocol
@@ -81,17 +88,50 @@ extension I.CarTrackLoginInteractor: CarTrackLoginBusinessLogicProtocol {
 
         let passwordIsSelected     = request.txtUsernameIsFirstResponder
         let userNameIsSelected     = request.txtPasswordIsFirstResponder
-        let passwordIsValidInShape = password!.count >= 5 && !passwordIsSelected
-        let emailIsValidInShape    = userName!.isValidEmail && !userNameIsSelected
-        let emailIsNotEmpty        = userName!.count > 0
-        let passwordIsNotEmpty     = password!.count > 0
-        let response = VM.CarTrackLogin.ScreenState.Response(passwordIsValidInShape: passwordIsValidInShape,
-                                                             emailIsValidInShape: emailIsValidInShape,
-                                                             emailIsNotEmpty: emailIsNotEmpty,
-                                                             passwordIsNotEmpty: passwordIsNotEmpty)
-        self.presenter?.presentScreenState(response: response)
-        let userCanTryToContinue = emailIsValidInShape && passwordIsValidInShape
-        self.presenter?.presentNextButtonState(response: VM.CarTrackLogin.NextButtonState.Response(isEnabled: userCanTryToContinue))
+        let emailIsEmpty        = userName!.trim.count == 0
+        let passwordIsEmpty     = password!.trim.count == 0
+
+        var emailIsValid    = true
+        var passwordIsValid = true
+
+        func isValid(somePassword: String) -> Bool {
+            return somePassword.count >= 5
+        }
+        var response: VM.CarTrackLogin.ScreenState.Response?
+
+        //print("emailIsNotEmpty: \(emailIsNotEmpty) | passwordIsNotEmpty:\(passwordIsNotEmpty)")
+        if emailIsEmpty && passwordIsEmpty {
+            //
+            // Booth fields are empty...
+            //
+            response = VM.CarTrackLogin.ScreenState.Response(emailIsValid: true, passwordIsValid: true)
+        } else if passwordIsSelected {
+            //
+            // Password is being edited
+            //
+            let usernameIsValid = emailIsEmpty ? true : userName!.isValidEmail // if not empty, perform validation
+            let passwordIsValid = isValid(somePassword: password!) || passwordIsEmpty
+            response = VM.CarTrackLogin.ScreenState.Response(emailIsValid: usernameIsValid, passwordIsValid: passwordIsValid)
+        } else if userNameIsSelected {
+            //
+            // Username is being edited
+            //
+            let passwordIsValid = passwordIsEmpty ? true : isValid(somePassword: password!)  // if not empty, perform validation
+            let usernameIsValid    = userName!.isValidEmail || emailIsEmpty
+            response = VM.CarTrackLogin.ScreenState.Response(emailIsValid: usernameIsValid, passwordIsValid: passwordIsValid)
+        } else {
+            //
+            // None of the fields are being edited
+            //
+            let emailIsValid    = emailIsEmpty ? true : userName!.isValidEmail               // if not empty, perform validation
+            let passwordIsValid = passwordIsEmpty ? true : isValid(somePassword: password!)  // if not empty, perform validation
+            response = VM.CarTrackLogin.ScreenState.Response(emailIsValid: emailIsValid, passwordIsValid: passwordIsValid)
+        }
+        if let response = response {
+            print(response)
+            self.presenter?.presentScreenState(response: response)
+        }
+        presentNextButtonState()
     }
 
 }

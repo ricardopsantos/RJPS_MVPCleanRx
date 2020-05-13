@@ -33,10 +33,15 @@ extension R {
 // MARK: RoutingLogicProtocol
 
 extension R.CarTrackLoginRouter: CarTrackLoginRoutingLogicProtocol {
+
     func dismissMe() {
         viewController?.dismissMe()
     }
 
+    func routeToNextScreen() {
+
+    }
+    
     func routeToTemplateWithDataStore() {
         func passDataToSomewhere(source: CarTrackLoginDataStoreProtocol, destination: inout CarTrackLoginDataStoreProtocol) {
             destination.dsSomeKindOfModelA = source.dsSomeKindOfModelA

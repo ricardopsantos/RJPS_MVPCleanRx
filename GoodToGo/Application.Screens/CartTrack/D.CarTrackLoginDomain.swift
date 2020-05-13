@@ -81,6 +81,7 @@ protocol CarTrackLoginRoutingLogicProtocol {
     // Naming convention : func routeTo__XXX__MaybeSomeExtraInfo()
     func routeToTemplateWithParentDataStore()
     func routeToTemplateWithDataStore()
+    func routeToNextScreen()
 }
 
 //
@@ -139,10 +140,8 @@ extension VM {
                 let txtPasswordIsFirstResponder: Bool
             }
             struct Response {
-                let passwordIsValidInShape: Bool
-                let emailIsValidInShape: Bool
-                let emailIsNotEmpty: Bool
-                let passwordIsNotEmpty: Bool
+                let emailIsValid: Bool
+                let passwordIsValid: Bool
             }
             struct ViewModel {
                 let layout: E.CarTrackLoginView.ScreenLayout

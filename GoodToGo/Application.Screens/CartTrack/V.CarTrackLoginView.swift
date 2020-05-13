@@ -13,7 +13,6 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 import TinyConstraints
-import CCTextFieldEffects
 import SkyFloatingLabelTextField
 //
 import AppConstants
@@ -194,7 +193,7 @@ extension V {
                     setErrorMessage("", forField: txtPassword)
                 case .invalidPasswordFormat(errorMessage: let errorMessage):
                     setErrorMessage(errorMessage, forField: txtPassword)
-                    setErrorMessage("", forField: txtPassword)
+                    setErrorMessage("", forField: txtUserName)
                 case .invalidEmailFormatAndPasswordFormat(passwordErrorMessage: let passwordErrorMessage, emailErrorMessage: let emailErrorMessage):
                     setErrorMessage(emailErrorMessage, forField: txtUserName)
                     setErrorMessage(passwordErrorMessage, forField: txtPassword)

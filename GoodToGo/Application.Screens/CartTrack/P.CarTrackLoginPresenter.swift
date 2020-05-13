@@ -72,11 +72,37 @@ extension P.CarTrackLoginPresenter: CarTrackLoginPresentationLogicProtocol {
     // Used By Interactor (exclusively)
     func presentScreenState(response: VM.CarTrackLogin.ScreenState.Response) {
 
+        let emailIsValid    = response.emailIsValid
+        let passwordIsValid = response.passwordIsValid
+       // print("emailIsValid: \(emailIsValid) | passwordIsValid: \(passwordIsValid)")
+        var layout: E.CarTrackLoginView.ScreenLayout = .allFieldsAreValid
+        if emailIsValid && !passwordIsValid {
+            //
+            // Invalid password
+            //
+            layout = .invalidPasswordFormat(errorMessage: Messages.invalidPassword.localised)
+        } else if !emailIsValid && passwordIsValid {
+            //
+            // Invalid email
+            //
+            layout = .invalidEmailFormat(errorMessage: Messages.invalidEmail.localised)
+        } else if !emailIsValid && !passwordIsValid {
+            //
+            // Invalid email and password
+            //
+            layout = .invalidEmailFormatAndPasswordFormat(passwordErrorMessage: Messages.invalidPassword.localised, emailErrorMessage: Messages.invalidEmail.localised)
+        } else {
+            //
+            // All valid
+            //
+            layout = .allFieldsAreValid
+        }
+/*
         var layout: E.CarTrackLoginView.ScreenLayout = .enterUserCredentials
-        let fieldsHaveValues = response.emailIsNotEmpty || response.passwordIsNotEmpty
+        let boothFieldsHaveValues = response.emailIsNotEmpty && response.passwordIsNotEmpty
         let invalidEmail    = !response.emailIsValidInShape && !response.emailIsNotEmpty
         let invalidPassword = !response.emailIsValidInShape && !response.emailIsNotEmpty
-        if fieldsHaveValues {
+        if boothFieldsHaveValues {
             if invalidPassword && !invalidEmail {
                 // Invalid password
                 layout = .invalidPasswordFormat(errorMessage: Messages.invalidPassword.localised)
@@ -91,7 +117,7 @@ extension P.CarTrackLoginPresenter: CarTrackLoginPresentationLogicProtocol {
             }
         } else {
             layout = .enterUserCredentials
-        }
+        }*/
         let viewModel = VM.CarTrackLogin.ScreenState.ViewModel(layout: layout)
         viewController?.displayScreenState(viewModel: viewModel)
 

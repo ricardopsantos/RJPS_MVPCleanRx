@@ -43,12 +43,6 @@ github "roberthein/TinyConstraints"
 github "scalessec/Toast-Swift" ~> 5.0.1
 
 ####################################################################
-# https://github.com/Cokile/CCTextFieldEffects
-# A simple replacement for UITextField.
-
-#github "Cokile/CCTextFieldEffects"
-
-####################################################################
 
 # A Swift Autolayout DSL for iOS & OS X http://snapkit.io
 # https://github.com/SnapKit/SnapKit
@@ -102,7 +96,6 @@ github "Swinject/SwinjectAutoregistration"
 # $(SRCROOT)/Carthage/Build/iOS/ToastSwiftFramework.framework
 # $(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework
 # $(SRCROOT)/Carthage/Build/iOS/Differentiator.framework
-# $(SRCROOT)/Carthage/Build/iOS/CCTextFieldEffects.framework
 # $(SRCROOT)/Carthage/Build/iOS/SkyFloatingLabelTextField.framework
 
 # *** Fetching Swinject

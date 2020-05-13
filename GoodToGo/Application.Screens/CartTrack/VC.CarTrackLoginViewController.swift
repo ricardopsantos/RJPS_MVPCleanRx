@@ -121,7 +121,9 @@ extension VC {
 
             #warning("adicionar um delay desde que parou de escrever")
             let observable1 = genericView.rxTxtPassword.value.asObservable()
+                .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
             let observable2 = genericView.rxTxtUsername.value.asObservable()
+                .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
             Observable.combineLatest(observable1, observable2).asObservable().bind { [weak self] (password, userName) in
                 guard let self = self else { return }
                 guard self.isVisible else { return }
