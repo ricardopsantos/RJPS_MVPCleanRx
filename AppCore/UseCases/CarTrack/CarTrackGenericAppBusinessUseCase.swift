@@ -19,6 +19,10 @@ import Domain
 
 public class CarTrackGenericAppBusinessUseCase: GenericUseCase, CarTrackGenericAppBusinessUseCaseProtocol {
     public override init() { super.init() }
+
+    public var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
+    public var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
+
     public func validate(user: String, password: String) {
         
     }

@@ -73,7 +73,7 @@ final class RootAssemblyContainer: Assembly {
         // CarTrack
         //
 
-        container.register(AppProtocols.someProtocolXXXX_UseCase) { resolver in
+        container.register(AppProtocols.carTrackGenericAppBusiness_UseCase) { resolver in
             let uc = CarTrackGenericAppBusinessUseCase()
             uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)

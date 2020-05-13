@@ -19,6 +19,11 @@ import Domain
 
 public class CarTrackAPI_UseCase: GenericUseCase, CarTrackAPI_UseCaseProtocol {
 
+    public override init() { super.init() }
+
+    public var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
+    public var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
+    
     public func getUserDetail(userName: String, canUseCache: Bool, completionHandler: @escaping CarTrackAPI_UseCaseCompletionHandler) {
 
     }
