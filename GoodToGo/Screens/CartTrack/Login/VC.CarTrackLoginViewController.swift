@@ -11,6 +11,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 import TinyConstraints
+import Material
 //
 import AppConstants
 import AppTheme
@@ -139,6 +140,9 @@ extension VC {
 
             genericView.rxBtnLoginTap
                 .do(onNext: { [weak self] in
+                    self?.genericView.subViewsWith(tag: UIKitViewFactoryElementTag.label.rawValue, recursive: true).forEach({ (some) in
+                           (some as? UITextField)?.resignFirstResponder()
+                       })
                     let request = VM.CarTrackLogin.Login.Request()
                     self?.interactor?.requestLogin(request: request)
                 })

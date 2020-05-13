@@ -154,11 +154,10 @@ public extension BaseViewControllerMVP {
 
 extension BaseViewControllerMVP {
 
-    private func label(baseView: UIView? = nil, title: String="", style: UILabel.LayoutStyle, tag: Int=0) -> UILabel {
+    private func label(baseView: UIView? = nil, title: String="", style: UILabel.LayoutStyle) -> UILabel {
         let some = UILabel()
         some.text = title
         some.numberOfLines = 0
-        some.tag = tag
         some.layoutStyle = style
         baseView?.addSubview(some)
         return some

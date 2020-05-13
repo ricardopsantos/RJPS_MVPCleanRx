@@ -80,10 +80,12 @@ extension I.CarTrackLoginInteractor: CarTrackLoginBusinessLogicProtocol {
             return
         }
         func routeToNext() {
+            presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
             let response = VM.CarTrackLogin.Login.Response(success: true)
             presenter?.presentLogin(response: response)
         }
         func presentError() {
+            presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
             let response = BaseDisplayLogicModels.Error(title: Messages.invalidUserCrededentials.localised)
             presenter?.presentError(response: response)
         }

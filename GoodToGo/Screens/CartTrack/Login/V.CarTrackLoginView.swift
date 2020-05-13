@@ -14,6 +14,8 @@ import RxSwift
 import RxDataSources
 import TinyConstraints
 import SkyFloatingLabelTextField
+import Material
+import Motion
 //
 import AppConstants
 import AppTheme
@@ -62,7 +64,10 @@ extension V {
         }()
 
         private lazy var btnLogin: UIButton = {
-            UIKitFactory.button(title: Messages.login.localised, style: .regular)
+            let button = RaisedButton(title: Messages.login.localised, titleColor: .white)
+            button.pulseColor = .white
+            button.backgroundColor = AppColors.TopBar.background
+            return button
         }()
 
         private lazy var txtPassword: SkyFloatingLabelTextField = {
@@ -70,6 +75,9 @@ extension V {
             some.placeholder = "Your \(Messages.password.localised)"
             some.title = Messages.password.localised
             some.errorColor = AppColors.error
+            some.titleColor = AppColors.lblTextColor
+            some.textColor = AppColors.lblTextColor
+            some.tag = UIKitViewFactoryElementTag.textField.rawValue
             some.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
             return some
         }()
@@ -79,6 +87,8 @@ extension V {
             some.placeholder = "Your \(Messages.email.localised)"
             some.title = Messages.email.localised
             some.errorColor = AppColors.error
+            some.textColor = AppColors.lblTextColor
+            some.tag = UIKitViewFactoryElementTag.textField.rawValue
             some.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
             return some
         }()
@@ -90,9 +100,11 @@ extension V {
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 1/3 : JUST to add stuff to the view....
         override func prepareLayoutCreateHierarchy() {
+
             addSubview(scrollView)
             scrollView.addSubview(stackViewVLevel1)
             stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: TopBar.defaultHeight)
+            stackViewVLevel1.uiUtils.addArrangedSeparator()
             stackViewVLevel1.uiUtils.addArrangedSeparator()
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(txtUserName)
             stackViewVLevel1.uiUtils.addArrangedSeparator()
@@ -168,7 +180,7 @@ extension V {
             if value {
                 btnLogin.fadeTo(1)
             } else {
-                btnLogin.fadeTo(0.5)
+                btnLogin.fadeTo(0.2)
             }
         }
         func setupWith(nextButtonState viewModel: VM.CarTrackLogin.NextButtonState.ViewModel) {

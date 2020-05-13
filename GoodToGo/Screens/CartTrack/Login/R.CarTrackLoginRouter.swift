@@ -39,7 +39,8 @@ extension R.CarTrackLoginRouter: CarTrackLoginRoutingLogicProtocol {
     }
 
     func routeToNextScreen() {
-
+        let viewController = VC.CarTrackUsersViewController()
+        viewController.present(viewController, animated: true) { }
     }
     
     func routeToTemplateWithDataStore() {
