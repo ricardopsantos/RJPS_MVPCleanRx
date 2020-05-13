@@ -1,5 +1,5 @@
 //
-//  I.LoginInteractor.swift
+//  I.CarTrackLoginInteractor.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 12/05/2020.
@@ -21,6 +21,7 @@ import Domain
 import Extensions
 import PointFreeFunctions
 import UIBase
+import AppResources
 
 //
 // Interactor will fetch the Domain objects, (from DataManager or WebAPI) and return that response
@@ -32,71 +33,71 @@ import UIBase
 //
 
 extension I {
-    class LoginInteractor: BaseInteractorVIP, LoginDataStoreProtocol {
+    class CarTrackLoginInteractor: BaseInteractorVIP, CarTrackLoginDataStoreProtocol {
 
-        var presenter: LoginPresentationLogicProtocol?
+        var presenter: CarTrackLoginPresentationLogicProtocol?
         weak var basePresenter: BasePresenterVIPProtocol? { return presenter }
 
         // DataStoreProtocol Protocol vars...
-        var dsSomeKindOfModelA: LoginDataStoreModelA?
-        var dsSomeKindOfModelB: LoginDataStoreModelB?
+        var dsSomeKindOfModelA: CarTrackLoginDataStoreModelA?
+        var dsSomeKindOfModelB: CarTrackLoginDataStoreModelB?
     }
 }
 
 // MARK: Interator Mandatory BusinessLogicProtocol
 
-extension I.LoginInteractor: BaseInteractorVIPMandatoryBusinessLogicProtocol {
+extension I.CarTrackLoginInteractor: BaseInteractorVIPMandatoryBusinessLogicProtocol {
 
     /// When the screen is loaded, this function is responsible to bind the View with some (temporary or final) data
     /// till the user have all the data loaded on the view. This will improve user experience.
     func requestScreenInitialState() {
-        var response: VM.Login.ScreenInitialState.Response!
+        var response: VM.CarTrackLogin.ScreenInitialState.Response!
         if let dataPassing = dsSomeKindOfModelA {
             // Some data was passed via Router, lets use it...
             let title = "Template Scene 2"
             let subTitle = "Some data was passed!\nScroll me\n\n\n\n\n\(dataPassing)\n\n\n"
-            response = VM.Login.ScreenInitialState.Response(title: title,
+            response = VM.CarTrackLogin.ScreenInitialState.Response(title: title,
                                                                                subTitle: subTitle)
         } else {
-            response = VM.Login.ScreenInitialState.Response(title: "Template Scene 1",
+            response = VM.CarTrackLogin.ScreenInitialState.Response(title: "Template Scene 1",
                                                                                subTitle: "Tap one of the buttons")
         }
         presenter?.presentScreenInitialState(response: response)
 
         // Update Model for future use
-        dsSomeKindOfModelA = LoginDataStoreModelA(aString: "Passed via DataStoreProtocol @ \(Date())")
+        dsSomeKindOfModelA = CarTrackLoginDataStoreModelA(aString: "Passed via DataStoreProtocol @ \(Date())")
 
-        requestSomeStuff(request: VM.Login.SomeStuff.Request(userId: ""))
+        requestSomeStuff(request: VM.CarTrackLogin.SomeStuff.Request(userId: ""))
     }
 
 }
 
 // MARK: Private Stuff
 
-extension I.LoginInteractor {
+extension I.CarTrackLoginInteractor {
 
 }
 
 // MARK: BusinessLogicProtocol
 
-extension I.LoginInteractor: LoginBusinessLogicProtocol {
+extension I.CarTrackLoginInteractor: CarTrackLoginBusinessLogicProtocol {
 
     // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
     // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
     // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
-    func requestSomeStuff(request: VM.Login.SomeStuff.Request) {
+    func requestSomeStuff(request: VM.CarTrackLogin.SomeStuff.Request) {
 
-        presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true, message: ""))
-        presenter?.presentError(response: BaseDisplayLogicModels.Error(title: "asd", message: "asd"))
-        presenter?.presentStatus(response: BaseDisplayLogicModels.Status(message: "123123"))
-        presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true, message: ""))
-        DispatchQueue.executeWithDelay(delay: 1) { [weak self] in
+        presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
+        DispatchQueue.executeWithDelay(delay: 3) { [weak self] in
             let mockA1 = TemplateModel(id: "some id 1", state: "state_a - \(Date())")
-            let response = VM.Login.SomeStuff.Response(listA: [mockA1],
-                                                                          listB: [mockA1],
+            let mockA2 = TemplateModel(id: "some id 2", state: "state_a - \(Date())")
+            let response = VM.CarTrackLogin.SomeStuff.Response(listA: [mockA1],
+                                                                          listB: [mockA2],
                                                                           subTitle: "New subtitle \(Date())")
             self?.presenter?.presentSomeStuff(response: response)
-            self?.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false, message: ""))
+            self?.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
+            //self?.presenter?.presentError(response: BaseDisplayLogicModels.Error(title: "Messages.error.localised, message: "Error message"))
+            self?.presenter?.presentStatus(response: BaseDisplayLogicModels.Status(message: Messages.success.localised))
         }
     }
 

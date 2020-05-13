@@ -1,5 +1,5 @@
 //
-//  P.LoginPresenter.swift
+//  P.CarTrackLoginPresenter.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 12/05/2020.
@@ -35,8 +35,8 @@ import UIBase
 //
 
 extension P {
-    class LoginPresenter: BasePresenterVIP {
-        weak var viewController: (LoginDisplayLogicProtocol)?
+    class CarTrackLoginPresenter: BasePresenterVIP {
+        weak var viewController: (CarTrackLoginDisplayLogicProtocol)?
 
         override weak var baseViewController: BaseViewControllerVIPProtocol? {
             return viewController
@@ -46,9 +46,12 @@ extension P {
 
 // MARK: PresentationLogicProtocol
 
-extension P.LoginPresenter {
-/*
-    #warning("colocar em extensao")
+extension P.CarTrackLoginPresenter {
+
+    //
+    // Do you need to override this? Its allready implemented on a Protocol Extension
+    //
+    /*
     func presentStatus(response: BaseDisplayLogicModels.Status) {
         let viewModel = response
         baseDisplayLogic?.displayStatus(viewModel: viewModel)
@@ -67,38 +70,38 @@ extension P.LoginPresenter {
 
 // MARK: PresentationLogicProtocol
 
-extension P.LoginPresenter: LoginPresentationLogicProtocol {
+extension P.CarTrackLoginPresenter: CarTrackLoginPresentationLogicProtocol {
 
     // Used By Interactor (exclusively)
-    func presentScreenInitialState(response: VM.Login.ScreenInitialState.Response) {
+    func presentScreenInitialState(response: VM.CarTrackLogin.ScreenInitialState.Response) {
         let title = response.title.uppercased()
         let subTitle = response.subTitle.lowercased()
-        let viewModel = VM.Login.ScreenInitialState.ViewModel(title: title,
+        let viewModel = VM.CarTrackLogin.ScreenInitialState.ViewModel(title: title,
                                                                                  subTitle: subTitle,
                                                                                  screenLayout: .layoutA)
         viewController?.displayScreenInitialState(viewModel: viewModel)
     }
 
     // Used By Interactor (exclusively)
-    func presentSomeStuff(response: VM.Login.SomeStuff.Response) {
+    func presentSomeStuff(response: VM.CarTrackLogin.SomeStuff.Response) {
         // Presenter will transform response object in something that the View can process/read
         let subTitle = response.subTitle.uppercased()
         let someListA = response.listA
-            .map { VM.Login.TableItem(enabled: true,
+            .map { VM.CarTrackLogin.TableItem(enabled: true,
                                                   image: Images.noInternet.rawValue,
                                                   title: $0.id ?? "N.A.",
                                                   subtitle: $0.state?.uppercased() ?? "N.A.",
                                                   cellType: .cellType1)
             }
         let someListB = response.listB
-            .map { VM.Login.TableItem(enabled: true,
+            .map { VM.CarTrackLogin.TableItem(enabled: true,
                                                          image: Images.noInternet.rawValue,
                                                   title: $0.id ?? "N.A.",
                                                   subtitle: $0.state?.uppercased() ?? "N.A.",
                                                   cellType: .cellType2)
             }
         let sum = someListA.count + someListB.count
-        let viewModel = VM.Login.SomeStuff.ViewModel(subTitle: subTitle,
+        let viewModel = VM.CarTrackLogin.SomeStuff.ViewModel(subTitle: subTitle,
                                                                              someValue: "\(sum)",
             someListSectionATitle: "\(someListA.count) A elements",
             someListSectionBTitle: "\(someListB.count) B elements",

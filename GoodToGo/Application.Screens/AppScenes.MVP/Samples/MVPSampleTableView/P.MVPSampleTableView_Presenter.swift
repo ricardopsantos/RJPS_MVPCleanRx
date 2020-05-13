@@ -157,7 +157,7 @@ extension P.MVPSampleTableView_Presenter {
             }
             ).disposed(by: disposeBag)
         
-        rxObservable_GetEmployees()
+        getEmployeesObservable()
             .subscribe(
                 onNext: { [weak self] employeeList in
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
@@ -172,7 +172,7 @@ extension P.MVPSampleTableView_Presenter {
         
     }
     
-    func rxObservable_GetEmployees() -> Observable<[Employee.ResponseDto]> {
+    func getEmployeesObservable() -> Observable<[Employee.ResponseDto]> {
         return Observable.create { observer -> Disposable in
             do {
                 let apiRequest: WebAPIRequest_Protocol = try WebAPI.Employees.GetEmployees_APIRequest()
@@ -183,12 +183,12 @@ extension P.MVPSampleTableView_Presenter {
                         let employeeList = some.entity
                         observer.onNext(employeeList)
                     case .failure(let error):
-                        RJS_Logs.DLogError(error)
+                        AppLogger.error(error)
                         observer.onError(error)
                     }
                 })
             } catch {
-                RJS_Logs.DLogError(error)
+                AppLogger.error(error)
                 observer.onError(error)
             }
             return Disposables.create()

@@ -7,7 +7,10 @@
 //
 
 import Foundation
+//
 import AppResources
 import RJPSLib
+import CCTextFieldEffects
 
 public typealias CustomSearchBar = RJS_Designables_SearchBar
+public typealias AppSizes = Designables.Sizes

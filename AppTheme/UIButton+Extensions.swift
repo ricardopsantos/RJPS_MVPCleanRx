@@ -12,6 +12,7 @@ import AppResources
 import AppConstants
 import DevTools
 import PointFreeFunctions
+import Extensions
 
 public extension UIButton {
     
@@ -33,6 +34,7 @@ public extension UIButton {
             self.setState(enabled: true)
             self.layer.cornerRadius = 10.0
             self.clipsToBounds      = true
+            self.addShadow()
         }
         let alternative = {
             self.titleLabel?.font = UIFont.App.regular(size: .small)
@@ -41,6 +43,7 @@ public extension UIButton {
             self.setState(enabled: true)
             self.layer.cornerRadius = 10.0
             self.clipsToBounds      = true
+            self.addShadow()
         }
         let dismiss = {
             self.titleLabel?.font = UIFont.App.regular(size: .regular)
@@ -50,6 +53,7 @@ public extension UIButton {
             self.setState(enabled: true)
             self.layer.cornerRadius = 4.0
             self.clipsToBounds      = true
+            self.addShadow()
         }
 
         switch style {

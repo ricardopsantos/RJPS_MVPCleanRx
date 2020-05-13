@@ -1,5 +1,5 @@
 //
-//  R.LoginRouter.swift
+//  R.CarTrackLoginRouter.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 12/05/2020.
@@ -24,29 +24,29 @@ import PointFreeFunctions
 import UIBase
 
 extension R {
-    class LoginRouter: LoginDataPassingProtocol {
-        weak var viewController: VC.LoginViewController?
+    class CarTrackLoginRouter: CarTrackLoginDataPassingProtocol {
+        weak var viewController: VC.CarTrackLoginViewController?
 
         // DataPassingProtocol Protocol vars...
-        var dsLogin: LoginDataStoreProtocol? { didSet { AppLogger.log("DataStore changed") } }
+        var dsCarTrackLogin: CarTrackLoginDataStoreProtocol? { didSet { AppLogger.log("DataStore changed") } }
      }
 }
 
 // MARK: RoutingLogicProtocol
 
-extension R.LoginRouter: LoginRoutingLogicProtocol {
+extension R.CarTrackLoginRouter: CarTrackLoginRoutingLogicProtocol {
     func dismissMe() {
         viewController?.dismissMe()
     }
 
     func routeToTemplateWithDataStore() {
-        func passDataToSomewhere(source: LoginDataStoreProtocol, destination: inout LoginDataStoreProtocol) {
+        func passDataToSomewhere(source: CarTrackLoginDataStoreProtocol, destination: inout CarTrackLoginDataStoreProtocol) {
             destination.dsSomeKindOfModelA = source.dsSomeKindOfModelA
             destination.dsSomeKindOfModelB = source.dsSomeKindOfModelB
         }
-        let destinationVC = VC.LoginViewController()
-        if var destinationDS = destinationVC.router?.dsLogin {
-            passDataToSomewhere(source: dsLogin!, destination: &destinationDS)
+        let destinationVC = VC.CarTrackLoginViewController()
+        if var destinationDS = destinationVC.router?.dsCarTrackLogin {
+            passDataToSomewhere(source: dsCarTrackLogin!, destination: &destinationDS)
         }
         viewController?.navigationController?.present(destinationVC, animated: true, completion: nil)
     }

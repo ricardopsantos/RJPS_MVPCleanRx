@@ -90,8 +90,9 @@ extension I.___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___Business
         presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
         DispatchQueue.executeWithDelay(delay: 3) { [weak self] in
             let mockA1 = TemplateModel(id: "some id 1", state: "state_a - \(Date())")
+            let mockA2 = TemplateModel(id: "some id 2", state: "state_a - \(Date())")
             let response = VM.___VARIABLE_sceneName___.SomeStuff.Response(listA: [mockA1],
-                                                                          listB: [mockA1],
+                                                                          listB: [mockA2],
                                                                           subTitle: "New subtitle \(Date())")
             self?.presenter?.presentSomeStuff(response: response)
             self?.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))

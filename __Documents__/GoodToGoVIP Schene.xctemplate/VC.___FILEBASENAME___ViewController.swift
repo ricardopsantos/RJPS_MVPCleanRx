@@ -39,6 +39,7 @@ extension VC {
         // Order in View life-cycle : 2
         override func loadView() {
             super.loadView()
+            view.accessibilityIdentifier = AppConstants.UIViewControllers.genericAccessibilityIdentifier(self as! BaseViewControllerMVP)
         }
 
         // Order in View life-cycle : 4
@@ -99,6 +100,8 @@ extension VC {
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
 
+            #warning("Add reachability support")
+            
             genericView.rxModelSelected
                 .subscribe(onNext: { /* [router] */ (some) in
                     AppLogger.log("Received [\(some)]")

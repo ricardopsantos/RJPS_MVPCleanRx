@@ -28,6 +28,13 @@ public struct AppConstants {
 
     }
 
+    public struct Shadows {
+        private init() { }
+        public static let offset = CGSize(width: 1, height: 5)
+        public static var shadowColor = UIColor(red: CGFloat(80/255.0), green: CGFloat(88/255.0), blue: CGFloat(93/255.0), alpha: 0.1)
+        //public static var roundedCornersColor = UIColor(red: CGFloat(49/255.0), green: CGFloat(49/255.0), blue: CGFloat(49/255.0), alpha: 0.1)
+    }
+
     public struct URLs {
         private init() {}
        

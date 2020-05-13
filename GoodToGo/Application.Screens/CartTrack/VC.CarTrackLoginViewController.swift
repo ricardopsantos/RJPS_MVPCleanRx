@@ -1,5 +1,5 @@
 //
-//  VC.LoginViewController.swift
+//  VC.CarTrackLoginViewController.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 12/05/2020.
@@ -26,11 +26,11 @@ import UIBase
 
 extension VC {
 
-    class LoginViewController: BaseGenericViewControllerVIP<V.LoginView> {
-        private var interactor: LoginBusinessLogicProtocol?
-        var router: (LoginRoutingLogicProtocol &
-            LoginDataPassingProtocol &
-            LoginRoutingLogicProtocol)?
+    class CarTrackLoginViewController: BaseGenericViewControllerVIP<V.CarTrackLoginView> {
+        private var interactor: CarTrackLoginBusinessLogicProtocol?
+        var router: (CarTrackLoginRoutingLogicProtocol &
+            CarTrackLoginDataPassingProtocol &
+            CarTrackLoginRoutingLogicProtocol)?
 
         //
         // MARK: View lifecycle
@@ -77,15 +77,15 @@ extension VC {
         override func setup() {
             // This function is called automatically by super BaseGenericView
             let viewController = self
-            let interactor = I.LoginInteractor()
-            let presenter  = P.LoginPresenter()
-            let router     = R.LoginRouter()
+            let interactor = I.CarTrackLoginInteractor()
+            let presenter  = P.CarTrackLoginPresenter()
+            let router     = R.CarTrackLoginRouter()
             viewController.interactor = interactor
             viewController.router = router
             interactor.presenter  = presenter
             presenter.viewController = viewController
             router.viewController = viewController
-            router.dsLogin = interactor
+            router.dsCarTrackLogin = interactor
         }
 
         // Order in View life-cycle : 5
@@ -99,29 +99,9 @@ extension VC {
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
 
-            genericView.rxModelSelected
-                .subscribe(onNext: { /* [router] */ (some) in
-                    AppLogger.log("Received [\(some)]")
-                })
-                .disposed(by: disposeBag)
-
             genericView.rxBtnSample1Tap
                 .do(onNext: { [weak self] in
                     self?.router?.routeToTemplateWithParentDataStore()
-                })
-                .subscribe()
-                .disposed(by: disposeBag)
-
-            genericView.rxBtnSample2Tap
-                .do(onNext: { [weak self] in
-                    self?.router?.routeToTemplateWithDataStore()
-                })
-                .subscribe()
-                .disposed(by: disposeBag)
-
-            genericView.rxBtnSample3Tap
-                .do(onNext: { [weak self] in
-                    self?.doPrivateStuff()
                 })
                 .subscribe()
                 .disposed(by: disposeBag)
@@ -138,7 +118,7 @@ extension VC {
 
 // MARK: Public Misc Stuff
 
-extension VC.LoginViewController {
+extension VC.CarTrackLoginViewController {
     // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
     // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
     // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
@@ -149,28 +129,28 @@ extension VC.LoginViewController {
 
 // MARK: Private Misc Stuff
 
-extension VC.LoginViewController {
+extension VC.CarTrackLoginViewController {
 
     // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
     // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
     // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
     private func doPrivateStuff() {
         let userId = genericView.subTitle
-        let request = VM.Login.SomeStuff.Request(userId: userId)
+        let request = VM.CarTrackLogin.SomeStuff.Request(userId: userId)
         self.interactor?.requestSomeStuff(request: request)
     }
 }
 
 // MARK: DisplayLogicProtocolProtocol
 
-extension VC.LoginViewController: LoginDisplayLogicProtocol {
+extension VC.CarTrackLoginViewController: CarTrackLoginDisplayLogicProtocol {
 
-    func displaySomeStuff(viewModel: VM.Login.SomeStuff.ViewModel) {
+    func displaySomeStuff(viewModel: VM.CarTrackLogin.SomeStuff.ViewModel) {
         // Setting up the view, option 1 : passing the view model
         genericView.setupWith(someStuff: viewModel)
     }
 
-    func displayScreenInitialState(viewModel: VM.Login.ScreenInitialState.ViewModel) {
+    func displayScreenInitialState(viewModel: VM.CarTrackLogin.ScreenInitialState.ViewModel) {
         title = viewModel.title
         // Setting up the view, option 2 : setting the vars one by one
         genericView.subTitle = viewModel.subTitle

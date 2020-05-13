@@ -44,3 +44,5 @@ typealias AppLogger   = DevTools.AppLogger
 //typealias GenericView = UIBase.BaseViewControllerMVP
 
 // MARK: - MISC
+
+typealias InputFields = RJS_Designables_InputFields

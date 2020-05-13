@@ -1,5 +1,5 @@
 //
-//  D.LoginDomain.swift
+//  D.CarTrackLoginDomain.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 12/05/2020.
@@ -28,7 +28,7 @@ import UIBase
 //
 
 extension E {
-    struct LoginView {
+    struct CarTrackLoginView {
         enum ScreenLayout {
             case unknown
             case layoutA
@@ -41,30 +41,30 @@ extension E {
 // MARK: - Interactor (Business Logic)
 //
 
-protocol LoginBusinessLogicProtocol: BaseInteractorVIPMandatoryBusinessLogicProtocol {
-    // Naming convention : func request__XXX__(viewModel: VM.Login.__XXX__.Request)
+protocol CarTrackLoginBusinessLogicProtocol: BaseInteractorVIPMandatoryBusinessLogicProtocol {
+    // Naming convention : func request__XXX__(viewModel: VM.CarTrackLogin.__XXX__.Request)
     func requestScreenInitialState()
-    func requestSomeStuff(request: VM.Login.SomeStuff.Request)
+    func requestSomeStuff(request: VM.CarTrackLogin.SomeStuff.Request)
 }
 
 //
 // MARK: - Presenter (Presentation Logic)
 //
 
-protocol LoginPresentationLogicProtocol: BasePresenterVIPProtocol {
-    // Naming convention : func present__XXX__(response: VM.Login.__XXX__.Response)
-    func presentScreenInitialState(response: VM.Login.ScreenInitialState.Response)
-    func presentSomeStuff(response: VM.Login.SomeStuff.Response)
+protocol CarTrackLoginPresentationLogicProtocol: BasePresenterVIPProtocol {
+    // Naming convention : func present__XXX__(response: VM.CarTrackLogin.__XXX__.Response)
+    func presentScreenInitialState(response: VM.CarTrackLogin.ScreenInitialState.Response)
+    func presentSomeStuff(response: VM.CarTrackLogin.SomeStuff.Response)
 }
 
 //
 // MARK: - ViewController (Display Logic)
 //
 
-protocol LoginDisplayLogicProtocol: BaseViewControllerVIPProtocol {
-    // Naming convention : func display__XXX__(viewModel: VM.Login.__XXX__.ViewModel)
-    func displayScreenInitialState(viewModel: VM.Login.ScreenInitialState.ViewModel)
-    func displaySomeStuff(viewModel: VM.Login.SomeStuff.ViewModel)
+protocol CarTrackLoginDisplayLogicProtocol: BaseViewControllerVIPProtocol {
+    // Naming convention : func display__XXX__(viewModel: VM.CarTrackLogin.__XXX__.ViewModel)
+    func displayScreenInitialState(viewModel: VM.CarTrackLogin.ScreenInitialState.ViewModel)
+    func displaySomeStuff(viewModel: VM.CarTrackLogin.SomeStuff.ViewModel)
 }
 
 //
@@ -72,7 +72,7 @@ protocol LoginDisplayLogicProtocol: BaseViewControllerVIPProtocol {
 //
 
 // Routing Logic Protocol - all the methods used for routing are kept under this protocol.
-protocol LoginRoutingLogicProtocol {
+protocol CarTrackLoginRoutingLogicProtocol {
     // Naming convention : func routeTo__XXX__MaybeSomeExtraInfo()
     func routeToTemplateWithParentDataStore()
     func routeToTemplateWithDataStore()
@@ -83,17 +83,17 @@ protocol LoginRoutingLogicProtocol {
 //
 
 // DataStore : Data Passing Protocol - a protocol that contains the data that needs to be passed to the destination controller.
-protocol LoginDataPassingProtocol {
+protocol CarTrackLoginDataPassingProtocol {
 
     // DataStore
-    var dsLogin: LoginDataStoreProtocol? { get }
+    var dsCarTrackLogin: CarTrackLoginDataStoreProtocol? { get }
 }
 
 // DataStore : Implemented by the Interactor, and the Router
-protocol LoginDataStoreProtocol {
-    // must have a reference like [var dataStore: LoginDataStoreProtocol?]
-    var dsSomeKindOfModelA: LoginDataStoreModelA? { get set }
-    var dsSomeKindOfModelB: LoginDataStoreModelB? { get set }
+protocol CarTrackLoginDataStoreProtocol {
+    // must have a reference like [var dataStore: CarTrackLoginDataStoreProtocol?]
+    var dsSomeKindOfModelA: CarTrackLoginDataStoreModelA? { get set }
+    var dsSomeKindOfModelB: CarTrackLoginDataStoreModelB? { get set }
 
 }
 
@@ -103,18 +103,18 @@ protocol LoginDataStoreProtocol {
 
 // DataStore
 
-struct LoginDataStoreModelA {
+struct CarTrackLoginDataStoreModelA {
     let aString: String
 }
 
-struct LoginDataStoreModelB {
+struct CarTrackLoginDataStoreModelB {
     let aString: String
 }
 
 // Other Models
 
 extension VM {
-    enum Login {
+    enum CarTrackLogin {
         enum CellType {
             case cellType1
             case cellType2
@@ -134,8 +134,8 @@ extension VM {
                 let someValue: String
                 let someListSectionATitle: String
                 let someListSectionBTitle: String
-                let someListSectionAElements: [VM.Login.TableItem]
-                let someListSectionBElements: [VM.Login.TableItem]
+                let someListSectionAElements: [VM.CarTrackLogin.TableItem]
+                let someListSectionBElements: [VM.CarTrackLogin.TableItem]
             }
         }
 
@@ -148,7 +148,7 @@ extension VM {
             struct ViewModel {
                 let title: String
                 let subTitle: String
-                let screenLayout: E.LoginView.ScreenLayout
+                let screenLayout: E.CarTrackLoginView.ScreenLayout
             }
         }
 
@@ -162,23 +162,23 @@ extension VM {
     }
 }
 
-extension VM.Login {
+extension VM.CarTrackLogin {
     struct TableItem: IdentifiableType, Hashable {
 
-        public typealias Identity = VM.Login.CellType
-        public var identity: VM.Login.CellType { return cellType }
+        public typealias Identity = VM.CarTrackLogin.CellType
+        public var identity: VM.CarTrackLogin.CellType { return cellType }
 
         let enabled: Bool
         let image: String
         let title: String
         let subtitle: String
-        let cellType: VM.Login.CellType
+        let cellType: VM.CarTrackLogin.CellType
 
         init(enabled: Bool,
              image: String,
              title: String,
              subtitle: String,
-             cellType: VM.Login.CellType) {
+             cellType: VM.CarTrackLogin.CellType) {
             self.enabled = enabled
             self.image = image
             self.title = title

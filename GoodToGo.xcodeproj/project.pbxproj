@@ -137,7 +137,6 @@
 		D73E05BF2467112500965E96 /* AppResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E05BE2467112500965E96 /* AppResources.swift */; };
 		D741A35B246A85E5000235E0 /* D.BaseDomainVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D741A35A246A85E5000235E0 /* D.BaseDomainVIP.swift */; };
 		D741A360246A9CA9000235E0 /* BaseViewControllerMVP+RxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D741A35F246A9CA9000235E0 /* BaseViewControllerMVP+RxExtensions.swift */; };
-		D761FEB52468330600BD41A5 /* ProgramaticUIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEB42468330600BD41A5 /* ProgramaticUIUtils.swift */; };
 		D761FEB72468334D00BD41A5 /* UIKitViewFactoryElementTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEB62468334D00BD41A5 /* UIKitViewFactoryElementTag.swift */; };
 		D761FEBC2468358B00BD41A5 /* BaseViewControllerMVP+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEBB2468358B00BD41A5 /* BaseViewControllerMVP+Keyboard.swift */; };
 		D761FEC02468385100BD41A5 /* TemplateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEBF2468385100BD41A5 /* TemplateModel.swift */; };
@@ -154,6 +153,14 @@
 		D7711F6B246B340C00B6963A /* P.___FILEBASENAME___Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7711F60246B340C00B6963A /* P.___FILEBASENAME___Presenter.swift */; };
 		D7711F6C246B340C00B6963A /* VC.___FILEBASENAME___ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7711F61246B340C00B6963A /* VC.___FILEBASENAME___ViewController.swift */; };
 		D7711F6D246B3B4400B6963A /* V.___FILEBASENAME___TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7711F59246B340B00B6963A /* V.___FILEBASENAME___TableViewCell.swift */; };
+		D7711F77246B5A3500B6963A /* V.CarTrackLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7711F70246B5A3500B6963A /* V.CarTrackLoginView.swift */; };
+		D7711F78246B5A3500B6963A /* VC.CarTrackLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7711F71246B5A3500B6963A /* VC.CarTrackLoginViewController.swift */; };
+		D7711F79246B5A3500B6963A /* R.CarTrackLoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7711F72246B5A3500B6963A /* R.CarTrackLoginRouter.swift */; };
+		D7711F7A246B5A3500B6963A /* D.CarTrackLoginDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7711F73246B5A3500B6963A /* D.CarTrackLoginDomain.swift */; };
+		D7711F7C246B5A3500B6963A /* I.CarTrackLoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7711F75246B5A3500B6963A /* I.CarTrackLoginInteractor.swift */; };
+		D7711F7D246B5A3500B6963A /* P.CarTrackLoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7711F76246B5A3500B6963A /* P.CarTrackLoginPresenter.swift */; };
+		D7711F82246B691600B6963A /* ProgramaticUIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEB42468330600BD41A5 /* ProgramaticUIUtils.swift */; };
+		D7711F85246B6B4F00B6963A /* UIView+ExtentionShadows.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7711F83246B697F00B6963A /* UIView+ExtentionShadows.swift */; };
 		D779A5EF234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5E9234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift */; };
 		D779A5F0234FE3A500D3D6F7 /* W.SampleVIP_Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5EA234FE3A500D3D6F7 /* W.SampleVIP_Worker.swift */; };
 		D779A5F1234FE3A500D3D6F7 /* R.SampleVIP_Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779A5EB234FE3A500D3D6F7 /* R.SampleVIP_Router.swift */; };
@@ -204,13 +211,6 @@
 		D7AB24CB246743BD000142C4 /* AppCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AB24C4246743BD000142C4 /* AppCore.framework */; };
 		D7AB24CC246743BD000142C4 /* AppCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7AB24C4246743BD000142C4 /* AppCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7CA2B42246B1A790071DAF8 /* Rx+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5D1CF322E5E45700C0AF38 /* Rx+Extensions.swift */; };
-		D7CA2B5D246B28010071DAF8 /* V.LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CA2B55246B28010071DAF8 /* V.LoginView.swift */; };
-		D7CA2B5E246B28010071DAF8 /* VC.LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CA2B56246B28010071DAF8 /* VC.LoginViewController.swift */; };
-		D7CA2B5F246B28010071DAF8 /* R.LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CA2B57246B28010071DAF8 /* R.LoginRouter.swift */; };
-		D7CA2B60246B28010071DAF8 /* D.LoginDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CA2B58246B28010071DAF8 /* D.LoginDomain.swift */; };
-		D7CA2B62246B28010071DAF8 /* V.LoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CA2B5A246B28010071DAF8 /* V.LoginTableViewCell.swift */; };
-		D7CA2B63246B28010071DAF8 /* I.LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CA2B5B246B28010071DAF8 /* I.LoginInteractor.swift */; };
-		D7CA2B64246B28010071DAF8 /* P.LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CA2B5C246B28010071DAF8 /* P.LoginPresenter.swift */; };
 		D7D9E78E246753F0005B4313 /* Mappers+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD387C3223DCAF5001D2F4E /* Mappers+Utils.swift */; };
 		D7D9E79024675410005B4313 /* Mappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E78F24675410005B4313 /* Mappers.swift */; };
 		D7D9E7922467545D005B4313 /* typealias.AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E7912467545D005B4313 /* typealias.AppCore.swift */; };
@@ -810,6 +810,13 @@
 		D7711F5F246B340C00B6963A /* TemplateInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
 		D7711F60246B340C00B6963A /* P.___FILEBASENAME___Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "P.___FILEBASENAME___Presenter.swift"; sourceTree = "<group>"; };
 		D7711F61246B340C00B6963A /* VC.___FILEBASENAME___ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VC.___FILEBASENAME___ViewController.swift"; sourceTree = "<group>"; };
+		D7711F70246B5A3500B6963A /* V.CarTrackLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V.CarTrackLoginView.swift; sourceTree = "<group>"; };
+		D7711F71246B5A3500B6963A /* VC.CarTrackLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.CarTrackLoginViewController.swift; sourceTree = "<group>"; };
+		D7711F72246B5A3500B6963A /* R.CarTrackLoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.CarTrackLoginRouter.swift; sourceTree = "<group>"; };
+		D7711F73246B5A3500B6963A /* D.CarTrackLoginDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D.CarTrackLoginDomain.swift; sourceTree = "<group>"; };
+		D7711F75246B5A3500B6963A /* I.CarTrackLoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.CarTrackLoginInteractor.swift; sourceTree = "<group>"; };
+		D7711F76246B5A3500B6963A /* P.CarTrackLoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.CarTrackLoginPresenter.swift; sourceTree = "<group>"; };
+		D7711F83246B697F00B6963A /* UIView+ExtentionShadows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ExtentionShadows.swift"; sourceTree = "<group>"; };
 		D779A5E9234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.SampleVIP_Presenter.swift; sourceTree = "<group>"; };
 		D779A5EA234FE3A500D3D6F7 /* W.SampleVIP_Worker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W.SampleVIP_Worker.swift; sourceTree = "<group>"; };
 		D779A5EB234FE3A500D3D6F7 /* R.SampleVIP_Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.SampleVIP_Router.swift; sourceTree = "<group>"; };
@@ -833,13 +840,6 @@
 		D7AB24C4246743BD000142C4 /* AppCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7AB24C6246743BD000142C4 /* AppCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppCore.h; sourceTree = "<group>"; };
 		D7AB24C7246743BD000142C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D7CA2B55246B28010071DAF8 /* V.LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V.LoginView.swift; sourceTree = "<group>"; };
-		D7CA2B56246B28010071DAF8 /* VC.LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.LoginViewController.swift; sourceTree = "<group>"; };
-		D7CA2B57246B28010071DAF8 /* R.LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.LoginRouter.swift; sourceTree = "<group>"; };
-		D7CA2B58246B28010071DAF8 /* D.LoginDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D.LoginDomain.swift; sourceTree = "<group>"; };
-		D7CA2B5A246B28010071DAF8 /* V.LoginTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V.LoginTableViewCell.swift; sourceTree = "<group>"; };
-		D7CA2B5B246B28010071DAF8 /* I.LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.LoginInteractor.swift; sourceTree = "<group>"; };
-		D7CA2B5C246B28010071DAF8 /* P.LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.LoginPresenter.swift; sourceTree = "<group>"; };
 		D7D9E78F24675410005B4313 /* Mappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mappers.swift; sourceTree = "<group>"; };
 		D7D9E7912467545D005B4313 /* typealias.AppCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = typealias.AppCore.swift; sourceTree = "<group>"; };
 		D7D9E79424676CC1005B4313 /* UseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCases.swift; sourceTree = "<group>"; };
@@ -1371,11 +1371,11 @@
 		D729226724669F3700DAD480 /* Designables */ = {
 			isa = PBXGroup;
 			children = (
+				D72923772466BDE900DAD480 /* typealias.Designables.swift */,
 				9F8AE14B2205DD0300DF75F6 /* LayoutsSizes.swift */,
 				D7FCAC28246874CE00DBECA2 /* Extensions */,
 				D72923A62466DCBE00DAD480 /* Protocols */,
 				9FFF80BD22BFBBB5003C4562 /* Sample_TableViewCell.swift */,
-				D72923772466BDE900DAD480 /* typealias.Designables.swift */,
 				9F58FB1422BE5DE700042A8C /* BottomBar.swift */,
 				9F58FB1122BE5DE700042A8C /* TopBar.swift */,
 				9F574EFD22356CA6007DAA58 /* Factory.swift */,
@@ -1633,9 +1633,9 @@
 		D7AB24BC24674323000142C4 /* Application.Comom */ = {
 			isa = PBXGroup;
 			children = (
+				D761FEB42468330600BD41A5 /* ProgramaticUIUtils.swift */,
 				9FCF332222EF53890074DAB9 /* GenericUseCase.swift */,
 				9FE1437021AF1ADC0026BDFC /* Environments.swift */,
-				D761FEB42468330600BD41A5 /* ProgramaticUIUtils.swift */,
 			);
 			path = Application.Comom;
 			sourceTree = "<group>";
@@ -1665,13 +1665,12 @@
 		D7CA2B54246B27ED0071DAF8 /* CartTrack */ = {
 			isa = PBXGroup;
 			children = (
-				D7CA2B55246B28010071DAF8 /* V.LoginView.swift */,
-				D7CA2B56246B28010071DAF8 /* VC.LoginViewController.swift */,
-				D7CA2B57246B28010071DAF8 /* R.LoginRouter.swift */,
-				D7CA2B58246B28010071DAF8 /* D.LoginDomain.swift */,
-				D7CA2B5A246B28010071DAF8 /* V.LoginTableViewCell.swift */,
-				D7CA2B5B246B28010071DAF8 /* I.LoginInteractor.swift */,
-				D7CA2B5C246B28010071DAF8 /* P.LoginPresenter.swift */,
+				D7711F70246B5A3500B6963A /* V.CarTrackLoginView.swift */,
+				D7711F71246B5A3500B6963A /* VC.CarTrackLoginViewController.swift */,
+				D7711F72246B5A3500B6963A /* R.CarTrackLoginRouter.swift */,
+				D7711F73246B5A3500B6963A /* D.CarTrackLoginDomain.swift */,
+				D7711F75246B5A3500B6963A /* I.CarTrackLoginInteractor.swift */,
+				D7711F76246B5A3500B6963A /* P.CarTrackLoginPresenter.swift */,
 			);
 			path = CartTrack;
 			sourceTree = "<group>";
@@ -1872,6 +1871,7 @@
 			isa = PBXGroup;
 			children = (
 				D7FCAC242468748B00DBECA2 /* UIView+Extensions.swift */,
+				D7711F83246B697F00B6963A /* UIView+ExtentionShadows.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2520,6 +2520,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/ToastSwiftFramework.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Differentiator.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CCTextFieldEffects.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -2686,10 +2687,8 @@
 				9F6BB2FD22E3C0E400829A6F /* VM.BlissDetails_ViewModel.swift in Sources */,
 				9FE1439721AF2F520026BDFC /* typealias.Application.swift in Sources */,
 				9F6BB2FB22E3C0E400829A6F /* P.BlissDetails_Presenter.swift in Sources */,
-				D7CA2B60246B28010071DAF8 /* D.LoginDomain.swift in Sources */,
 				9F6BB2ED22E3A97F00829A6F /* D.BlissQuestionsList_ViewModel.swift in Sources */,
 				D788BD9824698AAD007C59D0 /* GenericUseCase.swift in Sources */,
-				D7CA2B5D246B28010071DAF8 /* V.LoginView.swift in Sources */,
 				9F6BB2D122E3470200829A6F /* V.MVPSampleTableView_View.swift in Sources */,
 				9F58FB4722BE5DE700042A8C /* UserDetails_AssemblyContainer.swift in Sources */,
 				9F6BB2FE22E3C0E400829A6F /* AS.BlissDetails_AssemblyContainer.swift in Sources */,
@@ -2697,6 +2696,7 @@
 				9F6BB2F122E3A97F00829A6F /* R.BlissQuestionsList_Router.swift in Sources */,
 				D7711F69246B340C00B6963A /* V.___FILEBASENAME___View.swift in Sources */,
 				9F6BB2FA22E3C0E400829A6F /* R.BlissDetails_Router.swift in Sources */,
+				D7711F79246B5A3500B6963A /* R.CarTrackLoginRouter.swift in Sources */,
 				D7711F6B246B340C00B6963A /* P.___FILEBASENAME___Presenter.swift in Sources */,
 				9F6BB2D222E3470200829A6F /* P.MVPSampleTableView_Presenter.swift in Sources */,
 				9FE0572822E8D75400802747 /* MVPSampleRxView_View.swift in Sources */,
@@ -2704,6 +2704,7 @@
 				9F58FB4B22BE5DE700042A8C /* P.SearchUser_Presenter.swift in Sources */,
 				9F103A302236C08900C57BC0 /* DependencyInjectionManager.swift in Sources */,
 				9F6BB2D022E3470200829A6F /* AS.MVPSampleTableView_AssemblyContainer.swift in Sources */,
+				D7711F7D246B5A3500B6963A /* P.CarTrackLoginPresenter.swift in Sources */,
 				D779A5F4234FE3A500D3D6F7 /* I.SampleVIP_Interactor.swift in Sources */,
 				9FE143B821AF2F520026BDFC /* Environments.swift in Sources */,
 				9F58FB4C22BE5DE700042A8C /* V.SearchUser_View.swift in Sources */,
@@ -2712,13 +2713,12 @@
 				9FE0572722E8D75400802747 /* D.MVPSampleRxView_ViewModel.swift in Sources */,
 				9F6BB2FF22E3CB2D00829A6F /* P.BlissRoot_Presenter.swift in Sources */,
 				9FE143C021AF2F520026BDFC /* AppDelegate.swift in Sources */,
-				D7CA2B5F246B28010071DAF8 /* R.LoginRouter.swift in Sources */,
 				9FACC17B223BDD5B00576498 /* ToDo.swift in Sources */,
 				9FE0572922E8D8F000802747 /* R.MVPSampleView_Router.swift in Sources */,
-				D761FEB52468330600BD41A5 /* ProgramaticUIUtils.swift in Sources */,
 				9FE0572422E8D75400802747 /* R.MVPSampleRxView_Router.swift in Sources */,
 				9F6BB30222E3CB2D00829A6F /* V.BlissRoot_View.swift in Sources */,
 				9F6BB2FC22E3C0E400829A6F /* V.BlissDetails_View.swift in Sources */,
+				D7711F7C246B5A3500B6963A /* I.CarTrackLoginInteractor.swift in Sources */,
 				9F6BB30122E3CB2D00829A6F /* R.BlissRoot_Router.swift in Sources */,
 				9F6BB2CF22E3470200829A6F /* D.MVPSampleTableView_ViewModel.swift in Sources */,
 				9F6BB30022E3CB2D00829A6F /* AC.BlissRoot_AssemblyContainer.swift in Sources */,
@@ -2730,27 +2730,27 @@
 				D7711F63246B340C00B6963A /* R.___FILEBASENAME___Router.swift in Sources */,
 				D779A5EF234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift in Sources */,
 				D72923892466BF4700DAD480 /* AppView+TabBarController.swift in Sources */,
+				D7711F82246B691600B6963A /* ProgramaticUIUtils.swift in Sources */,
 				9F58FB4822BE5DE700042A8C /* UserDetais_ViewModel.swift in Sources */,
 				9F6BB2DB22E36C5B00829A6F /* BlissGenericAppBussiness_UseCase.swift in Sources */,
 				D7AB2443246716C6000142C4 /* V.UserTableViewCell.swift in Sources */,
-				D7CA2B5E246B28010071DAF8 /* VC.LoginViewController.swift in Sources */,
-				D7CA2B64246B28010071DAF8 /* P.LoginPresenter.swift in Sources */,
 				9F58FB4A22BE5DE700042A8C /* D.SearchUser_ViewModel.swift in Sources */,
 				D7711F6D246B3B4400B6963A /* V.___FILEBASENAME___TableViewCell.swift in Sources */,
 				9FA0DCCB22BE5E45003ADF99 /* Sample_UseCase.swift in Sources */,
 				9F58FB4D22BE5DE700042A8C /* AS.SearchUser_AssemblyContainer.swift in Sources */,
 				D779A5F0234FE3A500D3D6F7 /* W.SampleVIP_Worker.swift in Sources */,
-				D7CA2B62246B28010071DAF8 /* V.LoginTableViewCell.swift in Sources */,
 				9F6BB2D322E3470200829A6F /* R.MVPSampleTableView_Router.swift in Sources */,
 				9FE0572B22E8D8F000802747 /* P.MVPSampleView_Presenter.swift in Sources */,
+				D7711F78246B5A3500B6963A /* VC.CarTrackLoginViewController.swift in Sources */,
 				9FE0572622E8D75400802747 /* P.MVPSampleRxView_Presenter.swift in Sources */,
+				D7711F7A246B5A3500B6963A /* D.CarTrackLoginDomain.swift in Sources */,
+				D7711F77246B5A3500B6963A /* V.CarTrackLoginView.swift in Sources */,
 				9FA0DCC922BE5E45003ADF99 /* GitUser_UseCase.swift in Sources */,
 				9FB8DFCA2233E67100095420 /* typealias.encaplulate.swift in Sources */,
 				9F58FB4422BE5DE700042A8C /* UserDetais_View.swift in Sources */,
 				9F103A332236C08900C57BC0 /* RootAssemblyContainer.swift in Sources */,
 				D7711F65246B340C00B6963A /* D.___FILEBASENAME___Domain.swift in Sources */,
 				9F58FB4622BE5DE700042A8C /* UserDetais_Presenter.swift in Sources */,
-				D7CA2B63246B28010071DAF8 /* I.LoginInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2829,6 +2829,7 @@
 			files = (
 				D72923352466B40D00DAD480 /* Notification+Extensions.swift in Sources */,
 				D7FCAC292468753500DBECA2 /* UIView+Autolayout.swift in Sources */,
+				D7711F85246B6B4F00B6963A /* UIView+ExtentionShadows.swift in Sources */,
 				D72923342466B3FA00DAD480 /* UITextField+Extensions.swift in Sources */,
 				D761FED32468421C00BD41A5 /* UIKit+ExtensionsPaints .swift in Sources */,
 				D761FED72468462F00BD41A5 /* UIButton+Rx.swift in Sources */,

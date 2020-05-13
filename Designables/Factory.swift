@@ -97,14 +97,17 @@ public struct UIKitFactory {
     // https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/LayoutUsingStackViews.html
     // https://spin.atomicobject.com/2016/06/22/uistackview-distribution/
     public static var stackViewDefaultLayoutMargins: UIEdgeInsets {
-        let spacing: CGFloat = 0 // Is [ZERO] because [stackViewDefaultSpacing] will do the vertical space (if vertical stack-view)
-        return UIEdgeInsets(top: spacing, left: Designables.Sizes.Margins.defaultMargin, bottom: spacing, right: Designables.Sizes.Margins.defaultMargin)
+        let topAndBottomSpacing: CGFloat = 0 // Is [ZERO] because [stackViewDefaultSpacing] will do the vertical space (if vertical stack-view)
+        return UIEdgeInsets(top: topAndBottomSpacing,
+                            left: Designables.Sizes.Margins.defaultMargin,
+                            bottom: topAndBottomSpacing,
+                            right: Designables.Sizes.Margins.defaultMargin)
     }
     public static var stackViewDefaultSpacing: CGFloat {
-        return 10
+        return Designables.Sizes.Margins.defaultMargin / 2
     }
     public static func stackView(arrangedSubviews: [UIView] = [],
-                                 spacing: CGFloat = UIKitFactory.stackViewDefaultSpacing,
+                                 spacing: CGFloat = UIKitFactory.stackViewDefaultSpacing, // Space between subviews
                                  axis: NSLayoutConstraint.Axis,
                                  distribution: UIStackView.Distribution = .fill,
                                  alignment: UIStackView.Alignment = .fill,
