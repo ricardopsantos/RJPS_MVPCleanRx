@@ -57,8 +57,8 @@ extension Presenter {
         weak var genericView: BaseViewControllerMVPProtocol?
         weak var view: BlissDetails_ViewProtocol!
         var router: BlissDetails_RouterProtocol!
-        var blissQuestions_UseCase: BlissQuestionsAPI_UseCaseProtocol!
-        var blissGeneric_UseCase: BlissGenericAppBusiness_UseCaseProtocol!
+        var blissQuestions_UseCase: BlissQuestionsAPIUseCaseProtocol!
+        var blissGeneric_UseCase: BlissGenericAppBusinessUseCaseProtocol!
         var tableView: GenericTableView_Protocol!
         var viewModel: VM.BlissDetails_ViewModel? { didSet { AppLogger.log(appCode: .vmChanged); viewModelChanged() } }
     }

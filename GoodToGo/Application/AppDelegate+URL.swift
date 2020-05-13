@@ -20,7 +20,7 @@ extension AppDelegate {
         
         AppLogger.log("App is opening URL [\(url)] with option [\(options)]")
         
-        var blissGenericAppBusiness_UseCase: BlissGenericAppBusiness_UseCaseProtocol { return container.resolve(AppProtocols.blissGenericAppBusiness_UseCase)! }
+        var blissGenericAppBusiness_UseCase: BlissGenericAppBusinessUseCaseProtocol { return container.resolve(AppProtocols.blissGenericAppBusiness_UseCase)! }
         
         blissGenericAppBusiness_UseCase.handle(url: url)
         return true

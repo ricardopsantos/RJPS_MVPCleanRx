@@ -16,14 +16,14 @@ import AppConstants
 import PointFreeFunctions
 import Domain
 
-
 /**
  * Brain. Where we can have business rules
  */
-public class BlissGenericAppBusiness_UseCase: GenericUseCase, BlissGenericAppBusiness_UseCaseProtocol {
+public class BlissGenericAppBusiness_UseCase: GenericUseCase, BlissGenericAppBusinessUseCaseProtocol {
 
-    var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
-    var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
+    public override init() { super.init() }
+    public var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
+    public var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
     public var rxPublishRelayApplicationDidReceivedData: PublishRelay = PublishRelay<Void>() // PublishRelay model Events
 
     public func handle(url: URL) {
@@ -44,6 +44,8 @@ public class BlissGenericAppBusiness_UseCase: GenericUseCase, BlissGenericAppBus
             return results
         }
 
+        #warning("fix deeplinks")
+        /*
         if let parans = getKeyValsFromURL(url: url) {
             parans.forEach { (kv) in
                 if kv.key == AppConstants.Bliss.DeepLinks.questionsFilter {
@@ -55,7 +57,7 @@ public class BlissGenericAppBusiness_UseCase: GenericUseCase, BlissGenericAppBus
                 }
             }
             rxPublishRelayApplicationDidReceivedData.accept(())
-        }
+        }*/
     }
 
     public func screenHaveHandledData(screen: String) {
@@ -83,11 +85,5 @@ public class BlissGenericAppBusiness_UseCase: GenericUseCase, BlissGenericAppBus
     public func setNeedToOpenScreen(screen: String, key: String, value: String) {
         let storedKey = "\(screen).\(key)"
         _ = generic_LocalStorageRepository.save(key: storedKey, value: value, expireDate: RJS_DataModel.baseDate.add(minutes: 1))
-        if AppEnvironments.isDev {
-            let stored = screenHaveDataToHandle(screen: screen)
-            assert(stored!.0 == key)
-            assert(stored!.1 == value)
-        }
     }
 }
-

@@ -10,7 +10,7 @@ import UIKit
 //
 import RJPSLib
 
-public protocol BlissQuestionsAPI_UseCaseProtocol: class {
+public protocol BlissQuestionsAPIUseCaseProtocol: class {
     func getHealth(completionHandler: @escaping (_ result: Result<Bliss.ServerHealth>) -> Void)
     func getQuestions(limit: Int, filter: String, offSet: Int, checkHealth: Bool, completionHandler: @escaping (Result<[Bliss.QuestionElementResponseDto]>) -> Void)
     func getQuestionBy(id: Int, checkHealth: Bool, completionHandler: @escaping (_ result: Result<Bliss.QuestionElementResponseDto>) -> Void)

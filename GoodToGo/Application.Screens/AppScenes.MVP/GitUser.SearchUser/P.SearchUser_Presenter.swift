@@ -66,7 +66,7 @@ extension Presenter {
         weak var view: SearchUser_ViewProtocol!
         var viewModel: VM.SearchUser? { didSet { AppLogger.log(appCode: .vmChanged); viewModelChanged() } }
         var router: SearchUser_RouterProtocol!
-        var useCase_1: GitUser_UseCaseProtocol!
+        var useCase_1: GitUserUseCaseProtocol!
         
         var input: SearchUser_PresenterProtocol_Input { return self }
         var output: SearchUser_PresenterProtocol_Output { return self }

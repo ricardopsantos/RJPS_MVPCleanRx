@@ -56,8 +56,8 @@ extension Presenter {
         weak var view: BlissQuestionsList_ViewProtocol!
         var router: BlissQuestionsList_RouterProtocol!
         var tableView: GenericTableView_Protocol!
-        var blissQuestions_UseCase: BlissQuestionsAPI_UseCaseProtocol!
-        var blissGeneric_UseCase: BlissGenericAppBusiness_UseCaseProtocol!
+        var blissQuestions_UseCase: BlissQuestionsAPIUseCaseProtocol!
+        var blissGeneric_UseCase: BlissGenericAppBusinessUseCaseProtocol!
         var viewModel: VM.BlissQuestionsList_ViewModel? {
             didSet { AppLogger.log(appCode: .vmChanged); viewModelChanged() }
         }

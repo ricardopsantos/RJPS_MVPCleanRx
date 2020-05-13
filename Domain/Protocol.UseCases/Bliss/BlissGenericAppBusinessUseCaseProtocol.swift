@@ -11,7 +11,7 @@ import RJPSLib
 import RxCocoa
 import RxSwift
 
-public protocol BlissGenericAppBusiness_UseCaseProtocol: class {
+public protocol BlissGenericAppBusinessUseCaseProtocol: class {
     
     // PublishRelay model Events
     var rxPublishRelayApplicationDidReceivedData: PublishRelay<Void> { get }

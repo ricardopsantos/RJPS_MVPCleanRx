@@ -58,11 +58,11 @@ extension V {
         }()
 
         private lazy var btnSample2: UIButton = {
-            UIKitFactory.button(title: "btnSample2", style: .regular)
+            UIKitFactory.button(title: "btnSample2", style: .dismiss)
         }()
 
         private lazy var btnSample3: UIButton = {
-            UIKitFactory.button(title: "btnSample3", style: .regular)
+            UIKitFactory.button(title: "btnSample3", style: .alternative)
         }()
 
         // Naming convention: rxTbl[MeaningfulTableName]Items

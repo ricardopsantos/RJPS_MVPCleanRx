@@ -28,7 +28,7 @@ public extension UIButton {
 
     func apply(style: UIButton.LayoutStyle) {
         let regular = {
-            self.titleLabel?.font = UIFont.App.regular(size: .big)
+            self.titleLabel?.font = UIFont.App.bold(size: .regular)
             self.backgroundColor  = UIColor.App.btnBackgroundColor
             self.setTextColorForAllStates(UIColor.App.btnTextColor)
             self.setState(enabled: true)
@@ -37,7 +37,7 @@ public extension UIButton {
             self.addShadow()
         }
         let alternative = {
-            self.titleLabel?.font = UIFont.App.regular(size: .small)
+            self.titleLabel?.font = UIFont.App.regular(size: .regular)
             self.backgroundColor  = UIColor.App.btnBackgroundColor
             self.setTextColorForAllStates(UIColor.App.btnTextColor)
             self.setState(enabled: true)

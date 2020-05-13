@@ -17,9 +17,10 @@ import Factory
      * Brain. Where we can have business rules
      */
  public class SampleB_UseCase: GenericUseCase, SampleB_UseCaseProtocol {
+    public override init() { super.init() }
 
-        var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
-        var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
+        public var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
+        public var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
         
     public func operation1(canUseCache: Bool, completionHandler: @escaping SampleB_UseCaseCompletionHandler) {
             AppLogger.log(appCode: .notImplemented)

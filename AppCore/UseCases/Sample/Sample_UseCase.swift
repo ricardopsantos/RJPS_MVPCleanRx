@@ -21,12 +21,13 @@ import Factory
     /**
      * Brain. Where we can have business rules
      */
-    class Sample_UseCase: GenericUseCase, Sample_UseCaseProtocol {
+ public class Sample_UseCase: GenericUseCase, Sample_UseCaseProtocol {
+    public override init() { super.init() }
+
+    public var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
+    public var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
         
-        var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
-        var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
-        
-        func operation1(canUseCache: Bool, completionHandler: @escaping Sample_UseCaseCompletionHandler) {
+    public func operation1(canUseCache: Bool, completionHandler: @escaping Sample_UseCaseCompletionHandler) {
             guard existsInternetConnection else {
                 completionHandler(Result.failure(Factory.Errors.with(appCode: .noInternet)))
                 return
@@ -50,7 +51,7 @@ import Factory
             }
         }
         
-        func operation2(param: String, completionHandler: @escaping Sample_UseCaseCompletionHandler) {
+    public func operation2(param: String, completionHandler: @escaping Sample_UseCaseCompletionHandler) {
             guard existsInternetConnection else {
                 completionHandler(Result.failure(Factory.Errors.with(appCode: .noInternet)))
                 return

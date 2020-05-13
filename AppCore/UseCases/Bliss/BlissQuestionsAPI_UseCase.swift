@@ -18,11 +18,13 @@ import Factory
     /**
      * Brain. Where we can have business rules
      */
-public class BlissQuestionsAPI_UseCase: GenericUseCase, BlissQuestionsAPI_UseCaseProtocol {
+public class BlissQuestionsAPI_UseCase: GenericUseCase, BlissQuestionsAPIUseCaseProtocol {
 
-        var repositoryNetwork: Bliss_NetWorkRepositoryProtocol!
-        var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
-        var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
+    public override init() { super.init() }
+
+        public var repositoryNetwork: Bliss_NetWorkRepositoryProtocol!
+        public var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
+        public var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
         
         private func serverIsOK(completionHandler: @escaping (Bool) -> Void) {
             getHealth { (some) in

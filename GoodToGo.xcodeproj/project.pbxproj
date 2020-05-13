@@ -29,9 +29,7 @@
 		9F6BB2D122E3470200829A6F /* V.MVPSampleTableView_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF809A22BFB5CF003C4562 /* V.MVPSampleTableView_View.swift */; };
 		9F6BB2D222E3470200829A6F /* P.MVPSampleTableView_Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF809B22BFB5CF003C4562 /* P.MVPSampleTableView_Presenter.swift */; };
 		9F6BB2D322E3470200829A6F /* R.MVPSampleTableView_Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF809C22BFB5CF003C4562 /* R.MVPSampleTableView_Router.swift */; };
-		9F6BB2D522E3474F00829A6F /* BlissQuestionsAPI_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2D422E3474F00829A6F /* BlissQuestionsAPI_UseCase.swift */; };
 		9F6BB2D922E3673200829A6F /* AppDelegate+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2D822E3673200829A6F /* AppDelegate+URL.swift */; };
-		9F6BB2DB22E36C5B00829A6F /* BlissGenericAppBussiness_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2DA22E36C5B00829A6F /* BlissGenericAppBussiness_UseCase.swift */; };
 		9F6BB2ED22E3A97F00829A6F /* D.BlissQuestionsList_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2C522E3450E00829A6F /* D.BlissQuestionsList_ViewModel.swift */; };
 		9F6BB2EE22E3A97F00829A6F /* AS.BlissQuestionsList_AssemblyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2C622E3450E00829A6F /* AS.BlissQuestionsList_AssemblyContainer.swift */; };
 		9F6BB2EF22E3A97F00829A6F /* V.BlissQuestionsList_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2C722E3450E00829A6F /* V.BlissQuestionsList_View.swift */; };
@@ -48,9 +46,6 @@
 		9F6BB30222E3CB2D00829A6F /* V.BlissRoot_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2E622E3A61F00829A6F /* V.BlissRoot_View.swift */; };
 		9F6BB30322E3CB2D00829A6F /* D.BlissRoot_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2E722E3A61F00829A6F /* D.BlissRoot_ViewModel.swift */; };
 		9F9BEDA022E5CC4F0018BD4C /* RxGesture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9BED9F22E5CC4F0018BD4C /* RxGesture.framework */; };
-		9FA0DCC922BE5E45003ADF99 /* GitUser_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0DCC322BE5E45003ADF99 /* GitUser_UseCase.swift */; };
-		9FA0DCCA22BE5E45003ADF99 /* SampleB_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0DCC522BE5E45003ADF99 /* SampleB_UseCase.swift */; };
-		9FA0DCCB22BE5E45003ADF99 /* Sample_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0DCC622BE5E45003ADF99 /* Sample_UseCase.swift */; };
 		9FACC173223BBD8600576498 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC172223BBD8600576498 /* RxCocoa.framework */; };
 		9FACC177223BBFC700576498 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC176223BBFC600576498 /* RxSwift.framework */; };
 		9FACC17B223BDD5B00576498 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FACC17A223BDD5B00576498 /* ToDo.swift */; };
@@ -80,6 +75,14 @@
 		D725A68C246C4526005664CB /* P.CarTrackUsersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D725A685246C4526005664CB /* P.CarTrackUsersPresenter.swift */; };
 		D725A68E246C452B005664CB /* V.CarTrackUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D725A68D246C452B005664CB /* V.CarTrackUsersTableViewCell.swift */; };
 		D725A693246C46B8005664CB /* CarTrackAPI_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D725A692246C46B8005664CB /* CarTrackAPI_UseCase.swift */; };
+		D725A694246C4AA5005664CB /* GenericUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCF332222EF53890074DAB9 /* GenericUseCase.swift */; };
+		D725A696246C4AAF005664CB /* BlissGenericAppBussiness_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2DA22E36C5B00829A6F /* BlissGenericAppBussiness_UseCase.swift */; };
+		D725A697246C4AAF005664CB /* BlissQuestionsAPI_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2D422E3474F00829A6F /* BlissQuestionsAPI_UseCase.swift */; };
+		D725A698246C4AAF005664CB /* SampleB_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0DCC522BE5E45003ADF99 /* SampleB_UseCase.swift */; };
+		D725A699246C4AAF005664CB /* GitUser_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0DCC322BE5E45003ADF99 /* GitUser_UseCase.swift */; };
+		D725A69A246C4AAF005664CB /* Sample_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA0DCC622BE5E45003ADF99 /* Sample_UseCase.swift */; };
+		D725A69C246C4B2E005664CB /* CarTrackGenericAppBusinessUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D725A69B246C4B2E005664CB /* CarTrackGenericAppBusinessUseCase.swift */; };
+		D725A69F246C6302005664CB /* typealias.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.encaplulate.swift */; };
 		D729225E24669D5000DAD480 /* AppConstants.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7E25A9424669B9B003BBEA0 /* AppConstants.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D729226024669D5400DAD480 /* PointFreeFunctions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7E25A7A246699FC003BBEA0 /* PointFreeFunctions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D729226A24669F3700DAD480 /* Designables.h in Headers */ = {isa = PBXBuildFile; fileRef = D729226824669F3700DAD480 /* Designables.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -181,7 +184,6 @@
 		D788BD83246944A9007C59D0 /* VC.BaseGenericViewControllerVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788BD82246944A9007C59D0 /* VC.BaseGenericViewControllerVIP.swift */; };
 		D788BD842469453E007C59D0 /* V.BaseGenericViewVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEBD246837CE00BD41A5 /* V.BaseGenericViewVIP.swift */; };
 		D788BD8F246959F2007C59D0 /* StylableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788BD8E246959F2007C59D0 /* StylableView.swift */; };
-		D788BD9824698AAD007C59D0 /* GenericUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCF332222EF53890074DAB9 /* GenericUseCase.swift */; };
 		D788BD9924698CDD007C59D0 /* LayoutsSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8AE14B2205DD0300DF75F6 /* LayoutsSizes.swift */; };
 		D788BDA324698D74007C59D0 /* Factory.h in Headers */ = {isa = PBXBuildFile; fileRef = D788BDA124698D74007C59D0 /* Factory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D788BDA624698D74007C59D0 /* Factory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D788BD9F24698D74007C59D0 /* Factory.framework */; };
@@ -205,9 +207,9 @@
 		D7AB24A92467366D000142C4 /* CacheRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCF332722EF55500074DAB9 /* CacheRepositoryProtocol.swift */; };
 		D7AB24AA2467366D000142C4 /* LocalStorageRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9829422239892D00ACA6B7 /* LocalStorageRepositoryProtocol.swift */; };
 		D7AB24AB24673675000142C4 /* RelatedToSamples_UseCase2Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8D4AC42238832D00777976 /* RelatedToSamples_UseCase2Protocol.swift */; };
-		D7AB24AC24673675000142C4 /* BlissQuestionsAPI_UseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9F97022E4B8CB00D64FD2 /* BlissQuestionsAPI_UseCaseProtocol.swift */; };
-		D7AB24AD24673675000142C4 /* BlissGenericAppBussiness_UseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9F97122E4B8CB00D64FD2 /* BlissGenericAppBussiness_UseCaseProtocol.swift */; };
-		D7AB24AE24673675000142C4 /* GitUser_UseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F98293E223986CE00ACA6B7 /* GitUser_UseCaseProtocol.swift */; };
+		D7AB24AC24673675000142C4 /* BlissQuestionsAPIUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9F97022E4B8CB00D64FD2 /* BlissQuestionsAPIUseCaseProtocol.swift */; };
+		D7AB24AD24673675000142C4 /* BlissGenericAppBusinessUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9F97122E4B8CB00D64FD2 /* BlissGenericAppBusinessUseCaseProtocol.swift */; };
+		D7AB24AE24673675000142C4 /* GitUserUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F98293E223986CE00ACA6B7 /* GitUserUseCaseProtocol.swift */; };
 		D7AB24AF24673675000142C4 /* RelatedToSamples_UseCase1Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8D4AB2223873CD00777976 /* RelatedToSamples_UseCase1Protocol.swift */; };
 		D7AB24B02467374A000142C4 /* BaseRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80A922BFB68C003C4562 /* BaseRouterProtocol.swift */; };
 		D7AB24B12467374A000142C4 /* BasePresenterVMPProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80AC22BFB68D003C4562 /* BasePresenterVMPProtocol.swift */; };
@@ -223,7 +225,7 @@
 		D7D9E79024675410005B4313 /* Mappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E78F24675410005B4313 /* Mappers.swift */; };
 		D7D9E7922467545D005B4313 /* typealias.AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E7912467545D005B4313 /* typealias.AppCore.swift */; };
 		D7D9E793246754AD005B4313 /* Mappers+GitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FACC16A223BA4CB00576498 /* Mappers+GitUser.swift */; };
-		D7D9E79524676CC1005B4313 /* UseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E79424676CC1005B4313 /* UseCases.swift */; };
+		D7D9E79524676CC1005B4313 /* SomeProtocolXXXX_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E79424676CC1005B4313 /* SomeProtocolXXXX_UseCase.swift */; };
 		D7D9E7A424676FE6005B4313 /* API.h in Headers */ = {isa = PBXBuildFile; fileRef = D7D9E7A224676FE6005B4313 /* API.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D7D9E7A724676FE6005B4313 /* API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7D9E7A024676FE6005B4313 /* API.framework */; };
 		D7D9E7A824676FE6005B4313 /* API.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7D9E7A024676FE6005B4313 /* API.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -264,7 +266,7 @@
 		D7D9E81824681899005B4313 /* Employee copy 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E81724681899005B4313 /* Employee copy 2.swift */; };
 		D7D9E81A246818AF005B4313 /* CarTrackUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E819246818AE005B4313 /* CarTrackUserModel.swift */; };
 		D7D9E81C24681BBE005B4313 /* CarTrack_WebAPIRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E81B24681BBE005B4313 /* CarTrack_WebAPIRepositoryProtocol.swift */; };
-		D7D9E82524682161005B4313 /* CarTrackGenericAppBusiness_UseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E82424682161005B4313 /* CarTrackGenericAppBusiness_UseCaseProtocol.swift */; };
+		D7D9E82524682161005B4313 /* CarTrackGenericAppBusinessUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E82424682161005B4313 /* CarTrackGenericAppBusinessUseCaseProtocol.swift */; };
 		D7D9E86F2468264A005B4313 /* CarTrackAPI_UseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E86E2468264A005B4313 /* CarTrackAPI_UseCaseProtocol.swift */; };
 		D7D9E870246827E3005B4313 /* E.Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80BB22BFB9A6003C4562 /* E.Images.swift */; };
 		D7E25A7E246699FC003BBEA0 /* PointFreeFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = D7E25A7C246699FC003BBEA0 /* PointFreeFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -279,6 +281,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D725A69D246C5601005664CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F288F1C20F8089F008A9539 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D72922AE2466A0CA00DAD480;
+			remoteInfo = DevTools;
+		};
 		D729226B24669F3700DAD480 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9F288F1C20F8089F008A9539 /* Project object */;
@@ -692,7 +701,7 @@
 		9F8D4ABB223877D400777976 /* WebAPI.Employees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebAPI.Employees.swift; sourceTree = "<group>"; };
 		9F8D4ABD223877D400777976 /* Employees.APIRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employees.APIRequests.swift; sourceTree = "<group>"; };
 		9F8D4AC42238832D00777976 /* RelatedToSamples_UseCase2Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedToSamples_UseCase2Protocol.swift; sourceTree = "<group>"; };
-		9F98293E223986CE00ACA6B7 /* GitUser_UseCaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitUser_UseCaseProtocol.swift; sourceTree = "<group>"; };
+		9F98293E223986CE00ACA6B7 /* GitUserUseCaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitUserUseCaseProtocol.swift; sourceTree = "<group>"; };
 		9F9829422239892D00ACA6B7 /* LocalStorageRepositoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalStorageRepositoryProtocol.swift; sourceTree = "<group>"; };
 		9F98294B22398DF700ACA6B7 /* GitUser.APIRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitUser.APIRequests.swift; sourceTree = "<group>"; };
 		9F98294F22398EDB00ACA6B7 /* WebAPI.GitUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebAPI.GitUser.swift; sourceTree = "<group>"; };
@@ -715,8 +724,8 @@
 		9FB35E0822EC611000326092 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9FB35E0922EC611000326092 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9FB8DFC92233E67100095420 /* typealias.encaplulate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = typealias.encaplulate.swift; sourceTree = "<group>"; };
-		9FB9F97022E4B8CB00D64FD2 /* BlissQuestionsAPI_UseCaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlissQuestionsAPI_UseCaseProtocol.swift; sourceTree = "<group>"; };
-		9FB9F97122E4B8CB00D64FD2 /* BlissGenericAppBussiness_UseCaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlissGenericAppBussiness_UseCaseProtocol.swift; sourceTree = "<group>"; };
+		9FB9F97022E4B8CB00D64FD2 /* BlissQuestionsAPIUseCaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlissQuestionsAPIUseCaseProtocol.swift; sourceTree = "<group>"; };
+		9FB9F97122E4B8CB00D64FD2 /* BlissGenericAppBusinessUseCaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlissGenericAppBusinessUseCaseProtocol.swift; sourceTree = "<group>"; };
 		9FB9F97222E4B8CB00D64FD2 /* Bliss_NetWorkRepositoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bliss_NetWorkRepositoryProtocol.swift; sourceTree = "<group>"; };
 		9FB9F97622E520DB00D64FD2 /* Debug.QA.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.QA.xcconfig; sourceTree = "<group>"; };
 		9FBF4B0722BEBC3B00E0D1AB /* RJPSLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RJPSLib.framework; path = Carthage/Build/iOS/RJPSLib.framework; sourceTree = "<group>"; };
@@ -769,6 +778,7 @@
 		D725A685246C4526005664CB /* P.CarTrackUsersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.CarTrackUsersPresenter.swift; sourceTree = "<group>"; };
 		D725A68D246C452B005664CB /* V.CarTrackUsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V.CarTrackUsersTableViewCell.swift; sourceTree = "<group>"; };
 		D725A692246C46B8005664CB /* CarTrackAPI_UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTrackAPI_UseCase.swift; sourceTree = "<group>"; };
+		D725A69B246C4B2E005664CB /* CarTrackGenericAppBusinessUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTrackGenericAppBusinessUseCase.swift; sourceTree = "<group>"; };
 		D729226624669F3700DAD480 /* Designables.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Designables.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D729226824669F3700DAD480 /* Designables.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Designables.h; sourceTree = "<group>"; };
 		D729226924669F3700DAD480 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -858,7 +868,7 @@
 		D7AB24C7246743BD000142C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7D9E78F24675410005B4313 /* Mappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mappers.swift; sourceTree = "<group>"; };
 		D7D9E7912467545D005B4313 /* typealias.AppCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = typealias.AppCore.swift; sourceTree = "<group>"; };
-		D7D9E79424676CC1005B4313 /* UseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCases.swift; sourceTree = "<group>"; };
+		D7D9E79424676CC1005B4313 /* SomeProtocolXXXX_UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeProtocolXXXX_UseCase.swift; sourceTree = "<group>"; };
 		D7D9E79624676CD2005B4313 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7D9E79724676D48005B4313 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7D9E79824676D90005B4313 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -893,7 +903,7 @@
 		D7D9E81724681899005B4313 /* Employee copy 2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Employee copy 2.swift"; sourceTree = "<group>"; };
 		D7D9E819246818AE005B4313 /* CarTrackUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTrackUserModel.swift; sourceTree = "<group>"; };
 		D7D9E81B24681BBE005B4313 /* CarTrack_WebAPIRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTrack_WebAPIRepositoryProtocol.swift; sourceTree = "<group>"; };
-		D7D9E82424682161005B4313 /* CarTrackGenericAppBusiness_UseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTrackGenericAppBusiness_UseCaseProtocol.swift; sourceTree = "<group>"; };
+		D7D9E82424682161005B4313 /* CarTrackGenericAppBusinessUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTrackGenericAppBusinessUseCaseProtocol.swift; sourceTree = "<group>"; };
 		D7D9E86E2468264A005B4313 /* CarTrackAPI_UseCaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTrackAPI_UseCaseProtocol.swift; sourceTree = "<group>"; };
 		D7E25A6C2465E5A6003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7E25A702465E5F1003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -1114,8 +1124,8 @@
 			children = (
 				9FE1438821AF2D8B0026BDFC /* typealias.Application.swift */,
 				9FFF99A42247B1FA00783EE2 /* Application */,
-				9F103A2D2236C08900C57BC0 /* DependencyInjection */,
 				9F58FB0F22BE5DE700042A8C /* Application.Screens */,
+				9F103A2D2236C08900C57BC0 /* DependencyInjection */,
 				D7AB24BC24674323000142C4 /* Application.Comom */,
 				9FD971A420FF418A00F73FB9 /* SupportingFiles */,
 			);
@@ -1125,13 +1135,13 @@
 		9F36ADE321B1612600FADBB1 /* __Documents__ */ = {
 			isa = PBXGroup;
 			children = (
-				D7711F87246B862F00B6963A /* Cartfile */,
 				D761FE9A2468304A00BD41A5 /* GoodToGoVIP Schene.xctemplate */,
 				9F55525522E9A73D009364D1 /* README.md */,
-				9F7B2F4421B9451C001F3FFA /* DevNotes.txt */,
 				9FC6819A22F9907000D3F281 /* Notes.md */,
 				D7D9E7FF24680753005B4313 /* CarTrack.md */,
 				9FACC17A223BDD5B00576498 /* ToDo.swift */,
+				9F7B2F4421B9451C001F3FFA /* DevNotes.txt */,
+				D7711F87246B862F00B6963A /* Cartfile */,
 				9FCF331E22EF18A90074DAB9 /* .swiftlint.yml */,
 				D7A620B0246556A1008B1722 /* _script_installPackages.sh */,
 				9F6BB2BB22E31D0400829A6F /* MVPClean_Arquitecture.pptx */,
@@ -1277,7 +1287,8 @@
 		9FA0DCC122BE5E45003ADF99 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				D7D9E79424676CC1005B4313 /* UseCases.swift */,
+				D7D9E79424676CC1005B4313 /* SomeProtocolXXXX_UseCase.swift */,
+				9FCF332222EF53890074DAB9 /* GenericUseCase.swift */,
 				D725A691246C4675005664CB /* CarTrack */,
 				D725A690246C4670005664CB /* Bliss */,
 				D725A68F246C466A005664CB /* Sample */,
@@ -1412,9 +1423,9 @@
 		D725A68F246C466A005664CB /* Sample */ = {
 			isa = PBXGroup;
 			children = (
+				9FA0DCC622BE5E45003ADF99 /* Sample_UseCase.swift */,
 				9FA0DCC522BE5E45003ADF99 /* SampleB_UseCase.swift */,
 				9FA0DCC322BE5E45003ADF99 /* GitUser_UseCase.swift */,
-				9FA0DCC622BE5E45003ADF99 /* Sample_UseCase.swift */,
 			);
 			path = Sample;
 			sourceTree = "<group>";
@@ -1432,6 +1443,7 @@
 			isa = PBXGroup;
 			children = (
 				D725A692246C46B8005664CB /* CarTrackAPI_UseCase.swift */,
+				D725A69B246C4B2E005664CB /* CarTrackGenericAppBusinessUseCase.swift */,
 			);
 			path = CarTrack;
 			sourceTree = "<group>";
@@ -1702,7 +1714,6 @@
 			isa = PBXGroup;
 			children = (
 				D761FEB42468330600BD41A5 /* ProgramaticUIUtils.swift */,
-				9FCF332222EF53890074DAB9 /* GenericUseCase.swift */,
 				9FE1437021AF1ADC0026BDFC /* Environments.swift */,
 			);
 			path = Application.Comom;
@@ -1881,8 +1892,8 @@
 		D7D9E82124682128005B4313 /* Bliss */ = {
 			isa = PBXGroup;
 			children = (
-				9FB9F97122E4B8CB00D64FD2 /* BlissGenericAppBussiness_UseCaseProtocol.swift */,
-				9FB9F97022E4B8CB00D64FD2 /* BlissQuestionsAPI_UseCaseProtocol.swift */,
+				9FB9F97122E4B8CB00D64FD2 /* BlissGenericAppBusinessUseCaseProtocol.swift */,
+				9FB9F97022E4B8CB00D64FD2 /* BlissQuestionsAPIUseCaseProtocol.swift */,
 			);
 			path = Bliss;
 			sourceTree = "<group>";
@@ -1890,7 +1901,7 @@
 		D7D9E82224682130005B4313 /* GitHub */ = {
 			isa = PBXGroup;
 			children = (
-				9F98293E223986CE00ACA6B7 /* GitUser_UseCaseProtocol.swift */,
+				9F98293E223986CE00ACA6B7 /* GitUserUseCaseProtocol.swift */,
 			);
 			path = GitHub;
 			sourceTree = "<group>";
@@ -1898,7 +1909,7 @@
 		D7D9E8232468214B005B4313 /* CarTrack */ = {
 			isa = PBXGroup;
 			children = (
-				D7D9E82424682161005B4313 /* CarTrackGenericAppBusiness_UseCaseProtocol.swift */,
+				D7D9E82424682161005B4313 /* CarTrackGenericAppBusinessUseCaseProtocol.swift */,
 				D7D9E86E2468264A005B4313 /* CarTrackAPI_UseCaseProtocol.swift */,
 			);
 			path = CarTrack;
@@ -2183,6 +2194,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D725A69E246C5601005664CB /* PBXTargetDependency */,
 			);
 			name = Extensions;
 			productName = Extensions;
@@ -2740,9 +2752,7 @@
 				9FE0572A22E8D8F000802747 /* AS.MVPSampleView_AssemblyContainer.swift in Sources */,
 				9FE0572522E8D75400802747 /* AS.MVPSampleRxView_AssemblyContainer.swift in Sources */,
 				9F3ED4BC22E618C80020A50A /* AppView+RxTesting.swift in Sources */,
-				9F6BB2D522E3474F00829A6F /* BlissQuestionsAPI_UseCase.swift in Sources */,
 				D7711F6C246B340C00B6963A /* VC.___FILEBASENAME___ViewController.swift in Sources */,
-				9FA0DCCA22BE5E45003ADF99 /* SampleB_UseCase.swift in Sources */,
 				D779A5F3234FE3A500D3D6F7 /* VC.SampleVIP_ViewController.swift in Sources */,
 				D779A5F1234FE3A500D3D6F7 /* R.SampleVIP_Router.swift in Sources */,
 				D7711F68246B340C00B6963A /* I.___FILEBASENAME___Interactor.swift in Sources */,
@@ -2752,7 +2762,6 @@
 				9FE1439721AF2F520026BDFC /* typealias.Application.swift in Sources */,
 				9F6BB2FB22E3C0E400829A6F /* P.BlissDetails_Presenter.swift in Sources */,
 				9F6BB2ED22E3A97F00829A6F /* D.BlissQuestionsList_ViewModel.swift in Sources */,
-				D788BD9824698AAD007C59D0 /* GenericUseCase.swift in Sources */,
 				9F6BB2D122E3470200829A6F /* V.MVPSampleTableView_View.swift in Sources */,
 				9F58FB4722BE5DE700042A8C /* UserDetails_AssemblyContainer.swift in Sources */,
 				9F6BB2FE22E3C0E400829A6F /* AS.BlissDetails_AssemblyContainer.swift in Sources */,
@@ -2799,12 +2808,10 @@
 				D72923892466BF4700DAD480 /* AppView+TabBarController.swift in Sources */,
 				D7711F82246B691600B6963A /* ProgramaticUIUtils.swift in Sources */,
 				9F58FB4822BE5DE700042A8C /* UserDetais_ViewModel.swift in Sources */,
-				9F6BB2DB22E36C5B00829A6F /* BlissGenericAppBussiness_UseCase.swift in Sources */,
 				D7AB2443246716C6000142C4 /* V.UserTableViewCell.swift in Sources */,
 				9F58FB4A22BE5DE700042A8C /* D.SearchUser_ViewModel.swift in Sources */,
 				D725A686246C4526005664CB /* V.CarTrackUsersView.swift in Sources */,
 				D7711F6D246B3B4400B6963A /* V.___FILEBASENAME___TableViewCell.swift in Sources */,
-				9FA0DCCB22BE5E45003ADF99 /* Sample_UseCase.swift in Sources */,
 				9F58FB4D22BE5DE700042A8C /* AS.SearchUser_AssemblyContainer.swift in Sources */,
 				D725A687246C4526005664CB /* VC.CarTrackUsersViewController.swift in Sources */,
 				D779A5F0234FE3A500D3D6F7 /* W.SampleVIP_Worker.swift in Sources */,
@@ -2815,7 +2822,6 @@
 				9FE0572622E8D75400802747 /* P.MVPSampleRxView_Presenter.swift in Sources */,
 				D7711F7A246B5A3500B6963A /* D.CarTrackLoginDomain.swift in Sources */,
 				D7711F77246B5A3500B6963A /* V.CarTrackLoginView.swift in Sources */,
-				9FA0DCC922BE5E45003ADF99 /* GitUser_UseCase.swift in Sources */,
 				9FB8DFCA2233E67100095420 /* typealias.encaplulate.swift in Sources */,
 				D725A68B246C4526005664CB /* I.CarTrackUsersInteractor.swift in Sources */,
 				9F58FB4422BE5DE700042A8C /* UserDetais_View.swift in Sources */,
@@ -2933,6 +2939,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D725A69F246C6302005664CB /* typealias.encaplulate.swift in Sources */,
 				D788BDB324698DFA007C59D0 /* FactoryErrors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2941,7 +2948,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7AB24AC24673675000142C4 /* BlissQuestionsAPI_UseCaseProtocol.swift in Sources */,
+				D7AB24AC24673675000142C4 /* BlissQuestionsAPIUseCaseProtocol.swift in Sources */,
 				D7D9E7FE2468016D005B4313 /* E.AppMode.swift in Sources */,
 				D7AB24A72467366D000142C4 /* GitUser_NetWorkRepositoryProtocol.swift in Sources */,
 				D7AB24B324673780000142C4 /* BaseViewProtocol.swift in Sources */,
@@ -2949,13 +2956,13 @@
 				D7AB247F24672F36000142C4 /* GitHub.UserViewModel.swift in Sources */,
 				D7AB248024673000000142C4 /* Employee.swift in Sources */,
 				D7AB24AB24673675000142C4 /* RelatedToSamples_UseCase2Protocol.swift in Sources */,
-				D7D9E82524682161005B4313 /* CarTrackGenericAppBusiness_UseCaseProtocol.swift in Sources */,
+				D7D9E82524682161005B4313 /* CarTrackGenericAppBusinessUseCaseProtocol.swift in Sources */,
 				D7AB24A62467366D000142C4 /* Bliss_NetWorkRepositoryProtocol.swift in Sources */,
 				D7AB24AF24673675000142C4 /* RelatedToSamples_UseCase1Protocol.swift in Sources */,
 				D7D9E7FA2467FFBA005B4313 /* E.AppCodes.swift in Sources */,
 				D7D9E8092468172A005B4313 /* UserResponseDto.swift in Sources */,
 				D7AB247924672405000142C4 /* typealias.Domain.swift in Sources */,
-				D7AB24AD24673675000142C4 /* BlissGenericAppBussiness_UseCaseProtocol.swift in Sources */,
+				D7AB24AD24673675000142C4 /* BlissGenericAppBusinessUseCaseProtocol.swift in Sources */,
 				D7D9E8162468186E005B4313 /* CarTrack.swift in Sources */,
 				D7D9E810246817CE005B4313 /* GitHub.swift in Sources */,
 				D7AB24AA2467366D000142C4 /* LocalStorageRepositoryProtocol.swift in Sources */,
@@ -2974,7 +2981,7 @@
 				D7D9E81A246818AF005B4313 /* CarTrackUserModel.swift in Sources */,
 				D761FEC02468385100BD41A5 /* TemplateModel.swift in Sources */,
 				D7AB248224673062000142C4 /* Bliss+ExtensionUtils.swift in Sources */,
-				D7AB24AE24673675000142C4 /* GitUser_UseCaseProtocol.swift in Sources */,
+				D7AB24AE24673675000142C4 /* GitUserUseCaseProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2982,14 +2989,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D725A694246C4AA5005664CB /* GenericUseCase.swift in Sources */,
 				D7D9E7B5246771DB005B4313 /* AppUtils_Protocol+Extension.swift in Sources */,
 				D725A693246C46B8005664CB /* CarTrackAPI_UseCase.swift in Sources */,
+				D725A69C246C4B2E005664CB /* CarTrackGenericAppBusinessUseCase.swift in Sources */,
 				D7D9E79024675410005B4313 /* Mappers.swift in Sources */,
+				D725A698246C4AAF005664CB /* SampleB_UseCase.swift in Sources */,
 				D7D9E7922467545D005B4313 /* typealias.AppCore.swift in Sources */,
+				D725A697246C4AAF005664CB /* BlissQuestionsAPI_UseCase.swift in Sources */,
 				D7D9E7F32467FB98005B4313 /* typealias.encaplulate.swift in Sources */,
-				D7D9E79524676CC1005B4313 /* UseCases.swift in Sources */,
+				D7D9E79524676CC1005B4313 /* SomeProtocolXXXX_UseCase.swift in Sources */,
+				D725A696246C4AAF005664CB /* BlissGenericAppBussiness_UseCase.swift in Sources */,
 				D7D9E793246754AD005B4313 /* Mappers+GitUser.swift in Sources */,
+				D725A69A246C4AAF005664CB /* Sample_UseCase.swift in Sources */,
 				D7D9E78E246753F0005B4313 /* Mappers+Utils.swift in Sources */,
+				D725A699246C4AAF005664CB /* GitUser_UseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3053,6 +3067,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D725A69E246C5601005664CB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D72922AE2466A0CA00DAD480 /* DevTools */;
+			targetProxy = D725A69D246C5601005664CB /* PBXContainerItemProxy */;
+		};
 		D729226C24669F3700DAD480 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D729226524669F3700DAD480 /* Designables */;

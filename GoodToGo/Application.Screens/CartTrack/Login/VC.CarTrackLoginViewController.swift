@@ -37,6 +37,7 @@ extension VC {
         // Order in View life-cycle : 2
         override func loadView() {
             super.loadView()
+            self.title = Messages.login.localised
         }
 
         // Order in View life-cycle : 4

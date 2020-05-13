@@ -4,3 +4,4 @@
 #warning("adicionar image a mostrar os ecran os tipo de botoes e labels")
 #warning("colocar uma cache decente")
 #warning("Add rxKeyboard")
+#warning("Colocar UC. nos use cases")
