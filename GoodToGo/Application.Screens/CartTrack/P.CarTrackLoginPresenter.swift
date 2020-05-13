@@ -8,10 +8,8 @@
 import Foundation
 import UIKit
 //
-//import Differentiator
 import RxCocoa
 import RxSwift
-//import RxDataSources
 import TinyConstraints
 //
 import AppConstants
@@ -74,18 +72,21 @@ extension P.CarTrackLoginPresenter: CarTrackLoginPresentationLogicProtocol {
 
     // Used By Interactor (exclusively)
     func presentScreenInitialState(response: VM.CarTrackLogin.ScreenInitialState.Response) {
-        let title = response.title.uppercased()
-        let subTitle = response.subTitle.lowercased()
+        let userName = response.userName
+        let password = response.password
+        let screenLayout = E.CarTrackLoginView.ScreenLayout.cantProceed
+        let title = Messages.welcome.localised
         let viewModel = VM.CarTrackLogin.ScreenInitialState.ViewModel(title: title,
-                                                                                 subTitle: subTitle,
-                                                                                 screenLayout: .layoutA)
+                                                                      userName: userName,
+                                                                      password: password,
+                                                                      screenLayout: screenLayout)
         viewController?.displayScreenInitialState(viewModel: viewModel)
     }
 
     // Used By Interactor (exclusively)
-    func presentSomeStuff(response: VM.CarTrackLogin.SomeStuff.Response) {
+    func presentScreenState(response: VM.CarTrackLogin.ScreenState.Response) {
         // Presenter will transform response object in something that the View can process/read
-        let subTitle = response.subTitle.uppercased()
+       /* let subTitle = response.subTitle.uppercased()
         let someListA = response.listA
             .map { VM.CarTrackLogin.TableItem(enabled: true,
                                                   image: Images.noInternet.rawValue,
@@ -101,13 +102,13 @@ extension P.CarTrackLoginPresenter: CarTrackLoginPresentationLogicProtocol {
                                                   cellType: .cellType2)
             }
         let sum = someListA.count + someListB.count
-        let viewModel = VM.CarTrackLogin.SomeStuff.ViewModel(subTitle: subTitle,
+        let viewModel = VM.CarTrackLogin.ValidateNextButtonEnabled.ViewModel(subTitle: subTitle,
                                                                              someValue: "\(sum)",
             someListSectionATitle: "\(someListA.count) A elements",
             someListSectionBTitle: "\(someListB.count) B elements",
             someListSectionAElements: someListA,
             someListSectionBElements: someListB)
-        viewController?.displaySomeStuff(viewModel: viewModel)
+        viewController?.displaySomeStuff(viewModel: viewModel)*/
     }
 
 }

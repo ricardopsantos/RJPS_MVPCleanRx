@@ -10,10 +10,10 @@ import Foundation
 
 // Shortcut for common app messages
 public enum Messages: Int {
-    case noInternet = 0
+    case alert = 0
+    case noInternet
     case pleaseTryAgainLater
     case dismiss
-    case alert
     case ok
     case success
     case no
@@ -23,9 +23,11 @@ public enum Messages: Int {
     case password
     case login
     case invalidPassword
+    case welcome
 
     public var localised: String {
         switch self {
+        case .welcome: return AppResources.get("Welcome")
         case .userName: return AppResources.get("Usernames")
         case .password: return AppResources.get("Password")
         case .invalidPassword: return AppResources.get("Invalid password")

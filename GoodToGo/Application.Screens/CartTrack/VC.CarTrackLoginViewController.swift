@@ -8,9 +8,7 @@
 import Foundation
 import UIKit
 //
-//import Differentiator
 import RxCocoa
-//import RxDataSources
 import RxSwift
 import TinyConstraints
 //
@@ -99,7 +97,13 @@ extension VC {
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
 
-            genericView.rxBtnSample1Tap
+            Observable.combineLatest(genericView.rxPassword, genericView.rxPassword).bind { [weak self] (s1, s2) in
+                guard let s1 = s1, let s2 = s2 else { return }
+                let request = VM.CarTrackLogin.ScreenState.Request(userName: s1, password: s2)
+                self?.interactor?.requestScreenState(request: request)
+            }.disposed(by: disposeBag)
+
+            genericView.rxBtnLoginTap
                 .do(onNext: { [weak self] in
                     self?.router?.routeToTemplateWithParentDataStore()
                 })
@@ -134,10 +138,9 @@ extension VC.CarTrackLoginViewController {
     // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
     // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
     // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
-    private func doPrivateStuff() {
-        let userId = genericView.subTitle
-        let request = VM.CarTrackLogin.SomeStuff.Request(userId: userId)
-        self.interactor?.requestSomeStuff(request: request)
+    private func validateNextButtonEnabled() {
+        let request = VM.CarTrackLogin.ScreenState.Request(userName: "userName", password: "password")
+        self.interactor?.requestScreenState(request: request)
     }
 }
 
@@ -145,14 +148,12 @@ extension VC.CarTrackLoginViewController {
 
 extension VC.CarTrackLoginViewController: CarTrackLoginDisplayLogicProtocol {
 
-    func displaySomeStuff(viewModel: VM.CarTrackLogin.SomeStuff.ViewModel) {
+    func displayScreenState(viewModel: VM.CarTrackLogin.ScreenState.ViewModel) {
         // Setting up the view, option 1 : passing the view model
         genericView.setupWith(someStuff: viewModel)
     }
 
     func displayScreenInitialState(viewModel: VM.CarTrackLogin.ScreenInitialState.ViewModel) {
-        title = viewModel.title
-        // Setting up the view, option 2 : setting the vars one by one
-        genericView.subTitle = viewModel.subTitle
+        genericView.setupWith(screenInitialState: viewModel)
     }
 }

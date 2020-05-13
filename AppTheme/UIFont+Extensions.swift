@@ -12,9 +12,9 @@ public extension UIFont {
     struct App {
         private init() {}
         public enum Size: CGFloat {
-            case big        = 15
-            case regularBig = 13.5
-            case regular    = 12
+            case big        = 24 // Heading
+            case regularBig = 18 // Paragraph
+            case regular    = 12 // caption
             case small      = 10
         }
         

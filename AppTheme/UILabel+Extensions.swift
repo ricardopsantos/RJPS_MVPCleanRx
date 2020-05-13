@@ -21,18 +21,14 @@ public extension UILabel {
 
     func apply(style: UILabel.LayoutStyle) {
         let title = {
-            self.backgroundColor = .clear
-            self.textColor       = UIColor.App.TopBar.titleColor
+            self.backgroundColor = UIColor.App.lblBackgroundColor
+            self.textColor       = UIColor.App.lblTextColor
             self.font            = UIFont.App.bold(size: .big)
-            self.numberOfLines  = 0
-            self.addShadow()
         }
         let value = {
-            self.backgroundColor = .clear
+            self.backgroundColor = UIColor.App.lblBackgroundColor
             self.textColor       = UIColor.App.lblTextColor.withAlphaComponent(0.8)
-            self.font            = UIFont.App.regular(size: .small)
-            self.numberOfLines  = 0
-            self.addShadow()
+            self.font            = UIFont.App.regular(size: .regular)
         }
         switch style {
         case .notApplied : _ = 1

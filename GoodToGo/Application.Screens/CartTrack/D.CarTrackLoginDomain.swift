@@ -9,7 +9,6 @@
 import UIKit
 import Foundation
 //
-//import Differentiator
 import RxCocoa
 import RxSwift
 import RxDataSources
@@ -30,9 +29,9 @@ import UIBase
 extension E {
     struct CarTrackLoginView {
         enum ScreenLayout {
-            case unknown
-            case layoutA
-            case layoutB
+            case wrongPassword
+            case canProceed
+            case cantProceed
         }
     }
 }
@@ -44,7 +43,7 @@ extension E {
 protocol CarTrackLoginBusinessLogicProtocol: BaseInteractorVIPMandatoryBusinessLogicProtocol {
     // Naming convention : func request__XXX__(viewModel: VM.CarTrackLogin.__XXX__.Request)
     func requestScreenInitialState()
-    func requestSomeStuff(request: VM.CarTrackLogin.SomeStuff.Request)
+    func requestScreenState(request: VM.CarTrackLogin.ScreenState.Request)
 }
 
 //
@@ -54,7 +53,7 @@ protocol CarTrackLoginBusinessLogicProtocol: BaseInteractorVIPMandatoryBusinessL
 protocol CarTrackLoginPresentationLogicProtocol: BasePresenterVIPProtocol {
     // Naming convention : func present__XXX__(response: VM.CarTrackLogin.__XXX__.Response)
     func presentScreenInitialState(response: VM.CarTrackLogin.ScreenInitialState.Response)
-    func presentSomeStuff(response: VM.CarTrackLogin.SomeStuff.Response)
+    func presentScreenState(response: VM.CarTrackLogin.ScreenState.Response)
 }
 
 //
@@ -64,7 +63,7 @@ protocol CarTrackLoginPresentationLogicProtocol: BasePresenterVIPProtocol {
 protocol CarTrackLoginDisplayLogicProtocol: BaseViewControllerVIPProtocol {
     // Naming convention : func display__XXX__(viewModel: VM.CarTrackLogin.__XXX__.ViewModel)
     func displayScreenInitialState(viewModel: VM.CarTrackLogin.ScreenInitialState.ViewModel)
-    func displaySomeStuff(viewModel: VM.CarTrackLogin.SomeStuff.ViewModel)
+    func displayScreenState(viewModel: VM.CarTrackLogin.ScreenState.ViewModel)
 }
 
 //
@@ -120,34 +119,29 @@ extension VM {
             case cellType2
         }
 
-        struct SomeStuff {
+        struct ScreenState {
             struct Request {
-                let userId: String
+                let userName: String
+                let password: String
             }
             struct Response {
-                let listA: [TemplateModel]
-                let listB: [TemplateModel]
-                let subTitle: String
+                let nextButtonEnabled: Bool
             }
             struct ViewModel {
-                let subTitle: String
-                let someValue: String
-                let someListSectionATitle: String
-                let someListSectionBTitle: String
-                let someListSectionAElements: [VM.CarTrackLogin.TableItem]
-                let someListSectionBElements: [VM.CarTrackLogin.TableItem]
+                let nextButtonEnabled: Bool
             }
         }
 
         struct ScreenInitialState {
-            struct Request {}
+            struct Request { }
             struct Response {
-                let title: String
-                let subTitle: String
+                let userName: String
+                let password: String
             }
             struct ViewModel {
                 let title: String
-                let subTitle: String
+                let userName: String
+                let password: String
                 let screenLayout: E.CarTrackLoginView.ScreenLayout
             }
         }
@@ -158,32 +152,6 @@ extension VM {
                 let message: String
                 let shouldRouteBack: Bool
             }
-        }
-    }
-}
-
-extension VM.CarTrackLogin {
-    struct TableItem: IdentifiableType, Hashable {
-
-        public typealias Identity = VM.CarTrackLogin.CellType
-        public var identity: VM.CarTrackLogin.CellType { return cellType }
-
-        let enabled: Bool
-        let image: String
-        let title: String
-        let subtitle: String
-        let cellType: VM.CarTrackLogin.CellType
-
-        init(enabled: Bool,
-             image: String,
-             title: String,
-             subtitle: String,
-             cellType: VM.CarTrackLogin.CellType) {
-            self.enabled = enabled
-            self.image = image
-            self.title = title
-            self.subtitle = subtitle
-            self.cellType = cellType
         }
     }
 }

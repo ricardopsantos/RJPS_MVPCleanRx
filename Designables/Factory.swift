@@ -38,6 +38,7 @@ public struct UIKitFactory {
         some.numberOfLines = 0
         some.tag =  UIKitViewFactoryElementTag.label.rawValue
         some.layoutStyle = style
+        some.addShadow()
         baseView?.addSubview(some)
         return some
     }

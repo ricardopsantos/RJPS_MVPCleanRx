@@ -9,14 +9,11 @@
 import UIKit
 import Foundation
 //
-//import Differentiator
 import RxCocoa
 import RxSwift
 import RxDataSources
 import TinyConstraints
 import CCTextFieldEffects
-//import RxKeyboard
-//import SwifterSwift
 //
 import AppConstants
 import AppTheme
@@ -43,6 +40,9 @@ extension V {
 
         }
 
+        var rxUserName = BehaviorSubject<String?>(value: nil)
+        var rxPassword = BehaviorSubject<String?>(value: nil)
+
         // MARK: - UI Elements (Private and lazy by default)
 
         private lazy var scrollView: UIScrollView = {
@@ -54,7 +54,7 @@ extension V {
         }()
 
         private lazy var lblTitle: UILabel = {
-            UIKitFactory.label(style: .value)
+            UIKitFactory.label(style: .title)
         }()
 
         private lazy var lblErrorMessage: UILabel = {
@@ -68,15 +68,18 @@ extension V {
         private lazy var txtPassword: MadokaTextField = {
             let some = MadokaTextField()
             some.placeholder = Messages.password.localised
-            some.didEndEditingHandler = {
-                print(some.text)
-            };
+            some.didEndEditingHandler = { [weak self] in
+                self?.rxUserName.onNext(some.text)
+            }
             return some
         }()
 
         private lazy var txtUserName: MadokaTextField = {
             let some = MadokaTextField()
             some.placeholder = Messages.userName.localised
+            some.didEndEditingHandler = { [weak self] in
+                self?.rxPassword.onNext(some.text)
+            }
             return some
         }()
 
@@ -152,31 +155,33 @@ extension V {
         // We can set the view data by : 2 - Custom Setters / Computed Vars         ---> var subTitle: String <---
         // We can set the view data by : 3 - Passing the view model inside the view ---> func setupWith(viewModel: ... <---
 
-        public var subTitle: String {
-            get { return  lblTitle.text ?? "" }
-            set(newValue) {
-                lblTitle.textAnimated = newValue
-            }
-        }
-
-        public var titleStyleType: UILabel.LayoutStyle = .value {
-            didSet {
-                lblTitle.layoutStyle = titleStyleType
-            }
-        }
-
-        func setupWith(someStuff viewModel: VM.CarTrackLogin.SomeStuff.ViewModel) {
-            subTitle = viewModel.subTitle
+        func setupWith(someStuff viewModel: VM.CarTrackLogin.ScreenState.ViewModel) {
+           // subTitle = viewModel.subTitle
         }
 
         func setupWith(screenInitialState viewModel: VM.CarTrackLogin.ScreenInitialState.ViewModel) {
-            subTitle = viewModel.subTitle
+            lblTitle.text = viewModel.title
+            txtUserName.text = viewModel.userName
+            txtPassword.text = viewModel.password
             screenLayout = viewModel.screenLayout
         }
 
-        var screenLayout: E.CarTrackLoginView.ScreenLayout = .unknown {
+        var screenLayout: E.CarTrackLoginView.ScreenLayout = .cantProceed {
             didSet {
-                // show or hide stuff
+                switch screenLayout {
+                case .canProceed:
+                    lblErrorMessage.fadeTo(0)
+                    btnLogin.fadeTo(1)
+                    btnLogin.isUserInteractionEnabled = true
+                case .wrongPassword:
+                    lblErrorMessage.fadeTo(1)
+                    btnLogin.fadeTo(1)
+                    btnLogin.isUserInteractionEnabled = true
+                case .cantProceed:
+                    lblErrorMessage.fadeTo(0)
+                    btnLogin.fadeTo(0.5)
+                    btnLogin.isUserInteractionEnabled = false
+                }
             }
         }
     }
@@ -185,5 +190,5 @@ extension V {
 // MARK: - Events capture
 
 extension V.CarTrackLoginView {
-    var rxBtnSample1Tap: Observable<Void> { btnLogin.rx.tapSmart(disposeBag) }
+    var rxBtnLoginTap: Observable<Void> { btnLogin.rx.tapSmart(disposeBag) }
 }
