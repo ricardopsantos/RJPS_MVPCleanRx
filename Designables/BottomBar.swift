@@ -90,7 +90,7 @@ open class BottomBar: BaseViewControllerMVP {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        view.accessibilityIdentifier = AppConstants.UIViewControllers.genericAccessibilityIdentifier(self)
+        view.accessibilityIdentifier = self.genericAccessibilityIdentifier
         self.view.backgroundColor = UIColor.App.TopBar.background
     }
     

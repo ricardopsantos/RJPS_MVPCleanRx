@@ -49,15 +49,13 @@ open class TopBar: BaseViewControllerMVP {
     }()
 
     private lazy var _lblTitle: UILabel = {
-        let some = UIKitFactory.label(baseView: self.view, style: .title)
+        let some = UIKitFactory.label(baseView: self.view, style: .navigationBarTitle)
         some.textAlignment = .center
         some.rjsALayouts.setMargin(_btnSize*2, on: .left)
         some.rjsALayouts.setMargin(_btnSize*2, on: .right)
         some.rjsALayouts.setMargin(0, on: .top)
         some.rjsALayouts.setMargin(0, on: .bottom)
         some.numberOfLines = 0
-        some.layoutStyle   = .title
-        some.textColor     = UIColor.App.TopBar.titleColor
         return some
     }()
 
@@ -68,7 +66,7 @@ open class TopBar: BaseViewControllerMVP {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        view.accessibilityIdentifier = AppConstants.UIViewControllers.genericAccessibilityIdentifier(self)
+        view.accessibilityIdentifier = self.genericAccessibilityIdentifier
         self.view.backgroundColor    = UIColor.App.TopBar.background
     }
 }

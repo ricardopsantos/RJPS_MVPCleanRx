@@ -86,21 +86,52 @@ extension VC {
             router.dsCarTrackLogin = interactor
         }
 
+        private lazy var _topGenericView: TopBar = {
+            let bar         = TopBar()
+            let screenWidth = UIScreen.main.bounds.width
+            let height      = TopBar.defaultHeight
+            let container   = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: screenWidth, height: height)))
+            self.genericView.addSubview(container)
+            UIViewController.rjs.loadViewControllerInContainedView(sender: self, senderContainedView: container, controller: bar) { (_, _) in }
+
+            container.rjsALayouts.setMargin(0, on: .top)
+            container.rjsALayouts.setMargin(0, on: .right)
+            container.rjsALayouts.setMargin(0, on: .left)
+            container.rjsALayouts.setHeight(TopBar.defaultHeight)
+
+            bar.view.rjsALayouts.setMargin(0, on: .top)
+            bar.view.rjsALayouts.setMargin(0, on: .right)
+            bar.view.rjsALayouts.setMargin(0, on: .left)
+            bar.view.rjsALayouts.setHeight(TopBar.defaultHeight)
+            bar.setTitle(Messages.welcome.localised)
+            return bar
+        }()
+
         // Order in View life-cycle : 5
         // This function is called automatically by super BaseGenericView
         override func setupViewIfNeed() {
             // Use it to configure stuff on the genericView, depending on the value external/public variables
             // that are set after we instantiate the view controller, but before if has been presented
+            _topGenericView.lazyLoad()
         }
 
         // Order in View life-cycle : 3
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
 
-            Observable.combineLatest(genericView.rxPassword, genericView.rxUserName).bind { [weak self] (s1, s2) in
-                guard let s1 = s1, let s2 = s2 else { return }
-                let request = VM.CarTrackLogin.ScreenState.Request(userName: s1, password: s2)
-                self?.interactor?.requestScreenState(request: request)
+            #warning("adicionar um delay desde que parou de escrever")
+            let observable1 = genericView.rxTxtPassword.value.asObservable()
+            let observable2 = genericView.rxTxtUsername.value.asObservable()
+            Observable.combineLatest(observable1, observable2).asObservable().bind { [weak self] (password, userName) in
+                guard let self = self else { return }
+                guard self.isVisible else { return }
+                guard let password = password else { return }
+                guard let userName = userName else { return }
+                let request = VM.CarTrackLogin.ScreenState.Request(userName: userName,
+                                                                   password: password,
+                                                                   txtUsernameIsFirstResponder: self.genericView.txtUsernameIsFirstResponder,
+                                                                   txtPasswordIsFirstResponder: self.genericView.txtPasswordIsFirstResponder)
+                self.interactor?.requestScreenState(request: request)
             }.disposed(by: disposeBag)
 
             genericView.rxBtnLoginTap
@@ -135,13 +166,6 @@ extension VC.CarTrackLoginViewController {
 
 extension VC.CarTrackLoginViewController {
 
-    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
-    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
-    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
-    private func validateNextButtonEnabled() {
-        let request = VM.CarTrackLogin.ScreenState.Request(userName: "userName", password: "password")
-        self.interactor?.requestScreenState(request: request)
-    }
 }
 
 // MARK: DisplayLogicProtocolProtocol
@@ -150,7 +174,11 @@ extension VC.CarTrackLoginViewController: CarTrackLoginDisplayLogicProtocol {
 
     func displayScreenState(viewModel: VM.CarTrackLogin.ScreenState.ViewModel) {
         // Setting up the view, option 1 : passing the view model
-        genericView.setupWith(someStuff: viewModel)
+        genericView.setupWith(screenState: viewModel)
+    }
+
+    func displayNextButtonState(viewModel: VM.CarTrackLogin.NextButtonState.ViewModel) {
+        genericView.setupWith(nextButtonState: viewModel)
     }
 
     func displayScreenInitialState(viewModel: VM.CarTrackLogin.ScreenInitialState.ViewModel) {

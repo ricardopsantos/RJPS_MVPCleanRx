@@ -13,9 +13,9 @@ extension AppConstants {
     
     public struct UIViewControllers {
         private init() {}
-        private static let accessibilityIdentifierPrefix = "acId"
-        public static func genericAccessibilityIdentifier(_ controller: BaseViewControllerMVP) -> String {
-            return "\(accessibilityIdentifierPrefix).\(controller.className)"
-        }
+        //private static let accessibilityIdentifierPrefix = "acId"
+        //public static func genericAccessibilityIdentifier(_ controller: BaseViewControllerMVP) -> String {
+        //    return "\(accessibilityIdentifierPrefix).\(controller.className)"
+        //}
     }
 }

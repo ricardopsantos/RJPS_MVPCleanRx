@@ -38,6 +38,8 @@ extension I {
         var presenter: CarTrackLoginPresentationLogicProtocol?
         weak var basePresenter: BasePresenterVIPProtocol? { return presenter }
 
+        private var password: String?
+        private var userName: String?
         // DataStoreProtocol Protocol vars...
         var dsSomeKindOfModelA: CarTrackLoginDataStoreModelA?
         var dsSomeKindOfModelB: CarTrackLoginDataStoreModelB?
@@ -51,8 +53,10 @@ extension I.CarTrackLoginInteractor: BaseInteractorVIPMandatoryBusinessLogicProt
     /// When the screen is loaded, this function is responsible to bind the View with some (temporary or final) data
     /// till the user have all the data loaded on the view. This will improve user experience.
     func requestScreenInitialState() {
-        let response = VM.CarTrackLogin.ScreenInitialState.Response(userName: "123", password: "345")
+        let storedUsername = "ricardo"
+        let response = VM.CarTrackLogin.ScreenInitialState.Response(userName: storedUsername, password: "")
         presenter?.presentScreenInitialState(response: response)
+        presenter?.presentNextButtonState(response: VM.CarTrackLogin.NextButtonState.Response(isEnabled: false))
     }
 
 }
@@ -72,19 +76,22 @@ extension I.CarTrackLoginInteractor: CarTrackLoginBusinessLogicProtocol {
     // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
     func requestScreenState(request: VM.CarTrackLogin.ScreenState.Request) {
 
-        /*
-        presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
-        DispatchQueue.executeWithDelay(delay: 3) { [weak self] in
-            let mockA1 = TemplateModel(id: "some id 1", state: "state_a - \(Date())")
-            let mockA2 = TemplateModel(id: "some id 2", state: "state_a - \(Date())")
-            let response = VM.CarTrackLogin.ValidateNextButtonEnabled.Response(listA: [mockA1],
-                                                                          listB: [mockA2],
-                                                                          subTitle: "New subtitle \(Date())")
-            self?.presenter?.presentSomeStuff(response: response)
-            self?.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
-            //self?.presenter?.presentError(response: BaseDisplayLogicModels.Error(title: "Messages.error.localised, message: "Error message"))
-            self?.presenter?.presentStatus(response: BaseDisplayLogicModels.Status(message: Messages.success.localised))
-        }*/
+        password = request.password
+        userName = request.userName
+
+        let passwordIsSelected     = request.txtUsernameIsFirstResponder
+        let userNameIsSelected     = request.txtPasswordIsFirstResponder
+        let passwordIsValidInShape = password!.count >= 5 && !passwordIsSelected
+        let emailIsValidInShape    = userName!.isValidEmail && !userNameIsSelected
+        let emailIsNotEmpty        = userName!.count > 0
+        let passwordIsNotEmpty     = password!.count > 0
+        let response = VM.CarTrackLogin.ScreenState.Response(passwordIsValidInShape: passwordIsValidInShape,
+                                                             emailIsValidInShape: emailIsValidInShape,
+                                                             emailIsNotEmpty: emailIsNotEmpty,
+                                                             passwordIsNotEmpty: passwordIsNotEmpty)
+        self.presenter?.presentScreenState(response: response)
+        let userCanTryToContinue = emailIsValidInShape && passwordIsValidInShape
+        self.presenter?.presentNextButtonState(response: VM.CarTrackLogin.NextButtonState.Response(isEnabled: userCanTryToContinue))
     }
 
 }

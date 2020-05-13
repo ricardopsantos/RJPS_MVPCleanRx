@@ -46,35 +46,21 @@ extension P {
 
 extension P.CarTrackLoginPresenter {
 
-    //
-    // Do you need to override this? Its allready implemented on a Protocol Extension
-    //
-    /*
-    func presentStatus(response: BaseDisplayLogicModels.Status) {
-        let viewModel = response
-        baseDisplayLogic?.displayStatus(viewModel: viewModel)
-    }
-
-    func presentError(response: BaseDisplayLogicModels.Error) {
-        let viewModel = response
-        baseDisplayLogic?.displayError(viewModel: viewModel)
-    }
-
-    func presentLoading(response: BaseDisplayLogicModels.Loading) {
-        let viewModel = response
-        baseDisplayLogic?.displayLoading(viewModel: viewModel)
-    }*/
 }
 
 // MARK: PresentationLogicProtocol
 
 extension P.CarTrackLoginPresenter: CarTrackLoginPresentationLogicProtocol {
+    func presentNextButtonState(response: VM.CarTrackLogin.NextButtonState.Response) {
+        let viewModel = VM.CarTrackLogin.NextButtonState.ViewModel(isEnabled: response.isEnabled)
+        viewController?.displayNextButtonState(viewModel: viewModel)
+    }
 
     // Used By Interactor (exclusively)
     func presentScreenInitialState(response: VM.CarTrackLogin.ScreenInitialState.Response) {
         let userName = response.userName
         let password = response.password
-        let screenLayout = E.CarTrackLoginView.ScreenLayout.invalidEmailFormat(errorMessage: "errorMessage")
+        let screenLayout: E.CarTrackLoginView.ScreenLayout = .enterUserCredentials
         let title = Messages.welcome.localised
         let viewModel = VM.CarTrackLogin.ScreenInitialState.ViewModel(title: title,
                                                                       userName: userName,
@@ -85,30 +71,30 @@ extension P.CarTrackLoginPresenter: CarTrackLoginPresentationLogicProtocol {
 
     // Used By Interactor (exclusively)
     func presentScreenState(response: VM.CarTrackLogin.ScreenState.Response) {
-        // Presenter will transform response object in something that the View can process/read
-       /* let subTitle = response.subTitle.uppercased()
-        let someListA = response.listA
-            .map { VM.CarTrackLogin.TableItem(enabled: true,
-                                                  image: Images.noInternet.rawValue,
-                                                  title: $0.id ?? "N.A.",
-                                                  subtitle: $0.state?.uppercased() ?? "N.A.",
-                                                  cellType: .cellType1)
+
+        var layout: E.CarTrackLoginView.ScreenLayout = .enterUserCredentials
+        let fieldsHaveValues = response.emailIsNotEmpty || response.passwordIsNotEmpty
+        let invalidEmail    = !response.emailIsValidInShape && !response.emailIsNotEmpty
+        let invalidPassword = !response.emailIsValidInShape && !response.emailIsNotEmpty
+        if fieldsHaveValues {
+            if invalidPassword && !invalidEmail {
+                // Invalid password
+                layout = .invalidPasswordFormat(errorMessage: Messages.invalidPassword.localised)
+            } else if !invalidPassword && invalidEmail {
+                // Invalid email
+                layout = .invalidEmailFormat(errorMessage: Messages.invalidEmail.localised)
+            } else if !invalidPassword && !invalidEmail {
+                // Invalid email and password
+                layout = .invalidEmailFormatAndPasswordFormat(passwordErrorMessage: Messages.invalidPassword.localised, emailErrorMessage: Messages.invalidEmail.localised)
+            } else {
+                layout = .allFieldsAreValid
             }
-        let someListB = response.listB
-            .map { VM.CarTrackLogin.TableItem(enabled: true,
-                                                         image: Images.noInternet.rawValue,
-                                                  title: $0.id ?? "N.A.",
-                                                  subtitle: $0.state?.uppercased() ?? "N.A.",
-                                                  cellType: .cellType2)
-            }
-        let sum = someListA.count + someListB.count
-        let viewModel = VM.CarTrackLogin.ValidateNextButtonEnabled.ViewModel(subTitle: subTitle,
-                                                                             someValue: "\(sum)",
-            someListSectionATitle: "\(someListA.count) A elements",
-            someListSectionBTitle: "\(someListB.count) B elements",
-            someListSectionAElements: someListA,
-            someListSectionBElements: someListB)
-        viewController?.displaySomeStuff(viewModel: viewModel)*/
+        } else {
+            layout = .enterUserCredentials
+        }
+        let viewModel = VM.CarTrackLogin.ScreenState.ViewModel(layout: layout)
+        viewController?.displayScreenState(viewModel: viewModel)
+
     }
 
 }

@@ -130,7 +130,7 @@ extension V {
         override func loadView() {
             super.loadView()
             presenter.generic?.loadView()
-            view.accessibilityIdentifier = AppConstants.UIViewControllers.genericAccessibilityIdentifier(self)
+            view.accessibilityIdentifier = self.genericAccessibilityIdentifier
         }
         
         override func viewDidLoad() {

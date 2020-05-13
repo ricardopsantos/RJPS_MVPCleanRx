@@ -39,7 +39,7 @@ extension V {
         private let _imageSize: Int = 100
         
         private lazy var _topGenericView: TopBar = {
-            let some = UIKitFactory.topBar(baseController: self)
+            let some = UIKitFactory.topBar(baseViewControllerMVP: self)
             some.setTitle(Messages.Bliss.appName)
             some.setTitle(Messages.details.localised)
             some.addBackButton()
@@ -142,7 +142,7 @@ extension V {
         override func loadView() {
             super.loadView()
             presenter.generic?.loadView()
-            view.accessibilityIdentifier = AppConstants.UIViewControllers.genericAccessibilityIdentifier(self)
+            view.accessibilityIdentifier = self.genericAccessibilityIdentifier
         }
         
         override func viewDidLoad() {

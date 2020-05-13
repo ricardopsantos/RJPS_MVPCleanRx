@@ -30,10 +30,12 @@ extension E {
     struct CarTrackLoginView {
         enum ScreenLayout {
             case enterUserCredentials
-            case wrongPassword(errorMessage: String)
+            case enterPassword
+            case allFieldsAreValid
+            case wrongUserCredencial(errorMessage: String)
             case invalidEmailFormat(errorMessage: String)
             case invalidPasswordFormat(errorMessage: String)
-            case invalidEmailFormatAndPasswordFormat(errorMessage1: String, errorMessage2: String)
+            case invalidEmailFormatAndPasswordFormat(passwordErrorMessage: String, emailErrorMessage: String)
         }
     }
 }
@@ -56,6 +58,7 @@ protocol CarTrackLoginPresentationLogicProtocol: BasePresenterVIPProtocol {
     // Naming convention : func present__XXX__(response: VM.CarTrackLogin.__XXX__.Response)
     func presentScreenInitialState(response: VM.CarTrackLogin.ScreenInitialState.Response)
     func presentScreenState(response: VM.CarTrackLogin.ScreenState.Response)
+    func presentNextButtonState(response: VM.CarTrackLogin.NextButtonState.Response)
 }
 
 //
@@ -66,6 +69,7 @@ protocol CarTrackLoginDisplayLogicProtocol: BaseViewControllerVIPProtocol {
     // Naming convention : func display__XXX__(viewModel: VM.CarTrackLogin.__XXX__.ViewModel)
     func displayScreenInitialState(viewModel: VM.CarTrackLogin.ScreenInitialState.ViewModel)
     func displayScreenState(viewModel: VM.CarTrackLogin.ScreenState.ViewModel)
+    func displayNextButtonState(viewModel: VM.CarTrackLogin.NextButtonState.ViewModel)
 }
 
 //
@@ -116,21 +120,32 @@ struct CarTrackLoginDataStoreModelB {
 
 extension VM {
     enum CarTrackLogin {
-        enum CellType {
-            case cellType1
-            case cellType2
+
+        struct NextButtonState {
+            struct Request { }
+            struct Response {
+                let isEnabled: Bool
+            }
+            struct ViewModel {
+                let isEnabled: Bool
+            }
         }
 
         struct ScreenState {
             struct Request {
                 let userName: String
                 let password: String
+                let txtUsernameIsFirstResponder: Bool
+                let txtPasswordIsFirstResponder: Bool
             }
             struct Response {
-                let nextButtonEnabled: Bool
+                let passwordIsValidInShape: Bool
+                let emailIsValidInShape: Bool
+                let emailIsNotEmpty: Bool
+                let passwordIsNotEmpty: Bool
             }
             struct ViewModel {
-                let nextButtonEnabled: Bool
+                let layout: E.CarTrackLoginView.ScreenLayout
             }
         }
 

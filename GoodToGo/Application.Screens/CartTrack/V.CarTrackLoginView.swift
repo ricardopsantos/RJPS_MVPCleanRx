@@ -41,8 +41,8 @@ extension V {
 
         }
 
-        var rxUserName = BehaviorSubject<String?>(value: nil)
-        var rxPassword = BehaviorSubject<String?>(value: nil)
+        //var rxUserName = BehaviorSubject<String?>(value: nil)
+        //var rxPassword = BehaviorSubject<String?>(value: nil)
 
         // MARK: - UI Elements (Private and lazy by default)
 
@@ -59,7 +59,7 @@ extension V {
         }()
 
         private lazy var lblErrorMessage: UILabel = {
-            UIKitFactory.label(style: .value)
+            return UIKitFactory.label(style: .error)
         }()
 
         private lazy var btnLogin: UIButton = {
@@ -68,18 +68,18 @@ extension V {
 
         private lazy var txtPassword: SkyFloatingLabelTextField = {
             let some = SkyFloatingLabelTextField(frame: CGRect(x: 10, y: 10, width: 120, height: 45))
-            some.placeholder = "Password"
-            some.title = "Your Password"
-            some.errorColor = UIColor.red
+            some.placeholder = "Your \(Messages.password.localised)"
+            some.title = Messages.password.localised
+            some.errorColor = AppColors.error
             some.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
             return some
         }()
 
         private lazy var txtUserName: SkyFloatingLabelTextField = {
             let some = SkyFloatingLabelTextField(frame: CGRect(x: 10, y: 10, width: 120, height: 45))
-            some.placeholder = "Email"
-            some.title = "Email address"
-            some.errorColor = UIColor.red
+            some.placeholder = "Your \(Messages.email.localised)"
+            some.title = Messages.email.localised
+            some.errorColor = AppColors.error
             some.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
             return some
         }()
@@ -93,18 +93,17 @@ extension V {
         override func prepareLayoutCreateHierarchy() {
             addSubview(scrollView)
             scrollView.addSubview(stackViewVLevel1)
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(lblTitle)
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(txtPassword)
+            stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: TopBar.defaultHeight)
             stackViewVLevel1.uiUtils.addArrangedSeparator()
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(txtUserName)
             stackViewVLevel1.uiUtils.addArrangedSeparator()
+            stackViewVLevel1.uiUtils.safeAddArrangedSubview(txtPassword)
+            stackViewVLevel1.uiUtils.addArrangedSeparator()
+            stackViewVLevel1.uiUtils.addArrangedSeparator()
+            stackViewVLevel1.uiUtils.addArrangedSeparator()
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(btnLogin)
             stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(lblErrorMessage)
-
         }
 
         // This function is called automatically by super BaseGenericViewVIP
@@ -139,21 +138,12 @@ extension V {
         // Order in View life-cycle : 2
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
-            let changed1 = txtPassword.rx.text.orEmpty.map { $0.count >= 1 }//.distinctUntilChanged()
-            let changed2    = txtUserName.rx.text.orEmpty.map({ $0.count >= 1 })//.distinctUntilChanged()
-            let isButtonEnabled = Observable.combineLatest(changed1, changed2) { $0 || $1 }
-            isButtonEnabled.asObservable().bind { (some) in
-                print("changed \(some)")
-            }.disposed(by: disposeBag)
+
         }
 
         // This will notify us when something has changed on the textfield
         @objc func textFieldDidChange(_ textfield: UITextField) {
-            if let floatingLabelTextField = txtUserName as? SkyFloatingLabelTextField {
-                rxUserName.onNext(floatingLabelTextField.text)
-            } else if let floatingLabelTextField = txtPassword as? SkyFloatingLabelTextField {
-                rxPassword.onNext(floatingLabelTextField.text)
-            }
+
         }
 
         // MARK: - Custom Getter/Setters
@@ -162,8 +152,9 @@ extension V {
         // We can set the view data by : 2 - Custom Setters / Computed Vars         ---> var subTitle: String <---
         // We can set the view data by : 3 - Passing the view model inside the view ---> func setupWith(viewModel: ... <---
 
-        func setupWith(someStuff viewModel: VM.CarTrackLogin.ScreenState.ViewModel) {
-           // subTitle = viewModel.subTitle
+        func setupWith(screenState viewModel: VM.CarTrackLogin.ScreenState.ViewModel) {
+            print(viewModel.layout)
+            screenLayout = viewModel.layout
         }
 
         func setupWith(screenInitialState viewModel: VM.CarTrackLogin.ScreenInitialState.ViewModel) {
@@ -173,24 +164,46 @@ extension V {
             screenLayout = viewModel.screenLayout
         }
 
-        private func setErrorMessage(_ message: String, forField: SkyFloatingLabelTextField) {
-            forField.errorMessage = message
+        private func userCanProceed(_ value: Bool) {
+            btnLogin.isUserInteractionEnabled = value
+            if value {
+                btnLogin.fadeTo(1)
+            } else {
+                btnLogin.fadeTo(0.5)
+            }
+        }
+        func setupWith(nextButtonState viewModel: VM.CarTrackLogin.NextButtonState.ViewModel) {
+            userCanProceed(viewModel.isEnabled)
         }
 
         var screenLayout: E.CarTrackLoginView.ScreenLayout = .enterUserCredentials {
             didSet {
+                func setErrorMessage(_ message: String, forField: SkyFloatingLabelTextField) {
+                    forField.errorMessage = message
+                }
+                setErrorMessage("", forField: txtUserName)
                 switch screenLayout {
                 case .enterUserCredentials:
-                    btnLogin.fadeTo(0.8)
-                case .wrongPassword(errorMessage: let errorMessage):
+                    userCanProceed(false)
+                    setErrorMessage("", forField: txtPassword)
+                    setErrorMessage("", forField: txtUserName)
+                case .wrongUserCredencial(errorMessage: let errorMessage):
                     lblErrorMessage.text = errorMessage
                 case .invalidEmailFormat(errorMessage: let errorMessage):
                     setErrorMessage(errorMessage, forField: txtUserName)
                     setErrorMessage("", forField: txtPassword)
                 case .invalidPasswordFormat(errorMessage: let errorMessage):
-                    _ = 1
-                case .invalidEmailFormatAndPasswordFormat(errorMessage1: let errorMessage1, errorMessage2: let errorMessage2):
-                    _ = 1
+                    setErrorMessage(errorMessage, forField: txtPassword)
+                    setErrorMessage("", forField: txtPassword)
+                case .invalidEmailFormatAndPasswordFormat(passwordErrorMessage: let passwordErrorMessage, emailErrorMessage: let emailErrorMessage):
+                    setErrorMessage(emailErrorMessage, forField: txtUserName)
+                    setErrorMessage(passwordErrorMessage, forField: txtPassword)
+                case .enterPassword:
+                    txtPassword.becomeFirstResponder()
+                case .allFieldsAreValid:
+                    setErrorMessage("", forField: txtPassword)
+                    setErrorMessage("", forField: txtPassword)
+                    lblErrorMessage.fadeTo(0)
                 }
             }
         }
@@ -201,4 +214,8 @@ extension V {
 
 extension V.CarTrackLoginView {
     var rxBtnLoginTap: Observable<Void> { btnLogin.rx.tapSmart(disposeBag) }
+    var rxTxtPassword: Reactive<SkyFloatingLabelTextField> { txtPassword.rx }
+    var rxTxtUsername: Reactive<SkyFloatingLabelTextField> { txtUserName.rx }
+    var txtUsernameIsFirstResponder: Bool { txtUserName.isFirstResponder }
+    var txtPasswordIsFirstResponder: Bool { txtPassword.isFirstResponder }
 }

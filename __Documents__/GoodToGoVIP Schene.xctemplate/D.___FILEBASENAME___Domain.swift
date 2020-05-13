@@ -120,15 +120,15 @@ extension VM {
         }
 
         struct SomeStuff {
-            struct Request {
+            struct Request { /* ViewController -> Interactor */
                 let userId: String
             }
-            struct Response {
+            struct Response { /* Interactor -> Presenter */
                 let listA: [TemplateModel]
                 let listB: [TemplateModel]
                 let subTitle: String
             }
-            struct ViewModel {
+            struct ViewModel { /* Presenter -> ViewController */
                 let subTitle: String
                 let someValue: String
                 let someListSectionATitle: String

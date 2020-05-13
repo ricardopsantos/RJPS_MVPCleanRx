@@ -64,7 +64,7 @@ extension V {
         }()
         
         private lazy var _topGenericBar: TopBar = {
-            let some = UIKitFactory.topBar(baseController: self)
+            let some = UIKitFactory.topBar(baseViewControllerMVP: self)
             some.setTitle(Messages.details.localised)
             some.addDismissButton()
             some.rxSignal_btnDismissTapped
@@ -84,7 +84,7 @@ extension V {
         override func loadView() {
             super.loadView()
             presenter.generic?.loadView()
-            view.accessibilityIdentifier = AppConstants.UIViewControllers.genericAccessibilityIdentifier(self)
+            view.accessibilityIdentifier = self.genericAccessibilityIdentifier
         }
         
         override func viewDidLoad() {

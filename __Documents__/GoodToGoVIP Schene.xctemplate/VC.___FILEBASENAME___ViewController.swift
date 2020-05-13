@@ -37,7 +37,7 @@ extension VC {
         // Order in View life-cycle : 2
         override func loadView() {
             super.loadView()
-            view.accessibilityIdentifier = AppConstants.UIViewControllers.genericAccessibilityIdentifier(self as! BaseViewControllerMVP)
+            view.accessibilityIdentifier = self.genericAccessibilityIdentifier
         }
 
         // Order in View life-cycle : 4

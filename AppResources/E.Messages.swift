@@ -23,16 +23,20 @@ public enum Messages: Int {
     case password
     case login
     case invalidPassword
+    case invalidEmail
+    case invalidUserCrededentials
     case welcome
+    case email
 
     public var localised: String {
         switch self {
+        case .email: return AppResources.get("Email")
         case .welcome: return AppResources.get("Welcome")
         case .userName: return AppResources.get("Usernames")
         case .password: return AppResources.get("Password")
         case .invalidPassword: return AppResources.get("Invalid password")
         case .login: return AppResources.get("Login")
-        case .noInternet: return AppResources.get("NoInternetConnection")
+        case .noInternet: return AppResources.get("No Internet connection")
         case .pleaseTryAgainLater: return AppResources.get("Please try again latter")
         case .dismiss: return  AppResources.get("Dismiss")
         case .alert: return AppResources.get("Alert")
@@ -41,6 +45,8 @@ public enum Messages: Int {
         case .no: return AppResources.get("NO")
         case .details: return AppResources.get("Details")
         case .invalidURL: return AppResources.get("Invalid URL")
+        case .invalidEmail: return AppResources.get("Invalid email")
+        case .invalidUserCrededentials: return AppResources.get("Invalid user credential")
         }
     }
 

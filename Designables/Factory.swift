@@ -143,13 +143,35 @@ public struct UIKitFactory {
         return some
     }
 
-    public static func topBar(baseController: BaseViewControllerMVP) -> TopBar {
+    public static func topBar(baseGenericViewControllerVIP: BaseGenericViewControllerVIP<StylableView>) -> TopBar {
         let bar         = TopBar()
         let screenWidth = UIScreen.main.bounds.width
         let height      = TopBar.defaultHeight
         let container   = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: screenWidth, height: height)))
-        baseController.view.addSubview(container)
-        UIViewController.rjs.loadViewControllerInContainedView(sender: baseController, senderContainedView: container, controller: bar) { (_, _) in }
+        baseGenericViewControllerVIP.genericView.addSubview(container)
+        UIViewController.rjs.loadViewControllerInContainedView(sender: baseGenericViewControllerVIP, senderContainedView: container, controller: bar) { (_, _) in }
+
+        container.rjsALayouts.setMargin(0, on: .top)
+        container.rjsALayouts.setMargin(0, on: .right)
+        container.rjsALayouts.setMargin(0, on: .left)
+        container.rjsALayouts.setHeight(TopBar.defaultHeight)
+
+        bar.view.rjsALayouts.setMargin(0, on: .top)
+        bar.view.rjsALayouts.setMargin(0, on: .right)
+        bar.view.rjsALayouts.setMargin(0, on: .left)
+        bar.view.rjsALayouts.setHeight(TopBar.defaultHeight)
+        return bar
+    }
+    
+    public static func topBar(baseViewControllerMVP: BaseViewControllerMVP) -> TopBar {
+        let bar         = TopBar()
+        let screenWidth = UIScreen.main.bounds.width
+        let height      = TopBar.defaultHeight
+        let container   = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: screenWidth, height: height)))
+        baseViewControllerMVP.view.addSubview(container)
+        UIViewController.rjs.loadViewControllerInContainedView(sender: baseViewControllerMVP,
+                                                               senderContainedView: container,
+                                                               controller: bar) { (_, _) in }
 
         container.rjsALayouts.setMargin(0, on: .top)
         container.rjsALayouts.setMargin(0, on: .right)

@@ -20,20 +20,32 @@ public extension UILabel {
     }
 
     func apply(style: UILabel.LayoutStyle) {
+        let navigationBarTitle = {
+            self.backgroundColor = UIColor.clear
+            self.textColor       = UIColor.App.TopBar.titleColor
+            self.font            = UIFont.App.bold(size: .big)
+        }
         let title = {
             self.backgroundColor = UIColor.App.lblBackgroundColor
             self.textColor       = UIColor.App.lblTextColor
-            self.font            = UIFont.App.bold(size: .big)
+            self.font            = UIFont.App.bold(size: .regularBig)
         }
         let value = {
             self.backgroundColor = UIColor.App.lblBackgroundColor
             self.textColor       = UIColor.App.lblTextColor.withAlphaComponent(0.8)
             self.font            = UIFont.App.regular(size: .regular)
         }
+        let error = {
+            self.backgroundColor = UIColor.clear
+            self.textColor       = UIColor.App.error
+            self.font            = UIFont.App.regular(size: .regular)
+        }
         switch style {
         case .notApplied : _ = 1
-        case .title      : title()
-        case .value      : value()
+        case .navigationBarTitle : navigationBarTitle()
+        case .title              : title()
+        case .value              : value()
+        case .error              : error()
         }
     }
 }

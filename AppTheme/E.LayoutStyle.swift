@@ -21,7 +21,9 @@ public extension UIButton {
 public extension UILabel {
     enum LayoutStyle {
         case notApplied /// not Applied
+        case navigationBarTitle
         case title
         case value
+        case error
     }
 }

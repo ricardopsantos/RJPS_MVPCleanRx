@@ -32,7 +32,7 @@ public extension V {
         var presenter: SearchUser_PresenterProtocol!
         
         private lazy var _topGenericView: TopBar = {
-            let some = UIKitFactory.topBar(baseController: self)
+            let some = UIKitFactory.topBar(baseViewControllerMVP: self)
             some.setTitle("Search GitHub user")
             return some
         }()
@@ -65,8 +65,8 @@ public extension V {
         public override func loadView() {
             super.loadView()
             presenter.generic?.loadView()
-            view.accessibilityIdentifier = AppConstants.UIViewControllers.genericAccessibilityIdentifier(self)
-            
+            view.accessibilityIdentifier = self.genericAccessibilityIdentifier
+
             if #available(iOS 13.0, *) {
                 // Always light.
                 let lightView = self.view
