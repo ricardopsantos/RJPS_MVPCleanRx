@@ -17,19 +17,32 @@ public struct AssembyContainer { private init() {} }
 
 struct RootAssemblyContainerProtocols {
 
+    //
     // Repositories
+    //
     static let networkClient                    = NetworkClient_Protocol.self
     static let generic_CacheRepository          = CacheRepositoryProtocol.self
     static let generic_LocalStorageRepository   = LocalStorageRepositoryProtocol.self
     static let bliss_NetWorkRepository          = Bliss_NetWorkRepositoryProtocol.self
     static let gitUser_NetWorkRepository        = GitUser_NetWorkRepositoryProtocol.self
-    
+
+    //
     // Use Cases
-    static let sample_UseCase                   = Sample_UseCaseProtocol.self
-    static let sampleB_UseCase                  = SampleB_UseCaseProtocol.self
-    static let blissQuestions_UseCase           = BlissQuestionsAPI_UseCaseProtocol.self
-    static let blissGenericAppBusiness_UseCase  = BlissGenericAppBusiness_UseCaseProtocol.self
-    static let gitUser_UseCase                  = GitUser_UseCaseProtocol.self
+    //
+
+    // Sample
+    static let sample_UseCase                     = Sample_UseCaseProtocol.self
+    static let sampleB_UseCase                    = SampleB_UseCaseProtocol.self
+    static let gitUser_UseCase                    = GitUser_UseCaseProtocol.self
+
+    // Bliss
+    static let blissQuestions_UseCase             = BlissQuestionsAPI_UseCaseProtocol.self
+    static let blissGenericAppBusiness_UseCase    = BlissGenericAppBusiness_UseCaseProtocol.self
+
+    // CarTrack
+    static let carTrackGenericAppBusiness_UseCase = CarTrackGenericAppBusiness_UseCaseProtocol.self
+    static let carTrackAPI_UseCase                = CarTrackAPI_UseCaseProtocol.self
+
 }
 
 final class RootAssemblyContainer: Assembly {
