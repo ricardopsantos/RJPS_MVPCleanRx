@@ -24,6 +24,7 @@ public extension UILabel {
         case navigationBarTitle
         case title
         case value
+        case info
         case error
     }
 }

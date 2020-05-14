@@ -49,6 +49,7 @@ extension VC {
         override func loadView() {
             super.loadView()
             view.accessibilityIdentifier = self.genericAccessibilityIdentifier
+            self.title = "Map"
             topGenericView.lazyLoad()
         }
 
@@ -106,10 +107,11 @@ extension VC {
             // Use it to configure stuff on the genericView, depending on the value external/public variables
             // that are set after we instantiate the view controller, but before if has been presented
             genericView.rxFilter.asObserver().bind { [weak self] (search) in
+                guard let self = self else { return }
                 guard let search = search else { return }
-                guard self?.isVisible else { return }
+                guard self.isVisible else { return }
                 let viewModel = VM.CartTrackMap.MapDataFilter.Request(filter: search)
-                self?.interactor?.requestMapDataFilter(viewModel: viewModel)
+                self.interactor?.requestMapDataFilter(viewModel: viewModel)
             }.disposed(by: disposeBag)
         }
 
@@ -144,12 +146,10 @@ extension VC.CartTrackMapViewController {
 extension VC.CartTrackMapViewController: CartTrackMapDisplayLogicProtocol {
 
     func displayMapDataFilter(viewModel: VM.CartTrackMap.MapDataFilter.ViewModel) {
-        self.title = viewModel.subTitle
         genericView.setupWith(mapDataFilter: viewModel)
     }
 
     func displayMapData(viewModel: VM.CartTrackMap.MapData.ViewModel) {
-        self.title = viewModel.subTitle
         genericView.setupWith(mapData: viewModel)
     }
 

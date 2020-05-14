@@ -91,7 +91,7 @@ open class BottomBar: BaseViewControllerMVP {
     public override func viewDidLoad() {
         super.viewDidLoad()
         view.accessibilityIdentifier = self.genericAccessibilityIdentifier
-        self.view.backgroundColor = UIColor.App.TopBar.background
+        self.view.backgroundColor = UIColor.App.primary
     }
     
     public override func prepareLayoutCreateHierarchy() {

@@ -40,12 +40,20 @@ public extension UILabel {
             self.textColor       = UIColor.App.error
             self.font            = UIFont.App.regular(size: .regular)
         }
+        let info = {
+            self.backgroundColor = UIColor.App.lblBackgroundColor
+            self.textColor       = UIColor.App.lblTextColor.withAlphaComponent(0.8)
+            self.font            = UIFont.App.regular(size: .small)
+            self.addShadow()
+            self.addCorner(radius: 5)
+        }
         switch style {
         case .notApplied : _ = 1
         case .navigationBarTitle : navigationBarTitle()
         case .title              : title()
         case .value              : value()
         case .error              : error()
+        case .info               : info()
         }
     }
 }

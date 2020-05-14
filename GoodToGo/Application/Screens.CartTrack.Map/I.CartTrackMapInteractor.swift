@@ -73,7 +73,7 @@ extension I.CartTrackMapInteractor: CartTrackMapBusinessLogicProtocol {
             }
             let response = VM.CartTrackMap.MapData.Response(list: filtered)
             self.presenter?.presentMapData(response: response)
-        } else {
+        } else if list.count > 0 {
             let response = VM.CartTrackMap.MapData.Response(list: list)
             self.presenter?.presentMapData(response: response)
         }

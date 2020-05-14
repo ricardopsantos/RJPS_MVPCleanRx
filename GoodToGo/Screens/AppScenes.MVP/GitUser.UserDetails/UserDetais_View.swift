@@ -123,7 +123,7 @@ extension V.UserDetais_View: UserDetais_ViewProtocol {
     }
     
     func viewDataToScreen(some: VM.UserDetais) {
-        _lblUserName.text = some.user.name
+        _lblUserName.textAnimated = some.user.name
         _tableView.reloadData()
     }
 }

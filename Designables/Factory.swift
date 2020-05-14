@@ -66,7 +66,7 @@ public struct UIKitFactory {
     public static func searchBar(baseView: UIView? = nil) -> CustomSearchBar {
         let some = CustomSearchBar()
         baseView?.addSubview(some)
-        some.tintColor = UIColor.App.TopBar.background
+        some.tintColor = UIColor.App.primary
         some.tag =  UIKitViewFactoryElementTag.searchBar.rawValue
         some.barStyle = .default
         return some

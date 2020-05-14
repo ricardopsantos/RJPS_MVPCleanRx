@@ -105,7 +105,7 @@ extension VM {
                 let list: [CarTrack.UserModel]
             }
             struct ViewModel { /* Presenter -> ViewController */
-                let subTitle: String
+                let report: String
                 let list: [CarTrack.UserModel]
             }
         }
@@ -118,7 +118,7 @@ extension VM {
                 let list: [CarTrack.UserModel]
             }
             struct ViewModel { /* Presenter -> ViewController */
-                let subTitle: String
+                let report: String
                 let list: [CarTrack.UserModel]
             }
         }

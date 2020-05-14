@@ -66,7 +66,7 @@ extension V {
         private lazy var btnLogin: UIButton = {
             let button = RaisedButton(title: Messages.login.localised, titleColor: .white)
             button.pulseColor = .white
-            button.backgroundColor = AppColors.TopBar.background
+            button.backgroundColor = AppColors.primary
             return button
         }()
 
@@ -169,7 +169,7 @@ extension V {
         }
 
         func setupWith(screenInitialState viewModel: VM.CarTrackLogin.ScreenInitialState.ViewModel) {
-            lblTitle.text = viewModel.title
+            lblTitle.textAnimated = viewModel.title
             txtUserName.text = viewModel.userName
             txtPassword.text = viewModel.password
             screenLayout = viewModel.screenLayout

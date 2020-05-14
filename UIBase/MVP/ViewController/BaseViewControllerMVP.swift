@@ -77,7 +77,7 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
             guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
             let value = !to
             let duration = 0.5
-            self._lblReachability.text = withMessage
+            self._lblReachability.textAnimated = withMessage
             self._lblReachability.fadeTo(value ? 0 : 0.95, duration: duration)
             self._lblReachability.rjsALayouts.updateConstraint(self._lblReachabilityDistanceFromTop!,
                                                                toValue: value ? -self._lblReachabilityHeight : self._margin,
@@ -156,7 +156,7 @@ extension BaseViewControllerMVP {
 
     private func label(baseView: UIView? = nil, title: String="", style: UILabel.LayoutStyle) -> UILabel {
         let some = UILabel()
-        some.text = title
+        some.textAnimated = title
         some.numberOfLines = 0
         some.layoutStyle = style
         baseView?.addSubview(some)

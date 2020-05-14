@@ -74,10 +74,9 @@ extension V {
             let defaultMargin = Designables.Sizes.Margins.defaultMargin
             let insets: TinyEdgeInsets = TinyEdgeInsets(top: defaultMargin, left: defaultMargin, bottom: defaultMargin, right: defaultMargin)
 
-            lblResume.autoLayout.topToBottom(of: searchBar)
+            lblResume.autoLayout.topToBottom(of: searchBar, offset: Designables.Sizes.Margins.defaultMargin)
             lblResume.autoLayout.width(screenWidth / 4)
-            lblResume.autoLayout.leadingToSuperview()
-            lblResume.autoLayout.trailingToSuperview()
+            lblResume.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
 
             mapView.autoLayout.topToBottom(of: searchBar)
             mapView.autoLayout.bottomToSuperview()
@@ -98,6 +97,10 @@ extension V {
             // Do any additional setup after loading the view, typically from a nib.
 
             mapView.delegate = self
+            lblResume.backgroundColor = lblResume.backgroundColor?.withAlphaComponent(0.5)
+            lblResume.addShadow()
+            lblResume.addCorner(radius: 5)
+            lblResume.textAlignment = .right
 
         }
 
@@ -129,29 +132,8 @@ extension V {
         // MARK: - Custom Getter/Setters
 
         func setupWith(mapData viewModel: VM.CartTrackMap.MapData.ViewModel) {
-
-            let list: [CarTrack.UserModel] = viewModel.list
-            print(list)
-
-            let lat: CLLocationDegrees =  CLLocationDegrees(Double(list.first!.address.geo.lat)!)
-            let lng: CLLocationDegrees =  CLLocationDegrees(Double(list.first!.address.geo.lng)!)
-            let coordinate = CLLocationCoordinate2DMake(lat, lng)
-            let span = MKCoordinateSpan.init(latitudeDelta: 0.03, longitudeDelta: 0.03)
-            let region = MKCoordinateRegion.init(center: coordinate, span: span)
-            mapView.setRegion(region, animated: true)
-
-            list.forEach { (some) in
-                let lng: CLLocationDegrees =  CLLocationDegrees(Double(some.address.geo.lat)!)
-                let lat: CLLocationDegrees =  CLLocationDegrees(Double(some.address.geo.lng)!)
-
-                print(lat, lng)
-                let coordinate = CLLocationCoordinate2DMake(lat, lng)
-                 let annotation = MKPointAnnotation()
-                 annotation.coordinate = coordinate
-                annotation.title = some.company.name
-                annotation.subtitle = some.address.city
-                 self.mapView.addAnnotation(annotation)
-            }
+            lblResume.textAnimated = viewModel.report
+            updateMapWith(list: viewModel.list)
         }
 
         func setupWith(screenInitialState viewModel: VM.CartTrackMap.ScreenInitialState.ViewModel) {
@@ -160,16 +142,40 @@ extension V {
         }
 
         func setupWith(mapDataFilter viewModel: VM.CartTrackMap.MapDataFilter.ViewModel) {
-            //subTitle = viewModel.subTitle
-            //screenLayout = viewModel.screenLayout
+            lblResume.textAnimated = viewModel.report
+            updateMapWith(list: viewModel.list)
         }
-        
-        var screenLayout: E.CartTrackMapView.ScreenLayout = .unknown {
-            didSet {
-                // show or hide stuff
-            }
+
+    }
+}
+
+// MARK: - Private
+
+extension V.CartTrackMapView {
+
+    func updateMapWith(list: [CarTrack.UserModel]) {
+
+        let lat: CLLocationDegrees =  CLLocationDegrees(Double(list.first!.address.geo.lat)!)
+        let lng: CLLocationDegrees =  CLLocationDegrees(Double(list.first!.address.geo.lng)!)
+        let coordinate = CLLocationCoordinate2DMake(lat, lng)
+        let span = MKCoordinateSpan.init(latitudeDelta: 0.03, longitudeDelta: 0.03)
+        let region = MKCoordinateRegion.init(center: coordinate, span: span)
+        mapView.setRegion(region, animated: true)
+
+        list.forEach { (some) in
+            let lng: CLLocationDegrees =  CLLocationDegrees(Double(some.address.geo.lat)!)
+            let lat: CLLocationDegrees =  CLLocationDegrees(Double(some.address.geo.lng)!)
+
+            print(lat, lng)
+            let coordinate = CLLocationCoordinate2DMake(lat, lng)
+             let annotation = MKPointAnnotation()
+             annotation.coordinate = coordinate
+            annotation.title = some.company.name
+            annotation.subtitle = some.address.city
+             self.mapView.addAnnotation(annotation)
         }
     }
+
 }
 
 // MARK: - MKMapViewDelegate

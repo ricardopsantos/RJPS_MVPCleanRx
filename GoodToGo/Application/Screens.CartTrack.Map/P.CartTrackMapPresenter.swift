@@ -52,6 +52,10 @@ extension P.CartTrackMapPresenter {
 
 extension P.CartTrackMapPresenter: CartTrackMapPresentationLogicProtocol {
 
+    private func buildReport(list: [CarTrack.UserModel]) -> String {
+        let report = "\(Date())\nRecords: \(list.count)"
+        return report
+    }
     // Used By Interactor (exclusively)
     func presentScreenInitialState(response: VM.CartTrackMap.ScreenInitialState.Response) {
         let viewModel = VM.CartTrackMap.ScreenInitialState.ViewModel()
@@ -60,13 +64,15 @@ extension P.CartTrackMapPresenter: CartTrackMapPresentationLogicProtocol {
 
     // Used By Interactor (exclusively)
     func presentMapData(response: VM.CartTrackMap.MapData.Response) {
-        let viewModel = VM.CartTrackMap.MapData.ViewModel(subTitle: "Hi", list: response.list)
+        let report    = buildReport(list: response.list)
+        let viewModel = VM.CartTrackMap.MapData.ViewModel(report: report, list: response.list)
         viewController?.displayMapData(viewModel: viewModel)
     }
 
     // Used By Interactor (exclusively)
     func presentMapDataFilter(response: VM.CartTrackMap.MapDataFilter.Response) {
-        let viewModel = VM.CartTrackMap.MapDataFilter.ViewModel(subTitle: "Hi", list: response.list)
+        let report    = buildReport(list: response.list)
+        let viewModel = VM.CartTrackMap.MapDataFilter.ViewModel(report: report, list: response.list)
         viewController?.displayMapDataFilter(viewModel: viewModel)
     }
 

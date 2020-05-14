@@ -80,7 +80,7 @@ extension TopBar {
     public static var defaultHeight: CGFloat { return 60 }
     public func addBackButton() { enable(btn: _btnBack) }
     public func addDismissButton() { enable(btn: _btnClose) }
-    public func setTitle(_ title: String) { _lblTitle.text = title }
+    public func setTitle(_ title: String) { _lblTitle.textAnimated = title }
     public func lazyLoad() { /* Lazy var auxiliar */ }
     
     public var rxSignal_btnDismissTapped: Signal<Void> {
