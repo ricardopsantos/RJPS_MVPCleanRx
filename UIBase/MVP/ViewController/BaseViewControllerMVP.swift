@@ -11,6 +11,7 @@ import UIKit
 import RxSwift
 import RJPSLib
 import RxCocoa
+import ToastSwiftFramework
 //
 import DevTools
 import Extensions
@@ -26,6 +27,8 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
         //AppLogger.log("\(self.className) was killed")
         NotificationCenter.default.removeObserver(self)
     }
+
+    public static var shared = BaseViewControllerMVP()
 
     // Keyboard related init
     var _keyboardHeigth: CGFloat = 0
@@ -69,7 +72,17 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
     }
     
     open func displayMessage(_ message: String, type: AlertType) {
-        DevTools.makeToast(message, isError: type == .error)
+        var style = ToastStyle()
+        style.cornerRadius = 5
+        style.displayShadow = true
+        style.messageFont = UIFont.App.regular(size: .regularBig)
+        switch type {
+        case .success: style.backgroundColor = UIColor.App.success.withAlphaComponent(0.9)
+        case .warning: style.backgroundColor = UIColor.App.warning.withAlphaComponent(0.9)
+        case .error: style.backgroundColor = UIColor.App.error.withAlphaComponent(0.9)
+        }
+        style.messageColor = .white
+        DevTools.topViewController()?.view.makeToast(message, duration: 5, position: .top, style: style)
     }
     
     open func setNoConnectionViewVisibility(to: Bool, withMessage: String = Messages.noInternet.localised) {

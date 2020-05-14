@@ -72,6 +72,42 @@ public struct UIKitFactory {
         return some
     }
 
+    public static func switchWithCaption(caption: String,
+                                         defaultValue: Bool = false,
+                                         disposeBag: DisposeBag? = nil,
+                                         toggle: ((Bool) -> Void)? = nil) -> UIView {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        stackView.alignment = .center
+        stackView.spacing = AppSizes.Margins.defaultMargin
+        let label = UILabel()
+        label.font = UIFont.App.bold(size: .big)
+        label.backgroundColor = .clear
+        let uiSwitch = UISwitch()
+        label.numberOfLines = 0
+        label.apply(style: .value)
+        label.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .horizontal)
+        label.text = caption
+        uiSwitch.isOn = defaultValue
+        uiSwitch.setContentHuggingPriority(UILayoutPriority.required, for: .horizontal)
+        stackView.addArrangedSubview(label)
+        stackView.addArrangedSubview(uiSwitch)
+        stackView.tag =  UIKitViewFactoryElementTag.searchBar.rawValue
+        if let disposeBag = disposeBag, let toggle = toggle {
+            uiSwitch.rx
+                .isOn
+                .changed
+                .debounce(RxTimeInterval.milliseconds(800), scheduler: MainScheduler.instance)
+                .distinctUntilChanged()
+                .asObservable()
+                .subscribe(onNext: { value in
+                    toggle(value)
+                }).disposed(by: disposeBag)
+        }
+        return stackView
+    }
+
     public static func imageView(baseView: UIView? = nil,
                                  image: UIImage? = nil) -> UIImageView {
         let some = UIImageView()
@@ -141,26 +177,6 @@ public struct UIKitFactory {
         some.spacing      = spacing      // determines the minimum spacing between arranged views.
         some.alignment    = alignment    // determines the layout of the arranged views perpendicular to the stack’s axis.
         return some
-    }
-
-    public static func topBar(baseGenericViewControllerVIP: BaseGenericViewControllerVIP<StylableView>) -> TopBar {
-        let bar         = TopBar()
-        let screenWidth = UIScreen.main.bounds.width
-        let height      = TopBar.defaultHeight
-        let container   = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: screenWidth, height: height)))
-        baseGenericViewControllerVIP.genericView.addSubview(container)
-        UIViewController.rjs.loadViewControllerInContainedView(sender: baseGenericViewControllerVIP, senderContainedView: container, controller: bar) { (_, _) in }
-
-        container.rjsALayouts.setMargin(0, on: .top)
-        container.rjsALayouts.setMargin(0, on: .right)
-        container.rjsALayouts.setMargin(0, on: .left)
-        container.rjsALayouts.setHeight(TopBar.defaultHeight)
-
-        bar.view.rjsALayouts.setMargin(0, on: .top)
-        bar.view.rjsALayouts.setMargin(0, on: .right)
-        bar.view.rjsALayouts.setMargin(0, on: .left)
-        bar.view.rjsALayouts.setHeight(TopBar.defaultHeight)
-        return bar
     }
     
     public static func topBar(baseViewControllerMVP: BaseViewControllerMVP) -> TopBar {

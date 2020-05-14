@@ -26,20 +26,22 @@ public extension UILabel {
             self.font            = UIFont.App.bold(size: .big)
         }
         let title = {
-            self.backgroundColor = UIColor.App.lblBackgroundColor
+            //self.backgroundColor = UIColor.App.lblBackgroundColor
             self.textColor       = UIColor.App.lblTextColor
             self.font            = UIFont.App.bold(size: .regularBig)
         }
         let value = {
-            self.backgroundColor = UIColor.App.lblBackgroundColor
+            //self.backgroundColor = UIColor.App.lblBackgroundColor
             self.textColor       = UIColor.App.lblTextColor.withAlphaComponent(0.8)
             self.font            = UIFont.App.regular(size: .regular)
         }
         let error = {
-            self.backgroundColor = UIColor.clear
+            //self.backgroundColor = UIColor.clear
             self.textColor       = UIColor.App.error
             self.font            = UIFont.App.regular(size: .regular)
         }
+
+        #warning("this should be a component, not a style")
         let info = {
             self.backgroundColor = UIColor.App.lblBackgroundColor
             self.textColor       = UIColor.App.lblTextColor.withAlphaComponent(0.8)

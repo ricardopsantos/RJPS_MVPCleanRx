@@ -51,23 +51,7 @@ extension I.StylesInteractor: BaseInteractorVIPMandatoryBusinessLogicProtocol {
     /// When the screen is loaded, this function is responsible to bind the View with some (temporary or final) data
     /// till the user have all the data loaded on the view. This will improve user experience.
     func requestScreenInitialState() {
-        var response: VM.Styles.ScreenInitialState.Response!
-        if let dataPassing = dsSomeKindOfModelA {
-            // Some data was passed via Router, lets use it...
-            let title = "Template Scene 2"
-            let subTitle = "Some data was passed!\nScroll me\n\n\n\n\n\(dataPassing)\n\n\n"
-            response = VM.Styles.ScreenInitialState.Response(title: title,
-                                                                               subTitle: subTitle)
-        } else {
-            response = VM.Styles.ScreenInitialState.Response(title: "Template Scene 1",
-                                                                               subTitle: "Tap one of the buttons")
-        }
-        presenter?.presentScreenInitialState(response: response)
 
-        // Update Model for future use
-        dsSomeKindOfModelA = StylesDataStoreModelA(aString: "Passed via DataStoreProtocol @ \(Date())")
-
-        requestSomeStuff(request: VM.Styles.SomeStuff.Request(userId: ""))
     }
 
 }
@@ -87,18 +71,6 @@ extension I.StylesInteractor: StylesBusinessLogicProtocol {
     // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
     func requestSomeStuff(request: VM.Styles.SomeStuff.Request) {
 
-        presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
-        DispatchQueue.executeWithDelay(delay: 3) { [weak self] in
-            let mockA1 = TemplateModel(id: "some id 1", state: "state_a - \(Date())")
-            let mockA2 = TemplateModel(id: "some id 2", state: "state_a - \(Date())")
-            let response = VM.Styles.SomeStuff.Response(listA: [mockA1],
-                                                                          listB: [mockA2],
-                                                                          subTitle: "New subtitle \(Date())")
-            self?.presenter?.presentSomeStuff(response: response)
-            self?.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
-            //self?.presenter?.presentError(response: BaseDisplayLogicModels.Error(title: "Messages.error.localised, message: "Error message"))
-            self?.presenter?.presentStatus(response: BaseDisplayLogicModels.Status(message: Messages.success.localised))
-        }
     }
 
 }

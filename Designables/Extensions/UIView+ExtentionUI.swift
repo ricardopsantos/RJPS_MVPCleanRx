@@ -11,6 +11,7 @@ import UIKit
 //
 import AppConstants
 public extension UIView {
+    
     func addShadow(color: UIColor = AppConstants.Shadows.shadowColor,
                    offset: CGSize = AppConstants.Shadows.offset,
                    radius: CGFloat = AppConstants.Shadows.offset.height) {
@@ -20,4 +21,10 @@ public extension UIView {
         self.layer.shadowRadius = radius
         self.layer.masksToBounds = false
     }
+
+        func addCorner(radius: CGFloat) {
+    //        self.layer.backgroundColor  = UIColor.redColor().CGColor
+            self.layer.cornerRadius = radius
+            self.layer.masksToBounds = true
+        }
 }

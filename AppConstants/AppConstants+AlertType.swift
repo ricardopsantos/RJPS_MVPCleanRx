@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum AlertType: Int {
+public enum AlertType: CaseIterable {
     case success
     case warning
     case error

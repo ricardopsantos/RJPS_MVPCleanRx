@@ -60,19 +60,92 @@ extension V {
             scrollView.addSubview(stackViewVLevel1)
             stackViewVLevel1.uiUtils.addArrangedSeparator()
 
-            stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: .black)
+            func buttonWithAction(title: String, block:@escaping () -> Void) -> UIButton {
+                let some = UIKitFactory.button(title: title, style: .regular)
+                some.onTouchUpInside {
+                    block()
+                }
+                return some
+            }
+            func makeSection(_ name: String, size: CGFloat) {
+                stackViewVLevel1.uiUtils.addArrangedSeparator()
+                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: size, color: UIColor.lightGray)
+                let label = UIKitFactory.label(title: "\(name)", style: .title)
+                label.textAlignment = .center
+                stackViewVLevel1.uiUtils.safeAddArrangedSubview(label)
+                stackViewVLevel1.uiUtils.addArrangedSeparator()
+            }
+
+            //
+            // FeatureFlag
+            //
+
+            makeSection("DevTools.FeatureFlag", size: 5)
+            func makeFeatureView(_ flag: DevTools.FeatureFlag) -> UIView {
+                let view = UIKitFactory.switchWithCaption(caption: flag.rawValue,
+                                                          defaultValue: flag.defaultValue,
+                                                          disposeBag: disposeBag) { value in
+                                                            DevTools.FeatureFlag.setFlag(flag, value: value)
+                }
+                if flag.rawValue.lowercased().hasPrefix("dev") {
+                    // On real devices, Dev features are faded
+                    view.alpha = Designables.Constants.disabledViewAlpha
+                }
+                return view
+            }
+            let ffViews: [UIView] = DevTools.FeatureFlag.allCases.map { makeFeatureView($0) }
+            ffViews.forEach { (ffView) in
+                stackViewVLevel1.uiUtils.safeAddArrangedSubview(ffView)
+                stackViewVLevel1.uiUtils.addArrangedSeparator()
+            }
+
+            //
+            // AlertType
+            //
+
+            makeSection("AlertType", size: 5)
+
+            AlertType.allCases.forEach { (some) in
+                let button = buttonWithAction(title: "Alert.\(some)") {
+                    BaseViewControllerMVP.shared.displayMessage(randomStringWith(length: randomInt(min: 50, max: 100)), type: some)
+                }
+                stackViewVLevel1.uiUtils.safeAddArrangedSubview(button)
+                stackViewVLevel1.uiUtils.addArrangedSeparator()
+            }
+
+            //
+            // UILabel.LayoutStyle
+            //
+
+            makeSection("UILabel.LayoutStyle", size: 5)
 
             UILabel.LayoutStyle.allCases.forEach { (some) in
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(UIKitFactory.label(title: "\(some)", style: some))
                 stackViewVLevel1.uiUtils.addArrangedSeparator()
             }
 
-            stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: .black)
+            //
+            // UILabel.LayoutStyle
+            //
 
+            makeSection("UIButton.LayoutStyle", size: 5)
+            
             UIButton.LayoutStyle.allCases.forEach { (some) in
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(UIKitFactory.button(title: "\(some)", style: some))
                 stackViewVLevel1.uiUtils.addArrangedSeparator()
             }
+
+            //
+            // Components
+            //
+
+            makeSection("Components", size: 5)
+
+            let labelWithPadding = UILabelWithPadding()
+            labelWithPadding.text = "UILabelWithPadding"
+            labelWithPadding.label.apply(style: .title)
+            stackViewVLevel1.uiUtils.safeAddArrangedSubview(labelWithPadding)
+
         }
 
         // This function is called automatically by super BaseGenericViewVIP

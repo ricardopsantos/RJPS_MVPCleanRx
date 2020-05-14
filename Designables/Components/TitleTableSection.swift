@@ -10,12 +10,11 @@ import Foundation
 import UIKit
 
 #warning("finish me")
-open class TitleTableSectionView: UIView {
 
+open class TitleTableSectionView: UIView {
     public var title: String? {
         didSet {
-            
+
         }
     }
-
 }

@@ -23,5 +23,6 @@ public enum UIKitViewFactoryElementTag: Int {
     case stackViewSpace
     
     // Composed
+    case switchWithCaption
     case genericTitleAndValue
 }

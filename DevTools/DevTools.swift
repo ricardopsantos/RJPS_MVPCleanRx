@@ -75,15 +75,19 @@ public struct DevTools {
         return onDebug || onSimulator
      }
 
-    func topMostController() -> UIViewController? {
-        guard let window = UIApplication.shared.keyWindow, let rootViewController = window.rootViewController else {
-            return nil
+    public static func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        if let navigationController = controller as? UINavigationController {
+            return topViewController(controller: navigationController.visibleViewController)
         }
-        var topController = rootViewController
-        while let newTopController = topController.presentedViewController {
-            topController = newTopController
+        if let tabController = controller as? UITabBarController {
+            if let selected = tabController.selectedViewController {
+                return topViewController(controller: selected)
+            }
         }
-        return topController
+        if let presented = controller?.presentedViewController {
+            return topViewController(controller: presented)
+        }
+        return controller
     }
 }
 
@@ -99,21 +103,6 @@ extension DevTools {
             return
         }
 
-        func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
-            if let navigationController = controller as? UINavigationController {
-                return topViewController(controller: navigationController.visibleViewController)
-            }
-            if let tabController = controller as? UITabBarController {
-                if let selected = tabController.selectedViewController {
-                    return topViewController(controller: selected)
-                }
-            }
-            if let presented = controller?.presentedViewController {
-                return topViewController(controller: presented)
-            }
-            return controller
-        }
-
         // Delay because sometimes we are changing screen, and the toast would be lost..
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             var style = ToastStyle()
@@ -123,12 +112,12 @@ extension DevTools {
             if isError {
                 style.backgroundColor = UIColor.red.withAlphaComponent(0.9)
                 style.messageColor = .white
-                topViewController()?.view.makeToast(messageFinal, duration: 10.0, position: .top, style: style)
+                DevTools.topViewController()?.view.makeToast(messageFinal, duration: 10.0, position: .top, style: style)
             } else {
                 var style = ToastStyle()
                 style.backgroundColor = UIColor.darkGray.withAlphaComponent(0.9)
                 style.messageColor = .white
-                topViewController()?.view.makeToast(messageFinal, duration: 3.0, position: .top, style: style)
+                DevTools.topViewController()?.view.makeToast(messageFinal, duration: 3.0, position: .top, style: style)
             }
         }
     }

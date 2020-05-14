@@ -19,6 +19,8 @@ open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtoco
         NotificationCenter.default.removeObserver(self)
     }
 
+    public static var shared = BaseViewControllerVIP()
+
     open override func loadView() {
         super.loadView()
         setupColorsAndStyles()
