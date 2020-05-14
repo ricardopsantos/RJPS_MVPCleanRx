@@ -64,31 +64,20 @@ extension V {
         }()
 
         private lazy var btnLogin: UIButton = {
-            let button = RaisedButton(title: Messages.login.localised, titleColor: .white)
-            button.pulseColor = .white
-            button.backgroundColor = AppColors.primary
+            let button = UIKitFactory.raisedButton(title: Messages.login.localised)
             return button
         }()
 
         private lazy var txtPassword: SkyFloatingLabelTextField = {
-            let some = SkyFloatingLabelTextField(frame: CGRect(x: 10, y: 10, width: 120, height: 45))
-            some.placeholder = "Your \(Messages.password.localised)"
-            some.title = Messages.password.localised
-            some.errorColor = AppColors.error
-            some.titleColor = AppColors.lblTextColor
-            some.textColor = AppColors.lblTextColor
-            some.tag = UIKitViewFactoryElementTag.textField.rawValue
+            let some = UIKitFactory.skyFloatingLabelTextField(title: Messages.password.localised,
+                                                              placeholder: "Your \(Messages.password.localised)")
             some.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
             return some
         }()
 
         private lazy var txtUserName: SkyFloatingLabelTextField = {
-            let some = SkyFloatingLabelTextField(frame: CGRect(x: 10, y: 10, width: 120, height: 45))
-            some.placeholder = "Your \(Messages.email.localised)"
-            some.title = Messages.email.localised
-            some.errorColor = AppColors.error
-            some.textColor = AppColors.lblTextColor
-            some.tag = UIKitViewFactoryElementTag.textField.rawValue
+            let some = UIKitFactory.skyFloatingLabelTextField(title: Messages.email.localised,
+                                                              placeholder: "Your \(Messages.invalidEmail.localised)")
             some.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
             return some
         }()
@@ -176,11 +165,10 @@ extension V {
         }
 
         private func userCanProceed(_ value: Bool) {
-            btnLogin.isUserInteractionEnabled = value
             if value {
-                btnLogin.fadeTo(1)
+                btnLogin.enable()
             } else {
-                btnLogin.fadeTo(0.2)
+                btnLogin.disable()
             }
         }
         func setupWith(nextButtonState viewModel: VM.CarTrackLogin.NextButtonState.ViewModel) {

@@ -15,7 +15,7 @@ import PointFreeFunctions
 import Extensions
 
 public extension UIButton {
-    
+
     var layoutStyle: UIButton.LayoutStyle {
         set { apply(style: newValue) }
         get { return .notApplied }

@@ -60,6 +60,8 @@ extension V {
             scrollView.addSubview(stackViewVLevel1)
             stackViewVLevel1.uiUtils.addArrangedSeparator()
 
+            let sectionSize: CGFloat = 3
+
             func buttonWithAction(title: String, block:@escaping () -> Void) -> UIButton {
                 let some = UIKitFactory.button(title: title, style: .regular)
                 some.onTouchUpInside {
@@ -80,7 +82,7 @@ extension V {
             // FeatureFlag
             //
 
-            makeSection("DevTools.FeatureFlag", size: 5)
+            makeSection("DevTools.FeatureFlag", size: sectionSize)
             func makeFeatureView(_ flag: DevTools.FeatureFlag) -> UIView {
                 let view = UIKitFactory.switchWithCaption(caption: flag.rawValue,
                                                           defaultValue: flag.defaultValue,
@@ -96,55 +98,69 @@ extension V {
             let ffViews: [UIView] = DevTools.FeatureFlag.allCases.map { makeFeatureView($0) }
             ffViews.forEach { (ffView) in
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(ffView)
-                stackViewVLevel1.uiUtils.addArrangedSeparator()
+                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: UIColor.App.primary)
             }
 
             //
             // AlertType
             //
 
-            makeSection("AlertType", size: 5)
+            makeSection("AlertType", size: sectionSize)
 
             AlertType.allCases.forEach { (some) in
-                let button = buttonWithAction(title: "Alert.\(some)") {
+                let button = buttonWithAction(title: "Tap to show \(some) alert") {
                     BaseViewControllerMVP.shared.displayMessage(randomStringWith(length: randomInt(min: 50, max: 100)), type: some)
                 }
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(button)
-                stackViewVLevel1.uiUtils.addArrangedSeparator()
+                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: UIColor.App.primary)
             }
 
             //
             // UILabel.LayoutStyle
             //
 
-            makeSection("UILabel.LayoutStyle", size: 5)
+            makeSection("UILabel.LayoutStyle", size: sectionSize)
 
             UILabel.LayoutStyle.allCases.forEach { (some) in
-                stackViewVLevel1.uiUtils.safeAddArrangedSubview(UIKitFactory.label(title: "\(some)", style: some))
-                stackViewVLevel1.uiUtils.addArrangedSeparator()
+                let label1 = UIKitFactory.label(title: "\(some)", style: some)
+                label1.backgroundColor = UIColor.white
+                let label2 = UIKitFactory.label(title: "\(some)", style: some)
+                label2.backgroundColor = UIColor.black
+                label1.textAlignment = .center
+                label2.textAlignment = .center
+                stackViewVLevel1.uiUtils.safeAddArrangedSubview(label1)
+                stackViewVLevel1.uiUtils.safeAddArrangedSubview(label2)
+                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: UIColor.App.primary)
             }
 
             //
-            // UILabel.LayoutStyle
+            // UIButton.LayoutStyle
             //
 
-            makeSection("UIButton.LayoutStyle", size: 5)
+            makeSection("UIButton.LayoutStyle", size: sectionSize)
             
             UIButton.LayoutStyle.allCases.forEach { (some) in
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(UIKitFactory.button(title: "\(some)", style: some))
-                stackViewVLevel1.uiUtils.addArrangedSeparator()
+                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: UIColor.App.primary)
             }
 
             //
             // Components
             //
 
-            makeSection("Components", size: 5)
+            makeSection("Components", size: sectionSize)
 
-            let labelWithPadding = UILabelWithPadding()
-            labelWithPadding.text = "UILabelWithPadding"
-            labelWithPadding.label.apply(style: .title)
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(labelWithPadding)
+            let raisedButton = UIKitFactory.raisedButton(title: "raisedButton", backgroundColor: AppColors.primary)
+            stackViewVLevel1.uiUtils.safeAddArrangedSubview(raisedButton)
+
+            stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: UIColor.App.primary)
+
+            let skyFloatingLabelTextField = UIKitFactory.skyFloatingLabelTextField(title: "skyFloatingLabelTextField",
+                                                            placeholder: "Your skyFloatingLabelTextField")
+            stackViewVLevel1.uiUtils.safeAddArrangedSubview(skyFloatingLabelTextField)
+
+            stackViewVLevel1.uiUtils.addArrangedSeparator()
+            stackViewVLevel1.uiUtils.addArrangedSeparator()
 
         }
 
@@ -152,16 +168,9 @@ extension V {
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 2/3 : JUST to setup layout rules zone....
         override func prepareLayoutBySettingAutoLayoutsRules() {
-
             stackViewVLevel1.uiUtils.edgeStackViewToSuperView()
             scrollView.autoLayout.edgesToSuperview(excluding: .bottom, insets: .zero)
             scrollView.autoLayout.height(screenHeight)
-/*
-            self.subViewsOf(types: [.button, .label], recursive: true).forEach { (some) in
-                some.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
-                some.autoLayout.marginToSuperVerticalStackView(trailing: defaultMargin, leading: defaultMargin)
-            }
-*/
         }
 
         // This function is called automatically by super BaseGenericViewVIP

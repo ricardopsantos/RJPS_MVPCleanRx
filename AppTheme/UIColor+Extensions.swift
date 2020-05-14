@@ -61,6 +61,7 @@ public extension UIColor {
         public static var lblTextColor: UIColor { return _grey_1.toDark() }
 
         public static var primary: UIColor { return _blue1.toDark() }
+        public static var onPrimary: UIColor { return _grey_7 }
 
         public static var error: UIColor { return _red1.toDark() }
         public static var success: UIColor { return _blue2.toDark() }

@@ -7,19 +7,46 @@
 
 import UIKit
 //
-import RxSwift
 import RxCocoa
-import RJPSLib
+import RxSwift
+import RxDataSources
+import TinyConstraints
+import SkyFloatingLabelTextField
+import Material
+import Motion
 //
 import AppConstants
-import PointFreeFunctions
-import Extensions
-import AppResources
-import UIBase
+import AppTheme
+import DevTools
 import Domain
+import Extensions
+import PointFreeFunctions
+import UIBase
+import AppResources
 
 public struct UIKitFactory {
     private init() {}
+
+    public static func raisedButton(title: String,
+                                    pulseColor: UIColor = UIColor.App.onPrimary,
+                                    backgroundColor: UIColor = UIColor.App.primary) -> UIButton {
+        let button = RaisedButton(title: title, titleColor: .white)
+        button.pulseColor = UIColor.App.onPrimary //.white
+        button.backgroundColor = backgroundColor
+        return button
+    }
+
+    public static func skyFloatingLabelTextField(title: String,
+                                                 placeholder: String) -> SkyFloatingLabelTextField {
+        let some = SkyFloatingLabelTextField(frame: CGRect(x: 10, y: 10, width: 120, height: 45))
+        some.placeholder = placeholder
+        some.title = title
+        some.errorColor = UIColor.App.error
+        some.titleColor = UIColor.App.lblTextColor
+        some.textColor = UIColor.App.lblTextColor
+        some.tag = UIKitViewFactoryElementTag.textField.rawValue
+        return some
+    }
 
     public static func textField(baseView: UIView? = nil,
                                  title: String = "") -> UITextField {
@@ -63,6 +90,7 @@ public struct UIKitFactory {
         some.translatesAutoresizingMaskIntoConstraints = false
         return some
     }
+
     public static func searchBar(baseView: UIView? = nil) -> CustomSearchBar {
         let some = CustomSearchBar()
         baseView?.addSubview(some)
