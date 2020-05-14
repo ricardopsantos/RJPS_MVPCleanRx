@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import MapKit
 //
 import RxCocoa
 import RxSwift
@@ -41,36 +42,8 @@ extension V {
 
         // MARK: - UI Elements (Private and lazy by default)
 
-        private lazy var scrollView: UIScrollView = {
-            UIKitFactory.scrollView()
-        }()
-
-        private lazy var stackViewVLevel1: UIStackView = {
-            UIKitFactory.stackView(axis: .vertical)
-        }()
-
-        private lazy var lblSample: UILabel = {
-            UIKitFactory.label(style: .value)
-        }()
-
-        private lazy var btnSample1: UIButton = {
-            UIKitFactory.button(title: "btnSample1", style: .regular)
-        }()
-
-        private lazy var btnSample2: UIButton = {
-            UIKitFactory.button(title: "btnSample2", style: .regular)
-        }()
-
-        private lazy var btnSample3: UIButton = {
-            UIKitFactory.button(title: "btnSample3", style: .regular)
-        }()
-
-        // Naming convention: rxTbl[MeaningfulTableName]Items
-        typealias Section = AnimatableSectionModel<String, VM.CartTrackMap.TableItem>
-        var rxTableItems = BehaviorSubject<[Section]>(value: [])
-
-        private lazy var tableView: UITableView = {
-            UIKitFactory.tableView()
+        private lazy var mapView: MKMapView = {
+            return MKMapView()
         }()
 
         // MARK: - Mandatory
@@ -80,17 +53,7 @@ extension V {
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 1/3 : JUST to add stuff to the view....
         override func prepareLayoutCreateHierarchy() {
-            addSubview(scrollView)
-            scrollView.addSubview(stackViewVLevel1)
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(lblSample)
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(btnSample1)
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(btnSample2)
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(btnSample3)
-            addSubview(tableView)
+            addSubview(mapView)
         }
 
         // This function is called automatically by super BaseGenericViewVIP
@@ -100,40 +63,7 @@ extension V {
             let edgesToExclude: LayoutEdge = .init([.top, .bottom])
             let defaultMargin = Designables.Sizes.Margins.defaultMargin
             let insets: TinyEdgeInsets = TinyEdgeInsets(top: defaultMargin, left: defaultMargin, bottom: defaultMargin, right: defaultMargin)
-         //   lblSample.autoLayout.edgesToSuperview(excluding: edgesToExclude, insets: insets)
-
-            stackViewVLevel1.uiUtils.edgeStackViewToSuperView()
-            let scrollViewHeight = screenHeight/2
-            scrollView.autoLayout.edgesToSuperview(excluding: .bottom, insets: .zero)
-            scrollView.autoLayout.height(scrollViewHeight)
-
-            self.subViewsOf(types: [.button, .label], recursive: true).forEach { (some) in
-                some.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
-                some.autoLayout.marginToSuperVerticalStackView(trailing: defaultMargin, leading: defaultMargin)
-            }
-
-            #warning("Have weird autolayout issue")
-/*
-            2020-05-12 23:22:34.460689+0100 GoodToGo[79776:6479479] [LayoutConstraints] Unable to simultaneously satisfy constraints.
-                Probably at least one of the constraints in the following list is one you don't want.
-                Try this:
-                    (1) look at each constraint and try to figure out which you don't expect;
-                    (2) find the code that added the unwanted constraint or constraints and fix it.
-            (
-                "<NSLayoutConstraint:0x600001da80a0 H:|-(16)-[UILabel:0x7ffb2c512420](LTR)   (active, names: '|':UIStackView:0x7ffb2c50dfa0 )>",
-                "<NSLayoutConstraint:0x600001df7b60 UIStackView:0x7ffb2c50dfa0.width == UIScrollView:0x7ffb2d021200.width   (active)>",
-                "<NSLayoutConstraint:0x600001df7c00 H:|-(0)-[UIScrollView:0x7ffb2d021200](LTR)   (active, names: '|':_TtCC8GoodToGo7AppView28CartTrackMapView:0x7ffb2c508d80 )>",
-                "<NSLayoutConstraint:0x600001df7c50 UIScrollView:0x7ffb2d021200.right == _TtCC8GoodToGo7AppView28CartTrackMapView:0x7ffb2c508d80.right   (active)>",
-                "<NSLayoutConstraint:0x600001da8910 '_UITemporaryLayoutWidth' _TtCC8GoodToGo7AppView28CartTrackMapView:0x7ffb2c508d80.width == 0   (active)>",
-                "<NSLayoutConstraint:0x600001dd7250 'UISV-alignment' UIView:0x7ffb2c50e130.trailing == UILabel:0x7ffb2c512420.trailing   (active)>",
-                "<NSLayoutConstraint:0x600001dd6f80 'UISV-canvas-connection' UILayoutGuide:0x6000007e31e0'UIViewLayoutMarginsGuide'.trailing == UIView:0x7ffb2c50e130.trailing   (active)>",
-                "<NSLayoutConstraint:0x600001dd6c60 'UIView-rightMargin-guide-constraint' H:[UILayoutGuide:0x6000007e31e0'UIViewLayoutMarginsGuide']-(16)-|(LTR)   (active, names: '|':UIStackView:0x7ffb2c50dfa0 )>"
-            )
-*/
-            tableView.autoLayout.topToBottom(of: scrollView, offset: Designables.Sizes.Margins.defaultMargin)
-            tableView.autoLayout.leadingToSuperview()
-            tableView.autoLayout.trailingToSuperview()
-            tableView.autoLayout.bottomToSuperview()
+            mapView.edgesToSuperview()
 
         }
 
@@ -141,12 +71,10 @@ extension V {
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 3/3 : Stuff that is not included in [prepareLayoutCreateHierarchy] and [prepareLayoutBySettingAutoLayoutsRules]
         override func prepareLayoutByFinishingPrepareLayout() {
-            V.CartTrackMapTableViewCell.prepare(tableView: tableView)
-            tableView.estimatedRowHeight = Designables.Sizes.TableViewCell.defaultSize
-            tableView.rowHeight = UITableView.automaticDimension
-            tableView.separatorColor = .clear
-            tableView.rx.setDelegate(self).disposed(by: disposeBag)
-            lblSample.textAlignment = .center
+            // Do any additional setup after loading the view, typically from a nib.
+
+            mapView.delegate = self
+
         }
 
         override func setupColorsAndStyles() {
@@ -156,64 +84,38 @@ extension V {
         // Order in View life-cycle : 2
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
-            let dataSource = RxTableViewSectionedAnimatedDataSource<Section>(
-                configureCell: { _, tableView, indexPath, item in
-                    let row = indexPath.row
-                    let section = indexPath.section
-                    switch item.cellType {
-                    case .cellType1:
-                        let reuseIdentifier = CartTrackMapTableViewCell.reuseIdentifier
-                        if let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier,
-                                                                    for: IndexPath(row: row, section: section)) as? CartTrackMapTableViewCell {
-                            cell.configWith(viewModel: item)
-                            return cell
-                        }
-                    case .cellType2:
-                        let reuseIdentifier = CartTrackMapTableViewCell.reuseIdentifier
-                        if let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier,
-                                                                    for: IndexPath(row: row, section: section)) as? CartTrackMapTableViewCell {
-                            cell.configWith(viewModel: item)
-                            return cell
-                        }
-                    }
-                    return UITableViewCell()
-            })
-            dataSource.animationConfiguration = AnimationConfiguration(insertAnimation: .fade, reloadAnimation: .fade, deleteAnimation: .fade)
 
-            rxTableItems.asObserver().bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
-
-            tableView.rx.modelSelected(VM.CartTrackMap.TableItem.self)
-                .observeOn(MainScheduler.instance).subscribe(onNext: { [weak self] some in
-                    guard let self = self else { return }
-                    if !some.enabled { return }
-                    //rxModelSelected.bind(onNext: some)
-                }).disposed(by: disposeBag)
         }
 
         // MARK: - Custom Getter/Setters
-
-        // We can set the view data by : 1 - Rx                                     ---> var rxTableItems = BehaviorRelay <---
-        // We can set the view data by : 2 - Custom Setters / Computed Vars         ---> var subTitle: String <---
-        // We can set the view data by : 3 - Passing the view model inside the view ---> func setupWith(viewModel: ... <---
-
-        public var subTitle: String {
-            get { return  lblSample.text ?? "" }
-            set(newValue) {
-                lblSample.textAnimated = newValue
-            }
-        }
-
-        public var titleStyleType: UILabel.LayoutStyle = .value {
-            didSet {
-                lblSample.layoutStyle = titleStyleType
-            }
-        }
 
         func setupWith(someStuff viewModel: VM.CartTrackMap.UserInfo.ViewModel) {
             /*subTitle = viewModel.subTitle
             let sectionA = Section(model: viewModel.someListSectionATitle, items: viewModel.someListSectionAElements)
             let sectionB = Section(model: viewModel.someListSectionBTitle, items: viewModel.someListSectionBElements)
             rxTableItems.onNext([sectionA, sectionB])*/
+            let list: [CarTrack.UserModel] = viewModel.list
+            print(list)
+
+            let lat: CLLocationDegrees =  CLLocationDegrees(Double(list.first!.address.geo.lat)!)
+            let lng: CLLocationDegrees =  CLLocationDegrees(Double(list.first!.address.geo.lng)!)
+            let coordinate = CLLocationCoordinate2DMake(lat, lng)
+            let span = MKCoordinateSpan.init(latitudeDelta: 0.03, longitudeDelta: 0.03)
+            let region = MKCoordinateRegion.init(center: coordinate, span: span)
+            mapView.setRegion(region, animated: true)
+
+            list.forEach { (some) in
+                let lng: CLLocationDegrees =  CLLocationDegrees(Double(some.address.geo.lat)!)
+                let lat: CLLocationDegrees =  CLLocationDegrees(Double(some.address.geo.lng)!)
+
+                print(lat, lng)
+                let coordinate = CLLocationCoordinate2DMake(lat, lng)
+                 let annotation = MKPointAnnotation()
+                 annotation.coordinate = coordinate
+                annotation.title = some.company.name
+                annotation.subtitle = some.address.city
+                 self.mapView.addAnnotation(annotation)
+            }
         }
 
         func setupWith(screenInitialState viewModel: VM.CartTrackMap.ScreenInitialState.ViewModel) {
@@ -229,43 +131,66 @@ extension V {
     }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - MKMapViewDelegate
 
-extension V.CartTrackMapView: UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        #warning("Not implemented TitleTableSectionView")
-        let sectionView = TitleTableSectionView(frame: .zero)
-        if let sectionItem = try? rxTableItems.value() {
-            guard sectionItem.count > section else { return nil }
-            sectionView.title = sectionItem[section].model
-        }
-        return UIView()
+extension V.CartTrackMapView: MKMapViewDelegate {
+    // Called when the region displayed by the map view is about to change
+    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        print(#function)
     }
 
-    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return Designables.Sizes.TableView.defaultHeightForHeaderInSection
+    // Called when the annotation was added
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+
+        let reuseId = "pin"
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView?.animatesDrop = true
+            pinView?.canShowCallout = true
+            pinView?.isDraggable = true
+            pinView?.pinColor = .purple
+
+            let rightButton: AnyObject! = UIButton(type: UIButton.ButtonType.detailDisclosure)
+            pinView?.rightCalloutAccessoryView = rightButton as? UIView
+        } else {
+            pinView?.annotation = annotation
+        }
+
+        return pinView
     }
 
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if let sectionItem = try? rxTableItems.value() {
-            let item = sectionItem[indexPath.section].items[indexPath.row]
-            switch item.cellType {
-            case .cellType1: return V.CartTrackMapTableViewCell.cellSize
-            case .cellType2: return V.CartTrackMapTableViewCell.cellSize
-            }
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        print(#function)
+        if control == view.rightCalloutAccessoryView {
+            print("toTheMoon")
         }
-        return 0
+    }
+
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationView.DragState, fromOldState oldState: MKAnnotationView.DragState) {
+        if newState == MKAnnotationView.DragState.ending {
+            let droppedAt = view.annotation?.coordinate
+            print(droppedAt.debugDescription)
+        }
+    }
+
+    // MARK: - Navigation
+
+    @IBAction func didReturnToMapViewController(_ segue: UIStoryboardSegue) {
+        print(#function)
     }
 }
 
 // MARK: - Events capture
 
 extension V.CartTrackMapView {
-    var rxBtnSample1Tap: Observable<Void> { btnSample1.rx.tapSmart(disposeBag) }
+ /*   var rxBtnSample1Tap: Observable<Void> { btnSample1.rx.tapSmart(disposeBag) }
     var rxBtnSample2Tap: Observable<Void> { btnSample2.rx.tapSmart(disposeBag) }
     var rxBtnSample3Tap: Observable<Void> { btnSample3.rx.tapSmart(disposeBag) }
     var rxModelSelected: ControlEvent<VM.CartTrackMap.TableItem> {
         tableView.rx.modelSelected(VM.CartTrackMap.TableItem.self)
-    }
+    }*/
 }

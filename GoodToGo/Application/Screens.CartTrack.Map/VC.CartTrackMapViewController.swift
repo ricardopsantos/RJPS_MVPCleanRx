@@ -99,33 +99,13 @@ extension VC {
         override func setupViewUIRx() {
 
             #warning("Add reachability support")
-            
+            /*
             genericView.rxModelSelected
                 .subscribe(onNext: { /* [router] */ (some) in
                     AppLogger.log("Received [\(some)]")
                 })
                 .disposed(by: disposeBag)
-
-            genericView.rxBtnSample1Tap
-                .do(onNext: { [weak self] in
-                    self?.router?.routeToTemplateWithParentDataStore()
-                })
-                .subscribe()
-                .disposed(by: disposeBag)
-
-            genericView.rxBtnSample2Tap
-                .do(onNext: { [weak self] in
-                    self?.router?.routeToTemplateWithDataStore()
-                })
-                .subscribe()
-                .disposed(by: disposeBag)
-
-            genericView.rxBtnSample3Tap
-                .do(onNext: { [weak self] in
-                    self?.doPrivateStuff()
-                })
-                .subscribe()
-                .disposed(by: disposeBag)
+*/
 
         }
 
@@ -152,14 +132,6 @@ extension VC.CartTrackMapViewController {
 
 extension VC.CartTrackMapViewController {
 
-    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
-    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
-    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
-    private func doPrivateStuff() {
-        let userId = genericView.subTitle
-        let request = VM.CartTrackMap.UserInfo.Request(userId: userId)
-        self.interactor?.requestUserInfo(request: request)
-    }
 }
 
 // MARK: DisplayLogicProtocolProtocol
@@ -168,6 +140,7 @@ extension VC.CartTrackMapViewController: CartTrackMapDisplayLogicProtocol {
 
     func displayUserInfo(viewModel: VM.CartTrackMap.UserInfo.ViewModel) {
         // Setting up the view, option 1 : passing the view model
+        self.title = viewModel.subTitle
         genericView.setupWith(someStuff: viewModel)
     }
 

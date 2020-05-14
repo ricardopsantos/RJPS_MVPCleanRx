@@ -72,40 +72,14 @@ extension P.CartTrackMapPresenter: CartTrackMapPresentationLogicProtocol {
 
     // Used By Interactor (exclusively)
     func presentScreenInitialState(response: VM.CartTrackMap.ScreenInitialState.Response) {
-       /* let title = response.title.uppercased()
-        let subTitle = response.subTitle.lowercased()
-        let viewModel = VM.CartTrackMap.ScreenInitialState.ViewModel(title: title,
-                                                                                 subTitle: subTitle,
-                                                                                 screenLayout: .layoutA)
-        viewController?.displayScreenInitialState(viewModel: viewModel)*/
+        let viewModel = VM.CartTrackMap.ScreenInitialState.ViewModel()
+        viewController?.displayScreenInitialState(viewModel: viewModel)
     }
 
     // Used By Interactor (exclusively)
     func presentUserInfo(response: VM.CartTrackMap.UserInfo.Response) {
-        // Presenter will transform response object in something that the View can process/read
-       /* let subTitle = response.subTitle.uppercased()
-        let someListA = response.listA
-            .map { VM.CartTrackMap.TableItem(enabled: true,
-                                                  image: Images.noInternet.rawValue,
-                                                  title: $0.id ?? "N.A.",
-                                                  subtitle: $0.state?.uppercased() ?? "N.A.",
-                                                  cellType: .cellType1)
-            }
-        let someListB = response.listB
-            .map { VM.CartTrackMap.TableItem(enabled: true,
-                                                         image: Images.noInternet.rawValue,
-                                                  title: $0.id ?? "N.A.",
-                                                  subtitle: $0.state?.uppercased() ?? "N.A.",
-                                                  cellType: .cellType2)
-            }
-        let sum = someListA.count + someListB.count
-        let viewModel = VM.CartTrackMap.UserInfo.ViewModel(subTitle: subTitle,
-                                                                             someValue: "\(sum)",
-            someListSectionATitle: "\(someListA.count) A elements",
-            someListSectionBTitle: "\(someListB.count) B elements",
-            someListSectionAElements: someListA,
-            someListSectionBElements: someListB)
-        viewController?.displayUserInfo(viewModel: viewModel)*/
+        let viewModel = VM.CartTrackMap.UserInfo.ViewModel(subTitle: "Hi", list: response.list)
+        viewController?.displayUserInfo(viewModel: viewModel)
     }
 
 }

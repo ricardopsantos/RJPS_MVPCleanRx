@@ -72,6 +72,8 @@ extension I.CartTrackMapInteractor: BaseInteractorVIPMandatoryBusinessLogicProto
 
         requestUserInfo(request: VM.CartTrackMap.UserInfo.Request(userId: ""))*/
 
+        let request = VM.CartTrackMap.UserInfo.Request()
+        requestUserInfo(request: request)
     }
 
 }
@@ -93,11 +95,14 @@ extension I.CartTrackMapInteractor: CartTrackMapBusinessLogicProtocol {
             .getUserDetailV3(cacheStrategy: .cacheAndLatestValue)
             .asObservable().bind(onNext: { [weak self] (result) in
                 self?.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
+                guard let self = self else { return }
                 switch result {
                 case .success(let elements):
-                    self?.list = elements.map({ $0.toDomain! })
+                    self.list = elements.map({ $0.toDomain! })
+                    let response = VM.CartTrackMap.UserInfo.Response(list: self.list)
+                    self.presenter?.presentUserInfo(response: response)
                 case .failure:
-                    self?.presenter?.presentErrorGeneric()
+                    self.presenter?.presentErrorGeneric()
                 }
             }).disposed(by: disposeBag)
     }

@@ -120,7 +120,6 @@ extension VM {
 
         struct UserInfo {
             struct Request { /* ViewController -> Interactor */
-                let userId: String
             }
             struct Response { /* Interactor -> Presenter */
                 let list: [CarTrack.UserModel]
