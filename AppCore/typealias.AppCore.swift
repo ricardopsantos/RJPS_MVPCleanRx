@@ -8,12 +8,16 @@
 
 import Foundation
 //
-import DevTools
-//
 import RJPSLib
+//
+import DevTools
+import Domain
 
 typealias AppLogger = DevTools.AppLogger
 typealias AppSimpleNetworkClient = RJS_SimpleNetworkClient
 
 public typealias UC = UseCases
 public class UseCases { private init() {} }
+
+public typealias CarTrackUserResponseDtoElement = Domain.CarTrack.CarTrackUserResponseDtoElement
+public typealias CarTrackUserModel = Domain.CarTrack.UserModel

@@ -13,6 +13,7 @@ import RxSwift
 public typealias CarTrackAPI_UseCaseCompletionHandler = (_ result: Result<[CarTrack.CarTrackUserResponseDtoElement]>) -> Void
 
 public protocol CarTrackAPI_UseCaseProtocol: class {
-    func getUserDetail(completionHandler: @escaping CarTrackAPI_UseCaseCompletionHandler)
-    func getUserDetail(cacheStrategy: CacheStrategy) -> Observable<[CarTrack.CarTrackUserResponseDtoElement]>
+    func getUserDetailV1(completionHandler: @escaping CarTrackAPI_UseCaseCompletionHandler) // Result<T> Completion version
+    func getUserDetailV2(cacheStrategy: CacheStrategy) -> Observable<[CarTrack.CarTrackUserResponseDtoElement]> // RxVersion
+    func getUserDetailV3(cacheStrategy: CacheStrategy) -> Observable<Result<[CarTrack.CarTrackUserResponseDtoElement]>> // Result + RxVersion
 }

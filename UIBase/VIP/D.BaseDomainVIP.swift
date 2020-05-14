@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 //
 import RJPSLib
+import AppResources
 
 // MARK: - Interactor - Business Logic
 
@@ -26,6 +27,10 @@ public protocol BasePresenterVIPProtocol: class {
     func presentLoading(response: BaseDisplayLogicModels.Loading)
     func presentError(response: BaseDisplayLogicModels.Error)
     func presentStatus(response: BaseDisplayLogicModels.Status)
+
+    // Helper...
+    func presentErrorGeneric()
+
 }
 
 /// Default implementation....
@@ -38,6 +43,11 @@ public extension BasePresenterVIPProtocol {
     func presentError(response: BaseDisplayLogicModels.Error) {
         let viewModel = response
         baseViewController?.displayError(viewModel: viewModel)
+    }
+
+    func presentErrorGeneric() {
+        let response = BaseDisplayLogicModels.Error(title: Messages.alert.localised, message: Messages.pleaseTryAgainLater.localised)
+        presentError(response: response)
     }
 
     func presentLoading(response: BaseDisplayLogicModels.Loading) {

@@ -8,6 +8,5 @@
 
 import Foundation
 
-protocol ModelEntityProtocol: Codable {
-
-}
+protocol ModelEntityProtocol: Codable { }
+protocol ResponseDtoProtocol: Codable { }

@@ -11,23 +11,24 @@ import Foundation
 public extension CarTrack {
 
     struct UserModel: ModelEntityProtocol {
-        let id: Int
-        let name, username, email: String
-        let address: AddressModel
-        let phone, website: String
-        let company: CompanyModel
+        public let id: Int
+        public let name, username, email: String
+        public let address: AddressModel
+        public let phone, website: String
+        public let company: CompanyModel
+
+        public struct AddressModel: ModelEntityProtocol {
+            public let street, suite, city, zipcode: String
+            public let geo: GeoModel
+        }
+
+        public struct GeoModel: ModelEntityProtocol {
+            public let lat, lng: String
+        }
+
+        public struct CompanyModel: ModelEntityProtocol {
+            public let name, catchPhrase, bs: String
+        }
     }
 
-    struct AddressModel: ModelEntityProtocol {
-        let street, suite, city, zipcode: String
-        let geo: GeoModel
-    }
-
-    struct GeoModel: ModelEntityProtocol {
-        let lat, lng: String
-    }
-
-    struct CompanyModel: ModelEntityProtocol {
-        let name, catchPhrase, bs: String
-    }
 }

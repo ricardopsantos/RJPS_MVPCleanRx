@@ -7,30 +7,38 @@
 //
 
 import Foundation
+//
+import PointFreeFunctions
 
 public extension CarTrack {
-    // MARK: - CarTrackUserResponseDtoElement
-    struct CarTrackUserResponseDtoElement: ModelEntityProtocol {
-        let id: Int
-        let name, username, email: String
-        let address: Address
-        let phone, website: String
-        let company: Company
-    }
 
-    // MARK: - Address
-    struct Address: Codable {
-        let street, suite, city, zipcode: String
-        let geo: Geo
-    }
+    struct CarTrackUserResponseDtoElement: ResponseDtoProtocol {
+        public let id: Int
+        public let name, username, email: String
+        public let address: Address
+        public let phone, website: String
+        public let company: Company
 
-    // MARK: - Geo
-    struct Geo: Codable {
-        let lat, lng: String
-    }
+        // MARK: - Address
+        public struct Address: ResponseDtoProtocol {
+            public let street, suite, city, zipcode: String
+            public let geo: Geo
+        }
 
-    // MARK: - Company
-    struct Company: Codable {
-        let name, catchPhrase, bs: String
+        // MARK: - Geo
+        public struct Geo: ResponseDtoProtocol {
+            public let lat, lng: String
+        }
+
+        // MARK: - Company
+        public struct Company: ResponseDtoProtocol {
+            public let name, catchPhrase, bs: String
+        }
+    }
+}
+
+public extension CarTrack.CarTrackUserResponseDtoElement {
+    public var toDomain: Domain.CarTrack.UserModel? {
+        return perfectMapper(inValue: self, outValue: Domain.CarTrack.UserModel.self)
     }
 }

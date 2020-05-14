@@ -69,7 +69,7 @@ extension I.CarTrackUsersInteractor: BaseInteractorVIPMandatoryBusinessLogicProt
 
         requestSomeStuff(request: VM.CarTrackUsers.SomeStuff.Request(userId: ""))
 /*
-        CarTrackResolver.shared.api?.getUserDetail(completionHandler: { (result) in
+        CarTrackResolver.shared.api?.getUserDetailV1(completionHandler: { (result) in
             switch result {
             case .success(let results):
                 print(results)
@@ -78,8 +78,15 @@ extension I.CarTrackUsersInteractor: BaseInteractorVIPMandatoryBusinessLogicProt
             }
         })
 */
+        /*
         CarTrackResolver.shared.api?
-            .getUserDetail(cacheStrategy: .cacheAndLatestValue)
+            .getUserDetailV2(cacheStrategy: .cacheAndLatestValue)
+            .asObservable().bind(onNext: { (result) in
+                print(result)
+            }).disposed(by: disposeBag)
+*/
+        CarTrackResolver.shared.api?
+            .getUserDetailV3(cacheStrategy: .cacheAndLatestValue)
             .asObservable().bind(onNext: { (result) in
                 print(result)
             }).disposed(by: disposeBag)

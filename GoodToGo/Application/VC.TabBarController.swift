@@ -35,11 +35,12 @@ extension VC {
             let vip2 = VC.___VARIABLE_sceneName___ViewController()
             let carTrackLoginViewController = VC.CarTrackLoginViewController()
             let carTrackUsersViewController = VC.CarTrackUsersViewController()
+            let cartTrackMapViewController = VC.CartTrackMapViewController()
 
             if false {
                 viewControllers = [vip2, c1, c2, c3, c4, c5, c6]
             } else {
-                viewControllers = [carTrackLoginViewController, carTrackUsersViewController, vip2]
+                viewControllers = [cartTrackMapViewController, carTrackLoginViewController, carTrackUsersViewController]
             }
         }
         
