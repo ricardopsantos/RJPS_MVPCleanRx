@@ -26,6 +26,7 @@ public extension AppCodes {
         case .dequeueReusableCellFail : return "Dev : dequeueReusableCellFail"
         case .unknownError            : return "Dev : Unknown error"
         case .referenceLost           : return "Dev : Reference lost"
+        case .notFound                : return "Dev : Reference lost"
         }
     }
 
@@ -38,6 +39,7 @@ public extension AppCodes {
         case .noInternet              : return Messages.noInternet.localised
         case .invalidURL              : return Messages.invalidURL.localised
 
+        case .notFound                : return defaultMessage
         case .notImplemented          : return defaultMessage
         case .notPredicted            : return defaultMessage
         case .parsingError            : return defaultMessage

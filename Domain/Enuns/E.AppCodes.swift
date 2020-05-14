@@ -19,4 +19,5 @@ public enum AppCodes: Int {
     case dequeueReusableCellFail
     case unknownError
     case referenceLost
+    case notFound
 }

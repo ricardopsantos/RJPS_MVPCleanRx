@@ -8,9 +8,11 @@
 
 import Foundation
 import RJPSLib
+import RxSwift
 
-public typealias CarTrackAPI_UseCaseCompletionHandler = (_ result: Result<[Any]>) -> Void
+public typealias CarTrackAPI_UseCaseCompletionHandler = (_ result: Result<[CarTrack.CarTrackUserResponseDtoElement]>) -> Void
 
 public protocol CarTrackAPI_UseCaseProtocol: class {
-    func getUserDetail(userName: String, canUseCache: Bool, completionHandler: @escaping CarTrackAPI_UseCaseCompletionHandler)
+    func getUserDetail(completionHandler: @escaping CarTrackAPI_UseCaseCompletionHandler)
+    func getUserDetail(cacheStrategy: CacheStrategy) -> Observable<[CarTrack.CarTrackUserResponseDtoElement]>
 }

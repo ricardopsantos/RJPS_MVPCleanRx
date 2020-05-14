@@ -8,7 +8,9 @@
 
 import Foundation
 import DevTools
+import RJPSLib
 
 // MARK: - DevTools
 
 typealias AppLogger   = DevTools.AppLogger
+public typealias CacheStrategy = RJSLib.Storages.CachePersistant.CacheStrategy

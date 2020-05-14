@@ -68,8 +68,8 @@ extension I.CarTrackUsersInteractor: BaseInteractorVIPMandatoryBusinessLogicProt
         dsSomeKindOfModelA = CarTrackUsersDataStoreModelA(aString: "Passed via DataStoreProtocol @ \(Date())")
 
         requestSomeStuff(request: VM.CarTrackUsers.SomeStuff.Request(userId: ""))
-
-        CarTrackResolver.shared.api?.getUserDetail(userName: "", canUseCache: true, completionHandler: { (result) in
+/*
+        CarTrackResolver.shared.api?.getUserDetail(completionHandler: { (result) in
             switch result {
             case .success(let results):
                 print(results)
@@ -77,6 +77,12 @@ extension I.CarTrackUsersInteractor: BaseInteractorVIPMandatoryBusinessLogicProt
                 _ = ()
             }
         })
+*/
+        CarTrackResolver.shared.api?
+            .getUserDetail(cacheStrategy: .cacheAndLatestValue)
+            .asObservable().bind(onNext: { (result) in
+                print(result)
+            }).disposed(by: disposeBag)
     }
 
 }
