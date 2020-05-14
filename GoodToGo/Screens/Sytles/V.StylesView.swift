@@ -63,7 +63,8 @@ extension V {
             let sectionSize: CGFloat = 3
 
             func buttonWithAction(title: String, block:@escaping () -> Void) -> UIButton {
-                let some = UIKitFactory.button(title: title, style: .regular)
+                let some = UIKitFactory.raisedButton(title: title, backgroundColor: AppColors.primary)
+                //let some = UIKitFactory.button(title: title, style: .regular)
                 some.onTouchUpInside {
                     block()
                 }
@@ -85,7 +86,7 @@ extension V {
             makeSection("DevTools.FeatureFlag", size: sectionSize)
             func makeFeatureView(_ flag: DevTools.FeatureFlag) -> UIView {
                 let view = UIKitFactory.switchWithCaption(caption: flag.rawValue,
-                                                          defaultValue: flag.defaultValue,
+                                                          defaultValue: flag.isTrue,
                                                           disposeBag: disposeBag) { value in
                                                             DevTools.FeatureFlag.setFlag(flag, value: value)
                 }

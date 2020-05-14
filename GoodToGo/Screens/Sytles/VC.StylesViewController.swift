@@ -38,7 +38,7 @@ extension VC {
         override func loadView() {
             super.loadView()
             view.accessibilityIdentifier = self.genericAccessibilityIdentifier
-            self.title = "Styles"
+            self.title = "DevScreen"
         }
 
         // Order in View life-cycle : 4

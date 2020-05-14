@@ -38,8 +38,15 @@ extension V {
 
         deinit { }
 
-        var rxFilter = BehaviorSubject<String?>(value: nil)
+        enum CartTrackMapViewAnnotationType {
+            case pinAnnotationView
+            case markerAnnotationView
+        }
 
+        static var selectedAnnotationsTypeForMap: CartTrackMapViewAnnotationType = .markerAnnotationView
+
+        var rxFilter = BehaviorSubject<String?>(value: nil)
+        private var lastModel: [CarTrack.UserModel] = []
         // MARK: - UI Elements (Private and lazy by default)
 
         private lazy var mapView: MKMapView = {
@@ -50,8 +57,8 @@ extension V {
             return UIKitFactory.searchBar()
         }()
 
-        private lazy var lblResume: UILabel = {
-            return UIKitFactory.label(style: .value)
+        private lazy var lblInfo: UILabel = {
+            return UIKitFactory.label(style: .info)
         }()
 
         // MARK: - Mandatory
@@ -63,7 +70,7 @@ extension V {
         override func prepareLayoutCreateHierarchy() {
             addSubview(mapView)
             addSubview(searchBar)
-            addSubview(lblResume)
+            addSubview(lblInfo)
         }
 
         // This function is called automatically by super BaseGenericViewVIP
@@ -74,9 +81,9 @@ extension V {
             let defaultMargin = Designables.Sizes.Margins.defaultMargin
             let insets: TinyEdgeInsets = TinyEdgeInsets(top: defaultMargin, left: defaultMargin, bottom: defaultMargin, right: defaultMargin)
 
-            lblResume.autoLayout.topToBottom(of: searchBar, offset: Designables.Sizes.Margins.defaultMargin)
-            lblResume.autoLayout.width(screenWidth / 4)
-            lblResume.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+            lblInfo.autoLayout.topToBottom(of: searchBar, offset: Designables.Sizes.Margins.defaultMargin)
+            lblInfo.autoLayout.width(screenWidth / 4)
+            lblInfo.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
 
             mapView.autoLayout.topToBottom(of: searchBar)
             mapView.autoLayout.bottomToSuperview()
@@ -97,10 +104,9 @@ extension V {
             // Do any additional setup after loading the view, typically from a nib.
 
             mapView.delegate = self
-            lblResume.backgroundColor = lblResume.backgroundColor?.withAlphaComponent(0.5)
-            lblResume.addShadow()
-            lblResume.addCorner(radius: 5)
-            lblResume.textAlignment = .right
+            lblInfo.addShadow()
+            lblInfo.addCorner(radius: 5)
+            lblInfo.textAlignment = .right
 
         }
 
@@ -132,7 +138,7 @@ extension V {
         // MARK: - Custom Getter/Setters
 
         func setupWith(mapData viewModel: VM.CartTrackMap.MapData.ViewModel) {
-            lblResume.textAnimated = viewModel.report
+            lblInfo.textAnimated = viewModel.report
             updateMapWith(list: viewModel.list)
         }
 
@@ -142,7 +148,7 @@ extension V {
         }
 
         func setupWith(mapDataFilter viewModel: VM.CartTrackMap.MapDataFilter.ViewModel) {
-            lblResume.textAnimated = viewModel.report
+            lblInfo.textAnimated = viewModel.report
             updateMapWith(list: viewModel.list)
         }
 
@@ -153,26 +159,54 @@ extension V {
 
 extension V.CartTrackMapView {
 
-    func updateMapWith(list: [CarTrack.UserModel]) {
+    private func extractSubTitle(_ userModel: Domain.CarTrack.UserModel) -> String {
+        return userModel.name
+    }
 
-        let lat: CLLocationDegrees =  CLLocationDegrees(Double(list.first!.address.geo.lat)!)
-        let lng: CLLocationDegrees =  CLLocationDegrees(Double(list.first!.address.geo.lng)!)
+    private func extractTitle(_ userModel: Domain.CarTrack.UserModel) -> String {
+        return userModel.company.name
+    }
+
+    private func extractLocation(_ userModel: Domain.CarTrack.UserModel) -> CLLocationCoordinate2D {
+        let latitude  = userModel.address.geo.lat
+        let longitude = userModel.address.geo.lng
+        let lat: CLLocationDegrees = CLLocationDegrees(Double(latitude)!)
+        let lng: CLLocationDegrees = CLLocationDegrees(Double(longitude)!)
         let coordinate = CLLocationCoordinate2DMake(lat, lng)
-        let span = MKCoordinateSpan.init(latitudeDelta: 0.03, longitudeDelta: 0.03)
-        let region = MKCoordinateRegion.init(center: coordinate, span: span)
-        mapView.setRegion(region, animated: true)
+        return coordinate
+    }
 
-        list.forEach { (some) in
-            let lng: CLLocationDegrees =  CLLocationDegrees(Double(some.address.geo.lat)!)
-            let lat: CLLocationDegrees =  CLLocationDegrees(Double(some.address.geo.lng)!)
+    private func updateMapWith(list: [CarTrack.UserModel]) {
+        lastModel = list
+        mapView.removeAnnotations()
 
-            print(lat, lng)
-            let coordinate = CLLocationCoordinate2DMake(lat, lng)
-             let annotation = MKPointAnnotation()
-             annotation.coordinate = coordinate
-            annotation.title = some.company.name
-            annotation.subtitle = some.address.city
-             self.mapView.addAnnotation(annotation)
+        guard list.count > 0 else {
+            BaseViewControllerMVP.shared.displayMessage(Messages.noRecords.localised, type: .warning)
+            return
+        }
+
+        if V.CartTrackMapView.selectedAnnotationsTypeForMap == .pinAnnotationView {
+
+            let mkPointAnnotationList: [MKPointAnnotation] = list.map {
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = extractLocation($0)
+                annotation.title = extractTitle($0)
+                annotation.subtitle = extractSubTitle($0)
+                return annotation
+            }
+
+            mkPointAnnotationList.forEach { (mkPointAnnotation) in
+                self.mapView.addAnnotation(mkPointAnnotation)
+            }
+        } else {
+            let mkAnnotationsList: [CarTrackMKAnnotation] = list.map {
+                CarTrackMKAnnotation(title: extractTitle($0), subTitle: extractSubTitle($0), coordinate: extractLocation($0))
+            }
+            self.mapView.addAnnotations(mkAnnotationsList)
+        }
+
+        if let first = list.first {
+            mapView.setRegion(extractLocation(first))
         }
     }
 
@@ -181,46 +215,61 @@ extension V.CartTrackMapView {
 // MARK: - MKMapViewDelegate
 
 extension V.CartTrackMapView: MKMapViewDelegate {
+
     // Called when the region displayed by the map view is about to change
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        print(#function)
+        //    print(#function)
     }
 
     // Called when the annotation was added
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is MKUserLocation {
-            return nil
+
+        if annotation is MKUserLocation { return nil }
+
+        let reuseIdentifier = "MKAnnotationView.identifier"
+
+        if V.CartTrackMapView.selectedAnnotationsTypeForMap == .pinAnnotationView {
+            var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier) as? MKPinAnnotationView
+            if pinView == nil {
+                pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
+                pinView?.animatesDrop = true
+                pinView?.canShowCallout = true
+                pinView?.isDraggable = true
+                pinView?.pinTintColor = UIColor.App.primary
+                let rightButton: AnyObject! = UIButton(type: UIButton.ButtonType.detailDisclosure)
+                pinView?.rightCalloutAccessoryView = rightButton as? UIView
+            } else {
+                pinView?.annotation = annotation
+            }
+            return pinView
+        } else if V.CartTrackMapView.selectedAnnotationsTypeForMap == .markerAnnotationView {
+            guard let annotation = annotation as? CarTrackMKAnnotation else { return nil }
+            var view: MKMarkerAnnotationView
+            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier) as? MKMarkerAnnotationView {
+                dequeuedView.annotation = annotation
+                view = dequeuedView
+            } else {
+                view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
+                view.canShowCallout = true
+                view.calloutOffset = CGPoint(x: -5, y: 5)
+                view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            }
+            return view
         }
-
-        let reuseId = "pin"
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
-        if pinView == nil {
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            pinView?.animatesDrop = true
-            pinView?.canShowCallout = true
-            pinView?.isDraggable = true
-            pinView?.pinColor = .purple
-
-            let rightButton: AnyObject! = UIButton(type: UIButton.ButtonType.detailDisclosure)
-            pinView?.rightCalloutAccessoryView = rightButton as? UIView
-        } else {
-            pinView?.annotation = annotation
-        }
-
-        return pinView
+        return nil
     }
 
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         print(#function)
         if control == view.rightCalloutAccessoryView {
-            print("toTheMoon")
+            //   print("toTheMoon")
         }
     }
 
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationView.DragState, fromOldState oldState: MKAnnotationView.DragState) {
-        if newState == MKAnnotationView.DragState.ending {
+        if newState == .ending {
             let droppedAt = view.annotation?.coordinate
-            print(droppedAt.debugDescription)
+            //print(droppedAt.debugDescription)
         }
     }
 
@@ -234,10 +283,51 @@ extension V.CartTrackMapView: MKMapViewDelegate {
 // MARK: - Events capture
 
 extension V.CartTrackMapView {
- /*   var rxBtnSample1Tap: Observable<Void> { btnSample1.rx.tapSmart(disposeBag) }
-    var rxBtnSample2Tap: Observable<Void> { btnSample2.rx.tapSmart(disposeBag) }
-    var rxBtnSample3Tap: Observable<Void> { btnSample3.rx.tapSmart(disposeBag) }
-    var rxModelSelected: ControlEvent<VM.CartTrackMap.TableItem> {
-        tableView.rx.modelSelected(VM.CartTrackMap.TableItem.self)
-    }*/
+    /*   var rxBtnSample1Tap: Observable<Void> { btnSample1.rx.tapSmart(disposeBag) }
+     var rxBtnSample2Tap: Observable<Void> { btnSample2.rx.tapSmart(disposeBag) }
+     var rxBtnSample3Tap: Observable<Void> { btnSample3.rx.tapSmart(disposeBag) }
+     var rxModelSelected: ControlEvent<VM.CartTrackMap.TableItem> {
+     tableView.rx.modelSelected(VM.CartTrackMap.TableItem.self)
+     }*/
+}
+
+// MARK: MKMapViewUtils
+
+extension MKMapView {
+    func removeAnnotations() {
+        self.removeAnnotations(self.annotations)
+    }
+
+    func setRegion(_ center: CLLocationCoordinate2D) {
+        guard self.annotations.count > 0 else {
+            return
+        }
+
+        let maxLongitude = annotations.max { (a, b) -> Bool in a.coordinate.longitude > b.coordinate.longitude }!.coordinate.longitude
+        let minLongitude = annotations.min { (a, b) -> Bool in a.coordinate.longitude > b.coordinate.longitude }!.coordinate.longitude
+        let maxLatitude = annotations.max { (a, b) -> Bool in a.coordinate.latitude > b.coordinate.latitude }!.coordinate.longitude
+        let minLatitude = annotations.min { (a, b) -> Bool in a.coordinate.latitude > b.coordinate.latitude }!.coordinate.longitude
+        //print(maxLongitude, minLongitude)
+        //print(maxLatitude, minLatitude)
+        //let latitudeDelta = CLLocationDegrees()
+        //let longitudeDelta = CLLocationDegrees()
+        let span = MKCoordinateSpan(latitudeDelta: 4, longitudeDelta: 4)
+        let region = MKCoordinateRegion.init(center: center, span: span)
+        self.setRegion(region, animated: true)
+    }
+}
+
+// MARK: MKMapViewUtils
+
+class CarTrackMKAnnotation: NSObject, MKAnnotation {
+    let title: String?
+    let subTitle: String?
+    let coordinate: CLLocationCoordinate2D
+
+    init(title: String?, subTitle: String?, coordinate: CLLocationCoordinate2D) {
+        self.title = title
+        self.subTitle = subTitle
+        self.coordinate = coordinate
+        super.init()
+    }
 }

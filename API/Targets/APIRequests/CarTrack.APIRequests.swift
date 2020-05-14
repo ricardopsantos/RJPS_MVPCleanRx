@@ -43,7 +43,7 @@ extension WebAPI.CarTrack {
         var debugRequest: Bool
         var urlRequest: URLRequest
         var responseType: NetworkClientResponseType
-        var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.GitHub.getUser_200 : nil }
+        var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.CarTrack.get_200 : nil }
 
         init(userName: String) throws {
             let urlString = Target.getUsers.endpoint

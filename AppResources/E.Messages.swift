@@ -29,9 +29,11 @@ public enum Messages: Int {
     case invalidUserCrededentials
     case welcome
     case email
+    case noRecords
 
     public var localised: String {
         switch self {
+        case .noRecords: return AppResources.get("No Records")
         case .pleaseWait: return AppResources.get("Please wait")
         case .email: return AppResources.get("Email")
         case .welcome: return AppResources.get("Welcome")

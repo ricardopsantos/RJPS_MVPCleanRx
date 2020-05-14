@@ -64,7 +64,7 @@ extension V {
         }()
         
         private lazy var _topGenericBar: TopBar = {
-            let some = UIKitFactory.topBar(baseViewControllerMVP: self)
+            let some = UIKitFactory.topBar(baseController: self)
             some.setTitle(Messages.details.localised)
             some.addDismissButton()
             some.rxSignal_btnDismissTapped

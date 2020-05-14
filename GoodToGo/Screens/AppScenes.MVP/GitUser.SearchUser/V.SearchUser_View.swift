@@ -32,7 +32,7 @@ public extension V {
         var presenter: SearchUser_PresenterProtocol!
         
         private lazy var _topGenericView: TopBar = {
-            let some = UIKitFactory.topBar(baseViewControllerMVP: self)
+            let some = UIKitFactory.topBar(baseController: self)
             some.setTitle("Search GitHub user")
             return some
         }()

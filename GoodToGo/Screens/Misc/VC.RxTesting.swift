@@ -35,7 +35,7 @@ extension VC {
         private var _rxReachabilityService = try! DefaultReachabilityService()
         
         private lazy var _topGenericView: TopBar = {
-            let some = UIKitFactory.topBar(baseViewControllerMVP: self)
+            let some = UIKitFactory.topBar(baseController: self)
             some.setTitle("RxTesting")
             return some
         }()

@@ -53,7 +53,22 @@ extension P.CartTrackMapPresenter {
 extension P.CartTrackMapPresenter: CartTrackMapPresentationLogicProtocol {
 
     private func buildReport(list: [CarTrack.UserModel]) -> String {
-        let report = "\(Date())\nRecords: \(list.count)"
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .medium
+        let date = formatter.string(from: Date())
+
+        var report = ""
+        var i = 1
+        if list.count == 0 {
+            report = "\(date)\n\n\(Messages.noRecords.localised.uppercased())"
+        } else {
+            report = "\(date)\n"
+            list.forEach { (some) in
+                report = "\(report)\n\(i). \(some.company.name)"
+                i += 1
+            }
+        }
         return report
     }
     // Used By Interactor (exclusively)

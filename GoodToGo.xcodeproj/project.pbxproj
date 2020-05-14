@@ -171,6 +171,7 @@
 		D788BDB324698DFA007C59D0 /* FactoryErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FCAC222468697000DBECA2 /* FactoryErrors.swift */; };
 		D78F27E9246DCF31008F7E54 /* Designables.Sizes copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78F27E8246DCF31008F7E54 /* Designables.Sizes copy.swift */; };
 		D78F27EB246DE1D4008F7E54 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78F27EA246DE1D4008F7E54 /* UIButton+Extensions.swift */; };
+		D78F27ED246DF04C008F7E54 /* AppConstants+Mock+CarTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78F27EC246DF04C008F7E54 /* AppConstants+Mock+CarTrack.swift */; };
 		D7979D3E246C870C0039031C /* Material.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7979D3D246C870C0039031C /* Material.framework */; };
 		D7979D41246C87230039031C /* Motion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7979D40246C87230039031C /* Motion.framework */; };
 		D7979D42246C87230039031C /* Motion.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7979D40246C87230039031C /* Motion.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -866,6 +867,7 @@
 		D788BDA224698D74007C59D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D78F27E8246DCF31008F7E54 /* Designables.Sizes copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Designables.Sizes copy.swift"; sourceTree = "<group>"; };
 		D78F27EA246DE1D4008F7E54 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
+		D78F27EC246DF04C008F7E54 /* AppConstants+Mock+CarTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppConstants+Mock+CarTrack.swift"; sourceTree = "<group>"; };
 		D7979D3D246C870C0039031C /* Material.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Material.framework; path = Carthage/Build/iOS/Material.framework; sourceTree = "<group>"; };
 		D7979D40246C87230039031C /* Motion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Motion.framework; path = Carthage/Build/iOS/Motion.framework; sourceTree = "<group>"; };
 		D7979D43246C9DD00039031C /* WebAPI.CarTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPI.CarTrack.swift; sourceTree = "<group>"; };
@@ -1883,6 +1885,7 @@
 				D7D9E7C524678344005B4313 /* AppConstants+Mocks+Employees.swift */,
 				D7D9E7C824678741005B4313 /* AppConstants+Mock+GitHub.swift */,
 				D7D9E7CA24678AC1005B4313 /* AppConstants+Mock+Bliss.swift */,
+				D78F27EC246DF04C008F7E54 /* AppConstants+Mock+CarTrack.swift */,
 			);
 			path = AppMocks;
 			sourceTree = "<group>";
@@ -3193,6 +3196,7 @@
 				D7D9E7CB24678AC1005B4313 /* AppConstants+Mock+Bliss.swift in Sources */,
 				D72923C024670D5300DAD480 /* AppConstants+Testing.swift in Sources */,
 				D72923A02466D91700DAD480 /* AppConstants+Mocks.swift in Sources */,
+				D78F27ED246DF04C008F7E54 /* AppConstants+Mock+CarTrack.swift in Sources */,
 				D72922D72466AD5D00DAD480 /* typealias.AppConstants.swift in Sources */,
 				D7E25AA624669BF4003BBEA0 /* AppConstants.swift in Sources */,
 				D72923C224670D7500DAD480 /* AppConstants+Strings.swift in Sources */,
@@ -3647,7 +3651,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/GoodToGo/SupportingFiles/GoodToGo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3679,7 +3683,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/GoodToGo/SupportingFiles/GoodToGo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3711,7 +3715,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/GoodToGo/SupportingFiles/GoodToGo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3804,7 +3808,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/GoodToGo/SupportingFiles/GoodToGo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

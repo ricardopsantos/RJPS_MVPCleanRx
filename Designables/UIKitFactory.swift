@@ -207,13 +207,13 @@ public struct UIKitFactory {
         return some
     }
     
-    public static func topBar(baseViewControllerMVP: BaseViewControllerMVP) -> TopBar {
+    public static func topBar(baseController: UIViewController) -> TopBar {
         let bar         = TopBar()
         let screenWidth = UIScreen.main.bounds.width
         let height      = TopBar.defaultHeight
         let container   = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: screenWidth, height: height)))
-        baseViewControllerMVP.view.addSubview(container)
-        UIViewController.rjs.loadViewControllerInContainedView(sender: baseViewControllerMVP,
+        baseController.view.addSubview(container)
+        UIViewController.rjs.loadViewControllerInContainedView(sender: baseController,
                                                                senderContainedView: container,
                                                                controller: bar) { (_, _) in }
 
@@ -229,7 +229,7 @@ public struct UIKitFactory {
         return bar
     }
 
-    public static func bottomBar(baseController: BaseViewControllerMVP) -> BottomBar {
+    public static func bottomBar(baseController: UIViewController) -> BottomBar {
         let bar         = BottomBar()
         bar.view.backgroundColor = .clear
         let screenWidth = UIScreen.main.bounds.width

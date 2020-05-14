@@ -69,7 +69,8 @@ extension I.CartTrackMapInteractor: CartTrackMapBusinessLogicProtocol {
         if viewModel.filter.count > 0 {
             let filtered = self.list.filter { (some) -> Bool in
                 let c1 = some.company.name.contains(subString: viewModel.filter)
-                return c1
+                let c2 = some.name.contains(subString: viewModel.filter)
+                return c1 || c2
             }
             let response = VM.CartTrackMap.MapData.Response(list: filtered)
             self.presenter?.presentMapData(response: response)

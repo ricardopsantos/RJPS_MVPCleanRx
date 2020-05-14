@@ -31,7 +31,8 @@ public extension DevTools {
         }
 
         public var isTrue: Bool {
-            return FeatureFlag.getFlag(self) == true
+            let value = FeatureFlag.getFlag(self) == true
+            return value
         }
 
         public static func getFlag(_ flagName: FeatureFlag) -> Bool {
@@ -40,14 +41,18 @@ public extension DevTools {
                 // If production then we need to get the default value
                 return defaultValue
             }
-            guard UserDefaults.standard.object(forKey: flagName.rawValue) != nil else {
-                return defaultValue
+
+            if RJSLib.Storages.NSUserDefaults.existsWith(flagName.rawValue) {
+                if let value = RJSLib.Storages.NSUserDefaults.getWith(flagName.rawValue) {
+                    return "\(value)" == "\(true)"
+                }
             }
-            return UserDefaults.standard.bool(forKey: flagName.rawValue)
+            return defaultValue
+
         }
 
         public static func setFlag(_ flagName: FeatureFlag, value: Bool) {
-            UserDefaults.standard.set(value, forKey: flagName.rawValue)
+            RJSLib.Storages.NSUserDefaults.save("\(value)" as AnyObject, key: flagName.rawValue)
         }
     }
 }

@@ -36,11 +36,16 @@ extension VC {
             let carTrackLoginViewController = VC.CarTrackLoginViewController()
             let carTrackUsersViewController = VC.CarTrackUsersViewController()
             let cartTrackMapViewController = VC.CartTrackMapViewController()
+            let stylesViewController = VC.StylesViewController()
+
+            carTrackLoginViewController.tabBarItem.title = "Login"
+            cartTrackMapViewController.tabBarItem.title = "Map"
+            stylesViewController.tabBarItem.title = "Styles"
 
             if false {
                 viewControllers = [vip2, c1, c2, c3, c4, c5, c6]
             } else {
-                viewControllers = [cartTrackMapViewController, carTrackLoginViewController, VC.StylesViewController()]
+                viewControllers = [cartTrackMapViewController, carTrackLoginViewController, stylesViewController]
             }
         }
         
