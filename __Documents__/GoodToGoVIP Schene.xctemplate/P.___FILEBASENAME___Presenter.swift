@@ -81,7 +81,7 @@ extension P.___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___Presentat
     }
 
     // Used By Interactor (exclusively)
-    func presentSomeStuff(response: VM.___VARIABLE_sceneName___.SomeStuff.Response) {
+    func presentSomething(response: VM.___VARIABLE_sceneName___.Something.Response) {
         // Presenter will transform response object in something that the View can process/read
         let subTitle = response.subTitle.uppercased()
         let someListA = response.listA
@@ -99,13 +99,13 @@ extension P.___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___Presentat
                                                   cellType: .cellType2)
             }
         let sum = someListA.count + someListB.count
-        let viewModel = VM.___VARIABLE_sceneName___.SomeStuff.ViewModel(subTitle: subTitle,
+        let viewModel = VM.___VARIABLE_sceneName___.Something.ViewModel(subTitle: subTitle,
                                                                              someValue: "\(sum)",
             someListSectionATitle: "\(someListA.count) A elements",
             someListSectionBTitle: "\(someListB.count) B elements",
             someListSectionAElements: someListA,
             someListSectionBElements: someListB)
-        viewController?.displaySomeStuff(viewModel: viewModel)
+        viewController?.displaySomething(viewModel: viewModel)
     }
 
 }

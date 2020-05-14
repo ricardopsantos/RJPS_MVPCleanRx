@@ -89,24 +89,10 @@ extension VC {
         }
 
         private lazy var _topGenericView: TopBar = {
-            let bar         = TopBar()
-            let screenWidth = UIScreen.main.bounds.width
-            let height      = TopBar.defaultHeight
-            let container   = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: screenWidth, height: height)))
-            self.genericView.addSubview(container)
-            UIViewController.rjs.loadViewControllerInContainedView(sender: self, senderContainedView: container, controller: bar) { (_, _) in }
-
-            container.rjsALayouts.setMargin(0, on: .top)
-            container.rjsALayouts.setMargin(0, on: .right)
-            container.rjsALayouts.setMargin(0, on: .left)
-            container.rjsALayouts.setHeight(TopBar.defaultHeight)
-
-            bar.view.rjsALayouts.setMargin(0, on: .top)
-            bar.view.rjsALayouts.setMargin(0, on: .right)
-            bar.view.rjsALayouts.setMargin(0, on: .left)
-            bar.view.rjsALayouts.setHeight(TopBar.defaultHeight)
-            bar.setTitle(Messages.welcome.localised)
-            return bar
+            let some = TopBar()
+            some.injectOn(viewController: self)
+            some.setTitle(Messages.welcome.localised)
+            return some
         }()
 
         // Order in View life-cycle : 5

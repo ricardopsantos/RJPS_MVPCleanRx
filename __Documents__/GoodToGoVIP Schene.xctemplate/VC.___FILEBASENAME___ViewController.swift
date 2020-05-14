@@ -157,8 +157,8 @@ extension VC.___VARIABLE_sceneName___ViewController {
     // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
     private func doPrivateStuff() {
         let userId = genericView.subTitle
-        let request = VM.___VARIABLE_sceneName___.SomeStuff.Request(userId: userId)
-        self.interactor?.requestSomeStuff(request: request)
+        let request = VM.___VARIABLE_sceneName___.Something.Request(userId: userId)
+        self.interactor?.requestSomething(request: request)
     }
 }
 
@@ -166,7 +166,7 @@ extension VC.___VARIABLE_sceneName___ViewController {
 
 extension VC.___VARIABLE_sceneName___ViewController: ___VARIABLE_sceneName___DisplayLogicProtocol {
 
-    func displaySomeStuff(viewModel: VM.___VARIABLE_sceneName___.SomeStuff.ViewModel) {
+    func displaySomething(viewModel: VM.___VARIABLE_sceneName___.Something.ViewModel) {
         // Setting up the view, option 1 : passing the view model
         genericView.setupWith(someStuff: viewModel)
     }

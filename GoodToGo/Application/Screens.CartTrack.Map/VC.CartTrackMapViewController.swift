@@ -31,6 +31,17 @@ extension VC {
             CartTrackMapRoutingLogicProtocol)?
 
         //
+        // MARK: UI Elements
+        //
+
+        private lazy var topGenericView: TopBar = {
+            let some = TopBar()
+            some.injectOn(viewController: self)
+            some.setTitle(Messages.welcome.localised)
+            return some
+        }()
+
+        //
         // MARK: View lifecycle
         //
 
@@ -38,6 +49,7 @@ extension VC {
         override func loadView() {
             super.loadView()
             view.accessibilityIdentifier = self.genericAccessibilityIdentifier
+            topGenericView.lazyLoad()
         }
 
         // Order in View life-cycle : 4
@@ -50,6 +62,8 @@ extension VC {
             super.viewWillAppear(animated)
             if firstAppearance {
                 interactor?.requestScreenInitialState()
+                let request = VM.CartTrackMap.MapData.Request()
+                interactor?.requestMapData(request: request)
             }
         }
 
@@ -84,7 +98,6 @@ extension VC {
             interactor.presenter  = presenter
             presenter.viewController = viewController
             router.viewController = viewController
-            router.dsCartTrackMap = interactor
         }
 
         // Order in View life-cycle : 5
@@ -92,21 +105,18 @@ extension VC {
         override func setupViewIfNeed() {
             // Use it to configure stuff on the genericView, depending on the value external/public variables
             // that are set after we instantiate the view controller, but before if has been presented
+            genericView.rxFilter.asObserver().bind { [weak self] (search) in
+                guard let search = search else { return }
+                guard self?.isVisible else { return }
+                let viewModel = VM.CartTrackMap.MapDataFilter.Request(filter: search)
+                self?.interactor?.requestMapDataFilter(viewModel: viewModel)
+            }.disposed(by: disposeBag)
         }
 
         // Order in View life-cycle : 3
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
-
             #warning("Add reachability support")
-            /*
-            genericView.rxModelSelected
-                .subscribe(onNext: { /* [router] */ (some) in
-                    AppLogger.log("Received [\(some)]")
-                })
-                .disposed(by: disposeBag)
-*/
-
         }
 
         // Order in View life-cycle : 7
@@ -120,12 +130,7 @@ extension VC {
 // MARK: Public Misc Stuff
 
 extension VC.CartTrackMapViewController {
-    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
-    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
-    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
-    public func somePublicStuff() {
-        // Do some public stuff
-    }
+
 }
 
 // MARK: Private Misc Stuff
@@ -138,15 +143,17 @@ extension VC.CartTrackMapViewController {
 
 extension VC.CartTrackMapViewController: CartTrackMapDisplayLogicProtocol {
 
-    func displayUserInfo(viewModel: VM.CartTrackMap.UserInfo.ViewModel) {
-        // Setting up the view, option 1 : passing the view model
+    func displayMapDataFilter(viewModel: VM.CartTrackMap.MapDataFilter.ViewModel) {
         self.title = viewModel.subTitle
-        genericView.setupWith(someStuff: viewModel)
+        genericView.setupWith(mapDataFilter: viewModel)
+    }
+
+    func displayMapData(viewModel: VM.CartTrackMap.MapData.ViewModel) {
+        self.title = viewModel.subTitle
+        genericView.setupWith(mapData: viewModel)
     }
 
     func displayScreenInitialState(viewModel: VM.CartTrackMap.ScreenInitialState.ViewModel) {
-        /*title = viewModel.title
-        // Setting up the view, option 2 : setting the vars one by one
-        genericView.subTitle = viewModel.subTitle*/
+
     }
 }

@@ -209,7 +209,7 @@ extension V {
             }
         }
 
-        func setupWith(someStuff viewModel: VM.___VARIABLE_sceneName___.SomeStuff.ViewModel) {
+        func setupWith(someStuff viewModel: VM.___VARIABLE_sceneName___.Something.ViewModel) {
             subTitle = viewModel.subTitle
             let sectionA = Section(model: viewModel.someListSectionATitle, items: viewModel.someListSectionAElements)
             let sectionB = Section(model: viewModel.someListSectionBTitle, items: viewModel.someListSectionBElements)
@@ -221,7 +221,7 @@ extension V {
             screenLayout = viewModel.screenLayout
         }
 
-        var screenLayout: E.___VARIABLE_sceneName___View.ScreenLayout = .unknown {
+        var screenLayout: E.___VARIABLE_sceneName___View.ScreenLayout = .layoutA {
             didSet {
                 // show or hide stuff
             }

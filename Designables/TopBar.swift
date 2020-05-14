@@ -67,7 +67,7 @@ open class TopBar: BaseViewControllerMVP {
     public override func viewDidLoad() {
         super.viewDidLoad()
         view.accessibilityIdentifier = self.genericAccessibilityIdentifier
-        self.view.backgroundColor    = UIColor.App.TopBar.background
+        self.view.backgroundColor    = TopBar.defaultColor
     }
 }
 
@@ -75,6 +75,7 @@ open class TopBar: BaseViewControllerMVP {
  * Public stuff
  */
 extension TopBar {
+    public static var defaultColor: UIColor { UIColor.App.TopBar.background }
 
     public static var defaultHeight: CGFloat { return 60 }
     public func addBackButton() { enable(btn: _btnBack) }
@@ -96,5 +97,27 @@ extension TopBar {
             .when(.recognized)
             .map({ $0.location(in: $0.view)})
             .asSignal(onErrorJustReturn: .zero)
+    }
+}
+
+public extension TopBar {
+    func injectOn(viewController: UIViewController) {
+        let screenWidth = UIScreen.main.bounds.width
+        let height      = TopBar.defaultHeight
+        let container   = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: screenWidth, height: height)))
+        viewController.view.addSubview(container)
+        UIViewController.rjs.loadViewControllerInContainedView(sender: viewController,
+                                                               senderContainedView: container,
+                                                               controller: self) { (_, _) in }
+
+        container.rjsALayouts.setMargin(0, on: .top)
+        container.rjsALayouts.setMargin(0, on: .right)
+        container.rjsALayouts.setMargin(0, on: .left)
+        container.rjsALayouts.setHeight(TopBar.defaultHeight)
+
+        self.view.rjsALayouts.setMargin(0, on: .top)
+        self.view.rjsALayouts.setMargin(0, on: .right)
+        self.view.rjsALayouts.setMargin(0, on: .left)
+        self.view.rjsALayouts.setHeight(TopBar.defaultHeight)
     }
 }

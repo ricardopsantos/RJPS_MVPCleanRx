@@ -67,7 +67,7 @@ extension I.___VARIABLE_sceneName___Interactor: BaseInteractorVIPMandatoryBusine
         // Update Model for future use
         dsSomeKindOfModelA = ___VARIABLE_sceneName___DataStoreModelA(aString: "Passed via DataStoreProtocol @ \(Date())")
 
-        requestSomeStuff(request: VM.___VARIABLE_sceneName___.SomeStuff.Request(userId: ""))
+        requestSomething(request: VM.___VARIABLE_sceneName___.Something.Request(userId: ""))
     }
 
 }
@@ -85,16 +85,16 @@ extension I.___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___Business
     // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
     // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
     // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
-    func requestSomeStuff(request: VM.___VARIABLE_sceneName___.SomeStuff.Request) {
+    func requestSomething(request: VM.___VARIABLE_sceneName___.Something.Request) {
 
         presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
         DispatchQueue.executeWithDelay(delay: 3) { [weak self] in
             let mockA1 = TemplateModel(id: "some id 1", state: "state_a - \(Date())")
             let mockA2 = TemplateModel(id: "some id 2", state: "state_a - \(Date())")
-            let response = VM.___VARIABLE_sceneName___.SomeStuff.Response(listA: [mockA1],
+            let response = VM.___VARIABLE_sceneName___.Something.Response(listA: [mockA1],
                                                                           listB: [mockA2],
                                                                           subTitle: "New subtitle \(Date())")
-            self?.presenter?.presentSomeStuff(response: response)
+            self?.presenter?.presentSomething(response: response)
             self?.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
             //self?.presenter?.presentError(response: BaseDisplayLogicModels.Error(title: "Messages.error.localised, message: "Error message"))
             self?.presenter?.presentStatus(response: BaseDisplayLogicModels.Status(message: Messages.success.localised))

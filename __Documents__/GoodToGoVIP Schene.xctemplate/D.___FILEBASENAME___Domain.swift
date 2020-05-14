@@ -29,7 +29,6 @@ import UIBase
 extension E {
     struct ___VARIABLE_sceneName___View {
         enum ScreenLayout {
-            case unknown
             case layoutA
             case layoutB
         }
@@ -43,7 +42,7 @@ extension E {
 protocol ___VARIABLE_sceneName___BusinessLogicProtocol: BaseInteractorVIPMandatoryBusinessLogicProtocol {
     // Naming convention : func request__XXX__(viewModel: VM.___VARIABLE_sceneName___.__XXX__.Request)
     func requestScreenInitialState()
-    func requestSomeStuff(request: VM.___VARIABLE_sceneName___.SomeStuff.Request)
+    func requestSomething(request: VM.___VARIABLE_sceneName___.Something.Request)
 }
 
 //
@@ -53,7 +52,7 @@ protocol ___VARIABLE_sceneName___BusinessLogicProtocol: BaseInteractorVIPMandato
 protocol ___VARIABLE_sceneName___PresentationLogicProtocol: BasePresenterVIPProtocol {
     // Naming convention : func present__XXX__(response: VM.___VARIABLE_sceneName___.__XXX__.Response)
     func presentScreenInitialState(response: VM.___VARIABLE_sceneName___.ScreenInitialState.Response)
-    func presentSomeStuff(response: VM.___VARIABLE_sceneName___.SomeStuff.Response)
+    func presentSomething(response: VM.___VARIABLE_sceneName___.Something.Response)
 }
 
 //
@@ -63,7 +62,7 @@ protocol ___VARIABLE_sceneName___PresentationLogicProtocol: BasePresenterVIPProt
 protocol ___VARIABLE_sceneName___DisplayLogicProtocol: BaseViewControllerVIPProtocol {
     // Naming convention : func display__XXX__(viewModel: VM.___VARIABLE_sceneName___.__XXX__.ViewModel)
     func displayScreenInitialState(viewModel: VM.___VARIABLE_sceneName___.ScreenInitialState.ViewModel)
-    func displaySomeStuff(viewModel: VM.___VARIABLE_sceneName___.SomeStuff.ViewModel)
+    func displaySomething(viewModel: VM.___VARIABLE_sceneName___.Something.ViewModel)
 }
 
 //
@@ -119,7 +118,8 @@ extension VM {
             case cellType2
         }
 
-        struct SomeStuff {
+        struct Something {
+            private init() {}
             struct Request { /* ViewController -> Interactor */
                 let userId: String
             }
@@ -139,6 +139,7 @@ extension VM {
         }
 
         struct ScreenInitialState {
+            private init() {}
             struct Request {}
             struct Response {
                 let title: String
@@ -148,14 +149,6 @@ extension VM {
                 let title: String
                 let subTitle: String
                 let screenLayout: E.___VARIABLE_sceneName___View.ScreenLayout
-            }
-        }
-
-        enum Error {
-            struct Response {
-                let title: String
-                let message: String
-                let shouldRouteBack: Bool
             }
         }
     }

@@ -40,9 +40,9 @@ extension E {
 //
 
 protocol CartTrackMapBusinessLogicProtocol: BaseInteractorVIPMandatoryBusinessLogicProtocol {
-    // Naming convention : func request__XXX__(viewModel: VM.CartTrackMap.__XXX__.Request)
     func requestScreenInitialState()
-    func requestUserInfo(request: VM.CartTrackMap.UserInfo.Request)
+    func requestMapData(request: VM.CartTrackMap.MapData.Request)
+    func requestMapDataFilter(viewModel: VM.CartTrackMap.MapDataFilter.Request)
 }
 
 //
@@ -50,9 +50,9 @@ protocol CartTrackMapBusinessLogicProtocol: BaseInteractorVIPMandatoryBusinessLo
 //
 
 protocol CartTrackMapPresentationLogicProtocol: BasePresenterVIPProtocol {
-    // Naming convention : func present__XXX__(response: VM.CartTrackMap.__XXX__.Response)
     func presentScreenInitialState(response: VM.CartTrackMap.ScreenInitialState.Response)
-    func presentUserInfo(response: VM.CartTrackMap.UserInfo.Response)
+    func presentMapData(response: VM.CartTrackMap.MapData.Response)
+    func presentMapDataFilter(response: VM.CartTrackMap.MapDataFilter.Response)
 }
 
 //
@@ -60,9 +60,9 @@ protocol CartTrackMapPresentationLogicProtocol: BasePresenterVIPProtocol {
 //
 
 protocol CartTrackMapDisplayLogicProtocol: BaseViewControllerVIPProtocol {
-    // Naming convention : func display__XXX__(viewModel: VM.CartTrackMap.__XXX__.ViewModel)
     func displayScreenInitialState(viewModel: VM.CartTrackMap.ScreenInitialState.ViewModel)
-    func displayUserInfo(viewModel: VM.CartTrackMap.UserInfo.ViewModel)
+    func displayMapData(viewModel: VM.CartTrackMap.MapData.ViewModel)
+    func displayMapDataFilter(viewModel: VM.CartTrackMap.MapDataFilter.ViewModel)
 }
 
 //
@@ -71,9 +71,7 @@ protocol CartTrackMapDisplayLogicProtocol: BaseViewControllerVIPProtocol {
 
 // Routing Logic Protocol - all the methods used for routing are kept under this protocol.
 protocol CartTrackMapRoutingLogicProtocol {
-    // Naming convention : func routeTo__XXX__MaybeSomeExtraInfo()
-    func routeToTemplateWithParentDataStore()
-    func routeToTemplateWithDataStore()
+
 }
 
 //
@@ -83,33 +81,16 @@ protocol CartTrackMapRoutingLogicProtocol {
 // DataStore : Data Passing Protocol - a protocol that contains the data that needs to be passed to the destination controller.
 protocol CartTrackMapDataPassingProtocol {
 
-    // DataStore
-    var dsCartTrackMap: CartTrackMapDataStoreProtocol? { get }
 }
 
 // DataStore : Implemented by the Interactor, and the Router
 protocol CartTrackMapDataStoreProtocol {
-    // must have a reference like [var dataStore: CartTrackMapDataStoreProtocol?]
-    var dsSomeKindOfModelA: CartTrackMapDataStoreModelA? { get set }
-    var dsSomeKindOfModelB: CartTrackMapDataStoreModelB? { get set }
 
 }
 
 //
 // MARK: - Models
 //
-
-// DataStore
-
-struct CartTrackMapDataStoreModelA {
-    let aString: String
-}
-
-struct CartTrackMapDataStoreModelB {
-    let aString: String
-}
-
-// Other Models
 
 extension VM {
     enum CartTrackMap {
@@ -118,8 +99,20 @@ extension VM {
             case cellType2
         }
 
-        struct UserInfo {
-            struct Request { /* ViewController -> Interactor */
+        struct MapData {
+            struct Request { } /* ViewController -> Interactor */
+            struct Response { /* Interactor -> Presenter */
+                let list: [CarTrack.UserModel]
+            }
+            struct ViewModel { /* Presenter -> ViewController */
+                let subTitle: String
+                let list: [CarTrack.UserModel]
+            }
+        }
+
+        struct MapDataFilter { /* ViewController -> Interactor */
+            struct Request {
+                let filter: String
             }
             struct Response { /* Interactor -> Presenter */
                 let list: [CarTrack.UserModel]
@@ -136,13 +129,6 @@ extension VM {
             struct ViewModel { }
         }
 
-        enum Error {
-            struct Response {
-                let title: String
-                let message: String
-                let shouldRouteBack: Bool
-            }
-        }
     }
 }
 

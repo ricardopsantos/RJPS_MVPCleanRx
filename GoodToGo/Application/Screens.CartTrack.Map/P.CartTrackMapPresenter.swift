@@ -46,24 +46,6 @@ extension P {
 
 extension P.CartTrackMapPresenter {
 
-    //
-    // Do you need to override this? Its allready implemented on a Protocol Extension
-    //
-    /*
-    func presentStatus(response: BaseDisplayLogicModels.Status) {
-        let viewModel = response
-        baseDisplayLogic?.displayStatus(viewModel: viewModel)
-    }
-
-    func presentError(response: BaseDisplayLogicModels.Error) {
-        let viewModel = response
-        baseDisplayLogic?.displayError(viewModel: viewModel)
-    }
-
-    func presentLoading(response: BaseDisplayLogicModels.Loading) {
-        let viewModel = response
-        baseDisplayLogic?.displayLoading(viewModel: viewModel)
-    }*/
 }
 
 // MARK: PresentationLogicProtocol
@@ -77,9 +59,15 @@ extension P.CartTrackMapPresenter: CartTrackMapPresentationLogicProtocol {
     }
 
     // Used By Interactor (exclusively)
-    func presentUserInfo(response: VM.CartTrackMap.UserInfo.Response) {
-        let viewModel = VM.CartTrackMap.UserInfo.ViewModel(subTitle: "Hi", list: response.list)
-        viewController?.displayUserInfo(viewModel: viewModel)
+    func presentMapData(response: VM.CartTrackMap.MapData.Response) {
+        let viewModel = VM.CartTrackMap.MapData.ViewModel(subTitle: "Hi", list: response.list)
+        viewController?.displayMapData(viewModel: viewModel)
+    }
+
+    // Used By Interactor (exclusively)
+    func presentMapDataFilter(response: VM.CartTrackMap.MapDataFilter.Response) {
+        let viewModel = VM.CartTrackMap.MapDataFilter.ViewModel(subTitle: "Hi", list: response.list)
+        viewController?.displayMapDataFilter(viewModel: viewModel)
     }
 
 }

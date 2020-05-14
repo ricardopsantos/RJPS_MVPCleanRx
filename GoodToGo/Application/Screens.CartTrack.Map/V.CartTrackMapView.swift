@@ -36,14 +36,22 @@ import AppResources
 extension V {
     class CartTrackMapView: BaseGenericViewVIP {
 
-        deinit {
+        deinit { }
 
-        }
+        var rxFilter = BehaviorSubject<String?>(value: nil)
 
         // MARK: - UI Elements (Private and lazy by default)
 
         private lazy var mapView: MKMapView = {
             return MKMapView()
+        }()
+
+        private lazy var searchBar: CustomSearchBar = {
+            return UIKitFactory.searchBar()
+        }()
+
+        private lazy var lblResume: UILabel = {
+            return UIKitFactory.label(style: .value)
         }()
 
         // MARK: - Mandatory
@@ -54,6 +62,8 @@ extension V {
         // Function 1/3 : JUST to add stuff to the view....
         override func prepareLayoutCreateHierarchy() {
             addSubview(mapView)
+            addSubview(searchBar)
+            addSubview(lblResume)
         }
 
         // This function is called automatically by super BaseGenericViewVIP
@@ -63,7 +73,21 @@ extension V {
             let edgesToExclude: LayoutEdge = .init([.top, .bottom])
             let defaultMargin = Designables.Sizes.Margins.defaultMargin
             let insets: TinyEdgeInsets = TinyEdgeInsets(top: defaultMargin, left: defaultMargin, bottom: defaultMargin, right: defaultMargin)
-            mapView.edgesToSuperview()
+
+            lblResume.autoLayout.topToBottom(of: searchBar)
+            lblResume.autoLayout.width(screenWidth / 4)
+            lblResume.autoLayout.leadingToSuperview()
+            lblResume.autoLayout.trailingToSuperview()
+
+            mapView.autoLayout.topToBottom(of: searchBar)
+            mapView.autoLayout.bottomToSuperview()
+            mapView.autoLayout.leadingToSuperview()
+            mapView.autoLayout.trailingToSuperview()
+
+            searchBar.rjsALayouts.setMargin(TopBar.defaultHeight, on: .top)
+            searchBar.autoLayout.leadingToSuperview()
+            searchBar.autoLayout.trailingToSuperview()
+            searchBar.autoLayout.height(50)
 
         }
 
@@ -78,22 +102,34 @@ extension V {
         }
 
         override func setupColorsAndStyles() {
-            self.backgroundColor = AppColors.appDefaultBackgroundColor
+            self.backgroundColor = TopBar.defaultColor
         }
 
         // Order in View life-cycle : 2
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
-
+            searchBar.rx.text
+                .orEmpty
+                .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
+                .subscribe(onNext: { [weak self] _ in
+                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    //self.presenter.searchUserWith(username: some.text ?? "")
+                    self.rxFilter.onNext(self.searchBar.text)
+                })
+                .disposed(by: disposeBag)
+            searchBar.rx.textDidEndEditing
+                .subscribe(onNext: { [weak self] (_) in
+                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    guard self.searchBar.text!.count>0 else { return }
+                    self.rxFilter.onNext(self.searchBar.text)
+                })
+                .disposed(by: self.disposeBag)
         }
 
         // MARK: - Custom Getter/Setters
 
-        func setupWith(someStuff viewModel: VM.CartTrackMap.UserInfo.ViewModel) {
-            /*subTitle = viewModel.subTitle
-            let sectionA = Section(model: viewModel.someListSectionATitle, items: viewModel.someListSectionAElements)
-            let sectionB = Section(model: viewModel.someListSectionBTitle, items: viewModel.someListSectionBElements)
-            rxTableItems.onNext([sectionA, sectionB])*/
+        func setupWith(mapData viewModel: VM.CartTrackMap.MapData.ViewModel) {
+
             let list: [CarTrack.UserModel] = viewModel.list
             print(list)
 
@@ -123,6 +159,11 @@ extension V {
             //screenLayout = viewModel.screenLayout
         }
 
+        func setupWith(mapDataFilter viewModel: VM.CartTrackMap.MapDataFilter.ViewModel) {
+            //subTitle = viewModel.subTitle
+            //screenLayout = viewModel.screenLayout
+        }
+        
         var screenLayout: E.CartTrackMapView.ScreenLayout = .unknown {
             didSet {
                 // show or hide stuff

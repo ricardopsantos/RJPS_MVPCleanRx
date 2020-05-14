@@ -25,8 +25,6 @@ extension R {
     class CartTrackMapRouter: CartTrackMapDataPassingProtocol {
         weak var viewController: VC.CartTrackMapViewController?
 
-        // DataPassingProtocol Protocol vars...
-        var dsCartTrackMap: CartTrackMapDataStoreProtocol? { didSet { AppLogger.log("DataStore changed") } }
      }
 }
 
@@ -35,22 +33,6 @@ extension R {
 extension R.CartTrackMapRouter: CartTrackMapRoutingLogicProtocol {
     func dismissMe() {
         viewController?.dismissMe()
-    }
-
-    func routeToTemplateWithDataStore() {
-        func passDataToSomewhere(source: CartTrackMapDataStoreProtocol, destination: inout CartTrackMapDataStoreProtocol) {
-            destination.dsSomeKindOfModelA = source.dsSomeKindOfModelA
-            destination.dsSomeKindOfModelB = source.dsSomeKindOfModelB
-        }
-        let destinationVC = VC.CartTrackMapViewController()
-        if var destinationDS = destinationVC.router?.dsCartTrackMap {
-            passDataToSomewhere(source: dsCartTrackMap!, destination: &destinationDS)
-        }
-        viewController?.navigationController?.present(destinationVC, animated: true, completion: nil)
-    }
-
-    func routeToTemplateWithParentDataStore() {
-        routeToTemplateWithDataStore()
     }
 
 }

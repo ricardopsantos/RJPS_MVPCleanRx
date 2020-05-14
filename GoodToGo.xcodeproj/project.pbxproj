@@ -1716,9 +1716,9 @@
 		D7979D99246D6B370039031C /* Screens.CartTrack.Map */ = {
 			isa = PBXGroup;
 			children = (
-				D7979D9B246D6B370039031C /* I.CartTrackMapInteractor.swift */,
-				D7979D9C246D6B370039031C /* VC.CartTrackMapViewController.swift */,
 				D7979D9D246D6B370039031C /* V.CartTrackMapView.swift */,
+				D7979D9C246D6B370039031C /* VC.CartTrackMapViewController.swift */,
+				D7979D9B246D6B370039031C /* I.CartTrackMapInteractor.swift */,
 				D7979D9E246D6B370039031C /* R.CartTrackMapRouter.swift */,
 				D7979D9F246D6B370039031C /* D.CartTrackMapDomain.swift */,
 				D7979DA0246D6B370039031C /* P.CartTrackMapPresenter.swift */,
