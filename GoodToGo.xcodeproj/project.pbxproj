@@ -208,6 +208,12 @@
 		D7979DB9246D6B370039031C /* P.CarTrackLoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979DA5246D6B370039031C /* P.CarTrackLoginPresenter.swift */; };
 		D7979DBA246D6B370039031C /* I.CarTrackLoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979DA6246D6B370039031C /* I.CarTrackLoginInteractor.swift */; };
 		D7979DBB246D6B370039031C /* R.CarTrackLoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979DA7246D6B370039031C /* R.CarTrackLoginRouter.swift */; };
+		D7979DC5246DC1960039031C /* V.StylesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979DBE246DC1960039031C /* V.StylesView.swift */; };
+		D7979DC6246DC1960039031C /* VC.StylesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979DBF246DC1960039031C /* VC.StylesViewController.swift */; };
+		D7979DC7246DC1960039031C /* R.StylesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979DC0246DC1960039031C /* R.StylesRouter.swift */; };
+		D7979DC8246DC1960039031C /* D.StylesDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979DC1246DC1960039031C /* D.StylesDomain.swift */; };
+		D7979DCA246DC1960039031C /* I.StylesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979DC3246DC1960039031C /* I.StylesInteractor.swift */; };
+		D7979DCB246DC1960039031C /* P.StylesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979DC4246DC1960039031C /* P.StylesPresenter.swift */; };
 		D7AB2443246716C6000142C4 /* V.UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1522BE5DE700042A8C /* V.UserTableViewCell.swift */; };
 		D7AB2445246718A9000142C4 /* typealias.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.encaplulate.swift */; };
 		D7AB2446246718AA000142C4 /* typealias.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.encaplulate.swift */; };
@@ -893,6 +899,12 @@
 		D7979DA5246D6B370039031C /* P.CarTrackLoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = P.CarTrackLoginPresenter.swift; sourceTree = "<group>"; };
 		D7979DA6246D6B370039031C /* I.CarTrackLoginInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = I.CarTrackLoginInteractor.swift; sourceTree = "<group>"; };
 		D7979DA7246D6B370039031C /* R.CarTrackLoginRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.CarTrackLoginRouter.swift; sourceTree = "<group>"; };
+		D7979DBE246DC1960039031C /* V.StylesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V.StylesView.swift; sourceTree = "<group>"; };
+		D7979DBF246DC1960039031C /* VC.StylesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.StylesViewController.swift; sourceTree = "<group>"; };
+		D7979DC0246DC1960039031C /* R.StylesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.StylesRouter.swift; sourceTree = "<group>"; };
+		D7979DC1246DC1960039031C /* D.StylesDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D.StylesDomain.swift; sourceTree = "<group>"; };
+		D7979DC3246DC1960039031C /* I.StylesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.StylesInteractor.swift; sourceTree = "<group>"; };
+		D7979DC4246DC1960039031C /* P.StylesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.StylesPresenter.swift; sourceTree = "<group>"; };
 		D7A620B0246556A1008B1722 /* _script_installPackages.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = _script_installPackages.sh; sourceTree = SOURCE_ROOT; };
 		D7AB244D24671CBF000142C4 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7AB245024671CBF000142C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1414,6 +1426,12 @@
 			isa = PBXGroup;
 			children = (
 				9F3ED4BB22E618C80020A50A /* VC.RxTesting.swift */,
+				D7979DBE246DC1960039031C /* V.StylesView.swift */,
+				D7979DBF246DC1960039031C /* VC.StylesViewController.swift */,
+				D7979DC0246DC1960039031C /* R.StylesRouter.swift */,
+				D7979DC1246DC1960039031C /* D.StylesDomain.swift */,
+				D7979DC3246DC1960039031C /* I.StylesInteractor.swift */,
+				D7979DC4246DC1960039031C /* P.StylesPresenter.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -2832,6 +2850,7 @@
 				D779A5F3234FE3A500D3D6F7 /* VC.SampleVIP_ViewController.swift in Sources */,
 				D779A5F1234FE3A500D3D6F7 /* R.SampleVIP_Router.swift in Sources */,
 				D7711F68246B340C00B6963A /* I.___FILEBASENAME___Interactor.swift in Sources */,
+				D7979DC6246DC1960039031C /* VC.StylesViewController.swift in Sources */,
 				D7979DA9246D6B370039031C /* D.CarTrackUsersDomain.swift in Sources */,
 				9F6BB2EF22E3A97F00829A6F /* V.BlissQuestionsList_View.swift in Sources */,
 				D779A5F2234FE3A500D3D6F7 /* D.SampleVIP_Domain.swift in Sources */,
@@ -2845,6 +2864,7 @@
 				D725A6A1246C6CDB005664CB /* CarTrackResolver.swift in Sources */,
 				9F6BB2FE22E3C0E400829A6F /* AS.BlissDetails_AssemblyContainer.swift in Sources */,
 				9F6BB30322E3CB2D00829A6F /* D.BlissRoot_ViewModel.swift in Sources */,
+				D7979DCB246DC1960039031C /* P.StylesPresenter.swift in Sources */,
 				9F6BB2F122E3A97F00829A6F /* R.BlissQuestionsList_Router.swift in Sources */,
 				D7711F69246B340C00B6963A /* V.___FILEBASENAME___View.swift in Sources */,
 				9F6BB2FA22E3C0E400829A6F /* R.BlissDetails_Router.swift in Sources */,
@@ -2900,12 +2920,16 @@
 				D7979DB7246D6B370039031C /* V.CarTrackLoginView.swift in Sources */,
 				9FE0572622E8D75400802747 /* P.MVPSampleRxView_Presenter.swift in Sources */,
 				9FB8DFCA2233E67100095420 /* typealias.encaplulate.swift in Sources */,
+				D7979DC5246DC1960039031C /* V.StylesView.swift in Sources */,
 				9F58FB4422BE5DE700042A8C /* UserDetais_View.swift in Sources */,
 				D7979DB3246D6B370039031C /* R.CartTrackMapRouter.swift in Sources */,
 				9F103A332236C08900C57BC0 /* RootAssemblyContainer.swift in Sources */,
 				D7979DB0246D6B370039031C /* I.CartTrackMapInteractor.swift in Sources */,
 				D7979DB4246D6B370039031C /* D.CartTrackMapDomain.swift in Sources */,
+				D7979DC8246DC1960039031C /* D.StylesDomain.swift in Sources */,
+				D7979DC7246DC1960039031C /* R.StylesRouter.swift in Sources */,
 				D7979DAC246D6B370039031C /* V.CarTrackUsersTableViewCell.swift in Sources */,
+				D7979DCA246DC1960039031C /* I.StylesInteractor.swift in Sources */,
 				D7711F65246B340C00B6963A /* D.___FILEBASENAME___Domain.swift in Sources */,
 				9F58FB4622BE5DE700042A8C /* UserDetais_Presenter.swift in Sources */,
 			);

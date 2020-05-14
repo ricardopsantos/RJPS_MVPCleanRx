@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 public extension UIButton {
-    enum LayoutStyle {
+    enum LayoutStyle: CaseIterable {
         case notApplied
         case regular
         case dismiss
@@ -19,7 +19,7 @@ public extension UIButton {
 }
 
 public extension UILabel {
-    enum LayoutStyle {
+    enum LayoutStyle: CaseIterable {
         case notApplied /// not Applied
         case navigationBarTitle
         case title
