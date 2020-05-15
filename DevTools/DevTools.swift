@@ -91,10 +91,37 @@ public struct DevTools {
     }
 }
 
-extension DevTools {
+public extension DevTools {
 
+        // A improved approach for things like "assert(key != nil, "Could not obtain public key")"
+    // Better that (Foundation) assert because :
+    //  1 - if 'forceFix==true', crashes the app to force the fix
+    //  2 - on the console log (Swift.print), tells where the fail was exactly and therefore is easier to find and fix
+    //  3 - we can add safe guards depending on app env.
+    static func assert(_ isTrue:@autoclosure() -> Bool,
+                              message: String="",
+                              function: StaticString = #function,
+                              file: StaticString = #file,
+                              line: Int = #line,
+                              forceFix: Bool=false) {
+        guard onSimulator || onDebug else {
+            return
+        }
+
+        if !isTrue() {
+            let messageFinal = "\(message)\n\n@\(whereAmIDynamic(function: "\(function)", file: "\(file)", line: line, short: true))"
+            DevTools.makeToast(messageFinal, isError: true)
+
+            print("⛔⛔⛔⛔⛔ assert ⛔⛔⛔⛔⛔")
+            print("⛔⛔⛔⛔⛔ assert ⛔⛔⛔⛔⛔")
+            print(messageFinal)
+            if forceFix {
+                fatalError("\nThis need to be fixed now!\n")
+            }
+        }
+    }
     /// if [searchForErrors] = true, the message will be scaned in order to decide if its an error and should present a different toast specific for error
-    public static func makeToast(_ message: String, isError: Bool = false, function: String = #function, file: String = #file, line: Int = #line) {
+    static func makeToast(_ message: String, isError: Bool = false, function: String = #function, file: String = #file, line: Int = #line) {
         guard !DevTools.isProductionReleaseApp else { return } //If production bail out immediately
         guard DevTools.devModeIsEnabled else { return } // Not dev mode? bail out immediately
 

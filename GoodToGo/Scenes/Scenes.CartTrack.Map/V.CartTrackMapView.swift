@@ -56,7 +56,7 @@ extension V {
         }()
 
         private lazy var searchBar: CustomSearchBar = {
-            return UIKitFactory.searchBar()
+            return UIKitFactory.searchBar(placeholder: Messages.search.localised)
         }()
 
         private lazy var lblInfo: UILabelWithPadding = {

@@ -6,6 +6,8 @@
 //  Copyright (c) 2020 Ricardo P Santos. All rights reserved.
 //
 
+// swiftlint:disable all
+
 import UIKit
 import Foundation
 //
@@ -61,7 +63,7 @@ extension V {
             stackViewVLevel1.uiUtils.addArrangedSeparator()
 
             let sectionSize: CGFloat = 3
-            let sectionSmallSeparatorColor = AppColors.primary.withAlphaComponent(0.5)
+            let sectionSmallSeparatorColor = AppColors.primary.withAlphaComponent(FadeType.light.rawValue)
             func buttonWithAction(title: String, block:@escaping () -> Void) -> UIButton {
                 let some = UIKitFactory.raisedButton(title: title, backgroundColor: AppColors.primary)
                 //let some = UIKitFactory.button(title: title, style: .regular)
@@ -145,6 +147,60 @@ extension V {
                 stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
             }
 
+            #warning("adicionar as cores (passar para enum)")
+
+            //
+            // Shadows
+            //
+
+            makeSection("Shadows", size: sectionSize)
+            let viewShadow1 = UILabel()
+            viewShadow1.font = UIFont.App.bold(size: .regular)
+            viewShadow1.text = "Strong shadow"
+            viewShadow1.textColor = UIColor.App.lblTextColor
+            viewShadow1.textAlignment = .center
+            viewShadow1.backgroundColor = UIColor.App.primary
+            viewShadow1.addShadow(strong: true)
+            viewShadow1.autoLayout.height(40)
+
+            stackViewVLevel1.uiUtils.safeAddArrangedSubview(viewShadow1)
+
+            let viewShadow2 = UILabel()
+            viewShadow2.font = UIFont.App.bold(size: .regular)
+            viewShadow2.text = "Week shadow"
+            viewShadow2.textColor = UIColor.App.lblTextColor
+            viewShadow2.textAlignment = .center
+            viewShadow2.backgroundColor = UIColor.App.primary
+            viewShadow2.addShadow(strong: false)
+            viewShadow2.autoLayout.height(40)
+
+            stackViewVLevel1.uiUtils.safeAddArrangedSubview(viewShadow2)
+
+            let viewNoShadow = UILabel()
+            viewNoShadow.font = UIFont.App.bold(size: .regular)
+            viewNoShadow.textColor = UIColor.App.lblTextColor
+            viewNoShadow.text = "No shadow"
+            viewNoShadow.textAlignment = .center
+            viewNoShadow.backgroundColor = UIColor.App.primary
+            viewNoShadow.autoLayout.height(40)
+            stackViewVLevel1.uiUtils.safeAddArrangedSubview(viewNoShadow)
+
+            //
+            // Misc
+            //
+
+            #warning("adicionar as cores (passar para enum)")
+            makeSection("FadeType", size: sectionSize)
+            FadeType.allCases.forEach { (some) in
+                let view = UIKitFactory.label(style: .title)
+                view.text = "\(some)"
+                view.textAlignment = .center
+                view.addCorner(radius: 5)
+                view.backgroundColor = UIColor.App.primary.withAlphaComponent(some.rawValue)
+                stackViewVLevel1.uiUtils.safeAddArrangedSubview(view)
+                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
+            }
+
             //
             // Components
             //
@@ -152,7 +208,7 @@ extension V {
             makeSection("Components", size: sectionSize)
 
             let labelWithPadding = UIKitFactory.labelWithPadding(title: "labelWithPadding", style: .title)
-            labelWithPadding.backgroundColor = UIColor.App.primary.withAlphaComponent(0.1)
+            labelWithPadding.backgroundColor = UIColor.App.primary.withAlphaComponent(FadeType.superHeavy.rawValue)
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(labelWithPadding)
 
             stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
@@ -163,7 +219,7 @@ extension V {
             stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
 
             let skyFloatingLabelTextField = UIKitFactory.skyFloatingLabelTextField(title: "skyFloatingLabelTextField",
-                                                            placeholder: "Your skyFloatingLabelTextField")
+                                                                                   placeholder: "Your skyFloatingLabelTextField")
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(skyFloatingLabelTextField)
 
             stackViewVLevel1.uiUtils.addArrangedSeparator()

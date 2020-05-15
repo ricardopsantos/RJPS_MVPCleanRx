@@ -21,3 +21,26 @@
 
 [https://github.com/ricardopsantos/RJPS_Docs](https://github.com/ricardopsantos/RJPS_Docs)
 
+#  Xcode tips
+
+* [⌥] -> Options 
+* [⌘] -> Command
+* [⇧] -> Shift
+* [alt] -> Alt
+
+----
+
+* Indent code
+    * Control + I
+    
+* Open quicky
+    * ⌘ + ⇧ + O
+    
+* Clean Project
+    * ⌘ + ⇧ + K
+    * ⌘ + K
+
+* Xcode Code Sniptes
+    * ⌘ + ⇧ + L
+
+

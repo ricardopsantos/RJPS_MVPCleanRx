@@ -54,11 +54,19 @@ extension P.CarTrackLoginPresenter: CarTrackLoginPresentationLogicProtocol {
 
     func presentLogin(response: VM.CarTrackLogin.Login.Response) {
         if response.success {
+            // All cool!
             let viewModel = VM.CarTrackLogin.Login.ViewModel(message: "", success: true)
             viewController?.displayLogin(viewModel: viewModel)
+        } else if let error = response.error, let appCode = error.appCode, appCode == .invalidCredentials {
+            // Wrong password
+            let viewModel = VM.CarTrackLogin.ScreenState.ViewModel(layout: .wrongUserCredencial(errorMessage: appCode.localisedMessageForView))
+            viewController?.displayScreenState(viewModel: viewModel)
+        } else if let error = response.error {
+            // Other type of error....
+            let viewModel = BaseDisplayLogicModels.Error(title: Messages.alert.localised, message: error.localisedMessageForView)
+            viewController?.displayError(viewModel: viewModel)
         } else {
-            let viewModel = VM.CarTrackLogin.Login.ViewModel(message: Messages.invalidUserCrededentials.localised, success: response.success)
-            viewController?.displayLogin(viewModel: viewModel)
+            DevTools.assert(false, message: DevTools.Strings.notPredicted.rawValue, forceFix: true)
         }
     }
 

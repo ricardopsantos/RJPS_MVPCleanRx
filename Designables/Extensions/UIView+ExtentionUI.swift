@@ -14,9 +14,10 @@ public extension UIView {
     
     func addShadow(color: UIColor = AppConstants.Shadows.shadowColor,
                    offset: CGSize = AppConstants.Shadows.offset,
-                   radius: CGFloat = AppConstants.Shadows.offset.height) {
+                   radius: CGFloat = AppConstants.Shadows.offset.height,
+                   strong: Bool = false) {
         self.layer.shadowColor = color.cgColor
-        self.layer.shadowOpacity = 0.5
+        self.layer.shadowOpacity = Float(strong ? FadeType.heavy.rawValue : FadeType.light.rawValue)
         self.layer.shadowOffset = offset
         self.layer.shadowRadius = radius
         self.layer.masksToBounds = false

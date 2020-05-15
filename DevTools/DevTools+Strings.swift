@@ -12,5 +12,6 @@ public extension DevTools {
     enum `Strings`: String {
         case notImplemented
         case overrideMe
+        case notPredicted
     }
 }

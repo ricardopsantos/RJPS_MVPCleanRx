@@ -7,6 +7,8 @@
 
 import UIKit
 import Foundation
+//
+import AppConstants
 
 public extension UILabel {
     
@@ -29,17 +31,17 @@ public extension UILabel {
             self.font            = UIFont.App.bold(size: .regularBig)
         }
         let value = {
-            self.textColor       = UIColor.App.lblTextColor.withAlphaComponent(0.8)
+            self.textColor       = UIColor.App.lblTextColor.withAlphaComponent(FadeType.regular.rawValue)
             self.font            = UIFont.App.regular(size: .regular)
         }
         let error = {
             self.textColor       = UIColor.App.error
-            self.font            = UIFont.App.regular(size: .regular)
+            self.font            = UIFont.App.regular(size: .regularBig)
         }
 
         #warning("this should be a component, not a style")
         let info = {
-            self.backgroundColor = UIColor.App.primary.withAlphaComponent(0.7)
+            self.backgroundColor = UIColor.App.primary.withAlphaComponent(FadeType.heavy.rawValue)
             self.textColor       = UIColor.App.onPrimary
             self.font            = UIFont.App.regular(size: .regular)
             self.addShadow()

@@ -26,13 +26,19 @@ public enum Messages: Int {
     case login
     case invalidPassword
     case invalidEmail
-    case invalidUserCrededentials
+    case invalidCredentials
     case welcome
     case email
     case noRecords
+    case search
+
+    public static var defaultErrorMessage: String {
+        return Messages.pleaseTryAgainLater.localised
+    }
 
     public var localised: String {
         switch self {
+        case .search: return AppResources.get("Search")
         case .noRecords: return AppResources.get("No Records")
         case .pleaseWait: return AppResources.get("Please wait")
         case .email: return AppResources.get("Email")
@@ -52,7 +58,7 @@ public enum Messages: Int {
         case .details: return AppResources.get("Details")
         case .invalidURL: return AppResources.get("Invalid URL")
         case .invalidEmail: return AppResources.get("Invalid email")
-        case .invalidUserCrededentials: return AppResources.get("Invalid user credential")
+        case .invalidCredentials: return AppResources.get("Invalid user credentials")
         }
     }
 

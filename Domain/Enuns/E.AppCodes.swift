@@ -20,4 +20,5 @@ public enum AppCodes: Int {
     case unknownError
     case referenceLost
     case notFound
+    case invalidCredentials
 }

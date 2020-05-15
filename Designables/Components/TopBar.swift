@@ -45,7 +45,7 @@ open class TopBar: BaseViewControllerMVP {
         some.rjsALayouts.setSize(CGSize(width: _btnSize, height: _btnSize))
         some.setTitleForAllStates("X")
         some.addCorner(radius: 5)
-        some.backgroundColor = UIColor.App.onPrimary.withAlphaComponent(0.75)
+        some.backgroundColor = UIColor.App.onPrimary.withAlphaComponent(FadeType.regular.rawValue)
         some.titleLabel?.textColor = UIColor.App.primary
         some.setTitleColor(UIColor.App.primary, for: .normal)
         some.isHidden = true

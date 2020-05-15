@@ -102,12 +102,28 @@ public struct UIKitFactory {
         return some
     }
 
-    public static func searchBar(baseView: UIView? = nil) -> CustomSearchBar {
+    public static func searchBar(baseView: UIView? = nil, placeholder: String) -> CustomSearchBar {
         let some = CustomSearchBar()
         baseView?.addSubview(some)
         some.tintColor = UIColor.App.primary
         some.tag =  UIKitViewFactoryElementTag.searchBar.rawValue
         some.barStyle = .default
+
+        let searchBarTextAttributes = [
+            NSAttributedString.Key.font: UIFont.App.regular(size: .regularBig),
+            NSAttributedString.Key.foregroundColor: UIColor.App.lblTextColor
+        ]
+        // Default attributes for search text
+        UITextField.appearance(whenContainedInInstancesOf: [CustomSearchBar.self]).defaultTextAttributes = searchBarTextAttributes
+
+        // Attributed placeholder string
+        let attributedPlaceholder = NSAttributedString(string: placeholder, attributes: searchBarTextAttributes)
+        UITextField.appearance(whenContainedInInstancesOf: [CustomSearchBar.self]).attributedPlaceholder = attributedPlaceholder
+
+        // Search bar cancel button
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [CustomSearchBar.self]).setTitleTextAttributes(searchBarTextAttributes, for: .normal)
+        //UIBarButtonItem.appearance(whenContainedInInstancesOf: [CustomSearchBar.self]).title = "Cancel"
+
         return some
     }
 
@@ -185,10 +201,10 @@ public struct UIKitFactory {
     }
     public static func stackView(arrangedSubviews: [UIView] = [],
                                  spacing: CGFloat = UIKitFactory.stackViewDefaultSpacing, // Space between subviews
-                                 axis: NSLayoutConstraint.Axis,
-                                 distribution: UIStackView.Distribution = .fill,
-                                 alignment: UIStackView.Alignment = .fill,
-                                 layoutMargins: UIEdgeInsets? = UIKitFactory.stackViewDefaultLayoutMargins) -> UIStackView {
+        axis: NSLayoutConstraint.Axis,
+        distribution: UIStackView.Distribution = .fill,
+        alignment: UIStackView.Alignment = .fill,
+        layoutMargins: UIEdgeInsets? = UIKitFactory.stackViewDefaultLayoutMargins) -> UIStackView {
         // Distribution: Fill - makes one subview take up most of the space, while the others remain at their natural size.
         //               It decides which view to stretch by examining the content hugging priority for each of the subviews.
         // Distribution: Fill Equally - adjusts each subview so that it takes up equal amount of space in the stack view.
@@ -222,25 +238,25 @@ public struct UIKitFactory {
     public static func topBar(baseController: UIViewController) -> TopBar {
         let bar = TopBar()
         bar.injectOn(viewController: baseController)
-         /*
-        let screenWidth = UIScreen.main.bounds.width
-        let height      = TopBar.defaultHeight
-        let container   = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: screenWidth, height: height)))
-        baseController.view.addSubview(container)
-        UIViewController.rjs.loadViewControllerInContainedView(sender: baseController,
-                                                               senderContainedView: container,
-                                                               controller: bar) { (_, _) in }
+        /*
+         let screenWidth = UIScreen.main.bounds.width
+         let height      = TopBar.defaultHeight
+         let container   = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: screenWidth, height: height)))
+         baseController.view.addSubview(container)
+         UIViewController.rjs.loadViewControllerInContainedView(sender: baseController,
+         senderContainedView: container,
+         controller: bar) { (_, _) in }
 
-        container.rjsALayouts.setMargin(0, on: .top)
-        container.rjsALayouts.setMargin(0, on: .right)
-        container.rjsALayouts.setMargin(0, on: .left)
-        container.rjsALayouts.setHeight(TopBar.defaultHeight)
+         container.rjsALayouts.setMargin(0, on: .top)
+         container.rjsALayouts.setMargin(0, on: .right)
+         container.rjsALayouts.setMargin(0, on: .left)
+         container.rjsALayouts.setHeight(TopBar.defaultHeight)
 
-        bar.view.rjsALayouts.setMargin(0, on: .top)
-        bar.view.rjsALayouts.setMargin(0, on: .right)
-        bar.view.rjsALayouts.setMargin(0, on: .left)
-        bar.view.rjsALayouts.setHeight(TopBar.defaultHeight)
-        return bar*/
+         bar.view.rjsALayouts.setMargin(0, on: .top)
+         bar.view.rjsALayouts.setMargin(0, on: .right)
+         bar.view.rjsALayouts.setMargin(0, on: .left)
+         bar.view.rjsALayouts.setHeight(TopBar.defaultHeight)
+         return bar*/
         return bar
     }
 

@@ -82,6 +82,7 @@ extension I.CartTrackMapInteractor: CartTrackMapBusinessLogicProtocol {
 
     func requestMapData(request: VM.CartTrackMap.MapData.Request) {
 
+        #warning("dont use bind. use asObservable")
         presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
         CarTrackResolver.shared.api?
             .getUserDetailV3(cacheStrategy: .cacheAndLatestValue)

@@ -27,6 +27,7 @@ public extension AppCodes {
         case .unknownError            : return "Dev : Unknown error"
         case .referenceLost           : return "Dev : Reference lost"
         case .notFound                : return "Dev : Reference lost"
+        case .invalidCredentials      : return "Dev : Invalid Credentials"
         }
     }
 
@@ -34,20 +35,20 @@ public extension AppCodes {
     // For end users
     //
     var localisedMessageForView: String {
-        let defaultMessage = Messages.pleaseTryAgainLater.localised
         switch self {
         case .noInternet              : return Messages.noInternet.localised
         case .invalidURL              : return Messages.invalidURL.localised
+        case .invalidCredentials      : return Messages.invalidCredentials.localised
 
-        case .notFound                : return defaultMessage
-        case .notImplemented          : return defaultMessage
-        case .notPredicted            : return defaultMessage
-        case .parsingError            : return defaultMessage
-        case .ignored                 : return defaultMessage
-        case .vmChanged               : return defaultMessage
-        case .dequeueReusableCellFail : return defaultMessage
-        case .unknownError            : return defaultMessage
-        case .referenceLost           : return defaultMessage
+        case .notFound                : return Messages.defaultErrorMessage
+        case .notImplemented          : return Messages.defaultErrorMessage
+        case .notPredicted            : return Messages.defaultErrorMessage
+        case .parsingError            : return Messages.defaultErrorMessage
+        case .ignored                 : return Messages.defaultErrorMessage
+        case .vmChanged               : return Messages.defaultErrorMessage
+        case .dequeueReusableCellFail : return Messages.defaultErrorMessage
+        case .unknownError            : return Messages.defaultErrorMessage
+        case .referenceLost           : return Messages.defaultErrorMessage
         }
     }
 

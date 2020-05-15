@@ -17,6 +17,6 @@ public extension UIButton {
 
     func enable() {
         self.isUserInteractionEnabled = true
-        self.fadeTo(Designables.Constants.disabledViewAlpha)
+        self.fadeTo(1)
     }
 }

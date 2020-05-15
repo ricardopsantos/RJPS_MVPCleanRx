@@ -61,7 +61,8 @@ public extension GoodToGoProgramaticUIUtils where GoodToGoBase: UIScrollView {
         target.addSubview(contentView)
         contentView.autoLayout.edgesToSuperview()
         guard let superview = target.superview else {
-            assert(false, message: "Superview is nil")
+            DevTools.assert(false, message: "Superview is nil")
+
             return contentView
         }
         contentView.autoLayout.size(to: superview)
@@ -185,9 +186,9 @@ public extension GoodToGoProgramaticUIUtils where GoodToGoBase: UIView {
 
     func addShadow(color: UIColor = AppConstants.Shadows.shadowColor,
                    offset: CGSize = AppConstants.Shadows.offset,
-                   radius: CGFloat = AppConstants.Shadows.offset.height) {
+                   radius: CGFloat = AppConstants.Shadows.offset.height, strong: Bool = false) {
         let target = self.base
-        target.addShadow(color: color, offset: offset, radius: radius)
+        target.addShadow(color: color, offset: offset, radius: radius, strong: strong)
     }
 
     func setWidthAnchor(value: CGFloat) {

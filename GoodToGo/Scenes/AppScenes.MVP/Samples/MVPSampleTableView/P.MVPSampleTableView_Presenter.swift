@@ -85,7 +85,7 @@ extension P.MVPSampleTableView_Presenter: GenericTableView_Protocol {
                 someCell.rxBehaviorRelay_image.accept(image)
             }
         } else {
-            assert(false, message: RJS_Constants.notPredicted + "\(cell)")
+            DevTools.assert(false, message: RJS_Constants.notPredicted + "\(cell)")
         }
     }
     

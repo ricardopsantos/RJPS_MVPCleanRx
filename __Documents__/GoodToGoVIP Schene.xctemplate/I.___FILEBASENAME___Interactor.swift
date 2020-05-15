@@ -22,6 +22,7 @@ import Extensions
 import PointFreeFunctions
 import UIBase
 import AppResources
+import Factory
 
 //
 // Interactor will fetch the Domain objects, (from DataManager or WebAPI) and return that response

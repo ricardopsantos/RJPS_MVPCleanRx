@@ -36,6 +36,13 @@ custom_rules:
         message: "Use #warning"
         severity: error
 
+    no_BindNext:
+        included: ".*\\.swift"
+        name: "Fordiden bind"
+        regex: "bind(onNext"
+        message: "Use asObservable()."
+        severity: error
+
     no_hardCodedDateFormats:
         included: ".*\\.swift"
         name: "Hardcoded DateFormats"

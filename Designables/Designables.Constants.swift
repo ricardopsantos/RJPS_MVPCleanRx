@@ -7,10 +7,11 @@
 
 import Foundation
 import UIKit
+import AppConstants
 
 public extension Designables {
     struct Constants {
         private init() {}
-        public static let disabledViewAlpha: CGFloat = 0.6
+        public static let disabledViewAlpha: CGFloat = FadeType.superHeavy.rawValue
     }
 }

@@ -15,14 +15,6 @@ import RJPSLib
 public var screenWidth: CGFloat { return UIScreen.main.bounds.width }
 public var screenHeight: CGFloat { return UIScreen.main.bounds.height }
 
-public func assert(_ value: @autoclosure() -> Bool,
-                   message: @autoclosure() -> String="",
-                   function: StaticString = #function,
-                   file: StaticString = #file,
-                   line: Int = #line) {
-    RJS_Utils.assert(value(), message: message(), function: function, file: file, line: line)
-}
-
 public func saveWith(key: String,
                      value: String,
                      expireDate: Date?=nil) {

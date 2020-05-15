@@ -77,9 +77,9 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
         style.displayShadow = true
         style.messageFont = UIFont.App.regular(size: .regularBig)
         switch type {
-        case .success: style.backgroundColor = UIColor.App.success.withAlphaComponent(0.9)
-        case .warning: style.backgroundColor = UIColor.App.warning.withAlphaComponent(0.9)
-        case .error: style.backgroundColor = UIColor.App.error.withAlphaComponent(0.9)
+        case .success: style.backgroundColor = UIColor.App.success.withAlphaComponent(FadeType.light.rawValue)
+        case .warning: style.backgroundColor = UIColor.App.warning.withAlphaComponent(FadeType.light.rawValue)
+        case .error: style.backgroundColor = UIColor.App.error.withAlphaComponent(FadeType.light.rawValue)
         }
         style.messageColor = .white
         DevTools.topViewController()?.view.makeToast(message, duration: 5, position: .top, style: style)
@@ -119,7 +119,7 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
     // ...
     //
     open func prepareLayoutCreateHierarchy() {
-        assert(false, message: DevTools.Strings.overrideMe.rawValue)
+        AppLogger.warning(DevTools.Strings.overrideMe.rawValue)
     }
 
     // What should this function be used for? Setup layout rules zone....
@@ -129,7 +129,7 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
     // ...
     //
     open func prepareLayoutBySettingAutoLayoutsRules() {
-        assert(false, message: DevTools.Strings.overrideMe.rawValue)
+        AppLogger.warning(DevTools.Strings.overrideMe.rawValue)
     }
 
     // What should this function be used for? Extra stuff zone (not included in [prepareLayoutCreateHierarchy]
@@ -140,11 +140,11 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
     // label.textAlignment = .center
     // ...
     open func prepareLayoutByFinishingPrepareLayout() {
-        assert(false, message: DevTools.Strings.overrideMe.rawValue)
+        AppLogger.warning(DevTools.Strings.overrideMe.rawValue)
     }
 
     open func setupViewUIRx() {
-        assert(false, message: DevTools.Strings.overrideMe.rawValue)
+        AppLogger.warning(DevTools.Strings.overrideMe.rawValue)
     }
 
 }

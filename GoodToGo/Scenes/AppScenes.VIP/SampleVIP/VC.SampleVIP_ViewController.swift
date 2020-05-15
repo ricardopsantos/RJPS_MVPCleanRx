@@ -52,7 +52,7 @@ class SampleVIP_ViewController: BaseViewControllerMVP, SampleVIP_DisplayLogic {
     }
 
     private lazy var _searchBar: CustomSearchBar = {
-        let some = UIKitFactory.searchBar(baseView: self.view)
+        let some = UIKitFactory.searchBar(baseView: self.view, placeholder: Messages.search.localised)
         some.rjsALayouts.setMargin(0, on: .top)
         some.rjsALayouts.setMargin(0, on: .right)
         some.rjsALayouts.setMargin(0, on: .left)

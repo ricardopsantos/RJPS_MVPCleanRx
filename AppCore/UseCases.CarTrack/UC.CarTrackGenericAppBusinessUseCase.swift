@@ -16,6 +16,7 @@ import RJPSLib
 import AppConstants
 import PointFreeFunctions
 import Domain
+import Factory
 
 extension UC {
     public class CarTrackGenericAppBusinessUseCase: GenericUseCase, CarTrackGenericAppBusinessUseCaseProtocol {
@@ -32,10 +33,13 @@ extension UC {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
             DispatchQueue.executeWithDelay(delay: 1) { 
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                let kUserName = "ricardo@gmail.com" //RJSLib.Storages.Keychain.readFromKeychain("username")
                 let kPassword = "12345"             // RJSLib.Storages.Keychain.readFromKeychain("password")
-                let success = kUserName.lowercased() == user.lowercased() && kPassword == password
-                completionHandler(Result.success(success))
+                let success = kPassword == password
+                if success {
+                    completionHandler(Result.success(success))
+                } else {
+                    completionHandler(Result.failure(Factory.Errors.with(appCode: .invalidCredentials)))
+                }
             }
         }
     }

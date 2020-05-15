@@ -45,7 +45,7 @@ extension VC {
                 guard !filter.isEmpty else { return }
                 aux_log(message: "[_searchBar.][handle] from [\(sender)] : [\(filter)]", showAlert: true, appendToTable: true)
             }
-            let some = UIKitFactory.searchBar(baseView: self.view)
+            let some = UIKitFactory.searchBar(baseView: self.view, placeholder: Messages.search.localised)
             some.rjsALayouts.setMargin(0, on: .top, from: _topGenericView.view)
             some.rjsALayouts.setMargin(0, on: .right)
             some.rjsALayouts.setMargin(0, on: .left)

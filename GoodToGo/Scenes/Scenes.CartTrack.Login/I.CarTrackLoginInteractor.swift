@@ -22,6 +22,7 @@ import Extensions
 import PointFreeFunctions
 import UIBase
 import AppResources
+import Factory
 
 //
 // Interactor will fetch the Domain objects, (from DataManager or WebAPI) and return that response
@@ -81,29 +82,30 @@ extension I.CarTrackLoginInteractor: CarTrackLoginBusinessLogicProtocol {
         }
         func routeToNext() {
             presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
-            let response = VM.CarTrackLogin.Login.Response(success: true)
+            let response = VM.CarTrackLogin.Login.Response(success: true, error: nil)
             presenter?.presentLogin(response: response)
         }
-        func presentError() {
-            // This logic message should be on the presenter!
+        func handleError(_ error: Error) {
             presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
-            let response = BaseDisplayLogicModels.Error(title: "", message: Messages.invalidUserCrededentials.localised)
-            presenter?.presentError(response: response)
+            let response = VM.CarTrackLogin.Login.Response(success: false, error: error)
+            presenter?.presentLogin(response: response)
         }
         presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true, message: Messages.alert.localised))
         CarTrackResolver.shared.genericBusiness?.validate(user: username,
                                                           password: password,
                                                           completionHandler: { (result) in
                                                             switch result {
-                                                            case .success(let isValid): if isValid { routeToNext() } else { presentError() }
-                                                            case .failure: presentError()
+                                                            case .success(let isValid):
+                                                                if isValid {
+                                                                    routeToNext()
+                                                                } else {
+                                                                    handleError(AppCodes.invalidCredentials.toError)
+                                                                }
+                                                            case .failure(let error): handleError(error)
                                                             }
         })
     }
 
-    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
-    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
-    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
     func requestScreenState(request: VM.CarTrackLogin.ScreenState.Request) {
 
         password = request.password
@@ -123,28 +125,28 @@ extension I.CarTrackLoginInteractor: CarTrackLoginBusinessLogicProtocol {
             //
             // Booth fields are empty...
             //
-            response = VM.CarTrackLogin.ScreenState.Response(emailIsValid: true, passwordIsValid: true)
+            response = VM.CarTrackLogin.ScreenState.Response(emailIsValid: true, passwordIsValid: true, invalidCredencials: nil)
         } else if passwordIsSelected {
             //
             // Password is being edited
             //
             let usernameIsValid = emailIsEmpty ? true : userName!.isValidEmail // if not empty, perform validation
             let passwordIsValid = isValid(somePassword: password!) || passwordIsEmpty
-            response = VM.CarTrackLogin.ScreenState.Response(emailIsValid: usernameIsValid, passwordIsValid: passwordIsValid)
+            response = VM.CarTrackLogin.ScreenState.Response(emailIsValid: usernameIsValid, passwordIsValid: passwordIsValid, invalidCredencials: nil)
         } else if userNameIsSelected {
             //
             // Username is being edited
             //
             let passwordIsValid = passwordIsEmpty ? true : isValid(somePassword: password!)  // if not empty, perform validation
             let usernameIsValid    = userName!.isValidEmail || emailIsEmpty
-            response = VM.CarTrackLogin.ScreenState.Response(emailIsValid: usernameIsValid, passwordIsValid: passwordIsValid)
+            response = VM.CarTrackLogin.ScreenState.Response(emailIsValid: usernameIsValid, passwordIsValid: passwordIsValid, invalidCredencials: nil)
         } else {
             //
             // None of the fields are being edited
             //
             let emailIsValid    = emailIsEmpty ? true : userName!.isValidEmail               // if not empty, perform validation
             let passwordIsValid = passwordIsEmpty ? true : isValid(somePassword: password!)  // if not empty, perform validation
-            response = VM.CarTrackLogin.ScreenState.Response(emailIsValid: emailIsValid, passwordIsValid: passwordIsValid)
+            response = VM.CarTrackLogin.ScreenState.Response(emailIsValid: emailIsValid, passwordIsValid: passwordIsValid, invalidCredencials: nil)
         }
         if let response = response {
             self.presenter?.presentScreenState(response: response)

@@ -145,6 +145,7 @@ extension VM {
             struct Response {
                 let emailIsValid: Bool
                 let passwordIsValid: Bool
+                let invalidCredencials: Bool?
             }
             struct ViewModel {
                 let layout: E.CarTrackLoginView.ScreenLayout
@@ -155,6 +156,7 @@ extension VM {
             struct Request { }
             struct Response {
                 let success: Bool
+                let error: Error?
             }
             struct ViewModel {
                 let message: String

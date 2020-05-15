@@ -97,9 +97,11 @@ extension V {
             stackViewVLevel1.uiUtils.addArrangedSeparator()
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(txtUserName)
             stackViewVLevel1.uiUtils.addArrangedSeparator()
+            stackViewVLevel1.uiUtils.addArrangedSeparator()
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(txtPassword)
+            stackViewVLevel1.uiUtils.addArrangedSeparator()
+            stackViewVLevel1.uiUtils.safeAddArrangedSubview(lblErrorMessage)
             addSubview(btnLogin)
-            addSubview(lblErrorMessage)
         }
 
         // This function is called automatically by super BaseGenericViewVIP
@@ -155,7 +157,6 @@ extension V {
         // We can set the view data by : 3 - Passing the view model inside the view ---> func setupWith(viewModel: ... <---
 
         func setupWith(screenState viewModel: VM.CarTrackLogin.ScreenState.ViewModel) {
-            print(viewModel.layout)
             screenLayout = viewModel.layout
         }
 
@@ -183,13 +184,16 @@ extension V {
                     forField.errorMessage = message
                 }
                 setErrorMessage("", forField: txtUserName)
+                lblErrorMessage.alpha = 0
+                lblErrorMessage.text = ""
                 switch screenLayout {
                 case .enterUserCredentials:
                     userCanProceed(false)
                     setErrorMessage("", forField: txtPassword)
                     setErrorMessage("", forField: txtUserName)
                 case .wrongUserCredencial(errorMessage: let errorMessage):
-                    lblErrorMessage.text = errorMessage
+                    lblErrorMessage.textAnimated = errorMessage
+                    lblErrorMessage.fadeTo(1)
                 case .invalidEmailFormat(errorMessage: let errorMessage):
                     setErrorMessage(errorMessage, forField: txtUserName)
                     setErrorMessage("", forField: txtPassword)

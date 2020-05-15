@@ -60,13 +60,13 @@ public extension AppResources {
             }
             let path = Bundle.main.path(forResource: file, ofType: "lproj")
             guard path != nil else {
-                assert(false, message: "Fail location resource")
+                DevTools.assert(false, message: "Fail location resource")
                 return code
             }
 
             _currentLanguageBundle = Bundle(path: path!)
             guard _currentLanguageBundle != nil else {
-                assert(false, message: "Fail location resource")
+                DevTools.assert(false, message: "Fail location resource")
                 return code
             }
         }
