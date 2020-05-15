@@ -63,9 +63,9 @@ public struct UIKitFactory {
         some.text = title
         some.numberOfLines = 0
         some.tag =  UIKitViewFactoryElementTag.label.rawValue
-        //some.label.layoutStyle = style
         some.addShadow()
-        //baseView?.addSubview(some)
+        some.layoutStyle = style
+        //some.unifyColors()
         return some
     }
 

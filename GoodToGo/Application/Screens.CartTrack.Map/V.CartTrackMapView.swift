@@ -59,11 +59,11 @@ extension V {
             return UIKitFactory.searchBar()
         }()
 
-        private lazy var lblInfo: UILabel = {
-            return UIKitFactory.label(style: .info)
+        private lazy var lblInfo: UILabelWithPadding = {
+            return UIKitFactory.labelWithPadding(style: .info)
         }()
 
-        private lazy var ffView: UIView = {
+        private lazy var viewFeatureFlag: UIView = {
             UIKitFactory.switchWithCaption(caption: DevTools.FeatureFlag.devTeam_useMockedData.rawValue,
             defaultValue: DevTools.FeatureFlag.devTeam_useMockedData.isTrue,
             disposeBag: disposeBag) { value in
@@ -81,13 +81,14 @@ extension V {
             addSubview(mapView)
             addSubview(searchBar)
             addSubview(lblInfo)
-            addSubview(ffView)
+            addSubview(viewFeatureFlag)
         }
 
         // This function is called automatically by super BaseGenericViewVIP
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 2/3 : JUST to setup layout rules zone....
         override func prepareLayoutBySettingAutoLayoutsRules() {
+
             lblInfo.autoLayout.topToBottom(of: searchBar, offset: Designables.Sizes.Margins.defaultMargin)
             lblInfo.autoLayout.width(screenWidth / 4)
             lblInfo.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
@@ -102,8 +103,8 @@ extension V {
             searchBar.autoLayout.trailingToSuperview()
             searchBar.autoLayout.height(50)
 
-            ffView.autoLayout.bottomToSuperview(offset: Designables.Sizes.Margins.defaultMargin + 80)
-            ffView.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+            viewFeatureFlag.autoLayout.bottomToSuperview(offset: Designables.Sizes.Margins.defaultMargin + 80)
+            viewFeatureFlag.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
 
         }
 
