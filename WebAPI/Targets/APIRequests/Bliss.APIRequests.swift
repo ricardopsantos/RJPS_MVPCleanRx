@@ -16,13 +16,13 @@ import PointFreeFunctions
 import Domain
 import DevTools
 
-extension WebAPI.Bliss {
+public extension API.Bliss {
     struct GetHealthStatus_APIRequest: WebAPIRequest_Protocol {
-        var returnOnMainTread: Bool = true
-        var debugRequest: Bool = DevTools.devModeIsEnabled
-        var urlRequest: URLRequest
-        var responseType: NetworkClientResponseType
-        var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? "{\"status\": \"OK\"}" : nil }
+        public var returnOnMainTread: Bool = true
+        public var debugRequest: Bool = DevTools.devModeIsEnabled
+        public var urlRequest: URLRequest
+        public var responseType: NetworkClientResponseType
+        public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? "{\"status\": \"OK\"}" : nil }
 
         init() throws {
             let urlString = "\(AppConstants.Bliss.URLs.blissAPIBaseUrl)/health"
@@ -38,13 +38,13 @@ extension WebAPI.Bliss {
     }
 }
 
-extension WebAPI.Bliss {
+public extension API.Bliss {
     struct ListQuestions_APIRequest: WebAPIRequest_Protocol {
-        var returnOnMainTread: Bool = true
-        var debugRequest: Bool = DevTools.devModeIsEnabled
-        var urlRequest: URLRequest
-        var responseType: NetworkClientResponseType
-        var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.Bliss.getQuestions_200 : nil }
+        public var returnOnMainTread: Bool = true
+        public var debugRequest: Bool = DevTools.devModeIsEnabled
+        public var urlRequest: URLRequest
+        public var responseType: NetworkClientResponseType
+        public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.Bliss.getQuestions_200 : nil }
 
         init(limit: Int, filter: String, offSet: Int) throws {
             let escaped = filter.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
@@ -61,13 +61,13 @@ extension WebAPI.Bliss {
     }
 }
 
-extension WebAPI.Bliss {
+public extension API.Bliss {
     struct QuestionById_APIRequest: WebAPIRequest_Protocol {
-        var returnOnMainTread: Bool = true
-        var debugRequest: Bool = DevTools.devModeIsEnabled
-        var urlRequest: URLRequest
-        var responseType: NetworkClientResponseType
-        var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.Bliss.getQuestions_200 : nil }
+        public var returnOnMainTread: Bool = true
+        public var debugRequest: Bool = DevTools.devModeIsEnabled
+        public var urlRequest: URLRequest
+        public var responseType: NetworkClientResponseType
+        public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.Bliss.getQuestions_200 : nil }
 
         init(id: Int) throws {
             let urlString = "\(AppConstants.Bliss.URLs.blissAPIBaseUrl)/questions/\(id)"
@@ -83,7 +83,7 @@ extension WebAPI.Bliss {
     }
 }
 
-extension WebAPI.Bliss {
+extension API.Bliss {
     struct NewQuestion_APIRequest: WebAPIRequest_Protocol {
         var returnOnMainTread: Bool = true
         var debugRequest: Bool = DevTools.devModeIsEnabled
@@ -115,7 +115,7 @@ extension WebAPI.Bliss {
     }
 }
 
-extension WebAPI.Bliss {
+extension API.Bliss {
     struct UpdateQuestion_APIRequest: WebAPIRequest_Protocol {
         var returnOnMainTread: Bool = true
         var debugRequest: Bool = DevTools.devModeIsEnabled
@@ -150,7 +150,7 @@ extension WebAPI.Bliss {
     }
 }
 
-extension WebAPI.Bliss {
+extension API.Bliss {
     struct Share_APIRequest: WebAPIRequest_Protocol {
         var returnOnMainTread: Bool = true
         var debugRequest: Bool = DevTools.devModeIsEnabled

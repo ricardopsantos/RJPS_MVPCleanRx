@@ -7,3 +7,6 @@
 //
 
 import Foundation
+
+public typealias RP = Repositories
+public struct Repositories { private init() {} }

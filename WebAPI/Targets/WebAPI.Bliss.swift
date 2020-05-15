@@ -13,7 +13,7 @@ import Domain
  * WE CANT HAVE BUSINESS RULES HERE! THE CLIENT JUST DO THE OPERATION AND LEAVE
  */
 
-public extension WebAPI.Bliss {
+public extension API.Bliss {
     class NetWorkRepository: Bliss_NetWorkRepositoryProtocol {
 
         public init() { }

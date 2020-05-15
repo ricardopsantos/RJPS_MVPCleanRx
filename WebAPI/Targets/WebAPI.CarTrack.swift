@@ -13,7 +13,7 @@ import RJPSLib
 import Domain
 import DevTools
 
-public extension WebAPI.CarTrack {
+public extension API.CarTrack {
 
     class NetWorkRepository: CarTrack_NetWorkRepositoryProtocol {
 

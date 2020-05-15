@@ -34,6 +34,15 @@ import UIBase
             return some
         }()
 
+        var layoutStyle: UILabel.LayoutStyle {
+            set { label.layoutStyle = newValue }
+            get { return .notApplied }
+        }
+
+        public func apply(style: UILabel.LayoutStyle) {
+            layoutStyle = style
+        }
+
         public var numberOfLines: Int = 0 {
             didSet { label.numberOfLines = numberOfLines }
         }

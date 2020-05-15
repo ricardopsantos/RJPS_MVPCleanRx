@@ -21,7 +21,7 @@ import DevTools
 import PointFreeFunctions
 import Designables
 import Domain
-import API
+import WebAPI
 
 //
 // MARK: - Presenter_Protocol & View_Protocol
@@ -192,7 +192,7 @@ extension P.MVPSampleTableView_Presenter {
                 observer.onError(error)
             }
             return Disposables.create()
-            }.retry(WebAPI.Employees.GetEmployees_APIRequest.maxNumberOfRetrys)
+            }.retry(API.Employees.GetEmployees_APIRequest.maxNumberOfRetrys)
             .retryOnBecomesReachable([], reachabilityService: reachabilityService)
     }
 }

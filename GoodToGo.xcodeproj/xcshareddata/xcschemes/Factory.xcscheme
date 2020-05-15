@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D7D9E79F24676FE6005B4313"
-               BuildableName = "API.framework"
-               BlueprintName = "API"
+               BlueprintIdentifier = "D788BD9E24698D74007C59D0"
+               BuildableName = "Factory.framework"
+               BlueprintName = "Factory"
                ReferencedContainer = "container:GoodToGo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -50,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D7D9E79F24676FE6005B4313"
-            BuildableName = "API.framework"
-            BlueprintName = "API"
+            BlueprintIdentifier = "D788BD9E24698D74007C59D0"
+            BuildableName = "Factory.framework"
+            BlueprintName = "Factory"
             ReferencedContainer = "container:GoodToGo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

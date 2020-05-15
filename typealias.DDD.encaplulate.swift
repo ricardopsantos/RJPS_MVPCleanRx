@@ -17,5 +17,3 @@ public struct Enums { private init() {} }
 
 public typealias M = Model
 public struct Model { private init() {} }
-
-// Colocar REpositorys, Use Cases

@@ -48,8 +48,8 @@ open class TopBar: BaseViewControllerMVP {
         return some
     }()
 
-    private lazy var _lblTitle: UILabel = {
-        let some = UIKitFactory.label(baseView: self.view, style: .navigationBarTitle)
+    private lazy var _lblTitle: UILabelWithPadding = {
+        let some = UIKitFactory.labelWithPadding(style: .navigationBarTitle)
         some.textAlignment = .center
         some.rjsALayouts.setMargin(_btnSize*2, on: .left)
         some.rjsALayouts.setMargin(_btnSize*2, on: .right)

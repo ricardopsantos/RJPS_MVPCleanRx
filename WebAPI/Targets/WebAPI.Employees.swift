@@ -16,7 +16,7 @@ import DevTools
  * WE CANT HAVE BUSINESS RULES HERE! THE CLIENT JUST DO THE OPERATION AND LEAVE
  */
 
-public extension WebAPI.Employees {
+public extension API.Employees {
     class NetworkRepository: Samples_NetWorkRepositoryProtocol {
 
         public init() { }

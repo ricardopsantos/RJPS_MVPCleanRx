@@ -16,8 +16,7 @@ import PointFreeFunctions
 import Domain
 import DevTools
 
-extension WebAPI.CarTrack {
-
+public extension API.CarTrack {
     enum Target {
         case getUsers
 
@@ -37,13 +36,15 @@ extension WebAPI.CarTrack {
             }
         }
     }
+}
 
+public extension API.CarTrack {
     struct GetUserInfo_APIRequest: WebAPIRequest_Protocol {
-        var returnOnMainTread: Bool
-        var debugRequest: Bool
-        var urlRequest: URLRequest
-        var responseType: NetworkClientResponseType
-        var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.CarTrack.get_200 : nil }
+        public var returnOnMainTread: Bool
+        public var debugRequest: Bool
+        public var urlRequest: URLRequest
+        public var responseType: NetworkClientResponseType
+        public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.CarTrack.get_200 : nil }
 
         init(userName: String) throws {
             let urlString = Target.getUsers.endpoint

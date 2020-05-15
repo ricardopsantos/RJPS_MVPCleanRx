@@ -9,7 +9,7 @@ import Swinject
 import RJPSLib
 //
 import Domain
-import API
+import WebAPI
 import Repositories
 import AppCore
 
@@ -56,22 +56,22 @@ final class RootAssemblyContainer: Assembly {
     func assemble(container: Container) {
 
         container.autoregister(AppProtocols.generic_CacheRepository,
-                               initializer: CacheRepository.init).inObjectScope(.container)
+                               initializer: RP.CacheRepository.init).inObjectScope(.container)
         
         container.autoregister(AppProtocols.networkClient,
                                initializer: RJSLib.NetworkClient.init).inObjectScope(.container)
         
         container.autoregister(AppProtocols.generic_LocalStorageRepository,
-                               initializer: LocalStorageRepository.init).inObjectScope(.container)
+                               initializer: RP.LocalStorageRepository.init).inObjectScope(.container)
         
         container.autoregister(AppProtocols.gitUser_NetWorkRepository,
-                               initializer: WebAPI.GitUser.NetWorkRepository.init).inObjectScope(.container)
+                               initializer: API.GitUser.NetWorkRepository.init).inObjectScope(.container)
 
         container.autoregister(AppProtocols.bliss_NetWorkRepository,
-                               initializer: WebAPI.Bliss.NetWorkRepository.init).inObjectScope(.container)
+                               initializer: API.Bliss.NetWorkRepository.init).inObjectScope(.container)
 
         container.autoregister(AppProtocols.carTrack_NetWorkRepository,
-                               initializer: WebAPI.CarTrack.NetWorkRepository.init).inObjectScope(.container)
+                               initializer: API.CarTrack.NetWorkRepository.init).inObjectScope(.container)
 
         //
         // CarTrack

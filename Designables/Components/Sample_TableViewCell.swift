@@ -68,8 +68,8 @@ open class Sample_TableViewCell: UITableViewCell, GenericTableViewCell_Protocol 
     private var _imageSize: CGFloat { return Sample_TableViewCell.cellSize - 2 * _marginV }
     private let _disposeBag: DisposeBag = DisposeBag()
     
-    private lazy var _lblTitle: UILabel = {
-        let some = UIKitFactory.label(baseView: self, style: .value)
+    private lazy var _lblTitle: UILabelWithPadding = {
+        let some = UIKitFactory.labelWithPadding(style: .title)
         some.rjsALayouts.setMargin(_marginH, on: .left)
         some.rjsALayouts.setMargin(_marginH*2+_imageSize, on: .right)
         some.rjsALayouts.setMargin(_marginV, on: .top)

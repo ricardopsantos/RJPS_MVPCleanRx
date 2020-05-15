@@ -16,7 +16,7 @@ import PointFreeFunctions
 import Domain
 import DevTools
 
-public extension WebAPI.Employees {
+public extension API.Employees {
 
     enum Target {
         case getEmployees

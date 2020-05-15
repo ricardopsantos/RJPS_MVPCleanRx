@@ -57,6 +57,18 @@ public struct UIKitFactory {
         return some
     }
 
+    public static func labelWithPadding(title: String = "",
+                                        style: UILabel.LayoutStyle) -> UILabelWithPadding {
+        let some = UILabelWithPadding()
+        some.text = title
+        some.numberOfLines = 0
+        some.tag =  UIKitViewFactoryElementTag.label.rawValue
+        //some.label.layoutStyle = style
+        some.addShadow()
+        //baseView?.addSubview(some)
+        return some
+    }
+
     public static func label(baseView: UIView? = nil,
                              title: String = "",
                              style: UILabel.LayoutStyle) -> UILabel {
