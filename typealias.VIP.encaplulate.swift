@@ -8,15 +8,7 @@
 import Foundation
 import UIKit
 
-// Common to all frameworks
-
-public typealias E = Enums
-public enum Enums { /*private init() {}*/ }
-
-// MARK: - Models
-
-public typealias M = Model
-public struct Model { private init() {} }
+// Common to all frameworks that know the App UI Layer
 
 // MARK: - Scenes
 
