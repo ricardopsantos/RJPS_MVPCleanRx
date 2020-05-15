@@ -873,7 +873,7 @@
 		D78F27E8246DCF31008F7E54 /* Designables.Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Designables.Constants.swift; sourceTree = "<group>"; };
 		D78F27EA246DE1D4008F7E54 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		D78F27EC246DF04C008F7E54 /* AppConstants+Mock+CarTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppConstants+Mock+CarTrack.swift"; sourceTree = "<group>"; };
-		D78F27EE246E159C008F7E54 /* VIPClena_Architecture.pptx */ = {isa = PBXFileReference; lastKnownFileType = file; path = VIPClena_Architecture.pptx; sourceTree = "<group>"; };
+		D78F27EE246E159C008F7E54 /* VIPClean_Architecture.pptx */ = {isa = PBXFileReference; lastKnownFileType = file; path = VIPClean_Architecture.pptx; sourceTree = "<group>"; };
 		D78F27EF246E718D008F7E54 /* typealias.VIP.encaplulate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = typealias.VIP.encaplulate.swift; sourceTree = "<group>"; };
 		D7979D3D246C870C0039031C /* Material.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Material.framework; path = Carthage/Build/iOS/Material.framework; sourceTree = "<group>"; };
 		D7979D40246C87230039031C /* Motion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Motion.framework; path = Carthage/Build/iOS/Motion.framework; sourceTree = "<group>"; };
@@ -1186,7 +1186,7 @@
 			children = (
 				9FE1438821AF2D8B0026BDFC /* typealias.Application.swift */,
 				9FFF99A42247B1FA00783EE2 /* Application */,
-				9F58FB0F22BE5DE700042A8C /* Screens */,
+				9F58FB0F22BE5DE700042A8C /* Scenes */,
 				9F103A2D2236C08900C57BC0 /* DependencyInjection */,
 				D7AB24BC24674323000142C4 /* Comom */,
 				9FD971A420FF418A00F73FB9 /* SupportingFiles */,
@@ -1207,7 +1207,7 @@
 				9FCF331E22EF18A90074DAB9 /* .swiftlint.yml */,
 				D7A620B0246556A1008B1722 /* _script_installPackages.sh */,
 				9F6BB2BB22E31D0400829A6F /* MVPClean_Arquitecture.pptx */,
-				D78F27EE246E159C008F7E54 /* VIPClena_Architecture.pptx */,
+				D78F27EE246E159C008F7E54 /* VIPClean_Architecture.pptx */,
 			);
 			path = __Documents__;
 			sourceTree = "<group>";
@@ -1237,20 +1237,21 @@
 			path = Protocol.Repositories;
 			sourceTree = "<group>";
 		};
-		9F58FB0F22BE5DE700042A8C /* Screens */ = {
+		9F58FB0F22BE5DE700042A8C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				D7979D99246D6B370039031C /* Scenes.CartTrack.Map */,
+				D7979DA1246D6B370039031C /* Scenes.CartTrack.Login */,
+				D7979D90246D6B370039031C /* Scenes.CartTrack.Users */,
 				D7E25A702465E5F1003BBEA0 /* README.md */,
 				9F288F3320F808A2008A9539 /* LaunchScreen.storyboard */,
 				9F58FB1322BE5DE700042A8C /* Main.storyboard */,
-				D7979DD0246DCC920039031C /* Sytles */,
 				D7CA2B54246B27ED0071DAF8 /* CartTrack */,
-				D7AB2444246716DE000142C4 /* Components */,
 				D779A5F5234FE43900D3D6F7 /* AppScenes.VIP */,
 				9F58FB1722BE5DE700042A8C /* AppScenes.MVP */,
 				D725A6A4246C837E005664CB /* Misc */,
 			);
-			path = Screens;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		9F58FB1722BE5DE700042A8C /* AppScenes.MVP */ = {
@@ -1422,9 +1423,6 @@
 				9FACC18A223BFB0F00576498 /* AppDelegate+Setup.swift */,
 				9F6BB2D822E3673200829A6F /* AppDelegate+URL.swift */,
 				9F58FB1622BE5DE700042A8C /* VC.TabBarController.swift */,
-				D7979D99246D6B370039031C /* Screens.CartTrack.Map */,
-				D7979DA1246D6B370039031C /* Screens.CartTrack.Login */,
-				D7979D90246D6B370039031C /* Screens.CartTrack.Users */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -1441,6 +1439,7 @@
 		D725A6A4246C837E005664CB /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				D7979DD0246DCC920039031C /* Dev.Sytles */,
 				9F3ED4BB22E618C80020A50A /* VC.RxTesting.swift */,
 			);
 			path = Misc;
@@ -1716,7 +1715,7 @@
 			path = UseCases.CarTrack;
 			sourceTree = "<group>";
 		};
-		D7979D90246D6B370039031C /* Screens.CartTrack.Users */ = {
+		D7979D90246D6B370039031C /* Scenes.CartTrack.Users */ = {
 			isa = PBXGroup;
 			children = (
 				D7979D91246D6B370039031C /* V.CarTrackUsersView.swift */,
@@ -1728,7 +1727,7 @@
 				D7979D97246D6B370039031C /* Auxiliar */,
 				D7979D98246D6B370039031C /* P.CarTrackUsersPresenter.swift */,
 			);
-			path = Screens.CartTrack.Users;
+			path = Scenes.CartTrack.Users;
 			sourceTree = "<group>";
 		};
 		D7979D97246D6B370039031C /* Auxiliar */ = {
@@ -1738,7 +1737,7 @@
 			path = Auxiliar;
 			sourceTree = "<group>";
 		};
-		D7979D99246D6B370039031C /* Screens.CartTrack.Map */ = {
+		D7979D99246D6B370039031C /* Scenes.CartTrack.Map */ = {
 			isa = PBXGroup;
 			children = (
 				D7979D9D246D6B370039031C /* V.CartTrackMapView.swift */,
@@ -1748,10 +1747,10 @@
 				D7979D9F246D6B370039031C /* D.CartTrackMapDomain.swift */,
 				D7979DA0246D6B370039031C /* P.CartTrackMapPresenter.swift */,
 			);
-			path = Screens.CartTrack.Map;
+			path = Scenes.CartTrack.Map;
 			sourceTree = "<group>";
 		};
-		D7979DA1246D6B370039031C /* Screens.CartTrack.Login */ = {
+		D7979DA1246D6B370039031C /* Scenes.CartTrack.Login */ = {
 			isa = PBXGroup;
 			children = (
 				D7979DA2246D6B370039031C /* VC.CarTrackLoginViewController.swift */,
@@ -1761,7 +1760,7 @@
 				D7979DA6246D6B370039031C /* I.CarTrackLoginInteractor.swift */,
 				D7979DA7246D6B370039031C /* R.CarTrackLoginRouter.swift */,
 			);
-			path = Screens.CartTrack.Login;
+			path = Scenes.CartTrack.Login;
 			sourceTree = "<group>";
 		};
 		D7979DCF246DC9A60039031C /* Components */ = {
@@ -1777,7 +1776,7 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		D7979DD0246DCC920039031C /* Sytles */ = {
+		D7979DD0246DCC920039031C /* Dev.Sytles */ = {
 			isa = PBXGroup;
 			children = (
 				D7979DBE246DC1960039031C /* V.StylesView.swift */,
@@ -1787,7 +1786,7 @@
 				D7979DC3246DC1960039031C /* I.StylesInteractor.swift */,
 				D7979DC4246DC1960039031C /* P.StylesPresenter.swift */,
 			);
-			path = Sytles;
+			path = Dev.Sytles;
 			sourceTree = "<group>";
 		};
 		D7AB2444246716DE000142C4 /* Components */ = {
@@ -1829,6 +1828,7 @@
 		D7AB24BC24674323000142C4 /* Comom */ = {
 			isa = PBXGroup;
 			children = (
+				D7AB2444246716DE000142C4 /* Components */,
 				D725A6A5246C839B005664CB /* Resolvers */,
 				D761FEB42468330600BD41A5 /* ProgramaticUIUtils.swift */,
 				9FE1437021AF1ADC0026BDFC /* Environments.swift */,

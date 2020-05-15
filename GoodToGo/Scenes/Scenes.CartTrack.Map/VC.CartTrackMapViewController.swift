@@ -1,5 +1,5 @@
 //
-//  VC.StylesViewController.swift
+//  VC.CartTrackMapViewController.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 14/05/2020.
@@ -24,11 +24,22 @@ import UIBase
 
 extension VC {
 
-    class StylesViewController: BaseGenericViewControllerVIP<V.StylesView> {
-        private var interactor: StylesBusinessLogicProtocol?
-        var router: (StylesRoutingLogicProtocol &
-            StylesDataPassingProtocol &
-            StylesRoutingLogicProtocol)?
+    class CartTrackMapViewController: BaseGenericViewControllerVIP<V.CartTrackMapView> {
+        private var interactor: CartTrackMapBusinessLogicProtocol?
+        var router: (CartTrackMapRoutingLogicProtocol &
+            CartTrackMapDataPassingProtocol &
+            CartTrackMapRoutingLogicProtocol)?
+
+        //
+        // MARK: UI Elements
+        //
+
+        private lazy var topGenericView: TopBar = {
+            let some = TopBar()
+            some.injectOn(viewController: self)
+            some.setTitle(Messages.welcome.localised)
+            return some
+        }()
 
         //
         // MARK: View lifecycle
@@ -38,7 +49,8 @@ extension VC {
         override func loadView() {
             super.loadView()
             view.accessibilityIdentifier = self.genericAccessibilityIdentifier
-            self.title = "DevScreen"
+            self.title = "Map"
+            topGenericView.lazyLoad()
         }
 
         // Order in View life-cycle : 4
@@ -51,6 +63,8 @@ extension VC {
             super.viewWillAppear(animated)
             if firstAppearance {
                 interactor?.requestScreenInitialState()
+                let request = VM.CartTrackMap.MapData.Request()
+                interactor?.requestMapData(request: request)
             }
         }
 
@@ -65,7 +79,7 @@ extension VC {
 
         // Order in View life-cycle : 8
         public override func setupColorsAndStyles() {
-            super.setupColorsAndStyles()
+            //super.setupColorsAndStyles()
             // Setup UI on dark mode (if needed)
         }
 
@@ -77,15 +91,14 @@ extension VC {
         override func setup() {
             // This function is called automatically by super BaseGenericView
             let viewController = self
-            let interactor = I.StylesInteractor()
-            let presenter  = P.StylesPresenter()
-            let router     = R.StylesRouter()
+            let interactor = I.CartTrackMapInteractor()
+            let presenter  = P.CartTrackMapPresenter()
+            let router     = R.CartTrackMapRouter()
             viewController.interactor = interactor
             viewController.router = router
             interactor.presenter  = presenter
             presenter.viewController = viewController
             router.viewController = viewController
-            router.dsStyles = interactor
         }
 
         // Order in View life-cycle : 5
@@ -93,12 +106,19 @@ extension VC {
         override func setupViewIfNeed() {
             // Use it to configure stuff on the genericView, depending on the value external/public variables
             // that are set after we instantiate the view controller, but before if has been presented
+            genericView.rxFilter.asObserver().bind { [weak self] (search) in
+                guard let self = self else { return }
+                guard let search = search else { return }
+                guard self.isVisible else { return }
+                let viewModel = VM.CartTrackMap.MapDataFilter.Request(filter: search)
+                self.interactor?.requestMapDataFilter(viewModel: viewModel)
+            }.disposed(by: disposeBag)
         }
 
         // Order in View life-cycle : 3
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
-
+            #warning("Add reachability support")
         }
 
         // Order in View life-cycle : 7
@@ -111,25 +131,29 @@ extension VC {
 
 // MARK: Public Misc Stuff
 
-extension VC.StylesViewController {
+extension VC.CartTrackMapViewController {
 
 }
 
 // MARK: Private Misc Stuff
 
-extension VC.StylesViewController {
+extension VC.CartTrackMapViewController {
 
 }
 
 // MARK: DisplayLogicProtocolProtocol
 
-extension VC.StylesViewController: StylesDisplayLogicProtocol {
+extension VC.CartTrackMapViewController: CartTrackMapDisplayLogicProtocol {
 
-    func displaySomeStuff(viewModel: VM.Styles.SomeStuff.ViewModel) {
-        // Setting up the view, option 1 : passing the view model
+    func displayMapDataFilter(viewModel: VM.CartTrackMap.MapDataFilter.ViewModel) {
+        genericView.setupWith(mapDataFilter: viewModel)
     }
 
-    func displayScreenInitialState(viewModel: VM.Styles.ScreenInitialState.ViewModel) {
-        title = viewModel.title
+    func displayMapData(viewModel: VM.CartTrackMap.MapData.ViewModel) {
+        genericView.setupWith(mapData: viewModel)
+    }
+
+    func displayScreenInitialState(viewModel: VM.CartTrackMap.ScreenInitialState.ViewModel) {
+
     }
 }

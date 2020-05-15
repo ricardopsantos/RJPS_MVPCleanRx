@@ -27,15 +27,15 @@ open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtoco
     }
 
     open func displayStatus(viewModel: BaseDisplayLogicModels.Status) {
-        DevTools.makeToast(viewModel.message, isError: false)
+        BaseViewControllerMVP.shared.displayMessage(viewModel.message, type: .success)
     }
 
     open func displayLoading(viewModel: BaseDisplayLogicModels.Loading) {
-        DevTools.makeToast(viewModel.message, isError: false)
+        BaseViewControllerMVP.shared.setActivityState(viewModel.isLoading)
     }
 
     open func displayError(viewModel: BaseDisplayLogicModels.Error) {
-        DevTools.makeToast(viewModel.message, isError: true)
+        BaseViewControllerMVP.shared.displayMessage(viewModel.message, type: .error)
     }
 
     open func setupColorsAndStyles() {

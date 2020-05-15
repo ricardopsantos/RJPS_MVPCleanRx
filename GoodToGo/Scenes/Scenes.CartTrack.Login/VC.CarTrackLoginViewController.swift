@@ -65,7 +65,7 @@ extension VC {
 
         // Order in View life-cycle : 8
         public override func setupColorsAndStyles() {
-            super.setupColorsAndStyles()
+            //super.setupColorsAndStyles()
             // Setup UI on dark mode (if needed)
         }
 
