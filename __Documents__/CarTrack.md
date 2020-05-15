@@ -25,11 +25,11 @@ Deadline for submission: 15th  May 2020
 
  -----
  
- Colocar print
+ Colocar prints
  Colocar pass
  Falar da cache
  Falar do pattern 
  Colocar os PPTs do VIP no projec
-
+Falar dos mocks
 
 

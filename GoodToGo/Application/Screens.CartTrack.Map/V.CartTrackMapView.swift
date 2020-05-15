@@ -77,10 +77,6 @@ extension V {
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 2/3 : JUST to setup layout rules zone....
         override func prepareLayoutBySettingAutoLayoutsRules() {
-            let edgesToExclude: LayoutEdge = .init([.top, .bottom])
-            let defaultMargin = Designables.Sizes.Margins.defaultMargin
-            let insets: TinyEdgeInsets = TinyEdgeInsets(top: defaultMargin, left: defaultMargin, bottom: defaultMargin, right: defaultMargin)
-
             lblInfo.autoLayout.topToBottom(of: searchBar, offset: Designables.Sizes.Margins.defaultMargin)
             lblInfo.autoLayout.width(screenWidth / 4)
             lblInfo.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
@@ -102,12 +98,11 @@ extension V {
         // Function 3/3 : Stuff that is not included in [prepareLayoutCreateHierarchy] and [prepareLayoutBySettingAutoLayoutsRules]
         override func prepareLayoutByFinishingPrepareLayout() {
             // Do any additional setup after loading the view, typically from a nib.
-
             mapView.delegate = self
             lblInfo.addShadow()
             lblInfo.addCorner(radius: 5)
             lblInfo.textAlignment = .right
-
+            mapView.register(CarTrackMKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         }
 
         override func setupColorsAndStyles() {
@@ -122,7 +117,6 @@ extension V {
                 .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
                 .subscribe(onNext: { [weak self] _ in
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-                    //self.presenter.searchUserWith(username: some.text ?? "")
                     self.rxFilter.onNext(self.searchBar.text)
                 })
                 .disposed(by: disposeBag)
@@ -159,23 +153,6 @@ extension V {
 
 extension V.CartTrackMapView {
 
-    private func extractSubTitle(_ userModel: Domain.CarTrack.UserModel) -> String {
-        return userModel.name
-    }
-
-    private func extractTitle(_ userModel: Domain.CarTrack.UserModel) -> String {
-        return userModel.company.name
-    }
-
-    private func extractLocation(_ userModel: Domain.CarTrack.UserModel) -> CLLocationCoordinate2D {
-        let latitude  = userModel.address.geo.lat
-        let longitude = userModel.address.geo.lng
-        let lat: CLLocationDegrees = CLLocationDegrees(Double(latitude)!)
-        let lng: CLLocationDegrees = CLLocationDegrees(Double(longitude)!)
-        let coordinate = CLLocationCoordinate2DMake(lat, lng)
-        return coordinate
-    }
-
     private func updateMapWith(list: [CarTrack.UserModel]) {
         lastModel = list
         mapView.removeAnnotations()
@@ -186,27 +163,25 @@ extension V.CartTrackMapView {
         }
 
         if V.CartTrackMapView.selectedAnnotationsTypeForMap == .pinAnnotationView {
-
             let mkPointAnnotationList: [MKPointAnnotation] = list.map {
                 let annotation = MKPointAnnotation()
-                annotation.coordinate = extractLocation($0)
-                annotation.title = extractTitle($0)
-                annotation.subtitle = extractSubTitle($0)
+                annotation.coordinate = $0.mapLocation
+                annotation.title = $0.mapTitle
+                annotation.subtitle = $0.mapTitle
                 return annotation
             }
-
             mkPointAnnotationList.forEach { (mkPointAnnotation) in
                 self.mapView.addAnnotation(mkPointAnnotation)
             }
         } else {
             let mkAnnotationsList: [CarTrackMKAnnotation] = list.map {
-                CarTrackMKAnnotation(title: extractTitle($0), subTitle: extractSubTitle($0), coordinate: extractLocation($0))
+                CarTrackMKAnnotation(title: $0.mapTitle, subTitle: $0.mapSubTitle, coordinate: $0.mapLocation, model: $0)
             }
             self.mapView.addAnnotations(mkAnnotationsList)
         }
 
         if let first = list.first {
-            mapView.setRegion(extractLocation(first))
+            mapView.setRegion(first.mapLocation)
         }
     }
 
@@ -226,7 +201,7 @@ extension V.CartTrackMapView: MKMapViewDelegate {
 
         if annotation is MKUserLocation { return nil }
 
-        let reuseIdentifier = "MKAnnotationView.identifier"
+        let reuseIdentifier = MKMapViewDefaultAnnotationViewReuseIdentifier
 
         if V.CartTrackMapView.selectedAnnotationsTypeForMap == .pinAnnotationView {
             var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier) as? MKPinAnnotationView
@@ -244,15 +219,16 @@ extension V.CartTrackMapView: MKMapViewDelegate {
             return pinView
         } else if V.CartTrackMapView.selectedAnnotationsTypeForMap == .markerAnnotationView {
             guard let annotation = annotation as? CarTrackMKAnnotation else { return nil }
-            var view: MKMarkerAnnotationView
-            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier) as? MKMarkerAnnotationView {
+            var view: CarTrackMKMarkerAnnotationView
+            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier) as? CarTrackMKMarkerAnnotationView {
                 dequeuedView.annotation = annotation
                 view = dequeuedView
             } else {
-                view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
+                view = CarTrackMKMarkerAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
                 view.canShowCallout = true
                 view.calloutOffset = CGPoint(x: -5, y: 5)
                 view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+                view.tintColor = UIColor.App.primary
             }
             return view
         }
@@ -320,14 +296,50 @@ extension MKMapView {
 // MARK: MKMapViewUtils
 
 class CarTrackMKAnnotation: NSObject, MKAnnotation {
+
+    let model: Domain.CarTrack.UserModel
     let title: String?
     let subTitle: String?
     let coordinate: CLLocationCoordinate2D
 
-    init(title: String?, subTitle: String?, coordinate: CLLocationCoordinate2D) {
+    init(title: String, subTitle: String, coordinate: CLLocationCoordinate2D, model: Domain.CarTrack.UserModel) {
         self.title = title
         self.subTitle = subTitle
         self.coordinate = coordinate
+        self.model = model
         super.init()
+    }
+}
+
+class CarTrackMKMarkerAnnotationView: MKMarkerAnnotationView {
+
+    override var annotation: MKAnnotation? {
+        willSet {
+            guard let carTrackMKAnnotation = newValue as? CarTrackMKAnnotation else { return }
+            canShowCallout = true
+            calloutOffset = CGPoint(x: -5, y: 5)
+            rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            markerTintColor = carTrackMKAnnotation.model.mapColor
+            glyphText       = carTrackMKAnnotation.model.mapGlyphText
+        }
+    }
+}
+
+// MARK: Extension
+
+extension Domain.CarTrack.UserModel {
+
+    var mapTitle: String { return company.name }
+    var mapSubTitle: String { return self.name }
+    var mapColor: UIColor { return self.id > 5 ? UIColor.App.error : UIColor.App.success }
+    var mapGlyphText: String { return mapTitle.first }
+
+    var mapLocation: CLLocationCoordinate2D {
+        let latitude  = self.address.geo.lat
+        let longitude = self.address.geo.lng
+        let lat: CLLocationDegrees = CLLocationDegrees(Double(latitude)!)
+        let lng: CLLocationDegrees = CLLocationDegrees(Double(longitude)!)
+        let coordinate = CLLocationCoordinate2DMake(lat, lng)
+        return coordinate
     }
 }
