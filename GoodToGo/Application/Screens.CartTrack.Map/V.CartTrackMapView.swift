@@ -6,6 +6,8 @@
 //  Copyright (c) 2020 Ricardo P Santos. All rights reserved.
 //
 
+// swiftlint:disable no_hardCodedImages
+
 import UIKit
 import Foundation
 import MapKit
@@ -318,9 +320,16 @@ class CarTrackMKMarkerAnnotationView: MKMarkerAnnotationView {
             guard let carTrackMKAnnotation = newValue as? CarTrackMKAnnotation else { return }
             canShowCallout = true
             calloutOffset = CGPoint(x: -5, y: 5)
-            rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             markerTintColor = carTrackMKAnnotation.model.mapColor
             glyphText       = carTrackMKAnnotation.model.mapGlyphText
+            rightCalloutAccessoryView = carTrackMKAnnotation.model.mapButton
+
+            let detailLabel = UILabel()
+            detailLabel.numberOfLines = 0
+            detailLabel.font = UIFont.App.light(size: .regular)
+            detailLabel.text = carTrackMKAnnotation.model.mapSubTitle
+            detailCalloutAccessoryView = detailLabel
+
         }
     }
 }
@@ -329,11 +338,16 @@ class CarTrackMKMarkerAnnotationView: MKMarkerAnnotationView {
 
 extension Domain.CarTrack.UserModel {
 
-    var mapTitle: String { return company.name }
-    var mapSubTitle: String { return self.name }
-    var mapColor: UIColor { return self.id > 5 ? UIColor.App.error : UIColor.App.success }
+    var mapTitle: String { return name }
+    var mapSubTitle: String { return self.company.name + "\n" + self.email }
+    var mapColor: UIColor { return self.id % 2 == 0 ? UIColor.App.error : UIColor.App.success }
     var mapGlyphText: String { return mapTitle.first }
-
+    var mapButton: UIButton {
+        let size = 30
+        let some = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: size, height: size)))
+        some.setBackgroundImage(#imageLiteral(resourceName: "appleMaps"), for: .normal)
+        return some
+    }
     var mapLocation: CLLocationCoordinate2D {
         let latitude  = self.address.geo.lat
         let longitude = self.address.geo.lng

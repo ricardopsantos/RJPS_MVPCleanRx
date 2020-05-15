@@ -868,6 +868,7 @@
 		D78F27E8246DCF31008F7E54 /* Designables.Sizes copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Designables.Sizes copy.swift"; sourceTree = "<group>"; };
 		D78F27EA246DE1D4008F7E54 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		D78F27EC246DF04C008F7E54 /* AppConstants+Mock+CarTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppConstants+Mock+CarTrack.swift"; sourceTree = "<group>"; };
+		D78F27EE246E159C008F7E54 /* VIPClena_Architecture.pptx */ = {isa = PBXFileReference; lastKnownFileType = file; path = VIPClena_Architecture.pptx; sourceTree = "<group>"; };
 		D7979D3D246C870C0039031C /* Material.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Material.framework; path = Carthage/Build/iOS/Material.framework; sourceTree = "<group>"; };
 		D7979D40246C87230039031C /* Motion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Motion.framework; path = Carthage/Build/iOS/Motion.framework; sourceTree = "<group>"; };
 		D7979D43246C9DD00039031C /* WebAPI.CarTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPI.CarTrack.swift; sourceTree = "<group>"; };
@@ -1201,6 +1202,7 @@
 				9FCF331E22EF18A90074DAB9 /* .swiftlint.yml */,
 				D7A620B0246556A1008B1722 /* _script_installPackages.sh */,
 				9F6BB2BB22E31D0400829A6F /* MVPClean_Arquitecture.pptx */,
+				D78F27EE246E159C008F7E54 /* VIPClena_Architecture.pptx */,
 			);
 			path = __Documents__;
 			sourceTree = "<group>";
