@@ -12,9 +12,8 @@ import RJPSLib
 import RxCocoa
 import Domain
 
-extension UC {
-    
-}
-open class GenericUseCase: AppUtils_Protocol {
-    
+public extension UC {
+    open class GenericUseCase: AppUtils_Protocol {
+
+    }
 }

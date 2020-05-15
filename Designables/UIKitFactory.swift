@@ -117,6 +117,7 @@ public struct UIKitFactory {
         label.apply(style: .value)
         label.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .horizontal)
         label.text = caption
+        uiSwitch.tintColor = UIColor.App.primary
         uiSwitch.isOn = defaultValue
         uiSwitch.setContentHuggingPriority(UILayoutPriority.required, for: .horizontal)
         stackView.addArrangedSubview(label)

@@ -1,6 +1,6 @@
 # iOS Architecture design patterns : MVP + Clean + Rx
 
-- [x] 📱  iOS 10.0+
+- [x] 📱  iOS 11.0+
 - [x] 🔨  XCode 11.1, Swift 5.1
 
 The intent of this project is to show a simple implementation of the __MVP Clean (Rx)__ pattern. This is my vision about it, and if you dont agree with someting, just email me, I love to hear opinions and learn from that.

@@ -63,6 +63,14 @@ extension V {
             return UIKitFactory.label(style: .info)
         }()
 
+        private lazy var ffView: UIView = {
+            UIKitFactory.switchWithCaption(caption: DevTools.FeatureFlag.devTeam_useMockedData.rawValue,
+            defaultValue: DevTools.FeatureFlag.devTeam_useMockedData.isTrue,
+            disposeBag: disposeBag) { value in
+                DevTools.FeatureFlag.setFlag(.devTeam_useMockedData, value: value)
+            }
+        }()
+
         // MARK: - Mandatory
 
         // Order in View life-cycle : 1
@@ -73,6 +81,7 @@ extension V {
             addSubview(mapView)
             addSubview(searchBar)
             addSubview(lblInfo)
+            addSubview(ffView)
         }
 
         // This function is called automatically by super BaseGenericViewVIP
@@ -92,6 +101,9 @@ extension V {
             searchBar.autoLayout.leadingToSuperview()
             searchBar.autoLayout.trailingToSuperview()
             searchBar.autoLayout.height(50)
+
+            ffView.autoLayout.bottomToSuperview(offset: Designables.Sizes.Margins.defaultMargin + 80)
+            ffView.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
 
         }
 

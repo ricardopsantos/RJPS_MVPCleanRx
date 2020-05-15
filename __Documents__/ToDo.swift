@@ -2,6 +2,6 @@
 #warning("improve alerts top message (have messages colision)")
 #warning("add debug label/screen/html report")
 #warning("adicionar image a mostrar os ecran os tipo de botoes e labels")
-#warning("colocar uma cache decente")
 #warning("Add rxKeyboard")
 #warning("Colocar UC. nos use cases")
+#warning("adicionar suport para falta de internet")
