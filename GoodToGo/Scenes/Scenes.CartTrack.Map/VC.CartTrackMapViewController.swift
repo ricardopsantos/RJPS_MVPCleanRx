@@ -37,7 +37,7 @@ extension VC {
         private lazy var topGenericView: TopBar = {
             let some = TopBar()
             some.injectOn(viewController: self)
-            some.setTitle(Messages.welcome.localised)
+            some.addDismissButton()
             return some
         }()
 
@@ -50,7 +50,8 @@ extension VC {
             super.loadView()
             view.accessibilityIdentifier = self.genericAccessibilityIdentifier
             self.title = "Map"
-            topGenericView.lazyLoad()
+           // topGenericView.lazyLoad()
+            topGenericView.setTitle(self.title!)
         }
 
         // Order in View life-cycle : 4

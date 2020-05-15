@@ -38,11 +38,16 @@ open class TopBar: BaseViewControllerMVP {
     }()
 
     private lazy var _btnClose: UIButton = {
-        let some = UIKitFactory.button(baseView: self.view, style: .dismiss)
+        let some = UIKitFactory.raisedButton(title: "X")
+        self.view.addSubview(some)
         some.rjsALayouts.setMargin(_btnSize/2, on: .right)
         some.rjsALayouts.setMargin(_btnSize/2, on: .top)
         some.rjsALayouts.setSize(CGSize(width: _btnSize, height: _btnSize))
         some.setTitleForAllStates("X")
+        some.addCorner(radius: 5)
+        some.backgroundColor = UIColor.App.onPrimary.withAlphaComponent(0.75)
+        some.titleLabel?.textColor = UIColor.App.primary
+        some.setTitleColor(UIColor.App.primary, for: .normal)
         some.isHidden = true
         some.isUserInteractionEnabled = false
         return some
@@ -50,6 +55,7 @@ open class TopBar: BaseViewControllerMVP {
 
     private lazy var _lblTitle: UILabelWithPadding = {
         let some = UIKitFactory.labelWithPadding(style: .navigationBarTitle)
+        self.view.addSubview(some)
         some.textAlignment = .center
         some.rjsALayouts.setMargin(_btnSize*2, on: .left)
         some.rjsALayouts.setMargin(_btnSize*2, on: .right)
@@ -81,7 +87,12 @@ extension TopBar {
     public func addBackButton() { enable(btn: _btnBack) }
     public func addDismissButton() { enable(btn: _btnClose) }
     public func setTitle(_ title: String) { _lblTitle.textAnimated = title }
-    public func lazyLoad() { /* Lazy var auxiliar */ }
+    public func lazyLoad() {
+        _btnBack.lazyLoad()
+        _btnClose.lazyLoad()
+        _lblTitle.lazyLoad()
+        /* Lazy var auxiliar */
+    }
     
     public var rxSignal_btnDismissTapped: Signal<Void> {
         return _btnClose.rx.controlEvent(.touchUpInside).asSignal()
@@ -119,5 +130,8 @@ public extension TopBar {
         self.view.rjsALayouts.setMargin(0, on: .right)
         self.view.rjsALayouts.setMargin(0, on: .left)
         self.view.rjsALayouts.setHeight(TopBar.defaultHeight)
+
+        self.lazyLoad()
+
     }
 }

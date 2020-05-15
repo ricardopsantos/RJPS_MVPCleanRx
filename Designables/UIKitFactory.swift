@@ -48,6 +48,17 @@ public struct UIKitFactory {
         return some
     }
 
+    public static func button(baseView: UIView? = nil,
+                              title: String = "",
+                              style: UIButton.LayoutStyle) -> UIButton {
+        let some = UIButton()
+        some.tag =  UIKitViewFactoryElementTag.button.rawValue
+        some.setTitleForAllStates(title)
+        some.layoutStyle = style
+        baseView?.addSubview(some)
+        return some
+    }
+
     public static func textField(baseView: UIView? = nil,
                                  title: String = "") -> UITextField {
         let some = UITextField()
@@ -65,7 +76,6 @@ public struct UIKitFactory {
         some.tag =  UIKitViewFactoryElementTag.label.rawValue
         some.addShadow()
         some.layoutStyle = style
-        //some.unifyColors()
         return some
     }
 
@@ -78,17 +88,6 @@ public struct UIKitFactory {
         some.tag =  UIKitViewFactoryElementTag.label.rawValue
         some.layoutStyle = style
         some.addShadow()
-        baseView?.addSubview(some)
-        return some
-    }
-
-    public static func button(baseView: UIView? = nil,
-                              title: String = "",
-                              style: UIButton.LayoutStyle) -> UIButton {
-        let some = UIButton()
-        some.tag =  UIKitViewFactoryElementTag.button.rawValue
-        some.setTitleForAllStates(title)
-        some.layoutStyle = style
         baseView?.addSubview(some)
         return some
     }
@@ -221,7 +220,9 @@ public struct UIKitFactory {
     }
     
     public static func topBar(baseController: UIViewController) -> TopBar {
-        let bar         = TopBar()
+        let bar = TopBar()
+        bar.injectOn(viewController: baseController)
+         /*
         let screenWidth = UIScreen.main.bounds.width
         let height      = TopBar.defaultHeight
         let container   = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: screenWidth, height: height)))
@@ -239,6 +240,7 @@ public struct UIKitFactory {
         bar.view.rjsALayouts.setMargin(0, on: .right)
         bar.view.rjsALayouts.setMargin(0, on: .left)
         bar.view.rjsALayouts.setHeight(TopBar.defaultHeight)
+        return bar*/
         return bar
     }
 

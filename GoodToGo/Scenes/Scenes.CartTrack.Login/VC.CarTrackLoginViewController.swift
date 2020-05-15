@@ -88,7 +88,7 @@ extension VC {
             router.dsCarTrackLogin = interactor
         }
 
-        private lazy var _topGenericView: TopBar = {
+        private lazy var topGenericView: TopBar = {
             let some = TopBar()
             some.injectOn(viewController: self)
             some.setTitle(Messages.welcome.localised)
@@ -100,7 +100,7 @@ extension VC {
         override func setupViewIfNeed() {
             // Use it to configure stuff on the genericView, depending on the value external/public variables
             // that are set after we instantiate the view controller, but before if has been presented
-            _topGenericView.lazyLoad()
+            topGenericView.lazyLoad()
         }
 
         // Order in View life-cycle : 3

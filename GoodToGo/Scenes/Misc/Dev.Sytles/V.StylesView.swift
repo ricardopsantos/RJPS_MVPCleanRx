@@ -61,7 +61,7 @@ extension V {
             stackViewVLevel1.uiUtils.addArrangedSeparator()
 
             let sectionSize: CGFloat = 3
-
+            let sectionSmallSeparatorColor = AppColors.primary.withAlphaComponent(0.5)
             func buttonWithAction(title: String, block:@escaping () -> Void) -> UIButton {
                 let some = UIKitFactory.raisedButton(title: title, backgroundColor: AppColors.primary)
                 //let some = UIKitFactory.button(title: title, style: .regular)
@@ -99,7 +99,7 @@ extension V {
             let ffViews: [UIView] = DevTools.FeatureFlag.allCases.map { makeFeatureView($0) }
             ffViews.forEach { (ffView) in
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(ffView)
-                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: UIColor.App.primary)
+                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
             }
 
             //
@@ -113,7 +113,7 @@ extension V {
                     BaseViewControllerMVP.shared.displayMessage(randomStringWith(length: randomInt(min: 50, max: 100)), type: some)
                 }
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(button)
-                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: UIColor.App.primary)
+                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
             }
 
             //
@@ -131,7 +131,7 @@ extension V {
                 label2.textAlignment = .center
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(label1)
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(label2)
-                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: UIColor.App.primary)
+                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
             }
 
             //
@@ -142,7 +142,7 @@ extension V {
             
             UIButton.LayoutStyle.allCases.forEach { (some) in
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(UIKitFactory.button(title: "\(some)", style: some))
-                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: UIColor.App.primary)
+                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
             }
 
             //
@@ -151,10 +151,16 @@ extension V {
 
             makeSection("Components", size: sectionSize)
 
+            let labelWithPadding = UIKitFactory.labelWithPadding(title: "labelWithPadding", style: .title)
+            labelWithPadding.backgroundColor = UIColor.App.primary.withAlphaComponent(0.1)
+            stackViewVLevel1.uiUtils.safeAddArrangedSubview(labelWithPadding)
+
+            stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
+
             let raisedButton = UIKitFactory.raisedButton(title: "raisedButton", backgroundColor: AppColors.primary)
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(raisedButton)
 
-            stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: UIColor.App.primary)
+            stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
 
             let skyFloatingLabelTextField = UIKitFactory.skyFloatingLabelTextField(title: "skyFloatingLabelTextField",
                                                             placeholder: "Your skyFloatingLabelTextField")

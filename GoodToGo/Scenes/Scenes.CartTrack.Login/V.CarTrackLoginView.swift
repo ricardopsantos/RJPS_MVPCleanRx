@@ -98,12 +98,8 @@ extension V {
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(txtUserName)
             stackViewVLevel1.uiUtils.addArrangedSeparator()
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(txtPassword)
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(btnLogin)
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(lblErrorMessage)
+            addSubview(btnLogin)
+            addSubview(lblErrorMessage)
         }
 
         // This function is called automatically by super BaseGenericViewVIP
@@ -120,6 +116,12 @@ extension V {
                 some.autoLayout.marginToSuperVerticalStackView(trailing: AppSizes.Margins.defaultMargin,
                                                                leading: AppSizes.Margins.defaultMargin)
             }
+
+            btnLogin.autoLayout.centerXToSuperview()
+            btnLogin.autoLayout.centerYToSuperview()
+            btnLogin.autoLayout.leadingToSuperview(offset: AppSizes.Margins.defaultMargin)
+            btnLogin.autoLayout.trailingToSuperview(offset: AppSizes.Margins.defaultMargin)
+            btnLogin.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
         }
 
         // This function is called automatically by super BaseGenericViewVIP
