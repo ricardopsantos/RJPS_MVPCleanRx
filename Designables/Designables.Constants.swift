@@ -12,6 +12,6 @@ import AppConstants
 public extension Designables {
     struct Constants {
         private init() {}
-        public static let disabledViewAlpha: CGFloat = FadeType.superHeavy.rawValue
+        public static let disabledViewAlpha: CGFloat = FadeType.heavy.rawValue
     }
 }

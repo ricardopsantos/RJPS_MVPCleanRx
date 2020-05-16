@@ -195,8 +195,8 @@ extension V.CartTrackMapView {
             self.mapView.addAnnotations(mkAnnotationsList)
         }
 
-        if let first = list.first {
-            mapView.setRegion(first.mapLocation)
+        if let last  = list.last {
+            mapView.setRegion(last.mapLocation)
         }
     }
 

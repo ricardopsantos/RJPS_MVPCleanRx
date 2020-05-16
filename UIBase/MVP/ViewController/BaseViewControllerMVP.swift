@@ -77,9 +77,9 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
         style.displayShadow = true
         style.messageFont = UIFont.App.regular(size: .regularBig)
         switch type {
-        case .success: style.backgroundColor = UIColor.App.success.withAlphaComponent(FadeType.light.rawValue)
-        case .warning: style.backgroundColor = UIColor.App.warning.withAlphaComponent(FadeType.light.rawValue)
-        case .error: style.backgroundColor = UIColor.App.error.withAlphaComponent(FadeType.light.rawValue)
+        case .success: style.backgroundColor = UIColor.App.success.withAlphaComponent(FadeType.superLight.rawValue)
+        case .warning: style.backgroundColor = UIColor.App.warning.withAlphaComponent(FadeType.superLight.rawValue)
+        case .error: style.backgroundColor = UIColor.App.error.withAlphaComponent(FadeType.superLight.rawValue)
         }
         style.messageColor = .white
         DevTools.topViewController()?.view.makeToast(message, duration: 5, position: .top, style: style)

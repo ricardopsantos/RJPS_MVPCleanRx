@@ -184,11 +184,9 @@ public extension GoodToGoProgramaticUIUtils where GoodToGoBase: UIView {
         }
     }
 
-    func addShadow(color: UIColor = AppConstants.Shadows.shadowColor,
-                   offset: CGSize = AppConstants.Shadows.offset,
-                   radius: CGFloat = AppConstants.Shadows.offset.height, strong: Bool = false) {
+    func addShadow() {
         let target = self.base
-        target.addShadow(color: color, offset: offset, radius: radius, strong: strong)
+        target.addShadow()
     }
 
     func setWidthAnchor(value: CGFloat) {

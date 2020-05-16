@@ -63,7 +63,7 @@ extension V {
             stackViewVLevel1.uiUtils.addArrangedSeparator()
 
             let sectionSize: CGFloat = 3
-            let sectionSmallSeparatorColor = AppColors.primary.withAlphaComponent(FadeType.light.rawValue)
+            let sectionSmallSeparatorColor = AppColors.primary.withAlphaComponent(FadeType.superLight.rawValue)
             func buttonWithAction(title: String, block:@escaping () -> Void) -> UIButton {
                 let some = UIKitFactory.raisedButton(title: title, backgroundColor: AppColors.primary)
                 //let some = UIKitFactory.button(title: title, style: .regular)
@@ -81,6 +81,13 @@ extension V {
                 stackViewVLevel1.uiUtils.addArrangedSeparator()
             }
 
+            func pureLabel(text: String) -> UILabel {
+                let label = UIKitFactory.label(style: .title)
+                label.text = text
+                label.textAlignment = .center
+                label.font = UIFont.App.bold(size: .regular)
+                return label
+            }
             //
             // FeatureFlag
             //
@@ -115,7 +122,8 @@ extension V {
                     BaseViewControllerMVP.shared.displayMessage(randomStringWith(length: randomInt(min: 50, max: 100)), type: some)
                 }
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(button)
-                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
+                button.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
+                //stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
             }
 
             //
@@ -127,11 +135,18 @@ extension V {
             UILabel.LayoutStyle.allCases.forEach { (some) in
                 let label1 = UIKitFactory.label(title: "\(some)", style: some)
                 label1.backgroundColor = UIColor.white
+                label1.textAlignment = .center
                 let label2 = UIKitFactory.label(title: "\(some)", style: some)
                 label2.backgroundColor = UIColor.black
-                label1.textAlignment = .center
                 label2.textAlignment = .center
+                let label3 = UIKitFactory.label(title: "\(some)", style: some)
+                label3.backgroundColor = UIColor.App.primary
+                label3.textAlignment = .center
+                label1.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
+                label2.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
+                label3.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(label1)
+                stackViewVLevel1.uiUtils.safeAddArrangedSubview(label3)
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(label2)
                 stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
             }
@@ -143,8 +158,10 @@ extension V {
             makeSection("UIButton.LayoutStyle", size: sectionSize)
             
             UIButton.LayoutStyle.allCases.forEach { (some) in
-                stackViewVLevel1.uiUtils.safeAddArrangedSubview(UIKitFactory.button(title: "\(some)", style: some))
-                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
+                let btn = UIKitFactory.button(title: "\(some)", style: some)
+                stackViewVLevel1.uiUtils.safeAddArrangedSubview(btn)
+                btn.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
+                //stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
             }
 
             #warning("adicionar as cores (passar para enum)")
@@ -154,51 +171,32 @@ extension V {
             //
 
             makeSection("Shadows", size: sectionSize)
-            let viewShadow1 = UILabel()
-            viewShadow1.font = UIFont.App.bold(size: .regular)
-            viewShadow1.text = "Strong shadow"
-            viewShadow1.textColor = UIColor.App.lblTextColor
-            viewShadow1.textAlignment = .center
-            viewShadow1.backgroundColor = UIColor.App.primary
-            viewShadow1.addShadow(strong: true)
-            viewShadow1.autoLayout.height(40)
-
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(viewShadow1)
-
-            let viewShadow2 = UILabel()
-            viewShadow2.font = UIFont.App.bold(size: .regular)
-            viewShadow2.text = "Week shadow"
-            viewShadow2.textColor = UIColor.App.lblTextColor
-            viewShadow2.textAlignment = .center
-            viewShadow2.backgroundColor = UIColor.App.primary
-            viewShadow2.addShadow(strong: false)
-            viewShadow2.autoLayout.height(40)
-
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(viewShadow2)
-
-            let viewNoShadow = UILabel()
-            viewNoShadow.font = UIFont.App.bold(size: .regular)
-            viewNoShadow.textColor = UIColor.App.lblTextColor
-            viewNoShadow.text = "No shadow"
-            viewNoShadow.textAlignment = .center
-            viewNoShadow.backgroundColor = UIColor.App.primary
-            viewNoShadow.autoLayout.height(40)
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(viewNoShadow)
+            ShadowType.allCases.forEach { (some) in
+                let view1 = pureLabel(text: "\(some)")
+                view1.backgroundColor = UIColor.App.primary
+                view1.addShadow(shadowType: some)
+                view1.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
+                let view2 = pureLabel(text: "\(some)")
+                view2.backgroundColor = UIColor.white
+                view2.addShadow(shadowType: some)
+                view2.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
+                stackViewVLevel1.uiUtils.safeAddArrangedSubview(view1)
+                stackViewVLevel1.uiUtils.safeAddArrangedSubview(view2)
+                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
+            }
 
             //
-            // Misc
+            // FadeType
             //
 
             #warning("adicionar as cores (passar para enum)")
             makeSection("FadeType", size: sectionSize)
             FadeType.allCases.forEach { (some) in
-                let view = UIKitFactory.label(style: .title)
-                view.text = "\(some)"
-                view.textAlignment = .center
-                view.addCorner(radius: 5)
+                let view = pureLabel(text: "\(some)")
                 view.backgroundColor = UIColor.App.primary.withAlphaComponent(some.rawValue)
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(view)
-                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
+                view.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
+                //stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
             }
 
             //
@@ -208,7 +206,7 @@ extension V {
             makeSection("Components", size: sectionSize)
 
             let labelWithPadding = UIKitFactory.labelWithPadding(title: "labelWithPadding", style: .title)
-            labelWithPadding.backgroundColor = UIColor.App.primary.withAlphaComponent(FadeType.superHeavy.rawValue)
+            labelWithPadding.backgroundColor = UIColor.App.primary.withAlphaComponent(FadeType.heavy.rawValue)
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(labelWithPadding)
 
             stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
@@ -244,7 +242,7 @@ extension V {
         }
 
         override func setupColorsAndStyles() {
-            self.backgroundColor = AppColors.appDefaultBackgroundColor
+            self.backgroundColor = UIColor.white // mais facil para ver os filtros
         }
 
         // Order in View life-cycle : 2
