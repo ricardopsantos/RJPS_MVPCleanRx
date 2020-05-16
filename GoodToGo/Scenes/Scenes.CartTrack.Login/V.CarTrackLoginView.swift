@@ -92,7 +92,7 @@ extension V {
 
             addSubview(scrollView)
             scrollView.addSubview(stackViewVLevel1)
-            stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: TopBar.defaultHeight)
+            stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: TopBar.defaultHeight(usingSafeArea: true))
             stackViewVLevel1.uiUtils.addArrangedSeparator()
             stackViewVLevel1.uiUtils.addArrangedSeparator()
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(txtUserName)

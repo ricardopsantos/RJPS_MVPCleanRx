@@ -30,6 +30,9 @@ extension VC {
             StylesDataPassingProtocol &
             StylesRoutingLogicProtocol)?
 
+        let bottomBar = BottomBar()
+        let topBar = TopBar()
+
         //
         // MARK: View lifecycle
         //
@@ -50,6 +53,8 @@ extension VC {
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             if firstAppearance {
+                bottomBar.injectOn(viewController: self, usingSafeArea: false)
+                topBar.injectOn(viewController: self, usingSafeArea: false)
                 interactor?.requestScreenInitialState()
             }
         }

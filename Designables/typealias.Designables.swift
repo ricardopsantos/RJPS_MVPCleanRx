@@ -13,3 +13,4 @@ import RJPSLib
 
 public typealias CustomSearchBar = RJS_Designables_SearchBar
 public typealias AppSizes = Designables.Sizes
+public typealias AppleSizes = Designables.Sizes.Apple

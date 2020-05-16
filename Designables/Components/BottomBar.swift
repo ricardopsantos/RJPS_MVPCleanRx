@@ -93,12 +93,18 @@ open class BottomBar: BaseViewControllerMVP {
         view.accessibilityIdentifier = self.genericAccessibilityIdentifier
         self.view.backgroundColor = UIColor.App.primary
     }
-    
+
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if firstAppearance {
+            self.lazyLoad()
+        }
+    }
     public override func prepareLayoutCreateHierarchy() {
         let viewBack = UIView()
         viewBack.backgroundColor = .cyan
         self.view.addSubview(viewBack)
-        let viewBackMarginTop = BottomBar.defaultHeight() - BottomBar.backgroundHeight()
+        let viewBackMarginTop = BottomBar.defaultHeight - BottomBar.backgroundHeight
         viewBack.rjsALayouts.setMargin(0, on: .left)
         viewBack.rjsALayouts.setMargin(0, on: .right)
         viewBack.rjsALayouts.setMargin(0, on: .bottom)
@@ -112,14 +118,14 @@ open class BottomBar: BaseViewControllerMVP {
         
         let btns =  [_btn1, _btn2, _btn3, _btn4, _btn5]
         let k: CGFloat = 0.3
-        let dimH = BottomBar.backgroundHeight()*(1.0-k)
+        let dimH = BottomBar.backgroundHeight*(1.0-k)
         let dimW = (screenWidth / (CGFloat(btns.count+1)))
         
-        let margin: CGFloat = BottomBar.defaultHeight()*(k/2.0)
+        let margin: CGFloat = BottomBar.defaultHeight*(k/2.0)
         let btnSize = CGSize(width: dimW, height: dimH)
         btns.forEach { (some) in
             if some == _btn3 {
-                _btn3.backgroundColor = .red
+                _btn3.backgroundColor = UIColor.App.primary
                 some.rjsALayouts.setWidth(dimW)
                 some.rjsALayouts.setMargin(margin, on: .top)
             } else {
@@ -144,8 +150,40 @@ open class BottomBar: BaseViewControllerMVP {
 /**
  * Public stuff
  */
-extension BottomBar {
-    static func defaultHeight() -> CGFloat { return 100 }
-    static func backgroundHeight() -> CGFloat { return defaultHeight()-30 }
+public extension BottomBar {
+    static var defaultHeight: CGFloat { return 100 }
+    static var backgroundHeight: CGFloat { return defaultHeight-30 }
     func lazyLoad() { /* Lazy var auxiliar */ }
+}
+
+public extension BottomBar {
+
+    // [usingSafeArea=false] will make the BottomBar go down and use space on the safe area
+    func injectOn(viewController: UIViewController, usingSafeArea: Bool = false) {
+        self.view.backgroundColor = .clear
+        let container   = UIView()
+        container.backgroundColor = .clear
+        viewController.view.addSubview(container)
+        UIViewController.rjs.loadViewControllerInContainedView(sender: viewController,
+                                                               senderContainedView: container,
+                                                               controller: self) { (_, _) in }
+/*
+        container.autoLayout.trailingToSuperview()
+        container.autoLayout.leftToSuperview()
+        container.autoLayout.bottomToSuperview(usingSafeArea: usingSafeArea)
+        container.autoLayout.height(BottomBar.defaultHeight)
+        self.view.edgesToSuperview()
+*/
+
+        container.rjsALayouts.setMargin(0, on: .bottom)
+        container.rjsALayouts.setMargin(0, on: .right)
+        container.rjsALayouts.setMargin(0, on: .left)
+        container.rjsALayouts.setHeight(BottomBar.defaultHeight)
+
+        self.view.rjsALayouts.setMargin(0, on: .top)
+        self.view.rjsALayouts.setMargin(0, on: .right)
+        self.view.rjsALayouts.setMargin(0, on: .left)
+        self.view.rjsALayouts.setHeight(BottomBar.defaultHeight)
+
+    }
 }

@@ -186,6 +186,7 @@ extension AutoLayout {
                                priority: TinyConstraints.LayoutPriority = .required,
                                isActive: Bool = true,
                                usingSafeArea: Bool = false) -> TinyConstraints.Constraint {
+        // [usingSafeArea=false] will make the view go up and use space on the safe area
         return target.topToSuperview(anchor, offset: offset, relation: relation, priority: priority, isActive: isActive, usingSafeArea: usingSafeArea)
     }
 

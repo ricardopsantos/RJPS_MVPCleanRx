@@ -88,6 +88,9 @@ extension V {
                 label.font = UIFont.App.bold(size: .regular)
                 return label
             }
+
+            let testBackgroundColors = [UIColor.white, UIColor.App.primary, UIColor.black]
+
             //
             // FeatureFlag
             //
@@ -133,21 +136,13 @@ extension V {
             makeSection("UILabel.LayoutStyle", size: sectionSize)
 
             UILabel.LayoutStyle.allCases.forEach { (some) in
-                let label1 = UIKitFactory.label(title: "\(some)", style: some)
-                label1.backgroundColor = UIColor.white
-                label1.textAlignment = .center
-                let label2 = UIKitFactory.label(title: "\(some)", style: some)
-                label2.backgroundColor = UIColor.black
-                label2.textAlignment = .center
-                let label3 = UIKitFactory.label(title: "\(some)", style: some)
-                label3.backgroundColor = UIColor.App.primary
-                label3.textAlignment = .center
-                label1.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
-                label2.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
-                label3.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
-                stackViewVLevel1.uiUtils.safeAddArrangedSubview(label1)
-                stackViewVLevel1.uiUtils.safeAddArrangedSubview(label3)
-                stackViewVLevel1.uiUtils.safeAddArrangedSubview(label2)
+                testBackgroundColors.forEach { (backgroundColor) in
+                    let some = UIKitFactory.label(title: "\(some)", style: some)
+                    some.backgroundColor = backgroundColor
+                    some.textAlignment = .center
+                    some.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
+                    stackViewVLevel1.uiUtils.safeAddArrangedSubview(some)
+                }
                 stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
             }
 
@@ -172,16 +167,14 @@ extension V {
 
             makeSection("Shadows", size: sectionSize)
             ShadowType.allCases.forEach { (some) in
-                let view1 = pureLabel(text: "\(some)")
-                view1.backgroundColor = UIColor.App.primary
-                view1.addShadow(shadowType: some)
-                view1.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
-                let view2 = pureLabel(text: "\(some)")
-                view2.backgroundColor = UIColor.white
-                view2.addShadow(shadowType: some)
-                view2.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
-                stackViewVLevel1.uiUtils.safeAddArrangedSubview(view1)
-                stackViewVLevel1.uiUtils.safeAddArrangedSubview(view2)
+                testBackgroundColors.forEach { (backgroundColor) in
+                    let view = pureLabel(text: "\(some)")
+                    view.backgroundColor = backgroundColor
+                    view.textAlignment = .center
+                    view.addShadow(shadowType: some)
+                    view.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
+                    stackViewVLevel1.uiUtils.safeAddArrangedSubview(view)
+                }
                 stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
             }
 
@@ -220,6 +213,8 @@ extension V {
                                                                                    placeholder: "Your skyFloatingLabelTextField")
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(skyFloatingLabelTextField)
 
+            stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
+
             stackViewVLevel1.uiUtils.addArrangedSeparator()
             stackViewVLevel1.uiUtils.addArrangedSeparator()
 
@@ -230,8 +225,17 @@ extension V {
         // Function 2/3 : JUST to setup layout rules zone....
         override func prepareLayoutBySettingAutoLayoutsRules() {
             stackViewVLevel1.uiUtils.edgeStackViewToSuperView()
-            scrollView.autoLayout.edgesToSuperview(excluding: .bottom, insets: .zero)
-            scrollView.autoLayout.height(screenHeight)
+
+            if false {
+                scrollView.autoLayout.edgesToSuperview(excluding: .bottom, insets: .zero)
+                scrollView.autoLayout.height(screenHeight - BottomBar.backgroundHeight - AppleSizes.tabBarControllerDefaultSize)
+            } else {
+                scrollView.autoLayout.trailingToSuperview()
+                scrollView.autoLayout.leftToSuperview()
+                scrollView.autoLayout.topToSuperview(offset: TopBar.defaultHeight(usingSafeArea: true), usingSafeArea: false)
+                scrollView.autoLayout.height(screenHeight - BottomBar.backgroundHeight - AppleSizes.tabBarControllerDefaultSize)
+            }
+
         }
 
         // This function is called automatically by super BaseGenericViewVIP

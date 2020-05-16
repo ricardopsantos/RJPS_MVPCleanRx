@@ -51,7 +51,9 @@ open class BaseGenericViewControllerVIP<T: StylableView>: BaseViewControllerVIP 
 
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        firstAppearance = false
+        DispatchQueue.executeWithDelay(delay: 0.1) { [weak self] in
+            self?.firstAppearance = false
+        }
     }
 
     open func setupViewIfNeed() {

@@ -45,7 +45,7 @@ extension VC {
             if false {
                 viewControllers = [vip2, c1, c2, c3, c4, c5, c6]
             } else {
-                viewControllers = [cartTrackMapViewController, carTrackLoginViewController, stylesViewController]
+                viewControllers = [stylesViewController, cartTrackMapViewController, carTrackLoginViewController]
             }
         }
         

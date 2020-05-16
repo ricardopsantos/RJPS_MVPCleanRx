@@ -90,7 +90,7 @@ extension VC {
 
         private lazy var topGenericView: TopBar = {
             let some = TopBar()
-            some.injectOn(viewController: self)
+            some.injectOn(viewController: self, usingSafeArea: true)
             some.setTitle(Messages.welcome.localised)
             return some
         }()

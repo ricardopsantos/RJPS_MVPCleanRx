@@ -39,8 +39,7 @@ extension V {
         private let _imageSize: Int = 100
         
         private lazy var _topGenericView: TopBar = {
-            let some = UIKitFactory.topBar(baseController: self)
-            some.setTitle(Messages.Bliss.appName)
+            let some = UIKitFactory.topBar(baseController: self, usingSafeArea: true)
             some.setTitle(Messages.details.localised)
             some.addBackButton()
             some.rxSignal_btnDismissTapped

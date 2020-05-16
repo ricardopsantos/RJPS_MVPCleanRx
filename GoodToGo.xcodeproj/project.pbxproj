@@ -395,13 +395,6 @@
 			remoteGlobalIDString = D72922AE2466A0CA00DAD480;
 			remoteInfo = DevTools;
 		};
-		D72923BD24670A6800DAD480 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9F288F1C20F8089F008A9539 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D729233D2466B78300DAD480;
-			remoteInfo = AppResources;
-		};
 		D768AD78246858C000DF295D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9F288F1C20F8089F008A9539 /* Project object */;
@@ -1258,7 +1251,7 @@
 				D7CA2B54246B27ED0071DAF8 /* CartTrack */,
 				D779A5F5234FE43900D3D6F7 /* AppScenes.VIP */,
 				9F58FB1722BE5DE700042A8C /* AppScenes.MVP */,
-				D725A6A4246C837E005664CB /* Misc */,
+				D725A6A4246C837E005664CB /* AppScenes.DevStuff */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -1445,13 +1438,13 @@
 			path = Protocol.Misc;
 			sourceTree = "<group>";
 		};
-		D725A6A4246C837E005664CB /* Misc */ = {
+		D725A6A4246C837E005664CB /* AppScenes.DevStuff */ = {
 			isa = PBXGroup;
 			children = (
 				D7979DD0246DCC920039031C /* Dev.Sytles */,
 				9F3ED4BB22E618C80020A50A /* VC.RxTesting.swift */,
 			);
-			path = Misc;
+			path = AppScenes.DevStuff;
 			sourceTree = "<group>";
 		};
 		D725A6A5246C839B005664CB /* Resolvers */ = {
@@ -2298,7 +2291,6 @@
 			);
 			dependencies = (
 				D7B514FF246EB5750008E2E0 /* PBXTargetDependency */,
-				D72923BE24670A6800DAD480 /* PBXTargetDependency */,
 			);
 			name = AppTheme;
 			productName = AppTheme;
@@ -3278,11 +3270,6 @@
 			isa = PBXTargetDependency;
 			target = D72922AE2466A0CA00DAD480 /* DevTools */;
 			targetProxy = D72923BB24670A4C00DAD480 /* PBXContainerItemProxy */;
-		};
-		D72923BE24670A6800DAD480 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D729233D2466B78300DAD480 /* AppResources */;
-			targetProxy = D72923BD24670A6800DAD480 /* PBXContainerItemProxy */;
 		};
 		D768AD79246858C000DF295D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

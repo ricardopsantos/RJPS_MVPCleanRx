@@ -50,7 +50,7 @@ extension V {
             some.rjsALayouts.setMargin(_margin, on: .top, from: _imgAvatar)
             some.rjsALayouts.setMargin(_margin, on: .left)
             some.rjsALayouts.setMargin(_margin, on: .right)
-            some.rjsALayouts.setMargin(_margin + TopBar.defaultHeight, on: .bottom)
+            some.rjsALayouts.setMargin(_margin + TopBar.defaultHeight(usingSafeArea: true), on: .bottom)
             V.UserTableViewCell.prepare(tableView: some)
             return some
         }()
@@ -64,7 +64,7 @@ extension V {
         }()
         
         private lazy var _topGenericBar: TopBar = {
-            let some = UIKitFactory.topBar(baseController: self)
+            let some = UIKitFactory.topBar(baseController: self, usingSafeArea: true)
             some.setTitle(Messages.details.localised)
             some.addDismissButton()
             some.rxSignal_btnDismissTapped

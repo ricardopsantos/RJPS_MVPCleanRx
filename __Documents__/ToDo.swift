@@ -6,3 +6,4 @@
 #warning("Colocar UC. nos use cases")
 #warning("adicionar suport para falta de internet")
 #warning("wrongUserCredencial is not beying used")
+#warning("private var _btn")

@@ -39,7 +39,7 @@ extension V {
         private var _tableViewIsLoadingMoreData = false // flag
 
         private lazy var _topGenericView: TopBar = {
-            let some = UIKitFactory.topBar(baseController: self)
+            let some = UIKitFactory.topBar(baseController: self, usingSafeArea: true)
             some.setTitle(Messages.Bliss.appName)
             some.rxSignal_viewTapped
                 .emit(onNext: { [weak self] in

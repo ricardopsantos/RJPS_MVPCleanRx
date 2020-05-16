@@ -30,6 +30,7 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
 
     public static var shared = BaseViewControllerMVP()
 
+    public var firstAppearance = true
     // Keyboard related init
     var _keyboardHeigth: CGFloat = 0
     var _keyboardIsVisible = false
@@ -67,6 +68,9 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
     
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        DispatchQueue.executeWithDelay(delay: 0.1) { [weak self] in
+            self?.firstAppearance = false
+        }
         _lblReachability.lazyLoad()
         _lblReachability.superview?.bringSubviewToFront(_lblReachability)
     }

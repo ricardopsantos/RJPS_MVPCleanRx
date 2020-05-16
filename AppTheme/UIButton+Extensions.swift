@@ -37,13 +37,13 @@ public extension UIButton {
             self.addShadow()
         }
         let alternative = {
-            self.titleLabel?.font = UIFont.App.regular(size: .regular)
+            self.titleLabel?.font = UIFont.App.bold(size: .regularBig)
             self.backgroundColor  = UIColor.App.btnBackgroundColor
             self.setTextColorForAllStates(UIColor.App.btnTextColor)
             self.setState(enabled: true)
-            self.layer.cornerRadius = 10.0
+            self.layer.cornerRadius = 15.0
             self.clipsToBounds      = true
-            self.addShadow()
+            self.addShadow(shadowType: .heavy)
         }
         let dismiss = {
             self.titleLabel?.font = UIFont.App.regular(size: .regular)

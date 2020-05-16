@@ -235,9 +235,9 @@ public struct UIKitFactory {
         return some
     }
     
-    public static func topBar(baseController: UIViewController) -> TopBar {
+    public static func topBar(baseController: UIViewController, usingSafeArea: Bool) -> TopBar {
         let bar = TopBar()
-        bar.injectOn(viewController: baseController)
+        bar.injectOn(viewController: baseController, usingSafeArea: usingSafeArea)
         /*
          let screenWidth = UIScreen.main.bounds.width
          let height      = TopBar.defaultHeight
@@ -260,8 +260,10 @@ public struct UIKitFactory {
         return bar
     }
 
-    public static func bottomBar(baseController: UIViewController) -> BottomBar {
-        let bar         = BottomBar()
+    public static func bottomBar(baseController: UIViewController, usingSafeArea: Bool) -> BottomBar {
+        let bar = BottomBar()
+        bar.injectOn(viewController: baseController, usingSafeArea: usingSafeArea)
+       /* let bar         = BottomBar()
         bar.view.backgroundColor = .clear
         let screenWidth = UIScreen.main.bounds.width
         let height      = TopBar.defaultHeight
@@ -272,13 +274,13 @@ public struct UIKitFactory {
         container.rjsALayouts.setMargin(0, on: .bottom)
         container.rjsALayouts.setMargin(0, on: .right)
         container.rjsALayouts.setMargin(0, on: .left)
-        container.rjsALayouts.setHeight(BottomBar.defaultHeight())
+        container.rjsALayouts.setHeight(BottomBar.defaultHeight)
         container.backgroundColor = .clear
 
         bar.view.rjsALayouts.setMargin(0, on: .top)
         bar.view.rjsALayouts.setMargin(0, on: .right)
         bar.view.rjsALayouts.setMargin(0, on: .left)
-        bar.view.rjsALayouts.setHeight(BottomBar.defaultHeight())
+        bar.view.rjsALayouts.setHeight(BottomBar.defaultHeight)*/
         return bar
     }
 }

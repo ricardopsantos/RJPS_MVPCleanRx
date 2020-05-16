@@ -14,7 +14,7 @@ public extension UIButton {
         case notApplied
         case regular
         case dismiss
-        case alternative
+        case alternative // TabBar buttons
     }
 }
 

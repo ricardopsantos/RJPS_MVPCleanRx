@@ -98,7 +98,7 @@ extension V {
             mapView.autoLayout.leadingToSuperview()
             mapView.autoLayout.trailingToSuperview()
 
-            searchBar.rjsALayouts.setMargin(TopBar.defaultHeight, on: .top)
+            searchBar.rjsALayouts.setMargin(TopBar.defaultHeight(usingSafeArea: true), on: .top)
             searchBar.autoLayout.leadingToSuperview()
             searchBar.autoLayout.trailingToSuperview()
             searchBar.autoLayout.height(50)
