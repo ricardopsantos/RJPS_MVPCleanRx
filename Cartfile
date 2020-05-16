@@ -1,9 +1,10 @@
 # Tutorial
 # http://www.raywenderlich.com/109330/carthage-tutorial-getting-started
 
-# Edit File       : open -a Xcode Cartfile
-# Update (iPhone) : carthage update --platform iOS
-# Open compiled   : open Carthage
+# Edit File        : open -a Xcode Cartfile
+# Update (iPhone)  : carthage update --platform iOS
+# Update (RJPSLib) : carthage update RJPSLib
+# Open compiled    : open Carthage
 
 # brew update
 # brew install carthage

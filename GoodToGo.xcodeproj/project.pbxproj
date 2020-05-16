@@ -298,6 +298,8 @@
 		D7E25AA624669BF4003BBEA0 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F02AE5B20F91E7B00AB5942 /* AppConstants.swift */; };
 		D7E25AA724669D13003BBEA0 /* PointFreeFunctions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7E25A7A246699FC003BBEA0 /* PointFreeFunctions.framework */; };
 		D7E25AAA24669D1A003BBEA0 /* AppConstants.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7E25A9424669B9B003BBEA0 /* AppConstants.framework */; };
+		D7FA21F724708B9C001DD9D5 /* V.ReachabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA21F324706A32001DD9D5 /* V.ReachabilityView.swift */; };
+		D7FA21F9247097BD001DD9D5 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA21F8247097BD001DD9D5 /* File.swift */; };
 		D7FCAC2024685B7A00DBECA2 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FCAC1F24685B7A00DBECA2 /* RxDataSources.framework */; };
 		D7FCAC27246874C900DBECA2 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FCAC242468748B00DBECA2 /* UIView+Extensions.swift */; };
 		D7FCAC292468753500DBECA2 /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FECF2468412100BD41A5 /* UIView+Autolayout.swift */; };
@@ -976,6 +978,8 @@
 		D7E25A9424669B9B003BBEA0 /* AppConstants.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppConstants.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E25A9624669B9B003BBEA0 /* AppConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppConstants.h; sourceTree = "<group>"; };
 		D7E25A9724669B9B003BBEA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7FA21F324706A32001DD9D5 /* V.ReachabilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V.ReachabilityView.swift; sourceTree = "<group>"; };
+		D7FA21F8247097BD001DD9D5 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		D7FCAC1F24685B7A00DBECA2 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
 		D7FCAC222468697000DBECA2 /* FactoryErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryErrors.swift; sourceTree = "<group>"; };
 		D7FCAC242468748B00DBECA2 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
@@ -1768,6 +1772,7 @@
 		D7979DCF246DC9A60039031C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D7FA21F324706A32001DD9D5 /* V.ReachabilityView.swift */,
 				D7979DCD246DC46C0039031C /* V.LabelWithPadding.swift */,
 				D761FED4246845FD00BD41A5 /* TitleTableSection.swift */,
 				D761FEB62468334D00BD41A5 /* E.UIKitViewFactoryElementTag.swift */,
@@ -1834,6 +1839,7 @@
 				D725A6A5246C839B005664CB /* Resolvers */,
 				D761FEB42468330600BD41A5 /* ProgramaticUIUtils.swift */,
 				9FE1437021AF1ADC0026BDFC /* Environments.swift */,
+				D7FA21F8247097BD001DD9D5 /* File.swift */,
 			);
 			path = Comom;
 			sourceTree = "<group>";
@@ -2937,6 +2943,7 @@
 				D779A5EF234FE3A500D3D6F7 /* P.SampleVIP_Presenter.swift in Sources */,
 				D72923892466BF4700DAD480 /* VC.TabBarController.swift in Sources */,
 				D7711F82246B691600B6963A /* ProgramaticUIUtils.swift in Sources */,
+				D7FA21F9247097BD001DD9D5 /* File.swift in Sources */,
 				9F58FB4822BE5DE700042A8C /* UserDetais_ViewModel.swift in Sources */,
 				D7AB2443246716C6000142C4 /* V.UserTableViewCell.swift in Sources */,
 				9F58FB4A22BE5DE700042A8C /* D.SearchUser_ViewModel.swift in Sources */,
@@ -2981,6 +2988,7 @@
 				D7FCAC27246874C900DBECA2 /* UIView+Extensions.swift in Sources */,
 				D78F27E9246DCF31008F7E54 /* Designables.Constants.swift in Sources */,
 				D788BD9924698CDD007C59D0 /* Designables.Sizes.swift in Sources */,
+				D7FA21F724708B9C001DD9D5 /* V.ReachabilityView.swift in Sources */,
 				D78F27EB246DE1D4008F7E54 /* UIButton+Extensions.swift in Sources */,
 				D7979DCE246DC46C0039031C /* V.LabelWithPadding.swift in Sources */,
 			);

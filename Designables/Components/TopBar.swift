@@ -23,7 +23,7 @@ open class TopBar: BaseViewControllerMVP {
         NotificationCenter.default.removeObserver(self)
     }
 
-    private var btnSize: CGFloat { return TopBar.defaultHeight(usingSafeArea: false) / 2.0 }
+    private var btnSize: CGFloat { return TopBar.defaultHeight(usingSafeArea: true) / 2.0 }
     private var baseViewControllerTitle: String = ""
     private var usingSafeArea: Bool = false
 
@@ -95,7 +95,10 @@ open class TopBar: BaseViewControllerMVP {
 extension TopBar {
     public var height: CGFloat { return TopBar.defaultHeight(usingSafeArea: self.usingSafeArea ) }
     public static var defaultColor: UIColor { UIColor.App.TopBar.background }
-    public static func defaultHeight(usingSafeArea: Bool) -> CGFloat { return 60 + (!usingSafeArea ? AppleSizes.safeAreaTop : 0)}
+    public static func defaultHeight(usingSafeArea: Bool) -> CGFloat {
+        // [usingSafeArea=false] will make the TopBar go up and use space on the safe area
+        return 60 + (!usingSafeArea ? AppleSizes.safeAreaTop : 0)
+    }
     public func addBackButton() { enable(btn: _btnBack) }
     public func addDismissButton() { enable(btn: _btnClose) }
     public func setTitle(_ title: String) { _lblTitle.textAnimated = title }

@@ -33,6 +33,7 @@ public struct UIKitFactory {
         let button = RaisedButton(title: title, titleColor: .white)
         button.pulseColor = UIColor.App.onPrimary //.white
         button.backgroundColor = backgroundColor
+        button.addShadow()
         return button
     }
 
@@ -41,9 +42,18 @@ public struct UIKitFactory {
         let some = SkyFloatingLabelTextField(frame: CGRect(x: 10, y: 10, width: 120, height: 45))
         some.placeholder = placeholder
         some.title = title
-        some.errorColor = UIColor.App.error
-        some.titleColor = UIColor.App.lblTextColor
-        some.textColor = UIColor.App.lblTextColor
+
+        some.titleColor         = UIColor.App.lblTextColor.withAlphaComponent(FadeType.regular.rawValue)
+        some.selectedTitleColor = UIColor.App.lblTextColor
+        some.textColor          = UIColor.App.lblTextColor
+
+        some.errorColor      = UIColor.App.error
+        some.titleErrorColor = UIColor.App.error
+        some.textErrorColor  = UIColor.App.error
+        some.lineErrorColor  = UIColor.App.error
+
+        some.selectedLineColor = UIColor.App.primary
+        some.lineColor         = UIColor.App.primary.withAlphaComponent(FadeType.regular.rawValue)
         some.tag = UIKitViewFactoryElementTag.textField.rawValue
         return some
     }

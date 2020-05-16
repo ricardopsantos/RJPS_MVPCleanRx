@@ -36,8 +36,13 @@ extension VC {
 
         private lazy var topGenericView: TopBar = {
             let some = TopBar()
-            some.injectOn(viewController: self, usingSafeArea: true)
+            some.injectOn(viewController: self, usingSafeArea: false)
             some.addDismissButton()
+            some.rxSignal_btnDismissTapped
+                .asObservable()
+                .subscribe(onNext: { (_) in
+                    self.router?.routeToLogin()
+                }).disposed(by: disposeBag)
             return some
         }()
 
@@ -63,6 +68,7 @@ extension VC {
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             if firstAppearance {
+                self.addReachabilityView()
                 interactor?.requestScreenInitialState()
                 let request = VM.CartTrackMap.MapData.Request()
                 interactor?.requestMapData(request: request)

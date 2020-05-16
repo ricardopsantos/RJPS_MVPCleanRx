@@ -81,23 +81,34 @@ extension I.CartTrackMapInteractor: CartTrackMapBusinessLogicProtocol {
     }
 
     func requestMapData(request: VM.CartTrackMap.MapData.Request) {
-
-        #warning("dont use bind. use asObservable")
         presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
         CarTrackResolver.shared.api?
             .getUserDetailV3(cacheStrategy: .cacheAndLatestValue)
-            .asObservable().bind(onNext: { [weak self] (result) in
-                self?.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
+            .asObservable().subscribe(onNext: { [weak self] (result) in
                 guard let self = self else { return }
                 switch result {
                 case .success(let elements):
                     self.list = elements.map({ $0.toDomain! })
                     let response = VM.CartTrackMap.MapData.Response(list: self.list)
                     self.presenter?.presentMapData(response: response)
-                case .failure:
-                    self.presenter?.presentErrorGeneric()
+                case .failure(let error):
+                    self.presentError(error: error)
                 }
+            }, onError: { (error) in
+                DevTools.AppLogger.error(error)
+                self.presentError(error: error)
+            }, onCompleted: {
+                self.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
             }).disposed(by: disposeBag)
     }
 
+}
+
+// MARK: Utils {
+
+extension I.CartTrackMapInteractor {
+    func presentError(error: Error) {
+        let response = BaseDisplayLogicModels.Error(title: error.localisedMessageForView)
+        basePresenter?.presentError(response: response)
+    }
 }

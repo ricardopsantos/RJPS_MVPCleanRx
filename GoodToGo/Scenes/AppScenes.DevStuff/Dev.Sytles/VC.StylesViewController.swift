@@ -31,7 +31,17 @@ extension VC {
             StylesRoutingLogicProtocol)?
 
         let bottomBar = BottomBar()
-        let topBar = TopBar()
+
+        private lazy var topGenericView: TopBar = {
+            let some = TopBar()
+            some.injectOn(viewController: self, usingSafeArea: false)
+            some.addDismissButton()
+            some.rxSignal_viewTapped
+                .asObservable().subscribe(onNext: { (_) in
+                    DevTools.makeToast("Tap!")
+                }).disposed(by: disposeBag)
+            return some
+        }()
 
         //
         // MARK: View lifecycle
@@ -53,8 +63,8 @@ extension VC {
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             if firstAppearance {
-                bottomBar.injectOn(viewController: self, usingSafeArea: false)
-                topBar.injectOn(viewController: self, usingSafeArea: false)
+                //bottomBar.injectOn(viewController: self, usingSafeArea: false)
+                topGenericView.lazyLoad()
                 interactor?.requestScreenInitialState()
             }
         }

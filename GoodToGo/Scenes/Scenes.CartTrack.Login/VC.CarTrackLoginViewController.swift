@@ -57,6 +57,7 @@ extension VC {
         // Order in View life-cycle : 9
         override func viewDidAppear(_ animated: Bool) {
             super.viewDidAppear(animated)
+            _ = self.addReachabilityView()
         }
 
         //
@@ -90,7 +91,7 @@ extension VC {
 
         private lazy var topGenericView: TopBar = {
             let some = TopBar()
-            some.injectOn(viewController: self, usingSafeArea: true)
+            some.injectOn(viewController: self, usingSafeArea: false)
             some.setTitle(Messages.welcome.localised)
             return some
         }()
@@ -107,7 +108,9 @@ extension VC {
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
 
-            #warning("adicionar um delay desde que parou de escrever")
+            //
+            // User and password
+            //
             let observable1 = genericView.rxTxtPassword.value.asObservable()
                 .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
             let observable2 = genericView.rxTxtUsername.value.asObservable()
@@ -134,7 +137,6 @@ extension VC {
                 })
                 .subscribe()
                 .disposed(by: disposeBag)
-
         }
 
         // Order in View life-cycle : 7
@@ -148,12 +150,7 @@ extension VC {
 // MARK: Public Misc Stuff
 
 extension VC.CarTrackLoginViewController {
-    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
-    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
-    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
-    public func somePublicStuff() {
-        // Do some public stuff
-    }
+
 }
 
 // MARK: Private Misc Stuff
@@ -170,7 +167,7 @@ extension VC.CarTrackLoginViewController: CarTrackLoginDisplayLogicProtocol {
         if viewModel.success {
             router?.routeToNextScreen()
         } else {
-            
+            DevTools.assert(false, message: DevTools.Strings.notPredicted.rawValue)
         }
     }
 

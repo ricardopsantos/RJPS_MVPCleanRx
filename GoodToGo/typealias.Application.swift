@@ -36,11 +36,3 @@ typealias AppProtocols           = RootAssemblyContainerProtocols
 // MARK: - DevTools
 
 typealias AppLogger   = DevTools.AppLogger
-
-// MARK: - GenericView
-
-//typealias GenericView = UIBase.BaseViewControllerMVP
-
-// MARK: - MISC
-
-typealias InputFields = RJS_Designables_InputFields

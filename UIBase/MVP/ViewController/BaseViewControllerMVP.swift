@@ -43,6 +43,7 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
     private var _lblReachabilityHeight: CGFloat = 25
     private var _margin: CGFloat = 20
 
+    #warning("delete. deprecated")
     private lazy var _lblReachability: UILabel = {
         let some             = label(baseView: self.view, style: .title)
         some.textColor       = UIColor.App.TopBar.titleColor
@@ -51,7 +52,7 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
         some.alpha           = 0
         some.rjsALayouts.setMargin(0, on: .left)
         some.rjsALayouts.setMargin(0, on: .right)
-        _lblReachabilityDistanceFromTop = some.rjsALayouts.setMargin(0, on: .top, method: .constraints)
+        _lblReachabilityDistanceFromTop = some.rjsALayouts.setMargin(100, on: .top, method: .constraints)
         some.rjsALayouts.setHeight(_lblReachabilityHeight)
         return some
     }()
@@ -71,8 +72,6 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
         DispatchQueue.executeWithDelay(delay: 0.1) { [weak self] in
             self?.firstAppearance = false
         }
-        _lblReachability.lazyLoad()
-        _lblReachability.superview?.bringSubviewToFront(_lblReachability)
     }
     
     open func displayMessage(_ message: String, type: AlertType) {
@@ -90,18 +89,23 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
     }
     
     open func setNoConnectionViewVisibility(to: Bool, withMessage: String = Messages.noInternet.localised) {
+        //displayMessage(withMessage, type: .error)
         RJS_Utils.executeInMainTread { [weak self] in
             guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
             let value = !to
             let duration = 0.5
+            self._lblReachability.lazyLoad()
+            self._lblReachability.superview?.bringSubviewToFront(self._lblReachability)
             self._lblReachability.textAnimated = withMessage
-            self._lblReachability.fadeTo(value ? 0 : 0.95, duration: duration)
+            self._lblReachability.alpha = 1
+/*
+            //self._lblReachability.fadeTo(value ? 0 : 0.95, duration: duration)
             self._lblReachability.rjsALayouts.updateConstraint(self._lblReachabilityDistanceFromTop!,
                                                                toValue: value ? -self._lblReachabilityHeight : self._margin,
                                                                duration: duration,
                                                                completion: { (_) in
-                                                                
-            })
+
+            })*/
         }
     }
     

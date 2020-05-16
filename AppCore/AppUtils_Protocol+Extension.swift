@@ -38,7 +38,7 @@ public extension AppUtils_Protocol {
     }
     
     var existsInternetConnection: Bool {
-        return RJS_Utils.existsInternetConnection()
+        return RJS_Utils.existsInternetConnection
     }
     
     func assertExistsInternetConnection(sender: BaseViewControllerMVPProtocol?,

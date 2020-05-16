@@ -31,6 +31,11 @@ extension R {
 // MARK: RoutingLogicProtocol
 
 extension R.CartTrackMapRouter: CartTrackMapRoutingLogicProtocol {
+    
+    func routeToLogin() {
+        dismissMe()
+    }
+
     func dismissMe() {
         viewController?.dismissMe()
     }

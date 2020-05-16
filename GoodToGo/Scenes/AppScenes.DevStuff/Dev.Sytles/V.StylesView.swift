@@ -102,10 +102,10 @@ extension V {
                                                           disposeBag: disposeBag) { value in
                                                             DevTools.FeatureFlag.setFlag(flag, value: value)
                 }
-                if flag.rawValue.lowercased().hasPrefix("dev") {
+                //if flag.rawValue.lowercased().hasPrefix("dev") {
                     // On real devices, Dev features are faded
-                    view.alpha = Designables.Constants.disabledViewAlpha
-                }
+                //    view.alpha = Designables.Constants.disabledViewAlpha
+                //}
                 return view
             }
             let ffViews: [UIView] = DevTools.FeatureFlag.allCases.map { makeFeatureView($0) }
@@ -159,8 +159,6 @@ extension V {
                 //stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
             }
 
-            #warning("adicionar as cores (passar para enum)")
-
             //
             // Shadows
             //
@@ -182,7 +180,6 @@ extension V {
             // FadeType
             //
 
-            #warning("adicionar as cores (passar para enum)")
             makeSection("FadeType", size: sectionSize)
             FadeType.allCases.forEach { (some) in
                 let view = pureLabel(text: "\(some)")
@@ -230,10 +227,12 @@ extension V {
                 scrollView.autoLayout.edgesToSuperview(excluding: .bottom, insets: .zero)
                 scrollView.autoLayout.height(screenHeight - BottomBar.backgroundHeight - AppleSizes.tabBarControllerDefaultSize)
             } else {
+                let topBarSize    = TopBar.defaultHeight(usingSafeArea: false)
+                let bottomBarSize = BottomBar.backgroundHeight
                 scrollView.autoLayout.trailingToSuperview()
                 scrollView.autoLayout.leftToSuperview()
-                scrollView.autoLayout.topToSuperview(offset: TopBar.defaultHeight(usingSafeArea: true), usingSafeArea: false)
-                scrollView.autoLayout.height(screenHeight - BottomBar.backgroundHeight - AppleSizes.tabBarControllerDefaultSize)
+                scrollView.autoLayout.topToSuperview(offset: topBarSize, usingSafeArea: false)
+                scrollView.autoLayout.height(screenHeight - topBarSize  - bottomBarSize - AppleSizes.tabBarControllerDefaultSize)
             }
 
         }

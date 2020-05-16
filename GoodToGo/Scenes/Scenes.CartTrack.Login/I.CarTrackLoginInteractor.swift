@@ -81,7 +81,6 @@ extension I.CarTrackLoginInteractor: CarTrackLoginBusinessLogicProtocol {
             return
         }
         func routeToNext() {
-            presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
             let response = VM.CarTrackLogin.Login.Response(success: true, error: nil)
             presenter?.presentLogin(response: response)
         }
@@ -154,4 +153,13 @@ extension I.CarTrackLoginInteractor: CarTrackLoginBusinessLogicProtocol {
         presentNextButtonState()
     }
 
+}
+
+// MARK: Utils {
+
+extension I.CarTrackLoginInteractor {
+    func presentError(error: Error) {
+        let response = BaseDisplayLogicModels.Error(title: error.localisedMessageForView)
+        basePresenter?.presentError(response: response)
+    }
 }

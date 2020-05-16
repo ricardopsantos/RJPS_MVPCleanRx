@@ -33,7 +33,7 @@ extension UC {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
             DispatchQueue.executeWithDelay(delay: 1) { 
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                let kPassword = "12345"             // RJSLib.Storages.Keychain.readFromKeychain("password")
+                let kPassword = "12345"
                 let success = kPassword == password
                 if success {
                     completionHandler(Result.success(success))

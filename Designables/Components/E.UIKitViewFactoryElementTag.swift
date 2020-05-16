@@ -21,7 +21,10 @@ public enum UIKitViewFactoryElementTag: Int {
     case tableView
     case `switch`
     case stackViewSpace
-    
+
+    // component
+    case reachabilityView
+
     // Composed
     case switchWithCaption
     case genericTitleAndValue

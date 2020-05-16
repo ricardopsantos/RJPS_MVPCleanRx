@@ -97,9 +97,18 @@ extension I.___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___Business
                                                                           subTitle: "New subtitle \(Date())")
             self?.presenter?.presentSomething(response: response)
             self?.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
-            //self?.presenter?.presentError(response: BaseDisplayLogicModels.Error(title: "Messages.error.localised, message: "Error message"))
+            //self?.presenter?.presentError(error: error)
             self?.presenter?.presentStatus(response: BaseDisplayLogicModels.Status(message: Messages.success.localised))
         }
     }
 
+}
+
+// MARK: Utils {
+
+extension I.___VARIABLE_sceneName___Interactor {
+    func presentError(error: Error) {
+        let response = BaseDisplayLogicModels.Error(title: error.localisedMessageForView)
+        basePresenter?.presentError(response: response)
+    }
 }

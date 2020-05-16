@@ -12,6 +12,6 @@ import RxSwift
 import RxCocoa
 
 open class BaseInteractorVIP {
-    public var disposeBag = DisposeBag()
     public init() { }
+    public var disposeBag = DisposeBag()
 }

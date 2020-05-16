@@ -71,6 +71,7 @@ extension V {
         private lazy var txtPassword: SkyFloatingLabelTextField = {
             let some = UIKitFactory.skyFloatingLabelTextField(title: Messages.password.localised,
                                                               placeholder: "Your \(Messages.password.localised)")
+            some.isSecureTextEntry = true
             some.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
             return some
         }()
@@ -92,9 +93,7 @@ extension V {
 
             addSubview(scrollView)
             scrollView.addSubview(stackViewVLevel1)
-            stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: TopBar.defaultHeight(usingSafeArea: true))
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
+            stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: screenHeight/5)
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(txtUserName)
             stackViewVLevel1.uiUtils.addArrangedSeparator()
             stackViewVLevel1.uiUtils.addArrangedSeparator()
@@ -109,21 +108,23 @@ extension V {
         // Function 2/3 : JUST to setup layout rules zone....
         override func prepareLayoutBySettingAutoLayoutsRules() {
 
+            let margin = AppSizes.Margins.defaultMargin
             stackViewVLevel1.uiUtils.edgeStackViewToSuperView()
             scrollView.autoLayout.edgesToSuperview(excluding: .bottom, insets: .zero)
             scrollView.autoLayout.height(screenHeight)
 
             self.subViewsOf(types: [.button, .label], recursive: true).forEach { (some) in
                 some.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
-                some.autoLayout.marginToSuperVerticalStackView(trailing: AppSizes.Margins.defaultMargin,
-                                                               leading: AppSizes.Margins.defaultMargin)
+                some.autoLayout.marginToSuperVerticalStackView(trailing: margin,
+                                                               leading: margin)
             }
 
             btnLogin.autoLayout.centerXToSuperview()
             btnLogin.autoLayout.centerYToSuperview()
-            btnLogin.autoLayout.leadingToSuperview(offset: AppSizes.Margins.defaultMargin)
-            btnLogin.autoLayout.trailingToSuperview(offset: AppSizes.Margins.defaultMargin)
+            btnLogin.autoLayout.leadingToSuperview(offset: margin)
+            btnLogin.autoLayout.trailingToSuperview(offset: margin)
             btnLogin.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
+
         }
 
         // This function is called automatically by super BaseGenericViewVIP
@@ -178,8 +179,21 @@ extension V {
             userCanProceed(viewModel.isEnabled)
         }
 
+        // Dev Team Helper fast login
+        private func autoInsertCredentials() {
+            guard DevTools.FeatureFlag.devTeam_autoInsertPass.isTrue else { return }
+            DispatchQueue.executeOnce(token: DevTools.FeatureFlag.devTeam_autoInsertPass.rawValue) { [weak self] in
+                DispatchQueue.executeWithDelay(tread: .main, delay: 1) { [weak self] in
+                    self?.txtPassword.text = "12345"
+                    self?.txtUserName.text = "some.email@gmail.com"
+                    self?.btnLogin.enable()
+                }
+            }
+        }
+
         var screenLayout: E.CarTrackLoginView.ScreenLayout = .enterUserCredentials {
             didSet {
+                autoInsertCredentials()
                 func setErrorMessage(_ message: String, forField: SkyFloatingLabelTextField) {
                     forField.errorMessage = message
                 }

@@ -71,7 +71,7 @@ protocol CartTrackMapDisplayLogicProtocol: BaseViewControllerVIPProtocol {
 
 // Routing Logic Protocol - all the methods used for routing are kept under this protocol.
 protocol CartTrackMapRoutingLogicProtocol {
-
+    func routeToLogin()
 }
 
 //

@@ -77,6 +77,7 @@ public struct BaseDisplayLogicModels {
         public let title: String
         public let message: String
         public var shouldDisplay: Bool = true
+        
         public init(title: String, message: String="") {
             self.title = title
             self.message = message
