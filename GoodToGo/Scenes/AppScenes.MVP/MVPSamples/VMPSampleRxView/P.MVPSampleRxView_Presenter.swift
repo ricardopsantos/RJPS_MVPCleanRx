@@ -68,11 +68,11 @@ extension P.MVPSampleRxView_Presenter: MVPSampleRxView_PresenterProtocol {
     
     func userDidTryToLoginWith(user: String, password: String) {
         rxObservable_doAssynTask(user: user, password: password)
-            .debug("Subscription 1")
+            .log("Subscription 1")
             .debounce(.milliseconds(AppConstants.Rx.servicesDefaultDebounce), scheduler: MainScheduler.instance)
-            .debug("Subscription 2")
+            .log("Subscription 2")
             .throttle(.milliseconds(AppConstants.Rx.servicesDefaultThrottle), scheduler: MainScheduler.instance)
-            .debug("Subscription 3")
+            .log("Subscription 3")
             .subscribe(
                 onNext: { [weak self] some in
                     self?.viewModel! = VM.MVPSampleRxView_ViewModel(someString: some)

@@ -31,10 +31,8 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
     public static var shared = BaseViewControllerMVP()
 
     public var firstAppearance = true
-    // Keyboard related init
-    var keyboardHeigthAux: CGFloat = 0
+    //var keyboardHeigthAux: CGFloat = 0
     var keyboardIsVisible = false
-    // Keyboard related end
 
     public var reachabilityService: ReachabilityService! = DevTools.reachabilityService
     public var disposeBag: DisposeBag = DisposeBag()
@@ -42,11 +40,11 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
     private var lblReachabilityDistanceFromTop: NSLayoutConstraint?
     private var lblReachabilityHeight: CGFloat = 25
     private var margin: CGFloat = 20
+    private var stats: Stats?
 
     open override func loadView() {
         super.loadView()
         doViewLifeCycle()
-        setupKeyboard()
     }
     
     open override func viewWillAppear(_ animated: Bool) {
@@ -56,7 +54,12 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         DispatchQueue.executeWithDelay(delay: 0.1) { [weak self] in
-            self?.firstAppearance = false
+            guard let self = self else { return }
+            self.firstAppearance = false
+            if self.stats == nil {
+                self.stats = Stats(frame: CGRect(x: 20, y: 40, width: 100.0, height: 60.0))
+                self.view.addSubview(self.stats!)
+            }
         }
     }
     

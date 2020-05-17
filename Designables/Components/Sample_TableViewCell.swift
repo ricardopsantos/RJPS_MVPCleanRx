@@ -79,6 +79,7 @@ open class Sample_TableViewCell: UITableViewCell, GenericTableViewCell_Protocol 
     
     private lazy var lblTitle: UILabelWithPadding = {
         let some = UIKitFactory.labelWithPadding(style: .title)
+        self.addSubview(some)
         some.rjsALayouts.setMargin(marginH, on: .left)
         some.rjsALayouts.setMargin(marginH*2+imageSize, on: .right)
         some.rjsALayouts.setMargin(marginV, on: .top)

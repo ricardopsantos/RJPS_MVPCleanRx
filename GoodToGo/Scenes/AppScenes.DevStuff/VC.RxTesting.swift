@@ -78,7 +78,7 @@ extension VC {
             some.rjsALayouts.setHeight(btnHeight)
             //let trigger = PublishSubject<Bool>()
             some.rx.tap
-                .debug("_btnThrottle tap")
+                .log("_btnThrottle tap")
                 .throttle(.milliseconds(throttle*1000), scheduler: MainScheduler.instance)
                 .subscribe({ [weak self] _ in
                     self?.aux_log(message: "[_btnThrottle][fired]", showAlert: true, appendToTable: true)
@@ -96,7 +96,7 @@ extension VC {
             some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * margin))
             some.rjsALayouts.setHeight(btnHeight)
             some.rx.tap
-                .debug("_btnDebounce tap")
+                .log("_btnDebounce tap")
                 .debounce(.milliseconds(debounce*1000), scheduler: MainScheduler.instance)
                 .subscribe({ [weak self] _ in
                     some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
@@ -167,7 +167,7 @@ extension VC {
                 .disposed(by: disposeBag)
             
             rxBehaviorRelay_b  // BehaviorRelay (to models states) connected  to other BehaviorRelay
-                .debug("_rxBehaviorRelay_b")
+                .log("_rxBehaviorRelay_b")
                 .do(onNext: { _ in AppLogger.log("_rxBehaviorRelay_b : do.onNext_1") })
                 .bind(to: rxBehaviorRelay_a)
                 .disposed(by: disposeBag)
