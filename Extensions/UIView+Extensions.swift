@@ -12,5 +12,4 @@ import RJPSLib
 
 public extension UIView {
     func lazyLoad() { /* Lazy loading aux */ }
-
 }
