@@ -38,33 +38,33 @@ public extension UIColor {
     struct App {
         private init() {}
         
-        private static let _grey_1 = UIColor.colorFromRGBString("91,92,123")
-        private static let _grey_2 = UIColor.colorFromRGBString("127,128,153")
-        private static let _grey_3 = UIColor.colorFromRGBString("151,155,176")
-        private static let _grey_5 = UIColor.colorFromRGBString("221,225,233")
-        private static let _grey_6 = UIColor.colorFromRGBString("235,238,243")
-        private static let _grey_7 = UIColor.colorFromRGBString("244,246,250")
+        private static let grey_1 = UIColor.colorFromRGBString("91,92,123")
+        private static let grey_2 = UIColor.colorFromRGBString("127,128,153")
+        private static let grey_3 = UIColor.colorFromRGBString("151,155,176")
+        private static let grey_5 = UIColor.colorFromRGBString("221,225,233")
+        private static let grey_6 = UIColor.colorFromRGBString("235,238,243")
+        private static let grey_7 = UIColor.colorFromRGBString("244,246,250")
         
-        private static let _red1   = UIColor.colorFromRGBString("255,100,100")
-        private static let _blue1  = UIColor.colorFromRGBString("10,173,175")
-        private static let _blue2  = UIColor.colorFromRGBString("148,208,187")
+        private static let red1   = UIColor.colorFromRGBString("255,100,100")
+        private static let blue1  = UIColor.colorFromRGBString("10,173,175")
+        private static let blue2  = UIColor.colorFromRGBString("148,208,187")
             
         public struct TopBar {
             private init() {}
             public static var background: UIColor { return primary }
-            public static var titleColor: UIColor { return _grey_7.toDark() }
+            public static var titleColor: UIColor { return grey_7.toDark() }
         }
-        public static var appDefaultBackgroundColor: UIColor { return _grey_7.toDark() }
-        public static var btnBackgroundColor: UIColor { return _grey_6.toDark() }
-        public static var lblBackgroundColor: UIColor { return _grey_6.toDark() }
-        public static var btnTextColor: UIColor { return _grey_1.toDark() }
-        public static var lblTextColor: UIColor { return _grey_1.toDark() }
+        public static var appDefaultBackgroundColor: UIColor { return onPrimary }
+        public static var btnBackgroundColor: UIColor { return grey_6.toDark() }
+        public static var lblBackgroundColor: UIColor { return grey_6.toDark() }
+        public static var btnTextColor: UIColor { return grey_1.toDark() }
+        public static var lblTextColor: UIColor { return grey_1.toDark() }
 
-        public static var primary: UIColor { return _blue1.toDark() }
-        public static var onPrimary: UIColor { return _grey_7 }
+        public static var primary: UIColor { return blue1.toDark() }
+        public static var onPrimary: UIColor { return grey_7 }
 
-        public static var error: UIColor { return _red1.toDark() }
-        public static var success: UIColor { return _blue2.toDark() }
+        public static var error: UIColor { return red1.toDark() }
+        public static var success: UIColor { return blue2.toDark() }
         public static var warning: UIColor { return UIColor(red: 242, green: 168, blue: 62).toDark() }
     }
 }

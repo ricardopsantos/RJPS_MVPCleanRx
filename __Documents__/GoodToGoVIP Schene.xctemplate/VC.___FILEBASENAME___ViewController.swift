@@ -36,6 +36,10 @@ extension VC {
             ___VARIABLE_sceneName___DataPassingProtocol &
             ___VARIABLE_sceneName___RoutingLogicProtocol)?
 
+        private lazy var reachabilityView: ReachabilityView = {
+           return self.addReachabilityView()
+        }()
+
         //
         // MARK: View lifecycle
         //
@@ -44,6 +48,7 @@ extension VC {
         override func loadView() {
             super.loadView()
             view.accessibilityIdentifier = self.genericAccessibilityIdentifier
+            reachabilityView.load()
         }
 
         // Order in View life-cycle : 4
@@ -103,7 +108,6 @@ extension VC {
         // Order in View life-cycle : 3
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
-
             #warning("Add reachability support")
             
             genericView.rxModelSelected

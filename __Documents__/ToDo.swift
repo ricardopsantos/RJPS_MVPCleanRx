@@ -1,8 +1,3 @@
 #warning("add plist config file")
-#warning("improve alerts top message (have messages colision)")
-#warning("add debug label/screen/html report")
-#warning("adicionar image a mostrar os ecran os tipo de botoes e labels")
 #warning("Add rxKeyboard")
-#warning("Colocar UC. nos use cases")
-#warning("wrongUserCredencial is not beying used")
 #warning("private var _btn")

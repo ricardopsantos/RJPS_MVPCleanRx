@@ -99,11 +99,11 @@ public extension DevTools {
     //  2 - on the console log (Swift.print), tells where the fail was exactly and therefore is easier to find and fix
     //  3 - we can add safe guards depending on app env.
     static func assert(_ isTrue:@autoclosure() -> Bool,
-                              message: String="",
-                              function: StaticString = #function,
-                              file: StaticString = #file,
-                              line: Int = #line,
-                              forceFix: Bool=false) {
+                       message: String="",
+                       function: StaticString = #function,
+                       file: StaticString = #file,
+                       line: Int = #line,
+                       forceFix: Bool=false) {
         guard onSimulator || onDebug else {
             return
         }

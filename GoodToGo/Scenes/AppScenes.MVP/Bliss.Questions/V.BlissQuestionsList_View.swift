@@ -35,7 +35,7 @@ extension V {
         // BehaviorRelay model a State
         private var rxBehaviorRelay_tableDataSource = BehaviorRelay<[Bliss.QuestionElementResponseDto]>(value: [])
 
-        private let _tableViewThreshold: CGFloat = 100.0 // threshold from bottom of tableView
+        private let tableViewThreshold: CGFloat = 100.0 // threshold from bottom of tableView
         private var tableViewIsLoadingMoreData = false // flag
 
         private lazy var topGenericView: TopBar = {
@@ -197,7 +197,7 @@ extension V.BlissQuestionsList_View: UIScrollViewDelegate {
             // Is allready wayting for data
             return
         }
-        if Double(maximumOffset) - Double(contentOffset) <= Double(_tableViewThreshold) {
+        if Double(maximumOffset) - Double(contentOffset) <= Double(tableViewThreshold) {
             // Get more data - API call
             searchBar.resignFirstResponder()
             self.tableViewIsLoadingMoreData = true

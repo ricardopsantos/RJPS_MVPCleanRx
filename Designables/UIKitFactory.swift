@@ -200,7 +200,7 @@ public struct UIKitFactory {
     // https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/LayoutUsingStackViews.html
     // https://spin.atomicobject.com/2016/06/22/uistackview-distribution/
     public static var stackViewDefaultLayoutMargins: UIEdgeInsets {
-        let topAndBottomSpacing: CGFloat = 0 // Is [ZERO] because [stackViewDefaultSpacing] will do the vertical space (if vertical stack-view)
+        let topAndBottomSpacing: CGFloat = 0 // Is [ZERO] because [stackViewDefaultSpacing] will do the vertical space (if vertical stackview)
         return UIEdgeInsets(top: topAndBottomSpacing,
                             left: Designables.Sizes.Margins.defaultMargin,
                             bottom: topAndBottomSpacing,
@@ -211,16 +211,16 @@ public struct UIKitFactory {
     }
     public static func stackView(arrangedSubviews: [UIView] = [],
                                  spacing: CGFloat = UIKitFactory.stackViewDefaultSpacing, // Space between subviews
-        axis: NSLayoutConstraint.Axis,
-        distribution: UIStackView.Distribution = .fill,
-        alignment: UIStackView.Alignment = .fill,
-        layoutMargins: UIEdgeInsets? = UIKitFactory.stackViewDefaultLayoutMargins) -> UIStackView {
+                                 axis: NSLayoutConstraint.Axis,
+                                 distribution: UIStackView.Distribution = .fill,
+                                 alignment: UIStackView.Alignment = .fill,
+                                 layoutMargins: UIEdgeInsets? = UIKitFactory.stackViewDefaultLayoutMargins) -> UIStackView {
         // Distribution: Fill - makes one subview take up most of the space, while the others remain at their natural size.
         //               It decides which view to stretch by examining the content hugging priority for each of the subviews.
         // Distribution: Fill Equally - adjusts each subview so that it takes up equal amount of space in the stack view.
         //               All space will be used up.
         // Distribution: Equal Spacing - adjusts the spacing between subviews without resizing the subviews themselves.
-        // Distribution: Equal Centering - attempts to ensure the centers of each subview are equally spaced, irrespective of how far the edge
+        // Distribution: Equal Centring - attempts to ensure the centers of each subview are equally spaced, irrespective of how far the edge
         //               of each subview is positioned.
         // Distribution: Fill Proportionally - is the most interesting, because it ensures subviews remain the same size relative to each other,
         //               but still stretches them to fit the available space. For example, if one view is 100 across and another is 200, and the
@@ -248,49 +248,12 @@ public struct UIKitFactory {
     public static func topBar(baseController: UIViewController, usingSafeArea: Bool) -> TopBar {
         let bar = TopBar()
         bar.injectOn(viewController: baseController, usingSafeArea: usingSafeArea)
-        /*
-         let screenWidth = UIScreen.main.bounds.width
-         let height      = TopBar.defaultHeight
-         let container   = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: screenWidth, height: height)))
-         baseController.view.addSubview(container)
-         UIViewController.rjs.loadViewControllerInContainedView(sender: baseController,
-         senderContainedView: container,
-         controller: bar) { (_, _) in }
-
-         container.rjsALayouts.setMargin(0, on: .top)
-         container.rjsALayouts.setMargin(0, on: .right)
-         container.rjsALayouts.setMargin(0, on: .left)
-         container.rjsALayouts.setHeight(TopBar.defaultHeight)
-
-         bar.view.rjsALayouts.setMargin(0, on: .top)
-         bar.view.rjsALayouts.setMargin(0, on: .right)
-         bar.view.rjsALayouts.setMargin(0, on: .left)
-         bar.view.rjsALayouts.setHeight(TopBar.defaultHeight)
-         return bar*/
         return bar
     }
 
     public static func bottomBar(baseController: UIViewController, usingSafeArea: Bool) -> BottomBar {
         let bar = BottomBar()
         bar.injectOn(viewController: baseController, usingSafeArea: usingSafeArea)
-       /* let bar         = BottomBar()
-        bar.view.backgroundColor = .clear
-        let screenWidth = UIScreen.main.bounds.width
-        let height      = TopBar.defaultHeight
-        let container   = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: screenWidth, height: height)))
-        baseController.view.addSubview(container)
-        UIViewController.rjs.loadViewControllerInContainedView(sender: baseController, senderContainedView: container, controller: bar) { (_, _) in }
-
-        container.rjsALayouts.setMargin(0, on: .bottom)
-        container.rjsALayouts.setMargin(0, on: .right)
-        container.rjsALayouts.setMargin(0, on: .left)
-        container.rjsALayouts.setHeight(BottomBar.defaultHeight)
-        container.backgroundColor = .clear
-
-        bar.view.rjsALayouts.setMargin(0, on: .top)
-        bar.view.rjsALayouts.setMargin(0, on: .right)
-        bar.view.rjsALayouts.setMargin(0, on: .left)
-        bar.view.rjsALayouts.setHeight(BottomBar.defaultHeight)*/
         return bar
     }
 }

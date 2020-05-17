@@ -29,8 +29,8 @@ import Factory
 extension VC {
     class RxTesting: BaseViewControllerMVP, AppUtils_Protocol {
         
-        let _margin: CGFloat = 10
-        let _btnHeight: CGFloat = 40
+        let margin: CGFloat = 10
+        let btnHeight: CGFloat = 40
         
         private lazy var topGenericView: TopBar = {
             let some = UIKitFactory.topBar(baseController: self, usingSafeArea: true)
@@ -72,10 +72,10 @@ extension VC {
         private lazy var btnThrottle: UIButton = {
             let throttle = 5
             let some = UIKitFactory.button(baseView: self.view, title: "Throttle \(throttle)s", style: .regular)
-            some.rjsALayouts.setMargin(_margin, on: .top, from: searchBar)
-            some.rjsALayouts.setMargin(_margin, on: .right)
-            some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
-            some.rjsALayouts.setHeight(_btnHeight)
+            some.rjsALayouts.setMargin(margin, on: .top, from: searchBar)
+            some.rjsALayouts.setMargin(margin, on: .right)
+            some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * margin))
+            some.rjsALayouts.setHeight(btnHeight)
             //let trigger = PublishSubject<Bool>()
             some.rx.tap
                 .debug("_btnThrottle tap")
@@ -91,10 +91,10 @@ extension VC {
         private lazy var btnDebounce: UIButton = {
             let debounce = 3
             let some = UIKitFactory.button(baseView: self.view, title: "Debounce \(debounce)s", style: .regular)
-            some.rjsALayouts.setMargin(_margin, on: .top, from: searchBar)
-            some.rjsALayouts.setMargin(_margin, on: .left)
-            some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
-            some.rjsALayouts.setHeight(_btnHeight)
+            some.rjsALayouts.setMargin(margin, on: .top, from: searchBar)
+            some.rjsALayouts.setMargin(margin, on: .left)
+            some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * margin))
+            some.rjsALayouts.setHeight(btnHeight)
             some.rx.tap
                 .debug("_btnDebounce tap")
                 .debounce(.milliseconds(debounce*1000), scheduler: MainScheduler.instance)
@@ -182,10 +182,10 @@ extension VC {
                 .disposed(by: disposeBag)
             
             let some = UIKitFactory.button(baseView: self.view, title: "[Publish|Behavior]Relay", style: .regular)
-            some.rjsALayouts.setMargin(_margin, on: .top, from: btnDebounce)
-            some.rjsALayouts.setMargin(_margin, on: .left)
-            some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
-            some.rjsALayouts.setHeight(_btnHeight)
+            some.rjsALayouts.setMargin(margin, on: .top, from: btnDebounce)
+            some.rjsALayouts.setMargin(margin, on: .left)
+            some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * margin))
+            some.rjsALayouts.setHeight(btnHeight)
             some.onTouchUpInside {
                 let someInt = (Date.utcNow.seconds)
                 let random = Int.random(in: 0 ... 5)
@@ -211,10 +211,10 @@ extension VC {
   
         private lazy var btnZip: UIButton = {
             let some = UIKitFactory.button(baseView: self.view, title: "Zip vs combineLatest", style: .regular)
-            some.rjsALayouts.setMargin(_margin, on: .top, from: btnRxRelays)
-            some.rjsALayouts.setMargin(_margin, on: .right)
-            some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
-            some.rjsALayouts.setHeight(_btnHeight)
+            some.rjsALayouts.setMargin(margin, on: .top, from: btnRxRelays)
+            some.rjsALayouts.setMargin(margin, on: .right)
+            some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * margin))
+            some.rjsALayouts.setHeight(btnHeight)
             
             var rxPublishRelay1 = PublishRelay<String?>()
             var rxPublishRelay2 = PublishRelay<String?>()
@@ -280,10 +280,10 @@ extension VC {
                     .disposed(by: disposeBag)
             }
             let some = UIKitFactory.button(baseView: self.view, title: "Observable<T>", style: .regular)
-            some.rjsALayouts.setMargin(_margin, on: .top, from: btnDebounce)
-            some.rjsALayouts.setMargin(_margin, on: .right)
-            some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
-            some.rjsALayouts.setHeight(_btnHeight)
+            some.rjsALayouts.setMargin(margin, on: .top, from: btnDebounce)
+            some.rjsALayouts.setMargin(margin, on: .right)
+            some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * margin))
+            some.rjsALayouts.setHeight(btnHeight)
             some.onTouchUpInside { doRequest() }
             return some
         }()
@@ -291,10 +291,10 @@ extension VC {
         private var rxBehaviorRelay_tableDataSource = BehaviorRelay<[String]>(value: [])
         private lazy var tableView: UITableView = {
             let some = UIKitFactory.tableView(baseView: self.view)
-            some.rjsALayouts.setMargin(_margin, on: .top, from: btnZip)
-            some.rjsALayouts.setMargin(_margin, on: .right)
-            some.rjsALayouts.setMargin(_margin, on: .left)
-            some.rjsALayouts.setMargin(_margin, on: .bottom)
+            some.rjsALayouts.setMargin(margin, on: .top, from: btnZip)
+            some.rjsALayouts.setMargin(margin, on: .right)
+            some.rjsALayouts.setMargin(margin, on: .left)
+            some.rjsALayouts.setMargin(margin, on: .bottom)
             some.register(Sample_TableViewCell.self, forCellReuseIdentifier: Sample_TableViewCell.reuseIdentifier)
             some.rx.setDelegate(self).disposed(by: disposeBag) // To manage heightForRowAt
             some.rx

@@ -36,7 +36,7 @@ extension V {
         }
         var presenter: MVPSampleView_PresenterProtocol!
         
-        private let _margin: CGFloat = Designables.Sizes.Margins.defaultMargin
+        private let margin: CGFloat = Designables.Sizes.Margins.defaultMargin
 
         private lazy var txtUser: UITextField = {
             let some = UIKitFactory.textField(baseView: self.view)
@@ -45,10 +45,10 @@ extension V {
             some.backgroundColor      = AppColors.lblBackgroundColor
             some.layer.masksToBounds  = false
             some.layer.cornerRadius   = 8
-            some.rjsALayouts.setMargin(_margin, on: .left)
-            some.rjsALayouts.setMargin(_margin, on: .right)
-            some.rjsALayouts.setMargin(_margin, on: .top)
-            some.rjsALayouts.setHeight(_margin)
+            some.rjsALayouts.setMargin(margin, on: .left)
+            some.rjsALayouts.setMargin(margin, on: .right)
+            some.rjsALayouts.setMargin(margin, on: .top)
+            some.rjsALayouts.setHeight(margin)
             return some
         }()
         
@@ -59,19 +59,19 @@ extension V {
             some.isSecureTextEntry    = true
             some.layer.masksToBounds  = false
             some.layer.cornerRadius   = 8
-            some.rjsALayouts.setMargin(_margin, on: .left)
-            some.rjsALayouts.setMargin(_margin, on: .right)
-            some.rjsALayouts.setMargin(_margin, on: .top, from: txtUser)
-            some.rjsALayouts.setHeight(_margin)
+            some.rjsALayouts.setMargin(margin, on: .left)
+            some.rjsALayouts.setMargin(margin, on: .right)
+            some.rjsALayouts.setMargin(margin, on: .top, from: txtUser)
+            some.rjsALayouts.setHeight(margin)
             return some
         }()
         
         private lazy var btnLogin: UIButton = {
             let some = UIKitFactory.button(baseView: self.view, title: Messages.login.localised, style: .regular)
-            some.rjsALayouts.setMargin(_margin, on: .left)
-            some.rjsALayouts.setMargin(_margin, on: .right)
-            some.rjsALayouts.setMargin(_margin*2, on: .top, from: txtPass)
-            some.rjsALayouts.setHeight(_margin*2)
+            some.rjsALayouts.setMargin(margin, on: .left)
+            some.rjsALayouts.setMargin(margin, on: .right)
+            some.rjsALayouts.setMargin(margin*2, on: .top, from: txtPass)
+            some.rjsALayouts.setHeight(margin*2)
             some.onTouchUpInside { [weak self] in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
@@ -90,19 +90,19 @@ extension V {
             some.layer.masksToBounds  = false
             some.layer.cornerRadius   = 8
             some.textAlignment        = .center
-            some.rjsALayouts.setMargin(_margin, on: .left)
-            some.rjsALayouts.setMargin(_margin, on: .right)
-            some.rjsALayouts.setMargin(_margin, on: .top, from: btnLogin)
-            some.rjsALayouts.setHeight(_margin*2)
+            some.rjsALayouts.setMargin(margin, on: .left)
+            some.rjsALayouts.setMargin(margin, on: .right)
+            some.rjsALayouts.setMargin(margin, on: .top, from: btnLogin)
+            some.rjsALayouts.setHeight(margin*2)
             return some
         }()
         
         private lazy var btnPush: UIButton = {
             let some = UIKitFactory.button(baseView: self.view, title: "Push", style: .regular)
-            some.rjsALayouts.setMargin(_margin, on: .left)
-            some.rjsALayouts.setWidth((screenWidth / 2) - (1.5 * _margin))
-            some.rjsALayouts.setMargin(_margin*2, on: .top, from: lblMessage)
-            some.rjsALayouts.setHeight(_margin*2)
+            some.rjsALayouts.setMargin(margin, on: .left)
+            some.rjsALayouts.setWidth((screenWidth / 2) - (1.5 * margin))
+            some.rjsALayouts.setMargin(margin*2, on: .top, from: lblMessage)
+            some.rjsALayouts.setHeight(margin*2)
             some.onTouchUpInside { [weak self] in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
@@ -114,10 +114,10 @@ extension V {
         
         private lazy var btnDismiss: UIButton = {
             let some = UIKitFactory.button(baseView: self.view, title: "Dismiss", style: .regular)
-            some.rjsALayouts.setMargin(_margin, on: .right)
-            some.rjsALayouts.setWidth((screenWidth / 2) - (1.5 * _margin))
-            some.rjsALayouts.setMargin(_margin*2, on: .top, from: lblMessage)
-            some.rjsALayouts.setHeight(_margin*2)
+            some.rjsALayouts.setMargin(margin, on: .right)
+            some.rjsALayouts.setWidth((screenWidth / 2) - (1.5 * margin))
+            some.rjsALayouts.setMargin(margin*2, on: .top, from: lblMessage)
+            some.rjsALayouts.setHeight(margin*2)
             some.onTouchUpInside { [weak self] in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }

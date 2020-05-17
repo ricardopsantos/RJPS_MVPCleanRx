@@ -216,7 +216,7 @@
 		D7979DC8246DC1960039031C /* D.StylesDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979DC1246DC1960039031C /* D.StylesDomain.swift */; };
 		D7979DCA246DC1960039031C /* I.StylesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979DC3246DC1960039031C /* I.StylesInteractor.swift */; };
 		D7979DCB246DC1960039031C /* P.StylesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979DC4246DC1960039031C /* P.StylesPresenter.swift */; };
-		D7979DCE246DC46C0039031C /* V.LabelWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979DCD246DC46C0039031C /* V.LabelWithPadding.swift */; };
+		D7979DCE246DC46C0039031C /* LabelWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979DCD246DC46C0039031C /* LabelWithPadding.swift */; };
 		D7AB2443246716C6000142C4 /* V.UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1522BE5DE700042A8C /* V.UserTableViewCell.swift */; };
 		D7AB2445246718A9000142C4 /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
 		D7AB2446246718AA000142C4 /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
@@ -297,7 +297,7 @@
 		D7E25AA624669BF4003BBEA0 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F02AE5B20F91E7B00AB5942 /* AppConstants.swift */; };
 		D7E25AA724669D13003BBEA0 /* PointFreeFunctions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7E25A7A246699FC003BBEA0 /* PointFreeFunctions.framework */; };
 		D7E25AAA24669D1A003BBEA0 /* AppConstants.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7E25A9424669B9B003BBEA0 /* AppConstants.framework */; };
-		D7FA21F724708B9C001DD9D5 /* V.ReachabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA21F324706A32001DD9D5 /* V.ReachabilityView.swift */; };
+		D7FA21F724708B9C001DD9D5 /* ReachabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA21F324706A32001DD9D5 /* ReachabilityView.swift */; };
 		D7FA2207247189B9001DD9D5 /* TokenRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA2206247189B9001DD9D5 /* TokenRefresh.swift */; };
 		D7FCAC2024685B7A00DBECA2 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FCAC1F24685B7A00DBECA2 /* RxDataSources.framework */; };
 		D7FCAC27246874C900DBECA2 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FCAC242468748B00DBECA2 /* UIView+Extensions.swift */; };
@@ -917,7 +917,7 @@
 		D7979DC1246DC1960039031C /* D.StylesDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D.StylesDomain.swift; sourceTree = "<group>"; };
 		D7979DC3246DC1960039031C /* I.StylesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.StylesInteractor.swift; sourceTree = "<group>"; };
 		D7979DC4246DC1960039031C /* P.StylesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.StylesPresenter.swift; sourceTree = "<group>"; };
-		D7979DCD246DC46C0039031C /* V.LabelWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V.LabelWithPadding.swift; sourceTree = "<group>"; };
+		D7979DCD246DC46C0039031C /* LabelWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithPadding.swift; sourceTree = "<group>"; };
 		D7A620B0246556A1008B1722 /* _script_installPackages.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = _script_installPackages.sh; sourceTree = SOURCE_ROOT; };
 		D7AB244D24671CBF000142C4 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7AB245024671CBF000142C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -973,7 +973,7 @@
 		D7E25A9424669B9B003BBEA0 /* AppConstants.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppConstants.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E25A9624669B9B003BBEA0 /* AppConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppConstants.h; sourceTree = "<group>"; };
 		D7E25A9724669B9B003BBEA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D7FA21F324706A32001DD9D5 /* V.ReachabilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V.ReachabilityView.swift; sourceTree = "<group>"; };
+		D7FA21F324706A32001DD9D5 /* ReachabilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityView.swift; sourceTree = "<group>"; };
 		D7FA21FC24715A9A001DD9D5 /* no_internet_usage_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_internet_usage_1.png; sourceTree = "<group>"; };
 		D7FA21FD24715A9A001DD9D5 /* map_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_1.png; sourceTree = "<group>"; };
 		D7FA21FE24715A9A001DD9D5 /* extra_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = extra_1.png; sourceTree = "<group>"; };
@@ -1770,8 +1770,8 @@
 		D7979DCF246DC9A60039031C /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				D7FA21F324706A32001DD9D5 /* V.ReachabilityView.swift */,
-				D7979DCD246DC46C0039031C /* V.LabelWithPadding.swift */,
+				D7FA21F324706A32001DD9D5 /* ReachabilityView.swift */,
+				D7979DCD246DC46C0039031C /* LabelWithPadding.swift */,
 				D761FED4246845FD00BD41A5 /* TitleTableSection.swift */,
 				D761FEB62468334D00BD41A5 /* E.UIKitViewFactoryElementTag.swift */,
 				9F58FB1122BE5DE700042A8C /* TopBar.swift */,
@@ -3006,9 +3006,9 @@
 				D7FCAC27246874C900DBECA2 /* UIView+Extensions.swift in Sources */,
 				D78F27E9246DCF31008F7E54 /* Designables.Constants.swift in Sources */,
 				D788BD9924698CDD007C59D0 /* Designables.Sizes.swift in Sources */,
-				D7FA21F724708B9C001DD9D5 /* V.ReachabilityView.swift in Sources */,
+				D7FA21F724708B9C001DD9D5 /* ReachabilityView.swift in Sources */,
 				D78F27EB246DE1D4008F7E54 /* UIButton+Extensions.swift in Sources */,
-				D7979DCE246DC46C0039031C /* V.LabelWithPadding.swift in Sources */,
+				D7979DCE246DC46C0039031C /* LabelWithPadding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

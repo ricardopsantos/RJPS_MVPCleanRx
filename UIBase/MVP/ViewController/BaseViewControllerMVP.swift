@@ -43,20 +43,6 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
     private var lblReachabilityHeight: CGFloat = 25
     private var margin: CGFloat = 20
 
-    #warning("delete. deprecated")
-    private lazy var lblReachability: UILabel = {
-        let some             = label(baseView: self.view, style: .title)
-        some.textColor       = UIColor.App.TopBar.titleColor
-        some.textAlignment   = .center
-        some.backgroundColor = UIColor.App.error
-        some.alpha           = 0
-        some.rjsALayouts.setMargin(0, on: .left)
-        some.rjsALayouts.setMargin(0, on: .right)
-        lblReachabilityDistanceFromTop = some.rjsALayouts.setMargin(100, on: .top, method: .constraints)
-        some.rjsALayouts.setHeight(lblReachabilityHeight)
-        return some
-    }()
-
     open override func loadView() {
         super.loadView()
         doViewLifeCycle()
@@ -89,24 +75,7 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
     }
     
     open func setNoConnectionViewVisibility(to: Bool, withMessage: String = Messages.noInternet.localised) {
-        //displayMessage(withMessage, type: .error)
-        RJS_Utils.executeInMainTread { [weak self] in
-            guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-            let value = !to
-            let duration = 0.5
-            self.lblReachability.lazyLoad()
-            self.lblReachability.superview?.bringSubviewToFront(self.lblReachability)
-            self.lblReachability.textAnimated = withMessage
-            self.lblReachability.alpha = 1
-/*
-            //self._lblReachability.fadeTo(value ? 0 : 0.95, duration: duration)
-            self._lblReachability.rjsALayouts.updateConstraint(self._lblReachabilityDistanceFromTop!,
-                                                               toValue: value ? -self._lblReachabilityHeight : self._margin,
-                                                               duration: duration,
-                                                               completion: { (_) in
-
-            })*/
-        }
+        DevTools.assert(false, message: "Deprecated")
     }
     
     func keyboardDidShow() { }
