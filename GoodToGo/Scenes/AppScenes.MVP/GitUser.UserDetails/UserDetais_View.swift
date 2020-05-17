@@ -31,39 +31,39 @@ extension V {
         }
         var presenter: UserDetais_PresenterProtocol!
         
-        private let _margin: CGFloat = Designables.Sizes.Margins.defaultMargin
-        private let _imageSize: CGFloat = 100
+        private let margin: CGFloat = Designables.Sizes.Margins.defaultMargin
+        private let imageSize: CGFloat = 100
         
-        private lazy var _lblUserName: UILabel = {
+        private lazy var lblUserName: UILabel = {
             let some = UIKitFactory.label(baseView: self.view, style: .value)
-            some.rjsALayouts.setSame(.height, as: _imgAvatar)
-            some.rjsALayouts.setSame(.top, as: _imgAvatar)
-            some.rjsALayouts.setMargin(_margin, on: .left)
-            some.rjsALayouts.setMargin(_margin, on: .right, from: _imgAvatar)
+            some.rjsALayouts.setSame(.height, as: imgAvatar)
+            some.rjsALayouts.setSame(.top, as: imgAvatar)
+            some.rjsALayouts.setMargin(margin, on: .left)
+            some.rjsALayouts.setMargin(margin, on: .right, from: imgAvatar)
             return some
         }()
         
-        private lazy var _tableView: UITableView = {
+        private lazy var tableView: UITableView = {
             let some = UIKitFactory.tableView(baseView: self.view)
             some.delegate   = self as UITableViewDelegate
             some.dataSource = self as UITableViewDataSource
-            some.rjsALayouts.setMargin(_margin, on: .top, from: _imgAvatar)
-            some.rjsALayouts.setMargin(_margin, on: .left)
-            some.rjsALayouts.setMargin(_margin, on: .right)
-            some.rjsALayouts.setMargin(_margin + TopBar.defaultHeight(usingSafeArea: true), on: .bottom)
+            some.rjsALayouts.setMargin(margin, on: .top, from: imgAvatar)
+            some.rjsALayouts.setMargin(margin, on: .left)
+            some.rjsALayouts.setMargin(margin, on: .right)
+            some.rjsALayouts.setMargin(margin + TopBar.defaultHeight(usingSafeArea: true), on: .bottom)
             V.UserTableViewCell.prepare(tableView: some)
             return some
         }()
         
-        private lazy var _imgAvatar: UIImageView = {
+        private lazy var imgAvatar: UIImageView = {
             let some = UIKitFactory.imageView(baseView: self.view)
-            some.rjsALayouts.setSize(CGSize(width: _imageSize, height: _imageSize))
-            some.rjsALayouts.setMargin(_margin, on: .top, from: _topGenericBar.view)
-            some.rjsALayouts.setMargin(_margin, on: .right)
+            some.rjsALayouts.setSize(CGSize(width: imageSize, height: imageSize))
+            some.rjsALayouts.setMargin(margin, on: .top, from: topGenericBar.view)
+            some.rjsALayouts.setMargin(margin, on: .right)
             return some
         }()
         
-        private lazy var _topGenericBar: TopBar = {
+        private lazy var topGenericBar: TopBar = {
             let some = UIKitFactory.topBar(baseController: self, usingSafeArea: true)
             some.setTitle(Messages.details.localised)
             some.addDismissButton()
@@ -99,10 +99,10 @@ extension V {
         
         public override func prepareLayoutCreateHierarchy() {
             self.view.backgroundColor = AppColors.appDefaultBackgroundColor
-            _topGenericBar.lazyLoad()
-            _imgAvatar.lazyLoad()
-            _lblUserName.lazyLoad()
-            _tableView.lazyLoad()
+            topGenericBar.lazyLoad()
+            imgAvatar.lazyLoad()
+            lblUserName.lazyLoad()
+            tableView.lazyLoad()
         }
         
         public override func prepareLayoutBySettingAutoLayoutsRules() {
@@ -119,12 +119,12 @@ extension V {
 
 extension V.UserDetais_View: UserDetais_ViewProtocol {
     func setAvatarWith(image: UIImage) {
-        _imgAvatar.image = image
+        imgAvatar.image = image
     }
     
     func viewDataToScreen(some: VM.UserDetais) {
-        _lblUserName.textAnimated = some.user.name
-        _tableView.reloadData()
+        lblUserName.textAnimated = some.user.name
+        tableView.reloadData()
     }
 }
 

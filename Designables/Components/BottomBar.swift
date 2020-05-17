@@ -29,7 +29,7 @@ open class BottomBar: BaseViewControllerMVP {
     }
     weak var delegate: BottomBar_Delegate?
     
-    private lazy var _btn1: UIButton = {
+    private lazy var btn1: UIButton = {
         let some = UIKitFactory.button(baseView: self.view, style: .alternative)
         some.setTitleForAllStates("1")
         some.rx.tap.subscribe({ [weak self] _ in
@@ -40,7 +40,7 @@ open class BottomBar: BaseViewControllerMVP {
         return some
     }()
     
-    private lazy var _btn2: UIButton = {
+    private lazy var btn2: UIButton = {
         let some = UIKitFactory.button(baseView: self.view, style: .alternative)
         some.setTitleForAllStates("2")
         some.rx.tap.subscribe({ [weak self] _ in
@@ -51,7 +51,7 @@ open class BottomBar: BaseViewControllerMVP {
         return some
     }()
     
-    private lazy var _btn3: UIButton = {
+    private lazy var btn3: UIButton = {
         let some = UIKitFactory.button(baseView: self.view, style: .alternative)
         some.setTitleForAllStates("3")
         some.rx.tap.subscribe({ [weak self] _ in
@@ -62,7 +62,7 @@ open class BottomBar: BaseViewControllerMVP {
         return some
     }()
     
-    private lazy var _btn4: UIButton = {
+    private lazy var btn4: UIButton = {
         let some = UIKitFactory.button(baseView: self.view, style: .alternative)
         some.setTitleForAllStates("4")
         some.rx.tap.subscribe({ [weak self] _ in
@@ -73,7 +73,7 @@ open class BottomBar: BaseViewControllerMVP {
         return some
     }()
     
-    private lazy var _btn5: UIButton = {
+    private lazy var btn5: UIButton = {
         let some = UIKitFactory.button(baseView: self.view, style: .alternative)
         some.setTitleForAllStates("5")
         some.rx.tap.subscribe({ [weak self] _ in
@@ -116,7 +116,7 @@ open class BottomBar: BaseViewControllerMVP {
     
     public override func prepareLayoutBySettingAutoLayoutsRules() {
         
-        let btns =  [_btn1, _btn2, _btn3, _btn4, _btn5]
+        let btns =  [btn1, btn2, btn3, btn4, btn5]
         let k: CGFloat = 0.3
         let dimH = BottomBar.backgroundHeight*(1.0-k)
         let dimW = (screenWidth / (CGFloat(btns.count+1)))
@@ -124,8 +124,8 @@ open class BottomBar: BaseViewControllerMVP {
         let margin: CGFloat = BottomBar.defaultHeight*(k/2.0)
         let btnSize = CGSize(width: dimW, height: dimH)
         btns.forEach { (some) in
-            if some == _btn3 {
-                _btn3.backgroundColor = UIColor.App.primary
+            if some == btn3 {
+                btn3.backgroundColor = UIColor.App.primary
                 some.rjsALayouts.setWidth(dimW)
                 some.rjsALayouts.setMargin(margin, on: .top)
             } else {
@@ -134,11 +134,11 @@ open class BottomBar: BaseViewControllerMVP {
             some.rjsALayouts.setMargin(margin, on: .bottom)
         }
         
-        _btn1.rjsALayouts.setMargin(margin, on: .left)
-        _btn2.rjsALayouts.setMargin(margin, on: .left, from: _btn1)
-        _btn3.rjsALayouts.setMargin(margin, on: .left, from: _btn2)
-        _btn4.rjsALayouts.setMargin(margin, on: .left, from: _btn3)
-        _btn5.rjsALayouts.setMargin(margin, on: .left, from: _btn4)
+        btn1.rjsALayouts.setMargin(margin, on: .left)
+        btn2.rjsALayouts.setMargin(margin, on: .left, from: btn1)
+        btn3.rjsALayouts.setMargin(margin, on: .left, from: btn2)
+        btn4.rjsALayouts.setMargin(margin, on: .left, from: btn3)
+        btn5.rjsALayouts.setMargin(margin, on: .left, from: btn4)
     }
     
     public override func prepareLayoutByFinishingPrepareLayout() {

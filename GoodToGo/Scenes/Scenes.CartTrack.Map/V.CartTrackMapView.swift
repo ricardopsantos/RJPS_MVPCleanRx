@@ -31,7 +31,7 @@ extension V {
     class CartTrackMapView: BaseGenericViewVIP {
 
         deinit {
-            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self) was killed") }
+            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self) was killed") }
             NotificationCenter.default.removeObserver(self)
         }
 

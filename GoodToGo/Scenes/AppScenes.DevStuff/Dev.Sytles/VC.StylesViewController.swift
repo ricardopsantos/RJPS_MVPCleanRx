@@ -35,11 +35,11 @@ extension VC {
         private lazy var topGenericView: TopBar = {
             let some = TopBar()
             some.injectOn(viewController: self, usingSafeArea: false)
-            some.addDismissButton()
+            /*some.addDismissButton()
             some.rxSignal_viewTapped
                 .asObservable().subscribe(onNext: { (_) in
                     DevTools.makeToast("Tap!")
-                }).disposed(by: disposeBag)
+                }).disposed(by: disposeBag)*/
             return some
         }()
 

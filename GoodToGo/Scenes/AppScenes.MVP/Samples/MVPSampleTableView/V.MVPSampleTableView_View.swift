@@ -26,16 +26,16 @@ extension V {
     class MVPSampleTableView_View: BaseViewControllerMVP {
         
         deinit {
-            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self.className) was killed") }
+            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self.className) was killed") }
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
         var presenter: MVPSampleTableView_PresenterProtocol!
 
         // BehaviorRelay model a State
-        private var _rxBehaviorRelay_tableDataSource = BehaviorRelay<[Employee.ResponseDto]>(value: [])
+        private var rxBehaviorRelay_tableDataSource = BehaviorRelay<[Employee.ResponseDto]>(value: [])
 
-        private lazy var _tableView: UITableView = {
+        private lazy var tableView: UITableView = {
             let some = UIKitFactory.tableView(baseView: self.view)
             some.backgroundColor = self.view.backgroundColor
             some.rjsALayouts.setMarginFromSuperview(top: 0, bottom: 0, left: 0, right: 0)
@@ -73,7 +73,7 @@ extension V {
                     }, completion: nil)
                 })).disposed(by: disposeBag)
             
-            _rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
+            rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
                 _ = element
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                 var indexPath = NSIndexPath(row: row, section: 0)
@@ -105,7 +105,7 @@ extension V {
 
         public override func prepareLayoutCreateHierarchy() {
             self.view.backgroundColor = .gray
-            _tableView.lazyLoad()
+            tableView.lazyLoad()
         }
 
         public override func prepareLayoutBySettingAutoLayoutsRules() {
@@ -128,6 +128,6 @@ extension V.MVPSampleTableView_View: MVPSampleTableView_ViewProtocol {
     }
     
     func viewNeedsToDisplay(list: [Employee.ResponseDto]) {
-        _rxBehaviorRelay_tableDataSource.accept(list)
+        rxBehaviorRelay_tableDataSource.accept(list)
     }
 }

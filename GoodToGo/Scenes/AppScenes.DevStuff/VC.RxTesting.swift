@@ -32,21 +32,21 @@ extension VC {
         let _margin: CGFloat = 10
         let _btnHeight: CGFloat = 40
 
-        private var _rxReachabilityService = try! DefaultReachabilityService()
+        private var rxReachabilityService = try! DefaultReachabilityService()
         
-        private lazy var _topGenericView: TopBar = {
+        private lazy var topGenericView: TopBar = {
             let some = UIKitFactory.topBar(baseController: self, usingSafeArea: true)
             some.setTitle("RxTesting")
             return some
         }()
         
-        private lazy var _searchBar: CustomSearchBar = {
+        private lazy var searchBar: CustomSearchBar = {
             func handle(filter: String, sender: String) {
                 guard !filter.isEmpty else { return }
                 aux_log(message: "[_searchBar.][handle] from [\(sender)] : [\(filter)]", showAlert: true, appendToTable: true)
             }
             let some = UIKitFactory.searchBar(baseView: self.view, placeholder: Messages.search.localised)
-            some.rjsALayouts.setMargin(0, on: .top, from: _topGenericView.view)
+            some.rjsALayouts.setMargin(0, on: .top, from: topGenericView.view)
             some.rjsALayouts.setMargin(0, on: .right)
             some.rjsALayouts.setMargin(0, on: .left)
             some.rjsALayouts.setHeight(50)
@@ -56,13 +56,13 @@ extension VC {
             some.rx.text
                 .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
                 .subscribe(onNext: { [weak self] _ in
-                    let query = self?._searchBar.text?.trim ?? ""
+                    let query = self?.searchBar.text?.trim ?? ""
                     handle(filter: query, sender: "[_searchBar][onNext]")
                 })
                 .disposed(by: disposeBag)
             some.rx.textDidEndEditing
                 .subscribe(onNext: { [weak self] (query) in
-                    let query = self?._searchBar.text?.trim ?? ""
+                    let query = self?.searchBar.text?.trim ?? ""
                     if query.count>0 {
                         handle(filter: query, sender: "[_searchBar][textDidEndEditing]")
                     }
@@ -71,10 +71,10 @@ extension VC {
             return some
         }()
         
-        private lazy var _btnThrottle: UIButton = {
+        private lazy var btnThrottle: UIButton = {
             let throttle = 5
             let some = UIKitFactory.button(baseView: self.view, title: "Throttle \(throttle)s", style: .regular)
-            some.rjsALayouts.setMargin(_margin, on: .top, from: _searchBar)
+            some.rjsALayouts.setMargin(_margin, on: .top, from: searchBar)
             some.rjsALayouts.setMargin(_margin, on: .right)
             some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
             some.rjsALayouts.setHeight(_btnHeight)
@@ -90,10 +90,10 @@ extension VC {
             return some
         }()
         
-        private lazy var _btnDebounce: UIButton = {
+        private lazy var btnDebounce: UIButton = {
             let debounce = 3
             let some = UIKitFactory.button(baseView: self.view, title: "Debounce \(debounce)s", style: .regular)
-            some.rjsALayouts.setMargin(_margin, on: .top, from: _searchBar)
+            some.rjsALayouts.setMargin(_margin, on: .top, from: searchBar)
             some.rjsALayouts.setMargin(_margin, on: .left)
             some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
             some.rjsALayouts.setHeight(_btnHeight)
@@ -131,18 +131,18 @@ extension VC {
          [PublishSubject] Is concerned only with emitting new events to its subscribers.
          
         */
-        var _rxPublishSubject_a: PublishSubject  = PublishSubject<Void>()
+        var rxPublishSubject_a: PublishSubject  = PublishSubject<Void>()
         
-        var _rxPublishRelay_a: PublishRelay  = PublishRelay<Void>()
-        var _rxPublishRelay_b: PublishRelay  = PublishRelay<String>()
+        var rxPublishRelay_a: PublishRelay  = PublishRelay<Void>()
+        var rxPublishRelay_b: PublishRelay  = PublishRelay<String>()
         
-        var _rxBehaviorRelay_a: BehaviorRelay = BehaviorRelay<String>(value: "")
-        var _rxBehaviorRelay_b: BehaviorRelay = BehaviorRelay<String>(value: "")
-        var _rxBehaviorRelay_c: BehaviorRelay = BehaviorRelay<Int>(value: 0)
+        var rxBehaviorRelay_a: BehaviorRelay = BehaviorRelay<String>(value: "")
+        var rxBehaviorRelay_b: BehaviorRelay = BehaviorRelay<String>(value: "")
+        var rxBehaviorRelay_c: BehaviorRelay = BehaviorRelay<Int>(value: 0)
         
-        private lazy var _btnRxRelays: UIButton = {
+        private lazy var btnRxRelays: UIButton = {
         
-            _rxPublishRelay_a.asSignal() // PublishRelay (to model events) without param
+            rxPublishRelay_a.asSignal() // PublishRelay (to model events) without param
                 .debug("rxPublishRelay_a")
                 .do(onNext: { _ in AppLogger.log("_rxPublishRelay_a : do.onNext_1") })
                 .do(onNext: { _ in AppLogger.log("_rxPublishRelay_a : do.onNext_2") })
@@ -151,7 +151,7 @@ extension VC {
                 })
                 .disposed(by: disposeBag)
             
-            _rxPublishRelay_b.asSignal() // PublishRelay (to model events) with param
+            rxPublishRelay_b.asSignal() // PublishRelay (to model events) with param
                 .debug("_rxPublishRelay_b")
                 .do(onNext: { _ in AppLogger.log("_rxPublishRelay_b : do.onNext_1") })
                 .do(onNext: { _ in AppLogger.log("_rxPublishRelay_b : do.onNext_2") })
@@ -160,31 +160,31 @@ extension VC {
                 })
                 .disposed(by: disposeBag)
             
-            _rxBehaviorRelay_a // BehaviorRelay (to models states) connected to Label
+            rxBehaviorRelay_a // BehaviorRelay (to models states) connected to Label
                 .asDriver()
                 .debug("_rxBehaviorRelay_a")
                 .do(onNext: { _ in AppLogger.log("_rxBehaviorRelay_a : do.onNext_1") })
                 .do(onNext: { _ in AppLogger.log("_rxBehaviorRelay_a : do.onNext_2") })
-                .drive(_searchBar.rx.text)
+                .drive(searchBar.rx.text)
                 .disposed(by: disposeBag)
             
-            _rxBehaviorRelay_b  // BehaviorRelay (to models states) connected  to other BehaviorRelay
+            rxBehaviorRelay_b  // BehaviorRelay (to models states) connected  to other BehaviorRelay
                 .debug("_rxBehaviorRelay_b")
                 .do(onNext: { _ in AppLogger.log("_rxBehaviorRelay_b : do.onNext_1") })
-                .bind(to: _rxBehaviorRelay_a)
+                .bind(to: rxBehaviorRelay_a)
                 .disposed(by: disposeBag)
             
-            _rxBehaviorRelay_c // BehaviorRelay (to models states) doing random stuff
+            rxBehaviorRelay_c // BehaviorRelay (to models states) doing random stuff
                 .asObservable()
                 .do(onNext: { _ in AppLogger.log("_rxBehaviorRelay_c : do.onNext_1") })
                 .do(onNext: { _ in AppLogger.log("_rxBehaviorRelay_c : do.onNext_2") })
                 .map { some -> Int in return some / 2 }
                 .do(onNext: { _ in AppLogger.log("_rxBehaviorRelay_c : do.onNext_3") })
-                .subscribe(onNext: { self._searchBar.text = "\($0)" })
+                .subscribe(onNext: { self.searchBar.text = "\($0)" })
                 .disposed(by: disposeBag)
             
             let some = UIKitFactory.button(baseView: self.view, title: "[Publish|Behavior]Relay", style: .regular)
-            some.rjsALayouts.setMargin(_margin, on: .top, from: _btnDebounce)
+            some.rjsALayouts.setMargin(_margin, on: .top, from: btnDebounce)
             some.rjsALayouts.setMargin(_margin, on: .left)
             some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
             some.rjsALayouts.setHeight(_btnHeight)
@@ -193,41 +193,41 @@ extension VC {
                 let random = Int.random(in: 0 ... 5)
                 if random==1 {
                     self.aux_log(message: "[_rxBehaviorRelay_a]", showAlert: false, appendToTable: true)
-                    self._rxBehaviorRelay_a.accept(self._rxBehaviorRelay_a.value + "|" + "VALUE_A_\(someInt)")
+                    self.rxBehaviorRelay_a.accept(self.rxBehaviorRelay_a.value + "|" + "VALUE_A_\(someInt)")
                 }
                 if random==2 {
                     self.aux_log(message: "[_rxBehaviorRelay_b]", showAlert: false, appendToTable: true)
-                    self._rxBehaviorRelay_b.accept("\(someInt)")
+                    self.rxBehaviorRelay_b.accept("\(someInt)")
                 }
                 if random==3 {
                     self.aux_log(message: "[_rxBehaviorRelay_c]", showAlert: false, appendToTable: true)
-                    self._rxBehaviorRelay_c.accept(someInt)
+                    self.rxBehaviorRelay_c.accept(someInt)
                 }
                 if random==4 {
                     self.aux_log(message: "[_rxPublishRelay_a]", showAlert: false, appendToTable: true)
-                    self._rxPublishRelay_a.accept(())
+                    self.rxPublishRelay_a.accept(())
                 }
             }
             return some
         }()
   
-        private lazy var _btnZip: UIButton = {
+        private lazy var btnZip: UIButton = {
             let some = UIKitFactory.button(baseView: self.view, title: "Zip vs combineLatest", style: .regular)
-            some.rjsALayouts.setMargin(_margin, on: .top, from: _btnRxRelays)
+            some.rjsALayouts.setMargin(_margin, on: .top, from: btnRxRelays)
             some.rjsALayouts.setMargin(_margin, on: .right)
             some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
             some.rjsALayouts.setHeight(_btnHeight)
             
-            var _rxPublishRelay1 = PublishRelay<String?>()
-            var _rxPublishRelay2 = PublishRelay<String?>()
-            var _rxPublishRelay3 = PublishRelay<String?>()
+            var rxPublishRelay1 = PublishRelay<String?>()
+            var rxPublishRelay2 = PublishRelay<String?>()
+            var rxPublishRelay3 = PublishRelay<String?>()
 
             // http://adamborek.com/combinelatest-withlatestfrom-zip/
 
             // CombineLatest emits an item whenever any of the source Observables
             // emits an item (so long as each of the source Observables has emitted at least one item)
             
-            Observable.combineLatest(_rxPublishRelay1, _rxPublishRelay2, _rxPublishRelay3,
+            Observable.combineLatest(rxPublishRelay1, rxPublishRelay2, rxPublishRelay3,
                 resultSelector: { return "\($0 ?? "nil")|\($1 ?? "nil")|\($2 ?? "nil")" })
                 .observeOn(MainScheduler.instance)
                 .subscribe( onNext: { self.aux_log(message: "[combineLatest][onNext] \($0)", showAlert: true, appendToTable: true) })
@@ -238,7 +238,7 @@ extension VC {
             // specified closure and emit single items for each combination based on the results of this closure.
             //
             
-            Observable.zip(_rxPublishRelay1, _rxPublishRelay2, _rxPublishRelay3,
+            Observable.zip(rxPublishRelay1, rxPublishRelay2, rxPublishRelay3,
                                      resultSelector: { return "\($0 ?? "nil")|\($1 ?? "nil")|\($2 ?? "nil")" })
                 .observeOn(MainScheduler.instance)
                 .subscribe( onNext: { self.aux_log(message: "[zip][onNext] \($0)", showAlert: true, appendToTable: true) })
@@ -246,19 +246,19 @@ extension VC {
             
             some.onTouchUpInside {
  
-                _rxPublishRelay1.accept("1.1")
-                _rxPublishRelay2.accept("2.1")
-                _rxPublishRelay3.accept("3.1") // Zip fires
+                rxPublishRelay1.accept("1.1")
+                rxPublishRelay2.accept("2.1")
+                rxPublishRelay3.accept("3.1") // Zip fires
                 
-                _rxPublishRelay1.accept("1.2")
-                _rxPublishRelay2.accept("2.2")
-                _rxPublishRelay3.accept("3.2")  // Zip fires
+                rxPublishRelay1.accept("1.2")
+                rxPublishRelay2.accept("2.2")
+                rxPublishRelay3.accept("3.2")  // Zip fires
                 
                 //_rxPublishRelay1.accept("1.3")
-                _rxPublishRelay2.accept("2.3")
-                _rxPublishRelay3.accept("3.3")
+                rxPublishRelay2.accept("2.3")
+                rxPublishRelay3.accept("3.3")
 
-                _rxPublishRelay1.accept("1.4")  // Zip fires
+                rxPublishRelay1.accept("1.4")  // Zip fires
                 //_rxPublishRelay2.accept("2.4")
                 //_rxPublishRelay3.accept("3.4")
                 
@@ -266,7 +266,7 @@ extension VC {
             return some
         }()
      
-        private lazy var _btnAsyncRequest: UIButton = {
+        private lazy var btnAsyncRequest: UIButton = {
             func doRequest() {
                 rxObservableAssyncRequest
                     .subscribe(
@@ -282,7 +282,7 @@ extension VC {
                     .disposed(by: disposeBag)
             }
             let some = UIKitFactory.button(baseView: self.view, title: "Observable<T>", style: .regular)
-            some.rjsALayouts.setMargin(_margin, on: .top, from: _btnDebounce)
+            some.rjsALayouts.setMargin(_margin, on: .top, from: btnDebounce)
             some.rjsALayouts.setMargin(_margin, on: .right)
             some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * _margin))
             some.rjsALayouts.setHeight(_btnHeight)
@@ -290,10 +290,10 @@ extension VC {
             return some
         }()
         
-        private var _rxBehaviorRelay_tableDataSource = BehaviorRelay<[String]>(value: [])
-        private lazy var _tableView: UITableView = {
+        private var rxBehaviorRelay_tableDataSource = BehaviorRelay<[String]>(value: [])
+        private lazy var tableView: UITableView = {
             let some = UIKitFactory.tableView(baseView: self.view)
-            some.rjsALayouts.setMargin(_margin, on: .top, from: _btnZip)
+            some.rjsALayouts.setMargin(_margin, on: .top, from: btnZip)
             some.rjsALayouts.setMargin(_margin, on: .right)
             some.rjsALayouts.setMargin(_margin, on: .left)
             some.rjsALayouts.setMargin(_margin, on: .bottom)
@@ -307,7 +307,7 @@ extension VC {
                     self?.aux_log(message: "[_tableView][modelSelected] : [\(item)]", showAlert: true, appendToTable: false)
                 })
                 .disposed(by: disposeBag)
-            _rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
+            rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
                 _ = element
                 _ = row
                 guard self != nil else { AppLogger.log(appCode: .referenceLost); return }
@@ -359,7 +359,7 @@ extension VC.RxTesting {
         /* [retryOnBecomesReachable], will actually return [rxReturnOnError] var if we dont have internet connection
            BUT ALSO, if the requests fails on [observer.onError], the subscriber will receive [rxReturnOnError]
              on event [onNext]. If we dont have the [retryOnBecomesReachable], the subscriber will receive the error on [onError] */
-        .retryOnBecomesReachable(rxReturnOnError, reachabilityService: _rxReachabilityService)
+        .retryOnBecomesReachable(rxReturnOnError, reachabilityService: rxReachabilityService)
     }
 }
 
@@ -370,22 +370,22 @@ extension VC.RxTesting {
     
     func aux_prepare() {
         self.view.backgroundColor = AppColors.appDefaultBackgroundColor
-        _topGenericView.lazyLoad()
-        _searchBar.lazyLoad()
-        _btnThrottle.lazyLoad()
-        _btnDebounce.lazyLoad()
-        _btnRxRelays.lazyLoad()
-        _btnAsyncRequest.lazyLoad()
-        _btnZip.lazyLoad()
-        _tableView.lazyLoad()
+        topGenericView.lazyLoad()
+        searchBar.lazyLoad()
+        btnThrottle.lazyLoad()
+        btnDebounce.lazyLoad()
+        btnRxRelays.lazyLoad()
+        btnAsyncRequest.lazyLoad()
+        btnZip.lazyLoad()
+        tableView.lazyLoad()
     }
     
     func aux_log(message: String, showAlert: Bool, appendToTable: Bool) {
-        _searchBar.resignFirstResponder()
+        searchBar.resignFirstResponder()
         print("\(message)")
         if appendToTable {
             let time = "" //"\(Date.utcNow().hours):\(Date.utcNow().minutes):\(Date.utcNow().seconds)"
-            _rxBehaviorRelay_tableDataSource.accept(["\(time) : \(message)"] + _rxBehaviorRelay_tableDataSource.value)
+            rxBehaviorRelay_tableDataSource.accept(["\(time) : \(message)"] + rxBehaviorRelay_tableDataSource.value)
         }
         if showAlert {
             displayMessage(message, type: .success)

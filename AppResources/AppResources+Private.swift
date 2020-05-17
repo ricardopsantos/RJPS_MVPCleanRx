@@ -21,10 +21,10 @@ public extension AppResources {
 
     static func get(_ code: String) -> String { return resource(code) }
 
-    static var selectedLanguage: SelectedLanguage = _storedLanguage {
+    static var selectedLanguage: SelectedLanguage = storedLanguage {
         didSet {
-            if selectedLanguage != _storedLanguage {
-                _currentLanguageBundle = nil
+            if selectedLanguage != storedLanguage {
+                currentLanguageBundle = nil
                 saveWith(key: AppConstants.Dev.keyCoreDataSaveLang, value: "\(selectedLanguage.rawValue)")
                 DevTools.AppLogger.warning("Language code changed to [\(selectedLanguage)]")
             }
@@ -37,22 +37,22 @@ public extension AppResources {
 
 public extension AppResources {
 
-    private static var _currentLanguageBundle: Bundle?
-    private static var _defaultLanguage: SelectedLanguage = .en
-    private static var _storedLanguage: SelectedLanguage {
+    private static var currentLanguageBundle: Bundle?
+    private static var defaultLanguage: SelectedLanguage = .en
+    private static var storedLanguage: SelectedLanguage {
         if let storedLanguageString = getWith(key: AppConstants.Dev.keyCoreDataSaveLang) {
             // We have a stored language!
-            if let storedLanguage = SelectedLanguage(rawValue: Int(storedLanguageString) ?? _defaultLanguage.rawValue ) {
+            if let storedLanguage = SelectedLanguage(rawValue: Int(storedLanguageString) ?? defaultLanguage.rawValue ) {
                 return storedLanguage
             }
         }
-        return _defaultLanguage
+        return defaultLanguage
     }
 
     private static func resource(_ code: String) -> String {
         guard !code.isEmpty else { return "" }
 
-        if _currentLanguageBundle == nil {
+        if currentLanguageBundle == nil {
             var file = ""
             switch selectedLanguage {
             case .en: file = "en"
@@ -64,13 +64,13 @@ public extension AppResources {
                 return code
             }
 
-            _currentLanguageBundle = Bundle(path: path!)
-            guard _currentLanguageBundle != nil else {
+            currentLanguageBundle = Bundle(path: path!)
+            guard currentLanguageBundle != nil else {
                 DevTools.assert(false, message: "Fail location resource")
                 return code
             }
         }
 
-        return _currentLanguageBundle!.localizedString(forKey: code, value: nil, table: nil)
+        return currentLanguageBundle!.localizedString(forKey: code, value: nil, table: nil)
     }
 }

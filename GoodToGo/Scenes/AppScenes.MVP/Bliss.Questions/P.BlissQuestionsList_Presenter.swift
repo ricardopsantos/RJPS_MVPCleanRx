@@ -62,8 +62,8 @@ extension Presenter {
             didSet { AppLogger.log(appCode: .vmChanged); viewModelChanged() }
         }
 
-        private var _lastFilder: String?
-        private var _lastOffSet: Int?
+        private var lastFilder: String?
+        private var lastOffSet: Int?
 
     }
 }
@@ -117,7 +117,7 @@ extension P.BlissQuestionsList_Presenter: BlissQuestionsList_PresenterProtocol {
 
     func viewNeedsMoreData(filter: String) {
         guard existsInternetConnection else { return }
-        updateData(filter: filter, offSet: _lastOffSet != nil ? _lastOffSet! + 1 : 1)
+        updateData(filter: filter, offSet: lastOffSet != nil ? lastOffSet! + 1 : 1)
     }
     
     func rxObservable_GetList(filter: String, offSet: Int) -> Observable<[Bliss.QuestionElementResponseDto]> {
@@ -155,8 +155,8 @@ extension P.BlissQuestionsList_Presenter: BasePresenterVMPProtocol {
     func viewDidAppear() { }
     func viewDidLoad() {
         viewModel = VM.BlissQuestionsList_ViewModel()
-        _lastFilder = nil
-        _lastOffSet = nil
+        lastFilder = nil
+        lastOffSet = nil
         updateData(filter: "", offSet: 0)
     }
     func viewWillAppear() { }
@@ -180,14 +180,14 @@ extension P.BlissQuestionsList_Presenter {
         let filter = filter.trim
         
         // Not pretty, but very efective in avoind duplicated repeated server calls
-        if _lastFilder != nil && _lastOffSet != nil {
-            guard "\(_lastFilder!)|\(_lastOffSet!)" != "\(filter)|\(offSet)" else {
+        if lastFilder != nil && lastOffSet != nil {
+            guard "\(lastFilder!)|\(lastOffSet!)" != "\(filter)|\(offSet)" else {
                 AppLogger.warning("Ignored. Same filter and offset")
                 return
             }
         }
-        _lastFilder = filter
-        _lastOffSet = offSet
+        lastFilder = filter
+        lastOffSet = offSet
         genericView?.setActivityState(true)
         rxObservable_GetList(filter: filter, offSet: offSet)
             .debounce(.milliseconds(AppConstants.Rx.servicesDefaultDebounce), scheduler: MainScheduler.instance)
@@ -195,7 +195,7 @@ extension P.BlissQuestionsList_Presenter {
             .subscribe(
                 onNext: { [weak self] questionsList in
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-                    if self._lastOffSet == 0 {
+                    if self.lastOffSet == 0 {
                         self.viewModel?.questionsList = questionsList
                     } else {
                         self.viewModel?.questionsList.append(contentsOf: questionsList)

@@ -46,43 +46,52 @@ open class Sample_TableViewCell: UITableViewCell, GenericTableViewCell_Protocol 
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        if let lbl = textLabel {
-            rxBehaviorRelay_title.asDriver().drive(lbl.rx.text).disposed(by: _disposeBag)
-            rxBehaviorRelay_textColor.asObservable().subscribe(onNext: { lbl.textColor = $0 }).disposed(by: _disposeBag)
-        }
-        
-        if let img = imageView {
-            rxBehaviorRelay_image.asDriver()
-                .do(onNext: { _ in self.setNeedsLayout() })
-                .drive(img.rx.image)
-                .disposed(by: _disposeBag)
-        }
+
+        rxBehaviorRelay_title
+            .asObservable()
+            .subscribe(onNext: { [weak self] (some) in
+                self?.lblTitle.label.text = some
+            }).disposed(by: disposeBag)
+
+        rxBehaviorRelay_textColor
+            .asObservable()
+            .subscribe(onNext: { [weak self] (some) in
+                self?.lblTitle.label.textColor = some
+            }).disposed(by: disposeBag)
+
+        rxBehaviorRelay_image
+            .asObservable()
+            .subscribe(onNext: { [weak self] (some) in
+                self?.imgView.image = some
+                self?.setNeedsLayout()
+            }).disposed(by: disposeBag)
+
     }
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    private var _marginH: CGFloat { return 10 }
-    private var _marginV: CGFloat { return _marginH }
-    private var _imageSize: CGFloat { return Sample_TableViewCell.cellSize - 2 * _marginV }
-    private let _disposeBag: DisposeBag = DisposeBag()
+    private var marginH: CGFloat { return 10 }
+    private var marginV: CGFloat { return marginH }
+    private var imageSize: CGFloat { return Sample_TableViewCell.cellSize - 2 * marginV }
+    private let disposeBag: DisposeBag = DisposeBag()
     
-    private lazy var _lblTitle: UILabelWithPadding = {
+    private lazy var lblTitle: UILabelWithPadding = {
         let some = UIKitFactory.labelWithPadding(style: .title)
-        some.rjsALayouts.setMargin(_marginH, on: .left)
-        some.rjsALayouts.setMargin(_marginH*2+_imageSize, on: .right)
-        some.rjsALayouts.setMargin(_marginV, on: .top)
-        some.rjsALayouts.setMargin(_marginV, on: .bottom)
+        some.rjsALayouts.setMargin(marginH, on: .left)
+        some.rjsALayouts.setMargin(marginH*2+imageSize, on: .right)
+        some.rjsALayouts.setMargin(marginV, on: .top)
+        some.rjsALayouts.setMargin(marginV, on: .bottom)
         return some
     }()
     
-    private lazy var _image: UIImageView = {
+    private lazy var imgView: UIImageView = {
         let some = UIKitFactory.imageView(baseView: self)
-        some.rjsALayouts.setMargin(_marginH, on: .right)
-        some.rjsALayouts.setMargin(_marginV, on: .top)
-        some.rjsALayouts.setSize(CGSize(width: _imageSize, height: _imageSize))
-        some.layer.cornerRadius = _imageSize * 0.1
+        some.rjsALayouts.setMargin(marginH, on: .right)
+        some.rjsALayouts.setMargin(marginV, on: .top)
+        some.rjsALayouts.setSize(CGSize(width: imageSize, height: imageSize))
+        some.layer.cornerRadius = imageSize * 0.1
         some.clipsToBounds      = true
         return some
     }()

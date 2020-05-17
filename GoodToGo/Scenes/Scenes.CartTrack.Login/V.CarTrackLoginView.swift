@@ -31,7 +31,7 @@ extension V {
     class CarTrackLoginView: BaseGenericViewVIP {
 
         deinit {
-            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self) was killed") }
+            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self) was killed") }
             NotificationCenter.default.removeObserver(self)
         }
 
@@ -41,7 +41,7 @@ extension V {
         // MARK: - UI Elements (Private and lazy by default)
 
         private lazy var scrollView: UIScrollView = {
-            UIKitFactory.scrollV w()
+            UIKitFactory.scrollView()
         }()
 
         private lazy var stackViewVLevel1: UIStackView = {

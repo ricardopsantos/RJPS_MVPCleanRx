@@ -11,6 +11,7 @@ import UIKit
 import RxSwift
 import RJPSLib
 import RxCocoa
+
 //
 import DevTools
 import Extensions
@@ -25,10 +26,17 @@ import Domain
 //
 
 extension BaseViewControllerMVP {
+    private struct Keyboard {
+        private init() {}
+        static var keyboardHeight: CGFloat = 0
+    }
+}
 
-    var keyboardHeigth: CGFloat {
-        if _keyboardIsVisible {
-            let autoCorrectBarSize: CGFloat = 44; return _keyboardHeigth - autoCorrectBarSize
+extension BaseViewControllerMVP {
+
+    var keyboardHeight: CGFloat {
+        if keyboardIsVisible {
+            let autoCorrectBarSize: CGFloat = 44; return BaseViewControllerMVP.Keyboard.keyboardHeight - autoCorrectBarSize
         } else {
             return 0
         }
@@ -43,14 +51,14 @@ extension BaseViewControllerMVP {
     }
     
     @objc private func keyboardWillHideNotification(_ notification: Notification) { }
-    @objc private func keyboardDidShowNotification(_ notification: Notification) { _keyboardIsVisible=true; self.keyboardDidShow() }
-    @objc private func keyboardDidHideNotification(_ notification: Notification) { _keyboardIsVisible=false; _keyboardHeigth=0; self.keyboardDidHide() }
+    @objc private func keyboardDidShowNotification(_ notification: Notification) { keyboardIsVisible=true; self.keyboardDidShow() }
+    @objc private func keyboardDidHideNotification(_ notification: Notification) { keyboardIsVisible=false; BaseViewControllerMVP.Keyboard.keyboardHeight=0; self.keyboardDidHide() }
     @objc private func keyboardWillShowNotification(_ notification: Notification) {
         if let userInfo = notification.userInfo {
             if let keyboardSize = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
                 let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
                 UIView.animate(withDuration: 0.3, animations: {
-                    self._keyboardHeigth = contentInsets.bottom
+                    BaseViewControllerMVP.Keyboard.keyboardHeight = contentInsets.bottom
                 })
             }
         }

@@ -30,9 +30,9 @@ extension V {
         }
         var presenter: BlissRoot_PresenterProtocol!
         
-        private var _imageSize: CGFloat = 200
-        private var _imgConstraintHeigth: NSLayoutConstraint?
-        private lazy var _imageView: UIImageView = {
+        private var imageSize: CGFloat = 200
+        private var imgConstraintHeigth: NSLayoutConstraint?
+        private lazy var imageView: UIImageView = {
             let some = UIImageView()
             self.view.addSubview(some)
             some.alpha = 0
@@ -40,8 +40,8 @@ extension V {
             some.clipsToBounds      = true
             some.rjsALayouts.setSame(.centerX, as: self.view)
             some.rjsALayouts.setSame(.centerY, as: self.view)
-            some.rjsALayouts.setWidth(_imageSize)
-            _imgConstraintHeigth = some.rjsALayouts.setHeight(_imageSize, method: .constraints)
+            some.rjsALayouts.setWidth(imageSize)
+            imgConstraintHeigth = some.rjsALayouts.setHeight(imageSize, method: .constraints)
             return some
         }()
         
@@ -68,7 +68,7 @@ extension V {
         
         public override func prepareLayoutCreateHierarchy() {
             self.view.backgroundColor = AppColors.appDefaultBackgroundColor
-            _imageView.lazyLoad()
+            imageView.lazyLoad()
         }
         
         public override func prepareLayoutBySettingAutoLayoutsRules() {
@@ -87,16 +87,16 @@ extension V.BlissRoot_View: BlissRoot_ViewProtocol {
     
     func set(image: UIImage?) {
         guard let image = image else {
-            _imageView.fadeTo(0)
+            imageView.fadeTo(0)
             return
         }
         
         let ratio = image.size.width / image.size.height
-        let imgCurrentWidh = _imageSize
+        let imgCurrentWidh = imageSize
         let newHeigth = imgCurrentWidh / ratio
-        _imageView.image = image
-        _imageView.fadeTo(1)
-        _imageView.rjsALayouts.updateConstraint(_imgConstraintHeigth!,
+        imageView.image = image
+        imageView.fadeTo(1)
+        imageView.rjsALayouts.updateConstraint(imgConstraintHeigth!,
                                                 toValue: newHeigth,
                                                 duration: 0.3,
                                                 completion: { (_) in

@@ -32,19 +32,19 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
 
     public var firstAppearance = true
     // Keyboard related init
-    var _keyboardHeigth: CGFloat = 0
-    var _keyboardIsVisible = false
+    var keyboardHeigthAux: CGFloat = 0
+    var keyboardIsVisible = false
     // Keyboard related end
 
     public var reachabilityService: ReachabilityService! = DevTools.reachabilityService
     public var disposeBag: DisposeBag = DisposeBag()
 
-    private var _lblReachabilityDistanceFromTop: NSLayoutConstraint?
-    private var _lblReachabilityHeight: CGFloat = 25
-    private var _margin: CGFloat = 20
+    private var lblReachabilityDistanceFromTop: NSLayoutConstraint?
+    private var lblReachabilityHeight: CGFloat = 25
+    private var margin: CGFloat = 20
 
     #warning("delete. deprecated")
-    private lazy var _lblReachability: UILabel = {
+    private lazy var lblReachability: UILabel = {
         let some             = label(baseView: self.view, style: .title)
         some.textColor       = UIColor.App.TopBar.titleColor
         some.textAlignment   = .center
@@ -52,8 +52,8 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
         some.alpha           = 0
         some.rjsALayouts.setMargin(0, on: .left)
         some.rjsALayouts.setMargin(0, on: .right)
-        _lblReachabilityDistanceFromTop = some.rjsALayouts.setMargin(100, on: .top, method: .constraints)
-        some.rjsALayouts.setHeight(_lblReachabilityHeight)
+        lblReachabilityDistanceFromTop = some.rjsALayouts.setMargin(100, on: .top, method: .constraints)
+        some.rjsALayouts.setHeight(lblReachabilityHeight)
         return some
     }()
 
@@ -94,10 +94,10 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
             guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
             let value = !to
             let duration = 0.5
-            self._lblReachability.lazyLoad()
-            self._lblReachability.superview?.bringSubviewToFront(self._lblReachability)
-            self._lblReachability.textAnimated = withMessage
-            self._lblReachability.alpha = 1
+            self.lblReachability.lazyLoad()
+            self.lblReachability.superview?.bringSubviewToFront(self.lblReachability)
+            self.lblReachability.textAnimated = withMessage
+            self.lblReachability.alpha = 1
 /*
             //self._lblReachability.fadeTo(value ? 0 : 0.95, duration: duration)
             self._lblReachability.rjsALayouts.updateConstraint(self._lblReachabilityDistanceFromTop!,
@@ -184,7 +184,7 @@ extension BaseViewControllerMVP {
         return some
     }
 }
-
+/*
 //
 // MARK: - Keyboard
 //
@@ -192,16 +192,17 @@ extension BaseViewControllerMVP {
 extension BaseViewControllerMVP {
     
     @objc private func keyboardWillHideNotification(_ notification: Notification) { }
-    @objc private func keyboardDidShowNotification(_ notification: Notification) { _keyboardIsVisible=true; self.keyboardDidShow() }
-    @objc private func keyboardDidHideNotification(_ notification: Notification) { _keyboardIsVisible=false; _keyboardHeigth=0; self.keyboardDidHide() }
+    @objc private func keyboardDidShowNotification(_ notification: Notification) { keyboardIsVisible=true; self.keyboardDidShow() }
+    @objc private func keyboardDidHideNotification(_ notification: Notification) { keyboardIsVisible=false; keyboardHeigth=0; self.keyboardDidHide() }
     @objc private func keyboardWillShowNotification(_ notification: Notification) {
         if let userInfo = notification.userInfo {
             if let keyboardSize = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
                 let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
                 UIView.animate(withDuration: 0.3, animations: {
-                    self._keyboardHeigth = contentInsets.bottom
+                    self.keyboardHeigth = contentInsets.bottom
                 })
             }
         }
     }
 }
+*/

@@ -26,33 +26,33 @@ extension V {
     class BlissQuestionsList_View: BaseViewControllerMVP {
         
         deinit {
-            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self.className) was killed") }
+            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self.className) was killed") }
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
         var presenter: BlissQuestionsList_PresenterProtocol!
 
         // BehaviorRelay model a State
-        private var _rxBehaviorRelay_tableDataSource = BehaviorRelay<[Bliss.QuestionElementResponseDto]>(value: [])
+        private var rxBehaviorRelay_tableDataSource = BehaviorRelay<[Bliss.QuestionElementResponseDto]>(value: [])
 
         private let _tableViewThreshold: CGFloat = 100.0 // threshold from bottom of tableView
-        private var _tableViewIsLoadingMoreData = false // flag
+        private var tableViewIsLoadingMoreData = false // flag
 
-        private lazy var _topGenericView: TopBar = {
+        private lazy var topGenericView: TopBar = {
             let some = UIKitFactory.topBar(baseController: self, usingSafeArea: true)
             some.setTitle(Messages.Bliss.appName)
             some.rxSignal_viewTapped
                 .emit(onNext: { [weak self] in
                     _ = $0
-                    self?._searchBar.resignFirstResponder()
+                    self?.searchBar.resignFirstResponder()
                 })
                 .disposed(by: disposeBag)
             return some
         }()
         
-        private lazy var _searchBar: CustomSearchBar = {
+        private lazy var searchBar: CustomSearchBar = {
             let some = UIKitFactory.searchBar(baseView: self.view, placeholder: Messages.search.localised)
-            some.rjsALayouts.setMargin(0, on: .top, from: _topGenericView.view)
+            some.rjsALayouts.setMargin(0, on: .top, from: topGenericView.view)
             some.rjsALayouts.setMargin(0, on: .right)
             some.rjsALayouts.setMargin(0, on: .left)
             some.rjsALayouts.setHeight(50)
@@ -61,24 +61,24 @@ extension V {
                 .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
                 .subscribe(onNext: { [weak self] _ in
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-                    let query = self._searchBar.text?.trim ?? ""
+                    let query = self.searchBar.text?.trim ?? ""
                     self.presenter.userPretendDoSearchWith(filter: query)
                 })
                 .disposed(by: disposeBag)
             some.rx.textDidEndEditing
                 .subscribe(onNext: { [weak self] (query) in
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-                    let query = self._searchBar.text?.trim ?? ""
+                    let query = self.searchBar.text?.trim ?? ""
                 })
                 .disposed(by: self.disposeBag)
             return some
         }()
         
-        private lazy var _tableView: UITableView = {
+        private lazy var tableView: UITableView = {
             let some = UIKitFactory.tableView(baseView: self.view)
             some.backgroundColor = .clear
             some.separatorColor  = .clear
-            some.rjsALayouts.setMargin(0, on: .top, from: _searchBar)
+            some.rjsALayouts.setMargin(0, on: .top, from: searchBar)
             some.rjsALayouts.setMargin(0, on: .right)
             some.rjsALayouts.setMargin(0, on: .left)
             some.rjsALayouts.setMargin(0, on: .bottom)
@@ -108,7 +108,7 @@ extension V {
                     }
                 })
                 .disposed(by: disposeBag)
-            _rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
+            rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
                 _ = element
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                 var indexPath = NSIndexPath(row: row, section: 0)
@@ -141,9 +141,9 @@ extension V {
 
         public override func prepareLayoutCreateHierarchy() {
             self.view.backgroundColor = AppColors.appDefaultBackgroundColor
-            _topGenericView.lazyLoad()
-            _searchBar.lazyLoad()
-            _tableView.lazyLoad()
+            topGenericView.lazyLoad()
+            searchBar.lazyLoad()
+            tableView.lazyLoad()
         }
 
         public override func prepareLayoutBySettingAutoLayoutsRules() {
@@ -163,13 +163,13 @@ extension V {
 extension V.BlissQuestionsList_View: BlissQuestionsList_ViewProtocol {
     
     func setSearch(text: String) {
-        _searchBar.text = text
+        searchBar.text = text
     }
     
     func viewNeedsToDisplay(list: [Bliss.QuestionElementResponseDto]) {
-        self._tableViewIsLoadingMoreData = false
-        self._rxBehaviorRelay_tableDataSource.accept(list)
-        self._searchBar.resignFirstResponder()
+        self.tableViewIsLoadingMoreData = false
+        self.rxBehaviorRelay_tableDataSource.accept(list)
+        self.searchBar.resignFirstResponder()
     }
 }
 
@@ -193,15 +193,15 @@ extension V.BlissQuestionsList_View: UIScrollViewDelegate {
         let contentOffset = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
         
-        guard !_tableViewIsLoadingMoreData else {
+        guard !tableViewIsLoadingMoreData else {
             // Is allready wayting for data
             return
         }
         if Double(maximumOffset) - Double(contentOffset) <= Double(_tableViewThreshold) {
             // Get more data - API call
-            _searchBar.resignFirstResponder()
-            self._tableViewIsLoadingMoreData = true
-            presenter.viewNeedsMoreData(filter: _searchBar.text!)
+            searchBar.resignFirstResponder()
+            self.tableViewIsLoadingMoreData = true
+            presenter.viewNeedsMoreData(filter: searchBar.text!)
         }
     }
 }

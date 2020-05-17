@@ -33,12 +33,12 @@ extension V {
         var presenter: BlissDetails_PresenterProtocol!
         
         // BehaviorRelay model a State
-        private var _rxBehaviorRelay_tableDataSource = BehaviorRelay<[Bliss.ChoiceElementResponseDto]>(value: [])
-        private var _imgCoverConstraintHeigth: NSLayoutConstraint?
-        private let _margin: CGFloat = Designables.Sizes.Margins.defaultMargin
-        private let _imageSize: Int = 100
+        private var rxBehaviorRelay_tableDataSource = BehaviorRelay<[Bliss.ChoiceElementResponseDto]>(value: [])
+        private var imgCoverConstraintHeigth: NSLayoutConstraint?
+        private let margin: CGFloat = Designables.Sizes.Margins.defaultMargin
+        private let imageSize: Int = 100
         
-        private lazy var _topGenericView: TopBar = {
+        private lazy var topGenericView: TopBar = {
             let some = UIKitFactory.topBar(baseController: self, usingSafeArea: true)
             some.setTitle(Messages.details.localised)
             some.addBackButton()
@@ -59,11 +59,11 @@ extension V {
             return some
         }()
         
-        private lazy var _btnShare1: UIButton = {
+        private lazy var btnShare1: UIButton = {
             let some = UIKitFactory.button(baseView: self.view, title: "Share in app", style: .regular)
-            some.rjsALayouts.setMargin(_margin, on: .left)
-            some.rjsALayouts.setWidth(screenWidth/2 - 2*_margin)
-            some.rjsALayouts.setMargin(_margin, on: .bottom)
+            some.rjsALayouts.setMargin(margin, on: .left)
+            some.rjsALayouts.setWidth(screenWidth/2 - 2*margin)
+            some.rjsALayouts.setMargin(margin, on: .bottom)
             some.rjsALayouts.setHeight(50)
             some.rx.tap.subscribe({ [weak self] _ in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
@@ -75,11 +75,11 @@ extension V {
             return some
         }()
         
-        private lazy var _btnShare2: UIButton = {
+        private lazy var btnShare2: UIButton = {
             let some = UIKitFactory.button(baseView: self.view, title: "Share by Email", style: .regular)
-            some.rjsALayouts.setMargin(_margin, on: .right)
-            some.rjsALayouts.setWidth(screenWidth/2 - 2*_margin)
-            some.rjsALayouts.setMargin(_margin, on: .bottom)
+            some.rjsALayouts.setMargin(margin, on: .right)
+            some.rjsALayouts.setWidth(screenWidth/2 - 2*margin)
+            some.rjsALayouts.setMargin(margin, on: .bottom)
             some.rjsALayouts.setHeight(50)
             some.rx.tap
                 .subscribe({ [weak self] _ in
@@ -92,21 +92,21 @@ extension V {
             return some
         }()
         
-        private lazy var _imgCover: UIImageView = {
+        private lazy var imgCover: UIImageView = {
             let some = UIKitFactory.imageView(baseView: self.view)
-            some.rjsALayouts.setMargin(_margin, on: .left)
-            some.rjsALayouts.setMargin(_margin, on: .right)
-            _imgCoverConstraintHeigth = some.rjsALayouts.setHeight(0, method: .constraints)
-            some.rjsALayouts.setWidth(CGFloat(_imageSize))
-            some.rjsALayouts.setMargin(_margin, on: .top, from: _topGenericView.view)
+            some.rjsALayouts.setMargin(margin, on: .left)
+            some.rjsALayouts.setMargin(margin, on: .right)
+            imgCoverConstraintHeigth = some.rjsALayouts.setHeight(0, method: .constraints)
+            some.rjsALayouts.setWidth(CGFloat(imageSize))
+            some.rjsALayouts.setMargin(margin, on: .top, from: topGenericView.view)
             some.rjsALayouts.setSame(.centerX, as: self.view)
             some.alpha = 0
-            some.layer.cornerRadius = CGFloat(_imageSize) * 0.1
+            some.layer.cornerRadius = CGFloat(imageSize) * 0.1
             some.clipsToBounds      = true
             return some
         }()
         
-        private lazy var _tableView: UITableView = {
+        private lazy var tableView: UITableView = {
             let some = UIKitFactory.tableView(baseView: self.view)
             some.backgroundColor    = .clear
             some.separatorColor     = .clear
@@ -114,10 +114,10 @@ extension V {
             some.isScrollEnabled    = false
             some.layer.cornerRadius = 10.0
             some.clipsToBounds      = true
-            some.rjsALayouts.setMargin(_margin, on: .top, from: _imgCover)
-            some.rjsALayouts.setMargin(_margin, on: .right)
-            some.rjsALayouts.setMargin(_margin, on: .left)
-            some.rjsALayouts.setMargin(_margin, on: .bottom, from: _btnShare1)
+            some.rjsALayouts.setMargin(margin, on: .top, from: imgCover)
+            some.rjsALayouts.setMargin(margin, on: .right)
+            some.rjsALayouts.setMargin(margin, on: .left)
+            some.rjsALayouts.setMargin(margin, on: .bottom, from: btnShare1)
             some.register(Sample_TableViewCell.self, forCellReuseIdentifier: Sample_TableViewCell.reuseIdentifier)
             some.rx.modelSelected(Bliss.ChoiceElementResponseDto.self)
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)                  .subscribe(onNext: { [weak self]  item in
@@ -129,7 +129,7 @@ extension V {
                     }
                 })
                 .disposed(by: disposeBag)
-            _rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
+            rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
                 _ = element
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                 cell.set(textColor: AppColors.lblTextColor)
@@ -161,11 +161,11 @@ extension V {
         
         public override func prepareLayoutCreateHierarchy() {
             self.view.backgroundColor = AppColors.appDefaultBackgroundColor
-            _topGenericView.lazyLoad()
-            _imgCover.lazyLoad()
-            _btnShare1.lazyLoad()
-            _btnShare2.lazyLoad()
-            _tableView.lazyLoad()
+            topGenericView.lazyLoad()
+            imgCover.lazyLoad()
+            btnShare1.lazyLoad()
+            btnShare2.lazyLoad()
+            tableView.lazyLoad()
         }
         
         public override func prepareLayoutBySettingAutoLayoutsRules() {
@@ -192,20 +192,20 @@ extension V.BlissDetails_View: BlissDetails_ViewProtocol {
     }
     
     func set(title: String) {
-        _topGenericView.setTitle(title)
+        topGenericView.setTitle(title)
     }
     
     func viewNeedsToDisplay(list: [Bliss.ChoiceElementResponseDto]) {
-        _rxBehaviorRelay_tableDataSource.accept(list)
+        rxBehaviorRelay_tableDataSource.accept(list)
     }
     
     func set(image: UIImage) {
         let ratio = image.size.width / image.size.height
-        let imgCoverCurrentWidh = screenWidth - 2 * _margin
+        let imgCoverCurrentWidh = screenWidth - 2 * margin
         let newHeigth = imgCoverCurrentWidh / ratio
-        _imgCover.image = image
-        _imgCover.fadeTo(1)
-        _imgCover.rjsALayouts.updateConstraint(_imgCoverConstraintHeigth!,
+        imgCover.image = image
+        imgCover.fadeTo(1)
+        imgCover.rjsALayouts.updateConstraint(imgCoverConstraintHeigth!,
                                                toValue: newHeigth,
                                                duration: 0.3,
                                                completion: { (_) in

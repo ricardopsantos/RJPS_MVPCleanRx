@@ -28,7 +28,7 @@ open class TopBar: BaseViewControllerMVP {
     private var baseViewControllerTitle: String = ""
     private var usingSafeArea: Bool = false
 
-    private lazy var _btnBack: UIButton = {
+    private lazy var btnBack: UIButton = {
         let some = UIKitFactory.button(baseView: self.view, style: .dismiss)
         some.rjsALayouts.setMargin(btnSize/2, on: .left)
         some.rjsALayouts.setMargin(btnSize/2, on: .top)
@@ -39,7 +39,7 @@ open class TopBar: BaseViewControllerMVP {
         return some
     }()
 
-    private lazy var _btnClose: UIButton = {
+    private lazy var btnClose: UIButton = {
         let some = UIKitFactory.raisedButton(title: "X")
         self.view.addSubview(some)
         some.rjsALayouts.setMargin(btnSize/2, on: .right)
@@ -55,7 +55,7 @@ open class TopBar: BaseViewControllerMVP {
         return some
     }()
 
-    private lazy var _lblTitle: UILabelWithPadding = {
+    private lazy var lblTitle: UILabelWithPadding = {
         let some = UIKitFactory.labelWithPadding(style: .navigationBarTitle)
         self.view.addSubview(some)
         some.textAlignment = .center
@@ -82,8 +82,8 @@ open class TopBar: BaseViewControllerMVP {
         super.viewWillAppear(animated)
         if firstAppearance {
             self.lazyLoad()
-            if _lblTitle.text.isEmpty && !baseViewControllerTitle.isEmpty {
-                _lblTitle.textAnimated = baseViewControllerTitle
+            if lblTitle.text.isEmpty && !baseViewControllerTitle.isEmpty {
+                lblTitle.textAnimated = baseViewControllerTitle
             }
         }
 
@@ -100,25 +100,25 @@ extension TopBar {
         // [usingSafeArea=false] will make the TopBar go up and use space on the safe area
         return 60 + (!usingSafeArea ? AppleSizes.safeAreaTop : 0)
     }
-    public func addBackButton() { enable(btn: _btnBack) }
-    public func addDismissButton() { enable(btn: _btnClose) }
-    public func setTitle(_ title: String) { _lblTitle.textAnimated = title }
+    public func addBackButton() { enable(btn: btnBack) }
+    public func addDismissButton() { enable(btn: btnClose) }
+    public func setTitle(_ title: String) { lblTitle.textAnimated = title }
     public func lazyLoad() {
-        _btnBack.lazyLoad()
-        _btnClose.lazyLoad()
-        _lblTitle.lazyLoad()
+        btnBack.lazyLoad()
+        btnClose.lazyLoad()
+        lblTitle.lazyLoad()
         /* Lazy var auxiliar */
     }
     public var rxSignal_btnDismissTapped: Signal<Void> {
-        return _btnClose.rx.controlEvent(.touchUpInside).asSignal()
+        return btnClose.rx.controlEvent(.touchUpInside).asSignal()
     }
     
     public var rxSignal_btnBackTapped: Signal<Void> {
-        return _btnBack.rx.controlEvent(.touchUpInside).asSignal()
+        return btnBack.rx.controlEvent(.touchUpInside).asSignal()
     }
     
     public var rxSignal_viewTapped: Signal<CGPoint> {
-        return _lblTitle.rx
+        return lblTitle.rx
             .tapGesture()
             .when(.recognized)
             .map({ $0.location(in: $0.view)})

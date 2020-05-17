@@ -300,6 +300,7 @@
 		D7E25AAA24669D1A003BBEA0 /* AppConstants.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7E25A9424669B9B003BBEA0 /* AppConstants.framework */; };
 		D7FA21F724708B9C001DD9D5 /* V.ReachabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA21F324706A32001DD9D5 /* V.ReachabilityView.swift */; };
 		D7FA21F9247097BD001DD9D5 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA21F8247097BD001DD9D5 /* File.swift */; };
+		D7FA2207247189B9001DD9D5 /* TokenRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA2206247189B9001DD9D5 /* TokenRefresh.swift */; };
 		D7FCAC2024685B7A00DBECA2 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FCAC1F24685B7A00DBECA2 /* RxDataSources.framework */; };
 		D7FCAC27246874C900DBECA2 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FCAC242468748B00DBECA2 /* UIView+Extensions.swift */; };
 		D7FCAC292468753500DBECA2 /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FECF2468412100BD41A5 /* UIView+Autolayout.swift */; };
@@ -987,6 +988,7 @@
 		D7FA220324715A9A001DD9D5 /* vip_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vip_3.png; sourceTree = "<group>"; };
 		D7FA220424715A9A001DD9D5 /* vip_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vip_1.png; sourceTree = "<group>"; };
 		D7FA220524715A9A001DD9D5 /* login_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_1.png; sourceTree = "<group>"; };
+		D7FA2206247189B9001DD9D5 /* TokenRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRefresh.swift; sourceTree = "<group>"; };
 		D7FCAC1F24685B7A00DBECA2 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
 		D7FCAC222468697000DBECA2 /* FactoryErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryErrors.swift; sourceTree = "<group>"; };
 		D7FCAC242468748B00DBECA2 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
@@ -1885,6 +1887,7 @@
 			isa = PBXGroup;
 			children = (
 				D7D9E7C1246775C2005B4313 /* WebAPI+Targets.swift */,
+				D7FA2206247189B9001DD9D5 /* TokenRefresh.swift */,
 				D7D9E7B324677046005B4313 /* typealias.WebAPI.swift */,
 				D7D9E7F124679A5E005B4313 /* E.APIErrors.swift */,
 				D7D9E7B224677039005B4313 /* README.md */,
@@ -3192,6 +3195,7 @@
 				D7D9E7F42467FB99005B4313 /* typealias.DDD.encaplulate.swift in Sources */,
 				D7D9E7B8246773F8005B4313 /* Employees.APIRequests.swift in Sources */,
 				D7D9E7B7246773F8005B4313 /* GitUser.APIRequests.swift in Sources */,
+				D7FA2207247189B9001DD9D5 /* TokenRefresh.swift in Sources */,
 				D7D9E7BC246773F8005B4313 /* WebAPI.Bliss.swift in Sources */,
 				D7D9E7BB246773F8005B4313 /* WebAPI.GitUser.swift in Sources */,
 				D7D9E80224681046005B4313 /* CarTrack.APIRequests.swift in Sources */,

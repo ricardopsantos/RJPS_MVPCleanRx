@@ -37,7 +37,7 @@ public extension V {
             return some
         }()
         
-        private lazy var _searchBar: CustomSearchBar = {
+        private lazy var searchBar: CustomSearchBar = {
             let some = UIKitFactory.searchBar(baseView: self.view, placeholder: Messages.search.localised)
             some.rjsALayouts.setMargin(0, on: .top, from: topGenericView.view)
             some.rjsALayouts.setMargin(0, on: .right)
@@ -54,7 +54,7 @@ public extension V {
             some.rx.textDidEndEditing
                 .subscribe(onNext: { [weak self] (_) in
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-                    if self._searchBar.text!.count>0 {
+                    if self.searchBar.text!.count>0 {
                         self.presenter.searchUserWith(username: some.text ?? "")
                     }
                 })
@@ -97,13 +97,13 @@ public extension V {
         open override func viewDidAppear(_ animated: Bool) {
             super.viewDidAppear(animated)
             presenter.generic?.viewDidAppear()
-            _searchBar.becomeFirstResponder()
+            searchBar.becomeFirstResponder()
         }
         
         public override func prepareLayoutCreateHierarchy() {
             self.view.backgroundColor = AppColors.appDefaultBackgroundColor
             topGenericView.lazyLoad()
-            _searchBar.lazyLoad()
+            searchBar.lazyLoad()
         }
         
         public override func prepareLayoutBySettingAutoLayoutsRules() {
@@ -119,6 +119,6 @@ public extension V {
 
 extension V.SearchUser_View: SearchUser_ViewProtocol {
     func viewDataToScreen(some: VM.SearchUser) {
-        _searchBar.text = some.user
+        searchBar.text = some.user
     }
 }

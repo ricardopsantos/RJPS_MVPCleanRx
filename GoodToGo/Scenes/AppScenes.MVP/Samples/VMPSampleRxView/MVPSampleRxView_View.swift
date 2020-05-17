@@ -37,7 +37,7 @@ extension V {
         
         private let _margin: CGFloat = Designables.Sizes.Margins.defaultMargin
 
-        private lazy var _txtUser: UITextField = {
+        private lazy var txtUser: UITextField = {
             let some = UIKitFactory.textField(baseView: self.view)
             some.font      = AppFonts.regular
             some.textColor = AppColors.lblTextColor
@@ -51,7 +51,7 @@ extension V {
             return some
         }()
         
-        private lazy var _txtPass: UITextField = {
+        private lazy var txtPass: UITextField = {
             let some = UIKitFactory.textField(baseView: self.view)
             some.font = AppFonts.regular
             some.backgroundColor      = AppColors.lblBackgroundColor
@@ -60,12 +60,12 @@ extension V {
             some.layer.cornerRadius   = 8
             some.rjsALayouts.setMargin(_margin, on: .left)
             some.rjsALayouts.setMargin(_margin, on: .right)
-            some.rjsALayouts.setMargin(_margin, on: .top, from: _txtUser)
+            some.rjsALayouts.setMargin(_margin, on: .top, from: txtUser)
             some.rjsALayouts.setHeight(_margin)
             return some
         }()
         
-        private lazy var _lblMessage: UILabel = {
+        private lazy var lblMessage: UILabel = {
             let some = UIKitFactory.label(baseView: self.view, style: .value)
             some.font = AppFonts.regular
             some.backgroundColor      = AppColors.lblBackgroundColor
@@ -74,44 +74,44 @@ extension V {
             some.textAlignment        = .center
             some.rjsALayouts.setMargin(_margin, on: .left)
             some.rjsALayouts.setMargin(_margin, on: .right)
-            some.rjsALayouts.setMargin(_margin, on: .top, from: _btnLogin)
+            some.rjsALayouts.setMargin(_margin, on: .top, from: btnLogin)
             some.rjsALayouts.setHeight(_margin*2)
             return some
         }()
         
-        private lazy var _btnLogin: UIButton = {
+        private lazy var btnLogin: UIButton = {
             let some = UIKitFactory.button(baseView: self.view, title: "Login", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .left)
             some.rjsALayouts.setMargin(_margin, on: .right)
-            some.rjsALayouts.setMargin(_margin*2, on: .top, from: _txtPass)
+            some.rjsALayouts.setMargin(_margin*2, on: .top, from: txtPass)
             some.rjsALayouts.setHeight(_margin*2)
             some.rx.tap
                 .subscribe({ [weak self] _ in
                     some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
                         guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-                        self.presenter.userDidTryToLoginWith(user: self._txtUser.text!, password: self._txtPass.text!)
+                        self.presenter.userDidTryToLoginWith(user: self.txtUser.text!, password: self.txtPass.text!)
                     })
                 })
                 .disposed(by: disposeBag)
             
-            let isPasswordValid = _txtPass.rx.text.orEmpty.map { $0.count >= 8 }.distinctUntilChanged()
-            let isEmailValid    = _txtUser.rx.text.orEmpty.map({ $0.count >= 5 && $0.contains("@") }).distinctUntilChanged()
+            let isPasswordValid = txtPass.rx.text.orEmpty.map { $0.count >= 8 }.distinctUntilChanged()
+            let isEmailValid    = txtUser.rx.text.orEmpty.map({ $0.count >= 5 && $0.contains("@") }).distinctUntilChanged()
             let isButtonEnabled = Observable.combineLatest(isPasswordValid, isEmailValid) { $0 && $1 }
             isButtonEnabled.bind(to: some.rx.isEnabled).disposed(by: disposeBag)
             isButtonEnabled.subscribe(onNext: { some.alpha = $0 ? 1 : 0.5 }).disposed(by: disposeBag)
             return some
         }()
         
-        private lazy var _btnPush: UIButton = {
+        private lazy var btnPush: UIButton = {
             let some = UIKitFactory.button(baseView: self.view, title: "Push", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .left)
             some.rjsALayouts.setWidth((screenWidth / 2) - (1.5 * _margin))
-            some.rjsALayouts.setMargin(_margin*2, on: .top, from: _lblMessage)
+            some.rjsALayouts.setMargin(_margin*2, on: .top, from: lblMessage)
             some.rjsALayouts.setHeight(_margin*2)
             some.rx.tap.subscribe({ [weak self] _ in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-                    let someString = "[\(self._txtUser.text ?? "")][\(self._txtPass.text ?? "")]"
+                    let someString = "[\(self.txtUser.text ?? "")][\(self.txtPass.text ?? "")]"
                     let vm = VM.MVPSampleRxView_ViewModel(someString: someString )
                     self.presenter.router.presentControllerWith(vm: vm)
                 })
@@ -120,11 +120,11 @@ extension V {
             return some
         }()
         
-        private lazy var _btnDismiss: UIButton = {
+        private lazy var btnDismiss: UIButton = {
             let some = UIKitFactory.button(baseView: self.view, title: "Dismiss", style: .regular)
             some.rjsALayouts.setMargin(_margin, on: .right)
             some.rjsALayouts.setWidth((screenWidth / 2) - (1.5 * _margin))
-            some.rjsALayouts.setMargin(_margin*2, on: .top, from: _lblMessage)
+            some.rjsALayouts.setMargin(_margin*2, on: .top, from: lblMessage)
             some.rjsALayouts.setHeight(_margin*2)
             some.rx.tap.subscribe({ [weak self] _ in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
@@ -159,14 +159,14 @@ extension V {
         
         public override func prepareLayoutCreateHierarchy() {
             self.view.backgroundColor = AppColors.appDefaultBackgroundColor
-            _txtUser.lazyLoad()
-            _txtPass.lazyLoad()
-            _btnLogin.lazyLoad()
-            _lblMessage.lazyLoad()
-            _btnPush.lazyLoad()
-            _btnDismiss.lazyLoad()
-            _txtUser.text = "admin@admin.com"
-            _txtPass.text = "admin"
+            txtUser.lazyLoad()
+            txtPass.lazyLoad()
+            btnLogin.lazyLoad()
+            lblMessage.lazyLoad()
+            btnPush.lazyLoad()
+            btnDismiss.lazyLoad()
+            txtUser.text = "admin@admin.com"
+            txtPass.text = "admin"
         }
         
         public override func prepareLayoutBySettingAutoLayoutsRules() {
@@ -183,6 +183,6 @@ extension V {
 
 extension V.MVPSampleRxView_View: MVPSampleRxView_ViewProtocol {
     func updateViewWith(message: String) {
-        _lblMessage.textAnimated = message
+        lblMessage.textAnimated = message
     }
 }

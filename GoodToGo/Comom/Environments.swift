@@ -19,15 +19,7 @@ struct AppEnvironments {
         case dev
     }
 
-    private static var _current: AppMode? {
-        didSet {
-            AppLogger.log("Environment set to \(String(describing: _current))".uppercased())
-        }
-    }
-    
-    static var current: AppMode {
-        return _current ?? .dev
-    }
+    static var current: AppMode = .dev
 
     static var isDev: Bool { return current == .dev }
     static var isQA: Bool { return current == .qa }
@@ -41,15 +33,15 @@ struct AppEnvironments {
 
         let block_recover = {
             AppLogger.log(appCode: .notPredicted)
-            _current = .dev
+            current = .dev
         }
 
         if let mode = appMode {
             switch mode {
-            case "Debug.Dev"  : _current = .dev
-            case "Debug.QA"   : _current = .qa
-            case "Debug.Prod" : _current = .prod
-            case "Release"    : _current = .prod
+            case "Debug.Dev"  : current = .dev
+            case "Debug.QA"   : current = .qa
+            case "Debug.Prod" : current = .prod
+            case "Release"    : current = .prod
             default           :
                 block_recover()
             }
