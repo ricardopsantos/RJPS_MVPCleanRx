@@ -13,7 +13,7 @@ import RJPSLib
 public extension UIButton {
     func disable() {
         self.isUserInteractionEnabled = false
-        self.rjs.fadeTo(Designables.Constants.disabledViewAlpha)
+        self.fadeTo(Designables.Constants.disabledViewAlpha)
     }
 
     func enable() {
