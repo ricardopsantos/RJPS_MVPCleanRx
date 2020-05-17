@@ -34,7 +34,6 @@ extension VC {
             let vip1 = createControllers(tabName: "VIP", vc: SampleVIP_ViewController())
             let vip2 = VC.___VARIABLE_sceneName___ViewController()
             let carTrackLoginViewController = VC.CarTrackLoginViewController()
-            let carTrackUsersViewController = VC.CarTrackUsersViewController()
             let cartTrackMapViewController = VC.CartTrackMapViewController()
             let stylesViewController = VC.StylesViewController()
             

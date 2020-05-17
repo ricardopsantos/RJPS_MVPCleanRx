@@ -191,13 +191,6 @@
 		D7979D76246D46FA0039031C /* UC.GitUser_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D73246D46FA0039031C /* UC.GitUser_UseCase.swift */; };
 		D7979D77246D46FA0039031C /* UC.Sample_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D72246D46F90039031C /* UC.Sample_UseCase.swift */; };
 		D7979D7B246D5BC00039031C /* Mappers+CarTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D7A246D5BC00039031C /* Mappers+CarTrack.swift */; };
-		D7979DA8246D6B370039031C /* V.CarTrackUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D91246D6B370039031C /* V.CarTrackUsersView.swift */; };
-		D7979DA9246D6B370039031C /* D.CarTrackUsersDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D92246D6B370039031C /* D.CarTrackUsersDomain.swift */; };
-		D7979DAA246D6B370039031C /* R.CarTrackUsersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D93246D6B370039031C /* R.CarTrackUsersRouter.swift */; };
-		D7979DAB246D6B370039031C /* VC.CarTrackUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D94246D6B370039031C /* VC.CarTrackUsersViewController.swift */; };
-		D7979DAC246D6B370039031C /* V.CarTrackUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D95246D6B370039031C /* V.CarTrackUsersTableViewCell.swift */; };
-		D7979DAD246D6B370039031C /* I.CarTrackUsersInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D96246D6B370039031C /* I.CarTrackUsersInteractor.swift */; };
-		D7979DAE246D6B370039031C /* P.CarTrackUsersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D98246D6B370039031C /* P.CarTrackUsersPresenter.swift */; };
 		D7979DB0246D6B370039031C /* I.CartTrackMapInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D9B246D6B370039031C /* I.CartTrackMapInteractor.swift */; };
 		D7979DB1246D6B370039031C /* VC.CartTrackMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D9C246D6B370039031C /* VC.CartTrackMapViewController.swift */; };
 		D7979DB2246D6B370039031C /* V.CartTrackMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D9D246D6B370039031C /* V.CartTrackMapView.swift */; };
@@ -892,13 +885,6 @@
 		D7979D73246D46FA0039031C /* UC.GitUser_UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UC.GitUser_UseCase.swift; sourceTree = "<group>"; };
 		D7979D74246D46FA0039031C /* UC.SampleB_UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UC.SampleB_UseCase.swift; sourceTree = "<group>"; };
 		D7979D7A246D5BC00039031C /* Mappers+CarTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mappers+CarTrack.swift"; sourceTree = "<group>"; };
-		D7979D91246D6B370039031C /* V.CarTrackUsersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V.CarTrackUsersView.swift; sourceTree = "<group>"; };
-		D7979D92246D6B370039031C /* D.CarTrackUsersDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = D.CarTrackUsersDomain.swift; sourceTree = "<group>"; };
-		D7979D93246D6B370039031C /* R.CarTrackUsersRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.CarTrackUsersRouter.swift; sourceTree = "<group>"; };
-		D7979D94246D6B370039031C /* VC.CarTrackUsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VC.CarTrackUsersViewController.swift; sourceTree = "<group>"; };
-		D7979D95246D6B370039031C /* V.CarTrackUsersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V.CarTrackUsersTableViewCell.swift; sourceTree = "<group>"; };
-		D7979D96246D6B370039031C /* I.CarTrackUsersInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = I.CarTrackUsersInteractor.swift; sourceTree = "<group>"; };
-		D7979D98246D6B370039031C /* P.CarTrackUsersPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = P.CarTrackUsersPresenter.swift; sourceTree = "<group>"; };
 		D7979D9B246D6B370039031C /* I.CartTrackMapInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = I.CartTrackMapInteractor.swift; sourceTree = "<group>"; };
 		D7979D9C246D6B370039031C /* VC.CartTrackMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VC.CartTrackMapViewController.swift; sourceTree = "<group>"; };
 		D7979D9D246D6B370039031C /* V.CartTrackMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V.CartTrackMapView.swift; sourceTree = "<group>"; };
@@ -1719,28 +1705,6 @@
 			path = UseCases.CarTrack;
 			sourceTree = "<group>";
 		};
-		D7979D90246D6B370039031C /* Scenes.CartTrack.Users */ = {
-			isa = PBXGroup;
-			children = (
-				D7979D91246D6B370039031C /* V.CarTrackUsersView.swift */,
-				D7979D92246D6B370039031C /* D.CarTrackUsersDomain.swift */,
-				D7979D93246D6B370039031C /* R.CarTrackUsersRouter.swift */,
-				D7979D94246D6B370039031C /* VC.CarTrackUsersViewController.swift */,
-				D7979D95246D6B370039031C /* V.CarTrackUsersTableViewCell.swift */,
-				D7979D96246D6B370039031C /* I.CarTrackUsersInteractor.swift */,
-				D7979D97246D6B370039031C /* Auxiliar */,
-				D7979D98246D6B370039031C /* P.CarTrackUsersPresenter.swift */,
-			);
-			path = Scenes.CartTrack.Users;
-			sourceTree = "<group>";
-		};
-		D7979D97246D6B370039031C /* Auxiliar */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Auxiliar;
-			sourceTree = "<group>";
-		};
 		D7979D99246D6B370039031C /* Scenes.CartTrack.Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -1864,7 +1828,6 @@
 			children = (
 				D7979D99246D6B370039031C /* Scenes.CartTrack.Map */,
 				D7979DA1246D6B370039031C /* Scenes.CartTrack.Login */,
-				D7979D90246D6B370039031C /* Scenes.CartTrack.Users */,
 			);
 			path = CartTrack;
 			sourceTree = "<group>";
@@ -2898,13 +2861,11 @@
 				D7979DB9246D6B370039031C /* P.CarTrackLoginPresenter.swift in Sources */,
 				9F3ED4BC22E618C80020A50A /* VC.RxTesting.swift in Sources */,
 				D7711F6C246B340C00B6963A /* VC.___FILEBASENAME___ViewController.swift in Sources */,
-				D7979DAA246D6B370039031C /* R.CarTrackUsersRouter.swift in Sources */,
 				D7979DB5246D6B370039031C /* P.CartTrackMapPresenter.swift in Sources */,
 				D779A5F3234FE3A500D3D6F7 /* VC.SampleVIP_ViewController.swift in Sources */,
 				D779A5F1234FE3A500D3D6F7 /* R.SampleVIP_Router.swift in Sources */,
 				D7711F68246B340C00B6963A /* I.___FILEBASENAME___Interactor.swift in Sources */,
 				D7979DC6246DC1960039031C /* VC.StylesViewController.swift in Sources */,
-				D7979DA9246D6B370039031C /* D.CarTrackUsersDomain.swift in Sources */,
 				9F6BB2EF22E3A97F00829A6F /* V.BlissQuestionsList_View.swift in Sources */,
 				D779A5F2234FE3A500D3D6F7 /* D.SampleVIP_Domain.swift in Sources */,
 				9F6BB2FD22E3C0E400829A6F /* VM.BlissDetails_ViewModel.swift in Sources */,
@@ -2933,23 +2894,19 @@
 				9FE143B821AF2F520026BDFC /* Environments.swift in Sources */,
 				9F58FB4C22BE5DE700042A8C /* V.SearchUser_View.swift in Sources */,
 				9F6BB2EE22E3A97F00829A6F /* AS.BlissQuestionsList_AssemblyContainer.swift in Sources */,
-				D7979DA8246D6B370039031C /* V.CarTrackUsersView.swift in Sources */,
 				D7979DB2246D6B370039031C /* V.CartTrackMapView.swift in Sources */,
 				9FE0572C22E8D8F000802747 /* D.MVPSampleView_ViewModel.swift in Sources */,
 				9FE0572722E8D75400802747 /* D.MVPSampleRxView_ViewModel.swift in Sources */,
 				9F6BB2FF22E3CB2D00829A6F /* P.BlissRoot_Presenter.swift in Sources */,
 				9FE143C021AF2F520026BDFC /* AppDelegate.swift in Sources */,
 				9FACC17B223BDD5B00576498 /* ToDo.swift in Sources */,
-				D7979DAE246D6B370039031C /* P.CarTrackUsersPresenter.swift in Sources */,
 				9FE0572922E8D8F000802747 /* R.MVPSampleView_Router.swift in Sources */,
 				9FE0572422E8D75400802747 /* R.MVPSampleRxView_Router.swift in Sources */,
 				9F6BB30222E3CB2D00829A6F /* V.BlissRoot_View.swift in Sources */,
-				D7979DAB246D6B370039031C /* VC.CarTrackUsersViewController.swift in Sources */,
 				D7979DB1246D6B370039031C /* VC.CartTrackMapViewController.swift in Sources */,
 				9F6BB2FC22E3C0E400829A6F /* V.BlissDetails_View.swift in Sources */,
 				9F6BB30122E3CB2D00829A6F /* R.BlissRoot_Router.swift in Sources */,
 				9F6BB2CF22E3470200829A6F /* D.MVPSampleTableView_ViewModel.swift in Sources */,
-				D7979DAD246D6B370039031C /* I.CarTrackUsersInteractor.swift in Sources */,
 				D7979DB8246D6B370039031C /* D.CarTrackLoginDomain.swift in Sources */,
 				9F6BB30022E3CB2D00829A6F /* AC.BlissRoot_AssemblyContainer.swift in Sources */,
 				9FACC18B223BFB0F00576498 /* AppDelegate+Setup.swift in Sources */,
@@ -2982,7 +2939,6 @@
 				D7979DB4246D6B370039031C /* D.CartTrackMapDomain.swift in Sources */,
 				D7979DC8246DC1960039031C /* D.StylesDomain.swift in Sources */,
 				D7979DC7246DC1960039031C /* R.StylesRouter.swift in Sources */,
-				D7979DAC246D6B370039031C /* V.CarTrackUsersTableViewCell.swift in Sources */,
 				D7979DCA246DC1960039031C /* I.StylesInteractor.swift in Sources */,
 				D7711F65246B340C00B6963A /* D.___FILEBASENAME___Domain.swift in Sources */,
 				9F58FB4622BE5DE700042A8C /* UserDetais_Presenter.swift in Sources */,
