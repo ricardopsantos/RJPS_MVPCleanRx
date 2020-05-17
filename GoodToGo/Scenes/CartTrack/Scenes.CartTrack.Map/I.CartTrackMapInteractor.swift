@@ -95,7 +95,7 @@ extension I.CartTrackMapInteractor: CartTrackMapBusinessLogicProtocol {
                     self.presentError(error: error)
                 }
             }, onError: { (error) in
-                DevTools.AppLogger.error(error)
+                DevTools.Log.error(error)
                 self.presentError(error: error)
             }, onCompleted: {
                 self.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))

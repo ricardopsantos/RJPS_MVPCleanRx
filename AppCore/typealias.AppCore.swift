@@ -13,7 +13,7 @@ import RJPSLib
 import DevTools
 import Domain
 
-typealias AppLogger = DevTools.AppLogger
+typealias AppLogger = DevTools.Log
 typealias AppSimpleNetworkClient = RJS_SimpleNetworkClient
 
 public typealias UC = UseCases

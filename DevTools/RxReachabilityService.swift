@@ -195,7 +195,7 @@ public class Reachability {
     }
     
     deinit {
-        if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { DevTools.AppLogger.log("\(self) was killed") }
+        if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { DevTools.Log.log("\(self) was killed") }
         stopNotifier()
         reachabilityRef = nil
         whenReachable = nil

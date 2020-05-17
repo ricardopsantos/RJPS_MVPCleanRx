@@ -12,4 +12,4 @@ import AppTheme
 import DevTools
 import AppResources
 
-public typealias AppLogger = DevTools.AppLogger
+public typealias AppLogger = DevTools.Log

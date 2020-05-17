@@ -1,8 +1,8 @@
 //
 //  GoodToGo
 //
-//  Created by Ricardo P Santos on 2019.
-//  Copyright © 2019 Ricardo P Santos. All rights reserved.
+//  Created by Ricardo P Santos
+//  Copyright ©  Ricardo P Santos. All rights reserved.
 //
 
 import UIKit
@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     static var shared: AppDelegate { return UIApplication.shared.delegate as! AppDelegate }
-    public var reachabilityService: ReachabilityService? = try! DefaultReachabilityService() // try! is only for simplicity sake
+    public var reachabilityService: ReachabilityService? = DevTools.reachabilityService
 
     // Where we have all the dependencies
     let container: Container = { return ApplicationAssembly.assembler.resolver as! Container }()
@@ -47,4 +47,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveContext()
     }
 }
-

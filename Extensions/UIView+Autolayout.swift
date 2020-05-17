@@ -43,7 +43,7 @@ extension AutoLayout {
     @discardableResult
     public func marginToSuperVerticalStackView(trailing: CGFloat, leading: CGFloat) -> TinyConstraints.Constraints? {
         guard let maybeStackView = target.superview as? UIStackView, maybeStackView.axis == .vertical else {
-            DevTools.AppLogger.warning("Invalid supper view [target.superview]")
+            DevTools.Log.warning("Invalid supper view [target.superview]")
             return nil
         }
         let insets: TinyEdgeInsets = TinyEdgeInsets(top: 0, left: trailing, bottom: 0, right: leading)
@@ -53,7 +53,7 @@ extension AutoLayout {
     @discardableResult
     public func marginToSuperHorizontalStackView(top: CGFloat, bottom: CGFloat) -> TinyConstraints.Constraints? {
         guard let maybeStackView = target.superview as? UIStackView, maybeStackView.axis == .horizontal else {
-            DevTools.AppLogger.warning("Invalid supper view [target.superview]")
+            DevTools.Log.warning("Invalid supper view [target.superview]")
             return nil
         }
         let insets: TinyEdgeInsets = TinyEdgeInsets(top: top, left: 0, bottom: bottom, right: 0)

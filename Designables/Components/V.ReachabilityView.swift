@@ -21,7 +21,7 @@ import DevTools
 open class ReachabilityView: UILabelWithPadding {
 
     var disposeBag = DisposeBag()
-    var reachabilityService: ReachabilityService? = try! DefaultReachabilityService() // try! is only for simplicity sake
+    var reachabilityService: ReachabilityService? = DevTools.reachabilityService // try! is only for simplicity sake
 
     public override var padding: UIEdgeInsets {
         let min: CGFloat = 0

@@ -6,8 +6,6 @@
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
 //
 
-// swiftlint:disable no_prints
-
 import Foundation
 import UIKit
 //
@@ -84,7 +82,7 @@ public extension GoodToGoProgramaticUIUtils where GoodToGoBase: UIStackView {
     func edgeStackViewToSuperView() {
         let target = self.base
         guard target.superview != nil else {
-            print("MoeyProgramaticUIUtils - edgeStackViewToSuperView : No super view for [\(target)]")
+            DevTools.Log.error("\(GoodToGoProgramaticUIUtils.self) - edgeStackViewToSuperView : No super view for [\(target)]")
             return
         }
         target.autoLayout.edgesToSuperview() // Don't use RJPSLayouts. It will fail if scroll view is inside of stack view with lots of elements

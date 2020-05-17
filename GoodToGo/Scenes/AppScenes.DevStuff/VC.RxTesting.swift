@@ -1,8 +1,8 @@
 //
 //  GoodToGo
 //
-//  Created by Ricardo P Santos on 2019.
-//  Copyright © 2019 Ricardo P Santos. All rights reserved.
+//  Created by Ricardo P Santos
+//  Copyright ©  Ricardo P Santos. All rights reserved.
 //
 
 import UIKit
@@ -31,8 +31,6 @@ extension VC {
         
         let _margin: CGFloat = 10
         let _btnHeight: CGFloat = 40
-
-        private var rxReachabilityService = try! DefaultReachabilityService()
         
         private lazy var topGenericView: TopBar = {
             let some = UIKitFactory.topBar(baseController: self, usingSafeArea: true)
@@ -359,7 +357,7 @@ extension VC.RxTesting {
         /* [retryOnBecomesReachable], will actually return [rxReturnOnError] var if we dont have internet connection
            BUT ALSO, if the requests fails on [observer.onError], the subscriber will receive [rxReturnOnError]
              on event [onNext]. If we dont have the [retryOnBecomesReachable], the subscriber will receive the error on [onError] */
-        .retryOnBecomesReachable(rxReturnOnError, reachabilityService: rxReachabilityService)
+            .retryOnBecomesReachable(rxReturnOnError, reachabilityService: DevTools.reachabilityService)
     }
 }
 

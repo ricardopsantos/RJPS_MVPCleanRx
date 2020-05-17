@@ -1,8 +1,8 @@
 //
 //  GoodToGo
 //
-//  Created by Ricardo P Santos on 2019.
-//  Copyright © 2019 Ricardo P Santos. All rights reserved.
+//  Created by Ricardo P Santos
+//  Copyright ©  Ricardo P Santos. All rights reserved.
 //
 
 import UIKit
@@ -26,7 +26,7 @@ public extension AppResources {
             if selectedLanguage != storedLanguage {
                 currentLanguageBundle = nil
                 saveWith(key: AppConstants.Dev.keyCoreDataSaveLang, value: "\(selectedLanguage.rawValue)")
-                DevTools.AppLogger.warning("Language code changed to [\(selectedLanguage)]")
+                DevTools.Log.warning("Language code changed to [\(selectedLanguage)]")
             }
         }
     }

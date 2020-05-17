@@ -12,5 +12,5 @@ import RJPSLib
 
 // MARK: - DevTools
 
-typealias AppLogger   = DevTools.AppLogger
+typealias AppLogger   = DevTools.Log
 public typealias CacheStrategy = RJSLib.Storages.CachePersistant.CacheStrategy
