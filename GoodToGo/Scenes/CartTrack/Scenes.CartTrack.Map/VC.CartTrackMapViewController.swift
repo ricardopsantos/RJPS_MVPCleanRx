@@ -129,7 +129,7 @@ extension VC {
         // Order in View life-cycle : 3
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
-            #warning("Add reachability support")
+
         }
 
         // Order in View life-cycle : 7
