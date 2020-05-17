@@ -9,8 +9,6 @@ import Foundation
 import UIKit
 import DevTools
 
-#warning("colocar a usar o perfect mapper")
-
 public extension Mappers {
     
     static func listFromCSV<T: Decodable>(_ dataString: String) -> [T] {

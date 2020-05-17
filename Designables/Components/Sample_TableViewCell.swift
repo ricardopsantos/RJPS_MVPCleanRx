@@ -30,7 +30,7 @@ public protocol Sample_TableViewCellProtocol: GenericTableViewCell_Protocol {
 
 open class Sample_TableViewCell: UITableViewCell, GenericTableViewCell_Protocol {
     deinit {
-        //AppLogger.log("\(self.className) was killed")
+        if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self.className) was killed") }
         NotificationCenter.default.removeObserver(self)
     }
     

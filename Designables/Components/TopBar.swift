@@ -20,6 +20,7 @@ import PointFreeFunctions
 open class TopBar: BaseViewControllerMVP {
 
     deinit {
+        if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self.className) was killed") }
         NotificationCenter.default.removeObserver(self)
     }
 

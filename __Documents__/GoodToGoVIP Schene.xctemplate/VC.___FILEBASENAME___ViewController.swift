@@ -25,6 +25,12 @@ import UIBase
 extension VC {
 
     class ___VARIABLE_sceneName___ViewController: BaseGenericViewControllerVIP<V.___VARIABLE_sceneName___View> {
+
+        deinit {
+            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self.className) was killed") }
+            NotificationCenter.default.removeObserver(self)
+        }
+        
         private var interactor: ___VARIABLE_sceneName___BusinessLogicProtocol?
         var router: (___VARIABLE_sceneName___RoutingLogicProtocol &
             ___VARIABLE_sceneName___DataPassingProtocol &

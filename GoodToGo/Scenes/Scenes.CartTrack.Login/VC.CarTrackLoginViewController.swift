@@ -31,6 +31,10 @@ extension VC {
             CarTrackLoginDataPassingProtocol &
             CarTrackLoginRoutingLogicProtocol)?
 
+        private lazy var reachabilityView: ReachabilityView = {
+           return self.addReachabilityView()
+        }()
+
         //
         // MARK: View lifecycle
         //
@@ -57,7 +61,7 @@ extension VC {
         // Order in View life-cycle : 9
         override func viewDidAppear(_ animated: Bool) {
             super.viewDidAppear(animated)
-            _ = self.addReachabilityView()
+            reachabilityView.lazyLoad()
         }
 
         //

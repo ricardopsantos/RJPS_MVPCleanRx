@@ -24,7 +24,7 @@ public protocol BottomBar_Delegate: AnyObject {
 open class BottomBar: BaseViewControllerMVP {
     
     deinit {
-        //AppLogger.log("\(self.className) was killed")
+        if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self.className) was killed") }
         NotificationCenter.default.removeObserver(self)
     }
     weak var delegate: BottomBar_Delegate?

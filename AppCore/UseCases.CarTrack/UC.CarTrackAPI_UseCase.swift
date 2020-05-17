@@ -101,7 +101,7 @@ extension UC {
         }
 
         // Rx wrapper around [public func getUserDetail(completionHandler: @escaping CarTrackAPI_UseCaseCompletionHandler)]
-        #warning("passar a single")
+        #warning("make it a Single")
         private func getUserDetailObserver(_ cacheKey: String, _ cacheKeyParams: [String]) -> Observable<[CarTrack.CarTrackUserResponseDtoElement]> {
             return Observable<[CarTrack.CarTrackUserResponseDtoElement]>.create { [weak self] observer in
                 self?.getUserDetailV1 { (result) in

@@ -16,6 +16,7 @@ import DevTools
 open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtocol {
 
     deinit {
+        if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self.className) was killed") }
         NotificationCenter.default.removeObserver(self)
     }
 

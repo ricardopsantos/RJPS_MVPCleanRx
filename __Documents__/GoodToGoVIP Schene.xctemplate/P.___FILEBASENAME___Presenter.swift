@@ -34,6 +34,10 @@ import UIBase
 
 extension P {
     class ___VARIABLE_sceneName___Presenter: BasePresenterVIP {
+        deinit {
+            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self) was killed") }
+            NotificationCenter.default.removeObserver(self)
+        }
         weak var viewController: (___VARIABLE_sceneName___DisplayLogicProtocol)?
 
         override weak var baseViewController: BaseViewControllerVIPProtocol? {

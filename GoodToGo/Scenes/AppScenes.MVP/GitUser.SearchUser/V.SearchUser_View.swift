@@ -25,13 +25,13 @@ public extension V {
     internal class SearchUser_View: BaseViewControllerMVP {
         
         deinit {
-            //AppLogger.log("\(self.className) was killed")
+            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self.className) was killed") }
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
         var presenter: SearchUser_PresenterProtocol!
         
-        private lazy var _topGenericView: TopBar = {
+        private lazy var topGenericView: TopBar = {
             let some = UIKitFactory.topBar(baseController: self, usingSafeArea: true)
             some.setTitle("Search GitHub user")
             return some
@@ -39,7 +39,7 @@ public extension V {
         
         private lazy var _searchBar: CustomSearchBar = {
             let some = UIKitFactory.searchBar(baseView: self.view, placeholder: Messages.search.localised)
-            some.rjsALayouts.setMargin(0, on: .top, from: _topGenericView.view)
+            some.rjsALayouts.setMargin(0, on: .top, from: topGenericView.view)
             some.rjsALayouts.setMargin(0, on: .right)
             some.rjsALayouts.setMargin(0, on: .left)
             some.rjsALayouts.setHeight(50)
@@ -102,7 +102,7 @@ public extension V {
         
         public override func prepareLayoutCreateHierarchy() {
             self.view.backgroundColor = AppColors.appDefaultBackgroundColor
-            _topGenericView.lazyLoad()
+            topGenericView.lazyLoad()
             _searchBar.lazyLoad()
         }
         

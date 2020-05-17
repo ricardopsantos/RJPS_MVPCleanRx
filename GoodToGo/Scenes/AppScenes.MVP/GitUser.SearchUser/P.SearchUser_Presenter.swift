@@ -71,8 +71,8 @@ extension Presenter {
         var input: SearchUser_PresenterProtocol_Input { return self }
         var output: SearchUser_PresenterProtocol_Output { return self }
         var users: Signal<[String]>!
-        private var _rxPublishRelay_userInfo    = PublishRelay<GitHub.UserResponseDto?>()
-        private var _rxPublishRelay_userFriends = PublishRelay<[GitHub.UserResponseDto]?>()
+        private var rxPublishRelay_userInfo    = PublishRelay<GitHub.UserResponseDto?>()
+        private var rxPublishRelay_userFriends = PublishRelay<[GitHub.UserResponseDto]?>()
     }
 }
 
@@ -101,7 +101,7 @@ extension P.SearchUser_Presenter: BasePresenterVMPProtocol {
     func viewWillAppear() { if viewModel != nil { updateViewWith(vm: viewModel) } }
     
     func rxSetup() {
-        Observable.zip(_rxPublishRelay_userInfo, _rxPublishRelay_userFriends, resultSelector: { return ($0, $1) })
+        Observable.zip(rxPublishRelay_userInfo, rxPublishRelay_userFriends, resultSelector: { return ($0, $1) })
             .observeOn(MainScheduler.instance)
             .subscribe( onNext: { [weak self] in
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
@@ -146,9 +146,9 @@ extension P.SearchUser_Presenter {
                 self.useCase_1.getInfoOfUserWith(userName: username, canUseCache: true) { [weak self] result in
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                     switch result {
-                    case .success(let some): self._rxPublishRelay_userInfo.accept(some)
+                    case .success(let some): self.rxPublishRelay_userInfo.accept(some)
                     case .failure(let error):
-                        self._rxPublishRelay_userInfo.accept(nil)
+                        self.rxPublishRelay_userInfo.accept(nil)
                         self.rxPublishRelay_error.accept(error)
                     }
                 }
@@ -166,9 +166,9 @@ extension P.SearchUser_Presenter {
                 self.useCase_1.getFriendsOfUserWith(userName: username, canUseCache: true, completionHandler: { [weak self] result in
                     guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
                     switch result {
-                    case .success(let some) : self._rxPublishRelay_userFriends.accept(some)
+                    case .success(let some) : self.rxPublishRelay_userFriends.accept(some)
                     case .failure(let error):
-                        self._rxPublishRelay_userFriends.accept(nil)
+                        self.rxPublishRelay_userFriends.accept(nil)
                         self.rxPublishRelay_error.accept(error)
                     }
                 })

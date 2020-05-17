@@ -46,6 +46,10 @@ extension VC {
             return some
         }()
 
+        private lazy var reachabilityView: ReachabilityView = {
+           return self.addReachabilityView()
+        }()
+
         //
         // MARK: View lifecycle
         //
@@ -68,7 +72,7 @@ extension VC {
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             if firstAppearance {
-                self.addReachabilityView()
+                reachabilityView.lazyLoad()
                 interactor?.requestScreenInitialState()
                 let request = VM.CartTrackMap.MapData.Request()
                 interactor?.requestMapData(request: request)

@@ -38,7 +38,7 @@ public extension CarTrack {
 }
 
 public extension CarTrack.CarTrackUserResponseDtoElement {
-    public var toDomain: Domain.CarTrack.UserModel? {
+    var toDomain: Domain.CarTrack.UserModel? {
         return perfectMapper(inValue: self, outValue: Domain.CarTrack.UserModel.self)
     }
 }

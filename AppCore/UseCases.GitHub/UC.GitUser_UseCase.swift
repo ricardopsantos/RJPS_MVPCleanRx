@@ -63,7 +63,7 @@ extension UC {
                 return
             }
 
-            #warning("lame cache. improve it")
+            #warning("Old cache version. Change it to new version")
             let cacheKey      = "\(AppConstants.Cache.servicesCache).\(GitUser_UseCase.self).getFriendsOfUserWith\(userName)"
             let coreDatakey   = "\(cacheKey).lastUpdate"
             let cacheLifeSpam = AppConstants.Cache.serverRequestCacheLifeSpam

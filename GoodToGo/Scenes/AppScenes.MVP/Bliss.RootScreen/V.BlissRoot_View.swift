@@ -24,7 +24,7 @@ extension V {
     class BlissRoot_View: BaseViewControllerMVP {
         
         deinit {
-            //AppLogger.log("\(self.className) was killed")
+            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self.className) was killed") }
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }

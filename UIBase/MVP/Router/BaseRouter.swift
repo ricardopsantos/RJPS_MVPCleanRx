@@ -21,7 +21,7 @@ import PointFreeFunctions
 
 open class BaseRouter {
     deinit {
-        //AppLogger.log("\(self.className) was killed")
+        if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self) was killed") }
         NotificationCenter.default.removeObserver(self)
     }
 

@@ -26,19 +26,12 @@ import PointFreeFunctions
 import UIBase
 import AppResources
 
-//
-// INSERT INVISION/ZEPLIN RELATED LAYOUT SCREENS BELOW
-//
-// Colors WIKI : https://casteamservicesvso.visualstudio.com/i9/_wiki/wikis/i9.wiki/378/Colors
-// Labels WIKI : https://casteamservicesvso.visualstudio.com/i9/_wiki/wikis/i9.wiki/880/Typography
-// Icons WIKI : https://casteamservicesvso.visualstudio.com/i9/_wiki/wikis/i9.wiki/333/Icons
-//
-
 extension V {
     class StylesView: BaseGenericViewVIP {
 
         deinit {
-
+            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self.className) was killed") }
+            NotificationCenter.default.removeObserver(self)
         }
 
         // MARK: - UI Elements (Private and lazy by default)
@@ -48,8 +41,7 @@ extension V {
         }()
 
         private lazy var stackViewVLevel1: UIStackView = {
-            UIKitFactory.stackView(axis: .vertical)
-        }()
+            UIKitFactory.stackView(axis: .vertical)        }()
 
         // MARK: - Mandatory
 

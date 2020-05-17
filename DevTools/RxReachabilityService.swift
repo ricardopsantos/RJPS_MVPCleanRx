@@ -7,6 +7,7 @@
 //
 
 import RxSwift
+import RJPSLib
 
 import class Dispatch.DispatchQueue
 
@@ -194,8 +195,8 @@ public class Reachability {
     }
     
     deinit {
+        if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { DevTools.AppLogger.log("\(self) was killed") }
         stopNotifier()
-        
         reachabilityRef = nil
         whenReachable = nil
         whenUnreachable = nil

@@ -7,6 +7,8 @@
 //
 
 import Foundation
+
+import RJPSLib
 import DevTools
 
 open class BasePresenterVIP: BasePresenterVIPProtocol {
@@ -15,7 +17,7 @@ open class BasePresenterVIP: BasePresenterVIPProtocol {
         fatalError("Override me on pressenter")
     }
     deinit {
-        //AppLogger.log("\(self.className) was killed")
+        if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self) was killed") }
         NotificationCenter.default.removeObserver(self)
     }
 }

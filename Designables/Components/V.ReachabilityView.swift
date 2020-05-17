@@ -49,6 +49,8 @@ open class ReachabilityView: UILabelWithPadding {
         }
     }
 
+    public func load() { }
+    
     private func hide() {
         setVisibility(to: false)
     }

@@ -16,6 +16,7 @@ public extension DevTools {
         case devTeam_useMockedData  = "DEV: Use Mock Data"      // Dev team
         case devTeam_doLogs         = "DEV: App can do logs"    // Dev team
         case devTeam_autoInsertPass = "DEV: CarTrack - AutoInsertPassword"  // Dev team
+        case devTeam_logDeinit      = "DEV: Log on deinit"  // Dev team
 
         public var defaultValue: Bool {
             switch self {
@@ -26,6 +27,8 @@ public extension DevTools {
             case .devTeam_doLogs:
                 return DevTools.devModeIsEnabled
             case .devTeam_autoInsertPass:
+                return false
+            case .devTeam_logDeinit:
                 return false
             }
         }

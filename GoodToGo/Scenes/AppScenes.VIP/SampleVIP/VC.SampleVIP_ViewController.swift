@@ -45,13 +45,12 @@ class SampleVIP_ViewController: BaseViewControllerMVP, SampleVIP_DisplayLogic {
     var interactor: SampleVIP_BusinessLogic?
     var router: (NSObjectProtocol & SampleVIP_RoutingLogic & SampleVIP_DataPassing)?
 
-    // Added to template
     deinit {
-        //AppLogger.log("\(self.className) was killed")
+        if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self.className) was killed") }
         NotificationCenter.default.removeObserver(self)
     }
 
-    private lazy var _searchBar: CustomSearchBar = {
+    private lazy var searchBar: CustomSearchBar = {
         let some = UIKitFactory.searchBar(baseView: self.view, placeholder: Messages.search.localised)
         some.rjsALayouts.setMargin(0, on: .top)
         some.rjsALayouts.setMargin(0, on: .right)
@@ -60,7 +59,7 @@ class SampleVIP_ViewController: BaseViewControllerMVP, SampleVIP_DisplayLogic {
         some.rx.textDidEndEditing
             .subscribe(onNext: { [weak self] (_) in
                 guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-                if self._searchBar.text!.count>0 {
+                if self.searchBar.text!.count>0 {
                     //     self.presenter.searchUserWith(username: some.text ?? "")
                 }
             })
@@ -84,7 +83,7 @@ class SampleVIP_ViewController: BaseViewControllerMVP, SampleVIP_DisplayLogic {
 
     public override func prepareLayoutCreateHierarchy() {
         self.view.backgroundColor = AppColors.appDefaultBackgroundColor
-        _searchBar.lazyLoad()
+        searchBar.lazyLoad()
 
     }
 
@@ -137,6 +136,6 @@ class SampleVIP_ViewController: BaseViewControllerMVP, SampleVIP_DisplayLogic {
     }
 
     func displaySomething(viewModel: SampleVIP.SearchView.ViewModel) {
-        _searchBar.text = viewModel.name
+        searchBar.text = viewModel.name
     }
 }
