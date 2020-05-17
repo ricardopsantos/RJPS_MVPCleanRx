@@ -176,8 +176,8 @@ extension P.MVPSampleTableView_Presenter {
         return Observable.create { observer -> Disposable in
             do {
                 let apiRequest: WebAPIRequest_Protocol = try WebAPI.Employees.GetEmployees_APIRequest()
-                let apiClient: NetworkClient_Protocol  = RJSLib.NetworkClient()
-                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<NetworkClientResponse<[Employee.ResponseDto]>>) in
+                let apiClient: RJSLibNetworkClient_Protocol  = RJSLib.NetworkClient()
+                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<RJSLibNetworkClientResponse<[Employee.ResponseDto]>>) in
                     switch result {
                     case .success(let some):
                         let employeeList = some.entity

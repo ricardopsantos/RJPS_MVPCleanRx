@@ -21,7 +21,7 @@ struct RootAssemblyContainerProtocols {
     //
     // Repositories
     //
-    static let networkClient                      = NetworkClient_Protocol.self
+    static let networkClient                      = RJSLibNetworkClient_Protocol.self
     static let generic_CacheRepository            = CacheRepositoryProtocol.self
     static let generic_LocalStorageRepository     = LocalStorageRepositoryProtocol.self
     static let bliss_NetWorkRepository            = Bliss_NetWorkRepositoryProtocol.self

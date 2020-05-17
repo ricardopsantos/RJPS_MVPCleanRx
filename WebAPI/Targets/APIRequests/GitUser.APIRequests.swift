@@ -48,7 +48,7 @@ public extension API.GitUser {
         public var returnOnMainTread: Bool
         public var debugRequest: Bool
         public var urlRequest: URLRequest
-        public var responseType: NetworkClientResponseType
+        public var responseType: RJSLibNetworkClientResponseType
         public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.GitHub.getUser_200 : nil }
 
         init(userName: String) throws {
@@ -70,7 +70,7 @@ public extension API.GitUser {
         public var returnOnMainTread: Bool
         public var debugRequest: Bool
         public var urlRequest: URLRequest
-        public var responseType: NetworkClientResponseType
+        public var responseType: RJSLibNetworkClientResponseType
         public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.GitHub.getUser_200 : nil }
 
         init(userName: String) throws {

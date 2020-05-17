@@ -21,7 +21,7 @@ public extension API.Bliss {
         public var returnOnMainTread: Bool = true
         public var debugRequest: Bool = DevTools.devModeIsEnabled
         public var urlRequest: URLRequest
-        public var responseType: NetworkClientResponseType
+        public var responseType: RJSLibNetworkClientResponseType
         public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? "{\"status\": \"OK\"}" : nil }
 
         init() throws {
@@ -43,7 +43,7 @@ public extension API.Bliss {
         public var returnOnMainTread: Bool = true
         public var debugRequest: Bool = DevTools.devModeIsEnabled
         public var urlRequest: URLRequest
-        public var responseType: NetworkClientResponseType
+        public var responseType: RJSLibNetworkClientResponseType
         public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.Bliss.getQuestions_200 : nil }
 
         init(limit: Int, filter: String, offSet: Int) throws {
@@ -66,7 +66,7 @@ public extension API.Bliss {
         public var returnOnMainTread: Bool = true
         public var debugRequest: Bool = DevTools.devModeIsEnabled
         public var urlRequest: URLRequest
-        public var responseType: NetworkClientResponseType
+        public var responseType: RJSLibNetworkClientResponseType
         public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.Bliss.getQuestions_200 : nil }
 
         init(id: Int) throws {
@@ -88,7 +88,7 @@ extension API.Bliss {
         var returnOnMainTread: Bool = true
         var debugRequest: Bool = DevTools.devModeIsEnabled
         var urlRequest: URLRequest
-        var responseType: NetworkClientResponseType
+        var responseType: RJSLibNetworkClientResponseType
         var mockedData: String?
 
         init(question: Bliss.QuestionElementResponseDto) throws {
@@ -120,7 +120,7 @@ extension API.Bliss {
         var returnOnMainTread: Bool = true
         var debugRequest: Bool = DevTools.devModeIsEnabled
         var urlRequest: URLRequest
-        var responseType: NetworkClientResponseType
+        var responseType: RJSLibNetworkClientResponseType
         var mockedData: String?
 
         init(question: Bliss.QuestionElementResponseDto) throws {
@@ -155,7 +155,7 @@ extension API.Bliss {
         var returnOnMainTread: Bool = true
         var debugRequest: Bool = DevTools.devModeIsEnabled
         var urlRequest: URLRequest
-        var responseType: NetworkClientResponseType
+        var responseType: RJSLibNetworkClientResponseType
         var mockedData: String?
 
         init(email: String, url: String) throws {
