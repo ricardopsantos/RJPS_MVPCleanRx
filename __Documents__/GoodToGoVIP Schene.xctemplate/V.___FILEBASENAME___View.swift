@@ -51,11 +51,11 @@ extension V {
         }()
 
         private lazy var btnSample2: UIButton = {
-            UIKitFactory.button(title: "btnSample2", style: .dismiss)
+            UIKitFactory.button(title: "btnSample2", style: .regular)
         }()
 
         private lazy var btnSample3: UIButton = {
-            UIKitFactory.button(title: "btnSample3", style: .alternative)
+            UIKitFactory.button(title: "btnSample3", style: .regular)
         }()
 
         // Naming convention: rxTbl[MeaningfulTableName]Items
@@ -106,23 +106,6 @@ extension V {
             }
 
             #warning("Have weird autolayout issue")
-/*
-            2020-05-12 23:22:34.460689+0100 GoodToGo[79776:6479479] [LayoutConstraints] Unable to simultaneously satisfy constraints.
-                Probably at least one of the constraints in the following list is one you don't want.
-                Try this:
-                    (1) look at each constraint and try to figure out which you don't expect;
-                    (2) find the code that added the unwanted constraint or constraints and fix it.
-            (
-                "<NSLayoutConstraint:0x600001da80a0 H:|-(16)-[UILabel:0x7ffb2c512420](LTR)   (active, names: '|':UIStackView:0x7ffb2c50dfa0 )>",
-                "<NSLayoutConstraint:0x600001df7b60 UIStackView:0x7ffb2c50dfa0.width == UIScrollView:0x7ffb2d021200.width   (active)>",
-                "<NSLayoutConstraint:0x600001df7c00 H:|-(0)-[UIScrollView:0x7ffb2d021200](LTR)   (active, names: '|':_TtCC8GoodToGo7AppView28___VARIABLE_sceneName___View:0x7ffb2c508d80 )>",
-                "<NSLayoutConstraint:0x600001df7c50 UIScrollView:0x7ffb2d021200.right == _TtCC8GoodToGo7AppView28___VARIABLE_sceneName___View:0x7ffb2c508d80.right   (active)>",
-                "<NSLayoutConstraint:0x600001da8910 '_UITemporaryLayoutWidth' _TtCC8GoodToGo7AppView28___VARIABLE_sceneName___View:0x7ffb2c508d80.width == 0   (active)>",
-                "<NSLayoutConstraint:0x600001dd7250 'UISV-alignment' UIView:0x7ffb2c50e130.trailing == UILabel:0x7ffb2c512420.trailing   (active)>",
-                "<NSLayoutConstraint:0x600001dd6f80 'UISV-canvas-connection' UILayoutGuide:0x6000007e31e0'UIViewLayoutMarginsGuide'.trailing == UIView:0x7ffb2c50e130.trailing   (active)>",
-                "<NSLayoutConstraint:0x600001dd6c60 'UIView-rightMargin-guide-constraint' H:[UILayoutGuide:0x6000007e31e0'UIViewLayoutMarginsGuide']-(16)-|(LTR)   (active, names: '|':UIStackView:0x7ffb2c50dfa0 )>"
-            )
-*/
             tableView.autoLayout.topToBottom(of: scrollView, offset: Designables.Sizes.Margins.defaultMargin)
             tableView.autoLayout.leadingToSuperview()
             tableView.autoLayout.trailingToSuperview()

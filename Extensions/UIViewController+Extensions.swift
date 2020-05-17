@@ -10,10 +10,6 @@ import Foundation
 
 public extension UIViewController {
 
-    var isVisible: Bool {
-        return self.viewIfLoaded?.window != nil
-    }
-
     var genericAccessibilityIdentifier: String {
         // One day we will have Accessibility on the app, and we will be ready....
         let name = String(describing: type(of: self))

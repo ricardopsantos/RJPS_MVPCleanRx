@@ -8,11 +8,12 @@
 
 import Foundation
 import UIKit
+import RJPSLib
 
 public extension UIButton {
     func disable() {
         self.isUserInteractionEnabled = false
-        self.fadeTo(Designables.Constants.disabledViewAlpha)
+        self.rjs.fadeTo(Designables.Constants.disabledViewAlpha)
     }
 
     func enable() {

@@ -42,7 +42,7 @@ public extension API.Employees {
         public var returnOnMainTread: Bool = true
         public var debugRequest: Bool = DevTools.devModeIsEnabled
         public var urlRequest: URLRequest
-        public var responseType: NetworkClientResponseType
+        public var responseType: RJSLibNetworkClientResponseType
         public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.Employees.getEmployees_200 : nil }
 
         public init() throws {

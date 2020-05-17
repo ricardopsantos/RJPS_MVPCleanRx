@@ -26,7 +26,7 @@ public extension UIView {
     func addShadow(color: UIColor = Shadows.shadowColor,
                    offset: CGSize = Shadows.offset,
                    radius: CGFloat = Shadows.offset.height,
-                   shadowType: ShadowType = ShadowType.regular) {
+                   shadowType: ShadowType = ShadowType.superLight) {
         self.layer.shadowColor   = color.cgColor
         self.layer.shadowOpacity = Float(1 - shadowType.rawValue)
         self.layer.shadowOffset  = offset

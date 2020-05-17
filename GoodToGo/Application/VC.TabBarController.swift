@@ -10,44 +10,33 @@ import Swinject
 import Domain
 
 extension VC {
-    
+
     class TabBarController: UITabBarController {
-        
+
         //let container: Container = { return ApplicationAssembly.assembler.resolver as! Container }()
         override func loadView() {
             super.loadView()
         }
         override func viewDidLoad() {
             super.viewDidLoad()
-            
-            let c1 = createControllers(tabName: "GitUser", vc: AppDelegate.shared.container.resolve(V.SearchUser_View.self)!)
-            let c2 = createControllers(tabName: "MVP", vc: AppDelegate.shared.container.resolve(V.MVPSampleView_View.self)!)
-            let c3 = createControllers(tabName: "MVPRx", vc: AppDelegate.shared.container.resolve(V.MVPSampleRxView_View.self)!)
-            let c4 = createControllers(tabName: "Bliss", vc: AppDelegate.shared.container.resolve(V.BlissRoot_View.self)!)
-            let c5 = createControllers(tabName: "MVPRxTable", vc: AppDelegate.shared.container.resolve(V.MVPSampleTableView_View.self)!)
-            let c6 = createControllers(tabName: "RxTesting", vc: RxTesting())
-            
-            //let mvvmVC = container.resolve(VC.MVVMSampleView_ViewController.self)!
-            //mvvmVC.viewModel = VM.MVVMSampleView_ViewModel(viewModel: M.MVVMSampleView.makeOne(name: "Dog_A"))
-            //let mvvm = createControllers(tabName: "MVVM", vc: mvvmVC)
-            
-            let vip1 = createControllers(tabName: "VIP", vc: SampleVIP_ViewController())
-            let vip2 = VC.___VARIABLE_sceneName___ViewController()
-            let carTrackLoginViewController = VC.CarTrackLoginViewController()
-            let cartTrackMapViewController = VC.CartTrackMapViewController()
-            let stylesViewController = VC.StylesViewController()
-            
-            carTrackLoginViewController.tabBarItem.title = "Login"
-            cartTrackMapViewController.tabBarItem.title = "Map"
-            stylesViewController.tabBarItem.title = "Styles"
-            
-            if false {
-                viewControllers = [vip2, c1, c2, c3, c4, c5, c6]
-            } else {
-                viewControllers = [carTrackLoginViewController, stylesViewController]
-            }
+
+            let mvpSample1 = createControllers(tabName: "MVP", vc: AppDelegate.shared.container.resolve(V.MVPSampleView_View.self)!)
+            let mvpSample2 = createControllers(tabName: "MVP.Rx", vc: AppDelegate.shared.container.resolve(V.MVPSampleRxView_View.self)!)
+            let mvpSample3 = createControllers(tabName: "MVP.Rx.Table", vc: AppDelegate.shared.container.resolve(V.MVPSampleTableView_View.self)!)
+
+            let mvpGitUser = createControllers(tabName: "GitUser", vc: AppDelegate.shared.container.resolve(V.SearchUser_View.self)!)
+            let mvpBliss = createControllers(tabName: "Bliss", vc: AppDelegate.shared.container.resolve(V.BlissRoot_View.self)!)
+
+            let vcRx = createControllers(tabName: "RxTesting", vc: RxTesting())
+
+            let vipTemplate = createControllers(tabName: "Template", vc: VC.___VARIABLE_sceneName___ViewController())
+            let vipDebug = createControllers(tabName: "Template", vc: VC.StylesViewController())
+            let vipCarTrack = createControllers(tabName: "Template", vc: VC.CarTrackLoginViewController())
+
+            viewControllers = [vipDebug, vipTemplate, vcRx]
+
         }
-        
+
         private func createControllers(tabName: String, vc: UIViewController) -> UINavigationController {
             let tabVC = UINavigationController(rootViewController: vc)
             tabVC.setNavigationBarHidden(true, animated: false)

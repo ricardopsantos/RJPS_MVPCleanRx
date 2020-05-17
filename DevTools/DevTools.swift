@@ -39,23 +39,15 @@ public struct DevTools {
     }
 
     public static var onSimulator: Bool {
-        #if targetEnvironment(simulator)
-        return true
-        #else
-        return false
-        #endif
+        RJS_Utils.onSimulator
     }
 
     public static var onDebug: Bool {
-        #if DEBUG
-        return true
-        #else
-        return false
-        #endif
+        RJS_Utils.onDebug
     }
 
     public static var onRelease: Bool {
-        return !onDebug
+        RJS_Utils.onRelease
     }
 
     public static var isQualityReleaseApp: Bool {

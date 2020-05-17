@@ -43,7 +43,7 @@ public extension API.CarTrack {
         public var returnOnMainTread: Bool
         public var debugRequest: Bool
         public var urlRequest: URLRequest
-        public var responseType: NetworkClientResponseType
+        public var responseType: RJSLibNetworkClientResponseType
         public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.CarTrack.get_200 : nil }
 
         init(userName: String) throws {
