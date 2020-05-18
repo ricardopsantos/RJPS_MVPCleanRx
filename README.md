@@ -1,7 +1,7 @@
 # iOS Architecture design patterns : MVP/VIP + Clean + Rx
 
 - [x] 📱  iOS 11.0+
-- [x] 🔨  XCode 11.1, Swift 5.1
+- [x] 🔨  XCode 11.4, Swift 5.1
 
 The intent of this project is to show a simple implementation of the __MVP/VIP Clean (Rx)__ pattern. This is my vision about it, and if you don't agree with something, just email me, I love to hear opinions and learn from that.
 
@@ -23,22 +23,19 @@ Just download source code and run  `./_script_installPackages.sh`
 - [x] Cache (on Network API) usage
 - [x] Code style analyser with [Swiftlint](https://github.com/realm/SwiftLint)
 - [x] Dependency injection with [Swinject](https://github.com/Swinject/Swinject)
-- [x] Command line [script](https://github.com/ricardopsantos/RJPS_MVPCleanRx/blob/master/_iOSGenericCompile.sh) for app build 
  
  More info about the project and MVP architecture [here](https://github.com/ricardopsantos/RJPS_MVPCleanRx/tree/master/Docs)
  
 
 # Code Guidelines/Conventions
 
-* All is private (variable, functions, etc), unless really need to be public
-* The function where where set RxSuff will always be named  `rxSetup`
-* The function where we setup the View layout will allways be named `prepareLayout´
+* All is private (variables, functions, etc), unless really need to be public.
 * UIKit names
-    * All UIButtons start by _btn_, example : _btnLogin_, _btnRegister_
-    * All UILabel start by _lbl_. Example _llbName_, _lblPassword_
-    * All UITableViews start by _table_ or _tbl_. Example : _tableUsers_, _tblFriends_
-    * All UITextViews and UITextFields starts by _txt_. Example : _txtPassword_, _txtUserName_
-    * Thumb rule : The name of the var, should be clear about the type associated. 
+    * All `UIButton`s start by _btn_, example : _btnLogin_, _btnRegister_
+    * All `UILabel`s start by _lbl_. Example _llbName_, _lblPassword_
+    * All `UITableView`s start by _table_ or _tbl_. Example : _tableUsers_, _tblFriends_
+    * All `UITextViews` and `UITextField`s starts by _txt_. Example : _txtPassword_, _txtUserName_
+    * Thumb rule : The name of the _var_, should be clear about the type associated. 
     
 
 # License
