@@ -10,6 +10,7 @@ import UIKit
 //
 import AppConstants
 import Domain
+import DevTools
 
 struct AppEnvironments {
 
@@ -32,7 +33,7 @@ struct AppEnvironments {
         }
 
         let block_recover = {
-            AppLogger.log(appCode: .notPredicted)
+            DevTools.Log.log(appCode: .notPredicted)
             current = .dev
         }
 

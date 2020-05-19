@@ -12,18 +12,20 @@ import RxSwift
 import RxCocoa
 import RJPSLib
 //
+import AppCore
 import AppConstants
 import PointFreeFunctions
 import Domain
+import Domain_Bliss
 
 /**
  * Brain. Where we can have business rules
  */
 
 extension UC {
-    public class BlissGenericAppBusiness_UseCase: GenericUseCase, BlissGenericAppBusinessUseCaseProtocol {
+    public class BlissGenericAppBusiness_UseCase: AppCore.UC.GenericUseCase, BlissGenericAppBusinessUseCaseProtocol {
 
-        public override init() { super.init() }
+        //public override init() { super.init() }
         public var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
         public var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
         public var rxPublishRelayApplicationDidReceivedData: PublishRelay = PublishRelay<Void>() // PublishRelay model Events

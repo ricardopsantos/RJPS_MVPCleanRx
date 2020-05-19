@@ -27,7 +27,7 @@ extension VC {
     class ___VARIABLE_sceneName___ViewController: BaseGenericViewControllerVIP<V.___VARIABLE_sceneName___View> {
 
         deinit {
-            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self.className) was killed") }
+            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { DevTools.Log.log("\(self.className) was killed") }
             NotificationCenter.default.removeObserver(self)
         }
         
@@ -112,7 +112,7 @@ extension VC {
             
             genericView.rxModelSelected
                 .subscribe(onNext: { /* [router] */ (some) in
-                    AppLogger.log("Received [\(some)]")
+                    DevTools.Log.log("Received [\(some)]")
                 })
                 .disposed(by: disposeBag)
 

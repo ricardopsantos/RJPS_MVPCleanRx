@@ -9,9 +9,11 @@ import Swinject
 import RJPSLib
 //
 import Domain
+import Domain_Bliss
 import WebAPI
 import Repositories
 import AppCore
+import AppCore_Bliss
 
 public typealias AS = AssembyContainer
 public struct AssembyContainer { private init() {} }
@@ -78,7 +80,7 @@ final class RootAssemblyContainer: Assembly {
         //
 
         container.register(AppProtocols.carTrackAPI_UseCase) { resolver in
-            let uc = UC.CarTrackAPI_UseCase()
+            let uc = AppCore.UC.CarTrackAPI_UseCase()
             uc.repositoryNetwork               = resolver.resolve(AppProtocols.carTrack_NetWorkRepository)
             uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
@@ -86,7 +88,7 @@ final class RootAssemblyContainer: Assembly {
         }
 
         container.register(AppProtocols.carTrackGenericAppBusiness_UseCase) { resolver in
-            let uc = UC.CarTrackGenericAppBusinessUseCase()
+            let uc = AppCore.UC.CarTrackGenericAppBusinessUseCase()
             uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
             return uc
@@ -97,21 +99,21 @@ final class RootAssemblyContainer: Assembly {
         //
 
         container.register(AppProtocols.someProtocolXXXX_UseCase) { resolver in
-            let uc = UC.SomeProtocolXXXX_UseCase()
+            let uc = AppCore.UC.SomeProtocolXXXX_UseCase()
             uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
             return uc
         }
 
         container.register(AppProtocols.sample_UseCase) { resolver in
-            let uc = UC.Sample_UseCase()
+            let uc = AppCore.UC.Sample_UseCase()
             uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
             return uc
         }
 
         container.register(AppProtocols.sampleB_UseCase) { resolver in
-            let uc = UC.SampleB_UseCase()
+            let uc = AppCore.UC.SampleB_UseCase()
             uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
             return uc
@@ -122,7 +124,7 @@ final class RootAssemblyContainer: Assembly {
         //
 
         container.register(AppProtocols.gitUser_UseCase) { resolver in
-            let uc = UC.GitUser_UseCase()
+            let uc = AppCore.UC.GitUser_UseCase()
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
             uc.repositoryNetwork               = resolver.resolve(AppProtocols.gitUser_NetWorkRepository)
             return uc
@@ -133,7 +135,7 @@ final class RootAssemblyContainer: Assembly {
         //
 
         container.register(AppProtocols.blissQuestions_UseCase) { resolver in
-            let uc = UC.BlissQuestionsAPI_UseCase()
+            let uc = AppCore_Bliss.UC.BlissQuestionsAPI_UseCase()
             uc.repositoryNetwork               = resolver.resolve(AppProtocols.bliss_NetWorkRepository)
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
             uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
@@ -141,7 +143,7 @@ final class RootAssemblyContainer: Assembly {
         }
         
         container.register(AppProtocols.blissGenericAppBusiness_UseCase) { resolver in
-            let uc = UC.BlissGenericAppBusiness_UseCase()
+            let uc = AppCore_Bliss.UC.BlissGenericAppBusiness_UseCase()
             uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
             return uc

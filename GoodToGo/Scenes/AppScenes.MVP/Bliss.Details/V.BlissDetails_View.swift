@@ -21,12 +21,13 @@ import DevTools
 import PointFreeFunctions
 import Designables
 import Domain
+import Domain_Bliss
 
 extension V {
     class BlissDetails_View: BaseViewControllerMVP {
         
         deinit {
-            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self.className) was killed") }
+            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { DevTools.Log.log("\(self.className) was killed") }
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
@@ -44,17 +45,17 @@ extension V {
             some.addBackButton()
             some.rxSignal_btnDismissTapped
                 .asObservable()
-                .do(onNext: { _ in AppLogger.log("rxSignal_btnDismissTapped") })
+                .do(onNext: { _ in DevTools.Log.log("rxSignal_btnDismissTapped") })
                 .bind(to: presenter.rxPublishRelay_dismissView)
                 .disposed(by: disposeBag)
             some.rxSignal_btnBackTapped
                 .asObservable()
-                .do(onNext: { _ in AppLogger.log("rxSignal_btnBackTapped") })
+                .do(onNext: { _ in DevTools.Log.log("rxSignal_btnBackTapped") })
                 .bind(to: presenter.rxPublishRelay_dismissView)
                 .disposed(by: disposeBag)
             some.rxSignal_viewTapped
-                .do(onNext: { _ in AppLogger.log("rxSignal_viewTapped : 2") })
-                .emit(onNext: { AppLogger.log("rxSignal_viewTapped : 3 \($0)") })
+                .do(onNext: { _ in DevTools.Log.log("rxSignal_viewTapped : 2") })
+                .emit(onNext: { DevTools.Log.log("rxSignal_viewTapped : 3 \($0)") })
                 .disposed(by: disposeBag)
             return some
         }()
@@ -67,7 +68,7 @@ extension V {
             some.rjsALayouts.setHeight(50)
             some.rx.tap.subscribe({ [weak self] _ in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
                     self.presenter.userDidPretendToShareInApp()
                 })
             })
@@ -84,7 +85,7 @@ extension V {
             some.rx.tap
                 .subscribe({ [weak self] _ in
                     some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                        guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                        guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
                         self.presenter.userDidPretendToShareByEmail()
                     })
                 })
@@ -121,8 +122,8 @@ extension V {
             some.register(Sample_TableViewCell.self, forCellReuseIdentifier: Sample_TableViewCell.reuseIdentifier)
             some.rx.modelSelected(Bliss.ChoiceElementResponseDto.self)
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)                  .subscribe(onNext: { [weak self]  item in
-                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
-                    AppLogger.log("Tapped [\(item)]")
+                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+                    DevTools.Log.log("Tapped [\(item)]")
                     self.presenter.tableView.didSelect(object: item)
                     if let index = some.indexPathForSelectedRow {
                         some.deselectRow(at: index, animated: true)
@@ -131,7 +132,7 @@ extension V {
                 .disposed(by: disposeBag)
             rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
                 _ = element
-                guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
                 cell.set(textColor: AppColors.lblTextColor)
                 self.presenter.tableView.configure(cell: cell, indexPath: NSIndexPath(row: row, section: 0) as IndexPath)
             }.disposed(by: disposeBag)
@@ -185,7 +186,7 @@ extension V {
 extension V.BlissDetails_View: BlissDetails_ViewProtocol {
     
     func displayShareOptionsWith(text: String) {
-        AppLogger.log("")
+        DevTools.Log.log("")
         let itens = [text]
         let activityViewController = UIActivityViewController(activityItems: itens, applicationActivities: nil)
         self.present(activityViewController, animated: true, completion: nil)

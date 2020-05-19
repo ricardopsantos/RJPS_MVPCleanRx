@@ -30,7 +30,7 @@ extension V {
     class MVPSampleView_View: BaseViewControllerMVP {
         
         deinit {
-            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self.className) was killed") }
+            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { DevTools.Log.log("\(self.className) was killed") }
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
@@ -74,7 +74,7 @@ extension V {
             some.rjsALayouts.setHeight(margin*2)
             some.onTouchUpInside { [weak self] in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
                     let user = self.txtUser.text
                     let pass = self.txtPass.text
                     self.presenter.userDidTryToLoginWith(user: user!, password: pass!)
@@ -105,7 +105,7 @@ extension V {
             some.rjsALayouts.setHeight(margin*2)
             some.onTouchUpInside { [weak self] in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
                     self.presenter.router.presentControllerWith(vm: nil)
                 })
             }
@@ -120,7 +120,7 @@ extension V {
             some.rjsALayouts.setHeight(margin*2)
             some.onTouchUpInside { [weak self] in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
                     self.presenter.router.dismissView()
                 })
             }

@@ -11,5 +11,3 @@ import Foundation
 import AppTheme
 import DevTools
 import AppResources
-
-public typealias AppLogger = DevTools.Log

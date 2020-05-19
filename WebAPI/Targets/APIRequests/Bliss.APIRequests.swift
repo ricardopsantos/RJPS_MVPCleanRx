@@ -14,6 +14,7 @@ import RJPSLib
 import AppConstants
 import PointFreeFunctions
 import Domain
+import Domain_Bliss
 import DevTools
 
 public extension API.Bliss {
@@ -140,7 +141,7 @@ extension API.Bliss {
                 })
             ]
             //if AppCan.Logs.requests {
-            //    AppLogger.log("\(parameters)")
+            //    DevTools.Log.log("\(parameters)")
             //}
             urlRequest.httpBody = parameters.percentEscaped().data(using: .utf8)
             responseType = .json

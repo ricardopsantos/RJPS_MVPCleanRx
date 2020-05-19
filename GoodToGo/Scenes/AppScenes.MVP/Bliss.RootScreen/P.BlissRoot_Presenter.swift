@@ -11,9 +11,11 @@ import RxSwift
 import RxCocoa
 import RJPSLib
 //
+import DevTools
 import AppConstants
 import PointFreeFunctions
 import Domain
+import Domain_Bliss
 import AppResources
 import UIBase
 import Factory
@@ -51,7 +53,7 @@ extension Presenter {
         var blissQuestions_UseCase: BlissQuestionsAPIUseCaseProtocol!
         var blissGeneric_UseCase: BlissGenericAppBusinessUseCaseProtocol!
         var viewModel: VM.BlissRoot_ViewModel? {
-            didSet { AppLogger.log(appCode: .vmChanged); viewModelChanged() }
+            didSet { DevTools.Log.log(appCode: .vmChanged); viewModelChanged() }
         }
     }
 }
@@ -64,7 +66,7 @@ extension P.BlissRoot_Presenter: BlissRoot_PresenterProtocol {
     
     func userDidReadBadServerHealthMessage() {
         DispatchQueue.executeWithDelay(delay: AppConstants.defaultAnimationsTime) { [weak self] in
-            guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+            guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
             self.checkServerStatus()
         }
     }
@@ -107,12 +109,12 @@ extension P.BlissRoot_Presenter {
         
         let delayToHaveTimeToEnjoyMainScreen: Double = 2
         DispatchQueue.executeWithDelay(delay: delayToHaveTimeToEnjoyMainScreen) { [weak self] in
-            guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+            guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
 
             let handleFail = { self.view.viewNeedsToDisplayBadServerMessage() }
             
             let handleSucess = { [weak self] in
-                guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
                 self.router.goToList(asNavigationController: true)
             }
             self.genericView?.setActivityState(true)

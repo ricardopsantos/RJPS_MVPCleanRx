@@ -50,7 +50,7 @@ extension Presenter {
     class UserDetais_Presenter: BasePresenterMVP {
         var generic: BasePresenterVMPProtocol?
         var genericView: BaseViewControllerMVPProtocol?
-        var viewModel: VM.UserDetais? { didSet { AppLogger.log(appCode: .vmChanged); viewModelChanged() } }
+        var viewModel: VM.UserDetais? { didSet { DevTools.Log.log(appCode: .vmChanged); viewModelChanged() } }
         weak var view: UserDetais_ViewProtocol!
         var router: UserDetais_RouterProtocol!
         var tableView: GenericTableView_Protocol!
@@ -107,7 +107,7 @@ extension P.UserDetais_Presenter: BasePresenterVMPProtocol {
 extension P.UserDetais_Presenter {
     
     private func updateViewWith(vm: VM.UserDetais?) {
-        guard vm != nil else { AppLogger.log(appCode: .ignored); return }
+        guard vm != nil else { DevTools.Log.log(appCode: .ignored); return }
         view.viewDataToScreen(some: vm!)
         downloadImage(imageURL: vm!.user.avatarUrl!, onFail: Images.notFound.image) { [weak self] (image) in
             self?.view.setAvatarWith(image: image!)

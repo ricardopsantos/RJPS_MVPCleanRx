@@ -25,7 +25,7 @@ extension V {
     class UserDetais_View: BaseViewControllerMVP {
         
         deinit {
-            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self.className) was killed") }
+            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { DevTools.Log.log("\(self.className) was killed") }
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
@@ -76,7 +76,7 @@ extension V {
                 .bind(to: presenter.rxPublishRelay_dismissView)
                 .disposed(by: disposeBag)
             some.rxSignal_viewTapped
-                .emit(onNext: { AppLogger.log("Tapped! \($0)") })
+                .emit(onNext: { DevTools.Log.log("Tapped! \($0)") })
                 .disposed(by: disposeBag)
             return some
         }()
@@ -137,7 +137,7 @@ extension V.UserDetais_View: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: V.UserTableViewCell.reuseIdentifier) as? V.UserTableViewCell else {
-            AppLogger.log(appCode: .dequeueReusableCellFail)
+            DevTools.Log.log(appCode: .dequeueReusableCellFail)
             return UITableViewCell()
         }
         presenter.tableView.configure(cell: cell, indexPath: indexPath)

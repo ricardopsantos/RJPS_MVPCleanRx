@@ -46,7 +46,7 @@ class SampleVIP_ViewController: BaseViewControllerMVP, SampleVIP_DisplayLogic {
     var router: (NSObjectProtocol & SampleVIP_RoutingLogic & SampleVIP_DataPassing)?
 
     deinit {
-        if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self.className) was killed") }
+        if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { DevTools.Log.log("\(self.className) was killed") }
         NotificationCenter.default.removeObserver(self)
     }
 
@@ -58,7 +58,7 @@ class SampleVIP_ViewController: BaseViewControllerMVP, SampleVIP_DisplayLogic {
         some.rjsALayouts.setHeight(50)
         some.rx.textDidEndEditing
             .subscribe(onNext: { [weak self] (_) in
-                guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
                 if self.searchBar.text!.count>0 {
                     //     self.presenter.searchUserWith(username: some.text ?? "")
                 }

@@ -6,19 +6,23 @@
 //
 
 import UIKit
+//
 import RJPSLib
+//
+import DevTools
 import Domain
+import Domain_Bliss
 
 extension AppDelegate {
     
     func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
-        AppLogger.log("App is handling URL : \(url)")
+        DevTools.Log.log("App is handling URL : \(url)")
         return true
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         
-        AppLogger.log("App is opening URL [\(url)] with option [\(options)]")
+        DevTools.Log.log("App is opening URL [\(url)] with option [\(options)]")
         
         var blissGenericAppBusiness_UseCase: BlissGenericAppBusinessUseCaseProtocol { return container.resolve(AppProtocols.blissGenericAppBusiness_UseCase)! }
         

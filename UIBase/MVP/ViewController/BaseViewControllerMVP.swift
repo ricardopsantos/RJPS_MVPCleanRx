@@ -24,7 +24,7 @@ import Domain
 open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtocol {
 
     deinit {
-        if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self.className) was killed") }
+        if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { DevTools.Log.log("\(self.className) was killed") }
         NotificationCenter.default.removeObserver(self)
     }
 
@@ -99,7 +99,7 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
     // ...
     //
     open func prepareLayoutCreateHierarchy() {
-        AppLogger.warning(DevTools.Strings.overrideMe.rawValue)
+        DevTools.Log.warning(DevTools.Strings.overrideMe.rawValue)
     }
 
     // What should this function be used for? Setup layout rules zone....
@@ -109,7 +109,7 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
     // ...
     //
     open func prepareLayoutBySettingAutoLayoutsRules() {
-        AppLogger.warning(DevTools.Strings.overrideMe.rawValue)
+        DevTools.Log.warning(DevTools.Strings.overrideMe.rawValue)
     }
 
     // What should this function be used for? Extra stuff zone (not included in [prepareLayoutCreateHierarchy]
@@ -120,11 +120,11 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
     // label.textAlignment = .center
     // ...
     open func prepareLayoutByFinishingPrepareLayout() {
-        AppLogger.warning(DevTools.Strings.overrideMe.rawValue)
+        DevTools.Log.warning(DevTools.Strings.overrideMe.rawValue)
     }
 
     open func setupViewUIRx() {
-        AppLogger.warning(DevTools.Strings.overrideMe.rawValue)
+        DevTools.Log.warning(DevTools.Strings.overrideMe.rawValue)
     }
 
 }

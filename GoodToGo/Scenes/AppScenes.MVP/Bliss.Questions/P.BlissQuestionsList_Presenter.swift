@@ -21,6 +21,7 @@ import DevTools
 import PointFreeFunctions
 import Designables
 import Domain
+import Domain_Bliss
 
 //
 // MARK: - Presenter_Protocol & View_Protocol
@@ -59,7 +60,7 @@ extension Presenter {
         var blissQuestions_UseCase: BlissQuestionsAPIUseCaseProtocol!
         var blissGeneric_UseCase: BlissGenericAppBusinessUseCaseProtocol!
         var viewModel: VM.BlissQuestionsList_ViewModel? {
-            didSet { AppLogger.log(appCode: .vmChanged); viewModelChanged() }
+            didSet { DevTools.Log.log(appCode: .vmChanged); viewModelChanged() }
         }
 
         private var lastFilder: String?
@@ -88,7 +89,7 @@ extension P.BlissQuestionsList_Presenter: GenericTableView_Protocol {
     }
     
     func didSelect(object: Any) {
-        AppLogger.log("\(object)")
+        DevTools.Log.log("\(object)")
         guard existsInternetConnection, let question = object as? Bliss.QuestionElementResponseDto else {
             return
         }
@@ -133,7 +134,7 @@ extension P.BlissQuestionsList_Presenter: BlissQuestionsList_PresenterProtocol {
                     }
                 })
             } else {
-                AppLogger.log(appCode: .referenceLost)
+                DevTools.Log.log(appCode: .referenceLost)
             }
             return Disposables.create()
             }.retry(3)
@@ -182,7 +183,7 @@ extension P.BlissQuestionsList_Presenter {
         // Not pretty, but very efective in avoind duplicated repeated server calls
         if lastFilder != nil && lastOffSet != nil {
             guard "\(lastFilder!)|\(lastOffSet!)" != "\(filter)|\(offSet)" else {
-                AppLogger.warning("Ignored. Same filter and offset")
+                DevTools.Log.warning("Ignored. Same filter and offset")
                 return
             }
         }
@@ -194,7 +195,7 @@ extension P.BlissQuestionsList_Presenter {
             .throttle(.milliseconds(AppConstants.Rx.servicesDefaultThrottle), scheduler: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] questionsList in
-                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
                     if self.lastOffSet == 0 {
                         self.viewModel?.questionsList = questionsList
                     } else {
@@ -203,7 +204,7 @@ extension P.BlissQuestionsList_Presenter {
                     self.genericView?.setActivityState(false)
                 },
                 onError: { [weak self] error in
-                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
                     self.genericView?.displayMessage(Messages.pleaseTryAgainLater.localised, type: .error)
                     self.genericView?.setActivityState(false)
                 }
@@ -240,7 +241,7 @@ extension P.BlissQuestionsList_Presenter {
         
         reachabilityService.reachability.subscribe(
             onNext: { [weak self] some in
-                guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
                 self.genericView?.setNoConnectionViewVisibility(to: !some.reachable, withMessage: Messages.noInternet.localised)
             }
             ).disposed(by: disposeBag)

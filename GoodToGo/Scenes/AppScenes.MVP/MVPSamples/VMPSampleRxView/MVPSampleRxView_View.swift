@@ -29,7 +29,7 @@ extension V {
     class MVPSampleRxView_View: BaseViewControllerMVP {
         
         deinit {
-            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self.className) was killed") }
+            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { DevTools.Log.log("\(self.className) was killed") }
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
@@ -88,7 +88,7 @@ extension V {
             some.rx.tap
                 .subscribe({ [weak self] _ in
                     some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                        guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                        guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
                         self.presenter.userDidTryToLoginWith(user: self.txtUser.text!, password: self.txtPass.text!)
                     })
                 })
@@ -110,7 +110,7 @@ extension V {
             some.rjsALayouts.setHeight(margin*2)
             some.rx.tap.subscribe({ [weak self] _ in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
                     let someString = "[\(self.txtUser.text ?? "")][\(self.txtPass.text ?? "")]"
                     let vm = VM.MVPSampleRxView_ViewModel(someString: someString )
                     self.presenter.router.presentControllerWith(vm: vm)
@@ -128,7 +128,7 @@ extension V {
             some.rjsALayouts.setHeight(margin*2)
             some.rx.tap.subscribe({ [weak self] _ in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
                     self.presenter.router.dismissView()
                 })
             })

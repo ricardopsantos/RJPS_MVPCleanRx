@@ -30,11 +30,11 @@ extension VC {
             let vcRx = createControllers(tabName: "RxTesting", vc: RxTesting())
 
             let vipTemplate = createControllers(tabName: "Template", vc: VC.___VARIABLE_sceneName___ViewController())
-            let vipDebug = createControllers(tabName: "Template", vc: VC.StylesViewController())
+            let vipDebug = createControllers(tabName: "DebugView", vc: VC.DebugViewController())
             let vipCarTrack = createControllers(tabName: "Template", vc: VC.CarTrackLoginViewController())
 
             viewControllers = [vipDebug, vipTemplate, vcRx]
-
+            
         }
 
         private func createControllers(tabName: String, vc: UIViewController) -> UINavigationController {

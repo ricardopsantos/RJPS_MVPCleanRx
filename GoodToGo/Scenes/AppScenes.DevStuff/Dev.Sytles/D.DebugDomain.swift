@@ -27,7 +27,7 @@ import UIBase
 //
 
 extension E {
-    struct StylesView {
+    struct DebugView {
         enum ScreenLayout {
             case unknown
             case layoutA
@@ -40,30 +40,30 @@ extension E {
 // MARK: - Interactor (Business Logic)
 //
 
-protocol StylesBusinessLogicProtocol: BaseInteractorVIPMandatoryBusinessLogicProtocol {
+protocol DebugBusinessLogicProtocol: BaseInteractorVIPMandatoryBusinessLogicProtocol {
     // Naming convention : func request__XXX__(viewModel: VM.Styles.__XXX__.Request)
     func requestScreenInitialState()
-    func requestSomeStuff(request: VM.Styles.SomeStuff.Request)
+    func requestSomeStuff(request: VM.Debug.SomeStuff.Request)
 }
 
 //
 // MARK: - Presenter (Presentation Logic)
 //
 
-protocol StylesPresentationLogicProtocol: BasePresenterVIPProtocol {
+protocol DebugPresentationLogicProtocol: BasePresenterVIPProtocol {
     // Naming convention : func present__XXX__(response: VM.Styles.__XXX__.Response)
-    func presentScreenInitialState(response: VM.Styles.ScreenInitialState.Response)
-    func presentSomeStuff(response: VM.Styles.SomeStuff.Response)
+    func presentScreenInitialState(response: VM.Debug.ScreenInitialState.Response)
+    func presentSomeStuff(response: VM.Debug.SomeStuff.Response)
 }
 
 //
 // MARK: - ViewController (Display Logic)
 //
 
-protocol StylesDisplayLogicProtocol: BaseViewControllerVIPProtocol {
+protocol DebugDisplayLogicProtocol: BaseViewControllerVIPProtocol {
     // Naming convention : func display__XXX__(viewModel: VM.Styles.__XXX__.ViewModel)
-    func displayScreenInitialState(viewModel: VM.Styles.ScreenInitialState.ViewModel)
-    func displaySomeStuff(viewModel: VM.Styles.SomeStuff.ViewModel)
+    func displayScreenInitialState(viewModel: VM.Debug.ScreenInitialState.ViewModel)
+    func displaySomeStuff(viewModel: VM.Debug.SomeStuff.ViewModel)
 }
 
 //
@@ -71,7 +71,7 @@ protocol StylesDisplayLogicProtocol: BaseViewControllerVIPProtocol {
 //
 
 // Routing Logic Protocol - all the methods used for routing are kept under this protocol.
-protocol StylesRoutingLogicProtocol {
+protocol DebugRoutingLogicProtocol {
     // Naming convention : func routeTo__XXX__MaybeSomeExtraInfo()
     func routeToTemplateWithParentDataStore()
     func routeToTemplateWithDataStore()
@@ -82,17 +82,17 @@ protocol StylesRoutingLogicProtocol {
 //
 
 // DataStore : Data Passing Protocol - a protocol that contains the data that needs to be passed to the destination controller.
-protocol StylesDataPassingProtocol {
+protocol DebugDataPassingProtocol {
 
     // DataStore
-    var dsStyles: StylesDataStoreProtocol? { get }
+    var dsStyles: DebugDataStoreProtocol? { get }
 }
 
 // DataStore : Implemented by the Interactor, and the Router
-protocol StylesDataStoreProtocol {
+protocol DebugDataStoreProtocol {
     // must have a reference like [var dataStore: StylesDataStoreProtocol?]
-    var dsSomeKindOfModelA: StylesDataStoreModelA? { get set }
-    var dsSomeKindOfModelB: StylesDataStoreModelB? { get set }
+    var dsSomeKindOfModelA: DebugDataStoreModelA? { get set }
+    var dsSomeKindOfModelB: DebugDataStoreModelB? { get set }
 
 }
 
@@ -102,18 +102,18 @@ protocol StylesDataStoreProtocol {
 
 // DataStore
 
-struct StylesDataStoreModelA {
+struct DebugDataStoreModelA {
     let aString: String
 }
 
-struct StylesDataStoreModelB {
+struct DebugDataStoreModelB {
     let aString: String
 }
 
 // Other Models
 
 extension VM {
-    enum Styles {
+    enum Debug {
         enum CellType {
             case cellType1
             case cellType2
@@ -133,8 +133,8 @@ extension VM {
                 let someValue: String
                 let someListSectionATitle: String
                 let someListSectionBTitle: String
-                let someListSectionAElements: [VM.Styles.TableItem]
-                let someListSectionBElements: [VM.Styles.TableItem]
+                let someListSectionAElements: [VM.Debug.TableItem]
+                let someListSectionBElements: [VM.Debug.TableItem]
             }
         }
 
@@ -147,37 +147,29 @@ extension VM {
             struct ViewModel {
                 let title: String
                 let subTitle: String
-                let screenLayout: E.StylesView.ScreenLayout
-            }
-        }
-
-        enum Error {
-            struct Response {
-                let title: String
-                let message: String
-                let shouldRouteBack: Bool
+                let screenLayout: E.DebugView.ScreenLayout
             }
         }
     }
 }
 
-extension VM.Styles {
+extension VM.Debug {
     struct TableItem: IdentifiableType, Hashable {
 
-        public typealias Identity = VM.Styles.CellType
-        public var identity: VM.Styles.CellType { return cellType }
+        public typealias Identity = VM.Debug.CellType
+        public var identity: VM.Debug.CellType { return cellType }
 
         let enabled: Bool
         let image: String
         let title: String
         let subtitle: String
-        let cellType: VM.Styles.CellType
+        let cellType: VM.Debug.CellType
 
         init(enabled: Bool,
              image: String,
              title: String,
              subtitle: String,
-             cellType: VM.Styles.CellType) {
+             cellType: VM.Debug.CellType) {
             self.enabled = enabled
             self.image = image
             self.title = title

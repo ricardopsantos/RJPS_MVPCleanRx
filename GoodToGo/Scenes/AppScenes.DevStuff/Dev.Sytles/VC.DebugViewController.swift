@@ -24,11 +24,11 @@ import UIBase
 
 extension VC {
 
-    class StylesViewController: BaseGenericViewControllerVIP<V.StylesView> {
-        private var interactor: StylesBusinessLogicProtocol?
-        var router: (StylesRoutingLogicProtocol &
-            StylesDataPassingProtocol &
-            StylesRoutingLogicProtocol)?
+    class DebugViewController: BaseGenericViewControllerVIP<V.DebugView> {
+        private var interactor: DebugBusinessLogicProtocol?
+        var router: (DebugRoutingLogicProtocol &
+            DebugDataPassingProtocol &
+            DebugRoutingLogicProtocol)?
 
         let bottomBar = BottomBar()
 
@@ -92,9 +92,9 @@ extension VC {
         override func setup() {
             // This function is called automatically by super BaseGenericView
             let viewController = self
-            let interactor = I.StylesInteractor()
-            let presenter  = P.StylesPresenter()
-            let router     = R.StylesRouter()
+            let interactor = I.DebugInteractor()
+            let presenter  = P.DebugPresenter()
+            let router     = R.DebugRouter()
             viewController.interactor = interactor
             viewController.router = router
             interactor.presenter  = presenter
@@ -126,25 +126,25 @@ extension VC {
 
 // MARK: Public Misc Stuff
 
-extension VC.StylesViewController {
+extension VC.DebugViewController {
 
 }
 
 // MARK: Private Misc Stuff
 
-extension VC.StylesViewController {
+extension VC.DebugViewController {
 
 }
 
 // MARK: DisplayLogicProtocolProtocol
 
-extension VC.StylesViewController: StylesDisplayLogicProtocol {
+extension VC.DebugViewController: DebugDisplayLogicProtocol {
 
-    func displaySomeStuff(viewModel: VM.Styles.SomeStuff.ViewModel) {
+    func displaySomeStuff(viewModel: VM.Debug.SomeStuff.ViewModel) {
         // Setting up the view, option 1 : passing the view model
     }
 
-    func displayScreenInitialState(viewModel: VM.Styles.ScreenInitialState.ViewModel) {
+    func displayScreenInitialState(viewModel: VM.Debug.ScreenInitialState.ViewModel) {
         title = viewModel.title
     }
 }

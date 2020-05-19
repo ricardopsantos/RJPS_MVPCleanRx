@@ -25,7 +25,7 @@ public extension V {
     internal class SearchUser_View: BaseViewControllerMVP {
         
         deinit {
-            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self.className) was killed") }
+            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { DevTools.Log.log("\(self.className) was killed") }
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
@@ -47,13 +47,13 @@ public extension V {
                 .orEmpty
                 .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
                 .subscribe(onNext: { [weak self] _ in
-                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
                     self.presenter.searchUserWith(username: some.text ?? "")
                 })
                 .disposed(by: disposeBag)
             some.rx.textDidEndEditing
                 .subscribe(onNext: { [weak self] (_) in
-                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
                     if self.searchBar.text!.count>0 {
                         self.presenter.searchUserWith(username: some.text ?? "")
                     }
@@ -91,7 +91,7 @@ public extension V {
         open override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             presenter.generic?.viewWillAppear()
-            AppLogger.error("Error")
+            DevTools.Log.error("Error")
         }
         
         open override func viewDidAppear(_ animated: Bool) {

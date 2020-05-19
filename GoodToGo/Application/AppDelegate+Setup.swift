@@ -17,9 +17,9 @@ import DevTools
 
 extension AppDelegate {
     func setup(application: UIApplication) {
-        AppLogger.enabled = DevTools.FeatureFlag.getFlag(.devTeam_doLogs)
+        DevTools.Log.enabled = DevTools.FeatureFlag.getFlag(.devTeam_doLogs)
         AppEnvironments.setup()
-        AppLogger.log("RJPSLib Version : \(RJSLib.version)")
-        AppLogger.log("Number of logins : \(AppUserDefaultsVars.incrementIntWithKey(AppConstants.Dev.numberOfLogins))")
+        DevTools.Log.log("RJPSLib Version : \(RJSLib.version)")
+        DevTools.Log.log("Number of logins : \(AppUserDefaultsVars.incrementIntWithKey(AppConstants.Dev.numberOfLogins))")
     }
 }

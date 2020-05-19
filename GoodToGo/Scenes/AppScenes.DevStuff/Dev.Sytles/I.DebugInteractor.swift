@@ -33,20 +33,20 @@ import AppResources
 //
 
 extension I {
-    class StylesInteractor: BaseInteractorVIP, StylesDataStoreProtocol {
+    class DebugInteractor: BaseInteractorVIP, DebugDataStoreProtocol {
 
-        var presenter: StylesPresentationLogicProtocol?
+        var presenter: DebugPresentationLogicProtocol?
         weak var basePresenter: BasePresenterVIPProtocol? { return presenter }
 
         // DataStoreProtocol Protocol vars...
-        var dsSomeKindOfModelA: StylesDataStoreModelA?
-        var dsSomeKindOfModelB: StylesDataStoreModelB?
+        var dsSomeKindOfModelA: DebugDataStoreModelA?
+        var dsSomeKindOfModelB: DebugDataStoreModelB?
     }
 }
 
 // MARK: Interator Mandatory BusinessLogicProtocol
 
-extension I.StylesInteractor: BaseInteractorVIPMandatoryBusinessLogicProtocol {
+extension I.DebugInteractor: BaseInteractorVIPMandatoryBusinessLogicProtocol {
 
     /// When the screen is loaded, this function is responsible to bind the View with some (temporary or final) data
     /// till the user have all the data loaded on the view. This will improve user experience.
@@ -58,18 +58,18 @@ extension I.StylesInteractor: BaseInteractorVIPMandatoryBusinessLogicProtocol {
 
 // MARK: Private Stuff
 
-extension I.StylesInteractor {
+extension I.DebugInteractor {
 
 }
 
 // MARK: BusinessLogicProtocol
 
-extension I.StylesInteractor: StylesBusinessLogicProtocol {
+extension I.DebugInteractor: DebugBusinessLogicProtocol {
 
     // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
     // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
     // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
-    func requestSomeStuff(request: VM.Styles.SomeStuff.Request) {
+    func requestSomeStuff(request: VM.Debug.SomeStuff.Request) {
 
     }
 
