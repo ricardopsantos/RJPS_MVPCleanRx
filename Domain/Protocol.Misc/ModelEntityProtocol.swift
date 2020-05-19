@@ -8,5 +8,5 @@
 
 import Foundation
 
-protocol ModelEntityProtocol: Codable { }
-protocol ResponseDtoProtocol: Codable { }
+public protocol ModelEntityProtocol: Codable { }
+public protocol ResponseDtoProtocol: Codable { }

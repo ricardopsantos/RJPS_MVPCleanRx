@@ -21,6 +21,7 @@ import DevTools
 import PointFreeFunctions
 import Designables
 import Domain
+import Domain_Bliss
 
 extension V {
     class BlissDetails_View: BaseViewControllerMVP {

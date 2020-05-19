@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+//
+import Domain
 
 //
 // Generate by https://app.quicktype.io/

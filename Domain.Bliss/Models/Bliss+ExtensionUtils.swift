@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Domain
 
 public struct Bliss {
     private init() {}
