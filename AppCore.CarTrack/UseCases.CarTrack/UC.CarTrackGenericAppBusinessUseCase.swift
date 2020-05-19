@@ -18,29 +18,28 @@ import PointFreeFunctions
 import Domain
 import Domain_CarTrack
 import Factory
+import AppCore
 
-extension UC {
-    public class CarTrackGenericAppBusinessUseCase: GenericUseCase, CarTrackGenericAppBusinessUseCaseProtocol {
+public class CarTrackGenericAppBusinessUseCase: GenericUseCase, CarTrackGenericAppBusinessUseCaseProtocol {
 
-        public override init() { super.init() }
+    public override init() { super.init() }
 
-        public var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
-        public var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
+    public var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
+    public var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
 
-        public func validate(user: String,
-                             password: String,
-                             completionHandler: @escaping CarTrackGenericAppBusinessUseCaseCompletionHandler) {
-            // Simulate some kind of API call
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            DispatchQueue.executeWithDelay(delay: 1) { 
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                let kPassword = "12345"
-                let success = kPassword == password
-                if success {
-                    completionHandler(Result.success(success))
-                } else {
-                    completionHandler(Result.failure(Factory.Errors.with(appCode: .invalidCredentials)))
-                }
+    public func validate(user: String,
+                         password: String,
+                         completionHandler: @escaping CarTrackGenericAppBusinessUseCaseCompletionHandler) {
+        // Simulate some kind of API call
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        DispatchQueue.executeWithDelay(delay: 1) {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            let kPassword = "12345"
+            let success = kPassword == password
+            if success {
+                completionHandler(Result.success(success))
+            } else {
+                completionHandler(Result.failure(Factory.Errors.with(appCode: .invalidCredentials)))
             }
         }
     }

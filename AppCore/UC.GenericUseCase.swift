@@ -12,8 +12,6 @@ import RJPSLib
 import RxCocoa
 import Domain
 
-public extension UC {
-    open class GenericUseCase: AppUtils_Protocol {
-        public init() { }
-    }
+open class GenericUseCase: AppUtils_Protocol {
+    public init() { }
 }

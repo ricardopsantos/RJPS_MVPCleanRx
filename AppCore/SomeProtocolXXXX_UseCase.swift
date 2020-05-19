@@ -26,16 +26,14 @@ public protocol SomeProtocolXXXX_UseCaseProtocol {
     func sayHi()
 }
 
-extension UC {
-    public class SomeProtocolXXXX_UseCase: GenericUseCase, SomeProtocolXXXX_UseCaseProtocol {
+public class SomeProtocolXXXX_UseCase: GenericUseCase, SomeProtocolXXXX_UseCaseProtocol {
 
-        public override init() { super.init() }
+    public override init() { super.init() }
 
-        public var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
-        public var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
+    public var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
+    public var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
 
-        public func sayHi() {
+    public func sayHi() {
 
-        }
     }
 }
