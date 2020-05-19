@@ -10,6 +10,32 @@
 # brew install carthage
 # brew upgrade carthage
 
+# MORE LIBRARIES HERE : https://github.com/Wolg/awesome-swift ###
+
+####################################################################
+# Elegant transition library for iOS & tvOS
+# https://github.com/HeroTransitions/Hero
+
+github "HeroTransitions/Hero"
+
+####################################################################
+# https://github.com/fpillet/NSLogger
+# A modern, flexible logging tool
+
+github "fpillet/NSLogger"
+
+####################################################################
+
+# https://github.com/stephencelis/SQLite.swift
+# A type-safe, Swift-language layer over SQLite3.
+
+#https://github.com/stephencelis/SQLite.swift
+
+####################################################################
+####################################################################
+####################################################################
+
+
 ####################################################################
 # A beautiful and flexible text field control implementation of "Float Label Pattern". Written in Swift.
 # https://github.com/Skyscanner/SkyFloatingLabelTextField

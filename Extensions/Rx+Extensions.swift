@@ -103,17 +103,17 @@ extension ObservableType {
                 let eventNormalized = (eventText.count > maxEventTextLength) && trimOutput
                     ? String(eventText.prefix(maxEventTextLength / 2)) + "..." + String(eventText.suffix(maxEventTextLength / 2))
                     : eventText
-                writeToLog(identifier: identifier, event: "next", eventText: "(\(eventNormalized))", file: "\(file)", line: Int(line), function: "\(function)")
+                writeToLog(identifier: identifier, event: "next", eventText: "(\(eventNormalized))", file: "\(file)", line: Int(line), function: "\(function)", isError: false)
             }, onError: { (error) in
-                writeToLog(identifier: identifier, event: "error", eventText: "(\(error))", file: "\(file)", line: Int(line), function: "\(function)")
+                writeToLog(identifier: identifier, event: "error", eventText: "(\(error))", file: "\(file)", line: Int(line), function: "\(function)", isError: true)
             }, onCompleted: {
-                writeToLog(identifier: identifier, event: "completed", eventText: "", file: "\(file)", line: Int(line), function: "\(function)")
+                writeToLog(identifier: identifier, event: "completed", eventText: "", file: "\(file)", line: Int(line), function: "\(function)", isError: false)
             }, onSubscribe: {
-                writeToLog(identifier: identifier, event: "subscribe", eventText: "", file: "\(file)", line: Int(line), function: "\(function)")
+                writeToLog(identifier: identifier, event: "subscribe", eventText: "", file: "\(file)", line: Int(line), function: "\(function)", isError: false)
             }, onSubscribed: {
-                writeToLog(identifier: identifier, event: "subscribed", eventText: "", file: "\(file)", line: Int(line), function: "\(function)")
+                writeToLog(identifier: identifier, event: "subscribed", eventText: "", file: "\(file)", line: Int(line), function: "\(function)", isError: false)
             }, onDispose: {
-                writeToLog(identifier: identifier, event: "dispose", eventText: "", file: "\(file)", line: Int(line), function: "\(function)")
+                writeToLog(identifier: identifier, event: "dispose", eventText: "", file: "\(file)", line: Int(line), function: "\(function)", isError: false)
             })
     }
 
@@ -128,15 +128,15 @@ extension PrimitiveSequenceType where Trait == CompletableTrait, Element == Neve
                     function: StaticString = #function)
         -> Completable {
             return self.do(onError: { (error) in
-                writeToLog(identifier: identifier, event: "error", eventText: "(\(error))", file: "\(file)", line: Int(line), function: "\(function)")
+                writeToLog(identifier: identifier, event: "error", eventText: "(\(error))", file: "\(file)", line: Int(line), function: "\(function)", isError: true)
             }, onCompleted: {
-                writeToLog(identifier: identifier, event: "completed", eventText: "", file: "\(file)", line: Int(line), function: "\(function)")
+                writeToLog(identifier: identifier, event: "completed", eventText: "", file: "\(file)", line: Int(line), function: "\(function)", isError: false)
             }, onSubscribe: {
-                writeToLog(identifier: identifier, event: "subscribe", eventText: "", file: "\(file)", line: Int(line), function: "\(function)")
+                writeToLog(identifier: identifier, event: "subscribe", eventText: "", file: "\(file)", line: Int(line), function: "\(function)", isError: false)
             }, onSubscribed: {
-                writeToLog(identifier: identifier, event: "subscribed", eventText: "", file: "\(file)", line: Int(line), function: "\(function)")
+                writeToLog(identifier: identifier, event: "subscribed", eventText: "", file: "\(file)", line: Int(line), function: "\(function)", isError: false)
             }, onDispose: {
-                writeToLog(identifier: identifier, event: "dispose", eventText: "", file: "\(file)", line: Int(line), function: "\(function)")
+                writeToLog(identifier: identifier, event: "dispose", eventText: "", file: "\(file)", line: Int(line), function: "\(function)", isError: false)
             })
     }
 }
@@ -152,15 +152,15 @@ extension PrimitiveSequenceType where Trait == SingleTrait {
                 let eventNormalized = (eventText.count > maxEventTextLength) && trimOutput
                     ? String(eventText.prefix(maxEventTextLength / 2)) + "..." + String(eventText.suffix(maxEventTextLength / 2))
                     : eventText
-                writeToLog(identifier: identifier, event: "success", eventText: "(\(eventNormalized))", file: "\(file)", line: Int(line), function: "\(function)")
+                writeToLog(identifier: identifier, event: "success", eventText: "(\(eventNormalized))", file: "\(file)", line: Int(line), function: "\(function)", isError: false)
             }, onError: { (error) in
-                writeToLog(identifier: identifier, event: "error", eventText: "(\(error))", file: "\(file)", line: Int(line), function: "\(function)")
+                writeToLog(identifier: identifier, event: "error", eventText: "(\(error))", file: "\(file)", line: Int(line), function: "\(function)", isError: true)
             }, onSubscribe: {
-                writeToLog(identifier: identifier, event: "subscribe", eventText: "", file: "\(file)", line: Int(line), function: "\(function)")
+                writeToLog(identifier: identifier, event: "subscribe", eventText: "", file: "\(file)", line: Int(line), function: "\(function)", isError: false)
             }, onSubscribed: {
-                writeToLog(identifier: identifier, event: "subscribed", eventText: "", file: "\(file)", line: Int(line), function: "\(function)")
+                writeToLog(identifier: identifier, event: "subscribed", eventText: "", file: "\(file)", line: Int(line), function: "\(function)", isError: false)
             }, onDispose: {
-                writeToLog(identifier: identifier, event: "dispose", eventText: "", file: "\(file)", line: Int(line), function: "\(function)")
+                writeToLog(identifier: identifier, event: "dispose", eventText: "", file: "\(file)", line: Int(line), function: "\(function)", isError: false)
             })
     }
 }
@@ -170,6 +170,11 @@ private func writeToLog(identifier: String,
                         eventText: String,
                         file: String,
                         line: Int,
-                        function: String) {
-    DevTools.Log.log("[Rx] \(identifier) -> \(event)\(eventText)", function: function, file: file, line: line)
+                        function: String,
+                        isError: Bool) {
+    if isError {
+        DevTools.Log.error("[Rx] \(identifier) -> \(event)\(eventText)", function: function, file: file, line: line)
+    } else {
+        DevTools.Log.log("[Rx] \(identifier) -> \(event)\(eventText)", function: function, file: file, line: line)
+    }
 }

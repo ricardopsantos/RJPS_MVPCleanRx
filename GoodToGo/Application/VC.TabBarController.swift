@@ -35,7 +35,7 @@ extension VC {
             let vip2 = VC.___VARIABLE_sceneName___ViewController()
             let carTrackLoginViewController = VC.CarTrackLoginViewController()
             let cartTrackMapViewController = VC.CartTrackMapViewController()
-            let stylesViewController = VC.StylesViewController()
+            let stylesViewController = VC.DebugViewController()
             
             carTrackLoginViewController.tabBarItem.title = "Login"
             cartTrackMapViewController.tabBarItem.title = "Map"

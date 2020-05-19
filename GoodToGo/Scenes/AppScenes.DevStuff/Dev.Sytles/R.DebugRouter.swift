@@ -22,27 +22,27 @@ import PointFreeFunctions
 import UIBase
 
 extension R {
-    class StylesRouter: StylesDataPassingProtocol {
-        weak var viewController: VC.StylesViewController?
+    class DebugRouter: DebugDataPassingProtocol {
+        weak var viewController: VC.DebugViewController?
 
         // DataPassingProtocol Protocol vars...
-        var dsStyles: StylesDataStoreProtocol? { didSet { AppLogger.log("DataStore changed") } }
+        var dsStyles: DebugDataStoreProtocol? { didSet { AppLogger.log("DataStore changed") } }
      }
 }
 
 // MARK: RoutingLogicProtocol
 
-extension R.StylesRouter: StylesRoutingLogicProtocol {
+extension R.DebugRouter: DebugRoutingLogicProtocol {
     func dismissMe() {
         viewController?.dismissMe()
     }
 
     func routeToTemplateWithDataStore() {
-        func passDataToSomewhere(source: StylesDataStoreProtocol, destination: inout StylesDataStoreProtocol) {
+        func passDataToSomewhere(source: DebugDataStoreProtocol, destination: inout DebugDataStoreProtocol) {
             destination.dsSomeKindOfModelA = source.dsSomeKindOfModelA
             destination.dsSomeKindOfModelB = source.dsSomeKindOfModelB
         }
-        let destinationVC = VC.StylesViewController()
+        let destinationVC = VC.DebugViewController()
         if var destinationDS = destinationVC.router?.dsStyles {
             passDataToSomewhere(source: dsStyles!, destination: &destinationDS)
         }

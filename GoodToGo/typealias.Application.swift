@@ -25,7 +25,7 @@ typealias AppSimpleNetworkClient = RJS_SimpleNetworkClient
 typealias AppUtils               = RJS_Utils
 typealias AppUserDefaultsVars    = RJS_UserDefaultsVars
 typealias AppUserDefaults        = RJS_UserDefaults
-typealias WebAPIRequest_Protocol = RJSLibWebAPIRequest_Protocol
+typealias WebAPIRequest_Protocol = RJS_NetworkClientRequestProtocol
 
 // MARK: - App Shortcuts
 

@@ -35,6 +35,16 @@ extension E {
     }
 }
 
+// DataStore
+
+struct ___VARIABLE_sceneName___DataStoreModelA {
+    let aString: String
+}
+
+struct ___VARIABLE_sceneName___DataStoreModelB {
+    let aString: String
+}
+
 //
 // MARK: - Interactor (Business Logic)
 //
@@ -98,16 +108,6 @@ protocol ___VARIABLE_sceneName___DataStoreProtocol {
 //
 // MARK: - Models
 //
-
-// DataStore
-
-struct ___VARIABLE_sceneName___DataStoreModelA {
-    let aString: String
-}
-
-struct ___VARIABLE_sceneName___DataStoreModelB {
-    let aString: String
-}
 
 // Other Models
 

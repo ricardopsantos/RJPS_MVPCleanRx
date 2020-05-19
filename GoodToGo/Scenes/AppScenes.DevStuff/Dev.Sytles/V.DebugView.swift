@@ -27,7 +27,7 @@ import UIBase
 import AppResources
 
 extension V {
-    class StylesView: BaseGenericViewVIP {
+    class DebugView: BaseGenericViewVIP {
 
         deinit {
             if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self.className) was killed") }
@@ -257,6 +257,6 @@ extension V {
 
 // MARK: - Events capture
 
-extension V.StylesView {
+extension V.DebugView {
 
 }
