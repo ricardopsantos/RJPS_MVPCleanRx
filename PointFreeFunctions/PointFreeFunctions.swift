@@ -106,15 +106,8 @@ public func perfectMapper<A: Codable, B: Codable>(inValue: A, outValue: B.Type) 
         let decoded = try JSONDecoder().decode(((B).self), from: encoded)
         return decoded
     } catch {
-        #if DEBUG
-            print("⛔⛔⛔⛔⛔ perfectMapper ⛔⛔⛔⛔⛔")
-            print("⛔⛔⛔⛔⛔ perfectMapper ⛔⛔⛔⛔⛔")
-            print("# Conversion fail from [\(A.self)] to [\(B.self)]")
-            print("# In value [\(inValue)]")
-            print("# Error [\(error)]")
-            print("⛔⛔⛔⛔⛔ perfectMapper ⛔⛔⛔⛔⛔")
-            print("⛔⛔⛔⛔⛔ perfectMapper ⛔⛔⛔⛔⛔")
-        #endif
+        let message = "# Conversion fail from [\(A.self)] to [\(B.self)]\n# In value [\(inValue)]\n# Error [\(error)]"
+        printError(title: "perfectMapper", message: message)
         return nil
     }
 }
@@ -125,4 +118,43 @@ extension String {
             String(decoding: $0, as: UTF8.self)
         }
     }
+}
+
+private func printError(title: String, message: String) {
+    #if DEBUG
+        print("⛔⛔⛔⛔⛔ \(title) ⛔⛔⛔⛔⛔")
+        print("⛔⛔⛔⛔⛔ \(title) ⛔⛔⛔⛔⛔")
+        print(message)
+        print("⛔⛔⛔⛔⛔ \(title) ⛔⛔⛔⛔⛔")
+        print("⛔⛔⛔⛔⛔ \(title) ⛔⛔⛔⛔⛔")
+    #endif
+}
+
+public func listFromCSV<T: Decodable>(_ dataString: String) -> [T] {
+    do {
+        guard let jsonKeys: [String] = dataString.components(separatedBy: "\n").first?.components(separatedBy: ",") else {
+            printError(title: "Parsing Error", message: dataString)
+            return []
+        }
+        var parsedCSV: [[String: String]] = dataString
+            .components(separatedBy: "\n")
+            .map({
+                var result = [String: String]()
+                for (index, value) in $0.components(separatedBy: ",").enumerated() {
+                    if index < jsonKeys.count {
+                        result["\(jsonKeys[index])"] = value
+                    }
+                }
+                return result
+            })
+        parsedCSV.removeFirst()
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: parsedCSV, options: []) else {
+            printError(title: "Parsing Error", message: "\(parsedCSV)")
+            return []
+        }
+        return try JSONDecoder().decode([T].self, from: jsonData)
+    } catch let error {
+        printError(title: "Parsing Error", message: "\(error)")
+    }
+    return []
 }
