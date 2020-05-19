@@ -294,16 +294,8 @@
 		D7F2DD5B24744D18008CE3DA /* Bliss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2C022E32A3C00829A6F /* Bliss.swift */; };
 		D7F2DD5C24744D18008CE3DA /* BlissGenericAppBusinessUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9F97122E4B8CB00D64FD2 /* BlissGenericAppBusinessUseCaseProtocol.swift */; };
 		D7F2DD5D24744D18008CE3DA /* BlissQuestionsAPIUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9F97022E4B8CB00D64FD2 /* BlissQuestionsAPIUseCaseProtocol.swift */; };
-		D7F2DD6024744E0C008CE3DA /* RJPSLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBF4B0722BEBC3B00E0D1AB /* RJPSLib.framework */; };
-		D7F2DD6124744E0C008CE3DA /* RJPSLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBF4B0722BEBC3B00E0D1AB /* RJPSLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7F2DD68247450F2008CE3DA /* UC.BlissGenericAppBussiness_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D6A246D46ED0039031C /* UC.BlissGenericAppBussiness_UseCase.swift */; };
 		D7F2DD69247450F2008CE3DA /* UC.BlissQuestionsAPI_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D6B246D46ED0039031C /* UC.BlissQuestionsAPI_UseCase.swift */; };
-		D7F2DD71247451D9008CE3DA /* RJPSLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBF4B0722BEBC3B00E0D1AB /* RJPSLib.framework */; };
-		D7F2DD72247451D9008CE3DA /* RJPSLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBF4B0722BEBC3B00E0D1AB /* RJPSLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D7F2DD73247451D9008CE3DA /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC172223BBD8600576498 /* RxCocoa.framework */; };
-		D7F2DD74247451D9008CE3DA /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC172223BBD8600576498 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D7F2DD75247451D9008CE3DA /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC176223BBFC600576498 /* RxSwift.framework */; };
-		D7F2DD76247451D9008CE3DA /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC176223BBFC600576498 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7F2DD7824745285008CE3DA /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
 		D7F2DD7924745286008CE3DA /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
 		D7FA21F724708B9C001DD9D5 /* ReachabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA21F324706A32001DD9D5 /* ReachabilityView.swift */; };
@@ -780,30 +772,6 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D7F2DD6224744E0C008CE3DA /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				D7F2DD6124744E0C008CE3DA /* RJPSLib.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D7F2DD77247451D9008CE3DA /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				D7F2DD74247451D9008CE3DA /* RxCocoa.framework in Embed Frameworks */,
-				D7F2DD72247451D9008CE3DA /* RJPSLib.framework in Embed Frameworks */,
-				D7F2DD76247451D9008CE3DA /* RxSwift.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -1260,7 +1228,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7F2DD6024744E0C008CE3DA /* RJPSLib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1268,9 +1235,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7F2DD73247451D9008CE3DA /* RxCocoa.framework in Frameworks */,
-				D7F2DD71247451D9008CE3DA /* RJPSLib.framework in Frameworks */,
-				D7F2DD75247451D9008CE3DA /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2696,7 +2660,6 @@
 				D7F2DD1D24744A0E008CE3DA /* Sources */,
 				D7F2DD1E24744A0E008CE3DA /* Frameworks */,
 				D7F2DD1F24744A0E008CE3DA /* Resources */,
-				D7F2DD6224744E0C008CE3DA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2719,7 +2682,6 @@
 				D7F2DD3624744A47008CE3DA /* Sources */,
 				D7F2DD3724744A47008CE3DA /* Frameworks */,
 				D7F2DD3824744A47008CE3DA /* Resources */,
-				D7F2DD77247451D9008CE3DA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
