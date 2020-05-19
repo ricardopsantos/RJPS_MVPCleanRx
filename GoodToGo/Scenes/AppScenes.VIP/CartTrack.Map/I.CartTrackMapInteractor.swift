@@ -18,6 +18,7 @@ import AppTheme
 import Designables
 import DevTools
 import Domain
+import Domain_CarTrack
 import Extensions
 import PointFreeFunctions
 import UIBase
@@ -38,7 +39,7 @@ extension I {
         var presenter: CartTrackMapPresentationLogicProtocol?
         weak var basePresenter: BasePresenterVIPProtocol? { return presenter }
 
-        var list: [Domain.CarTrack.UserModel] = []
+        var list: [Domain_CarTrack.CarTrack.UserModel] = []
     }
 }
 

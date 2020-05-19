@@ -8,9 +8,12 @@
 
 import Foundation
 import UIKit
+//
 import RJPSLib
+//
 
 public typealias CarTrack_UserDetailsNetWorkRepositoryCompletionHandler = (_ result: Result<RJSLibNetworkClientResponse<[CarTrack.CarTrackUserResponseDtoElement]>>) -> Void
+
 public protocol CarTrack_NetWorkRepositoryProtocol: class {
     func userDetails(canUseCache: Bool, completionHandler: @escaping CarTrack_UserDetailsNetWorkRepositoryCompletionHandler)
 }

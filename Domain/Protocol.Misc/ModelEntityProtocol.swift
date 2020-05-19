@@ -8,5 +8,7 @@
 
 import Foundation
 
+// swiftlint:disable rule_Coding
+
 public protocol ModelEntityProtocol: Codable { }
 public protocol ResponseDtoProtocol: Codable { }

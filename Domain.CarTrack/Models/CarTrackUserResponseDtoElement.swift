@@ -9,6 +9,7 @@
 import Foundation
 //
 import PointFreeFunctions
+import Domain
 
 public extension CarTrack {
 
@@ -38,7 +39,7 @@ public extension CarTrack {
 }
 
 public extension CarTrack.CarTrackUserResponseDtoElement {
-    var toDomain: Domain.CarTrack.UserModel? {
-        return perfectMapper(inValue: self, outValue: Domain.CarTrack.UserModel.self)
+    var toDomain: CarTrack.UserModel? {
+        return perfectMapper(inValue: self, outValue: CarTrack.UserModel.self)
     }
 }

@@ -6,7 +6,7 @@
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
 //
 
-// swiftlint:disable no_print
+// swiftlint:disable no_print rule_Coding
 
 import Foundation
 import UIKit

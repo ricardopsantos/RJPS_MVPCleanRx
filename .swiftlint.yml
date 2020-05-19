@@ -8,6 +8,13 @@ excluded:
 
 custom_rules:
 
+    rule_Coding:
+        included: ".*\\.swift"
+        name: "No let _ = ..."
+        regex: 'Codable'
+        message: "Don't use Codable alone. Use ModelEntityProtocol or ResponseDtoProtocol"
+        severity: error
+
     no_letUnderscore:
         included: ".*\\.swift"
         name: "No let _ = ..."

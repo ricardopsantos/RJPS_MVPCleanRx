@@ -22,6 +22,7 @@ import AppTheme
 import Designables
 import DevTools
 import Domain
+import Domain_CarTrack
 import Extensions
 import PointFreeFunctions
 import UIBase
@@ -43,7 +44,7 @@ extension V {
         static var selectedAnnotationsTypeForMap: CartTrackMapViewAnnotationType = .markerAnnotationView
 
         var rxFilter = BehaviorSubject<String?>(value: nil)
-        private var lastModel: [CarTrack.UserModel] = []
+        private var lastModel: [Domain_CarTrack.CarTrack.UserModel] = []
         // MARK: - UI Elements (Private and lazy by default)
 
         private lazy var mapView: MKMapView = {
@@ -293,10 +294,7 @@ extension MKMapView {
         let minLongitude = annotations.min { (a, b) -> Bool in a.coordinate.longitude > b.coordinate.longitude }!.coordinate.longitude
         let maxLatitude = annotations.max { (a, b) -> Bool in a.coordinate.latitude > b.coordinate.latitude }!.coordinate.longitude
         let minLatitude = annotations.min { (a, b) -> Bool in a.coordinate.latitude > b.coordinate.latitude }!.coordinate.longitude
-        //print(maxLongitude, minLongitude)
-        //print(maxLatitude, minLatitude)
-        //let latitudeDelta = CLLocationDegrees()
-        //let longitudeDelta = CLLocationDegrees()
+
         let span = MKCoordinateSpan(latitudeDelta: 4, longitudeDelta: 4)
         let region = MKCoordinateRegion.init(center: center, span: span)
         self.setRegion(region, animated: true)
@@ -307,12 +305,12 @@ extension MKMapView {
 
 class CarTrackMKAnnotation: NSObject, MKAnnotation {
 
-    let model: Domain.CarTrack.UserModel
+    let model: Domain_CarTrack.CarTrack.UserModel
     let title: String?
     let subTitle: String?
     let coordinate: CLLocationCoordinate2D
 
-    init(title: String, subTitle: String, coordinate: CLLocationCoordinate2D, model: Domain.CarTrack.UserModel) {
+    init(title: String, subTitle: String, coordinate: CLLocationCoordinate2D, model: Domain_CarTrack.CarTrack.UserModel) {
         self.title = title
         self.subTitle = subTitle
         self.coordinate = coordinate
@@ -344,7 +342,7 @@ class CarTrackMKMarkerAnnotationView: MKMarkerAnnotationView {
 
 // MARK: Extension
 
-extension Domain.CarTrack.UserModel {
+extension Domain_CarTrack.CarTrack.UserModel {
 
     var mapTitle: String { return name }
     var mapSubTitle: String { return self.company.name + "\n" + self.email }

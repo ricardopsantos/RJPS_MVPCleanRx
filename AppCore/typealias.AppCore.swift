@@ -14,6 +14,3 @@ import DevTools
 import Domain
 
 typealias AppSimpleNetworkClient = RJS_SimpleNetworkClient
-
-public typealias CarTrackUserResponseDtoElement = Domain.CarTrack.CarTrackUserResponseDtoElement
-public typealias CarTrackUserModel = Domain.CarTrack.UserModel

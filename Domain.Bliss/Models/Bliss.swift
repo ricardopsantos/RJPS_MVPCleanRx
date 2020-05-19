@@ -17,7 +17,7 @@ import Domain
 public extension Bliss {
     
     // MARK: - ResponseElement
-    struct QuestionElementResponseDto: ModelEntityProtocol {
+    struct QuestionElementResponseDto: ResponseDtoProtocol {
         public let id: Int
         public let question: Question
         public let imageURL: String
@@ -35,23 +35,23 @@ public extension Bliss {
     }
     
     // MARK: - ChoiceElement
-    struct ChoiceElementResponseDto: ModelEntityProtocol {
+    struct ChoiceElementResponseDto: ResponseDtoProtocol {
         public let choice: ChoiceEnum
         public let votes: Int
     }
     
-    enum ChoiceEnum: String, Codable {
+    enum ChoiceEnum: String, ResponseDtoProtocol {
         case objectiveC = "Objective-C"
         case python = "Python"
         case ruby = "Ruby"
         case swift = "Swift"
     }
     
-    enum PublishedAt: String, Codable {
+    enum PublishedAt: String, ResponseDtoProtocol {
         case the20150805T084051620Z = "2015-08-05T08:40:51.620Z"
     }
     
-    enum Question: String, Codable {
+    enum Question: String, ModelEntityProtocol {
         case favouriteProgrammingLanguage = "Favourite programming language?"
     }
 }

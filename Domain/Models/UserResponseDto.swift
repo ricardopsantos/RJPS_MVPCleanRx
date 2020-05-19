@@ -11,7 +11,7 @@ import UIKit
 import DevTools
 
 public extension GitHub {
-    struct UserResponseDto: Codable {
+    struct UserResponseDto: ResponseDtoProtocol {
 
         public var name: String?
         public var login: String?
