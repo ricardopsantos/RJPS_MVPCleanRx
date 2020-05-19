@@ -22,7 +22,7 @@ public extension API.GitUser {
         
         public func getInfoOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitUser_Single_NetWorkRepositoryCompletionHandler) {
             do {
-                let apiRequest: WebAPIRequest_Protocol = try WebAPI.GitUser.GetUserInfo_APIRequest(userName: userName)
+                let apiRequest: WebAPIRequest_Protocol = try WebAPI.GitUserAPIRequest.GetUserInfo(userName: userName)
                 let apiClient: RJSLibNetworkClient_Protocol  = RJSLib.NetworkClient()
                 apiClient.execute(request: apiRequest, completionHandler: { (result: Result<RJSLibNetworkClientResponse<GitHub.UserResponseDto>>) in
                     completionHandler(result)
@@ -34,7 +34,7 @@ public extension API.GitUser {
         
         public func getFriendsOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitUser_Friends_NetWorkRepositoryCompletionHandler) {
             do {
-                let apiRequest: WebAPIRequest_Protocol = try WebAPI.GitUser.GetFriends_APIRequest(userName: userName)
+                let apiRequest: WebAPIRequest_Protocol = try WebAPI.GitUserAPIRequest.GetFriends(userName: userName)
                 let apiClient: RJSLibNetworkClient_Protocol = RJSLib.NetworkClient()
                 apiClient.execute(request: apiRequest, completionHandler: { (result: Result<RJSLibNetworkClientResponse<[GitHub.UserResponseDto]>>) in
                     completionHandler(result)

@@ -16,7 +16,9 @@ import PointFreeFunctions
 import Domain
 import DevTools
 
-public extension API.Employees {
+// MARK: - Target
+
+public extension API.EmployeesAPIRequest {
 
     enum Target {
         case getEmployees
@@ -37,6 +39,11 @@ public extension API.Employees {
             }
         }
     }
+}
+
+// MARK: - GetEmployees
+
+public extension API.EmployeesAPIRequest {
 
     struct GetEmployees_APIRequest: WebAPIRequest_Protocol {
         public var returnOnMainTread: Bool = true

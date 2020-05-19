@@ -14,6 +14,10 @@ import Domain
 import DevTools
 import Domain_CarTrack
 
+/**
+* WE CANT HAVE BUSINESS RULES HERE! THE CLIENT JUST DO THE OPERATION AND LEAVE
+*/
+
 public extension API.CarTrack {
 
     class NetWorkRepository: CarTrack_NetWorkRepositoryProtocol {
@@ -22,7 +26,7 @@ public extension API.CarTrack {
 
         public func userDetails(canUseCache: Bool, completionHandler: @escaping CarTrack_UserDetailsNetWorkRepositoryCompletionHandler) {
             do {
-                let apiRequest: WebAPIRequest_Protocol = try WebAPI.CarTrack.GetUserInfo_APIRequest(userName: "")
+                let apiRequest: WebAPIRequest_Protocol = try WebAPI.CarTrackAPIRequest.GetUserInfo(userName: "")
                 let apiClient: RJSLibNetworkClient_Protocol  = RJSLib.NetworkClient()
                 apiClient.execute(request: apiRequest, completionHandler: { (result: Result<RJSLibNetworkClientResponse<[CarTrack.CarTrackUserResponseDtoElement]>>) in
                     completionHandler(result)

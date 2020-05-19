@@ -16,7 +16,7 @@ import PointFreeFunctions
 import Domain
 import DevTools
 
-public extension API.GitUser {
+public extension API.GitUserAPIRequest {
 
     enum Target {
         case getUser(userName: String)
@@ -42,9 +42,11 @@ public extension API.GitUser {
     }
 }
 
-public extension API.GitUser {
+// MARK: - GetUserInfo
 
-    struct GetUserInfo_APIRequest: WebAPIRequest_Protocol {
+public extension API.GitUserAPIRequest {
+
+    struct GetUserInfo: WebAPIRequest_Protocol {
         public var returnOnMainTread: Bool
         public var debugRequest: Bool
         public var urlRequest: URLRequest
@@ -65,8 +67,10 @@ public extension API.GitUser {
     }
 }
 
-public extension API.GitUser {
-    struct GetFriends_APIRequest: WebAPIRequest_Protocol {
+// MARK: - GetFriends
+
+public extension API.GitUserAPIRequest {
+    struct GetFriends: WebAPIRequest_Protocol {
         public var returnOnMainTread: Bool
         public var debugRequest: Bool
         public var urlRequest: URLRequest

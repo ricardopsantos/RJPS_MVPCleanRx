@@ -17,8 +17,10 @@ import Domain
 import Domain_Bliss
 import DevTools
 
-public extension API.Bliss {
-    struct GetHealthStatus_APIRequest: WebAPIRequest_Protocol {
+// MARK: - GetHealthStatus
+
+public extension API.BlissAPIRequest {
+    struct GetHealthStatus: WebAPIRequest_Protocol {
         public var returnOnMainTread: Bool = true
         public var debugRequest: Bool = DevTools.devModeIsEnabled
         public var urlRequest: URLRequest
@@ -39,8 +41,10 @@ public extension API.Bliss {
     }
 }
 
-public extension API.Bliss {
-    struct ListQuestions_APIRequest: WebAPIRequest_Protocol {
+// MARK: - ListQuestions
+
+public extension API.BlissAPIRequest {
+    struct ListQuestions: WebAPIRequest_Protocol {
         public var returnOnMainTread: Bool = true
         public var debugRequest: Bool = DevTools.devModeIsEnabled
         public var urlRequest: URLRequest
@@ -62,8 +66,10 @@ public extension API.Bliss {
     }
 }
 
-public extension API.Bliss {
-    struct QuestionById_APIRequest: WebAPIRequest_Protocol {
+// MARK: - QuestionById
+
+public extension API.BlissAPIRequest {
+    struct QuestionById: WebAPIRequest_Protocol {
         public var returnOnMainTread: Bool = true
         public var debugRequest: Bool = DevTools.devModeIsEnabled
         public var urlRequest: URLRequest
@@ -84,8 +90,10 @@ public extension API.Bliss {
     }
 }
 
-extension API.Bliss {
-    struct NewQuestion_APIRequest: WebAPIRequest_Protocol {
+// MARK: - NewQuestion
+
+extension API.BlissAPIRequest {
+    struct NewQuestion: WebAPIRequest_Protocol {
         var returnOnMainTread: Bool = true
         var debugRequest: Bool = DevTools.devModeIsEnabled
         var urlRequest: URLRequest
@@ -98,7 +106,7 @@ extension API.Bliss {
                 throw APIErrors.invalidURL(url: urlString)
             }
             urlRequest = URLRequest(url: url)
-            urlRequest.httpMethod = "POST"
+            urlRequest.httpMethod = RJS_NetworkClient.HttpMethod.post.rawValue
             urlRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             let parameters: [String: Any] = [
                 "question": question.question,
@@ -116,8 +124,10 @@ extension API.Bliss {
     }
 }
 
-extension API.Bliss {
-    struct UpdateQuestion_APIRequest: WebAPIRequest_Protocol {
+// MARK: - UpdateQuestion
+
+extension API.BlissAPIRequest {
+    struct UpdateQuestion: WebAPIRequest_Protocol {
         var returnOnMainTread: Bool = true
         var debugRequest: Bool = DevTools.devModeIsEnabled
         var urlRequest: URLRequest
@@ -130,7 +140,7 @@ extension API.Bliss {
                 throw APIErrors.invalidURL(url: urlString)
             }
             urlRequest = URLRequest(url: url)
-            urlRequest.httpMethod = "PUT"
+            urlRequest.httpMethod = RJS_NetworkClient.HttpMethod.put.rawValue
             urlRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             let parameters: [String: Any] = [
                 "question": question.question,
@@ -140,9 +150,6 @@ extension API.Bliss {
                     return "\(some.choice)"
                 })
             ]
-            //if AppCan.Logs.requests {
-            //    DevTools.Log.log("\(parameters)")
-            //}
             urlRequest.httpBody = parameters.percentEscaped().data(using: .utf8)
             responseType = .json
         }
@@ -151,8 +158,10 @@ extension API.Bliss {
     }
 }
 
-extension API.Bliss {
-    struct Share_APIRequest: WebAPIRequest_Protocol {
+// MARK: - Share
+
+extension API.BlissAPIRequest {
+    struct Share: WebAPIRequest_Protocol {
         var returnOnMainTread: Bool = true
         var debugRequest: Bool = DevTools.devModeIsEnabled
         var urlRequest: URLRequest
@@ -166,7 +175,7 @@ extension API.Bliss {
                 throw APIErrors.invalidURL(url: urlString)
             }
             urlRequest = URLRequest(url: url)
-            urlRequest.httpMethod = "POST"
+            urlRequest.httpMethod = RJS_NetworkClient.HttpMethod.post.rawValue
             responseType = .json
         }
         

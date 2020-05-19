@@ -16,7 +16,9 @@ import PointFreeFunctions
 import Domain
 import DevTools
 
-public extension API.CarTrack {
+// MARK: - Target
+
+public extension API.CarTrackAPIRequest {
     enum Target {
         case getUsers
 
@@ -38,8 +40,10 @@ public extension API.CarTrack {
     }
 }
 
-public extension API.CarTrack {
-    struct GetUserInfo_APIRequest: WebAPIRequest_Protocol {
+// MARK: - GetUserInfo
+
+public extension API.CarTrackAPIRequest {
+    struct GetUserInfo: WebAPIRequest_Protocol {
         public var returnOnMainTread: Bool
         public var debugRequest: Bool
         public var urlRequest: URLRequest

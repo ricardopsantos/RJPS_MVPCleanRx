@@ -155,7 +155,7 @@ extension P.MVPSampleTableView_Presenter {
                 guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
                 self.view.setNetworkViewVisibilityTo(some.reachable)
             }
-            ).disposed(by: disposeBag)
+        ).disposed(by: disposeBag)
         
         getEmployeesObservable()
             .subscribe(
@@ -167,7 +167,7 @@ extension P.MVPSampleTableView_Presenter {
                     guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
                     self.genericView?.displayMessage(error.localizedDescription, type: .error)
                 }
-            )
+        )
             .disposed(by: disposeBag)
         
     }
@@ -175,7 +175,7 @@ extension P.MVPSampleTableView_Presenter {
     func getEmployeesObservable() -> Observable<[Employee.ResponseDto]> {
         return Observable.create { observer -> Disposable in
             do {
-                let apiRequest: WebAPIRequest_Protocol = try WebAPI.Employees.GetEmployees_APIRequest()
+                let apiRequest: WebAPIRequest_Protocol = try WebAPI.EmployeesAPIRequest.GetEmployees_APIRequest()
                 let apiClient: RJSLibNetworkClient_Protocol  = RJSLib.NetworkClient()
                 apiClient.execute(request: apiRequest, completionHandler: { (result: Result<RJSLibNetworkClientResponse<[Employee.ResponseDto]>>) in
                     switch result {
@@ -192,7 +192,7 @@ extension P.MVPSampleTableView_Presenter {
                 observer.onError(error)
             }
             return Disposables.create()
-            }.retry(API.Employees.GetEmployees_APIRequest.maxNumberOfRetrys)
+        }.retry(API.EmployeesAPIRequest.GetEmployees_APIRequest.maxNumberOfRetrys)
             .retryOnBecomesReachable([], reachabilityService: reachabilityService)
     }
 }

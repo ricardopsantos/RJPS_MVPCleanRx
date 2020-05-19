@@ -9,9 +9,29 @@
 import Foundation
 
 public extension API {
-    private init() {}
-    struct Employees { private init() {} }
-    struct GitUser { public init() {} }
-    struct Bliss { private init() {} }
-    struct CarTrack { private init() {} }
+    struct Employees {
+        private init() {}
+    }
+    struct EmployeesAPIRequest { private init() {} }
+}
+
+public extension API {
+    struct GitUser {
+        private init() { }
+    }
+    struct GitUserAPIRequest { private init() {} }
+}
+
+public extension API {
+    struct Bliss {
+        private init() { }
+    }
+    struct BlissAPIRequest { private init() {} }
+}
+
+public extension API {
+    struct CarTrack {
+        private init() { }
+    }
+    struct CarTrackAPIRequest { private init() {} }
 }
