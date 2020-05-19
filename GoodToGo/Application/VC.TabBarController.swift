@@ -33,7 +33,7 @@ extension VC {
             let vipDebug = createControllers(tabName: "DebugView", vc: VC.DebugViewController())
             let vipCarTrack = createControllers(tabName: "Template", vc: VC.CarTrackLoginViewController())
 
-            viewControllers = [vipDebug, vipTemplate, vcRx]
+            viewControllers = [vipDebug, vipTemplate, vcRx, mvpBliss]
             
         }
 

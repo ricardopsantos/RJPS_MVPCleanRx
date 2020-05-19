@@ -35,8 +35,8 @@ public extension API.GitUser {
 
         var httpMethod: String {
             switch self {
-            case .getUser: return "GET"
-            case .getFriends: return "GET"
+            case .getUser   : return RJS_NetworkClient.HttpMethod.get.rawValue
+            case .getFriends: return RJS_NetworkClient.HttpMethod.get.rawValue
             }
         }
     }

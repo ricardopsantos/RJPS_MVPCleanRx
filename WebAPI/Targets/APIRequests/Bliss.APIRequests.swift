@@ -23,7 +23,7 @@ public extension API.Bliss {
         public var debugRequest: Bool = DevTools.devModeIsEnabled
         public var urlRequest: URLRequest
         public var responseType: RJSLibNetworkClientResponseType
-        public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? "{\"status\": \"OK\"}" : nil }
+        public var mockedData: String? { "{\"status\": \"OK\"}" }
 
         init() throws {
             let urlString = "\(AppConstants.Bliss.URLs.blissAPIBaseUrl)/health"
@@ -31,7 +31,7 @@ public extension API.Bliss {
                 throw APIErrors.invalidURL(url: urlString)
             }
             urlRequest = URLRequest(url: url)
-            urlRequest.httpMethod = "GET"
+            urlRequest.httpMethod = RJS_NetworkClient.HttpMethod.get.rawValue
             responseType = .json
         }
         
@@ -45,7 +45,7 @@ public extension API.Bliss {
         public var debugRequest: Bool = DevTools.devModeIsEnabled
         public var urlRequest: URLRequest
         public var responseType: RJSLibNetworkClientResponseType
-        public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.Bliss.getQuestions_200 : nil }
+        public var mockedData: String? { AppConstants.Mocks.Bliss.getQuestions_200 }
 
         init(limit: Int, filter: String, offSet: Int) throws {
             let escaped = filter.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
@@ -54,7 +54,7 @@ public extension API.Bliss {
                 throw APIErrors.invalidURL(url: urlString)
             }
             urlRequest = URLRequest(url: url)
-            urlRequest.httpMethod = "GET"
+            urlRequest.httpMethod = RJS_NetworkClient.HttpMethod.get.rawValue
             responseType = .json
         }
         
@@ -68,7 +68,7 @@ public extension API.Bliss {
         public var debugRequest: Bool = DevTools.devModeIsEnabled
         public var urlRequest: URLRequest
         public var responseType: RJSLibNetworkClientResponseType
-        public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.Bliss.getQuestions_200 : nil }
+        public var mockedData: String? { AppConstants.Mocks.Bliss.getQuestions_200 }
 
         init(id: Int) throws {
             let urlString = "\(AppConstants.Bliss.URLs.blissAPIBaseUrl)/questions/\(id)"
@@ -76,7 +76,7 @@ public extension API.Bliss {
                 throw APIErrors.invalidURL(url: urlString)
             }
             urlRequest = URLRequest(url: url)
-            urlRequest.httpMethod = "GET"
+            urlRequest.httpMethod = RJS_NetworkClient.HttpMethod.get.rawValue
             responseType = .json
         }
         

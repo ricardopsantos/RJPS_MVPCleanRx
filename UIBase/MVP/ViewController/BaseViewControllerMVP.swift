@@ -53,16 +53,14 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
     
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         DispatchQueue.executeWithDelay(delay: 0.1) { [weak self] in
             guard let self = self else { return }
             self.firstAppearance = false
-            if self.stats == nil {
-                self.stats = Stats(frame: CGRect(x: 20, y: 40, width: 100.0, height: 60.0))
-                self.view.addSubview(self.stats!)
-            }
+            self.addStatsView()
         }
     }
-    
+
     open func displayMessage(_ message: String, type: AlertType) {
         var style = ToastStyle()
         style.cornerRadius = 5
@@ -147,34 +145,39 @@ public extension BaseViewControllerMVP {
 
 extension BaseViewControllerMVP {
 
-    private func label(baseView: UIView? = nil, title: String="", style: UILabel.LayoutStyle) -> UILabel {
-        let some = UILabel()
-        some.textAnimated = title
-        some.numberOfLines = 0
-        some.layoutStyle = style
-        baseView?.addSubview(some)
-        return some
+    private func addStatsView() {
+        guard DevTools.FeatureFlag.devTeam_showStats.isTrue else { return }
+        guard self.stats == nil else { return }
+        self.stats = Stats()//frame: CGRect(x: 20, y: 40, width: 100.0, height: 60.0))
+        self.view.addSubview(self.stats!)
+        self.stats?.autoLayout.trailingToSuperview(offset: 20)
+        self.stats?.autoLayout.bottomToSuperview(offset: 40)
+        self.stats?.autoLayout.width(100)
+        self.stats?.addShadow()
+        self.stats?.addCorner(radius: 5)
+//        self.stats?.superview?.bringSubviewToFront(self.stats!)
     }
 }
-/*
-//
-// MARK: - Keyboard
-//
 
-extension BaseViewControllerMVP {
-    
-    @objc private func keyboardWillHideNotification(_ notification: Notification) { }
-    @objc private func keyboardDidShowNotification(_ notification: Notification) { keyboardIsVisible=true; self.keyboardDidShow() }
-    @objc private func keyboardDidHideNotification(_ notification: Notification) { keyboardIsVisible=false; keyboardHeigth=0; self.keyboardDidHide() }
-    @objc private func keyboardWillShowNotification(_ notification: Notification) {
-        if let userInfo = notification.userInfo {
-            if let keyboardSize = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-                let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.keyboardHeigth = contentInsets.bottom
-                })
-            }
-        }
-    }
-}
-*/
+/*
+ //
+ // MARK: - Keyboard
+ //
+
+ extension BaseViewControllerMVP {
+
+ @objc private func keyboardWillHideNotification(_ notification: Notification) { }
+ @objc private func keyboardDidShowNotification(_ notification: Notification) { keyboardIsVisible=true; self.keyboardDidShow() }
+ @objc private func keyboardDidHideNotification(_ notification: Notification) { keyboardIsVisible=false; keyboardHeigth=0; self.keyboardDidHide() }
+ @objc private func keyboardWillShowNotification(_ notification: Notification) {
+ if let userInfo = notification.userInfo {
+ if let keyboardSize = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+ let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+ UIView.animate(withDuration: 0.3, animations: {
+ self.keyboardHeigth = contentInsets.bottom
+ })
+ }
+ }
+ }
+ }
+ */

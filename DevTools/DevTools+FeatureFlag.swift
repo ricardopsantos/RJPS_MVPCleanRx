@@ -16,7 +16,8 @@ public extension DevTools {
         case devTeam_useMockedData  = "DEV: Use Mock Data"      // Dev team
         case devTeam_doLogs         = "DEV: App can do logs"    // Dev team
         case devTeam_autoInsertPass = "DEV: CarTrack - AutoInsertPassword"  // Dev team
-        case devTeam_logDeinit      = "DEV: Log on deinit"  // Dev team
+        case devTeam_logDeinit      = "DEV: Log on deinit event"  // Dev team
+        case devTeam_showStats      = "DEV: Show Stats View"  // Dev team
 
         public var defaultValue: Bool {
             switch self {
@@ -30,6 +31,8 @@ public extension DevTools {
                 return false
             case .devTeam_logDeinit:
                 return false
+            case .devTeam_showStats:
+                return DevTools.devModeIsEnabled
             }
         }
 

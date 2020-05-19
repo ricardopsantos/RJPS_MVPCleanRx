@@ -32,7 +32,7 @@ public extension API.CarTrack {
 
         public var httpMethod: String {
             switch self {
-            case .getUsers: return "GET"
+            case .getUsers: return RJS_NetworkClient.HttpMethod.get.rawValue
             }
         }
     }

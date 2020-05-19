@@ -33,7 +33,7 @@ public extension API.Employees {
 
         public var httpMethod: String {
             switch self {
-            case .getEmployees: return "GET"
+            case .getEmployees: return RJS_NetworkClient.HttpMethod.get.rawValue
             }
         }
     }

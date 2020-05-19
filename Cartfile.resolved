@@ -7,11 +7,7 @@ github "RxSwiftCommunity/RxGesture" "3.0.3"
 github "Skyscanner/SkyFloatingLabelTextField" "3.8.0"
 github "Swinject/Swinject" "2.7.1"
 github "Swinject/SwinjectAutoregistration" "2.7.0"
-<<<<<<< HEAD
-github "ricardopsantos/RJPSLib" "299dbafb872bc228659c1c7edfcd03e47c210ed1"
-=======
 github "fpillet/NSLogger" "v1.9.7"
-github "ricardopsantos/RJPSLib" "02ddcfc4076702e376e129ba5732952368c173d0"
->>>>>>> master
+github "ricardopsantos/RJPSLib" "194e7332064ce94c1ee06560621872606ce6b3cf"
 github "roberthein/TinyConstraints" "4.0.1"
 github "scalessec/Toast-Swift" "5.0.1"
