@@ -26,7 +26,7 @@ extension R {
         weak var viewController: VC.DebugViewController?
 
         // DataPassingProtocol Protocol vars...
-        var dsStyles: DebugDataStoreProtocol? { didSet { AppLogger.log("DataStore changed") } }
+        var dsStyles: DebugDataStoreProtocol? { didSet { DevTools.Log.log("DataStore changed") } }
      }
 }
 

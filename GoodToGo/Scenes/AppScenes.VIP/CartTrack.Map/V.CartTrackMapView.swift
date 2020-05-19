@@ -31,7 +31,7 @@ extension V {
     class CartTrackMapView: BaseGenericViewVIP {
 
         deinit {
-            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self) was killed") }
+            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { DevTools.Log.log("\(self) was killed") }
             NotificationCenter.default.removeObserver(self)
         }
 
@@ -126,13 +126,13 @@ extension V {
                 .orEmpty
                 .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
                 .subscribe(onNext: { [weak self] _ in
-                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
                     self.rxFilter.onNext(self.searchBar.text)
                 })
                 .disposed(by: disposeBag)
             searchBar.rx.textDidEndEditing
                 .subscribe(onNext: { [weak self] (_) in
-                    guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
                     guard self.searchBar.text!.count>0 else { return }
                     self.rxFilter.onNext(self.searchBar.text)
                 })

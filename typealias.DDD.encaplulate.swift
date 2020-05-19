@@ -17,3 +17,6 @@ public struct Enums { private init() {} }
 
 public typealias M = Model
 public struct Model { private init() {} }
+
+public typealias UC = UseCases
+public class UseCases { private init() {} }

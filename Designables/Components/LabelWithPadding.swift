@@ -97,7 +97,7 @@ open class UILabelWithPadding: UIView {
         self._padding = padding
         self.text = text
         if padding.top + padding.left + padding.right + padding.bottom == 0 {
-            AppLogger.warning("No padding")
+            DevTools.Log.warning("No padding")
         }
         applyPadding()
     }

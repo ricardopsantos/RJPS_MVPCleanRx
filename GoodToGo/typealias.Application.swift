@@ -34,5 +34,3 @@ typealias AppFonts               = UIFont.App
 typealias AppProtocols           = RootAssemblyContainerProtocols
 
 // MARK: - DevTools
-
-typealias AppLogger   = DevTools.Log

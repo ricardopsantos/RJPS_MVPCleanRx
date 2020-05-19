@@ -16,7 +16,7 @@ import DevTools
 open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtocol {
 
     deinit {
-        if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self.className) was killed") }
+        if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { DevTools.Log.log("\(self.className) was killed") }
         NotificationCenter.default.removeObserver(self)
     }
 
@@ -40,6 +40,6 @@ open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtoco
     }
 
     open func setupColorsAndStyles() {
-        AppLogger.error(DevTools.Strings.notImplemented)
+        DevTools.Log.error(DevTools.Strings.notImplemented)
     }
 }

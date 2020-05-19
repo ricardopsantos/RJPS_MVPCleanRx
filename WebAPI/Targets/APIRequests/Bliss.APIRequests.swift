@@ -141,7 +141,7 @@ extension API.Bliss {
                 })
             ]
             //if AppCan.Logs.requests {
-            //    AppLogger.log("\(parameters)")
+            //    DevTools.Log.log("\(parameters)")
             //}
             urlRequest.httpBody = parameters.percentEscaped().data(using: .utf8)
             responseType = .json

@@ -24,7 +24,7 @@ extension V {
     class BlissRoot_View: BaseViewControllerMVP {
         
         deinit {
-            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self.className) was killed") }
+            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { DevTools.Log.log("\(self.className) was killed") }
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }
@@ -107,7 +107,7 @@ extension V.BlissRoot_View: BlissRoot_ViewProtocol {
     func viewNeedsToDisplayBadServerMessage() {
         let alert = UIAlertController(title: "", message: Messages.Bliss.serverDown, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Messages.ok.localised, style: .default, handler: { [weak self] _ in
-            guard let self = self else { AppLogger.log(appCode: .referenceLost); return }
+            guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
             self.presenter.userDidReadBadServerHealthMessage()
         }))
         self.present(alert, animated: true, completion: nil)

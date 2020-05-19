@@ -183,8 +183,6 @@
 		D7979D67246D46D70039031C /* Mappers+GitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D64246D46D70039031C /* Mappers+GitUser.swift */; };
 		D7979D68246D46D70039031C /* Mappers+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D65246D46D70039031C /* Mappers+Utils.swift */; };
 		D7979D69246D46D70039031C /* Mappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D66246D46D70039031C /* Mappers.swift */; };
-		D7979D6C246D46ED0039031C /* UC.BlissQuestionsAPI_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D6B246D46ED0039031C /* UC.BlissQuestionsAPI_UseCase.swift */; };
-		D7979D6D246D46ED0039031C /* UC.BlissGenericAppBussiness_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D6A246D46ED0039031C /* UC.BlissGenericAppBussiness_UseCase.swift */; };
 		D7979D70246D46F30039031C /* UC.CarTrackAPI_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D6F246D46F30039031C /* UC.CarTrackAPI_UseCase.swift */; };
 		D7979D71246D46F30039031C /* UC.CarTrackGenericAppBusinessUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D6E246D46F30039031C /* UC.CarTrackGenericAppBusinessUseCase.swift */; };
 		D7979D75246D46FA0039031C /* UC.SampleB_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D74246D46FA0039031C /* UC.SampleB_UseCase.swift */; };
@@ -298,6 +296,16 @@
 		D7F2DD5D24744D18008CE3DA /* BlissQuestionsAPIUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9F97022E4B8CB00D64FD2 /* BlissQuestionsAPIUseCaseProtocol.swift */; };
 		D7F2DD6024744E0C008CE3DA /* RJPSLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBF4B0722BEBC3B00E0D1AB /* RJPSLib.framework */; };
 		D7F2DD6124744E0C008CE3DA /* RJPSLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBF4B0722BEBC3B00E0D1AB /* RJPSLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7F2DD68247450F2008CE3DA /* UC.BlissGenericAppBussiness_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D6A246D46ED0039031C /* UC.BlissGenericAppBussiness_UseCase.swift */; };
+		D7F2DD69247450F2008CE3DA /* UC.BlissQuestionsAPI_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D6B246D46ED0039031C /* UC.BlissQuestionsAPI_UseCase.swift */; };
+		D7F2DD71247451D9008CE3DA /* RJPSLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBF4B0722BEBC3B00E0D1AB /* RJPSLib.framework */; };
+		D7F2DD72247451D9008CE3DA /* RJPSLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBF4B0722BEBC3B00E0D1AB /* RJPSLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7F2DD73247451D9008CE3DA /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC172223BBD8600576498 /* RxCocoa.framework */; };
+		D7F2DD74247451D9008CE3DA /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC172223BBD8600576498 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7F2DD75247451D9008CE3DA /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC176223BBFC600576498 /* RxSwift.framework */; };
+		D7F2DD76247451D9008CE3DA /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC176223BBFC600576498 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7F2DD7824745285008CE3DA /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
+		D7F2DD7924745286008CE3DA /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
 		D7FA21F724708B9C001DD9D5 /* ReachabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA21F324706A32001DD9D5 /* ReachabilityView.swift */; };
 		D7FA2207247189B9001DD9D5 /* TokenRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA2206247189B9001DD9D5 /* TokenRefresh.swift */; };
 		D7FCAC2024685B7A00DBECA2 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FCAC1F24685B7A00DBECA2 /* RxDataSources.framework */; };
@@ -719,6 +727,13 @@
 			remoteGlobalIDString = D7AB244C24671CBF000142C4;
 			remoteInfo = Domain;
 		};
+		D7F2DD66247450DA008CE3DA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F288F1C20F8089F008A9539 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D7AB24C3246743BD000142C4;
+			remoteInfo = AppCore;
+		};
 		D7FCAC1D24685A5000DBECA2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9F288F1C20F8089F008A9539 /* Project object */;
@@ -772,6 +787,19 @@
 			dstSubfolderSpec = 10;
 			files = (
 				D7F2DD6124744E0C008CE3DA /* RJPSLib.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7F2DD77247451D9008CE3DA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D7F2DD74247451D9008CE3DA /* RxCocoa.framework in Embed Frameworks */,
+				D7F2DD72247451D9008CE3DA /* RJPSLib.framework in Embed Frameworks */,
+				D7F2DD76247451D9008CE3DA /* RxSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1240,6 +1268,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7F2DD73247451D9008CE3DA /* RxCocoa.framework in Frameworks */,
+				D7F2DD71247451D9008CE3DA /* RJPSLib.framework in Frameworks */,
+				D7F2DD75247451D9008CE3DA /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1285,6 +1316,7 @@
 				D7E25A9524669B9B003BBEA0 /* AppConstants */,
 				D72922E02466B06300DAD480 /* AppTheme */,
 				D7AB24C5246743BD000142C4 /* AppCore */,
+				D7F2DD3B24744A47008CE3DA /* Core.Bliss */,
 				D729233F2466B78300DAD480 /* AppResources */,
 				D7AB244E24671CBF000142C4 /* Domain */,
 				D7F2DD2224744A0E008CE3DA /* Domain.Bliss */,
@@ -1296,7 +1328,6 @@
 				D729228E2466A04200DAD480 /* UIBase */,
 				D7D9E7D42467958E005B4313 /* Repositories */,
 				D7D9E7A124676FE6005B4313 /* WebAPI */,
-				D7F2DD3B24744A47008CE3DA /* Core.Bliss */,
 				9F288F2520F8089F008A9539 /* Products */,
 				4546C3C321B570CD00127A20 /* Frameworks */,
 			);
@@ -1956,7 +1987,6 @@
 				D7979D4D246D42E10039031C /* UC.GenericUseCase.swift */,
 				D7979D7E246D5CF00039031C /* UseCases.CarTrack */,
 				D7979D7D246D5CE80039031C /* UseCases.GitHub */,
-				D7979D7C246D5CD80039031C /* UseCases.Bliss */,
 				D7979D5D246D468D0039031C /* Mappers */,
 				D7D9E79624676CD2005B4313 /* README.md */,
 				D7979D4C246D42E10039031C /* AppUtils_Protocol+Extension.swift */,
@@ -2143,6 +2173,8 @@
 		D7F2DD3B24744A47008CE3DA /* Core.Bliss */ = {
 			isa = PBXGroup;
 			children = (
+				D7F2DD652474509F008CE3DA /* Mappers */,
+				D7979D7C246D5CD80039031C /* UseCases.Bliss */,
 				D7F2DD3C24744A47008CE3DA /* Core_Bliss.h */,
 				D7F2DD3D24744A47008CE3DA /* Info.plist */,
 			);
@@ -2173,6 +2205,13 @@
 				9FB9F97222E4B8CB00D64FD2 /* Bliss_NetWorkRepositoryProtocol.swift */,
 			);
 			path = Protocol.Repositories;
+			sourceTree = "<group>";
+		};
+		D7F2DD652474509F008CE3DA /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mappers;
 			sourceTree = "<group>";
 		};
 		D7FA21FA247159A5001DD9D5 /* Arquitecture */ = {
@@ -2364,12 +2403,12 @@
 				D72923162466B35300DAD480 /* PBXTargetDependency */,
 				D72923442466B78300DAD480 /* PBXTargetDependency */,
 				D7AB245324671CBF000142C4 /* PBXTargetDependency */,
+				D7F2DD2724744A0E008CE3DA /* PBXTargetDependency */,
 				D7AB24CA246743BD000142C4 /* PBXTargetDependency */,
+				D7F2DD4024744A47008CE3DA /* PBXTargetDependency */,
 				D7D9E7A624676FE6005B4313 /* PBXTargetDependency */,
 				D7D9E7D92467958F005B4313 /* PBXTargetDependency */,
 				D788BDA524698D74007C59D0 /* PBXTargetDependency */,
-				D7F2DD2724744A0E008CE3DA /* PBXTargetDependency */,
-				D7F2DD4024744A47008CE3DA /* PBXTargetDependency */,
 			);
 			name = GoodToGo;
 			productName = GoodToGo;
@@ -2680,10 +2719,12 @@
 				D7F2DD3624744A47008CE3DA /* Sources */,
 				D7F2DD3724744A47008CE3DA /* Frameworks */,
 				D7F2DD3824744A47008CE3DA /* Resources */,
+				D7F2DD77247451D9008CE3DA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D7F2DD67247450DA008CE3DA /* PBXTargetDependency */,
 				D7F2DD5324744AE2008CE3DA /* PBXTargetDependency */,
 				D7F2DD5124744ADA008CE3DA /* PBXTargetDependency */,
 				D7F2DD4F24744AD0008CE3DA /* PBXTargetDependency */,
@@ -3352,9 +3393,7 @@
 				D7979D67246D46D70039031C /* Mappers+GitUser.swift in Sources */,
 				D7979D77246D46FA0039031C /* UC.Sample_UseCase.swift in Sources */,
 				D7979D71246D46F30039031C /* UC.CarTrackGenericAppBusinessUseCase.swift in Sources */,
-				D7979D6D246D46ED0039031C /* UC.BlissGenericAppBussiness_UseCase.swift in Sources */,
 				D7979D68246D46D70039031C /* Mappers+Utils.swift in Sources */,
-				D7979D6C246D46ED0039031C /* UC.BlissQuestionsAPI_UseCase.swift in Sources */,
 				D7979D7B246D5BC00039031C /* Mappers+CarTrack.swift in Sources */,
 				D7979D5A246D42E10039031C /* SomeProtocolXXXX_UseCase.swift in Sources */,
 				D7979D70246D46F30039031C /* UC.CarTrackAPI_UseCase.swift in Sources */,
@@ -3435,6 +3474,7 @@
 				D7F2DD5C24744D18008CE3DA /* BlissGenericAppBusinessUseCaseProtocol.swift in Sources */,
 				D7F2DD5A24744D18008CE3DA /* Bliss+ExtensionUtils.swift in Sources */,
 				D7F2DD5B24744D18008CE3DA /* Bliss.swift in Sources */,
+				D7F2DD7824745285008CE3DA /* typealias.DDD.encaplulate.swift in Sources */,
 				D7F2DD5D24744D18008CE3DA /* BlissQuestionsAPIUseCaseProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3443,6 +3483,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7F2DD68247450F2008CE3DA /* UC.BlissGenericAppBussiness_UseCase.swift in Sources */,
+				D7F2DD7924745286008CE3DA /* typealias.DDD.encaplulate.swift in Sources */,
+				D7F2DD69247450F2008CE3DA /* UC.BlissQuestionsAPI_UseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3743,6 +3786,11 @@
 			isa = PBXTargetDependency;
 			target = D7AB244C24671CBF000142C4 /* Domain */;
 			targetProxy = D7F2DD6324744E35008CE3DA /* PBXContainerItemProxy */;
+		};
+		D7F2DD67247450DA008CE3DA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D7AB24C3246743BD000142C4 /* AppCore */;
+			targetProxy = D7F2DD66247450DA008CE3DA /* PBXContainerItemProxy */;
 		};
 		D7FCAC1E24685A5000DBECA2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -8317,6 +8365,10 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -8400,6 +8452,10 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -8483,6 +8539,10 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -8533,6 +8593,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Core.Bliss/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

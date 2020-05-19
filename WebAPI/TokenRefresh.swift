@@ -36,7 +36,7 @@ class WEBAPI {
     private let rxTokenState: BehaviorRelay = BehaviorRelay<TokenState>(value: .invalid)
     private let rxTokenValue: BehaviorRelay = BehaviorRelay<String>(value: "")
 
-    func invalidateToken() { AppLogger.log("Token invalidated...".uppercased()); rxTokenState.accept(.invalid) }
+    func invalidateToken() { DevTools.Log.log("Token invalidated...".uppercased()); rxTokenState.accept(.invalid) }
     func assyncRequest(param: String, result: @escaping(String) -> Void) {
 
         func requestThatNeedsToken(_ token: String) {
@@ -52,32 +52,32 @@ class WEBAPI {
         return Single<Void>.create { observer -> Disposable in
             let identifier = "# TokenRefresh: "
             let endSequecence = {
-                AppLogger.log("\(identifier)Returned valid token.")
+                DevTools.Log.log("\(identifier)Returned valid token.")
                 observer(.success(()))
             }
             if self.rxTokenState.value == .valid {
                 endSequecence()
             } else {
                 if self.rxTokenState.value == .refreshing {
-                    AppLogger.log("\(identifier)A new Token is allready refreshing. Will observe for a change....")
+                    DevTools.Log.log("\(identifier)A new Token is allready refreshing. Will observe for a change....")
                     self.rxTokenState.subscribe(onNext: { state in
                         if state == .valid {
-                            AppLogger.log("\(identifier)Theres a new token available!")
+                            DevTools.Log.log("\(identifier)Theres a new token available!")
                             endSequecence()
                         }
                         }).disposed(by: disposeBag)
                 } else {
-                    AppLogger.log("\(identifier)Invalid token. Will refresh...")
+                    DevTools.Log.log("\(identifier)Invalid token. Will refresh...")
                     self.rxTokenState.accept(.refreshing)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         if Bool.random() {
                             let newToken = "some_token_[\(Date())]"
-                            AppLogger.log("\(identifier)New Token generated!".uppercased() + " -> " + newToken)
+                            DevTools.Log.log("\(identifier)New Token generated!".uppercased() + " -> " + newToken)
                             self.rxTokenValue.accept(newToken)
                             self.rxTokenState.accept(.valid)
                             endSequecence()
                         } else {
-                            AppLogger.log("\(identifier)Fail generating token!".uppercased())
+                            DevTools.Log.log("\(identifier)Fail generating token!".uppercased())
                             self.rxTokenState.accept(.invalid)
                             observer(.error(NSError(domain: "error.domain.refreshing", code: 0, userInfo: nil)))
                         }

@@ -13,7 +13,6 @@ import RJPSLib
 import DevTools
 
 typealias WebAPIRequest_Protocol = RJS_NetworkClientRequestProtocol
-typealias AppLogger   = DevTools.Log
 
 public typealias API = WebAPI
 public struct WebAPI { private init() {} }

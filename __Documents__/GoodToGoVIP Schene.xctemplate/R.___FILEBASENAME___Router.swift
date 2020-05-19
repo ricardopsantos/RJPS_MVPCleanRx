@@ -24,13 +24,13 @@ import UIBase
 extension R {
     class ___VARIABLE_sceneName___Router: ___VARIABLE_sceneName___DataPassingProtocol {
         deinit {
-            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { AppLogger.log("\(self) was killed") }
+            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { DevTools.Log.log("\(self) was killed") }
             NotificationCenter.default.removeObserver(self)
         }
         weak var viewController: VC.___VARIABLE_sceneName___ViewController?
 
         // DataPassingProtocol Protocol vars...
-        var ds___VARIABLE_sceneName___: ___VARIABLE_sceneName___DataStoreProtocol? { didSet { AppLogger.log("DataStore changed") } }
+        var ds___VARIABLE_sceneName___: ___VARIABLE_sceneName___DataStoreProtocol? { didSet { DevTools.Log.log("DataStore changed") } }
      }
 }
 

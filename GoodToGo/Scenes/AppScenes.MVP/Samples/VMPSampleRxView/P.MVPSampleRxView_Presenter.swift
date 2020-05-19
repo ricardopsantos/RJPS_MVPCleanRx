@@ -52,7 +52,7 @@ extension Presenter {
         weak var generic: BasePresenterVMPProtocol?
         weak var genericView: BaseViewControllerMVPProtocol?
         weak var view: MVPSampleRxView_ViewProtocol!
-        var viewModel: VM.MVPSampleRxView_ViewModel? { didSet { AppLogger.log(appCode: .vmChanged); viewModelChanged() } }
+        var viewModel: VM.MVPSampleRxView_ViewModel? { didSet { DevTools.Log.log(appCode: .vmChanged); viewModelChanged() } }
         var router: MVPSampleRxView_RouterProtocol!
 
         var sample_UseCase: Sample_UseCaseProtocol!
@@ -86,7 +86,7 @@ extension P.MVPSampleRxView_Presenter: MVPSampleRxView_PresenterProtocol {
     
     func rxObservable_doAssynTask(user: String, password: String) -> Observable<String> {
         return Observable.create { [weak self] observer -> Disposable in
-            AppLogger.log("Creating observable...")
+            DevTools.Log.log("Creating observable...")
             if let self = self {
                 self.sample_UseCase.operation1(canUseCache: true) { (result) in
                     switch result {
@@ -95,7 +95,7 @@ extension P.MVPSampleRxView_Presenter: MVPSampleRxView_PresenterProtocol {
                     }
                 }
             } else {
-                AppLogger.log(appCode: .referenceLost)
+                DevTools.Log.log(appCode: .referenceLost)
             }
             return Disposables.create()
             }.retry(3)
@@ -122,7 +122,7 @@ extension P.MVPSampleRxView_Presenter {
     }
     
     private func updateViewWith(vm: VM.MVPSampleRxView_ViewModel?) {
-        guard viewModel != nil else { AppLogger.log(appCode: .ignored); return }
+        guard viewModel != nil else { DevTools.Log.log(appCode: .ignored); return }
         view.updateViewWith(message: viewModel!.someString)
     }
     

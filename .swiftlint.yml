@@ -54,7 +54,7 @@ custom_rules:
         included: ".*\\.swift"
         name: "Fordiden print"
         regex: "print[(]"
-        message: "Use AppLogger..."
+        message: "Use DevTools.Log..."
         severity: warning
 
     no_hardCodedImages:

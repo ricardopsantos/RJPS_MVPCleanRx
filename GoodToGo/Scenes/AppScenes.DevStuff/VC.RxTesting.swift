@@ -111,12 +111,12 @@ extension VC {
          [PublishRelay] have parameters (optional)
          [PublishRelay] "fires" on [accept]
          [PublishRelay] is a good replacement for NSLocalNotications
-         [PublishRelay] can do stuff before on [.do(onNext: { _ in AppLogger.log("stuff") })]
+         [PublishRelay] can do stuff before on [.do(onNext: { _ in DevTools.Log.log("stuff") })]
 
          [BehaviorRelay] have parameters (mandatory)
          [BehaviorRelay] can be "connected" to a property of some UI thing
          [BehaviorRelay] can be connected to other [BehaviorRelay]
-         [BehaviorRelay] can do stuff before on [.do(onNext: { _ in AppLogger.log("stuff") })]
+         [BehaviorRelay] can do stuff before on [.do(onNext: { _ in DevTools.Log.log("stuff") })]
          [BehaviorRelay] The event "fires" on [accept]
          
          [BehaviorRelay/BehaviorSubject] model a State (hence it replays its latest value) and so does a Driver (models State).
@@ -142,8 +142,8 @@ extension VC {
         
             rxPublishRelay_a.asSignal() // PublishRelay (to model events) without param
                 .debug("rxPublishRelay_a")
-                .do(onNext: { _ in AppLogger.log("_rxPublishRelay_a : do.onNext_1") })
-                .do(onNext: { _ in AppLogger.log("_rxPublishRelay_a : do.onNext_2") })
+                .do(onNext: { _ in DevTools.Log.log("_rxPublishRelay_a : do.onNext_1") })
+                .do(onNext: { _ in DevTools.Log.log("_rxPublishRelay_a : do.onNext_2") })
                 .emit(onNext: { [weak self] in
                     self?.aux_log(message: "[_rxPublishRelay_a][emit]", showAlert: true, appendToTable: true)
                 })
@@ -151,8 +151,8 @@ extension VC {
             
             rxPublishRelay_b.asSignal() // PublishRelay (to model events) with param
                 .debug("_rxPublishRelay_b")
-                .do(onNext: { _ in AppLogger.log("_rxPublishRelay_b : do.onNext_1") })
-                .do(onNext: { _ in AppLogger.log("_rxPublishRelay_b : do.onNext_2") })
+                .do(onNext: { _ in DevTools.Log.log("_rxPublishRelay_b : do.onNext_1") })
+                .do(onNext: { _ in DevTools.Log.log("_rxPublishRelay_b : do.onNext_2") })
                 .emit(onNext: { [weak self] some in
                     self?.aux_log(message: "[_rxPublishRelay_b][emit] with param [\(some)]", showAlert: true, appendToTable: true)
                 })
@@ -161,23 +161,23 @@ extension VC {
             rxBehaviorRelay_a // BehaviorRelay (to models states) connected to Label
                 .asDriver()
                 .debug("_rxBehaviorRelay_a")
-                .do(onNext: { _ in AppLogger.log("_rxBehaviorRelay_a : do.onNext_1") })
-                .do(onNext: { _ in AppLogger.log("_rxBehaviorRelay_a : do.onNext_2") })
+                .do(onNext: { _ in DevTools.Log.log("_rxBehaviorRelay_a : do.onNext_1") })
+                .do(onNext: { _ in DevTools.Log.log("_rxBehaviorRelay_a : do.onNext_2") })
                 .drive(searchBar.rx.text)
                 .disposed(by: disposeBag)
             
             rxBehaviorRelay_b  // BehaviorRelay (to models states) connected  to other BehaviorRelay
                 .debug("_rxBehaviorRelay_b")
-                .do(onNext: { _ in AppLogger.log("_rxBehaviorRelay_b : do.onNext_1") })
+                .do(onNext: { _ in DevTools.Log.log("_rxBehaviorRelay_b : do.onNext_1") })
                 .bind(to: rxBehaviorRelay_a)
                 .disposed(by: disposeBag)
             
             rxBehaviorRelay_c // BehaviorRelay (to models states) doing random stuff
                 .asObservable()
-                .do(onNext: { _ in AppLogger.log("_rxBehaviorRelay_c : do.onNext_1") })
-                .do(onNext: { _ in AppLogger.log("_rxBehaviorRelay_c : do.onNext_2") })
+                .do(onNext: { _ in DevTools.Log.log("_rxBehaviorRelay_c : do.onNext_1") })
+                .do(onNext: { _ in DevTools.Log.log("_rxBehaviorRelay_c : do.onNext_2") })
                 .map { some -> Int in return some / 2 }
-                .do(onNext: { _ in AppLogger.log("_rxBehaviorRelay_c : do.onNext_3") })
+                .do(onNext: { _ in DevTools.Log.log("_rxBehaviorRelay_c : do.onNext_3") })
                 .subscribe(onNext: { self.searchBar.text = "\($0)" })
                 .disposed(by: disposeBag)
             
@@ -308,7 +308,7 @@ extension VC {
             rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
                 _ = element
                 _ = row
-                guard self != nil else { AppLogger.log(appCode: .referenceLost); return }
+                guard self != nil else { DevTools.Log.log(appCode: .referenceLost); return }
                 cell.set(title: element)
                 }.disposed(by: disposeBag)
             return some
@@ -434,9 +434,9 @@ extension VC.RxTesting {
                 .filter { $0 > 25 }
                 .subscribe({ event in
                     switch event {
-                    case .next(let value): AppLogger.log("\(value)")
-                    case .error(let error): AppLogger.log("\(error)")
-                    case .completed: AppLogger.log("completed s3")
+                    case .next(let value): DevTools.Log.log("\(value)")
+                    case .error(let error): DevTools.Log.log("\(error)")
+                    case .completed: DevTools.Log.log("completed s3")
                     }
                 }).disposed(by: disposeBag)
         }
@@ -470,12 +470,12 @@ extension VC.RxTesting {
             // Lets now create an observable that returns elements from an array.
             //
             let just = myJust("## my just ##")
-            _ = just.subscribe(onNext: { n in AppLogger.log("just_1 : \(n)") })
-            _ = just.subscribe(onNext: { n in AppLogger.log("just_2 : \(n)") })
+            _ = just.subscribe(onNext: { n in DevTools.Log.log("just_1 : \(n)") })
+            _ = just.subscribe(onNext: { n in DevTools.Log.log("just_2 : \(n)") })
     
             let from = myFrom(["## A ##", "## B ##", "## C ##"]).share()
-            _ = from.subscribe(onNext: { n in AppLogger.log("from_1 : \(n)") })
-            _ = from.subscribe(onNext: { n in AppLogger.log("from_2 : \(n)") })
+            _ = from.subscribe(onNext: { n in DevTools.Log.log("from_1 : \(n)") })
+            _ = from.subscribe(onNext: { n in DevTools.Log.log("from_2 : \(n)") })
         }
 
         if false {

@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+//
+import DevTools
 
 public extension GitHub {
     struct UserResponseDto: Codable {
@@ -32,7 +34,7 @@ public extension GitHub {
 
         init?(data: Data) {
             guard let object = try? JSONDecoder().decode(UserResponseDto.self, from: data) else {
-                AppLogger.error("Error: Couldn't decode data into Blog")
+                DevTools.Log.error("Error: Couldn't decode data into Blog")
                 return nil
             }
             self = object
