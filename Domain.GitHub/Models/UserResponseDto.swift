@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 //
 import DevTools
+//
+import Domain
 
 public extension GitHub {
     struct UserResponseDto: ResponseDtoProtocol {

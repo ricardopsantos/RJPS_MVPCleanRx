@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 //
 import Domain
+import Domain_GitHub
 
 //
 // The Brain Of The App

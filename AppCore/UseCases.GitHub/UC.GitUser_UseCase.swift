@@ -14,6 +14,7 @@ import RJPSLib
 import AppConstants
 import PointFreeFunctions
 import Domain
+import Domain_GitHub
 import Factory
 import DevTools
 

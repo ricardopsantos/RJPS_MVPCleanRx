@@ -7,7 +7,10 @@
 
 import Foundation
 import UIKit
+//
 import RJPSLib
+//
+import Domain
 
 public typealias GitUser_Single_UseCaseCompletionHandler = (_ result: Result<GitHub.UserResponseDto>) -> Void
 public typealias GitUser_Friends_UseCaseCompletionHandler = (_ result: Result<[GitHub.UserResponseDto]>) -> Void

@@ -11,6 +11,7 @@ import UIKit
 import RJPSLib
 //
 import Domain
+import Domain_GitHub
 
 public extension VM {
     struct UserDetais {
