@@ -17,6 +17,7 @@ import Repositories
 import AppCore
 import AppCore_Bliss
 import AppCore_CarTrack
+import AppCore_GitHub
 
 public typealias AS = AssembyContainer
 public struct AssembyContainer { private init() {} }

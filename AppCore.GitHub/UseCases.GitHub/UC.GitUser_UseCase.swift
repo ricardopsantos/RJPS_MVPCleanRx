@@ -17,6 +17,7 @@ import Domain
 import Domain_GitHub
 import Factory
 import DevTools
+import AppCore
 
 public class GitUser_UseCase: GenericUseCase, GitUserUseCaseProtocol {
     public override init() { super.init() }
