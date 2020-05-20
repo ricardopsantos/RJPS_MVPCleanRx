@@ -20,7 +20,7 @@ public class BlissQuestionsAPI_UseCase: GenericUseCase, BlissQuestionsAPIUseCase
     
     public override init() { super.init() }
     
-    public var repositoryNetwork: Bliss_NetWorkRepositoryProtocol!
+    public var repositoryNetwork: BlissNetWorkRepositoryProtocol!
     public var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
     public var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
     

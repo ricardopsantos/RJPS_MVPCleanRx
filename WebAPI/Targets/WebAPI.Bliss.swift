@@ -18,7 +18,7 @@ import Domain_Bliss
 
 public extension API.Bliss {
 
-    class NetWorkRepository: Bliss_NetWorkRepositoryProtocol {
+    class NetWorkRepository: BlissNetWorkRepositoryProtocol {
 
         public init() { }
 

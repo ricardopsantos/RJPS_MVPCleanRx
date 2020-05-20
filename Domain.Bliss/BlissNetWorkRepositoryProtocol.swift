@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import RJPSLib
 
-public protocol Bliss_NetWorkRepositoryProtocol: class {
+public protocol BlissNetWorkRepositoryProtocol: class {
 
     func getHealth(completionHandler: @escaping (_ result: Result<RJSLibNetworkClientResponse<Bliss.ServerHealth>>) -> Void)
 

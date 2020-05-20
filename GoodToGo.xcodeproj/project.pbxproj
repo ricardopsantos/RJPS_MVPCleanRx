@@ -272,7 +272,7 @@
 		D7F2DD3E24744A47008CE3DA /* Core_Bliss.h in Headers */ = {isa = PBXBuildFile; fileRef = D7F2DD3C24744A47008CE3DA /* Core_Bliss.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D7F2DD4124744A47008CE3DA /* AppCore_Bliss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7F2DD3A24744A47008CE3DA /* AppCore_Bliss.framework */; };
 		D7F2DD4224744A47008CE3DA /* AppCore_Bliss.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7F2DD3A24744A47008CE3DA /* AppCore_Bliss.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D7F2DD5924744D18008CE3DA /* Bliss_NetWorkRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9F97222E4B8CB00D64FD2 /* Bliss_NetWorkRepositoryProtocol.swift */; };
+		D7F2DD5924744D18008CE3DA /* BlissNetWorkRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9F97222E4B8CB00D64FD2 /* BlissNetWorkRepositoryProtocol.swift */; };
 		D7F2DD5A24744D18008CE3DA /* Bliss+ExtensionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2D622E35A0C00829A6F /* Bliss+ExtensionUtils.swift */; };
 		D7F2DD5B24744D18008CE3DA /* Bliss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2C022E32A3C00829A6F /* Bliss.swift */; };
 		D7F2DD5C24744D18008CE3DA /* BlissGenericAppBusinessUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9F97122E4B8CB00D64FD2 /* BlissGenericAppBusinessUseCaseProtocol.swift */; };
@@ -287,8 +287,8 @@
 		D7F2DD9824745F37008CE3DA /* CarTrackGenericAppBusinessUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E82424682161005B4313 /* CarTrackGenericAppBusinessUseCaseProtocol.swift */; };
 		D7F2DD9924745F3E008CE3DA /* CarTrackAPI_UseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E86E2468264A005B4313 /* CarTrackAPI_UseCaseProtocol.swift */; };
 		D7F2DD9A24745F56008CE3DA /* CarTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E8152468186E005B4313 /* CarTrack.swift */; };
-		D7F2DD9B24745F56008CE3DA /* CarTrackUserResponseDtoElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E8062468171F005B4313 /* CarTrackUserResponseDtoElement.swift */; };
-		D7F2DD9C24745F56008CE3DA /* CarTrackUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E819246818AE005B4313 /* CarTrackUserModel.swift */; };
+		D7F2DD9B24745F56008CE3DA /* CarTrack.CarTrackUserResponseDtoElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E8062468171F005B4313 /* CarTrack.CarTrackUserResponseDtoElement.swift */; };
+		D7F2DD9C24745F56008CE3DA /* CarTrack.CarTrackUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E819246818AE005B4313 /* CarTrack.CarTrackUserModel.swift */; };
 		D7F2DDA02474659A008CE3DA /* CarTrack_WebAPIRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E81B24681BBE005B4313 /* CarTrack_WebAPIRepositoryProtocol.swift */; };
 		D7F2DDAA24746C0F008CE3DA /* AppCore_CarTrack.h in Headers */ = {isa = PBXBuildFile; fileRef = D7F2DDA824746C0F008CE3DA /* AppCore_CarTrack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D7F2DDAD24746C0F008CE3DA /* AppCore_CarTrack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7F2DDA624746C0F008CE3DA /* AppCore_CarTrack.framework */; };
@@ -302,7 +302,7 @@
 		D7F2DDDC24747F6D008CE3DA /* Domain_GitHub.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7F2DDD424747F6C008CE3DA /* Domain_GitHub.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7F2DDED247482B3008CE3DA /* GitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E80F246817CE005B4313 /* GitHub.swift */; };
 		D7F2DDEE247482B3008CE3DA /* GitHub.UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1947C20F8870B0098CE39 /* GitHub.UserViewModel.swift */; };
-		D7F2DDEF247482B3008CE3DA /* UserResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E8082468172A005B4313 /* UserResponseDto.swift */; };
+		D7F2DDEF247482B3008CE3DA /* GitHub.UserResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E8082468172A005B4313 /* GitHub.UserResponseDto.swift */; };
 		D7F2DDF0247482B3008CE3DA /* GitUser_NetWorkRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2DC22E38C0300829A6F /* GitUser_NetWorkRepositoryProtocol.swift */; };
 		D7F2DDF1247482B3008CE3DA /* GitUserUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F98293E223986CE00ACA6B7 /* GitUserUseCaseProtocol.swift */; };
 		D7F2DE0224748644008CE3DA /* AppCore_GitHub.h in Headers */ = {isa = PBXBuildFile; fileRef = D7F2DE0024748644008CE3DA /* AppCore_GitHub.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1053,7 +1053,7 @@
 		9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = typealias.DDD.encaplulate.swift; sourceTree = "<group>"; };
 		9FB9F97022E4B8CB00D64FD2 /* BlissQuestionsAPIUseCaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlissQuestionsAPIUseCaseProtocol.swift; sourceTree = "<group>"; };
 		9FB9F97122E4B8CB00D64FD2 /* BlissGenericAppBusinessUseCaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlissGenericAppBusinessUseCaseProtocol.swift; sourceTree = "<group>"; };
-		9FB9F97222E4B8CB00D64FD2 /* Bliss_NetWorkRepositoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bliss_NetWorkRepositoryProtocol.swift; sourceTree = "<group>"; };
+		9FB9F97222E4B8CB00D64FD2 /* BlissNetWorkRepositoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlissNetWorkRepositoryProtocol.swift; sourceTree = "<group>"; };
 		9FB9F97622E520DB00D64FD2 /* Debug.QA.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.QA.xcconfig; sourceTree = "<group>"; };
 		9FBF4B0722BEBC3B00E0D1AB /* RJPSLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RJPSLib.framework; path = Carthage/Build/iOS/RJPSLib.framework; sourceTree = "<group>"; };
 		9FCF331E22EF18A90074DAB9 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
@@ -1240,13 +1240,13 @@
 		D7D9E7F72467FEE3005B4313 /* E.LayoutStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E.LayoutStyle.swift; sourceTree = "<group>"; };
 		D7D9E7F92467FFBA005B4313 /* E.AppCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E.AppCodes.swift; sourceTree = "<group>"; };
 		D7D9E80124681046005B4313 /* CarTrack.APIRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTrack.APIRequests.swift; sourceTree = "<group>"; };
-		D7D9E8062468171F005B4313 /* CarTrackUserResponseDtoElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTrackUserResponseDtoElement.swift; sourceTree = "<group>"; };
-		D7D9E8082468172A005B4313 /* UserResponseDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserResponseDto.swift; sourceTree = "<group>"; };
+		D7D9E8062468171F005B4313 /* CarTrack.CarTrackUserResponseDtoElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTrack.CarTrackUserResponseDtoElement.swift; sourceTree = "<group>"; };
+		D7D9E8082468172A005B4313 /* GitHub.UserResponseDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHub.UserResponseDto.swift; sourceTree = "<group>"; };
 		D7D9E80C2468173B005B4313 /* Employee copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Employee copy.swift"; sourceTree = "<group>"; };
 		D7D9E80F246817CE005B4313 /* GitHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHub.swift; sourceTree = "<group>"; };
 		D7D9E8152468186E005B4313 /* CarTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTrack.swift; sourceTree = "<group>"; };
 		D7D9E81724681899005B4313 /* Employee copy 2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Employee copy 2.swift"; sourceTree = "<group>"; };
-		D7D9E819246818AE005B4313 /* CarTrackUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTrackUserModel.swift; sourceTree = "<group>"; };
+		D7D9E819246818AE005B4313 /* CarTrack.CarTrackUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTrack.CarTrackUserModel.swift; sourceTree = "<group>"; };
 		D7D9E81B24681BBE005B4313 /* CarTrack_WebAPIRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTrack_WebAPIRepositoryProtocol.swift; sourceTree = "<group>"; };
 		D7D9E82424682161005B4313 /* CarTrackGenericAppBusinessUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTrackGenericAppBusinessUseCaseProtocol.swift; sourceTree = "<group>"; };
 		D7D9E86E2468264A005B4313 /* CarTrackAPI_UseCaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTrackAPI_UseCaseProtocol.swift; sourceTree = "<group>"; };
@@ -2306,9 +2306,10 @@
 		D7F2DD2224744A0E008CE3DA /* Domain.Bliss */ = {
 			isa = PBXGroup;
 			children = (
-				D7F2DD5824744CBF008CE3DA /* Protocol.Repositories */,
+				9FB9F97222E4B8CB00D64FD2 /* BlissNetWorkRepositoryProtocol.swift */,
+				9FB9F97122E4B8CB00D64FD2 /* BlissGenericAppBusinessUseCaseProtocol.swift */,
+				9FB9F97022E4B8CB00D64FD2 /* BlissQuestionsAPIUseCaseProtocol.swift */,
 				D7F2DD5724744C95008CE3DA /* Models */,
-				D7F2DD5624744C84008CE3DA /* Protocol.UseCases */,
 				D7F2DD2324744A0E008CE3DA /* Domain_Bliss.h */,
 				D7F2DD2424744A0E008CE3DA /* Info.plist */,
 			);
@@ -2326,15 +2327,6 @@
 			path = Core.Bliss;
 			sourceTree = "<group>";
 		};
-		D7F2DD5624744C84008CE3DA /* Protocol.UseCases */ = {
-			isa = PBXGroup;
-			children = (
-				9FB9F97122E4B8CB00D64FD2 /* BlissGenericAppBusinessUseCaseProtocol.swift */,
-				9FB9F97022E4B8CB00D64FD2 /* BlissQuestionsAPIUseCaseProtocol.swift */,
-			);
-			path = Protocol.UseCases;
-			sourceTree = "<group>";
-		};
 		D7F2DD5724744C95008CE3DA /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -2342,14 +2334,6 @@
 				9F6BB2C022E32A3C00829A6F /* Bliss.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		D7F2DD5824744CBF008CE3DA /* Protocol.Repositories */ = {
-			isa = PBXGroup;
-			children = (
-				9FB9F97222E4B8CB00D64FD2 /* Bliss_NetWorkRepositoryProtocol.swift */,
-			);
-			path = Protocol.Repositories;
 			sourceTree = "<group>";
 		};
 		D7F2DD652474509F008CE3DA /* Mappers */ = {
@@ -2362,40 +2346,24 @@
 		D7F2DD802474587C008CE3DA /* Domain.CarTrack */ = {
 			isa = PBXGroup;
 			children = (
-				D7F2DD9724745E55008CE3DA /* Protocol.UseCases */,
+				D7D9E81B24681BBE005B4313 /* CarTrack_WebAPIRepositoryProtocol.swift */,
+				D7D9E86E2468264A005B4313 /* CarTrackAPI_UseCaseProtocol.swift */,
+				D7D9E82424682161005B4313 /* CarTrackGenericAppBusinessUseCaseProtocol.swift */,
 				D7F2DD9624745E4C008CE3DA /* Models */,
-				D7F2DD9524745E45008CE3DA /* Protocol.Repositories */,
 				D7F2DD812474587C008CE3DA /* Domain_CarTrack.h */,
 				D7F2DD822474587C008CE3DA /* Info.plist */,
 			);
 			path = Domain.CarTrack;
 			sourceTree = "<group>";
 		};
-		D7F2DD9524745E45008CE3DA /* Protocol.Repositories */ = {
-			isa = PBXGroup;
-			children = (
-				D7D9E81B24681BBE005B4313 /* CarTrack_WebAPIRepositoryProtocol.swift */,
-			);
-			path = Protocol.Repositories;
-			sourceTree = "<group>";
-		};
 		D7F2DD9624745E4C008CE3DA /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				D7D9E8152468186E005B4313 /* CarTrack.swift */,
-				D7D9E8062468171F005B4313 /* CarTrackUserResponseDtoElement.swift */,
-				D7D9E819246818AE005B4313 /* CarTrackUserModel.swift */,
+				D7D9E8062468171F005B4313 /* CarTrack.CarTrackUserResponseDtoElement.swift */,
+				D7D9E819246818AE005B4313 /* CarTrack.CarTrackUserModel.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		D7F2DD9724745E55008CE3DA /* Protocol.UseCases */ = {
-			isa = PBXGroup;
-			children = (
-				D7D9E82424682161005B4313 /* CarTrackGenericAppBusinessUseCaseProtocol.swift */,
-				D7D9E86E2468264A005B4313 /* CarTrackAPI_UseCaseProtocol.swift */,
-			);
-			path = Protocol.UseCases;
 			sourceTree = "<group>";
 		};
 		D7F2DDA724746C0F008CE3DA /* AppCore.CarTrack */ = {
@@ -2420,29 +2388,13 @@
 		D7F2DDD524747F6D008CE3DA /* Domain.GitHub */ = {
 			isa = PBXGroup;
 			children = (
+				9F98293E223986CE00ACA6B7 /* GitUserUseCaseProtocol.swift */,
+				9F6BB2DC22E38C0300829A6F /* GitUser_NetWorkRepositoryProtocol.swift */,
 				D7F2DDEC247482A2008CE3DA /* Models */,
-				D7F2DDEB2474827A008CE3DA /* Protocol.Repositories */,
-				D7F2DDEA24748273008CE3DA /* Protocol.UseCases */,
 				D7F2DDD624747F6D008CE3DA /* Domain_GitHub.h */,
 				D7F2DDD724747F6D008CE3DA /* Info.plist */,
 			);
 			path = Domain.GitHub;
-			sourceTree = "<group>";
-		};
-		D7F2DDEA24748273008CE3DA /* Protocol.UseCases */ = {
-			isa = PBXGroup;
-			children = (
-				9F98293E223986CE00ACA6B7 /* GitUserUseCaseProtocol.swift */,
-			);
-			path = Protocol.UseCases;
-			sourceTree = "<group>";
-		};
-		D7F2DDEB2474827A008CE3DA /* Protocol.Repositories */ = {
-			isa = PBXGroup;
-			children = (
-				9F6BB2DC22E38C0300829A6F /* GitUser_NetWorkRepositoryProtocol.swift */,
-			);
-			path = Protocol.Repositories;
 			sourceTree = "<group>";
 		};
 		D7F2DDEC247482A2008CE3DA /* Models */ = {
@@ -2450,7 +2402,7 @@
 			children = (
 				D7D9E80F246817CE005B4313 /* GitHub.swift */,
 				9FB1947C20F8870B0098CE39 /* GitHub.UserViewModel.swift */,
-				D7D9E8082468172A005B4313 /* UserResponseDto.swift */,
+				D7D9E8082468172A005B4313 /* GitHub.UserResponseDto.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3908,7 +3860,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7F2DD5924744D18008CE3DA /* Bliss_NetWorkRepositoryProtocol.swift in Sources */,
+				D7F2DD5924744D18008CE3DA /* BlissNetWorkRepositoryProtocol.swift in Sources */,
 				D7F2DD5C24744D18008CE3DA /* BlissGenericAppBusinessUseCaseProtocol.swift in Sources */,
 				D7F2DD5A24744D18008CE3DA /* Bliss+ExtensionUtils.swift in Sources */,
 				D7F2DD5B24744D18008CE3DA /* Bliss.swift in Sources */,
@@ -3932,11 +3884,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7F2DD9824745F37008CE3DA /* CarTrackGenericAppBusinessUseCaseProtocol.swift in Sources */,
-				D7F2DD9B24745F56008CE3DA /* CarTrackUserResponseDtoElement.swift in Sources */,
+				D7F2DD9B24745F56008CE3DA /* CarTrack.CarTrackUserResponseDtoElement.swift in Sources */,
 				D7F2DD9924745F3E008CE3DA /* CarTrackAPI_UseCaseProtocol.swift in Sources */,
 				D7F2DD9A24745F56008CE3DA /* CarTrack.swift in Sources */,
 				D7F2DDA02474659A008CE3DA /* CarTrack_WebAPIRepositoryProtocol.swift in Sources */,
-				D7F2DD9C24745F56008CE3DA /* CarTrackUserModel.swift in Sources */,
+				D7F2DD9C24745F56008CE3DA /* CarTrack.CarTrackUserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3956,7 +3908,7 @@
 			files = (
 				D7F2DDF0247482B3008CE3DA /* GitUser_NetWorkRepositoryProtocol.swift in Sources */,
 				D7F2DDF1247482B3008CE3DA /* GitUserUseCaseProtocol.swift in Sources */,
-				D7F2DDEF247482B3008CE3DA /* UserResponseDto.swift in Sources */,
+				D7F2DDEF247482B3008CE3DA /* GitHub.UserResponseDto.swift in Sources */,
 				D7F2DDED247482B3008CE3DA /* GitHub.swift in Sources */,
 				D7F2DDEE247482B3008CE3DA /* GitHub.UserViewModel.swift in Sources */,
 			);
