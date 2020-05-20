@@ -30,8 +30,8 @@ extension I {
         weak var basePresenter: BasePresenterVIPProtocol? { return presenter }
 
         // DataStoreProtocol Protocol vars...
-        var dsSomeKindOfModelA: DataStoreReceiverDataStoreModelA?
-        var dsSomeKindOfModelB: DataStoreReceiverDataStoreModelB?
+        var dsSomeKindOfModelAToBeSettedByOtherRouter: SomeRandomModelA?
+        var dsSomeKindOfModelBToBeSettedByOtherRouter: SomeRandomModelB?
     }
 }
 
@@ -40,11 +40,11 @@ extension I {
 extension I.DataStoreReceiverInteractor: DataStoreReceiverBusinessLogicProtocol {
     func requestScreenInitialState() {
 
-        if let dataPassing = dsSomeKindOfModelA {
-            print("data passed A \(dataPassing)")
+        if let dataPassing = dsSomeKindOfModelAToBeSettedByOtherRouter { // <<-- DS Sample : Take notice
+            print("data received A \(dataPassing)") 
         }
-        if let dataPassing = dsSomeKindOfModelB {
-            print("data passed B \(dataPassing)")
+        if let dataPassing = dsSomeKindOfModelBToBeSettedByOtherRouter { // <<-- DS Sample : Take notice
+            print("data received B \(dataPassing)")
         }
     }
 }

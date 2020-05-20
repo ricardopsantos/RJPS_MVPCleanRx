@@ -22,16 +22,18 @@ import PointFreeFunctions
 import UIBase
 
 extension R {
-    class DataStoreReceiverRouter: DataStoreReceiverDataPassingProtocol {
+    class DataStoreReceiverRouter: DataStoreReceiverDataPassingProtocol { // <<-- DS Sample : Take notice
         weak var viewController: VC.DataStoreReceiverViewController?
 
-        // DataPassingProtocol Protocol vars...
-        var dsDataStoreReceiver: DataStoreReceiverDataStoreProtocol? { didSet { DevTools.Log.log("DataStore changed") } }
+        // DataPassingProtocol Protocol vars... // <<-- DS Sample : Take notice
+        var dsToBeSetted: DataStoreReceiverDataStoreProtocol? {
+            didSet {
+                print("\(DataStoreReceiverRouter.self) Datastore was setted!")
+            }
+        }
      }
 }
 
 // MARK: RoutingLogicProtocol
 
-extension R.DataStoreReceiverRouter: DataStoreReceiverRoutingLogicProtocol {
-
-}
+extension R.DataStoreReceiverRouter: DataStoreReceiverRoutingLogicProtocol { }

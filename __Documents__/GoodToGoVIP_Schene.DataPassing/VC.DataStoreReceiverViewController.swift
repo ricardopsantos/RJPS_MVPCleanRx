@@ -22,29 +22,40 @@ import PointFreeFunctions
 import AppResources
 import UIBase
 
+// MARK: - Presenter
+
+extension P {
+    class DataStoreReceiverPresenter: BasePresenterVIP {
+        weak var viewController: (DataStoreReceiverDisplayLogicProtocol)?
+        override weak var baseViewController: BaseViewControllerVIPProtocol? {
+            return viewController
+        }
+    }
+}
+
+extension P.DataStoreReceiverPresenter: DataStoreReceiverPresentationLogicProtocol { }
+
+// MARK: - View
+
 extension V {
     class DataStoreReceiverView: BaseGenericViewVIP { }
 }
+
+// MARK: - ViewController
 
 extension VC {
 
     class DataStoreReceiverViewController: BaseGenericViewControllerVIP<V.DataStoreReceiverView> {
         private var interactor: DataStoreReceiverBusinessLogicProtocol?
-        var router: (DataStoreReceiverRoutingLogicProtocol &
-            DataStoreReceiverDataPassingProtocol &
-            DataStoreReceiverRoutingLogicProtocol)?
+        var router: (DataStoreReceiverRoutingLogicProtocol
+            & DataStoreReceiverDataPassingProtocol // <<-- DS Sample : Take notice
+        )?
 
         // Order in View life-cycle : 6
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
-            if firstAppearance {
-                interactor?.requestScreenInitialState()
-            }
+            if firstAppearance { interactor?.requestScreenInitialState() }
         }
-
-        //
-        // MARK: Mandatory methods
-        //
 
         // Order in View life-cycle : 1
         override func setup() {
@@ -54,11 +65,11 @@ extension VC {
             let presenter  = P.DataStoreReceiverPresenter()
             let router     = R.DataStoreReceiverRouter()
             viewController.interactor = interactor
-            viewController.router = router
-            interactor.presenter  = presenter
+            viewController.router    = router
+            interactor.presenter     = presenter
             presenter.viewController = viewController
-            router.viewController = viewController
-            router.dsDataStoreReceiver = interactor
+            router.viewController    = viewController
+            router.dsToBeSetted      = interactor      // <<-- DS Sample : Take notice
         }
 
     }
@@ -66,6 +77,4 @@ extension VC {
 
 // MARK: DisplayLogicProtocolProtocol
 
-extension VC.DataStoreReceiverViewController: DataStoreReceiverDisplayLogicProtocol {
-
-}
+extension VC.DataStoreReceiverViewController: DataStoreReceiverDisplayLogicProtocol { }

@@ -61,6 +61,8 @@ extension VC {
             super.viewWillAppear(animated)
             if firstAppearance {
                 interactor?.requestScreenInitialState()
+                interactor?.requestSomething(request: VM.___VARIABLE_sceneName___.Something.Request(userId: ""))
+
             }
         }
 
@@ -95,7 +97,7 @@ extension VC {
             interactor.presenter  = presenter
             presenter.viewController = viewController
             router.viewController = viewController
-            router.ds___VARIABLE_sceneName___ = interactor
+            router.dsSource = interactor
         }
 
         // Order in View life-cycle : 5

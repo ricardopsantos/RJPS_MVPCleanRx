@@ -30,7 +30,7 @@ extension R {
         weak var viewController: VC.___VARIABLE_sceneName___ViewController?
 
         // DataPassingProtocol Protocol vars...
-        var ds___VARIABLE_sceneName___: ___VARIABLE_sceneName___DataStoreProtocol? { didSet { DevTools.Log.log("DataStore changed") } }
+        var dsSource: ___VARIABLE_sceneName___DataStoreProtocol? { didSet { DevTools.Log.log("DataStore changed") } }
      }
 }
 
@@ -42,15 +42,16 @@ extension R.___VARIABLE_sceneName___Router: ___VARIABLE_sceneName___RoutingLogic
     }
 
     func routeSomewhereWithDataStore() {
-        func passDataToSomewhere(source: ___VARIABLE_sceneName___DataStoreProtocol, destination: inout ___VARIABLE_sceneName___DataStoreProtocol) {
-            destination.dsSomeKindOfModelA = source.dsSomeKindOfModelA
-            destination.dsSomeKindOfModelB = source.dsSomeKindOfModelB
+        func passDataToSomewhere(source: ___VARIABLE_sceneName___DataStoreProtocol,
+                                 destination: inout DataStoreReceiverDataStoreProtocol) { // <<-- DS Sample : Take notice
+            destination.dsSomeKindOfModelAToBeSettedByOtherRouter = source.dsSomeKindOfModelAThatWillBePassedToOtherRouter
+            //destination.dsSomeKindOfModelBToBeSettedByOtherRouter = source.dsSomeKindOfModelBThatWillBePassedToOtherRouter
         }
-        let destinationVC = VC.___VARIABLE_sceneName___ViewController()
-        if var destinationDS = destinationVC.router?.ds___VARIABLE_sceneName___ {
-            passDataToSomewhere(source: ds___VARIABLE_sceneName___!, destination: &destinationDS)
+        let destinationVC = VC.DataStoreReceiverViewController()    // <<-- DS Sample : Take notice
+        if var destinationDS = destinationVC.router?.dsToBeSetted { // <<-- DS Sample : Take notice
+            passDataToSomewhere(source: dsSource!, destination: &destinationDS)
         }
-        viewController?.navigationController?.present(destinationVC, animated: true, completion: nil)
+        viewController?.present(destinationVC, animated: true, completion: nil)
     }
 
     func routeToTemplateWithParentDataStore() {

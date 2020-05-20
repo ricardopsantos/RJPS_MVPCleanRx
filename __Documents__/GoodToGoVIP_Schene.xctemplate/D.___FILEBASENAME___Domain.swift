@@ -35,8 +35,8 @@ extension E {
     }
 }
 
-// DataStore
-
+// DataStore shared model
+/*
 struct ___VARIABLE_sceneName___DataStoreModelA {
     let aString: String
 }
@@ -44,7 +44,7 @@ struct ___VARIABLE_sceneName___DataStoreModelA {
 struct ___VARIABLE_sceneName___DataStoreModelB {
     let aString: String
 }
-
+*/
 //
 // MARK: - Interactor (Business Logic)
 //
@@ -94,14 +94,14 @@ protocol ___VARIABLE_sceneName___RoutingLogicProtocol {
 protocol ___VARIABLE_sceneName___DataPassingProtocol {
 
     // DataStore
-    var ds___VARIABLE_sceneName___: ___VARIABLE_sceneName___DataStoreProtocol? { get }
+    var dsSource: ___VARIABLE_sceneName___DataStoreProtocol? { get }
 }
 
 // DataStore : Implemented by the Interactor, and the Router
 protocol ___VARIABLE_sceneName___DataStoreProtocol {
     // must have a reference like [var dataStore: ___VARIABLE_sceneName___DataStoreProtocol?]
-    var dsSomeKindOfModelA: ___VARIABLE_sceneName___DataStoreModelA? { get set }
-    var dsSomeKindOfModelB: ___VARIABLE_sceneName___DataStoreModelB? { get set }
+    var dsSomeKindOfModelAThatWillBePassedToOtherRouter: SomeRandomModelA? { get set }
+    var dsSomeKindOfModelBThatWillBePassedToOtherRouter: SomeRandomModelB? { get set }
 
 }
 

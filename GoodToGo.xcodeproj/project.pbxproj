@@ -314,7 +314,6 @@
 		D7F2DE342474A718008CE3DA /* R.DataStoreReceiverRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2DE262474A6D4008CE3DA /* R.DataStoreReceiverRouter.swift */; };
 		D7F2DE352474A718008CE3DA /* D.DataStoreReceiverDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2DE272474A6D4008CE3DA /* D.DataStoreReceiverDomain.swift */; };
 		D7F2DE362474A718008CE3DA /* I.DataStoreReceiverInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2DE292474A6D4008CE3DA /* I.DataStoreReceiverInteractor.swift */; };
-		D7F2DE372474A718008CE3DA /* P.DataStoreReceiverPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2DE2A2474A6D4008CE3DA /* P.DataStoreReceiverPresenter.swift */; };
 		D7FA21F724708B9C001DD9D5 /* ReachabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA21F324706A32001DD9D5 /* ReachabilityView.swift */; };
 		D7FA2207247189B9001DD9D5 /* TokenRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA2206247189B9001DD9D5 /* TokenRefresh.swift */; };
 		D7FCAC2024685B7A00DBECA2 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FCAC1F24685B7A00DBECA2 /* RxDataSources.framework */; };
@@ -1286,7 +1285,6 @@
 		D7F2DE262474A6D4008CE3DA /* R.DataStoreReceiverRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.DataStoreReceiverRouter.swift; sourceTree = "<group>"; };
 		D7F2DE272474A6D4008CE3DA /* D.DataStoreReceiverDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D.DataStoreReceiverDomain.swift; sourceTree = "<group>"; };
 		D7F2DE292474A6D4008CE3DA /* I.DataStoreReceiverInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.DataStoreReceiverInteractor.swift; sourceTree = "<group>"; };
-		D7F2DE2A2474A6D4008CE3DA /* P.DataStoreReceiverPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.DataStoreReceiverPresenter.swift; sourceTree = "<group>"; };
 		D7FA21F324706A32001DD9D5 /* ReachabilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityView.swift; sourceTree = "<group>"; };
 		D7FA21FC24715A9A001DD9D5 /* no_internet_usage_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_internet_usage_1.png; sourceTree = "<group>"; };
 		D7FA21FD24715A9A001DD9D5 /* map_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_1.png; sourceTree = "<group>"; };
@@ -1582,10 +1580,10 @@
 		9F36ADE321B1612600FADBB1 /* __Documents__ */ = {
 			isa = PBXGroup;
 			children = (
-				D7F2DE232474A69E008CE3DA /* Aux.xctemplate */,
+				D7F2DE232474A69E008CE3DA /* GoodToGoVIP_Schene.DataPassing */,
 				D7FA21FB24715A9A001DD9D5 /* CarTrackReport */,
 				D7FA21FA247159A5001DD9D5 /* Arquitecture */,
-				D761FE9A2468304A00BD41A5 /* GoodToGoVIP Schene.xctemplate */,
+				D761FE9A2468304A00BD41A5 /* GoodToGoVIP_Schene.xctemplate */,
 				9F55525522E9A73D009364D1 /* README.md */,
 				9FACC17A223BDD5B00576498 /* ToDo.swift */,
 				D7711F87246B862F00B6963A /* Cartfile */,
@@ -1942,11 +1940,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		D761FE9A2468304A00BD41A5 /* GoodToGoVIP Schene.xctemplate */ = {
+		D761FE9A2468304A00BD41A5 /* GoodToGoVIP_Schene.xctemplate */ = {
 			isa = PBXGroup;
 			children = (
 				D7711F58246B340B00B6963A /* Auxiliar */,
 				D7711F5A246B340B00B6963A /* D.___FILEBASENAME___Domain.swift */,
+				D7711F5E246B340C00B6963A /* V.___FILEBASENAME___View.swift */,
+				D7711F61246B340C00B6963A /* VC.___FILEBASENAME___ViewController.swift */,
 				D7711F5D246B340C00B6963A /* I.___FILEBASENAME___Interactor.swift */,
 				D7711F60246B340C00B6963A /* P.___FILEBASENAME___Presenter.swift */,
 				D7711F57246B340B00B6963A /* R.___FILEBASENAME___Router.swift */,
@@ -1954,10 +1954,8 @@
 				D7711F5C246B340B00B6963A /* TemplateIcon.png */,
 				D7711F5B246B340B00B6963A /* TemplateIcon@2x.png */,
 				D7711F5F246B340C00B6963A /* TemplateInfo.plist */,
-				D7711F5E246B340C00B6963A /* V.___FILEBASENAME___View.swift */,
-				D7711F61246B340C00B6963A /* VC.___FILEBASENAME___ViewController.swift */,
 			);
-			path = "GoodToGoVIP Schene.xctemplate";
+			path = GoodToGoVIP_Schene.xctemplate;
 			sourceTree = "<group>";
 		};
 		D7711F58246B340B00B6963A /* Auxiliar */ = {
@@ -2485,16 +2483,15 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
-		D7F2DE232474A69E008CE3DA /* Aux.xctemplate */ = {
+		D7F2DE232474A69E008CE3DA /* GoodToGoVIP_Schene.DataPassing */ = {
 			isa = PBXGroup;
 			children = (
 				D7F2DE252474A6D4008CE3DA /* VC.DataStoreReceiverViewController.swift */,
 				D7F2DE262474A6D4008CE3DA /* R.DataStoreReceiverRouter.swift */,
 				D7F2DE272474A6D4008CE3DA /* D.DataStoreReceiverDomain.swift */,
 				D7F2DE292474A6D4008CE3DA /* I.DataStoreReceiverInteractor.swift */,
-				D7F2DE2A2474A6D4008CE3DA /* P.DataStoreReceiverPresenter.swift */,
 			);
-			path = Aux.xctemplate;
+			path = GoodToGoVIP_Schene.DataPassing;
 			sourceTree = "<group>";
 		};
 		D7FA21FA247159A5001DD9D5 /* Arquitecture */ = {
@@ -3655,7 +3652,6 @@
 				D7979DB8246D6B370039031C /* D.CarTrackLoginDomain.swift in Sources */,
 				9F6BB30022E3CB2D00829A6F /* AC.BlissRoot_AssemblyContainer.swift in Sources */,
 				9FACC18B223BFB0F00576498 /* AppDelegate+Setup.swift in Sources */,
-				D7F2DE372474A718008CE3DA /* P.DataStoreReceiverPresenter.swift in Sources */,
 				9F6BB2D922E3673200829A6F /* AppDelegate+URL.swift in Sources */,
 				9F6BB2F022E3A97F00829A6F /* P.BlissQuestionsList_Presenter.swift in Sources */,
 				9F58FB4922BE5DE700042A8C /* R.SearchUser_Router.swift in Sources */,

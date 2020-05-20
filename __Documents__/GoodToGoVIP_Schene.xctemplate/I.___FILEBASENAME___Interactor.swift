@@ -35,6 +35,7 @@ import Factory
 
 extension I {
     class ___VARIABLE_sceneName___Interactor: BaseInteractorVIP, ___VARIABLE_sceneName___DataStoreProtocol {
+
         deinit {
             if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { DevTools.Log.log("\(self) was killed") }
             NotificationCenter.default.removeObserver(self)
@@ -43,8 +44,8 @@ extension I {
         weak var basePresenter: BasePresenterVIPProtocol? { return presenter }
 
         // DataStoreProtocol Protocol vars...
-        var dsSomeKindOfModelA: ___VARIABLE_sceneName___DataStoreModelA?
-        var dsSomeKindOfModelB: ___VARIABLE_sceneName___DataStoreModelB?
+        var dsSomeKindOfModelAThatWillBePassedToOtherRouter: SomeRandomModelA?
+        var dsSomeKindOfModelBThatWillBePassedToOtherRouter: SomeRandomModelB?
     }
 }
 
@@ -56,22 +57,15 @@ extension I.___VARIABLE_sceneName___Interactor: BaseInteractorVIPMandatoryBusine
     /// till the user have all the data loaded on the view. This will improve user experience.
     func requestScreenInitialState() {
         var response: VM.___VARIABLE_sceneName___.ScreenInitialState.Response!
-        if let dataPassing = dsSomeKindOfModelA {
-            // Some data was passed via Router, lets use it...
-            let title = "Template Scene 2"
-            let subTitle = "Some data was passed!\nScroll me\n\n\n\n\n\(dataPassing)\n\n\n"
-            response = VM.___VARIABLE_sceneName___.ScreenInitialState.Response(title: title,
-                                                                               subTitle: subTitle)
-        } else {
-            response = VM.___VARIABLE_sceneName___.ScreenInitialState.Response(title: "Template Scene 1",
-                                                                               subTitle: "Tap one of the buttons")
-        }
+        response = VM.___VARIABLE_sceneName___.ScreenInitialState.Response(title: "Template Scene 1",
+                                                                           subTitle: "Tap one of the buttons")
         presenter?.presentScreenInitialState(response: response)
 
-        // Update Model for future use
-        dsSomeKindOfModelA = ___VARIABLE_sceneName___DataStoreModelA(aString: "Passed via DataStoreProtocol @ \(Date())")
+        // Update DataStore // <<-- DS Sample : Take notice
+        // When passing Data from the Scene Router to other one, this will be the value that will be passed
+        dsSomeKindOfModelAThatWillBePassedToOtherRouter = SomeRandomModelA(s1: "A: \(Date())")
+        dsSomeKindOfModelBThatWillBePassedToOtherRouter = SomeRandomModelB(s2: "B: \(Date())")
 
-        requestSomething(request: VM.___VARIABLE_sceneName___.Something.Request(userId: ""))
     }
 
 }
