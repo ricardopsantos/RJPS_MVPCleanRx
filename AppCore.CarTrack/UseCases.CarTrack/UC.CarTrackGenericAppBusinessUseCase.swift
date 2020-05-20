@@ -20,7 +20,7 @@ import Domain_CarTrack
 import Factory
 import AppCore
 
-public class CarTrackGenericAppBusinessUseCase: GenericUseCase, CarTrackGenericAppBusinessUseCaseProtocol {
+public class CarTrackGenericAppBusinessUseCase: GenericUseCase, CarTrackGenericAppBusiness_UseCaseProtocol {
 
     public override init() { super.init() }
 

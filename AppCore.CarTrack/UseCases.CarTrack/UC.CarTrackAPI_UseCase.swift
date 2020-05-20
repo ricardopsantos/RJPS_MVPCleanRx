@@ -22,7 +22,7 @@ import Factory
 
 // swiftlint:disable rule_Coding
 
-public class CarTrackAPI_UseCase: GenericUseCase, CarTrackAPI_UseCaseProtocol {
+public class CarTrackAPI_UseCase: GenericUseCase, CarTrackAPIRelated_UseCaseProtocol {
 
     public override init() { super.init() }
 
@@ -96,7 +96,7 @@ public class CarTrackAPI_UseCase: GenericUseCase, CarTrackAPI_UseCaseProtocol {
     }
 
     public func getUserDetailV1(completionHandler: @escaping CarTrackAPI_UseCaseCompletionHandler) {
-        self.repositoryNetwork.userDetails(canUseCache: false) { (result) in
+        self.repositoryNetwork.userDetails { (result) in
             switch result {
             case .success(let some) : completionHandler(Result.success(some.entity))
             case .failure(let error): completionHandler(Result.failure(error))

@@ -50,8 +50,8 @@ struct RootAssemblyContainerProtocols {
     static let blissGenericAppBusiness_UseCase    = BlissGenericAppBusinessUseCaseProtocol.self
 
     // CarTrack
-    static let carTrackGenericAppBusiness_UseCase = CarTrackGenericAppBusinessUseCaseProtocol.self
-    static let carTrackAPI_UseCase                = CarTrackAPI_UseCaseProtocol.self
+    static let carTrackGenericAppBusiness_UseCase = CarTrackGenericAppBusiness_UseCaseProtocol.self
+    static let carTrackAPI_UseCase                = CarTrackAPIRelated_UseCaseProtocol.self
 
 }
 

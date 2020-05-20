@@ -284,12 +284,12 @@
 		D7F2DD832474587C008CE3DA /* Domain_CarTrack.h in Headers */ = {isa = PBXBuildFile; fileRef = D7F2DD812474587C008CE3DA /* Domain_CarTrack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D7F2DD862474587C008CE3DA /* Domain_CarTrack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7F2DD7F2474587C008CE3DA /* Domain_CarTrack.framework */; };
 		D7F2DD872474587C008CE3DA /* Domain_CarTrack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7F2DD7F2474587C008CE3DA /* Domain_CarTrack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D7F2DD9824745F37008CE3DA /* CarTrackGenericAppBusinessUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E82424682161005B4313 /* CarTrackGenericAppBusinessUseCaseProtocol.swift */; };
-		D7F2DD9924745F3E008CE3DA /* CarTrackAPI_UseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E86E2468264A005B4313 /* CarTrackAPI_UseCaseProtocol.swift */; };
+		D7F2DD9824745F37008CE3DA /* CarTrackGenericAppBusiness_UseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E82424682161005B4313 /* CarTrackGenericAppBusiness_UseCaseProtocol.swift */; };
+		D7F2DD9924745F3E008CE3DA /* CarTrackAPIRelated_UseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E86E2468264A005B4313 /* CarTrackAPIRelated_UseCaseProtocol.swift */; };
 		D7F2DD9A24745F56008CE3DA /* CarTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E8152468186E005B4313 /* CarTrack.swift */; };
 		D7F2DD9B24745F56008CE3DA /* CarTrack.CarTrackUserResponseDtoElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E8062468171F005B4313 /* CarTrack.CarTrackUserResponseDtoElement.swift */; };
 		D7F2DD9C24745F56008CE3DA /* CarTrack.CarTrackUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E819246818AE005B4313 /* CarTrack.CarTrackUserModel.swift */; };
-		D7F2DDA02474659A008CE3DA /* CarTrack_WebAPIRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E81B24681BBE005B4313 /* CarTrack_WebAPIRepositoryProtocol.swift */; };
+		D7F2DDA02474659A008CE3DA /* CarTrack_NetWorkRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E81B24681BBE005B4313 /* CarTrack_NetWorkRepositoryProtocol.swift */; };
 		D7F2DDAA24746C0F008CE3DA /* AppCore_CarTrack.h in Headers */ = {isa = PBXBuildFile; fileRef = D7F2DDA824746C0F008CE3DA /* AppCore_CarTrack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D7F2DDAD24746C0F008CE3DA /* AppCore_CarTrack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7F2DDA624746C0F008CE3DA /* AppCore_CarTrack.framework */; };
 		D7F2DDAE24746C0F008CE3DA /* AppCore_CarTrack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7F2DDA624746C0F008CE3DA /* AppCore_CarTrack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -1247,9 +1247,9 @@
 		D7D9E8152468186E005B4313 /* CarTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTrack.swift; sourceTree = "<group>"; };
 		D7D9E81724681899005B4313 /* Employee copy 2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Employee copy 2.swift"; sourceTree = "<group>"; };
 		D7D9E819246818AE005B4313 /* CarTrack.CarTrackUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTrack.CarTrackUserModel.swift; sourceTree = "<group>"; };
-		D7D9E81B24681BBE005B4313 /* CarTrack_WebAPIRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTrack_WebAPIRepositoryProtocol.swift; sourceTree = "<group>"; };
-		D7D9E82424682161005B4313 /* CarTrackGenericAppBusinessUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTrackGenericAppBusinessUseCaseProtocol.swift; sourceTree = "<group>"; };
-		D7D9E86E2468264A005B4313 /* CarTrackAPI_UseCaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTrackAPI_UseCaseProtocol.swift; sourceTree = "<group>"; };
+		D7D9E81B24681BBE005B4313 /* CarTrack_NetWorkRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTrack_NetWorkRepositoryProtocol.swift; sourceTree = "<group>"; };
+		D7D9E82424682161005B4313 /* CarTrackGenericAppBusiness_UseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTrackGenericAppBusiness_UseCaseProtocol.swift; sourceTree = "<group>"; };
+		D7D9E86E2468264A005B4313 /* CarTrackAPIRelated_UseCaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTrackAPIRelated_UseCaseProtocol.swift; sourceTree = "<group>"; };
 		D7E25A6C2465E5A6003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7E25A702465E5F1003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7E25A71246695EE003BBEA0 /* AppConstants+Mocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppConstants+Mocks.swift"; sourceTree = "<group>"; };
@@ -1500,6 +1500,7 @@
 		9F103A2D2236C08900C57BC0 /* DependencyInjection */ = {
 			isa = PBXGroup;
 			children = (
+				D725A6A5246C839B005664CB /* Resolvers */,
 				9F103A2F2236C08900C57BC0 /* RootAssemblyContainer.swift */,
 				9F103A2E2236C08900C57BC0 /* DependencyInjectionManager.swift */,
 			);
@@ -1816,12 +1817,12 @@
 			path = AppScenes.DevStuff;
 			sourceTree = "<group>";
 		};
-		D725A6A5246C839B005664CB /* DependencyInjection.Resolvers */ = {
+		D725A6A5246C839B005664CB /* Resolvers */ = {
 			isa = PBXGroup;
 			children = (
 				D725A6A0246C6CDB005664CB /* CarTrackResolver.swift */,
 			);
-			path = DependencyInjection.Resolvers;
+			path = Resolvers;
 			sourceTree = "<group>";
 		};
 		D729226724669F3700DAD480 /* Designables */ = {
@@ -2172,7 +2173,6 @@
 			isa = PBXGroup;
 			children = (
 				D7AB2444246716DE000142C4 /* Components */,
-				D725A6A5246C839B005664CB /* DependencyInjection.Resolvers */,
 				D761FEB42468330600BD41A5 /* ProgramaticUIUtils.swift */,
 				9FE1437021AF1ADC0026BDFC /* Environments.swift */,
 			);
@@ -2346,9 +2346,9 @@
 		D7F2DD802474587C008CE3DA /* Domain.CarTrack */ = {
 			isa = PBXGroup;
 			children = (
-				D7D9E81B24681BBE005B4313 /* CarTrack_WebAPIRepositoryProtocol.swift */,
-				D7D9E86E2468264A005B4313 /* CarTrackAPI_UseCaseProtocol.swift */,
-				D7D9E82424682161005B4313 /* CarTrackGenericAppBusinessUseCaseProtocol.swift */,
+				D7D9E81B24681BBE005B4313 /* CarTrack_NetWorkRepositoryProtocol.swift */,
+				D7D9E86E2468264A005B4313 /* CarTrackAPIRelated_UseCaseProtocol.swift */,
+				D7D9E82424682161005B4313 /* CarTrackGenericAppBusiness_UseCaseProtocol.swift */,
 				D7F2DD9624745E4C008CE3DA /* Models */,
 				D7F2DD812474587C008CE3DA /* Domain_CarTrack.h */,
 				D7F2DD822474587C008CE3DA /* Info.plist */,
@@ -3883,11 +3883,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7F2DD9824745F37008CE3DA /* CarTrackGenericAppBusinessUseCaseProtocol.swift in Sources */,
+				D7F2DD9824745F37008CE3DA /* CarTrackGenericAppBusiness_UseCaseProtocol.swift in Sources */,
 				D7F2DD9B24745F56008CE3DA /* CarTrack.CarTrackUserResponseDtoElement.swift in Sources */,
-				D7F2DD9924745F3E008CE3DA /* CarTrackAPI_UseCaseProtocol.swift in Sources */,
+				D7F2DD9924745F3E008CE3DA /* CarTrackAPIRelated_UseCaseProtocol.swift in Sources */,
 				D7F2DD9A24745F56008CE3DA /* CarTrack.swift in Sources */,
-				D7F2DDA02474659A008CE3DA /* CarTrack_WebAPIRepositoryProtocol.swift in Sources */,
+				D7F2DDA02474659A008CE3DA /* CarTrack_NetWorkRepositoryProtocol.swift in Sources */,
 				D7F2DD9C24745F56008CE3DA /* CarTrack.CarTrackUserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

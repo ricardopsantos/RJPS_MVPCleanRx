@@ -10,7 +10,6 @@ import Foundation
 //
 import RJPSLib
 //
-import Domain
 import DevTools
 import Domain_CarTrack
 
@@ -24,7 +23,7 @@ public extension API.CarTrack {
 
         public init() { }
 
-        public func userDetails(canUseCache: Bool, completionHandler: @escaping CarTrack_UserDetailsNetWorkRepositoryCompletionHandler) {
+        public func userDetails(completionHandler: @escaping CarTrack_NetWorkRepositoryCompletionHandler) {
             do {
                 let apiRequest: WebAPIRequest_Protocol = try WebAPI.CarTrackAPIRequest.GetUserInfo(userName: "")
                 let apiClient: RJSLibNetworkClient_Protocol  = RJSLib.NetworkClient()

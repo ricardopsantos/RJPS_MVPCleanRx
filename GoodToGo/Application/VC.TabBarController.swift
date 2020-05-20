@@ -30,10 +30,10 @@ extension VC {
             let vcRx = createControllers(tabName: "RxTesting", vc: RxTesting())
 
             let vipTemplate = createControllers(tabName: "Template", vc: VC.___VARIABLE_sceneName___ViewController())
-            let vipDebug = createControllers(tabName: "DebugView", vc: VC.DebugViewController())
-            let vipCarTrack = createControllers(tabName: "Template", vc: VC.CarTrackLoginViewController())
+            let vipDebug    = createControllers(tabName: "DebugView", vc: VC.DebugViewController())
+            let vipCarTrack = createControllers(tabName: "CarTrack", vc: VC.CarTrackLoginViewController())
 
-            viewControllers = [vipDebug, vipTemplate, vcRx, mvpBliss]
+            viewControllers = [vipDebug, vipTemplate, vipCarTrack, mvpBliss]
             
         }
 
