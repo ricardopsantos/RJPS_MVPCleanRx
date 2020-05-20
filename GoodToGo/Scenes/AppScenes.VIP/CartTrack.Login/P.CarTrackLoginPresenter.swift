@@ -93,7 +93,6 @@ extension P.CarTrackLoginPresenter: CarTrackLoginPresentationLogicProtocol {
 
         let emailIsValid    = response.emailIsValid
         let passwordIsValid = response.passwordIsValid
-       // print("emailIsValid: \(emailIsValid) | passwordIsValid: \(passwordIsValid)")
         var layout: E.CarTrackLoginView.ScreenLayout = .allFieldsAreValid
         if emailIsValid && !passwordIsValid {
             //
@@ -116,30 +115,7 @@ extension P.CarTrackLoginPresenter: CarTrackLoginPresentationLogicProtocol {
             //
             layout = .allFieldsAreValid
         }
-/*
-        var layout: E.CarTrackLoginView.ScreenLayout = .enterUserCredentials
-        let boothFieldsHaveValues = response.emailIsNotEmpty && response.passwordIsNotEmpty
-        let invalidEmail    = !response.emailIsValidInShape && !response.emailIsNotEmpty
-        let invalidPassword = !response.emailIsValidInShape && !response.emailIsNotEmpty
-        if boothFieldsHaveValues {
-            if invalidPassword && !invalidEmail {
-                // Invalid password
-                layout = .invalidPasswordFormat(errorMessage: Messages.invalidPassword.localised)
-            } else if !invalidPassword && invalidEmail {
-                // Invalid email
-                layout = .invalidEmailFormat(errorMessage: Messages.invalidEmail.localised)
-            } else if !invalidPassword && !invalidEmail {
-                // Invalid email and password
-                layout = .invalidEmailFormatAndPasswordFormat(passwordErrorMessage: Messages.invalidPassword.localised, emailErrorMessage: Messages.invalidEmail.localised)
-            } else {
-                layout = .allFieldsAreValid
-            }
-        } else {
-            layout = .enterUserCredentials
-        }*/
         let viewModel = VM.CarTrackLogin.ScreenState.ViewModel(layout: layout)
         viewController?.displayScreenState(viewModel: viewModel)
-
     }
-
 }

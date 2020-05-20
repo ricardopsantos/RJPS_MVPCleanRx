@@ -103,9 +103,10 @@ public extension DevTools {
         if !isTrue() {
             let messageFinal = "\(message)\n\n@\(whereAmIDynamic(function: "\(function)", file: "\(file)", line: line, short: true))"
             DevTools.makeToast(messageFinal, isError: true)
-
+            // swiftlint:disable no_print
             print("⛔⛔⛔⛔⛔ assert ⛔⛔⛔⛔⛔")
             print("⛔⛔⛔⛔⛔ assert ⛔⛔⛔⛔⛔")
+            // swiftlint:enable no_print
             print(messageFinal)
             if forceFix {
                 fatalError("\nThis need to be fixed now!\n")

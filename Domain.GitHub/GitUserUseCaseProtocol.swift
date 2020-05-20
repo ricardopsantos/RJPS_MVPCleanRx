@@ -12,16 +12,16 @@ import RJPSLib
 //
 import Domain
 
-public typealias GitUser_Single_UseCaseCompletionHandler = (_ result: Result<GitHub.UserResponseDto>) -> Void
-public typealias GitUser_Friends_UseCaseCompletionHandler = (_ result: Result<[GitHub.UserResponseDto]>) -> Void
+public typealias GitHubAPIRelated_S1_UseCaseCompletionHandler = (_ result: Result<GitHub.UserResponseDto>) -> Void
+public typealias GitHubAPIRelated_S2_UseCaseCompletionHandler = (_ result: Result<[GitHub.UserResponseDto]>) -> Void
 
-public protocol GitUserUseCaseProtocol: class {
+public protocol GitHubAPIRelated_UseCaseProtocol: class {
 
     func getInfoOfUserWith(userName: String,
                            canUseCache: Bool,
-                           completionHandler: @escaping GitUser_Single_UseCaseCompletionHandler)
+                           completionHandler: @escaping GitHubAPIRelated_S1_UseCaseCompletionHandler)
 
     func getFriendsOfUserWith(userName: String,
                               canUseCache: Bool,
-                              completionHandler: @escaping GitUser_Friends_UseCaseCompletionHandler)
+                              completionHandler: @escaping GitHubAPIRelated_S2_UseCaseCompletionHandler)
 }

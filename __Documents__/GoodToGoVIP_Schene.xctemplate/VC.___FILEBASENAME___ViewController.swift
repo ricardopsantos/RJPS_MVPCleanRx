@@ -93,11 +93,11 @@ extension VC {
             let presenter  = P.___VARIABLE_sceneName___Presenter()
             let router     = R.___VARIABLE_sceneName___Router()
             viewController.interactor = interactor
-            viewController.router = router
-            interactor.presenter  = presenter
+            viewController.router    = router
+            interactor.presenter     = presenter
             presenter.viewController = viewController
-            router.viewController = viewController
-            router.dsSource = interactor
+            router.viewController    = viewController
+            router.dsSource          = interactor
         }
 
         // Order in View life-cycle : 5
@@ -110,8 +110,7 @@ extension VC {
         // Order in View life-cycle : 3
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
-            #warning("Add reachability support")
-            
+
             genericView.rxModelSelected
                 .subscribe(onNext: { /* [router] */ (some) in
                     DevTools.Log.log("Received [\(some)]")
@@ -120,19 +119,12 @@ extension VC {
 
             genericView.rxBtnSample1Tap
                 .do(onNext: { [weak self] in
-                    self?.router?.routeToTemplateWithParentDataStore()
-                })
-                .subscribe()
-                .disposed(by: disposeBag)
-
-            genericView.rxBtnSample2Tap
-                .do(onNext: { [weak self] in
                     self?.router?.routeSomewhereWithDataStore()
                 })
                 .subscribe()
                 .disposed(by: disposeBag)
 
-            genericView.rxBtnSample3Tap
+            genericView.rxBtnSample2Tap
                 .do(onNext: { [weak self] in
                     self?.doPrivateStuff()
                 })
@@ -152,9 +144,7 @@ extension VC {
 // MARK: Public Misc Stuff
 
 extension VC.___VARIABLE_sceneName___ViewController {
-    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
-    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
-    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
+    #warning("THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE")
     public func somePublicStuff() {
         // Do some public stuff
     }
@@ -163,10 +153,7 @@ extension VC.___VARIABLE_sceneName___ViewController {
 // MARK: Private Misc Stuff
 
 extension VC.___VARIABLE_sceneName___ViewController {
-
-    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
-    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
-    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
+    #warning("THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE")
     private func doPrivateStuff() {
         let userId = genericView.subTitle
         let request = VM.___VARIABLE_sceneName___.Something.Request(userId: userId)

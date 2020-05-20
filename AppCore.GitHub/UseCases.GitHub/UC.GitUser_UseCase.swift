@@ -19,13 +19,13 @@ import Factory
 import DevTools
 import AppCore
 
-public class GitUser_UseCase: GenericUseCase, GitUserUseCaseProtocol {
+public class GitUser_UseCase: GenericUseCase, GitHubAPIRelated_UseCaseProtocol {
     public override init() { super.init() }
     
     public  var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
     public var repositoryNetwork: GitUser_NetWorkRepositoryProtocol!
     
-    public func getInfoOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitUser_Single_UseCaseCompletionHandler) {
+    public func getInfoOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitHubAPIRelated_S1_UseCaseCompletionHandler) {
         
         guard existsInternetConnection else {
             completionHandler(Result.failure(Factory.Errors.with(appCode: .noInternet)))
@@ -56,7 +56,7 @@ public class GitUser_UseCase: GenericUseCase, GitUserUseCaseProtocol {
         })
     }
     
-    public func getFriendsOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitUser_Friends_UseCaseCompletionHandler) {
+    public func getFriendsOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitHubAPIRelated_S2_UseCaseCompletionHandler) {
         
         guard existsInternetConnection else {
             completionHandler(Result.failure(Factory.Errors.with(appCode: .noInternet)))

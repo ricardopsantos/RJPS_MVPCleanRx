@@ -15,12 +15,30 @@ import DevTools
 
 open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtocol {
 
+    public var presentationStyle: ViewControllerPresentedLike?
+    public init(presentationStyle: ViewControllerPresentedLike) {
+        super.init(nibName: nil, bundle: nil)
+        self.presentationStyle = presentationStyle
+    }
+
+    private init() {
+        fatalError("Use instead [init(presentationStyle: E.ViewControllerPresentedLike)]")
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError("Use instead [init(presentationStyle: \(ViewControllerPresentedLike.self)]")
+    }
+
+    //private override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    //    fatalError("Use instead [init(presentationStyle: \(ViewControllerPresentedLike.self)]")
+    //}
+
     deinit {
         if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { DevTools.Log.log("\(self.className) was killed") }
         NotificationCenter.default.removeObserver(self)
     }
 
-    public static var shared = BaseViewControllerVIP()
+    public static var shared = BaseViewControllerVIP(presentationStyle: .unknown)
 
     open override func loadView() {
         super.loadView()

@@ -42,7 +42,7 @@ extension V {
             UIKitFactory.stackView(axis: .vertical)
         }()
 
-        private lazy var lblSample: UILabel = {
+        private lazy var lblTitle: UILabel = {
             UIKitFactory.label(style: .value)
         }()
 
@@ -51,11 +51,7 @@ extension V {
         }()
 
         private lazy var btnSample2: UIButton = {
-            UIKitFactory.button(title: "btnSample2", style: .regular)
-        }()
-
-        private lazy var btnSample3: UIButton = {
-            UIKitFactory.button(title: "btnSample3", style: .regular)
+            UIKitFactory.button(title: "btnSample", style: .regular)
         }()
 
         // Naming convention: rxTbl[MeaningfulTableName]Items
@@ -76,13 +72,11 @@ extension V {
             addSubview(scrollView)
             scrollView.addSubview(stackViewVLevel1)
             stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(lblSample)
+            stackViewVLevel1.uiUtils.safeAddArrangedSubview(lblTitle)
             stackViewVLevel1.uiUtils.addArrangedSeparator()
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(btnSample1)
             stackViewVLevel1.uiUtils.addArrangedSeparator()
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(btnSample2)
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(btnSample3)
             addSubview(tableView)
         }
 
@@ -90,10 +84,7 @@ extension V {
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 2/3 : JUST to setup layout rules zone....
         override func prepareLayoutBySettingAutoLayoutsRules() {
-            let edgesToExclude: LayoutEdge = .init([.top, .bottom])
             let defaultMargin = Designables.Sizes.Margins.defaultMargin
-            let insets: TinyEdgeInsets = TinyEdgeInsets(top: defaultMargin, left: defaultMargin, bottom: defaultMargin, right: defaultMargin)
-         //   lblSample.autoLayout.edgesToSuperview(excluding: edgesToExclude, insets: insets)
 
             stackViewVLevel1.uiUtils.edgeStackViewToSuperView()
             let scrollViewHeight = screenHeight/2
@@ -122,7 +113,7 @@ extension V {
             tableView.rowHeight = UITableView.automaticDimension
             tableView.separatorColor = .clear
             tableView.rx.setDelegate(self).disposed(by: disposeBag)
-            lblSample.textAlignment = .center
+            lblTitle.textAlignment = .center
         }
 
         override func setupColorsAndStyles() {
@@ -157,13 +148,6 @@ extension V {
             dataSource.animationConfiguration = AnimationConfiguration(insertAnimation: .fade, reloadAnimation: .fade, deleteAnimation: .fade)
 
             rxTableItems.asObserver().bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
-
-            tableView.rx.modelSelected(VM.___VARIABLE_sceneName___.TableItem.self)
-                .observeOn(MainScheduler.instance).subscribe(onNext: { [weak self] some in
-                    guard let self = self else { return }
-                    if !some.enabled { return }
-                    //rxModelSelected.bind(onNext: some)
-                }).disposed(by: disposeBag)
         }
 
         // MARK: - Custom Getter/Setters
@@ -173,15 +157,15 @@ extension V {
         // We can set the view data by : 3 - Passing the view model inside the view ---> func setupWith(viewModel: ... <---
 
         public var subTitle: String {
-            get { return  lblSample.text ?? "" }
+            get { return  lblTitle.text ?? "" }
             set(newValue) {
-                lblSample.textAnimated = newValue
+                lblTitle.textAnimated = newValue
             }
         }
 
         public var titleStyleType: UILabel.LayoutStyle = .value {
             didSet {
-                lblSample.layoutStyle = titleStyleType
+                lblTitle.layoutStyle = titleStyleType
             }
         }
 
@@ -240,7 +224,6 @@ extension V.___VARIABLE_sceneName___View: UITableViewDelegate {
 extension V.___VARIABLE_sceneName___View {
     var rxBtnSample1Tap: Observable<Void> { btnSample1.rx.tapSmart(disposeBag) }
     var rxBtnSample2Tap: Observable<Void> { btnSample2.rx.tapSmart(disposeBag) }
-    var rxBtnSample3Tap: Observable<Void> { btnSample3.rx.tapSmart(disposeBag) }
     var rxModelSelected: ControlEvent<VM.___VARIABLE_sceneName___.TableItem> {
         tableView.rx.modelSelected(VM.___VARIABLE_sceneName___.TableItem.self)
     }

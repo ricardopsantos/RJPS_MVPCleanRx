@@ -82,7 +82,6 @@ protocol ___VARIABLE_sceneName___DisplayLogicProtocol: BaseViewControllerVIPProt
 // Routing Logic Protocol - all the methods used for routing are kept under this protocol.
 protocol ___VARIABLE_sceneName___RoutingLogicProtocol {
     // Naming convention : func routeTo__XXX__MaybeSomeExtraInfo()
-    func routeToTemplateWithParentDataStore()
     func routeSomewhereWithDataStore()
 }
 

@@ -1,12 +1,12 @@
-# iOS Architecture design patterns : MVP/VIP + Clean + Rx
+# iOS Architecture design patterns : (MVP or VIP) + Clean + Rx
 
 - [x] 📱  iOS 11.0+
 - [x] 🔨  XCode 11.4, Swift 5.1
 
-The intent of this project is to show a simple implementation of the __MVP/VIP Clean (Rx)__ pattern. This is my vision about it, and if you don't agree with something, just email me, I love to hear opinions and learn from that.
+The intent of this project is to show a simple implementation of the __MVP/VIP + Clean (Rx)__ pattern. This is my vision about it, and if you don't agree with something, just email me, I love to hear opinions and learn from that.
 
 
-![Preview](__Documents__/ReadmeImages/readme_1.png)
+![Preview](__Documents__/ReadmeImages/readme_2.png)
 
 
 # Install
@@ -17,16 +17,16 @@ Just download source code and run  `./_script_installPackages.sh`
 
 - [x] Localisable ressources
 - [x] [RJPSLib](https://github.com/ricardopsantos/RJPSLib) to manage logs, caching, network client, generic extensions...
-- [x] Sample App - GitUser (search users on GitHub)
-- [x] RxSwift & RxCocoa sample examples
+- [x] RxSwift & RxCocoa usage
 - [x] [.xcconfig](https://nshipster.com/xcconfig/) usage
 - [x] Cache (on Network API) usage
 - [x] Code style analyser with [Swiftlint](https://github.com/realm/SwiftLint)
 - [x] Dependency injection with [Swinject](https://github.com/Swinject/Swinject)
- 
+ -[x] MVP Pattern design sample screens - `GoodToGo/Scenes/AppScenes.MVP`
+ -[x] VIP Pattern design sample screens - `GoodToGo/Scenes/AppScenes.VIP`
+ -[x] VIP Custom Xcode Template (`GoodToGoVIP_Schene.xctemplate`)
  More info about the project and MVP architecture [here](https://github.com/ricardopsantos/RJPS_MVPCleanRx/tree/master/Docs)
  
-
 # Code Guidelines/Conventions
 
 * All is private (variables, functions, etc), unless really need to be public.

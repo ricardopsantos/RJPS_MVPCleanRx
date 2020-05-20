@@ -204,7 +204,7 @@ extension V.CartTrackMapView: MKMapViewDelegate {
 
     // Called when the region displayed by the map view is about to change
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        //    print(#function)
+
     }
 
     // Called when the annotation was added
@@ -247,35 +247,28 @@ extension V.CartTrackMapView: MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        print(#function)
         if control == view.rightCalloutAccessoryView {
-            //   print("toTheMoon")
+
         }
     }
 
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationView.DragState, fromOldState oldState: MKAnnotationView.DragState) {
         if newState == .ending {
-            let droppedAt = view.annotation?.coordinate
-            //print(droppedAt.debugDescription)
+            DevTools.Log.log("\(String(describing: view.annotation?.coordinate))")
         }
     }
 
     // MARK: - Navigation
 
     @IBAction func didReturnToMapViewController(_ segue: UIStoryboardSegue) {
-        print(#function)
+
     }
 }
 
 // MARK: - Events capture
 
 extension V.CartTrackMapView {
-    /*   var rxBtnSample1Tap: Observable<Void> { btnSample1.rx.tapSmart(disposeBag) }
-     var rxBtnSample2Tap: Observable<Void> { btnSample2.rx.tapSmart(disposeBag) }
-     var rxBtnSample3Tap: Observable<Void> { btnSample3.rx.tapSmart(disposeBag) }
-     var rxModelSelected: ControlEvent<VM.CartTrackMap.TableItem> {
-     tableView.rx.modelSelected(VM.CartTrackMap.TableItem.self)
-     }*/
+
 }
 
 // MARK: MKMapViewUtils

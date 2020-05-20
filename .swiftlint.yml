@@ -10,7 +10,7 @@ custom_rules:
 
     rule_Coding:
         included: ".*\\.swift"
-        name: "No let _ = ..."
+        name: "Forbiden Codable= ..."
         regex: 'Codable'
         message: "Don't use Codable alone. Use ModelEntityProtocol or ResponseDtoProtocol"
         severity: error

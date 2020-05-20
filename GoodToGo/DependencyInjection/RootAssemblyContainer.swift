@@ -43,7 +43,7 @@ struct RootAssemblyContainerProtocols {
     // Sample
     static let sample_UseCase                     = Sample_UseCaseProtocol.self
     static let sampleB_UseCase                    = SampleB_UseCaseProtocol.self
-    static let gitUser_UseCase                    = GitUserUseCaseProtocol.self
+    static let gitUser_UseCase                    = GitHubAPIRelated_UseCaseProtocol.self
 
     // Bliss
     static let blissQuestions_UseCase             = BlissQuestionsAPIUseCaseProtocol.self

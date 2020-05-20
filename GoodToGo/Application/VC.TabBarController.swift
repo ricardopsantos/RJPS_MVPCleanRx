@@ -25,15 +25,15 @@ extension VC {
             let mvpSample3 = createControllers(tabName: "MVP.Rx.Table", vc: AppDelegate.shared.container.resolve(V.MVPSampleTableView_View.self)!)
 
             let mvpGitUser = createControllers(tabName: "GitUser", vc: AppDelegate.shared.container.resolve(V.SearchUser_View.self)!)
-            let mvpBliss = createControllers(tabName: "Bliss", vc: AppDelegate.shared.container.resolve(V.BlissRoot_View.self)!)
+            let mvpBliss   = createControllers(tabName: "Bliss", vc: AppDelegate.shared.container.resolve(V.BlissRoot_View.self)!)
 
             let vcRx = createControllers(tabName: "RxTesting", vc: RxTesting())
 
-            let vipTemplate = createControllers(tabName: "Template", vc: VC.___VARIABLE_sceneName___ViewController())
-            let vipDebug    = createControllers(tabName: "DebugView", vc: VC.DebugViewController())
-            let vipCarTrack = createControllers(tabName: "CarTrack", vc: VC.CarTrackLoginViewController())
+            let vipTemplate = createControllers(tabName: "Template", vc: VC.___VARIABLE_sceneName___ViewController(presentationStyle: .regularVC))
+            let vipDebug    = createControllers(tabName: "DebugView", vc: VC.DebugViewController(presentationStyle: .regularVC))
+            let vipCarTrack = createControllers(tabName: "CarTrack", vc: VC.CarTrackLoginViewController(presentationStyle: .regularVC))
 
-            viewControllers = [vipDebug, vipTemplate, vipCarTrack, mvpBliss]
+            viewControllers = [vipDebug, vipTemplate, vipCarTrack, mvpGitUser, mvpBliss]
             
         }
 

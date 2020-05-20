@@ -11,7 +11,6 @@ import UIKit
 import AVFoundation
 import Domain
 
-#warning("old cache")
 public extension RP {
     class CacheRepository: CacheRepositoryProtocol {
 

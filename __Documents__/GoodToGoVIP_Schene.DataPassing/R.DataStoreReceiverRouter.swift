@@ -28,7 +28,7 @@ extension R {
         // DataPassingProtocol Protocol vars... // <<-- DS Sample : Take notice
         var dsToBeSetted: DataStoreReceiverDataStoreProtocol? {
             didSet {
-                print("\(DataStoreReceiverRouter.self) Datastore was setted!")
+                DevTools.Log.log("\(DataStoreReceiverRouter.self) Datastore was setted!")
             }
         }
      }

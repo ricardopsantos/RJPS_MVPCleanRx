@@ -49,7 +49,7 @@ extension VC {
             some.rjsALayouts.setMargin(0, on: .left)
             some.rjsALayouts.setHeight(50)
             some.rx.text.subscribe(onNext: { text in
-                print(text as Any)
+                DevTools.Log.log(text ?? "")
             }).disposed(by: disposeBag)
             some.rx.text
                 .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
@@ -380,7 +380,7 @@ extension VC.RxTesting {
     
     func aux_log(message: String, showAlert: Bool, appendToTable: Bool) {
         searchBar.resignFirstResponder()
-        print("\(message)")
+        DevTools.Log.log("\(message)")
         if appendToTable {
             let time = "" //"\(Date.utcNow().hours):\(Date.utcNow().minutes):\(Date.utcNow().seconds)"
             rxBehaviorRelay_tableDataSource.accept(["\(time) : \(message)"] + rxBehaviorRelay_tableDataSource.value)
@@ -413,9 +413,9 @@ extension VC.RxTesting {
                 .map { return Int($0)! * 10 }
                 .filter { $0 > 25 }
                 .subscribe(
-                    onNext: { print($0) },
-                    onError: { print($0) },
-                    onCompleted: { print("completed s1") }
+                    onNext: { DevTools.Log.log("\($0)") },
+                    onError: { DevTools.Log.log("\($0)") },
+                    onCompleted: { DevTools.Log.log("completed s1") }
                 ).disposed(by: disposeBag)
             
             Observable<String>.of("2", "3", "3", "5")
@@ -423,9 +423,9 @@ extension VC.RxTesting {
                 .filter { $0 > 25 }
                 .subscribe({
                     switch $0 {
-                    case .next(let value): print(value)
-                    case .error(let error): print(error)
-                    case .completed: print("completed s2")
+                    case .next(let value): DevTools.Log.log("\(value)")
+                    case .error(let error): DevTools.Log.log("\(error)")
+                    case .completed: DevTools.Log.log("completed s2")
                     }
                 }).disposed(by: disposeBag)
             
@@ -485,12 +485,12 @@ extension VC.RxTesting {
                  .map { "\($0)" }
              
              _ = intervalObservable_1
-                 . subscribe(onNext: { n in print("intervalObservable : \(n)") })
+                 . subscribe(onNext: { n in DevTools.Log.log("intervalObservable : \(n)") })
              
              _ = intervalObservable_1
                  .throttle(.milliseconds(2000), scheduler: MainScheduler.instance)
                  .elementAt(0)
-                 .subscribe(onNext: { n in print("intervalObservable_throttle : \(n)") })
+                 .subscribe(onNext: { n in DevTools.Log.log("intervalObservable_throttle : \(n)") })
         }
         
     }

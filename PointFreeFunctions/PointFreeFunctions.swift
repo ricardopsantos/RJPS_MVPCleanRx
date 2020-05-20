@@ -122,11 +122,13 @@ extension String {
 
 private func printError(title: String, message: String) {
     #if DEBUG
+        // swiftlint:disable no_print
         print("⛔⛔⛔⛔⛔ \(title) ⛔⛔⛔⛔⛔")
         print("⛔⛔⛔⛔⛔ \(title) ⛔⛔⛔⛔⛔")
         print(message)
         print("⛔⛔⛔⛔⛔ \(title) ⛔⛔⛔⛔⛔")
         print("⛔⛔⛔⛔⛔ \(title) ⛔⛔⛔⛔⛔")
+        // swiftlint:enable no_print
     #endif
 }
 
