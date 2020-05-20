@@ -22,10 +22,11 @@ Just download source code and run  `./_script_installPackages.sh`
 - [x] Cache (on Network API) usage
 - [x] Code style analyser with [Swiftlint](https://github.com/realm/SwiftLint)
 - [x] Dependency injection with [Swinject](https://github.com/Swinject/Swinject)
- -[x] MVP Pattern design sample screens - `GoodToGo/Scenes/AppScenes.MVP`
- -[x] VIP Pattern design sample screens - `GoodToGo/Scenes/AppScenes.VIP`
- -[x] VIP Custom Xcode Template (`GoodToGoVIP_Schene.xctemplate`)
- More info about the project and MVP architecture [here](https://github.com/ricardopsantos/RJPS_MVPCleanRx/tree/master/Docs)
+- [x] MVP Pattern design sample screens - `GoodToGo/Scenes/AppScenes.MVP`
+- [x] VIP Pattern design sample screens - `GoodToGo/Scenes/AppScenes.VIP`
+- [x] VIP Custom Xcode Template (`GoodToGoVIP_Schene.xctemplate`)
+
+More info about the project and MVP architecture [here](https://github.com/ricardopsantos/RJPS_MVPCleanRx/tree/master/Docs)
  
 # Code Guidelines/Conventions
 
