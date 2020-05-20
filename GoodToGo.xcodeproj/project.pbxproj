@@ -310,6 +310,11 @@
 		D7F2DE0624748644008CE3DA /* AppCore_GitHub.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7F2DDFE24748644008CE3DA /* AppCore_GitHub.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7F2DE21247487F1008CE3DA /* Mappers+GitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D64246D46D70039031C /* Mappers+GitUser.swift */; };
 		D7F2DE22247487F1008CE3DA /* UC.GitUser_UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979D73246D46FA0039031C /* UC.GitUser_UseCase.swift */; };
+		D7F2DE332474A718008CE3DA /* VC.DataStoreReceiverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2DE252474A6D4008CE3DA /* VC.DataStoreReceiverViewController.swift */; };
+		D7F2DE342474A718008CE3DA /* R.DataStoreReceiverRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2DE262474A6D4008CE3DA /* R.DataStoreReceiverRouter.swift */; };
+		D7F2DE352474A718008CE3DA /* D.DataStoreReceiverDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2DE272474A6D4008CE3DA /* D.DataStoreReceiverDomain.swift */; };
+		D7F2DE362474A718008CE3DA /* I.DataStoreReceiverInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2DE292474A6D4008CE3DA /* I.DataStoreReceiverInteractor.swift */; };
+		D7F2DE372474A718008CE3DA /* P.DataStoreReceiverPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2DE2A2474A6D4008CE3DA /* P.DataStoreReceiverPresenter.swift */; };
 		D7FA21F724708B9C001DD9D5 /* ReachabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA21F324706A32001DD9D5 /* ReachabilityView.swift */; };
 		D7FA2207247189B9001DD9D5 /* TokenRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA2206247189B9001DD9D5 /* TokenRefresh.swift */; };
 		D7FCAC2024685B7A00DBECA2 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FCAC1F24685B7A00DBECA2 /* RxDataSources.framework */; };
@@ -1277,6 +1282,11 @@
 		D7F2DDFE24748644008CE3DA /* AppCore_GitHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppCore_GitHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7F2DE0024748644008CE3DA /* AppCore_GitHub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppCore_GitHub.h; sourceTree = "<group>"; };
 		D7F2DE0124748644008CE3DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7F2DE252474A6D4008CE3DA /* VC.DataStoreReceiverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.DataStoreReceiverViewController.swift; sourceTree = "<group>"; };
+		D7F2DE262474A6D4008CE3DA /* R.DataStoreReceiverRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.DataStoreReceiverRouter.swift; sourceTree = "<group>"; };
+		D7F2DE272474A6D4008CE3DA /* D.DataStoreReceiverDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D.DataStoreReceiverDomain.swift; sourceTree = "<group>"; };
+		D7F2DE292474A6D4008CE3DA /* I.DataStoreReceiverInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.DataStoreReceiverInteractor.swift; sourceTree = "<group>"; };
+		D7F2DE2A2474A6D4008CE3DA /* P.DataStoreReceiverPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.DataStoreReceiverPresenter.swift; sourceTree = "<group>"; };
 		D7FA21F324706A32001DD9D5 /* ReachabilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityView.swift; sourceTree = "<group>"; };
 		D7FA21FC24715A9A001DD9D5 /* no_internet_usage_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_internet_usage_1.png; sourceTree = "<group>"; };
 		D7FA21FD24715A9A001DD9D5 /* map_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_1.png; sourceTree = "<group>"; };
@@ -1572,6 +1582,7 @@
 		9F36ADE321B1612600FADBB1 /* __Documents__ */ = {
 			isa = PBXGroup;
 			children = (
+				D7F2DE232474A69E008CE3DA /* Aux.xctemplate */,
 				D7FA21FB24715A9A001DD9D5 /* CarTrackReport */,
 				D7FA21FA247159A5001DD9D5 /* Arquitecture */,
 				D761FE9A2468304A00BD41A5 /* GoodToGoVIP Schene.xctemplate */,
@@ -2474,6 +2485,18 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
+		D7F2DE232474A69E008CE3DA /* Aux.xctemplate */ = {
+			isa = PBXGroup;
+			children = (
+				D7F2DE252474A6D4008CE3DA /* VC.DataStoreReceiverViewController.swift */,
+				D7F2DE262474A6D4008CE3DA /* R.DataStoreReceiverRouter.swift */,
+				D7F2DE272474A6D4008CE3DA /* D.DataStoreReceiverDomain.swift */,
+				D7F2DE292474A6D4008CE3DA /* I.DataStoreReceiverInteractor.swift */,
+				D7F2DE2A2474A6D4008CE3DA /* P.DataStoreReceiverPresenter.swift */,
+			);
+			path = Aux.xctemplate;
+			sourceTree = "<group>";
+		};
 		D7FA21FA247159A5001DD9D5 /* Arquitecture */ = {
 			isa = PBXGroup;
 			children = (
@@ -3224,7 +3247,6 @@
 				D7F2DDA524746C0F008CE3DA /* AppCore.CarTrack */,
 				D7F2DDFD24748644008CE3DA /* AppCore.GitHub */,
 				D729226524669F3700DAD480 /* Designables */,
-				D729228C2466A04200DAD480 /* UIBase */,
 				D7E25A9324669B9B003BBEA0 /* AppConstants */,
 				D72922AE2466A0CA00DAD480 /* DevTools */,
 				D729230F2466B35300DAD480 /* Extensions */,
@@ -3232,6 +3254,7 @@
 				D7D9E79F24676FE6005B4313 /* WebAPI */,
 				D7D9E7D22467958E005B4313 /* Repositories */,
 				D788BD9E24698D74007C59D0 /* Factory */,
+				D729228C2466A04200DAD480 /* UIBase */,
 			);
 		};
 /* End PBXProject section */
@@ -3586,6 +3609,7 @@
 				D7979DC6246DC1960039031C /* VC.DebugViewController.swift in Sources */,
 				9F6BB2EF22E3A97F00829A6F /* V.BlissQuestionsList_View.swift in Sources */,
 				D779A5F2234FE3A500D3D6F7 /* D.SampleVIP_Domain.swift in Sources */,
+				D7F2DE362474A718008CE3DA /* I.DataStoreReceiverInteractor.swift in Sources */,
 				9F6BB2FD22E3C0E400829A6F /* VM.BlissDetails_ViewModel.swift in Sources */,
 				9FE1439721AF2F520026BDFC /* typealias.Application.swift in Sources */,
 				9F6BB2FB22E3C0E400829A6F /* P.BlissDetails_Presenter.swift in Sources */,
@@ -3594,6 +3618,7 @@
 				9F6BB2D122E3470200829A6F /* V.MVPSampleTableView_View.swift in Sources */,
 				9F58FB4722BE5DE700042A8C /* UserDetails_AssemblyContainer.swift in Sources */,
 				D725A6A1246C6CDB005664CB /* CarTrackResolver.swift in Sources */,
+				D7F2DE352474A718008CE3DA /* D.DataStoreReceiverDomain.swift in Sources */,
 				9F6BB2FE22E3C0E400829A6F /* AS.BlissDetails_AssemblyContainer.swift in Sources */,
 				9F6BB30322E3CB2D00829A6F /* D.BlissRoot_ViewModel.swift in Sources */,
 				D7979DCB246DC1960039031C /* P.DebugPresenter.swift in Sources */,
@@ -3603,6 +3628,8 @@
 				9F6BB2FA22E3C0E400829A6F /* R.BlissDetails_Router.swift in Sources */,
 				D7711F6B246B340C00B6963A /* P.___FILEBASENAME___Presenter.swift in Sources */,
 				9F6BB2D222E3470200829A6F /* P.MVPSampleTableView_Presenter.swift in Sources */,
+				D7F2DE332474A718008CE3DA /* VC.DataStoreReceiverViewController.swift in Sources */,
+				D7F2DE342474A718008CE3DA /* R.DataStoreReceiverRouter.swift in Sources */,
 				9FE0572822E8D75400802747 /* MVPSampleRxView_View.swift in Sources */,
 				9FE0572D22E8D8F000802747 /* V.MVPSampleView_View.swift in Sources */,
 				9F58FB4B22BE5DE700042A8C /* P.SearchUser_Presenter.swift in Sources */,
@@ -3628,6 +3655,7 @@
 				D7979DB8246D6B370039031C /* D.CarTrackLoginDomain.swift in Sources */,
 				9F6BB30022E3CB2D00829A6F /* AC.BlissRoot_AssemblyContainer.swift in Sources */,
 				9FACC18B223BFB0F00576498 /* AppDelegate+Setup.swift in Sources */,
+				D7F2DE372474A718008CE3DA /* P.DataStoreReceiverPresenter.swift in Sources */,
 				9F6BB2D922E3673200829A6F /* AppDelegate+URL.swift in Sources */,
 				9F6BB2F022E3A97F00829A6F /* P.BlissQuestionsList_Presenter.swift in Sources */,
 				9F58FB4922BE5DE700042A8C /* R.SearchUser_Router.swift in Sources */,

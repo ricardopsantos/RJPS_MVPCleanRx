@@ -41,7 +41,7 @@ extension R.___VARIABLE_sceneName___Router: ___VARIABLE_sceneName___RoutingLogic
         viewController?.dismissMe()
     }
 
-    func routeToTemplateWithDataStore() {
+    func routeSomewhereWithDataStore() {
         func passDataToSomewhere(source: ___VARIABLE_sceneName___DataStoreProtocol, destination: inout ___VARIABLE_sceneName___DataStoreProtocol) {
             destination.dsSomeKindOfModelA = source.dsSomeKindOfModelA
             destination.dsSomeKindOfModelB = source.dsSomeKindOfModelB
@@ -54,7 +54,7 @@ extension R.___VARIABLE_sceneName___Router: ___VARIABLE_sceneName___RoutingLogic
     }
 
     func routeToTemplateWithParentDataStore() {
-        routeToTemplateWithDataStore()
+        routeSomewhereWithDataStore()
     }
 
 }

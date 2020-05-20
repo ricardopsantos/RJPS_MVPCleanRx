@@ -125,7 +125,7 @@ extension VC {
 
             genericView.rxBtnSample2Tap
                 .do(onNext: { [weak self] in
-                    self?.router?.routeToTemplateWithDataStore()
+                    self?.router?.routeSomewhereWithDataStore()
                 })
                 .subscribe()
                 .disposed(by: disposeBag)

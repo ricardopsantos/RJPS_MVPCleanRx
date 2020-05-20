@@ -83,7 +83,7 @@ protocol ___VARIABLE_sceneName___DisplayLogicProtocol: BaseViewControllerVIPProt
 protocol ___VARIABLE_sceneName___RoutingLogicProtocol {
     // Naming convention : func routeTo__XXX__MaybeSomeExtraInfo()
     func routeToTemplateWithParentDataStore()
-    func routeToTemplateWithDataStore()
+    func routeSomewhereWithDataStore()
 }
 
 //
