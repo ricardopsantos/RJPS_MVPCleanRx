@@ -113,7 +113,7 @@ extension VC {
 
             genericView.rxModelSelected
                 .subscribe(onNext: { /* [router] */ (some) in
-                    DevTools.Log.log("Received [\(some)]")
+                    DevTools.Log.message("Received [\(some)]")
                 })
                 .disposed(by: disposeBag)
 

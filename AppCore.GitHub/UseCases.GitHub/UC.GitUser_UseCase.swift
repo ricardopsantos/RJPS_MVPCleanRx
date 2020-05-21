@@ -44,7 +44,7 @@ public class GitUser_UseCase: GenericUseCase, GitHubAPIRelated_UseCaseProtocol {
         }
         
         repositoryNetwork.getInfoOfUserWith(userName: userName, canUseCache: true, completionHandler: { [weak self] result in
-            guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+            guard let self = self else { return }
             switch result {
             case .success(let some):
                 let user: GitHub.UserResponseDto = some.entity
@@ -76,7 +76,7 @@ public class GitUser_UseCase: GenericUseCase, GitHubAPIRelated_UseCaseProtocol {
         }
         
         repositoryNetwork.getFriendsOfUserWith(userName: userName, canUseCache: true, completionHandler: { [weak self] result in
-            guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+            guard let self = self else { return }
             switch result {
             case .success(let some):
                 let friends: [GitHub.UserResponseDto] = some.entity

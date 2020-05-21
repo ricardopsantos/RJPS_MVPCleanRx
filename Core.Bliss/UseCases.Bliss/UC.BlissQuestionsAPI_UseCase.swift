@@ -51,7 +51,7 @@ public class BlissQuestionsAPI_UseCase: GenericUseCase, BlissQuestionsAPIUseCase
     
     public func shareQuestionBy(email: String, url: String, checkHealth: Bool, completionHandler: @escaping (Result<Bliss.ShareByEmail>) -> Void) {
         let doWork = { [weak self] in
-            guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+            guard let self = self else { return }
             self.repositoryNetwork.shareQuestionBy(email: email, url: url, completionHandler: { (result) in
                 switch result {
                 case .success(let some): completionHandler(Result.success(some.entity))
@@ -77,7 +77,7 @@ public class BlissQuestionsAPI_UseCase: GenericUseCase, BlissQuestionsAPIUseCase
     public func updateQuestion(question: Bliss.QuestionElementResponseDto, checkHealth: Bool, completionHandler: @escaping (Result<Bliss.QuestionElementResponseDto>) -> Void) {
         
         let doWork = { [weak self] in
-            guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+            guard let self = self else { return }
             self.repositoryNetwork.updateQuestion(question: question, completionHandler: { (result) in
                 switch result {
                 case .success(let some) : completionHandler(Result.success(some.entity))
@@ -103,7 +103,7 @@ public class BlissQuestionsAPI_UseCase: GenericUseCase, BlissQuestionsAPIUseCase
     public func getQuestions(limit: Int, filter: String, offSet: Int, checkHealth: Bool=true, completionHandler: @escaping (Result<[Bliss.QuestionElementResponseDto]>) -> Void) {
         
         let doWork = { [weak self] in
-            guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+            guard let self = self else { return }
             self.repositoryNetwork.getQuestions(limit: limit, filter: filter, offSet: offSet, completionHandler: { (result) in
                 switch result {
                 case .success(let some): completionHandler(Result.success(some.entity))
@@ -131,7 +131,7 @@ public class BlissQuestionsAPI_UseCase: GenericUseCase, BlissQuestionsAPIUseCase
     public func getQuestionBy(id: Int, checkHealth: Bool=true, completionHandler: @escaping (Result<Bliss.QuestionElementResponseDto>) -> Void) {
         
         let doWork = { [weak self] in
-            guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+            guard let self = self else { return }
             self.repositoryNetwork.getQuestionBy(id: id, completionHandler: { (result) in
                 switch result {
                 case .success(let some): completionHandler(Result.success(some.entity))
@@ -158,7 +158,7 @@ public class BlissQuestionsAPI_UseCase: GenericUseCase, BlissQuestionsAPIUseCase
     public func makeQuestion(question: Bliss.QuestionElementResponseDto, checkHealth: Bool=true, completionHandler: @escaping (Result<Bliss.QuestionElementResponseDto>) -> Void) {
         
         let doWork = { [weak self] in
-            guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+            guard let self = self else { return }
             self.repositoryNetwork.makeQuestion(question: question, completionHandler: { (result) in
                 switch result {
                 case .success(let some): completionHandler(Result.success(some.entity))

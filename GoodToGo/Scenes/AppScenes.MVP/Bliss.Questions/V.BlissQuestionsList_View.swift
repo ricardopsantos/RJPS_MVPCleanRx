@@ -61,14 +61,14 @@ extension V {
                 .orEmpty
                 .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
                 .subscribe(onNext: { [weak self] _ in
-                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+                    guard let self = self else { return }
                     let query = self.searchBar.text?.trim ?? ""
                     self.presenter.userPretendDoSearchWith(filter: query)
                 })
                 .disposed(by: disposeBag)
             some.rx.textDidEndEditing
                 .subscribe(onNext: { [weak self] (query) in
-                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+                    guard let self = self else { return }
                     let query = self.searchBar.text?.trim ?? ""
                 })
                 .disposed(by: self.disposeBag)
@@ -101,8 +101,8 @@ extension V {
             some.rx.modelSelected(Bliss.QuestionElementResponseDto.self)
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
                 .subscribe(onNext: { [weak self]  item in
-                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
-                    DevTools.Log.log("Tapped [\(item)]")
+                    guard let self = self else { return }
+                    DevTools.Log.message("Tapped [\(item)]")
                     self.presenter.tableView.didSelect(object: item)
                     if let index = some.indexPathForSelectedRow {
                         some.deselectRow(at: index, animated: true)
@@ -111,7 +111,7 @@ extension V {
                 .disposed(by: disposeBag)
             rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
                 _ = element
-                guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+                guard let self = self else { return }
                 var indexPath = NSIndexPath(row: row, section: 0)
                 cell.set(textColor: AppColors.lblTextColor)
                 self.presenter.tableView.configure(cell: cell, indexPath: indexPath as IndexPath)

@@ -76,7 +76,7 @@ extension V {
                 .bind(to: presenter.rxPublishRelay_dismissView)
                 .disposed(by: disposeBag)
             some.rxSignal_viewTapped
-                .emit(onNext: { DevTools.Log.log("Tapped! \($0)") })
+                .emit(onNext: { DevTools.Log.message("Tapped! \($0)") })
                 .disposed(by: disposeBag)
             return some
         }()
@@ -137,7 +137,7 @@ extension V.UserDetais_View: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: V.UserTableViewCell.reuseIdentifier) as? V.UserTableViewCell else {
-            DevTools.Log.log(appCode: .dequeueReusableCellFail)
+            DevTools.Log.appCode(.dequeueReusableCellFail)
             return UITableViewCell()
         }
         presenter.tableView.configure(cell: cell, indexPath: indexPath)

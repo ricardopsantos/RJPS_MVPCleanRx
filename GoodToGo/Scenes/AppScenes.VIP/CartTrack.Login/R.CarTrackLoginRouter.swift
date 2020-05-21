@@ -26,7 +26,7 @@ extension R {
         weak var viewController: VC.CarTrackLoginViewController?
 
         // DataPassingProtocol Protocol vars...
-        var dsCarTrackLogin: CarTrackLoginDataStoreProtocol? { didSet { DevTools.Log.log("DataStore changed") } }
+        var dsCarTrackLogin: CarTrackLoginDataStoreProtocol? { didSet { DevTools.Log.message("DataStore changed") } }
      }
 }
 

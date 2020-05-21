@@ -74,7 +74,7 @@ extension V {
             some.rjsALayouts.setHeight(margin*2)
             some.onTouchUpInside { [weak self] in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+                    guard let self = self else { return }
                     let user = self.txtUser.text
                     let pass = self.txtPass.text
                     self.presenter.userDidTryToLoginWith(user: user!, password: pass!)
@@ -105,7 +105,7 @@ extension V {
             some.rjsALayouts.setHeight(margin*2)
             some.onTouchUpInside { [weak self] in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+                    guard let self = self else { return }
                     self.presenter.router.presentControllerWith(vm: nil)
                 })
             }
@@ -120,7 +120,7 @@ extension V {
             some.rjsALayouts.setHeight(margin*2)
             some.onTouchUpInside { [weak self] in
                 some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
-                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+                    guard let self = self else { return }
                     self.presenter.router.dismissView()
                 })
             }

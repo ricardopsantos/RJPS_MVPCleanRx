@@ -127,13 +127,13 @@ extension V {
                 .orEmpty
                 .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
                 .subscribe(onNext: { [weak self] _ in
-                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+                    guard let self = self else { return }
                     self.rxFilter.onNext(self.searchBar.text)
                 })
                 .disposed(by: disposeBag)
             searchBar.rx.textDidEndEditing
                 .subscribe(onNext: { [weak self] (_) in
-                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+                    guard let self = self else { return }
                     guard self.searchBar.text!.count>0 else { return }
                     self.rxFilter.onNext(self.searchBar.text)
                 })
@@ -254,7 +254,7 @@ extension V.CartTrackMapView: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationView.DragState, fromOldState oldState: MKAnnotationView.DragState) {
         if newState == .ending {
-            DevTools.Log.log("\(String(describing: view.annotation?.coordinate))")
+            DevTools.Log.message("\(String(describing: view.annotation?.coordinate))")
         }
     }
 

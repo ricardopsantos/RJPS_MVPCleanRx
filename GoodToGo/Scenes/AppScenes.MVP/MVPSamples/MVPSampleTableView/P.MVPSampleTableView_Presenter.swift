@@ -53,7 +53,7 @@ extension Presenter {
         weak var genericView: BaseViewControllerMVPProtocol?
         weak var view: MVPSampleTableView_ViewProtocol!
         var viewModel: VM.MVPSampleTableView_ViewModel? {
-            didSet { DevTools.Log.log(appCode: .vmChanged); viewModelChanged() }
+            didSet { DevTools.Log.appCode(.vmChanged); viewModelChanged() }
         }
         var router: MVPSampleTableView_RouterProtocol!
         var tableView: GenericTableView_Protocol!
@@ -90,11 +90,11 @@ extension P.MVPSampleTableView_Presenter: GenericTableView_Protocol {
     }
     
     func didSelect(object: Any) {
-        DevTools.Log.log("\(object)")
+        DevTools.Log.message("\(object)")
     }
     
     func didSelectRowAt(indexPath: IndexPath) {
-        DevTools.Log.log("\(indexPath)")
+        DevTools.Log.message("\(indexPath)")
     }
     
 }
@@ -140,7 +140,7 @@ extension P.MVPSampleTableView_Presenter {
     }
     
     private func updateViewWith(vm: VM.MVPSampleTableView_ViewModel?) {
-        guard vm != nil else { DevTools.Log.log(appCode: .ignored); return }
+        guard vm != nil else { DevTools.Log.appCode(.ignored); return }
         if let vm = vm {
             view.viewNeedsToDisplay(list: vm.employeesList)
         } else {
@@ -152,7 +152,7 @@ extension P.MVPSampleTableView_Presenter {
         
         reachabilityService.reachability.subscribe(
             onNext: { [weak self] some in
-                guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+                guard let self = self else { return }
                 self.view.setNetworkViewVisibilityTo(some.reachable)
             }
         ).disposed(by: disposeBag)
@@ -160,11 +160,11 @@ extension P.MVPSampleTableView_Presenter {
         getEmployeesObservable()
             .subscribe(
                 onNext: { [weak self] employeeList in
-                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+                    guard let self = self else { return }
                     self.viewModel?.employeesList = employeeList
                 },
                 onError: { [weak self] error in
-                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+                    guard let self = self else { return }
                     self.genericView?.displayMessage(error.localizedDescription, type: .error)
                 }
         )

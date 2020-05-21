@@ -53,7 +53,7 @@ extension Presenter {
         var blissQuestions_UseCase: BlissQuestionsAPIUseCaseProtocol!
         var blissGeneric_UseCase: BlissGenericAppBusinessUseCaseProtocol!
         var viewModel: VM.BlissRoot_ViewModel? {
-            didSet { DevTools.Log.log(appCode: .vmChanged); viewModelChanged() }
+            didSet { DevTools.Log.appCode( .vmChanged); viewModelChanged() }
         }
     }
 }
@@ -66,7 +66,7 @@ extension P.BlissRoot_Presenter: BlissRoot_PresenterProtocol {
     
     func userDidReadBadServerHealthMessage() {
         DispatchQueue.executeWithDelay(delay: AppConstants.defaultAnimationsTime) { [weak self] in
-            guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+            guard let self = self else { return }
             self.checkServerStatus()
         }
     }
@@ -109,12 +109,12 @@ extension P.BlissRoot_Presenter {
         
         let delayToHaveTimeToEnjoyMainScreen: Double = 2
         DispatchQueue.executeWithDelay(delay: delayToHaveTimeToEnjoyMainScreen) { [weak self] in
-            guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+            guard let self = self else { return }
 
             let handleFail = { self.view.viewNeedsToDisplayBadServerMessage() }
             
             let handleSucess = { [weak self] in
-                guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+                guard let self = self else { return }
                 self.router.goToList(asNavigationController: true)
             }
             self.genericView?.setActivityState(true)
@@ -140,7 +140,7 @@ extension P.BlissRoot_Presenter {
             onNext: { [weak self] some in
                     if some.reachable {
                         self?.genericView?.setNoConnectionViewVisibility(to: false, withMessage: "")
-                        self?.rxObservableAssyncRequest
+                        self?.rxObservableAsyncRequest
                             .subscribe(
                                 onNext: { [weak self] some in self?.view.set(image: some); self?.checkServerStatus() },
                                 onError: { [weak self] _ in self?.view.set(image: Images.notFound.image) }
@@ -161,7 +161,7 @@ extension P.BlissRoot_Presenter {
 //
 extension P.BlissRoot_Presenter {
     var rxReturnOnError: UIImage { return Images.noInternet.image }
-    var rxObservableAssyncRequest: Observable<UIImage> {
+    var rxObservableAsyncRequest: Observable<UIImage> {
         return Observable.create { observer -> Disposable in
             self.downloadImage(imageURL: AppConstants.Bliss.logoURL, completion: { (image) in
                 if image != nil {

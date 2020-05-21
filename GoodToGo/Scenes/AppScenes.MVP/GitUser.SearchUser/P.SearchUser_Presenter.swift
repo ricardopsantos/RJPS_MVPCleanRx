@@ -65,7 +65,7 @@ extension Presenter {
         weak var generic: BasePresenterVMPProtocol?
         weak var genericView: BaseViewControllerMVPProtocol?
         weak var view: SearchUser_ViewProtocol!
-        var viewModel: VM.SearchUser? { didSet { DevTools.Log.log(appCode: .vmChanged); viewModelChanged() } }
+        var viewModel: VM.SearchUser? { didSet { DevTools.Log.appCode(.vmChanged); viewModelChanged() } }
         var router: SearchUser_RouterProtocol!
         var useCase_1: GitHubAPIRelated_UseCaseProtocol!
         
@@ -105,7 +105,7 @@ extension P.SearchUser_Presenter: BasePresenterVMPProtocol {
         Observable.zip(rxPublishRelay_userInfo, rxPublishRelay_userFriends, resultSelector: { return ($0, $1) })
             .observeOn(MainScheduler.instance)
             .subscribe( onNext: { [weak self] in
-                guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+                guard let self = self else { return }
                 self.genericView?.setActivityState(false)
                 guard $0 != nil && $1 != nil else {
                     self.genericView?.displayMessage(Messages.pleaseTryAgainLater.localised, type: .error)
@@ -118,7 +118,7 @@ extension P.SearchUser_Presenter: BasePresenterVMPProtocol {
         
         rxPublishRelay_error.asObservable()
             .subscribe(onNext: { [weak self] in
-                guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+                guard let self = self else { return }
                 self.genericView?.setActivityState(false)
                 self.genericView?.displayMessage(Messages.messageWith(error: $0), type: .error)
             })
@@ -137,7 +137,7 @@ extension P.SearchUser_Presenter {
     }
     
     private func updateViewWith(vm: VM.SearchUser?) {
-        guard vm != nil else { DevTools.Log.log(appCode: .ignored); return }
+        guard vm != nil else { DevTools.Log.appCode(.ignored); return }
         view.viewDataToScreen(some: vm!)
     }
     
@@ -145,7 +145,7 @@ extension P.SearchUser_Presenter {
         return Observable.create { [weak self] _ -> Disposable in
             if let self = self {
                 self.useCase_1.getInfoOfUserWith(userName: username, canUseCache: true) { [weak self] result in
-                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+                    guard let self = self else { return }
                     switch result {
                     case .success(let some): self.rxPublishRelay_userInfo.accept(some)
                     case .failure(let error):
@@ -154,7 +154,7 @@ extension P.SearchUser_Presenter {
                     }
                 }
             } else {
-                DevTools.Log.log(appCode: .referenceLost)
+                DevTools.Log.appCode( .referenceLost)
             }
             return Disposables.create()
             }.retry(3)
@@ -165,7 +165,7 @@ extension P.SearchUser_Presenter {
         return Observable.create { [weak self] _ -> Disposable in
             if let self = self {
                 self.useCase_1.getFriendsOfUserWith(userName: username, canUseCache: true, completionHandler: { [weak self] result in
-                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+                    guard let self = self else { return }
                     switch result {
                     case .success(let some) : self.rxPublishRelay_userFriends.accept(some)
                     case .failure(let error):
@@ -174,7 +174,7 @@ extension P.SearchUser_Presenter {
                     }
                 })
             } else {
-                DevTools.Log.log(appCode: .referenceLost)
+                DevTools.Log.appCode( .referenceLost)
             }
             return Disposables.create()
             }.retry(3)

@@ -41,10 +41,10 @@ extension I.DataStoreReceiverInteractor: DataStoreReceiverBusinessLogicProtocol 
     func requestScreenInitialState() {
 
         if let dataPassing = dsSomeKindOfModelAToBeSettedByOtherRouter { // <<-- DS Sample : Take notice
-            DevTools.Log.log("data received A \(dataPassing)")
+            DevTools.Log.message("data received A \(dataPassing)")
         }
         if let dataPassing = dsSomeKindOfModelBToBeSettedByOtherRouter { // <<-- DS Sample : Take notice
-            DevTools.Log.log("data received B \(dataPassing)")
+            DevTools.Log.message("data received B \(dataPassing)")
         }
     }
 }

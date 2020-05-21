@@ -61,7 +61,7 @@ extension Presenter {
         var blissQuestions_UseCase: BlissQuestionsAPIUseCaseProtocol!
         var blissGeneric_UseCase: BlissGenericAppBusinessUseCaseProtocol!
         var tableView: GenericTableView_Protocol!
-        var viewModel: VM.BlissDetails_ViewModel? { didSet { DevTools.Log.log(appCode: .vmChanged); viewModelChanged() } }
+        var viewModel: VM.BlissDetails_ViewModel? { didSet { DevTools.Log.appCode(.vmChanged); viewModelChanged() } }
     }
 }
 
@@ -88,7 +88,7 @@ extension P.BlissDetails_Presenter: BlissDetails_PresenterProtocol {
                     }
                 }
             } else {
-                DevTools.Log.log(appCode: .referenceLost)
+                DevTools.Log.appCode( .referenceLost)
             }
             return Disposables.create()
             }.retry(3)
@@ -103,7 +103,7 @@ extension P.BlissDetails_Presenter: BlissDetails_PresenterProtocol {
         guard existsInternetConnection else { return }
         genericView?.setActivityState(true)
         blissQuestions_UseCase.shareQuestionBy(email: "www.meumail@gmail.com", url: linkToShare, checkHealth: true) { [weak self] (result) in
-            guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+            guard let self = self else { return }
             self.genericView?.setActivityState(false)
             switch result {
             case .success(let some):
@@ -141,7 +141,7 @@ extension P.BlissDetails_Presenter: GenericTableView_Protocol {
     }
     
     func didSelect(object: Any) {
-        DevTools.Log.log("\(object)")
+        DevTools.Log.message("\(object)")
  
         guard existsInternetConnection else { return }
         
@@ -152,12 +152,12 @@ extension P.BlissDetails_Presenter: GenericTableView_Protocol {
             //.throttle(.milliseconds(AppConstants.Rx.servicesDefaultThrottle), scheduler: MainScheduler.instance) 
             .subscribe(
                 onNext: { [weak self] _ in
-                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+                    guard let self = self else { return }
                     self.genericView?.setActivityState(false)
                     self.genericView?.displayMessage(Messages.success.localised, type: .success)
                 },
                 onError: { [weak self] error in
-                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+                    guard let self = self else { return }
                     self.genericView?.displayMessage(Messages.pleaseTryAgainLater.localised, type: .error)
                     self.genericView?.setActivityState(false)
                 }
@@ -201,7 +201,7 @@ extension P.BlissDetails_Presenter {
     
     private func viewModelChanged() {
         guard viewModel != nil, viewModel?.question != nil else {
-            DevTools.Log.log(appCode: AppCodes.notPredicted)
+            DevTools.Log.appCode(.notPredicted)
             return
         }
         view.set(title: (viewModel!.question!.question.description))
@@ -221,9 +221,9 @@ extension P.BlissDetails_Presenter {
             let value = data.1
             if key == AppConstants.Bliss.DeepLinks.questionId {
                  if let someInt = Int(value) {
-                    DevTools.Log.log("Handling data!")
+                    DevTools.Log.message("Handling data!")
                     blissQuestions_UseCase.getQuestionBy(id: someInt, checkHealth: true) { [weak self] (result) in
-                        guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+                        guard let self = self else { return }
                         switch result {
                         case .success(let some): self.viewModel!.question = some
                         case .failure          : self.genericView?.displayMessage(Messages.pleaseTryAgainLater.localised, type: .error)
@@ -253,7 +253,7 @@ extension P.BlissDetails_Presenter {
         
         reachabilityService.reachability.subscribe(
             onNext: { [weak self] some in
-                guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+                guard let self = self else { return }
                 self.genericView?.setNoConnectionViewVisibility(to: !some.reachable, withMessage: Messages.noInternet.localised)
             }
             ).disposed(by: disposeBag)

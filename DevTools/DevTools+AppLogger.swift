@@ -18,12 +18,11 @@ public extension DevTools {
         public static var enabled = false
 
         public static func logDeInit(_ message: String, function: String = #function, file: String = #file, line: Int = #line) {
-            guard enabled else { return }
             guard DevTools.FeatureFlag.logDeInitEvent.isTrue else { return }
-            RJS_Logs.message(message, function: function, file: file, line: line)
+            DevTools.Log.message(message, function: function, file: file, line: line)
         }
 
-        public static func log(_ message: String, function: String = #function, file: String = #file, line: Int = #line) {
+        public static func message(_ message: String, function: String = #function, file: String = #file, line: Int = #line) {
             guard enabled else { return }
             RJS_Logs.message(message, function: function, file: file, line: line)
         }

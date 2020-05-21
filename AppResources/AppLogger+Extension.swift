@@ -15,7 +15,7 @@ import Domain
 //
 
 public extension DevTools.Log {
-    static func log(appCode: AppCodes, function: String = #function, file: String = #file, line: Int = #line) {
+    static func appCode(_ appCode: AppCodes, function: String = #function, file: String = #file, line: Int = #line) {
         guard enabled else { return }
         RJS_Logs.message(appCode.localisedMessageForDevTeam, function: function, file: file, line: line)
     }

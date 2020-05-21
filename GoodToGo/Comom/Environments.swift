@@ -33,7 +33,7 @@ struct AppEnvironments {
         }
 
         let block_recover = {
-            DevTools.Log.log(appCode: .notPredicted)
+            DevTools.Log.appCode(.notPredicted)
             current = .dev
         }
 

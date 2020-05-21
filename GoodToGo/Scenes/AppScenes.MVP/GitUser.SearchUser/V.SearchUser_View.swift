@@ -47,13 +47,13 @@ public extension V {
                 .orEmpty
                 .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
                 .subscribe(onNext: { [weak self] _ in
-                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+                    guard let self = self else { return }
                     self.presenter.searchUserWith(username: some.text ?? "")
                 })
                 .disposed(by: disposeBag)
             some.rx.textDidEndEditing
                 .subscribe(onNext: { [weak self] (_) in
-                    guard let self = self else { DevTools.Log.log(appCode: .referenceLost); return }
+                    guard let self = self else { return }
                     if self.searchBar.text!.count>0 {
                         self.presenter.searchUserWith(username: some.text ?? "")
                     }

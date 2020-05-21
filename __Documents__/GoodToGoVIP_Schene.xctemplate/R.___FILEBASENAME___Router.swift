@@ -30,7 +30,7 @@ extension R {
         weak var viewController: VC.___VARIABLE_sceneName___ViewController?
 
         // DataPassingProtocol Protocol vars...
-        var dsSource: ___VARIABLE_sceneName___DataStoreProtocol? { didSet { DevTools.Log.log("DataStore changed") } }
+        var dsSource: ___VARIABLE_sceneName___DataStoreProtocol? { didSet { DevTools.Log.message("DataStore changed") } }
      }
 }
 

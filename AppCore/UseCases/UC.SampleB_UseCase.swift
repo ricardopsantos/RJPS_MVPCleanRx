@@ -21,12 +21,12 @@ public class SampleB_UseCase: GenericUseCase, SampleB_UseCaseProtocol {
        public var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
 
    public func operation1(canUseCache: Bool, completionHandler: @escaping SampleB_UseCaseCompletionHandler) {
-           DevTools.Log.log(appCode: .notImplemented)
+           DevTools.Log.appCode( .notImplemented)
            completionHandler(Result.failure(Factory.Errors.with(appCode: .notImplemented)))
        }
 
    public func operation2(param: String, completionHandler: @escaping SampleB_UseCaseCompletionHandler) {
-           DevTools.Log.log(appCode: .notImplemented)
+           DevTools.Log.appCode( .notImplemented)
            completionHandler(Result.failure(Factory.Errors.with(appCode: .notImplemented)))
        }
 
