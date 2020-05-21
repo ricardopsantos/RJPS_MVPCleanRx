@@ -70,7 +70,7 @@ extension V {
                 stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: size, color: UIColor.lightGray)
                 let label = UILabel()
                 label.text = name
-                label.font = UIFont.App.Alternative.headingMedium.rawValue
+                label.font = UIFont.App.Alternative.headingSmall.rawValue
                 label.textAlignment = .center
                 label.textColor = UIColor.App.primary
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(label)

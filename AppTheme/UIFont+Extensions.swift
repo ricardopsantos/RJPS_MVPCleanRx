@@ -15,7 +15,7 @@ public extension UIFont {
         
         private init() {}
 
-        struct V1 {
+        private struct V1 {
             public enum Size: CGFloat {
                 case big        = 24 // Heading
                 case regularBig = 18 // Paragraph
@@ -40,18 +40,18 @@ public extension UIFont {
             case headingBold
             case headingMedium
             case headingSmall
-            case paragraphBoldSecondary
+            //case paragraphBoldSecondary
             case paragraphBold
-            case paragraphMediumSecondary
+            //case paragraphMediumSecondary
             case paragraphMedium
-            case paragraphSmallSecondary
+            //case paragraphSmallSecondary
             case paragraphSmall
-            case captionLargeSecondary
+            //case captionLargeSecondary
             case captionLargeCaption
             case captionLarge
-            case captionSecondary
+            //case captionSecondary
             case caption
-            case captionSmallSecondary
+            //case captionSmallSecondary
             case captionSmall
 
             public init?(rawValue: RawValue) { return nil }
@@ -71,18 +71,18 @@ public extension UIFont {
                 case .headingBold: return UIFont(name: boldFontName, size: 28.0)!
                 case .headingMedium:  return UIFont(name: mediumFontName, size: 28.0)!
                 case .headingSmall: return UIFont(name: regularFontName, size: 24.0)!
-                case .paragraphBoldSecondary: return UIFont(name: mediumFontName, size: 18.0)!
+                //case .paragraphBoldSecondary: return UIFont(name: mediumFontName, size: 18.0)!
                 case .paragraphBold:  return UIFont(name: mediumFontName, size: 18.0)!
-                case .paragraphMediumSecondary:return UIFont(name: mediumFontName, size: 16.0)!
+                //case .paragraphMediumSecondary:return UIFont(name: mediumFontName, size: 16.0)!
                 case .paragraphMedium: return UIFont(name: mediumFontName, size: 16.0)!
-                case .paragraphSmallSecondary: return UIFont(name: regularFontName, size: 16.0)!
+                //case .paragraphSmallSecondary: return UIFont(name: regularFontName, size: 16.0)!
                 case .paragraphSmall: return UIFont(name: regularFontName, size: 16.0)!
-                case .captionLargeSecondary: return UIFont(name: regularFontName, size: 14.0)!
+                //case .captionLargeSecondary: return UIFont(name: regularFontName, size: 14.0)!
                 case .captionLargeCaption: return UIFont(name: regularFontName, size: 14.0)!
                 case .captionLarge: return UIFont(name: regularFontName, size: 14.0)!
-                case .captionSecondary: return UIFont(name: mediumFontName, size: 12.0)!
+                //case .captionSecondary: return UIFont(name: mediumFontName, size: 12.0)!
                 case .caption: return UIFont(name: mediumFontName, size: 12.0)!
-                case .captionSmallSecondary: return UIFont(name: mediumFontName, size: 10.0)!
+                //case .captionSmallSecondary: return UIFont(name: mediumFontName, size: 10.0)!
                 case .captionSmall: return UIFont(name: mediumFontName, size: 10.0)!
                 }
             }
