@@ -325,7 +325,7 @@ class CarTrackMKMarkerAnnotationView: MKMarkerAnnotationView {
 
             let detailLabel = UILabel()
             detailLabel.numberOfLines = 0
-            detailLabel.font = UIFont.App.light(size: .regular)
+            detailLabel.font = UIFont.App.Alternative.textStyle.rawValue 
             detailLabel.text = carTrackMKAnnotation.model.mapSubTitle
             detailCalloutAccessoryView = detailLabel
 

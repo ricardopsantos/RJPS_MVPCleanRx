@@ -120,7 +120,7 @@ public struct UIKitFactory {
         some.barStyle = .default
 
         let searchBarTextAttributes = [
-            NSAttributedString.Key.font: UIFont.App.regular(size: .regularBig),
+            NSAttributedString.Key.font: UIFont.App.Alternative.paragraphSmall.rawValue ,
             NSAttributedString.Key.foregroundColor: UIColor.App.lblTextColor
         ]
         // Default attributes for search text
@@ -147,7 +147,7 @@ public struct UIKitFactory {
         stackView.alignment = .center
         stackView.spacing = AppSizes.Margins.defaultMargin
         let label = UILabel()
-        label.font = UIFont.App.bold(size: .big)
+        label.font = UIFont.App.Alternative.caption.rawValue 
         label.backgroundColor = .clear
         let uiSwitch = UISwitch()
         label.numberOfLines = 0

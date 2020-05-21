@@ -31,8 +31,6 @@ public extension UIButton {
         case .notApplied  : _ = 1
         case .primary     : self.applyStylePrimary()
         case .secondary   : self.applyStyleSecondary()
-        //case .dismiss     : self.applyStylePrimary()
-        //case .alternative : self.applyStylePrimary()
         case .destructive : self.applyStyleDestructive()
         case .inngage     : self.applyStyleInngage()
         }
@@ -41,7 +39,7 @@ public extension UIButton {
 
 private extension UIButton {
 
-    var defaultFont: UIFont { UIFont.App.bold(size: .regular) }
+    var defaultFont: UIFont { UIFont.App.Alternative.paragraphMedium.rawValue }
 
     func applySharedProperties() {
         self.setState(enabled: true)

@@ -68,8 +68,11 @@ extension V {
             func makeSection(_ name: String, size: CGFloat) {
                 stackViewVLevel1.uiUtils.addArrangedSeparator()
                 stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: size, color: UIColor.lightGray)
-                let label = UIKitFactory.label(title: "\(name)", style: .title)
+                let label = UILabel()
+                label.text = name
+                label.font = UIFont.App.Alternative.headingMedium.rawValue
                 label.textAlignment = .center
+                label.textColor = UIColor.App.primary
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(label)
                 stackViewVLevel1.uiUtils.addArrangedSeparator()
             }
@@ -78,7 +81,7 @@ extension V {
                 let label = UIKitFactory.label(style: .title)
                 label.text = text
                 label.textAlignment = .center
-                label.font = UIFont.App.bold(size: .regular)
+                label.font = UIFont.App.Alternative.textStyle.rawValue 
                 return label
             }
 
@@ -118,6 +121,28 @@ extension V {
             }
 
             //
+            // UIFont.App.Alternative
+            //
+
+            makeSection("UIFont.App.Alternative", size: sectionSize)
+            var allFonts = UIFont.App.Alternative.allCases
+            var allFontsSorted = allFonts.sorted { (f1, f2) -> Bool in return f1.rawValue.pointSize > f2.rawValue.pointSize }
+            allFontsSorted.forEach { (font) in
+                let some1 = UILabel()
+                some1.text = "\(font)"
+                some1.font = font.rawValue
+                some1.textAlignment = .center
+                some1.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
+                let some2 = UILabel()
+                some2.text = "\(font.rawValue.fontName) \(font.rawValue.pointSize)"
+                some2.font = UIFont.App.Alternative.caption.rawValue
+                some2.textAlignment = .center
+                stackViewVLevel1.uiUtils.safeAddArrangedSubview(some1)
+                stackViewVLevel1.uiUtils.safeAddArrangedSubview(some2)
+                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
+            }
+
+            //
             // UILabel.LayoutStyle
             //
 
@@ -126,7 +151,7 @@ extension V {
             UILabel.LayoutStyle.allCases.forEach { (some) in
                 testBackgroundColors.forEach { (backgroundColor) in
                     let some = UIKitFactory.label(title: "\(some)", style: some)
-                    some.backgroundColor = backgroundColor
+                    some.backgroundColor = backgroundColor.withAlphaComponent(FadeType.superHeavy.rawValue)
                     some.textAlignment = .center
                     some.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
                     stackViewVLevel1.uiUtils.safeAddArrangedSubview(some)
