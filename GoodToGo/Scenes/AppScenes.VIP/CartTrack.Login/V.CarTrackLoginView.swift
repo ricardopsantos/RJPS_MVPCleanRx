@@ -172,21 +172,8 @@ extension V {
             userCanProceed(viewModel.isEnabled)
         }
 
-        // Dev Team Helper fast login
-        private func autoInsertCredentials() {
-            guard DevTools.FeatureFlag.devTeam_autoInsertPass.isTrue else { return }
-            DispatchQueue.executeOnce(token: DevTools.FeatureFlag.devTeam_autoInsertPass.rawValue) { [weak self] in
-                DispatchQueue.executeWithDelay(tread: .main, delay: 1) { [weak self] in
-                    self?.txtPassword.text = "12345"
-                    self?.txtUserName.text = "some.email@gmail.com"
-                    self?.btnLogin.enable()
-                }
-            }
-        }
-
         var screenLayout: E.CarTrackLoginView.ScreenLayout = .enterUserCredentials {
             didSet {
-                autoInsertCredentials()
                 func setErrorMessage(_ message: String, forField: SkyFloatingLabelTextField) {
                     forField.errorMessage = message
                 }

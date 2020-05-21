@@ -12,27 +12,46 @@ import RJPSLib
 public extension DevTools {
     enum FeatureFlag: String, CaseIterable {
 
-        case devTeam_showToasts     = "DEV: devTeam_showToasts" // Dev team
-        case devTeam_useMockedData  = "DEV: Use Mock Data"      // Dev team
-        case devTeam_doLogs         = "DEV: App can do logs"    // Dev team
-        case devTeam_autoInsertPass = "DEV: CarTrack - AutoInsertPassword"  // Dev team
-        case devTeam_logDeinit      = "DEV: Log on deinit event"  // Dev team
-        case devTeam_showStats      = "DEV: Show Stats View"  // Dev team
+        case devTeam_showToasts     = "Show toast if error happens"
+        case devTeam_useMockedData  = "Use Mock Data"
+        case devTeam_doLogs         = "App can do logs"
+        case devTeam_logDeinit      = "Log on deinit event"
+        case devTeam_showStats      = "Show Stats View"
+
+        case devTeam_showSheme_bliss       = "Shene Enabled: Bliss"
+        case devTeam_showSheme_rxTests     = "Shene Enabled: RxTests"
+        case devTeam_showSheme_carTrack    = "Shene Enabled: CarTrack"
+        case devTeam_showSheme_gitHub      = "Shene Enabled: GitHub"
+        case devTeam_showSheme_vipTemplate = "Shene Enabled: VIP Template"
 
         public var defaultValue: Bool {
             switch self {
-            case .devTeam_showToasts:
-                return DevTools.devModeIsEnabled
-            case .devTeam_useMockedData:
-                return false
-            case .devTeam_doLogs:
-                return DevTools.devModeIsEnabled
-            case .devTeam_autoInsertPass:
-                return false
-            case .devTeam_logDeinit:
-                return false
-            case .devTeam_showStats:
-                return DevTools.devModeIsEnabled
+            case .devTeam_showToasts: return DevTools.devModeIsEnabled
+            case .devTeam_useMockedData: return false
+            case .devTeam_doLogs: return DevTools.devModeIsEnabled
+            case .devTeam_logDeinit: return false
+            case .devTeam_showStats: return DevTools.devModeIsEnabled
+            case .devTeam_showSheme_bliss: return true
+
+            case .devTeam_showSheme_rxTests: return true
+            case .devTeam_showSheme_carTrack: return true
+            case .devTeam_showSheme_gitHub: return true
+            case .devTeam_showSheme_vipTemplate: return true
+            }
+        }
+
+        public var isVisible: Bool {
+             switch self {
+             case .devTeam_showToasts:            return true
+             case .devTeam_useMockedData:         return true
+             case .devTeam_doLogs:                return true
+             case .devTeam_logDeinit:             return true
+             case .devTeam_showStats:             return true
+             case .devTeam_showSheme_bliss:       return true
+             case .devTeam_showSheme_rxTests:     return true
+             case .devTeam_showSheme_carTrack:    return true
+             case .devTeam_showSheme_gitHub:      return true
+             case .devTeam_showSheme_vipTemplate: return true
             }
         }
 

@@ -18,13 +18,4 @@ public extension UIViewController {
         let name = String(describing: type(of: self))
         return "accessibilityIdentifierPrefix.\(name)"
     }
-
-    func dismissMe(animated: Bool=true) {
-        let navigationController = self.navigationController != nil
-        if !navigationController {
-            self.dismiss(animated: animated, completion: nil)
-        } else {
-            self.navigationController?.popViewController(animated: animated)
-        }
-    }
 }

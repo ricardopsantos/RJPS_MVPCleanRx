@@ -134,7 +134,7 @@ public extension TopBar {
         self.usingSafeArea = usingSafeArea
         let container  = UIView()
         viewController.view.addSubview(container)
-        UIViewController.rjs.loadViewControllerInContainedView(sender: viewController,
+        UIViewController.loadViewControllerInContainedView(sender: viewController,
                                                                senderContainedView: container,
                                                                controller: self) { (_, _) in }
 

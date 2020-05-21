@@ -164,16 +164,9 @@ public extension BottomBar {
         let container   = UIView()
         container.backgroundColor = .clear
         viewController.view.addSubview(container)
-        UIViewController.rjs.loadViewControllerInContainedView(sender: viewController,
+        UIViewController.loadViewControllerInContainedView(sender: viewController,
                                                                senderContainedView: container,
                                                                controller: self) { (_, _) in }
-/*
-        container.autoLayout.trailingToSuperview()
-        container.autoLayout.leftToSuperview()
-        container.autoLayout.bottomToSuperview(usingSafeArea: usingSafeArea)
-        container.autoLayout.height(BottomBar.defaultHeight)
-        self.view.edgesToSuperview()
-*/
 
         container.rjsALayouts.setMargin(0, on: .bottom)
         container.rjsALayouts.setMargin(0, on: .right)

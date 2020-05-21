@@ -28,6 +28,22 @@ Just download source code and run  `./_script_installPackages.sh`
 
 More info about the project and MVP architecture [here](https://github.com/ricardopsantos/RJPS_MVPCleanRx/tree/master/Docs)
  
+ # Used Frameworks
+
+ * TinyConstraints - https://github.com/roberthein/TinyConstraints
+ * RJPSLib - https://github.com/ricardopsantos/RJPSLib
+ * SwinjectAutoregistration - https://github.com/Swinject/SwinjectAutoregistration
+ * NSLogger - https://github.com/fpillet/NSLogger
+ * RxDataSources
+ * RxGesture
+ * Swinject
+ * Toast-Swift - https://github.com/scalessec/Toast-Swift
+ * SkyFloatingLabelTextField - https://github.com/Skyscanner/SkyFloatingLabelTextField
+ * RxSwift
+ * Hero
+ * Material
+ * Motion
+ 
 # Code Guidelines/Conventions
 
 * All is private (variables, functions, etc), unless really need to be public.
