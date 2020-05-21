@@ -12,9 +12,12 @@ import UIKit
 public extension UIButton {
     enum LayoutStyle: CaseIterable {
         case notApplied
-        case regular
-        case dismiss
-        case alternative // TabBar buttons
+        case primary
+        case secondary
+        case destructive
+        //case dismiss
+        case inngage
+        //case alternative // TabBar buttons
     }
 }
 

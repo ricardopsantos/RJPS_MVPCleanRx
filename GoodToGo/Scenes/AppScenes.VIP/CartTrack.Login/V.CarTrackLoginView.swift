@@ -130,7 +130,7 @@ extension V {
         }
 
         override func setupColorsAndStyles() {
-            self.backgroundColor = AppColors.appDefaultBackgroundColor
+            self.backgroundColor = AppColors.backgroundColor
         }
 
         // Order in View life-cycle : 2

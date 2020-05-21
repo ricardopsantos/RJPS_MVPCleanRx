@@ -47,11 +47,11 @@ extension V {
         }()
 
         private lazy var btnSample1: UIButton = {
-            UIKitFactory.button(title: "btnSample1", style: .regular)
+            UIKitFactory.button(title: "btnSample1", style: .primary)
         }()
 
         private lazy var btnSample2: UIButton = {
-            UIKitFactory.button(title: "btnSample", style: .regular)
+            UIKitFactory.button(title: "btnSample", style: .primary)
         }()
 
         // Naming convention: rxTbl[MeaningfulTableName]Items
@@ -117,7 +117,7 @@ extension V {
         }
 
         override func setupColorsAndStyles() {
-            self.backgroundColor = AppColors.appDefaultBackgroundColor
+            self.backgroundColor = AppColors.backgroundColor
         }
 
         // Order in View life-cycle : 2

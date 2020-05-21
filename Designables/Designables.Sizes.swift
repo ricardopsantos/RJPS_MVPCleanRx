@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+//
+import AppConstants
 
 public struct Designables {
     public struct Sizes {
@@ -26,7 +28,7 @@ public struct Designables {
 
         public struct Button {
             private init() {}
-            public static var defaultSize: CGSize { return CGSize(width: 125, height: 50) }
+            public static var defaultSize: CGSize { return AppConstants.buttonDefaultSize }
         }
 
         public struct Misc {

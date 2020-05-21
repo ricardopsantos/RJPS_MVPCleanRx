@@ -61,7 +61,7 @@ extension V {
         }()
         
         private lazy var btnShare1: UIButton = {
-            let some = UIKitFactory.button(baseView: self.view, title: "Share in app", style: .regular)
+            let some = UIKitFactory.button(baseView: self.view, title: "Share in app", style: .primary)
             some.rjsALayouts.setMargin(margin, on: .left)
             some.rjsALayouts.setWidth(screenWidth/2 - 2*margin)
             some.rjsALayouts.setMargin(margin, on: .bottom)
@@ -77,7 +77,7 @@ extension V {
         }()
         
         private lazy var btnShare2: UIButton = {
-            let some = UIKitFactory.button(baseView: self.view, title: "Share by Email", style: .regular)
+            let some = UIKitFactory.button(baseView: self.view, title: "Share by Email", style: .primary)
             some.rjsALayouts.setMargin(margin, on: .right)
             some.rjsALayouts.setWidth(screenWidth/2 - 2*margin)
             some.rjsALayouts.setMargin(margin, on: .bottom)
@@ -162,7 +162,7 @@ extension V {
         }
         
         public override func prepareLayoutCreateHierarchy() {
-            self.view.backgroundColor = AppColors.appDefaultBackgroundColor
+            self.view.backgroundColor = AppColors.backgroundColor
             topGenericView.lazyLoad()
             imgCover.lazyLoad()
             btnShare1.lazyLoad()

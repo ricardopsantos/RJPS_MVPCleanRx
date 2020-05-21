@@ -67,7 +67,7 @@ extension V {
         }()
         
         private lazy var btnLogin: UIButton = {
-            let some = UIKitFactory.button(baseView: self.view, title: Messages.login.localised, style: .regular)
+            let some = UIKitFactory.button(baseView: self.view, title: Messages.login.localised, style: .primary)
             some.rjsALayouts.setMargin(margin, on: .left)
             some.rjsALayouts.setMargin(margin, on: .right)
             some.rjsALayouts.setMargin(margin*2, on: .top, from: txtPass)
@@ -98,7 +98,7 @@ extension V {
         }()
         
         private lazy var btnPush: UIButton = {
-            let some = UIKitFactory.button(baseView: self.view, title: "Push", style: .regular)
+            let some = UIKitFactory.button(baseView: self.view, title: "Push", style: .primary)
             some.rjsALayouts.setMargin(margin, on: .left)
             some.rjsALayouts.setWidth((screenWidth / 2) - (1.5 * margin))
             some.rjsALayouts.setMargin(margin*2, on: .top, from: lblMessage)
@@ -113,7 +113,7 @@ extension V {
         }()
         
         private lazy var btnDismiss: UIButton = {
-            let some = UIKitFactory.button(baseView: self.view, title: "Dismiss", style: .regular)
+            let some = UIKitFactory.button(baseView: self.view, title: "Dismiss", style: .primary)
             some.rjsALayouts.setMargin(margin, on: .right)
             some.rjsALayouts.setWidth((screenWidth / 2) - (1.5 * margin))
             some.rjsALayouts.setMargin(margin*2, on: .top, from: lblMessage)
@@ -149,7 +149,7 @@ extension V {
         }
         
         public override func prepareLayoutCreateHierarchy() {
-            self.view.backgroundColor = AppColors.appDefaultBackgroundColor
+            self.view.backgroundColor = AppColors.backgroundColor
             txtUser.lazyLoad()
             txtPass.lazyLoad()
             btnLogin.lazyLoad()

@@ -48,5 +48,8 @@ public struct AppConstants {
         public static let keyCoreDataSaveLang = "keyCoreDataSaveLang"
         public static let numberOfLogins      = "numberOfLogins"
         public static let mainStoryBoard      = "Main"
-    }    
+    }
+
+    public static var buttonDefaultSize: CGSize { return CGSize(width: 125, height: 44) }
+
 }

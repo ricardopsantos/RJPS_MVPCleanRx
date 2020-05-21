@@ -54,10 +54,16 @@ public extension UIColor {
             public static var background: UIColor { return primary }
             public static var titleColor: UIColor { return grey_7.toDark() }
         }
-        public static var appDefaultBackgroundColor: UIColor { return onPrimary }
-        public static var btnBackgroundColor: UIColor { return grey_6.toDark() }
+
+        public struct UIButton {
+            public static var backgroundColorInnGage: UIColor { return grey_6.toDark() }
+            public static var textColorInnGage: UIColor { return grey_1.toDark() }
+            public static var backgroundColorDefault: UIColor { return primary }
+            public static var textColorDefault: UIColor { return onPrimary }
+        }
+
+        public static var backgroundColor: UIColor { return onPrimary }
         public static var lblBackgroundColor: UIColor { return grey_6.toDark() }
-        public static var btnTextColor: UIColor { return grey_1.toDark() }
         public static var lblTextColor: UIColor { return grey_1.toDark() }
 
         public static var primary: UIColor { return blue1.toDark() }

@@ -30,7 +30,7 @@ open class BottomBar: BaseViewControllerMVP {
     weak var delegate: BottomBar_Delegate?
     
     private lazy var btn1: UIButton = {
-        let some = UIKitFactory.button(baseView: self.view, style: .alternative)
+        let some = UIKitFactory.button(baseView: self.view, style: .notApplied)
         some.setTitleForAllStates("1")
         some.rx.tap.subscribe({ [weak self] _ in
             some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
@@ -41,7 +41,7 @@ open class BottomBar: BaseViewControllerMVP {
     }()
     
     private lazy var btn2: UIButton = {
-        let some = UIKitFactory.button(baseView: self.view, style: .alternative)
+        let some = UIKitFactory.button(baseView: self.view, style: .notApplied)
         some.setTitleForAllStates("2")
         some.rx.tap.subscribe({ [weak self] _ in
             some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
@@ -52,7 +52,7 @@ open class BottomBar: BaseViewControllerMVP {
     }()
     
     private lazy var btn3: UIButton = {
-        let some = UIKitFactory.button(baseView: self.view, style: .alternative)
+        let some = UIKitFactory.button(baseView: self.view, style: .notApplied)
         some.setTitleForAllStates("3")
         some.rx.tap.subscribe({ [weak self] _ in
             some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
@@ -63,7 +63,7 @@ open class BottomBar: BaseViewControllerMVP {
     }()
     
     private lazy var btn4: UIButton = {
-        let some = UIKitFactory.button(baseView: self.view, style: .alternative)
+        let some = UIKitFactory.button(baseView: self.view, style: .notApplied)
         some.setTitleForAllStates("4")
         some.rx.tap.subscribe({ [weak self] _ in
             some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {
@@ -74,7 +74,7 @@ open class BottomBar: BaseViewControllerMVP {
     }()
     
     private lazy var btn5: UIButton = {
-        let some = UIKitFactory.button(baseView: self.view, style: .alternative)
+        let some = UIKitFactory.button(baseView: self.view, style: .notApplied)
         some.setTitleForAllStates("5")
         some.rx.tap.subscribe({ [weak self] _ in
             some.bumpAndPerform(disableUserInteractionFor: AppConstants.Dev.tapDefaultDisableTime, block: {

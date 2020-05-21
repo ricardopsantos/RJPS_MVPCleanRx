@@ -19,3 +19,11 @@ public enum FilterStrength: CGFloat, CaseIterable {
     case heavy        = 0.4
     case superHeavy   = 0.1
 }
+
+// MARK: - FadeType Utils
+
+public extension FadeType {
+    static var disabledUIElementDefaultValue: FilterStrength {
+        return heavyRegular
+    }
+}

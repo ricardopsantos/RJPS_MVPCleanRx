@@ -71,7 +71,7 @@ extension VC {
         
         private lazy var btnThrottle: UIButton = {
             let throttle = 5
-            let some = UIKitFactory.button(baseView: self.view, title: "Throttle \(throttle)s", style: .regular)
+            let some = UIKitFactory.button(baseView: self.view, title: "Throttle \(throttle)s", style: .primary)
             some.rjsALayouts.setMargin(margin, on: .top, from: searchBar)
             some.rjsALayouts.setMargin(margin, on: .right)
             some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * margin))
@@ -90,7 +90,7 @@ extension VC {
         
         private lazy var btnDebounce: UIButton = {
             let debounce = 3
-            let some = UIKitFactory.button(baseView: self.view, title: "Debounce \(debounce)s", style: .regular)
+            let some = UIKitFactory.button(baseView: self.view, title: "Debounce \(debounce)s", style: .primary)
             some.rjsALayouts.setMargin(margin, on: .top, from: searchBar)
             some.rjsALayouts.setMargin(margin, on: .left)
             some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * margin))
@@ -181,7 +181,7 @@ extension VC {
                 .subscribe(onNext: { self.searchBar.text = "\($0)" })
                 .disposed(by: disposeBag)
             
-            let some = UIKitFactory.button(baseView: self.view, title: "[Publish|Behavior]Relay", style: .regular)
+            let some = UIKitFactory.button(baseView: self.view, title: "[Publish|Behavior]Relay", style: .primary)
             some.rjsALayouts.setMargin(margin, on: .top, from: btnDebounce)
             some.rjsALayouts.setMargin(margin, on: .left)
             some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * margin))
@@ -210,7 +210,7 @@ extension VC {
         }()
   
         private lazy var btnZip: UIButton = {
-            let some = UIKitFactory.button(baseView: self.view, title: "Zip vs combineLatest", style: .regular)
+            let some = UIKitFactory.button(baseView: self.view, title: "Zip vs combineLatest", style: .primary)
             some.rjsALayouts.setMargin(margin, on: .top, from: btnRxRelays)
             some.rjsALayouts.setMargin(margin, on: .right)
             some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * margin))
@@ -279,7 +279,7 @@ extension VC {
                     )
                     .disposed(by: disposeBag)
             }
-            let some = UIKitFactory.button(baseView: self.view, title: "Observable<T>", style: .regular)
+            let some = UIKitFactory.button(baseView: self.view, title: "Observable<T>", style: .primary)
             some.rjsALayouts.setMargin(margin, on: .top, from: btnDebounce)
             some.rjsALayouts.setMargin(margin, on: .right)
             some.rjsALayouts.setWidth((UIScreen.main.bounds.width / 2.0) - (1.5 * margin))
@@ -367,7 +367,7 @@ extension VC.RxTesting {
 extension VC.RxTesting {
     
     func aux_prepare() {
-        self.view.backgroundColor = AppColors.appDefaultBackgroundColor
+        self.view.backgroundColor = AppColors.backgroundColor
         topGenericView.lazyLoad()
         searchBar.lazyLoad()
         btnThrottle.lazyLoad()

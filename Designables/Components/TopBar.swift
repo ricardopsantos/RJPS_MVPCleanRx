@@ -29,7 +29,7 @@ open class TopBar: BaseViewControllerMVP {
     private var usingSafeArea: Bool = false
 
     private lazy var btnBack: UIButton = {
-        let some = UIKitFactory.button(baseView: self.view, style: .dismiss)
+        let some = UIKitFactory.button(baseView: self.view, style: .notApplied)
         some.rjsALayouts.setMargin(btnSize/2, on: .left)
         some.rjsALayouts.setMargin(btnSize/2, on: .top)
         some.rjsALayouts.setSize(CGSize(width: btnSize, height: btnSize))

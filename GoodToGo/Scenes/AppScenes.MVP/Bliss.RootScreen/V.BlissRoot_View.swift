@@ -67,7 +67,7 @@ extension V {
         }
         
         public override func prepareLayoutCreateHierarchy() {
-            self.view.backgroundColor = AppColors.appDefaultBackgroundColor
+            self.view.backgroundColor = AppColors.backgroundColor
             imageView.lazyLoad()
         }
         
