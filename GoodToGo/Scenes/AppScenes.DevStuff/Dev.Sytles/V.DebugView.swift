@@ -81,7 +81,7 @@ extension V {
                 let label = UIKitFactory.label(style: .title)
                 label.text = text
                 label.textAlignment = .center
-                label.font = UIFont.App.Alternative.textStyle.rawValue 
+                label.font = UIFont.App.Alternative.caption.rawValue 
                 return label
             }
 

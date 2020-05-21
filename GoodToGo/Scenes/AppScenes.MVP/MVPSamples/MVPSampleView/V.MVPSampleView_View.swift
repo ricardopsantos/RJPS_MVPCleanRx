@@ -40,7 +40,7 @@ extension V {
 
         private lazy var txtUser: UITextField = {
             let some = UIKitFactory.textField(baseView: self.view)
-            some.font      = UIFont.App.Alternative.textStyle.rawValue 
+            some.font      = UIFont.App.Alternative.caption.rawValue 
             some.textColor = AppColors.lblTextColor
             some.backgroundColor      = AppColors.lblBackgroundColor
             some.layer.masksToBounds  = false
@@ -54,7 +54,7 @@ extension V {
         
         private lazy var txtPass: UITextField = {
             let some = UIKitFactory.textField(baseView: self.view)
-            some.font = UIFont.App.Alternative.textStyle.rawValue
+            some.font = UIFont.App.Alternative.caption.rawValue
             some.backgroundColor      = AppColors.lblBackgroundColor
             some.isSecureTextEntry    = true
             some.layer.masksToBounds  = false
@@ -85,7 +85,7 @@ extension V {
         
         private lazy var lblMessage: UILabel = {
             let some = UIKitFactory.label(baseView: self.view, style: .value)
-            some.font                 = UIFont.App.Alternative.textStyle.rawValue 
+            some.font                 = UIFont.App.Alternative.caption.rawValue 
             some.backgroundColor      = AppColors.lblBackgroundColor
             some.layer.masksToBounds  = false
             some.layer.cornerRadius   = 8

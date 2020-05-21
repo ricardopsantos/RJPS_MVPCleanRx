@@ -35,7 +35,6 @@ public extension UIFont {
         public enum Alternative: CaseIterable {
             public typealias RawValue = UIFont
 
-            case textStyle
             case headingJumbo
             case headingBold
             case headingMedium
@@ -47,12 +46,12 @@ public extension UIFont {
             //case paragraphSmallSecondary
             case paragraphSmall
             //case captionLargeSecondary
-            case captionLargeCaption
             case captionLarge
             //case captionSecondary
-            case caption
+            case caption // Same as [textStyle]
             //case captionSmallSecondary
             case captionSmall
+            //case text // Same as [caption]
 
             public init?(rawValue: RawValue) { return nil }
 
@@ -66,7 +65,7 @@ public extension UIFont {
                 let regularFontName = UIFont.App.V1.light.fontName    // Regular
 
                 switch self {
-                case .textStyle: return UIFont(name: regularFontName, size: 14.0)!
+                //case .text: return UIFont(name: regularFontName, size: 14.0)!
                 case .headingJumbo: return UIFont(name: regularFontName, size: 38.0)!
                 case .headingBold: return UIFont(name: boldFontName, size: 28.0)!
                 case .headingMedium:  return UIFont(name: mediumFontName, size: 28.0)!
@@ -78,7 +77,6 @@ public extension UIFont {
                 //case .paragraphSmallSecondary: return UIFont(name: regularFontName, size: 16.0)!
                 case .paragraphSmall: return UIFont(name: regularFontName, size: 16.0)!
                 //case .captionLargeSecondary: return UIFont(name: regularFontName, size: 14.0)!
-                case .captionLargeCaption: return UIFont(name: regularFontName, size: 14.0)!
                 case .captionLarge: return UIFont(name: regularFontName, size: 14.0)!
                 //case .captionSecondary: return UIFont(name: mediumFontName, size: 12.0)!
                 case .caption: return UIFont(name: mediumFontName, size: 12.0)!
