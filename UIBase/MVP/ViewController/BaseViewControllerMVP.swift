@@ -24,7 +24,7 @@ import Domain
 open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtocol {
 
     deinit {
-        if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { DevTools.Log.log("\(self.className) was killed") }
+        DevTools.Log.logDeInit("\(self.className) was killed")
         NotificationCenter.default.removeObserver(self)
     }
 
@@ -146,7 +146,7 @@ public extension BaseViewControllerMVP {
 extension BaseViewControllerMVP {
 
     private func addStatsView() {
-        guard DevTools.FeatureFlag.devTeam_showStats.isTrue else { return }
+        guard DevTools.FeatureFlag.showDebugStatsViewOnView.isTrue else { return }
         guard self.stats == nil else { return }
         self.stats = Stats()//frame: CGRect(x: 20, y: 40, width: 100.0, height: 60.0))
         self.view.addSubview(self.stats!)

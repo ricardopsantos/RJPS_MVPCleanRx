@@ -117,11 +117,7 @@ public extension DevTools {
     static func makeToast(_ message: String, isError: Bool = false, function: String = #function, file: String = #file, line: Int = #line) {
         guard !DevTools.isProductionReleaseApp else { return } //If production bail out immediately
         guard DevTools.devModeIsEnabled else { return } // Not dev mode? bail out immediately
-
-        guard DevTools.FeatureFlag.getFlag(.devTeam_showToasts) else {
-            // Disabled toast
-            return
-        }
+        guard DevTools.FeatureFlag.showToastsOnErrors.isTrue else { return }
 
         // Delay because sometimes we are changing screen, and the toast would be lost..
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

@@ -29,12 +29,8 @@ open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtoco
         fatalError("Use instead [init(presentationStyle: \(ViewControllerPresentedLike.self)]")
     }
 
-    //private override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-    //    fatalError("Use instead [init(presentationStyle: \(ViewControllerPresentedLike.self)]")
-    //}
-
     deinit {
-        if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { DevTools.Log.log("\(self.className) was killed") }
+        DevTools.Log.logDeInit("\(self.className) was killed")
         NotificationCenter.default.removeObserver(self)
     }
 

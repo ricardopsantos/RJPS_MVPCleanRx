@@ -24,7 +24,7 @@ import UIBase
 extension R {
     class ___VARIABLE_sceneName___Router: ___VARIABLE_sceneName___DataPassingProtocol {
         deinit {
-            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { DevTools.Log.log("\(self) was killed") }
+            DevTools.Log.logDeInit("\(___VARIABLE_sceneName___Router.self) was killed")
             NotificationCenter.default.removeObserver(self)
         }
         weak var viewController: VC.___VARIABLE_sceneName___ViewController?

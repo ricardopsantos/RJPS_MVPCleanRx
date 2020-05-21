@@ -112,6 +112,14 @@ public func callback(reachability: SCNetworkReachability, flags: SCNetworkReacha
 }
 
 public class Reachability {
+
+    deinit {
+        DevTools.Log.logDeInit("\(Reachability.self) was killed")
+        stopNotifier()
+        reachabilityRef = nil
+        whenReachable = nil
+        whenUnreachable = nil
+    }
     
     public typealias NetworkReachable = (Reachability) -> Void
     public typealias NetworkUnreachable = (Reachability) -> Void
@@ -193,13 +201,7 @@ public class Reachability {
         self.init(reachabilityRef: ref)
     }
     
-    deinit {
-        if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { DevTools.Log.log("\(self) was killed") }
-        stopNotifier()
-        reachabilityRef = nil
-        whenReachable = nil
-        whenUnreachable = nil
-    }
+
 }
 
 public extension Reachability {

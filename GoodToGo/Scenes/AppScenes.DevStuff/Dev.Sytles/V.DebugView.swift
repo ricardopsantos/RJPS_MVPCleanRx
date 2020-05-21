@@ -30,7 +30,7 @@ extension V {
     class DebugView: BaseGenericViewVIP {
 
         deinit {
-            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { DevTools.Log.log("\(self.className) was killed") }
+            DevTools.Log.logDeInit("\(self.className) was killed")
             NotificationCenter.default.removeObserver(self)
         }
 
@@ -64,6 +64,7 @@ extension V {
                 }
                 return some
             }
+
             func makeSection(_ name: String, size: CGFloat) {
                 stackViewVLevel1.uiUtils.addArrangedSeparator()
                 stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: size, color: UIColor.lightGray)
@@ -94,13 +95,9 @@ extension V {
                                                           disposeBag: disposeBag) { value in
                                                             DevTools.FeatureFlag.setFlag(flag, value: value)
                 }
-                //if flag.rawValue.lowercased().hasPrefix("dev") {
-                    // On real devices, Dev features are faded
-                //    view.alpha = Designables.Constants.disabledViewAlpha
-                //}
                 return view
             }
-            let ffViews: [UIView] = DevTools.FeatureFlag.allCases.map { makeFeatureView($0) }
+            let ffViews: [UIView] = DevTools.FeatureFlag.allCases.filter({ $0.isVisible }).map { makeFeatureView($0) }
             ffViews.forEach { (ffView) in
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(ffView)
                 stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
@@ -118,7 +115,6 @@ extension V {
                 }
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(button)
                 button.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
-                //stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
             }
 
             //

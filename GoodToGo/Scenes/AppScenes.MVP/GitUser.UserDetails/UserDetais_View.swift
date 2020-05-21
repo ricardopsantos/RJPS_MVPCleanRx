@@ -25,7 +25,7 @@ extension V {
     class UserDetais_View: BaseViewControllerMVP {
         
         deinit {
-            if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { DevTools.Log.log("\(self.className) was killed") }
+            DevTools.Log.logDeInit("\(self.className) was killed")
             NotificationCenter.default.removeObserver(self)
             presenter.generic?.view_deinit()
         }

@@ -16,7 +16,7 @@ import DevTools
 
 open class BasePresenterMVP {
     deinit {
-        if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { DevTools.Log.log("\(self) was killed") }
+        DevTools.Log.logDeInit("\(BasePresenterMVP.self) was killed")
         NotificationCenter.default.removeObserver(self)
     }
     public init () {}

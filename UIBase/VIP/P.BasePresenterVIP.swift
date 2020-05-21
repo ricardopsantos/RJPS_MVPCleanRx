@@ -17,7 +17,7 @@ open class BasePresenterVIP: BasePresenterVIPProtocol {
         fatalError("Override me on pressenter")
     }
     deinit {
-        if DevTools.FeatureFlag.devTeam_logDeinit.isTrue { DevTools.Log.log("\(self) was killed") }
+        DevTools.Log.logDeInit("\(BasePresenterVIP.self) was killed")
         NotificationCenter.default.removeObserver(self)
     }
 }

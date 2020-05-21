@@ -12,52 +12,51 @@ import RJPSLib
 public extension DevTools {
     enum FeatureFlag: String, CaseIterable {
 
-        case devTeam_showToasts     = "Show toast if error happens"
-        case devTeam_useMockedData  = "Use Mock Data"
-        case devTeam_doLogs         = "App can do logs"
-        case devTeam_logDeinit      = "Log on deinit event"
-        case devTeam_showStats      = "Show Stats View"
+        case showToastsOnErrors        = "Show toast if error happens"
+        case devTeam_useMockedData     = "Use Mock Data"
+        case appLogsEnabled            = "App can do logs"
+        case logDeInitEvent            = "Log on deinit event"
+        case showDebugStatsViewOnView      = "Show Stats View"
 
-        case devTeam_showSheme_bliss       = "Shene Enabled: Bliss"
-        case devTeam_showSheme_rxTests     = "Shene Enabled: RxTests"
-        case devTeam_showSheme_carTrack    = "Shene Enabled: CarTrack"
-        case devTeam_showSheme_gitHub      = "Shene Enabled: GitHub"
-        case devTeam_showSheme_vipTemplate = "Shene Enabled: VIP Template"
+        case showScene_bliss       = "Scene Enabled: Bliss"
+        case showScene_rxTests     = "Scene Enabled: RxTests"
+        case showScene_carTrack    = "Scene Enabled: CarTrack"
+        case showShene_gitHub      = "Scene Enabled: GitHub"
+        case showScene_vipTemplate = "Scene Enabled: VIP Template"
 
         public var defaultValue: Bool {
             switch self {
-            case .devTeam_showToasts: return DevTools.devModeIsEnabled
-            case .devTeam_useMockedData: return false
-            case .devTeam_doLogs: return DevTools.devModeIsEnabled
-            case .devTeam_logDeinit: return false
-            case .devTeam_showStats: return DevTools.devModeIsEnabled
-            case .devTeam_showSheme_bliss: return true
+            case .showToastsOnErrors:       return DevTools.devModeIsEnabled
+            case .devTeam_useMockedData:    return false
+            case .appLogsEnabled:           return DevTools.devModeIsEnabled
+            case .logDeInitEvent:           return false
+            case .showDebugStatsViewOnView: return DevTools.devModeIsEnabled
 
-            case .devTeam_showSheme_rxTests: return true
-            case .devTeam_showSheme_carTrack: return true
-            case .devTeam_showSheme_gitHub: return true
-            case .devTeam_showSheme_vipTemplate: return true
+            case .showScene_bliss:       return true
+            case .showScene_rxTests:     return true
+            case .showScene_carTrack:    return true
+            case .showShene_gitHub:      return true
+            case .showScene_vipTemplate: return true
             }
         }
 
         public var isVisible: Bool {
              switch self {
-             case .devTeam_showToasts:            return true
-             case .devTeam_useMockedData:         return true
-             case .devTeam_doLogs:                return true
-             case .devTeam_logDeinit:             return true
-             case .devTeam_showStats:             return true
-             case .devTeam_showSheme_bliss:       return true
-             case .devTeam_showSheme_rxTests:     return true
-             case .devTeam_showSheme_carTrack:    return true
-             case .devTeam_showSheme_gitHub:      return true
-             case .devTeam_showSheme_vipTemplate: return true
+             case .showToastsOnErrors:       return true
+             case .devTeam_useMockedData:    return true
+             case .appLogsEnabled:           return true
+             case .logDeInitEvent:           return true
+             case .showDebugStatsViewOnView: return true
+             case .showScene_bliss:          return true
+             case .showScene_rxTests:        return true
+             case .showScene_carTrack:       return true
+             case .showShene_gitHub:         return true
+             case .showScene_vipTemplate:    return true
             }
         }
 
         public var isTrue: Bool {
-            let value = FeatureFlag.getFlag(self) == true
-            return value
+            return FeatureFlag.getFlag(self)
         }
 
         public static func getFlag(_ flagName: FeatureFlag) -> Bool {
