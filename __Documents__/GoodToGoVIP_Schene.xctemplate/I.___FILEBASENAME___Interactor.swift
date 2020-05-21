@@ -37,7 +37,7 @@ extension I {
     class ___VARIABLE_sceneName___Interactor: BaseInteractorVIP, ___VARIABLE_sceneName___DataStoreProtocol {
 
         deinit {
-            DevTools.Log.logDeInit("\(self.className) was killed")
+            DevTools.Log.logDeInit("\(___VARIABLE_sceneName___Interactor.self) was killed")
             NotificationCenter.default.removeObserver(self)
         }
         var presenter: ___VARIABLE_sceneName___PresentationLogicProtocol?

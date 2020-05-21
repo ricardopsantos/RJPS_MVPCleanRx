@@ -200,7 +200,6 @@ public class Reachability {
         
         self.init(reachabilityRef: ref)
     }
-    
 
 }
 
