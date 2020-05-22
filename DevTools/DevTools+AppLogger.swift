@@ -24,12 +24,14 @@ public extension DevTools {
             guard DevTools.FeatureFlag.nsLogger.isTrue else { return }
             guard DevTools.Log.enabled else { return }
             LoggerSetupBonjourForBuildUser()
-/*
+            /*
             // If you don't want to disable OS_ACTIVITY_MODE for your scheme because you need that logs.
+            // https://github.com/fpillet/NSLogger#set-up-logger-options
             let pointer = LoggerGetDefaultLogger()
             var options = LoggerGetOptions(pointer)
             options ^= UInt32(kLoggerOption_CaptureSystemConsole) // disable that option
-            LoggerSetOptions(pointer, options)*/
+            LoggerSetOptions(pointer, options)
+            */
         }
 
         public static func logDeInit(_ message: String, function: String = #function, file: String = #file, line: Int = #line) {
