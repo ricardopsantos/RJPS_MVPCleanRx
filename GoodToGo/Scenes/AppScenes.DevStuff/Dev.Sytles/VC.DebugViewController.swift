@@ -72,6 +72,11 @@ extension VC {
         // Order in View life-cycle : 9
         override func viewDidAppear(_ animated: Bool) {
             super.viewDidAppear(animated)
+
+            DevTools.Log.message("message")
+            DevTools.Log.warning("warning")
+            DevTools.Log.error("error")
+
         }
 
         //

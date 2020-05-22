@@ -117,3 +117,4 @@ github "CosmicMind/Material"
 # $(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework
 # $(SRCROOT)/Carthage/Build/iOS/Differentiator.framework
 # $(SRCROOT)/Carthage/Build/iOS/SkyFloatingLabelTextField.framework
+# $(SRCROOT)/Carthage/Build/iOS/NSLogger.framework

@@ -14,9 +14,10 @@ public extension DevTools {
 
         case showToastsOnErrors        = "Show toast if error happens"
         case devTeam_useMockedData     = "Use Mock Data"
-        case appLogsEnabled            = "App can do logs"
-        case logDeInitEvent            = "Log on deinit event"
-        case showDebugStatsViewOnView      = "Show Stats View"
+        case showDebugStatsViewOnView  = "Show Stats View"
+        case appLogsEnabled            = "Logs: enabled"
+        case logDeInitEvent            = "Logs: log deinit event"
+        case nsLogger                  = "If [true] log to console, else to NSLogger"
 
         case showScene_bliss       = "Scene Enabled: Bliss"
         case showScene_rxTests     = "Scene Enabled: RxTests"
@@ -31,6 +32,7 @@ public extension DevTools {
             case .appLogsEnabled:           return DevTools.devModeIsEnabled
             case .logDeInitEvent:           return false
             case .showDebugStatsViewOnView: return DevTools.devModeIsEnabled
+            case .nsLogger:                 return false
 
             case .showScene_bliss:       return true
             case .showScene_rxTests:     return true
@@ -45,6 +47,7 @@ public extension DevTools {
              case .showToastsOnErrors:       return true
              case .devTeam_useMockedData:    return true
              case .appLogsEnabled:           return true
+             case .nsLogger:                 return true
              case .logDeInitEvent:           return true
              case .showDebugStatsViewOnView: return true
              case .showScene_bliss:          return true

@@ -30,16 +30,13 @@ More info about the project and MVP architecture [here](https://github.com/ricar
  
  # Used Frameworks
 
- * TinyConstraints - https://github.com/roberthein/TinyConstraints
- * RJPSLib - https://github.com/ricardopsantos/RJPSLib
- * SwinjectAutoregistration - https://github.com/Swinject/SwinjectAutoregistration
- * NSLogger - https://github.com/fpillet/NSLogger
- * RxDataSources
- * RxGesture
- * Swinject
- * Toast-Swift - https://github.com/scalessec/Toast-Swift
- * SkyFloatingLabelTextField - https://github.com/Skyscanner/SkyFloatingLabelTextField
- * RxSwift
+ * [TinyConstraints](https://github.com/roberthein/TinyConstraints)
+ * [RJPSLib](https://github.com/ricardopsantos/RJPSLib)
+ * [Swinject](https://github.com/Swinject/SwinjectAutoregistration)
+ * [NSLogger](https://github.com/fpillet/NSLogger)
+ * RxDataSources, RxSwift, RxGesture, RxCocoa
+ * [Toast-Swift](https://github.com/scalessec/Toast-Swift)
+ * [SkyFloatingLabelTextField](https://github.com/Skyscanner/SkyFloatingLabelTextField)
  * Hero
  * Material
  * Motion

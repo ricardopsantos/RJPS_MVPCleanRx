@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RJPSLib
+import NSLoggerSwift
 //
 import AppConstants
 import PointFreeFunctions
@@ -17,7 +18,17 @@ import DevTools
 
 extension AppDelegate {
     func setup(application: UIApplication) {
-        DevTools.Log.enabled = DevTools.FeatureFlag.appLogsEnabled.isTrue
+
+        if DevTools.FeatureFlag.appLogsEnabled.isTrue {
+            // Enable logs
+            DevTools.Log.enabled = true
+        }
+
+        if DevTools.FeatureFlag.appLogsEnabled.isTrue && DevTools.FeatureFlag.nsLogger.isTrue {
+            // https://github.com/fpillet/NSLogger#using-nslogger-on-a-shared-network
+            LoggerSetupBonjourForBuildUser()
+        }
+
         AppEnvironments.setup()
         DevTools.Log.message("RJPSLib Version : \(RJSLib.version)\nNumber of logins : \(AppUserDefaultsVars.incrementIntWithKey(AppConstants.Dev.numberOfLogins))")
     }
