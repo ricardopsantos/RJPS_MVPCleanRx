@@ -16,6 +16,9 @@ import Extensions
 
 public extension UIButton {
 
+    // Cant be o Designables because the Designables allready import AppTheme
+    static var defaultFont: UIFont { UIFont.App.Alternative.paragraphMedium.rawValue }
+
     var layoutStyle: UIButton.LayoutStyle {
         set { apply(style: newValue) }
         get { return .notApplied }
@@ -39,8 +42,6 @@ public extension UIButton {
 
 private extension UIButton {
 
-    var defaultFont: UIFont { UIFont.App.Alternative.paragraphMedium.rawValue }
-
     func applySharedProperties() {
         self.setState(enabled: true)
         self.addShadow(shadowType: .regular)
@@ -48,7 +49,7 @@ private extension UIButton {
 
     func applyStyleInngage() {
         applySharedProperties()
-        self.titleLabel?.font = defaultFont
+        self.titleLabel?.font = UIButton.defaultFont
         self.backgroundColor  = UIColor.App.UIButton.backgroundColorInnGage
         self.setTextColorForAllStates(UIColor.App.UIButton.textColorInnGage)
         self.layer.cornerRadius = 10.0
@@ -57,7 +58,7 @@ private extension UIButton {
 
     func applyStylePrimary() {
         applySharedProperties()
-        self.titleLabel?.font = defaultFont
+        self.titleLabel?.font = UIButton.defaultFont
         self.backgroundColor  = UIColor.App.UIButton.backgroundColorDefault
         self.setTextColorForAllStates(UIColor.App.UIButton.textColorDefault)
         self.layer.cornerRadius = AppConstants.buttonDefaultSize.height / 2
@@ -66,7 +67,7 @@ private extension UIButton {
 
     func applyStyleSecondary() {
         applySharedProperties()
-        self.titleLabel?.font = defaultFont
+        self.titleLabel?.font = UIButton.defaultFont
         self.backgroundColor  = UIColor.white //UIColor.App.onPrimary
         self.setTextColorForAllStates(UIColor.App.primary)
         self.layer.borderWidth = 2
@@ -77,7 +78,7 @@ private extension UIButton {
 
     func applyStyleDestructive() {
         applySharedProperties()
-        self.titleLabel?.font = defaultFont
+        self.titleLabel?.font = UIButton.defaultFont
         self.backgroundColor  = UIColor.white //UIColor.App.onPrimary
         self.setTextColorForAllStates(UIColor.App.primary)
         self.layer.cornerRadius = AppConstants.buttonDefaultSize.height / 2
@@ -88,7 +89,7 @@ private extension UIButton {
 
     func applyStyleDismiss() {
         applySharedProperties()
-        self.titleLabel?.font = defaultFont
+        self.titleLabel?.font = UIButton.defaultFont
         self.backgroundColor  = UIColor.App.UIButton.backgroundColorDefault
         self.setTextColorForAllStates(UIColor.App.UIButton.textColorDefault)
         self.setTitleForAllStates(Messages.dismiss.localised)

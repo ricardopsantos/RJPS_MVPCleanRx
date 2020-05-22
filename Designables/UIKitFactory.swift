@@ -30,10 +30,12 @@ public struct UIKitFactory {
     public static func raisedButton(title: String,
                                     pulseColor: UIColor = UIColor.App.onPrimary,
                                     backgroundColor: UIColor = UIColor.App.primary) -> UIButton {
-        let button = RaisedButton(title: title, titleColor: .white)
-        button.pulseColor = UIColor.App.onPrimary //.white
+        let button = RaisedButton(title: title, titleColor: pulseColor)
+        //button.
+        button.pulseColor = pulseColor
         button.backgroundColor = backgroundColor
         button.addShadow()
+        //button.apply(theme: Theme.dark)
         return button
     }
 

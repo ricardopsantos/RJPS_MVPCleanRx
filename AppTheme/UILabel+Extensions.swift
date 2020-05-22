@@ -41,7 +41,7 @@ public extension UILabel {
 
         #warning("this should be a component, not a style")
         let info = {
-            self.backgroundColor = UIColor.App.primary.withAlphaComponent(FadeType.heavyRegular.rawValue)
+            self.backgroundColor = UIColor.App.primary.withAlphaComponent(FadeType.regular.rawValue)
             self.textColor       = UIColor.App.onPrimary
             self.font            = UIFont.App.Alternative.captionLarge.rawValue
             self.addShadow()

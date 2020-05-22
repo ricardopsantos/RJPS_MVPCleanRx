@@ -85,7 +85,7 @@ extension V {
                 return label
             }
 
-            let testBackgroundColors = [UIColor.white, UIColor.App.primary, UIColor.black]
+            let testBackgroundColors = [UIColor.white, UIColor.App.primary]
 
             //
             // FeatureFlag
@@ -118,28 +118,6 @@ extension V {
                 }
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(button)
                 button.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
-            }
-
-            //
-            // UIFont.App.Alternative
-            //
-
-            makeSection("UIFont.App.Alternative", size: sectionSize)
-            var allFonts = UIFont.App.Alternative.allCases
-            var allFontsSorted = allFonts.sorted { (f1, f2) -> Bool in return f1.rawValue.pointSize > f2.rawValue.pointSize }
-            allFontsSorted.forEach { (font) in
-                let some1 = UILabel()
-                some1.text = "\(font)"
-                some1.font = font.rawValue
-                some1.textAlignment = .center
-                some1.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
-                let some2 = UILabel()
-                some2.text = "\(font.rawValue.fontName) \(font.rawValue.pointSize)"
-                some2.font = UIFont.App.Alternative.caption.rawValue
-                some2.textAlignment = .center
-                stackViewVLevel1.uiUtils.safeAddArrangedSubview(some1)
-                stackViewVLevel1.uiUtils.safeAddArrangedSubview(some2)
-                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
             }
 
             //
@@ -226,6 +204,63 @@ extension V {
             stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
 
             stackViewVLevel1.uiUtils.addArrangedSeparator()
+
+            //
+            // UIFont.App.Alternative
+            //
+
+            makeSection("UIFont.App.Alternative", size: sectionSize)
+            let allFonts = UIFont.App.Alternative.allCases
+            let allFontsSorted = allFonts.sorted { (f1, f2) -> Bool in return f1.rawValue.pointSize > f2.rawValue.pointSize }
+            allFontsSorted.forEach { (font) in
+                let some1 = UILabel()
+                some1.text = "\(font)"
+                some1.font = font.rawValue
+                some1.textAlignment = .center
+                some1.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
+                let some2 = UILabel()
+                some2.text = "\(font.rawValue.fontName) \(font.rawValue.pointSize)"
+                some2.font = UIFont.App.Alternative.caption.rawValue
+                some2.textAlignment = .center
+                stackViewVLevel1.uiUtils.safeAddArrangedSubview(some1)
+                stackViewVLevel1.uiUtils.safeAddArrangedSubview(some2)
+                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
+            }
+
+            //
+            // UIColor.Pack1
+            //
+
+            makeSection("UIColor.Pack1", size: sectionSize)
+            UIColor.Pack1.allCases.forEach { (some) in
+                let view = UILabel()
+                view.text = "\(some)"
+                view.apply(style: .value)
+                view.textColor = UIColor.white
+                view.backgroundColor = some.color
+                view.textAlignment = .center
+                view.addCorner(radius: 1)
+                stackViewVLevel1.uiUtils.safeAddArrangedSubview(view)
+                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
+            }
+
+            //
+            // UIColor.Pack2
+            //
+
+            makeSection("UIColor.Pack2", size: sectionSize)
+            UIColor.Pack2.allCases.forEach { (some) in
+                let view = UILabel()
+                view.text = "\(some)"
+                view.apply(style: .value)
+                view.textColor = UIColor.white
+                view.backgroundColor = some.color
+                view.textAlignment = .center
+                view.addCorner(radius: 1)
+                stackViewVLevel1.uiUtils.safeAddArrangedSubview(view)
+                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
+            }
+
             stackViewVLevel1.uiUtils.addArrangedSeparator()
 
         }

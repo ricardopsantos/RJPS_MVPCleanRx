@@ -15,7 +15,7 @@ public extension UIFont {
         
         private init() {}
 
-        private struct V1 {
+        private struct Builder {
             public enum Size: CGFloat {
                 case big        = 24 // Heading
                 case regularBig = 18 // Paragraph
@@ -32,6 +32,7 @@ public extension UIFont {
             public static func light(size: Size) -> UIFont { return UIFont(name: "HelveticaNeue-Thin", size: size.rawValue)! }
         }
 
+        // Find better name
         public enum Alternative: CaseIterable {
             public typealias RawValue = UIFont
 
@@ -60,9 +61,9 @@ public extension UIFont {
                 //let mediumFontName  = "Gloriola-Medium"  // Regular/Bold
                 //let regularFontName = "Gloriola-Regular" // Regular
 
-                let boldFontName    = UIFont.App.V1.bold.fontName     // Bold
-                let mediumFontName  = UIFont.App.V1.regular.fontName  // Regular/Bold
-                let regularFontName = UIFont.App.V1.light.fontName    // Regular
+                let boldFontName    = UIFont.App.Builder.bold.fontName     // Bold
+                let mediumFontName  = UIFont.App.Builder.regular.fontName  // Regular/Bold
+                let regularFontName = UIFont.App.Builder.light.fontName    // Regular
 
                 switch self {
                 //case .text: return UIFont(name: regularFontName, size: 14.0)!
