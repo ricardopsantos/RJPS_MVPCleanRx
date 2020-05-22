@@ -14,7 +14,10 @@ public extension UIButton {
         case notApplied
         case primary
         case secondary
-        case destructive
+        case secondaryDestructive
+        case accept
+        case reject
+        case remind
         case inngage
     }
 }

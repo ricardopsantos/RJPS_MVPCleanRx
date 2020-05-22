@@ -42,6 +42,11 @@ public extension UIColor {
         public static var error: UIColor { return UIColor.Pack1.red1.color }
         public static var success: UIColor { return UIColor.Pack1.blue2.color }
         public static var warning: UIColor { return UIColor.Pack1.orange.color }
+
+        public static var accept: UIColor { return UIColor.Pack2.green.color }
+        public static var reject: UIColor { return UIColor.Pack2.gray.color }
+        public static var remind: UIColor { return UIColor.Pack1.orange.color }
+
     }
 }
 

@@ -34,8 +34,11 @@ public extension UIButton {
         case .notApplied  : _ = 1
         case .primary     : self.applyStylePrimary()
         case .secondary   : self.applyStyleSecondary()
-        case .destructive : self.applyStyleDestructive()
+        case .secondaryDestructive : self.applyStyleSecondaryDestructive()
         case .inngage     : self.applyStyleInngage()
+        case .accept      : self.applyStyleAccept()
+        case .reject      : self.applyStyleReject()
+        case .remind      : self.applyStyleRemind()
         }
     }
 }
@@ -56,6 +59,32 @@ private extension UIButton {
         self.clipsToBounds      = true
     }
 
+    func applyStyleAccept() {
+        applySharedProperties()
+        self.titleLabel?.font = UIButton.defaultFont
+        self.backgroundColor  = UIColor.App.accept
+        self.setTextColorForAllStates(UIColor.App.UIButton.textColorDefault)
+        self.layer.cornerRadius = AppConstants.buttonDefaultSize.height / 2
+        self.clipsToBounds      = true
+    }
+
+    func applyStyleReject() {
+        applySharedProperties()
+        self.titleLabel?.font = UIButton.defaultFont
+        self.backgroundColor  = UIColor.App.reject
+        self.setTextColorForAllStates(UIColor.App.UIButton.textColorDefault)
+        self.layer.cornerRadius = AppConstants.buttonDefaultSize.height / 2
+        self.clipsToBounds      = true
+    }
+
+    func applyStyleRemind() {
+        applySharedProperties()
+        self.titleLabel?.font = UIButton.defaultFont
+        self.backgroundColor  = UIColor.App.remind
+        self.setTextColorForAllStates(UIColor.App.UIButton.textColorDefault)
+        self.layer.cornerRadius = AppConstants.buttonDefaultSize.height / 2
+        self.clipsToBounds      = true
+    }
     func applyStylePrimary() {
         applySharedProperties()
         self.titleLabel?.font = UIButton.defaultFont
@@ -68,23 +97,23 @@ private extension UIButton {
     func applyStyleSecondary() {
         applySharedProperties()
         self.titleLabel?.font = UIButton.defaultFont
-        self.backgroundColor  = UIColor.white //UIColor.App.onPrimary
+        self.backgroundColor  = UIColor.white
         self.setTextColorForAllStates(UIColor.App.primary)
-        self.layer.borderWidth = 2
-        self.layer.borderColor = UIColor.App.primary.cgColor
+        self.layer.borderWidth  = 2
+        self.layer.borderColor  = UIColor.App.primary.cgColor
         self.layer.cornerRadius = AppConstants.buttonDefaultSize.height / 2
         self.clipsToBounds      = true
     }
 
-    func applyStyleDestructive() {
+    func applyStyleSecondaryDestructive() {
         applySharedProperties()
         self.titleLabel?.font = UIButton.defaultFont
-        self.backgroundColor  = UIColor.white //UIColor.App.onPrimary
-        self.setTextColorForAllStates(UIColor.App.primary)
+        self.backgroundColor  = UIColor.white
+        self.setTextColorForAllStates(UIColor.App.error)
         self.layer.cornerRadius = AppConstants.buttonDefaultSize.height / 2
         self.clipsToBounds      = true
-        self.layer.borderWidth = 2
-        self.layer.borderColor = UIColor.App.error.cgColor
+        self.layer.borderWidth  = 2
+        self.layer.borderColor  = UIColor.App.error.cgColor
     }
 
     func applyStyleDismiss() {
