@@ -70,7 +70,7 @@ extension V {
                 stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: size, color: UIColor.lightGray)
                 let label = UILabel()
                 label.text = name
-                label.font = UIFont.App.Alternative.headingSmall.rawValue
+                label.font = UIFont.App.Styles.headingSmall.rawValue
                 label.textAlignment = .center
                 label.textColor = UIColor.App.primary
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(label)
@@ -81,7 +81,7 @@ extension V {
                 let label = UIKitFactory.label(style: .title)
                 label.text = text
                 label.textAlignment = .center
-                label.font = UIFont.App.Alternative.caption.rawValue 
+                label.font = UIFont.App.Styles.caption.rawValue 
                 return label
             }
 
@@ -210,7 +210,7 @@ extension V {
             //
 
             makeSection("UIFont.App.Alternative", size: sectionSize)
-            let allFonts = UIFont.App.Alternative.allCases
+            let allFonts = UIFont.App.Styles.allCases
             let allFontsSorted = allFonts.sorted { (f1, f2) -> Bool in return f1.rawValue.pointSize > f2.rawValue.pointSize }
             allFontsSorted.forEach { (font) in
                 let some1 = UILabel()
@@ -220,7 +220,7 @@ extension V {
                 some1.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
                 let some2 = UILabel()
                 some2.text = "\(font.rawValue.fontName) \(font.rawValue.pointSize)"
-                some2.font = UIFont.App.Alternative.caption.rawValue
+                some2.font = UIFont.App.Styles.caption.rawValue
                 some2.textAlignment = .center
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(some1)
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(some2)

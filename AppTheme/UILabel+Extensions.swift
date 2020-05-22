@@ -24,26 +24,26 @@ public extension UILabel {
     func apply(style: UILabel.LayoutStyle) {
         let navigationBarTitle = {
             self.textColor       = UIColor.App.TopBar.titleColor
-            self.font            = UIFont.App.Alternative.headingMedium.rawValue
+            self.font            = UIFont.App.Styles.headingMedium.rawValue
         }
         let title = {
-            self.textColor       = UIColor.App.lblTextColor
-            self.font            = UIFont.App.Alternative.paragraphBold.rawValue
+            self.textColor       = UIColor.App.UILabel.lblTextColor
+            self.font            = UIFont.App.Styles.paragraphBold.rawValue
         }
         let value = {
-            self.textColor       = UIColor.App.lblTextColor.withAlphaComponent(FadeType.regular.rawValue)
-            self.font            = UIFont.App.Alternative.paragraphSmall.rawValue
+            self.textColor       = UIColor.App.UILabel.lblTextColor.withAlphaComponent(FadeType.regular.rawValue)
+            self.font            = UIFont.App.Styles.paragraphSmall.rawValue
         }
         let error = {
             self.textColor       = UIColor.App.error
-            self.font            = UIFont.App.Alternative.captionSmall.rawValue
+            self.font            = UIFont.App.Styles.captionSmall.rawValue
         }
 
         #warning("this should be a component, not a style")
         let info = {
             self.backgroundColor = UIColor.App.primary.withAlphaComponent(FadeType.regular.rawValue)
             self.textColor       = UIColor.App.onPrimary
-            self.font            = UIFont.App.Alternative.captionLarge.rawValue
+            self.font            = UIFont.App.Styles.captionLarge.rawValue
             self.addShadow()
             self.addCorner(radius: 5)
         }

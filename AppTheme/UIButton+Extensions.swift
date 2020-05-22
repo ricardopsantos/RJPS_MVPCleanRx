@@ -17,7 +17,7 @@ import Extensions
 public extension UIButton {
 
     // Cant be o Designables because the Designables allready import AppTheme
-    static var defaultFont: UIFont { UIFont.App.Alternative.paragraphMedium.rawValue }
+    static var defaultFont: UIFont { UIFont.App.Styles.paragraphMedium.rawValue }
 
     var layoutStyle: UIButton.LayoutStyle {
         set { apply(style: newValue) }

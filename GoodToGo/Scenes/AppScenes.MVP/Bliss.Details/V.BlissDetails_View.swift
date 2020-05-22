@@ -134,7 +134,7 @@ extension V {
             rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
                 _ = element
                 guard let self = self else { return }
-                cell.set(textColor: AppColors.lblTextColor)
+                cell.set(textColor: AppColors.UILabel.lblTextColor)
                 self.presenter.tableView.configure(cell: cell, indexPath: NSIndexPath(row: row, section: 0) as IndexPath)
             }.disposed(by: disposeBag)
             return some

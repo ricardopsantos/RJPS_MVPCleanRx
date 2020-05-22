@@ -78,7 +78,7 @@ open class ReachabilityView: UILabelWithPadding {
         viewController.view.addSubview(some)
         some.tag             = tag.rawValue
         some.label.textColor = UIColor.App.TopBar.titleColor
-        some.label.font      = UIFont.App.Alternative.caption.rawValue 
+        some.label.font      = UIFont.App.Styles.caption.rawValue 
         some.textAlignment   = .center
         some.backgroundColor = UIColor.App.error
         some.alpha           = 0

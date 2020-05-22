@@ -11,11 +11,9 @@ import Foundation
 public extension UIFont {
     struct App {
 
-        #warning("adicionar isto ao ecran de debug")
-        
         private init() {}
 
-        private struct Builder {
+        private struct StylesBuilder {
             public enum Size: CGFloat {
                 case big        = 24 // Heading
                 case regularBig = 18 // Paragraph
@@ -33,26 +31,19 @@ public extension UIFont {
         }
 
         // Find better name
-        public enum Alternative: CaseIterable {
+        public enum Styles: CaseIterable {
             public typealias RawValue = UIFont
 
             case headingJumbo
             case headingBold
             case headingMedium
             case headingSmall
-            //case paragraphBoldSecondary
             case paragraphBold
-            //case paragraphMediumSecondary
             case paragraphMedium
-            //case paragraphSmallSecondary
             case paragraphSmall
-            //case captionLargeSecondary
             case captionLarge
-            //case captionSecondary
-            case caption // Same as [textStyle]
-            //case captionSmallSecondary
+            case caption
             case captionSmall
-            //case text // Same as [caption]
 
             public init?(rawValue: RawValue) { return nil }
 
@@ -61,27 +52,20 @@ public extension UIFont {
                 //let mediumFontName  = "Gloriola-Medium"  // Regular/Bold
                 //let regularFontName = "Gloriola-Regular" // Regular
 
-                let boldFontName    = UIFont.App.Builder.bold.fontName     // Bold
-                let mediumFontName  = UIFont.App.Builder.regular.fontName  // Regular/Bold
-                let regularFontName = UIFont.App.Builder.light.fontName    // Regular
+                let boldFontName    = UIFont.App.StylesBuilder.bold.fontName     // Bold
+                let mediumFontName  = UIFont.App.StylesBuilder.regular.fontName  // Regular/Bold
+                let regularFontName = UIFont.App.StylesBuilder.light.fontName    // Regular
 
                 switch self {
-                //case .text: return UIFont(name: regularFontName, size: 14.0)!
                 case .headingJumbo: return UIFont(name: regularFontName, size: 38.0)!
                 case .headingBold: return UIFont(name: boldFontName, size: 28.0)!
                 case .headingMedium:  return UIFont(name: mediumFontName, size: 28.0)!
                 case .headingSmall: return UIFont(name: regularFontName, size: 24.0)!
-                //case .paragraphBoldSecondary: return UIFont(name: mediumFontName, size: 18.0)!
                 case .paragraphBold:  return UIFont(name: mediumFontName, size: 18.0)!
-                //case .paragraphMediumSecondary:return UIFont(name: mediumFontName, size: 16.0)!
                 case .paragraphMedium: return UIFont(name: mediumFontName, size: 16.0)!
-                //case .paragraphSmallSecondary: return UIFont(name: regularFontName, size: 16.0)!
                 case .paragraphSmall: return UIFont(name: regularFontName, size: 16.0)!
-                //case .captionLargeSecondary: return UIFont(name: regularFontName, size: 14.0)!
                 case .captionLarge: return UIFont(name: regularFontName, size: 14.0)!
-                //case .captionSecondary: return UIFont(name: mediumFontName, size: 12.0)!
                 case .caption: return UIFont(name: mediumFontName, size: 12.0)!
-                //case .captionSmallSecondary: return UIFont(name: mediumFontName, size: 10.0)!
                 case .captionSmall: return UIFont(name: mediumFontName, size: 10.0)!
                 }
             }

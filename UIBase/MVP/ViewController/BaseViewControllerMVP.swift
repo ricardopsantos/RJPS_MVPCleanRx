@@ -65,7 +65,7 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
         var style = ToastStyle()
         style.cornerRadius = 5
         style.displayShadow = true
-        style.messageFont = UIFont.App.Alternative.paragraphSmall.rawValue 
+        style.messageFont = UIFont.App.Styles.paragraphSmall.rawValue 
         switch type {
         case .success: style.backgroundColor = UIColor.App.success.withAlphaComponent(FadeType.superLight.rawValue)
         case .warning: style.backgroundColor = UIColor.App.warning.withAlphaComponent(FadeType.superLight.rawValue)

@@ -29,9 +29,12 @@ public extension UIColor {
             public static var textColorDefault: UIColor { return onPrimary }
         }
 
+        public struct UILabel {
+            public static var lblBackgroundColor: UIColor { return UIColor.Pack1.grey_6.color }
+            public static var lblTextColor: UIColor { return UIColor.Pack1.grey_1.color }
+        }
+
         public static var backgroundColor: UIColor { return onPrimary }
-        public static var lblBackgroundColor: UIColor { return UIColor.Pack1.grey_6.color }
-        public static var lblTextColor: UIColor { return UIColor.Pack1.grey_1.color }
 
         public static var primary: UIColor { return UIColor.Pack1.blue1.color }
         public static var onPrimary: UIColor { return UIColor.Pack1.grey_7.color }

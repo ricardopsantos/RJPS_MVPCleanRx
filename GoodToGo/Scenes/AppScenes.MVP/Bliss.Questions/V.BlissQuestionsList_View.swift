@@ -113,7 +113,7 @@ extension V {
                 _ = element
                 guard let self = self else { return }
                 var indexPath = NSIndexPath(row: row, section: 0)
-                cell.set(textColor: AppColors.lblTextColor)
+                cell.set(textColor: AppColors.UILabel.lblTextColor)
                 self.presenter.tableView.configure(cell: cell, indexPath: indexPath as IndexPath)
             }.disposed(by: disposeBag)
             return some

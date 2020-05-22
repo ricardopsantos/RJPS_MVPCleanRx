@@ -37,7 +37,7 @@ open class Sample_TableViewCell: UITableViewCell, GenericTableViewCell_Protocol 
     // BehaviorRelay model a State
     public var rxBehaviorRelay_title     = BehaviorRelay<String>(value: "")
     public var rxBehaviorRelay_image     = BehaviorRelay<UIImage?>(value: nil)
-    public var rxBehaviorRelay_textColor = BehaviorRelay<UIColor>(value: UIColor.App.lblTextColor)
+    public var rxBehaviorRelay_textColor = BehaviorRelay<UIColor>(value: UIColor.App.UILabel.lblTextColor)
 
     open class var cellSize: CGFloat { return Designables.Sizes.TableViewCell.defaultSize }
     public static func prepare(tableView: UITableView) {

@@ -45,9 +45,9 @@ public struct UIKitFactory {
         some.placeholder = placeholder
         some.title = title
 
-        some.titleColor         = UIColor.App.lblTextColor.withAlphaComponent(FadeType.regular.rawValue)
-        some.selectedTitleColor = UIColor.App.lblTextColor
-        some.textColor          = UIColor.App.lblTextColor
+        some.titleColor         = UIColor.App.UILabel.lblTextColor.withAlphaComponent(FadeType.regular.rawValue)
+        some.selectedTitleColor = UIColor.App.UILabel.lblTextColor
+        some.textColor          = UIColor.App.UILabel.lblTextColor
 
         some.errorColor      = UIColor.App.error
         some.titleErrorColor = UIColor.App.error
@@ -122,8 +122,8 @@ public struct UIKitFactory {
         some.barStyle = .default
 
         let searchBarTextAttributes = [
-            NSAttributedString.Key.font: UIFont.App.Alternative.paragraphSmall.rawValue ,
-            NSAttributedString.Key.foregroundColor: UIColor.App.lblTextColor
+            NSAttributedString.Key.font: UIFont.App.Styles.paragraphSmall.rawValue ,
+            NSAttributedString.Key.foregroundColor: UIColor.App.UILabel.lblTextColor
         ]
         // Default attributes for search text
         UITextField.appearance(whenContainedInInstancesOf: [CustomSearchBar.self]).defaultTextAttributes = searchBarTextAttributes
@@ -149,7 +149,7 @@ public struct UIKitFactory {
         stackView.alignment = .center
         stackView.spacing = AppSizes.Margins.defaultMargin
         let label = UILabel()
-        label.font = UIFont.App.Alternative.caption.rawValue 
+        label.font = UIFont.App.Styles.caption.rawValue 
         label.backgroundColor = .clear
         let uiSwitch = UISwitch()
         label.numberOfLines = 0
