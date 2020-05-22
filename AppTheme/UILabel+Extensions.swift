@@ -31,8 +31,12 @@ public extension UILabel {
             self.font            = UIFont.App.Styles.paragraphBold.rawValue
         }
         let value = {
-            self.textColor       = UIColor.App.UILabel.lblTextColor.withAlphaComponent(FadeType.regular.rawValue)
+            self.textColor       = UIColor.App.UILabel.lblTextColor.withAlphaComponent(FadeType.superLight.rawValue)
             self.font            = UIFont.App.Styles.paragraphSmall.rawValue
+        }
+        let text = {
+            self.textColor       = UIColor.App.UILabel.lblTextColor
+            self.font            = UIFont.App.Styles.caption.rawValue
         }
         let error = {
             self.textColor       = UIColor.App.error
@@ -48,10 +52,11 @@ public extension UILabel {
             self.addCorner(radius: 5)
         }
         switch style {
-        case .notApplied : _ = 1
+        case .notApplied         : _ = 1
         case .navigationBarTitle : navigationBarTitle()
         case .title              : title()
         case .value              : value()
+        case .text               : text()
         case .error              : error()
         case .info               : info()
         }

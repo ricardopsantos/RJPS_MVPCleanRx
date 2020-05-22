@@ -15,18 +15,17 @@ public extension UIButton {
         case primary
         case secondary
         case destructive
-        //case dismiss
         case inngage
-        //case alternative // TabBar buttons
     }
 }
 
 public extension UILabel {
     enum LayoutStyle: CaseIterable {
-        case notApplied /// not Applied
+        case notApplied
         case navigationBarTitle
         case title
         case value
+        case text
         case info
         case error
     }
