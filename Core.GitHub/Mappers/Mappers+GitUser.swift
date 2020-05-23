@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 //
-import AppCore
+import Core
 import Domain
 import Domain_GitHub
 

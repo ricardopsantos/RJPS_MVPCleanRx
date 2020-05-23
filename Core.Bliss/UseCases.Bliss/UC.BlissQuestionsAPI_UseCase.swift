@@ -10,7 +10,7 @@ import UIKit
 //
 import RJPSLib
 //
-import AppCore
+import Core
 import Domain
 import Domain_Bliss
 import Factory
@@ -20,7 +20,7 @@ public class BlissQuestionsAPI_UseCase: GenericUseCase, BlissQuestionsAPIUseCase
     
     public override init() { super.init() }
     
-    public var repositoryNetwork: BlissNetWorkRepositoryProtocol!
+    public var repositoryNetwork: Bliss_NetWorkRepositoryProtocol!
     public var generic_CacheRepositoryProtocol: SimpleCacheRepositoryProtocol!
     public var generic_LocalStorageRepository: KeyValuesStorageRepositoryProtocol!
     

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D7F2DDFD24748644008CE3DA"
-               BuildableName = "AppCore_GitHub.framework"
-               BlueprintName = "AppCore.GitHub"
+               BlueprintIdentifier = "D7AB24C3246743BD000142C4"
+               BuildableName = "Core.framework"
+               BlueprintName = "Core"
                ReferencedContainer = "container:GoodToGo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -50,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D7F2DDFD24748644008CE3DA"
-            BuildableName = "AppCore_GitHub.framework"
-            BlueprintName = "AppCore.GitHub"
+            BlueprintIdentifier = "D7AB24C3246743BD000142C4"
+            BuildableName = "Core.framework"
+            BlueprintName = "Core"
             ReferencedContainer = "container:GoodToGo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

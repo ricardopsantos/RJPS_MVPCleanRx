@@ -12,12 +12,12 @@ import Domain
 import Domain_Bliss
 import Domain_CarTrack
 import Domain_GitHub
-import WebAPI
 import Repositories
-import AppCore
-import AppCore_Bliss
-import AppCore_CarTrack
-import AppCore_GitHub
+import Repositories_WebAPI
+import Core
+import Core_Bliss
+import Core_CarTrack
+import Core_GitHub
 
 public typealias AS = AssembyContainer
 public struct AssembyContainer { private init() {} }
@@ -30,7 +30,7 @@ struct RootAssemblyContainerProtocols {
     static let networkClient                      = RJSLibNetworkClient_Protocol.self
     static let generic_CacheRepository            = SimpleCacheRepositoryProtocol.self
     static let generic_LocalStorageRepository     = KeyValuesStorageRepositoryProtocol.self
-    static let bliss_NetWorkRepository            = BlissNetWorkRepositoryProtocol.self
+    static let bliss_NetWorkRepository            = Bliss_NetWorkRepositoryProtocol.self
     static let gitUser_NetWorkRepository          = GitUser_NetWorkRepositoryProtocol.self
     static let carTrack_NetWorkRepository         = CarTrack_NetWorkRepositoryProtocol.self
 
@@ -92,7 +92,7 @@ final class RootAssemblyContainer: Assembly {
         }
 
         container.register(AppProtocols.carTrackGenericAppBusiness_UseCase) { resolver in
-            let uc = AppCore_CarTrack.CarTrackGenericAppBusinessUseCase()
+            let uc = Core_CarTrack.CarTrackGenericAppBusinessUseCase()
             uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
             return uc

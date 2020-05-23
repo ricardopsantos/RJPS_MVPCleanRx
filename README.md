@@ -5,9 +5,13 @@
 
 The intent of this project is to show a simple implementation of the __MVP/VIP + Clean (Rx)__ pattern. This is my vision about it, and if you don't agree with something, just email me, I love to hear opinions and learn from that.
 
+## Project structure
 
-![Preview](__Documents__/ReadmeImages/readme_2.png)
+![Preview](__Documents__/ReadmeImages/readme_3.png)
 
+## Project modules dependencies
+
+![Preview](__Documents__/ReadmeImages/readme_4.png)
 
 # Install
 
@@ -28,7 +32,7 @@ Just download source code and run  `./_script_installPackages.sh`
 
 More info about the project and MVP architecture [here](https://github.com/ricardopsantos/RJPS_MVPCleanRx/tree/master/Docs)
  
- # Used Frameworks
+# Used Frameworks
 
  * [RJPSLib](https://github.com/ricardopsantos/RJPSLib) - Swift toolbox
  * [TinyConstraints](https://github.com/roberthein/TinyConstraints) - Nothing but sugar.
@@ -36,11 +40,11 @@ More info about the project and MVP architecture [here](https://github.com/ricar
  * [NSLogger](https://github.com/fpillet/NSLogger) - A modern, flexible logging tool
  * RxDataSources, RxSwift, RxGesture, RxCocoa
  * [Toast-Swift](https://github.com/scalessec/Toast-Swift) - A modern, flexible logging tool
- * [SkyFloatingLabelTextField](https://github.com/Skyscanner/SkyFloatingLabelTextField) - A beautiful and flexible text field control implementation of "Float Label Pattern". Written in Swift.
+ * [SkyFloatingLabelTextField](https://github.com/Skyscanner/SkyFloatingLabelTextField) - A beautiful and flexible text field control implementation of _Float Label Pattern_
  * [Hero](https://github.com/HeroTransitions/Hero) - Elegant transition library for iOS & tvOS
- * (Material)(https://github.com/CosmicMind/Material) - A UI/UX framework for creating beautiful applications. http://cosmicmind.com
- * [Motion](https://github.com/CosmicMind/Motion) - A library used to create beautiful animations and transitions for iOS. http://cosmicmind.com
- * [Lottie-ios](https://github.com/airbnb/lottie-ios) - An iOS library to natively render After Effects vector animations http://airbnb.io/lottie/
+ * [Material](https://github.com/CosmicMind/Material) - A UI/UX framework for creating beautiful applications. http://cosmicmind.com
+ * [Motion](https://github.com/CosmicMind/Motion) - A library used to create beautiful animations and transitions for iOS. 
+ * [Lottie-ios](https://github.com/airbnb/lottie-ios) - An iOS library to natively render After Effects vector animations
  
 # Code Guidelines/Conventions
 
@@ -50,6 +54,7 @@ More info about the project and MVP architecture [here](https://github.com/ricar
     * All `UILabel`s start by _lbl_. Example _llbName_, _lblPassword_
     * All `UITableView`s start by _table_ or _tbl_. Example : _tableUsers_, _tblFriends_
     * All `UITextViews` and `UITextField`s starts by _txt_. Example : _txtPassword_, _txtUserName_
+    * All Rx related vars start with `rx` or end with `Single`, `Observable`, etc...
     * Thumb rule : The name of the _var_, should be clear about the type associated. 
     
 

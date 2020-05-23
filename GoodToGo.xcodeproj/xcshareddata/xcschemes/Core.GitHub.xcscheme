@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D7D9E79F24676FE6005B4313"
-               BuildableName = "WebAPI.framework"
-               BlueprintName = "WebAPI"
+               BlueprintIdentifier = "D7F2DDFD24748644008CE3DA"
+               BuildableName = "Core_GitHub.framework"
+               BlueprintName = "Core.GitHub"
                ReferencedContainer = "container:GoodToGo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -50,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D7D9E79F24676FE6005B4313"
-            BuildableName = "WebAPI.framework"
-            BlueprintName = "WebAPI"
+            BlueprintIdentifier = "D7F2DDFD24748644008CE3DA"
+            BuildableName = "Core_GitHub.framework"
+            BlueprintName = "Core.GitHub"
             ReferencedContainer = "container:GoodToGo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

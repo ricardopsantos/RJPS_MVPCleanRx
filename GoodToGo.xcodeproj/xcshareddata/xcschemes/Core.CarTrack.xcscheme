@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D7F2DD3924744A47008CE3DA"
-               BuildableName = "AppCore_Bliss.framework"
-               BlueprintName = "AppCore.Bliss"
+               BlueprintIdentifier = "D7F2DDA524746C0F008CE3DA"
+               BuildableName = "Core_CarTrack.framework"
+               BlueprintName = "Core.CarTrack"
                ReferencedContainer = "container:GoodToGo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -50,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D7F2DD3924744A47008CE3DA"
-            BuildableName = "AppCore_Bliss.framework"
-            BlueprintName = "AppCore.Bliss"
+            BlueprintIdentifier = "D7F2DDA524746C0F008CE3DA"
+            BuildableName = "Core_CarTrack.framework"
+            BlueprintName = "Core.CarTrack"
             ReferencedContainer = "container:GoodToGo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

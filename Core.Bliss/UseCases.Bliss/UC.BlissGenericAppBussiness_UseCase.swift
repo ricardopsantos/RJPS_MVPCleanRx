@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 import RJPSLib
 //
-import AppCore
+import Core
 import AppConstants
 import PointFreeFunctions
 import Domain

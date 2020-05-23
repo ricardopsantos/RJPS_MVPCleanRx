@@ -18,7 +18,7 @@ import PointFreeFunctions
 import Domain
 import Domain_CarTrack
 import Factory
-import AppCore
+import Core
 
 public class CarTrackGenericAppBusinessUseCase: GenericUseCase, CarTrackGenericAppBusiness_UseCaseProtocol {
 

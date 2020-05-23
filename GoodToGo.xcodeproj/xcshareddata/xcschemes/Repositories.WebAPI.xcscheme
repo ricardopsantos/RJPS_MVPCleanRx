@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D7F2DDA524746C0F008CE3DA"
-               BuildableName = "AppCore_CarTrack.framework"
-               BlueprintName = "AppCore.CarTrack"
+               BlueprintIdentifier = "D7D9E79F24676FE6005B4313"
+               BuildableName = "Repositories_WebAPI.framework"
+               BlueprintName = "Repositories.WebAPI"
                ReferencedContainer = "container:GoodToGo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -50,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D7F2DDA524746C0F008CE3DA"
-            BuildableName = "AppCore_CarTrack.framework"
-            BlueprintName = "AppCore.CarTrack"
+            BlueprintIdentifier = "D7D9E79F24676FE6005B4313"
+            BuildableName = "Repositories_WebAPI.framework"
+            BlueprintName = "Repositories.WebAPI"
             ReferencedContainer = "container:GoodToGo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

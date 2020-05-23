@@ -15,11 +15,11 @@ import ToastSwiftFramework
 //
 import DevTools
 import Extensions
-import AppTheme
 import AppConstants
 import AppResources
 import PointFreeFunctions
 import Domain
+import AppTheme
 
 open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtocol {
 
@@ -159,25 +159,4 @@ extension BaseViewControllerMVP {
     }
 }
 
-/*
- //
- // MARK: - Keyboard
- //
 
- extension BaseViewControllerMVP {
-
- @objc private func keyboardWillHideNotification(_ notification: Notification) { }
- @objc private func keyboardDidShowNotification(_ notification: Notification) { keyboardIsVisible=true; self.keyboardDidShow() }
- @objc private func keyboardDidHideNotification(_ notification: Notification) { keyboardIsVisible=false; keyboardHeigth=0; self.keyboardDidHide() }
- @objc private func keyboardWillShowNotification(_ notification: Notification) {
- if let userInfo = notification.userInfo {
- if let keyboardSize = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
- let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
- UIView.animate(withDuration: 0.3, animations: {
- self.keyboardHeigth = contentInsets.bottom
- })
- }
- }
- }
- }
- */
