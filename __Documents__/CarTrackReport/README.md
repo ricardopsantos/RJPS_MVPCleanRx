@@ -24,7 +24,9 @@ The map allows tap and filter.
 
 ## Extra : Cache Suport
 
-To avoid the user waiting for a server response, the API calls are cached in a local data base. What happens is : the user have to wait for a server response for the first time. After the  after that the app will use the cache version, show it to the user, then will fetch the latest server version and update the screen again with the latest values
+To avoid the user waiting for a server response, the API calls are cached in a local data base.
+
+What happens is : the user have to wait for a server response for the first time __only__. After the  after that the app will use the cache version of the API, show it to the user; then the app will fetch the latest server version and update the screen again with the latest values.
 
 ## Extra : No Internet Connection
 
@@ -32,11 +34,12 @@ If theres no internet connection, a red bar will appear automatically on the top
 
 ![Drag Racing](no_internet_usage_1.png)
 
-__Because the app have a cache system, we are able the use the app with internet connection__
+__Because the app have a cache system integrated, we are able the use the app with out internet connection__. The map it self will no appear, but the data on it will appear. 
 
 ## Extra : Mock data
 
-The server data had inaccurate information (some of the coordinates were on the sea. For better developing experience and testing; the application can use mock data. The enable the mock data close the map, go to the second screen (a developer screen) and switch on the _Mock Data_. Going now to the map, it will have more friendly information.
+The server data had inaccurate information (some of the coordinates were on the sea). For a better developing experience and testing; the application can use [mock data](https://en.wikipedia.org/wiki/Mock_object). The enable the [mock data](https://en.wikipedia.org/wiki/Mock_object) close the map, then go to the second screen (a developer screen) and switch __on__ the _Mock Data_ option. Going now to the map, it will have more friendly information. The mock file is `
+AppConstants+Mock+CarTrack.swift`
 
 ![Drag Racing](mock_1.png)
 
@@ -73,7 +76,7 @@ All the connections are _protocols/interfaces_
 
 * Code style analyser with [Swiftlint](https://github.com/realm/SwiftLint)
 
-* Dependency injection with [Swinject](https://github.com/Swinject/Swinject)
+* Dependency injection with [Swinject](https://github.com/Swinject/Swinject) (See `RootAssemblyContainer.swift` file)
 
 * Multi language support prepared  (see `E.Messages.swift` file)
 
