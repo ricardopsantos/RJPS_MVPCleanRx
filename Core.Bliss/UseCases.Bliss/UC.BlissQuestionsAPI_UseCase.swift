@@ -21,8 +21,8 @@ public class BlissQuestionsAPI_UseCase: GenericUseCase, BlissQuestionsAPIUseCase
     public override init() { super.init() }
     
     public var repositoryNetwork: BlissNetWorkRepositoryProtocol!
-    public var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
-    public var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
+    public var generic_CacheRepositoryProtocol: SimpleCacheRepositoryProtocol!
+    public var generic_LocalStorageRepository: KeyValuesStorageRepositoryProtocol!
     
     private func serverIsOK(completionHandler: @escaping (Bool) -> Void) {
         getHealth { (some) in

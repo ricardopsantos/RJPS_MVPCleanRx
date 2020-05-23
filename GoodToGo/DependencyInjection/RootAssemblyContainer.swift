@@ -28,8 +28,8 @@ struct RootAssemblyContainerProtocols {
     // Repositories
     //
     static let networkClient                      = RJSLibNetworkClient_Protocol.self
-    static let generic_CacheRepository            = CacheRepositoryProtocol.self
-    static let generic_LocalStorageRepository     = LocalStorageRepositoryProtocol.self
+    static let generic_CacheRepository            = SimpleCacheRepositoryProtocol.self
+    static let generic_LocalStorageRepository     = KeyValuesStorageRepositoryProtocol.self
     static let bliss_NetWorkRepository            = BlissNetWorkRepositoryProtocol.self
     static let gitUser_NetWorkRepository          = GitUser_NetWorkRepositoryProtocol.self
     static let carTrack_NetWorkRepository         = CarTrack_NetWorkRepositoryProtocol.self
@@ -62,13 +62,13 @@ final class RootAssemblyContainer: Assembly {
     func assemble(container: Container) {
 
         container.autoregister(AppProtocols.generic_CacheRepository,
-                               initializer: RP.CacheRepository.init).inObjectScope(.container)
+                               initializer: RP.SimpleCacheRepository.init).inObjectScope(.container)
         
         container.autoregister(AppProtocols.networkClient,
                                initializer: RJSLib.NetworkClient.init).inObjectScope(.container)
         
         container.autoregister(AppProtocols.generic_LocalStorageRepository,
-                               initializer: RP.LocalStorageRepository.init).inObjectScope(.container)
+                               initializer: RP.KeyValuesStorageRepository.init).inObjectScope(.container)
         
         container.autoregister(AppProtocols.gitUser_NetWorkRepository,
                                initializer: API.GitUser.NetWorkRepository.init).inObjectScope(.container)

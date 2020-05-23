@@ -27,8 +27,8 @@ public class CarTrackAPI_UseCase: GenericUseCase, CarTrackAPIRelated_UseCaseProt
     public override init() { super.init() }
 
     public var repositoryNetwork: CarTrack_NetWorkRepositoryProtocol!
-    public var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
-    public var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
+    public var generic_CacheRepositoryProtocol: SimpleCacheRepositoryProtocol!
+    public var generic_LocalStorageRepository: KeyValuesStorageRepositoryProtocol!
 
     public func getUserDetailV3(cacheStrategy: CacheStrategy) -> Observable<Result<[CarTrack.CarTrackUserResponseDtoElement]>> {
         let cacheKey = "\(CarTrackAPI_UseCase.self).getUserDetail"

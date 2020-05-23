@@ -10,31 +10,30 @@
 # brew install carthage
 # brew upgrade carthage
 
-# MORE LIBRARIES HERE : https://github.com/Wolg/awesome-swift ###
+###
+### MORE LIBRARIES HERE : https://github.com/Wolg/awesome-swift
+###
+
+####################################################################
+# An iOS library to natively render After Effects vector animations http://airbnb.io/lottie/
+# https://github.com/airbnb/lottie-ios
+github "airbnb/lottie-ios" "master"
 
 ####################################################################
 # Elegant transition library for iOS & tvOS
 # https://github.com/HeroTransitions/Hero
-
-github "HeroTransitions/Hero"
+github "HeroTransitions/Hero" "1.5.0"
 
 ####################################################################
 # https://github.com/fpillet/NSLogger
 # A modern, flexible logging tool
-
 github "fpillet/NSLogger"
 
 ####################################################################
 
 # https://github.com/stephencelis/SQLite.swift
 # A type-safe, Swift-language layer over SQLite3.
-
-#https://github.com/stephencelis/SQLite.swift
-
-####################################################################
-####################################################################
-####################################################################
-
+github "stephencelis/SQLite.swift" ~> 0.12.0
 
 ####################################################################
 # A beautiful and flexible text field control implementation of "Float Label Pattern". Written in Swift.
@@ -44,13 +43,11 @@ github "Skyscanner/SkyFloatingLabelTextField"
 ####################################################################
 # Elegant HTTP Networking in Swift
 # https://github.com/Alamofire/Alamofire
-
-#github "Alamofire/Alamofire"
+# github "Alamofire/Alamofire"
 
 ####################################################################
 # Reactive Programming in Swift
 # https://github.com/ReactiveX/RxSwift
-
 github "ReactiveX/RxSwift"
 github "RxSwiftCommunity/RxGesture"
 github "RxSwiftCommunity/RxDataSources" ~> 4.0
@@ -58,43 +55,34 @@ github "RxSwiftCommunity/RxDataSources" ~> 4.0
 ####################################################################
 # Nothing but sugar.
 # https://github.com/roberthein/TinyConstraints
-
 github "roberthein/TinyConstraints"
 
 ####################################################################
 # A Swift extension that adds toast notifications to the UIView object class.
 # https://github.com/scalessec/Toast-Swift
-
 github "scalessec/Toast-Swift" ~> 5.0.1
 
 ####################################################################
 
 # Dependency injection framework for Swift with iOS/macOS/Linux
 # https://github.com/Swinject/Swinject
-
 github "Swinject/Swinject"
 github "Swinject/SwinjectAutoregistration"
-#github "Swinject/SwinjectStoryboard"
 
 ####################################################################
 # https://github.com/ricardopsantos/RJPSLib
 # Guys love tools, this is my Swift toolbox
-
 #github "ricardopsantos/RJPSLib" "1.1"
 github "ricardopsantos/RJPSLib" "master"
 
 ####################################################################
-
 # Realm is a mobile database: a replacement for Core Data & SQLite https://realm.io
 # https://realm.io/docs/swift/latest/
-
-## Swift 4.2.1
-    #github "realm/realm-cocoa" "v3.13.0"
+# github "realm/realm-cocoa"
 
 ####################################################################
 # A UI/UX framework for creating beautiful applications. http://cosmicmind.com
 # https://github.com/CosmicMind/Material
-
 github "CosmicMind/Material"
 
 ####################################################################
@@ -117,4 +105,4 @@ github "CosmicMind/Material"
 # $(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework
 # $(SRCROOT)/Carthage/Build/iOS/Differentiator.framework
 # $(SRCROOT)/Carthage/Build/iOS/SkyFloatingLabelTextField.framework
-# $(SRCROOT)/Carthage/Build/iOS/NSLogger.framework
+# $(SRCROOT)/Carthage/Build/iOS/NSLoggerSwift.framework

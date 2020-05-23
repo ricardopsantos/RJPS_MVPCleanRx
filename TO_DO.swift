@@ -2,3 +2,5 @@
 #warning("Add rxKeyboard")
 #warning("put .log on every rx subscribe")
 #warning("Finish TitleTableSectionView")
+#warning("https://github.com/stephencelis/SQLite.swift")
+#warning("add deeplink support")

@@ -13,7 +13,7 @@ import RxSwift
 //
 import DevTools
 
-func testeRefreshToken() {
+func testRefreshToken() {
 
     let webAPI = WEBAPI()
 

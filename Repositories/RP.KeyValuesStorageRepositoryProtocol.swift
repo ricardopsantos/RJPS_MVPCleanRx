@@ -10,7 +10,7 @@ import RJPSLib
 import Domain
 
 public extension RP {
-    class LocalStorageRepository: LocalStorageRepositoryProtocol {
+    class KeyValuesStorageRepository: KeyValuesStorageRepositoryProtocol {
 
         public init () {}
 

@@ -30,16 +30,17 @@ More info about the project and MVP architecture [here](https://github.com/ricar
  
  # Used Frameworks
 
- * [TinyConstraints](https://github.com/roberthein/TinyConstraints)
- * [RJPSLib](https://github.com/ricardopsantos/RJPSLib)
- * [Swinject](https://github.com/Swinject/SwinjectAutoregistration)
- * [NSLogger](https://github.com/fpillet/NSLogger)
+ * [RJPSLib](https://github.com/ricardopsantos/RJPSLib) - Swift toolbox
+ * [TinyConstraints](https://github.com/roberthein/TinyConstraints) - Nothing but sugar.
+ * [Swinject](https://github.com/Swinject/Swinject) - Dependency injection framework for Swift with iOS/macOS/Linux
+ * [NSLogger](https://github.com/fpillet/NSLogger) - A modern, flexible logging tool
  * RxDataSources, RxSwift, RxGesture, RxCocoa
- * [Toast-Swift](https://github.com/scalessec/Toast-Swift)
- * [SkyFloatingLabelTextField](https://github.com/Skyscanner/SkyFloatingLabelTextField)
- * Hero
- * Material
- * Motion
+ * [Toast-Swift](https://github.com/scalessec/Toast-Swift) - A modern, flexible logging tool
+ * [SkyFloatingLabelTextField](https://github.com/Skyscanner/SkyFloatingLabelTextField) - A beautiful and flexible text field control implementation of "Float Label Pattern". Written in Swift.
+ * [Hero](https://github.com/HeroTransitions/Hero) - Elegant transition library for iOS & tvOS
+ * (Material)(https://github.com/CosmicMind/Material) - A UI/UX framework for creating beautiful applications. http://cosmicmind.com
+ * [Motion](https://github.com/CosmicMind/Motion) - A library used to create beautiful animations and transitions for iOS. http://cosmicmind.com
+ * [Lottie-ios](https://github.com/airbnb/lottie-ios) - An iOS library to natively render After Effects vector animations http://airbnb.io/lottie/
  
 # Code Guidelines/Conventions
 

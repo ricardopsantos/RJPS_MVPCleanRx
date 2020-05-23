@@ -12,7 +12,7 @@ import AVFoundation
 import Domain
 
 public extension RP {
-    class CacheRepository: CacheRepositoryProtocol {
+    class SimpleCacheRepository: SimpleCacheRepositoryProtocol {
 
         public init () {}
 

@@ -19,8 +19,8 @@ import Factory
 public class Sample_UseCase: GenericUseCase, Sample_UseCaseProtocol {
     public override init() { super.init() }
 
-    public var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
-    public var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
+    public var generic_CacheRepositoryProtocol: SimpleCacheRepositoryProtocol!
+    public var generic_LocalStorageRepository: KeyValuesStorageRepositoryProtocol!
 
     public func operation1(canUseCache: Bool, completionHandler: @escaping Sample_UseCaseCompletionHandler) {
         guard existsInternetConnection else {

@@ -17,8 +17,8 @@ import Factory
 public class SampleB_UseCase: GenericUseCase, SampleB_UseCaseProtocol {
    public override init() { super.init() }
 
-       public var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
-       public var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
+       public var generic_CacheRepositoryProtocol: SimpleCacheRepositoryProtocol!
+       public var generic_LocalStorageRepository: KeyValuesStorageRepositoryProtocol!
 
    public func operation1(canUseCache: Bool, completionHandler: @escaping SampleB_UseCaseCompletionHandler) {
            DevTools.Log.appCode( .notImplemented)

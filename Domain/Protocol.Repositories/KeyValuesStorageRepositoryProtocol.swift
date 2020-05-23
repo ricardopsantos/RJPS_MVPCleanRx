@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import RJPSLib
 
-public protocol LocalStorageRepositoryProtocol {
+public protocol KeyValuesStorageRepositoryProtocol {
     @discardableResult func save(key: String, value: String, expireDate: Date?) -> Bool
     func existsWith(key: String) -> Bool
     func with(key: String) -> RJS_DataModel?

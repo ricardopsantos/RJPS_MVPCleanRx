@@ -26,6 +26,7 @@ import Extensions
 import PointFreeFunctions
 import UIBase
 import AppResources
+import Lottie
 
 extension V {
     class CarTrackLoginView: BaseGenericViewVIP {
@@ -39,6 +40,8 @@ extension V {
         //var rxPassword = BehaviorSubject<String?>(value: nil)
 
         // MARK: - UI Elements (Private and lazy by default)
+
+        private var animationView: AnimationView? // Lottie view
 
         private lazy var scrollView: UIScrollView = {
             UIKitFactory.scrollView()
@@ -83,7 +86,6 @@ extension V {
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 1/3 : JUST to add stuff to the view....
         override func prepareLayoutCreateHierarchy() {
-
             addSubview(scrollView)
             scrollView.addSubview(stackViewVLevel1)
             stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: screenHeight/5)
@@ -127,6 +129,7 @@ extension V {
             self.subViewsOf(types: [.label], recursive: true).forEach { (some) in
                 (some as? UILabel)?.textAlignment = .center
             }
+            setupLottie()
         }
 
         override func setupColorsAndStyles() {
@@ -142,6 +145,22 @@ extension V {
         // This will notify us when something has changed on the textfield
         @objc func textFieldDidChange(_ textfield: UITextField) {
 
+        }
+
+        func setupLottie() {
+            // https://lottiefiles.com/blog/working-with-lottie/how-to-add-lottie-animation-ios-app-swift
+            animationView = .init(name: "23038-animatonblue")
+            //animationView!.frame = self.bounds
+            animationView!.contentMode = .scaleAspectFit
+            animationView!.loopMode = .loop
+            animationView!.animationSpeed = 0.5
+           // addSubview(animationView!)
+
+            stackViewVLevel1.uiUtils.safeAddArrangedSubview(lblErrorMessage)
+
+//            animationView?.autoLayout.edgesToSuperview()
+
+            animationView!.play()
         }
 
         // MARK: - Custom Getter/Setters

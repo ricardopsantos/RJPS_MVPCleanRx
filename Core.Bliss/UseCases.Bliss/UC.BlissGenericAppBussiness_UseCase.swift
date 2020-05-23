@@ -20,8 +20,8 @@ import Domain_Bliss
 
 public class BlissGenericAppBusiness_UseCase: GenericUseCase, BlissGenericAppBusinessUseCaseProtocol {
 
-    public var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
-    public var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
+    public var generic_CacheRepositoryProtocol: SimpleCacheRepositoryProtocol!
+    public var generic_LocalStorageRepository: KeyValuesStorageRepositoryProtocol!
     public var rxPublishRelayApplicationDidReceivedData: PublishRelay = PublishRelay<Void>() // PublishRelay model Events
 
     public func handle(url: URL) {

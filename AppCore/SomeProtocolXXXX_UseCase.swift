@@ -30,8 +30,8 @@ public class SomeProtocolXXXX_UseCase: GenericUseCase, SomeProtocolXXXX_UseCaseP
 
     public override init() { super.init() }
 
-    public var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
-    public var generic_LocalStorageRepository: LocalStorageRepositoryProtocol!
+    public var generic_CacheRepositoryProtocol: SimpleCacheRepositoryProtocol!
+    public var generic_LocalStorageRepository: KeyValuesStorageRepositoryProtocol!
 
     public func sayHi() {
 

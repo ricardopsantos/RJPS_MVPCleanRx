@@ -22,7 +22,7 @@ import AppCore
 public class GitUser_UseCase: GenericUseCase, GitHubAPIRelated_UseCaseProtocol {
     public override init() { super.init() }
     
-    public  var generic_CacheRepositoryProtocol: CacheRepositoryProtocol!
+    public  var generic_CacheRepositoryProtocol: SimpleCacheRepositoryProtocol!
     public var repositoryNetwork: GitUser_NetWorkRepositoryProtocol!
     
     public func getInfoOfUserWith(userName: String, canUseCache: Bool, completionHandler: @escaping GitHubAPIRelated_S1_UseCaseCompletionHandler) {
