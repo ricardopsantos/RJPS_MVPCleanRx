@@ -11,6 +11,3 @@ import Foundation
 extension AppConstants {
     private init() {}
 }
-
-//public typealias E = Enums
-//public struct Enums { private init() {} }

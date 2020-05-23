@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if CommandLine.arguments.contains(AppConstants.Testing.CommandLineArguments.deleteUserData) {
             //resetAllData = true
         }
-        
+
         setup(application: application)
         self.window?.rootViewController = VC.TabBarController()
         return true

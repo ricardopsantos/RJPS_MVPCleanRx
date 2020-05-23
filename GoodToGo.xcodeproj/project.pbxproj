@@ -154,6 +154,8 @@
 		D77824B2247900650071776F /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77824B1247900650071776F /* Lottie.framework */; };
 		D77824B7247903C60071776F /* 23038-animatonblue.json in Resources */ = {isa = PBXBuildFile; fileRef = D77824B6247903C60071776F /* 23038-animatonblue.json */; };
 		D77824BA247906A60071776F /* 23038-animatonblue.json in Resources */ = {isa = PBXBuildFile; fileRef = D77824B6247903C60071776F /* 23038-animatonblue.json */; };
+		D77824BF2479C83F0071776F /* AppConstants.PropertiesList.plist in Resources */ = {isa = PBXBuildFile; fileRef = D77824BE2479C83F0071776F /* AppConstants.PropertiesList.plist */; };
+		D77824C12479C8D00071776F /* AppResources.PropertiesList.plist in Resources */ = {isa = PBXBuildFile; fileRef = D77824C02479C8D00071776F /* AppResources.PropertiesList.plist */; };
 		D786AE492473CC0400636935 /* UIViewContoller+ExtensionsAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786AE482473CC0400636935 /* UIViewContoller+ExtensionsAlerts.swift */; };
 		D788BD76246892B3007C59D0 /* P.BasePresenterVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788BD75246892B3007C59D0 /* P.BasePresenterVIP.swift */; };
 		D788BD7C246943AB007C59D0 /* I.BaseInteractorVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788BD7B246943AB007C59D0 /* I.BaseInteractorVIP.swift */; };
@@ -1153,6 +1155,8 @@
 		D77824B6247903C60071776F /* 23038-animatonblue.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "23038-animatonblue.json"; sourceTree = "<group>"; };
 		D77824B8247904860071776F /* README-Lotties.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = "README-Lotties.md"; path = "AppResources/README-Lotties.md"; sourceTree = SOURCE_ROOT; };
 		D77824BD2479C0230071776F /* DDD_Arquitecture.pptx */ = {isa = PBXFileReference; lastKnownFileType = file; path = DDD_Arquitecture.pptx; sourceTree = "<group>"; };
+		D77824BE2479C83F0071776F /* AppConstants.PropertiesList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppConstants.PropertiesList.plist; sourceTree = "<group>"; };
+		D77824C02479C8D00071776F /* AppResources.PropertiesList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppResources.PropertiesList.plist; sourceTree = "<group>"; };
 		D786AE482473CC0400636935 /* UIViewContoller+ExtensionsAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewContoller+ExtensionsAlerts.swift"; sourceTree = "<group>"; };
 		D788BD75246892B3007C59D0 /* P.BasePresenterVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.BasePresenterVIP.swift; sourceTree = "<group>"; };
 		D788BD7B246943AB007C59D0 /* I.BaseInteractorVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.BaseInteractorVIP.swift; sourceTree = "<group>"; };
@@ -1912,6 +1916,7 @@
 			children = (
 				D77824B3247902830071776F /* Lotties */,
 				D7D9E79924676E01005B4313 /* README.md */,
+				D77824C02479C8D00071776F /* AppResources.PropertiesList.plist */,
 				D72923662466B84100DAD480 /* typealias.AppResources.swift */,
 				D73E05BE2467112500965E96 /* AppResources.swift */,
 				9F8AE14A2205DD0300DF75F6 /* AppResources+Private.swift */,
@@ -2287,6 +2292,7 @@
 			children = (
 				D7D9E7C724678465005B4313 /* AppMocks */,
 				D7D9E79824676D90005B4313 /* README.md */,
+				D77824BE2479C83F0071776F /* AppConstants.PropertiesList.plist */,
 				D72922D62466AD5D00DAD480 /* typealias.AppConstants.swift */,
 				9F02AE5B20F91E7B00AB5942 /* AppConstants.swift */,
 				D72923C124670D7500DAD480 /* AppConstants+Strings.swift */,
@@ -3248,6 +3254,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D77824C12479C8D00071776F /* AppResources.PropertiesList.plist in Resources */,
 				D77824B7247903C60071776F /* 23038-animatonblue.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3298,6 +3305,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D77824BF2479C83F0071776F /* AppConstants.PropertiesList.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

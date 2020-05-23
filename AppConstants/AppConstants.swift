@@ -11,12 +11,21 @@ import RJPSLib
 public struct AppConstants {
     private init() {}
 
+    #warning("fix latter")
+    public static var propertiesList: NSDictionary? {
+        var nsDictionary: NSDictionary?
+        if let path = Bundle.main.path(forResource: "AppConstants.PropertiesList", ofType: "plist") {
+           nsDictionary = NSDictionary(contentsOfFile: path)
+        }
+        return nsDictionary
+    }
+
     public static let defaultAnimationsTime = RJS_Constants.defaultAnimationsTime
     
     public struct Rx {
         // https://medium.com/fantageek/throttle-vs-debounce-in-rxswift-86f8b303d5d4
-        // Throttle : Will ignore events between the time span of xxxx miliseconds
-        // Debounce : Only "fire" event, after the last happen after xxxx miliseconds.... Good to avoid double taps
+        // Throttle : Will ignore events between the time span of xxxx milliseconds
+        // Debounce : Only "fire" event, after the last happen after xxxx milliseconds.... Good to avoid double taps
         //static let tappingDefaultThrottle    = 10
         public static let tappingDefaultDebounce    = 500
 
@@ -28,12 +37,6 @@ public struct AppConstants {
 
     }
 
-    public struct URLs {
-        private init() {}
-       
-        public static let getPostCodes = "https://github.com/centraldedados/codigos_postais/raw/master/data/codigos_postais.csv"
-    }
-    
     public struct Cache {
         public static let serverRequestCacheLifeSpam: Int = 5 // minutes
         public static let servicesCache: String = "servicesCache"

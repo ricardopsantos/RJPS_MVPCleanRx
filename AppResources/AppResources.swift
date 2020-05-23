@@ -10,4 +10,12 @@ import Foundation
 
 public struct AppResources {
     private init() {}
+
+    static var propertiesList: NSDictionary? {
+        var nsDictionary: NSDictionary?
+        if let path = Bundle.main.path(forResource: "AppResources.PropertiesList", ofType: "plist") {
+           nsDictionary = NSDictionary(contentsOfFile: path)
+        }
+        return nsDictionary
+    }
 }
