@@ -48,15 +48,45 @@ More info about the project and MVP architecture [here](https://github.com/ricar
  
 # Code Guidelines/Conventions
 
-* All is private (variables, functions, etc), unless really need to be public.
-* UIKit names
-    * All `UIButton`s start by _btn_, example : _btnLogin_, _btnRegister_
-    * All `UILabel`s start by _lbl_. Example _llbName_, _lblPassword_
-    * All `UITableView`s start by _table_ or _tbl_. Example : _tableUsers_, _tblFriends_
-    * All `UITextViews` and `UITextField`s starts by _txt_. Example : _txtPassword_, _txtUserName_
-    * All Rx related vars start with `rx` or end with `Single`, `Observable`, etc...
-    * Thumb rule : The name of the _var_, should be clear about the type associated. 
-    
+## All is private
+
+Variables, functions, etc are private, unless really need to be public/internal
+
+## Variable naming
+
+* All `UIButton`s start by _btn_, example : _btnLogin_, _btnRegister_
+* All `UILabel`s start by _lbl_. Example _llbName_, _lblPassword_
+* All `UITableView`s start by _table_ or _tbl_. Example : _tableUsers_, _tblFriends_
+* All `UITextViews` and `UITextField`s starts by _txt_. Example : _txtPassword_, _txtUserName_
+* All Rx related vars start with `rx` or end with `Single`, `Observable`, etc...
+
+__Thumb rule : The name of the var, should be clear about the type associated.__
+
+## Files naming
+
+### Enums 
+
+All enum file names start by ` E.`.
+
+```
+public enum AlertType: CaseIterable {
+    case success
+    case warning
+    case error
+}
+```
+
+So, the `AlertType` will be found on a file name `E.AlertType.swift`
+ 
+### VIP, MVP
+
+The _Views_ will start allways by `V.`, _ViewControlles_ by `VC.`, Router by `R.`, _Interactors_ by `I.`, Presenters by `P.` and Domain file by `D.` 
+
+![Preview](__Documents__/ReadmeImages/readme_5.png)
+
+## Others
+
+* Hardcoded values are strongly discouraged
 
 # License
 
