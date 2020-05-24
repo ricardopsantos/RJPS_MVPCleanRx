@@ -76,7 +76,7 @@ extension Presenter {
 extension P.BlissQuestionsList_Presenter: GenericTableView_Protocol {
     
     func configure(cell: GenericTableViewCell_Protocol, indexPath: IndexPath) {
-        if let someCell = cell as? Sample_TableViewCellProtocol {
+        if let someCell = cell as? DefaultTableViewCellProtocol {
             let question = viewModel!.questionsList[indexPath.row]
             let title = "\(question.question.description)"
             someCell.rxBehaviorRelay_title.accept(title)

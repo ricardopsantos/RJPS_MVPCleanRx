@@ -77,7 +77,7 @@ extension P.MVPSampleTableView_Presenter: GenericTableView_Protocol {
     }
     
     func configure(cell: GenericTableViewCell_Protocol, indexPath: IndexPath) {
-        if let someCell = cell as? Sample_TableViewCellProtocol {
+        if let someCell = cell as? DefaultTableViewCellProtocol {
             let employee = viewModel!.employeesList[indexPath.row]
             let title = "\(employee.employeeName) | \(employee.employeeSalary)"
             someCell.rxBehaviorRelay_title.accept(title)

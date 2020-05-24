@@ -130,7 +130,7 @@ extension P.BlissDetails_Presenter: GenericTableView_Protocol {
         guard viewModel != nil, viewModel?.question != nil else {
             return
         }
-        if let someCell = cell as? Sample_TableViewCellProtocol {
+        if let someCell = cell as? DefaultTableViewCellProtocol {
             let choice = viewModel!.question!.choices[indexPath.row]
             let title = "\(choice.choice) | \(choice.votes)"
             //someCell.set(title:"\(choice.choice) | \(choice.votes)")

@@ -86,7 +86,7 @@ extension V {
             some.rjsALayouts.setMargin(0, on: .right)
             some.rjsALayouts.setMargin(0, on: .left)
             some.rjsALayouts.setMargin(0, on: .bottom)
-            some.register(Sample_TableViewCell.self, forCellReuseIdentifier: Sample_TableViewCell.reuseIdentifier)
+            some.register(DefaultTableViewCell.self, forCellReuseIdentifier: DefaultTableViewCell.reuseIdentifier)
             some.rx.setDelegate(self).disposed(by: disposeBag) // To manage heightForRowAt
             let animateCellsOnAppear = true
             if animateCellsOnAppear {
@@ -116,7 +116,7 @@ extension V {
                 .disposed(by: disposeBag)
             rxBehaviorRelay_tableDataSource
                 .log(whereAmI())
-                .bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
+                .bind(to: some.rx.items(cellIdentifier: DefaultTableViewCell.reuseIdentifier, cellType: DefaultTableViewCell.self)) { [weak self] (row, element, cell) in
                 _ = element
                 guard let self = self else { return }
                 var indexPath = NSIndexPath(row: row, section: 0)
@@ -187,7 +187,7 @@ extension V.BlissQuestionsList_View: BlissQuestionsList_ViewProtocol {
 
 extension V.BlissQuestionsList_View: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Sample_TableViewCell.cellSize
+        return DefaultTableViewCell.cellSize
     }
 }
 

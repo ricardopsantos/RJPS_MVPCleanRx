@@ -39,7 +39,7 @@ extension V {
             let some = UIKitFactory.tableView(baseView: self.view)
             some.backgroundColor = self.view.backgroundColor
             some.rjsALayouts.setMarginFromSuperview(top: 0, bottom: 0, left: 0, right: 0)
-            some.register(Sample_TableViewCell.self, forCellReuseIdentifier: Sample_TableViewCell.reuseIdentifier)
+            some.register(DefaultTableViewCell.self, forCellReuseIdentifier: DefaultTableViewCell.reuseIdentifier)
             some.rx.modelSelected(Employee.ResponseDto.self)
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
                 .log(whereAmI())
@@ -77,7 +77,7 @@ extension V {
                     }, completion: nil)
                 })).disposed(by: disposeBag)
             
-            rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
+            rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: DefaultTableViewCell.reuseIdentifier, cellType: DefaultTableViewCell.self)) { [weak self] (row, element, cell) in
                 _ = element
                 guard let self = self else { return }
                 var indexPath = NSIndexPath(row: row, section: 0)

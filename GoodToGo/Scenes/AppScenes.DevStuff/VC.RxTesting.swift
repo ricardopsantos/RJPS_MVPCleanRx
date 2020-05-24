@@ -295,7 +295,7 @@ extension VC {
             some.rjsALayouts.setMargin(margin, on: .right)
             some.rjsALayouts.setMargin(margin, on: .left)
             some.rjsALayouts.setMargin(margin, on: .bottom)
-            some.register(Sample_TableViewCell.self, forCellReuseIdentifier: Sample_TableViewCell.reuseIdentifier)
+            some.register(DefaultTableViewCell.self, forCellReuseIdentifier: DefaultTableViewCell.reuseIdentifier)
             some.rx.setDelegate(self).disposed(by: disposeBag) // To manage heightForRowAt
             some.rx
                 .modelSelected(String.self) // The type off the object we are binding on the tableview
@@ -305,7 +305,7 @@ extension VC {
                     self?.aux_log(message: "[_tableView][modelSelected] : [\(item)]", showAlert: true, appendToTable: false)
                 })
                 .disposed(by: disposeBag)
-            rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
+            rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: DefaultTableViewCell.reuseIdentifier, cellType: DefaultTableViewCell.self)) { [weak self] (row, element, cell) in
                 _ = element
                 _ = row
                 guard let self = self else { return }
@@ -395,7 +395,7 @@ extension VC.RxTesting {
 
 extension VC.RxTesting: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Designables.Sizes.TableViewCell.defaultSize
+        return Designables.Sizes.TableView.defaultHeightForCell
     }
 }
 

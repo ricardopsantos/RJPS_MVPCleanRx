@@ -83,7 +83,7 @@ extension I.___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___Business
     func requestSomething(request: VM.___VARIABLE_sceneName___.Something.Request) {
 
         presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
-        DispatchQueue.executeWithDelay(delay: 1) { [weak self] in
+        DispatchQueue.executeWithDelay(delay: 0.5) { [weak self] in
             let mockA1 = TemplateModel(id: "some id 1", state: "state_a - \(Date())")
             let mockA2 = TemplateModel(id: "some id 2", state: "state_a - \(Date())")
             let response = VM.___VARIABLE_sceneName___.Something.Response(listA: [mockA1],

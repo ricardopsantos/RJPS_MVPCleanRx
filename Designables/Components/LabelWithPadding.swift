@@ -26,7 +26,7 @@ import UIBase
 
 open class UILabelWithPadding: UIView {
 
-    private var _padding: UIEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+    var _padding: UIEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     public var padding: UIEdgeInsets { _padding }
     private var paddingWasApplied = false
     
@@ -92,16 +92,22 @@ open class UILabelWithPadding: UIView {
         label.rjsALayouts.setMargin(padding.bottom, on: .bottom)
         paddingWasApplied = true
     }
-    public convenience init(padding: UIEdgeInsets, text: String="") {
+    public convenience init(padding: UIEdgeInsets?, text: String="") {
         self.init(frame: .zero)
-        self._padding = padding
         self.text = text
-        if padding.top + padding.left + padding.right + padding.bottom == 0 {
-            DevTools.Log.warning("No padding")
+        if padding != nil {
+            self._padding = padding!
         }
+        //if self._padding .top + self._padding .left + self._padding .right + self._padding .bottom == 0 {
+        //    DevTools.Log.warning("No padding")
+        //}
         applyPadding()
     }
-    
+
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+
     private func setupView() {
         applyPadding()
     }

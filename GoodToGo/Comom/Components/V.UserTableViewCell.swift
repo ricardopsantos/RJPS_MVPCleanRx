@@ -14,8 +14,9 @@ import Designables
 //
 
 extension V {
-    class UserTableViewCell: Sample_TableViewCell {
-        public override class var cellSize: CGFloat { return Designables.Sizes.TableViewCell.defaultSize
+    class UserTableViewCell: DefaultTableViewCell {
+        public override class var cellSize: CGFloat {
+            return Designables.Sizes.TableView.defaultHeightForCell
         }
     }
 }

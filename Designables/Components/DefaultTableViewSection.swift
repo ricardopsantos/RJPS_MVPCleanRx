@@ -9,7 +9,18 @@
 import Foundation
 import UIKit
 
-open class TitleTableSectionView: UILabelWithPadding {
+open class DefaultTableViewSection: UILabelWithPadding {
+
+    override open func layoutSubviews() {
+        super.layoutSubviews()
+        prepareLayout()
+    }
+
+    // To override
+    func prepareLayout() {
+        self.backgroundColor = UIColor.Pack2.lightGray.color
+    }
+
     public var title: String? {
         didSet {
             label.text = title

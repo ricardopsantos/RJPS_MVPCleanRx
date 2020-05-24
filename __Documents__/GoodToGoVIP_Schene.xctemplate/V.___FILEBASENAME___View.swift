@@ -109,7 +109,7 @@ extension V {
         // Function 3/3 : Stuff that is not included in [prepareLayoutCreateHierarchy] and [prepareLayoutBySettingAutoLayoutsRules]
         override func prepareLayoutByFinishingPrepareLayout() {
             V.___VARIABLE_sceneName___TableViewCell.prepare(tableView: tableView)
-            tableView.estimatedRowHeight = Designables.Sizes.TableViewCell.defaultSize
+            tableView.estimatedRowHeight = Designables.Sizes.TableView.defaultHeightForCell
             tableView.rowHeight = UITableView.automaticDimension
             tableView.separatorColor = .clear
             tableView.rx.setDelegate(self).disposed(by: disposeBag)
@@ -127,6 +127,7 @@ extension V {
                 configureCell: { _, tableView, indexPath, item in
                     let row = indexPath.row
                     let section = indexPath.section
+                    print(row, section)
                     switch item.cellType {
                     case .cellType1:
                         let reuseIdentifier = ___VARIABLE_sceneName___TableViewCell.reuseIdentifier
@@ -147,7 +148,11 @@ extension V {
             })
             dataSource.animationConfiguration = AnimationConfiguration(insertAnimation: .fade, reloadAnimation: .fade, deleteAnimation: .fade)
 
-            rxTableItems.asObserver().bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+            rxTableItems
+                .asObserver()
+                .log(whereAmI())
+                .bind(to: tableView.rx.items(dataSource: dataSource))
+                .disposed(by: disposeBag)
         }
 
         // MARK: - Custom Getter/Setters
@@ -194,19 +199,19 @@ extension V {
 extension V.___VARIABLE_sceneName___View: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        #warning("Not implemented TitleTableSectionView")
-        let sectionView = TitleTableSectionView(frame: .zero)
+        let sectionView = DefaultTableViewSection(frame: .zero)
         if let sectionItem = try? rxTableItems.value() {
             guard sectionItem.count > section else { return nil }
             sectionView.title = sectionItem[section].model
+            return sectionView
         }
-        return UIView()
+        return nil
     }
-
+/*
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return Designables.Sizes.TableView.defaultHeightForHeaderInSection
     }
-
+*/
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let sectionItem = try? rxTableItems.value() {
             let item = sectionItem[indexPath.section].items[indexPath.row]

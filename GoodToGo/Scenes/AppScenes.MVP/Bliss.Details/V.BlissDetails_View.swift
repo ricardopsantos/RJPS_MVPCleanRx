@@ -111,7 +111,7 @@ extension V {
             let some = UIKitFactory.tableView(baseView: self.view)
             some.backgroundColor    = .clear
             some.separatorColor     = .clear
-            some.estimatedRowHeight = Sample_TableViewCell.cellSize
+            some.estimatedRowHeight = DefaultTableViewCell.cellSize
             some.isScrollEnabled    = false
             some.layer.cornerRadius = 10.0
             some.clipsToBounds      = true
@@ -119,7 +119,7 @@ extension V {
             some.rjsALayouts.setMargin(margin, on: .right)
             some.rjsALayouts.setMargin(margin, on: .left)
             some.rjsALayouts.setMargin(margin, on: .bottom, from: btnShare1)
-            some.register(Sample_TableViewCell.self, forCellReuseIdentifier: Sample_TableViewCell.reuseIdentifier)
+            some.register(DefaultTableViewCell.self, forCellReuseIdentifier: DefaultTableViewCell.reuseIdentifier)
             some.rx
                 .modelSelected(Bliss.ChoiceElementResponseDto.self)
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
@@ -133,7 +133,7 @@ extension V {
                     }
                 })
                 .disposed(by: disposeBag)
-            rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
+            rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: DefaultTableViewCell.reuseIdentifier, cellType: DefaultTableViewCell.self)) { [weak self] (row, element, cell) in
                 _ = element
                 guard let self = self else { return }
                 cell.set(textColor: AppColors.UILabel.lblTextColor)

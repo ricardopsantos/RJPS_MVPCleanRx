@@ -104,7 +104,7 @@ extension P.___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___Presentat
             }
         let sum = someListA.count + someListB.count
         let viewModel = VM.___VARIABLE_sceneName___.Something.ViewModel(subTitle: subTitle,
-                                                                             someValue: "\(sum)",
+                                                                        someValue: "\(sum)",
             someListSectionATitle: "\(someListA.count) A elements",
             someListSectionBTitle: "\(someListB.count) B elements",
             someListSectionAElements: someListA,

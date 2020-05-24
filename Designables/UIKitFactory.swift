@@ -80,10 +80,10 @@ public struct UIKitFactory {
         return some
     }
 
-    public static func labelWithPadding(title: String = "",
+    public static func labelWithPadding(padding: UIEdgeInsets? = nil,
+                                        title: String = "",
                                         style: UILabel.LayoutStyle) -> UILabelWithPadding {
-        let some = UILabelWithPadding()
-        some.text = title
+        let some = UILabelWithPadding(padding: padding, text: title)
         some.numberOfLines = 0
         some.tag =  UIKitViewFactoryElementTag.label.rawValue
         some.addShadow()
