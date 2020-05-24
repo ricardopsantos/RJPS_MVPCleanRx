@@ -32,7 +32,7 @@ class Test_CartTrack: XCTestCase {
         XCTAssert(GoodToGo.CarTrackResolver.shared.genericBusiness != nil)
     }
 
-    func test_viewController_mapWithData() {
+    func test_vc_mapWithData() {
         let expectation = self.expectation(description: #function)
         let vc = GoodToGo.VC.CartTrackMapViewController(presentationStyle: .regularVC)
         let request = GoodToGo.VM.CartTrackMap.MapData.Request()
