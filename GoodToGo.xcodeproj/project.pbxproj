@@ -1352,7 +1352,7 @@
 		D77825072479FB8E0071776F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7782517247A55F70071776F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D7782519247A56890071776F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		D7782521247A59D40071776F /* Test.TestCases.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test.TestCases.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7782521247A59D40071776F /* Test.TestCasesHost.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test.TestCasesHost.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7782523247A59D40071776F /* Test_TestCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_TestCases.swift; sourceTree = "<group>"; };
 		D7782525247A59D40071776F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D786AE482473CC0400636935 /* UIViewContoller+ExtensionsAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewContoller+ExtensionsAlerts.swift"; sourceTree = "<group>"; };
@@ -1785,7 +1785,7 @@
 				D7F2DDD424747F6C008CE3DA /* Domain_GitHub.framework */,
 				D7F2DDFE24748644008CE3DA /* Core_GitHub.framework */,
 				D77824F72479FB8C0071776F /* Tests.TestHost.app */,
-				D7782521247A59D40071776F /* Test.TestCases.xctest */,
+				D7782521247A59D40071776F /* Test.TestCasesHost.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3082,9 +3082,9 @@
 			productReference = D77824F72479FB8C0071776F /* Tests.TestHost.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D7782520247A59D40071776F /* Test.TestCases */ = {
+		D7782520247A59D40071776F /* Test.TestCasesHost */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D7782528247A59D40071776F /* Build configuration list for PBXNativeTarget "Test.TestCases" */;
+			buildConfigurationList = D7782528247A59D40071776F /* Build configuration list for PBXNativeTarget "Test.TestCasesHost" */;
 			buildPhases = (
 				D778251D247A59D40071776F /* Sources */,
 				D778251E247A59D40071776F /* Frameworks */,
@@ -3097,9 +3097,9 @@
 				D778252E247A5A0E0071776F /* PBXTargetDependency */,
 				D7782527247A59D40071776F /* PBXTargetDependency */,
 			);
-			name = Test.TestCases;
+			name = Test.TestCasesHost;
 			productName = Test.TestCases;
-			productReference = D7782521247A59D40071776F /* Test.TestCases.xctest */;
+			productReference = D7782521247A59D40071776F /* Test.TestCasesHost.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		D788BD9E24698D74007C59D0 /* Factory */ = {
@@ -3424,7 +3424,7 @@
 					};
 					D7782520247A59D40071776F = {
 						CreatedOnToolsVersion = 11.4;
-						TestTargetID = D77824F62479FB8C0071776F;
+						TestTargetID = 9FE1438E21AF2F520026BDFC;
 					};
 					D788BD9E24698D74007C59D0 = {
 						CreatedOnToolsVersion = 11.4;
@@ -3505,7 +3505,7 @@
 				D7D9E79F24676FE6005B4313 /* Repositories.WebAPI */,
 				D729228C2466A04200DAD480 /* UIBase */,
 				D77824F62479FB8C0071776F /* Tests.TestHost */,
-				D7782520247A59D40071776F /* Test.TestCases */,
+				D7782520247A59D40071776F /* Test.TestCasesHost */,
 			);
 		};
 /* End PBXProject section */
@@ -7349,7 +7349,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tests.TestHost.app/Tests.TestHost";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GoodToGo.app/GoodToGo";
 			};
 			name = Debug.Dev;
 		};
@@ -7422,7 +7422,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tests.TestHost.app/Tests.TestHost";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GoodToGo.app/GoodToGo";
 			};
 			name = Debug.QA;
 		};
@@ -7495,7 +7495,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tests.TestHost.app/Tests.TestHost";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GoodToGo.app/GoodToGo";
 			};
 			name = Debug.Prod;
 		};
@@ -7516,7 +7516,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tests.TestHost.app/Tests.TestHost";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GoodToGo.app/GoodToGo";
 			};
 			name = Release;
 		};
@@ -11457,7 +11457,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D7782528247A59D40071776F /* Build configuration list for PBXNativeTarget "Test.TestCases" */ = {
+		D7782528247A59D40071776F /* Build configuration list for PBXNativeTarget "Test.TestCasesHost" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D7782529247A59D40071776F /* Debug.Dev */,

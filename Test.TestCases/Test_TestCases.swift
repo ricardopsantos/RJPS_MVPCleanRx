@@ -26,6 +26,21 @@ class Test_GoodToGo: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+    func test_api_getUserDetailV1() {
+        let expectation = self.expectation(description: #function)
+
+        GoodToGo.CarTrackResolver.shared.api?.getUserDetailV1(completionHandler: { (some) in
+            switch some {
+            case .success: XCTAssert(true)
+            case .failure: XCTAssert(false)
+            }
+            expectation.fulfill()
+        })
+
+        waitForExpectations(timeout: 5)
+
+    }
+
     func testExample() throws {
 
         //print(GoodToGo.CarTrackResolver.shared.api)
