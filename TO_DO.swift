@@ -3,3 +3,6 @@
 #warning("Finish TitleTableSectionView")
 #warning("add deeplink support")
 #warning("Add permissions support with rx")
+#warning("add SQL e paginação")
+#warning("add more tests")
+#warning("add more resolvers to CarTrackResolver")

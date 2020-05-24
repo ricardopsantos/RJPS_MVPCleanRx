@@ -15,6 +15,11 @@
 ###
 
 ####################################################################
+# A Matcher Framework for Swift and Objective-C
+# https://github.com/Quick/Nimble
+github "quick/nimble" "master"
+
+####################################################################
 # An iOS library to natively render After Effects vector animations http://airbnb.io/lottie/
 # https://github.com/airbnb/lottie-ios
 github "airbnb/lottie-ios" "master"

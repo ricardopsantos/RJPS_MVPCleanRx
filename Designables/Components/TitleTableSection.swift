@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-open class TitleTableSectionView: UIView {
+open class TitleTableSectionView: UILabelWithPadding {
     public var title: String? {
         didSet {
-
+            label.text = title
         }
     }
 }
