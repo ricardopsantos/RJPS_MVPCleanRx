@@ -12,6 +12,8 @@ import RxCocoa
 //
 import Domain
 import UIBase
+import Extensions
+import PointFreeFunctions
 
 protocol SearchUser_RouterProtocol: class {
     func dismissView()
@@ -32,9 +34,11 @@ extension Router {
             func generalDismiss() {
                 baseView?.dismiss(animated: true)
             }
-            rxPublishRelay_ShowDetails.asObservable()
+            rxPublishRelay_ShowDetails
+                .asObservable()
                 .map { vm -> V.UserDetais_View? in return self.controllerWith(vm: vm) }
                 .ignoreNil()
+                .log(whereAmI())
                 .subscribe(onNext: { [weak self] in
                     $0.modalPresentationStyle = .overFullScreen
                     self?.baseView?.present($0, animated: true, completion: nil)

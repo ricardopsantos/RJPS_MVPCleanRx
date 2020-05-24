@@ -111,7 +111,9 @@ extension VC {
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
 
-            genericView.rxModelSelected
+            genericView
+                .rxModelSelected
+                .log(whereAmI())
                 .subscribe(onNext: { /* [router] */ (some) in
                     DevTools.Log.message("Received [\(some)]")
                 })

@@ -60,7 +60,8 @@ extension Router {
             //
             // Dismiss : Option 2
             //
-            rxPublishRelay_dismissView.asObservable()
+            rxPublishRelay_dismissView
+                .asObservable()
                 .log("rxPublishRelay_dismissView.asObservable ")
                 .subscribe(onNext: { [weak self] _ in self?.generalDismiss() })
                 .disposed(by: disposeBag)

@@ -12,6 +12,8 @@ import RxCocoa
 //
 import Domain
 import UIBase
+import PointFreeFunctions
+import Extensions
 
 protocol BlissQuestionsList_RouterProtocol: class {
     func dismissView()
@@ -33,12 +35,15 @@ extension Router {
             func generalDismiss() {
                 baseView?.dismiss(animated: true)
             }
-            rxPublishRelay_dismissView.asSignal()
+            rxPublishRelay_dismissView
+                .asSignal()
                 .emit(onNext: { _ in generalDismiss() })
                 .disposed(by: disposeBag)
-            rxPublishRelay_ShowDetails.asObservable()
+            rxPublishRelay_ShowDetails
+                .asObservable()
                 .map { vm -> V.BlissDetails_View? in return self.controllerWith(vm: vm) }
                 .ignoreNil()
+                .log(whereAmI())
                 .subscribe(onNext: { [weak self] in
                     if let navigationController = self?.baseView?.navigationController {
                         navigationController.pushViewController($0, animated: true)

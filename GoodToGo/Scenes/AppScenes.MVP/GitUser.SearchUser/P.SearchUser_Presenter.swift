@@ -116,7 +116,9 @@ extension P.SearchUser_Presenter: BasePresenterVMPProtocol {
             })
             .disposed(by: disposeBag)
         
-        rxPublishRelay_error.asObservable()
+        rxPublishRelay_error
+            .asObservable()
+            .log(whereAmI())
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.genericView?.setActivityState(false)

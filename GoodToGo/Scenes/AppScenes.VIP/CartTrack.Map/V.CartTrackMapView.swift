@@ -126,6 +126,7 @@ extension V {
             searchBar.rx.text
                 .orEmpty
                 .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
+                .log(whereAmI())
                 .subscribe(onNext: { [weak self] _ in
                     guard let self = self else { return }
                     self.rxFilter.onNext(self.searchBar.text)

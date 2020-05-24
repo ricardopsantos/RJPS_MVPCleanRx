@@ -60,13 +60,16 @@ extension V {
             some.rx.text
                 .orEmpty
                 .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
+                .log(whereAmI())
                 .subscribe(onNext: { [weak self] _ in
                     guard let self = self else { return }
                     let query = self.searchBar.text?.trim ?? ""
                     self.presenter.userPretendDoSearchWith(filter: query)
                 })
                 .disposed(by: disposeBag)
-            some.rx.textDidEndEditing
+            some.rx
+                .textDidEndEditing
+                .log(whereAmI())
                 .subscribe(onNext: { [weak self] (query) in
                     guard let self = self else { return }
                     let query = self.searchBar.text?.trim ?? ""
@@ -88,6 +91,7 @@ extension V {
             let animateCellsOnAppear = true
             if animateCellsOnAppear {
                 some.rx.willDisplayCell
+                    .log(whereAmI())
                     .subscribe(onNext: ({ (cell, /*indexPath*/ _ ) in
                         cell.alpha = 0
                         let transform = CATransform3DTranslate(CATransform3DIdentity, -250, 0, 0)
@@ -100,6 +104,7 @@ extension V {
             }
             some.rx.modelSelected(Bliss.QuestionElementResponseDto.self)
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
+                .log(whereAmI())
                 .subscribe(onNext: { [weak self]  item in
                     guard let self = self else { return }
                     DevTools.Log.message("Tapped [\(item)]")
@@ -109,7 +114,9 @@ extension V {
                     }
                 })
                 .disposed(by: disposeBag)
-            rxBehaviorRelay_tableDataSource.bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
+            rxBehaviorRelay_tableDataSource
+                .log(whereAmI())
+                .bind(to: some.rx.items(cellIdentifier: Sample_TableViewCell.reuseIdentifier, cellType: Sample_TableViewCell.self)) { [weak self] (row, element, cell) in
                 _ = element
                 guard let self = self else { return }
                 var indexPath = NSIndexPath(row: row, section: 0)

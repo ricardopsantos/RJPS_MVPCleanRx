@@ -120,8 +120,10 @@ extension V {
             some.rjsALayouts.setMargin(margin, on: .left)
             some.rjsALayouts.setMargin(margin, on: .bottom, from: btnShare1)
             some.register(Sample_TableViewCell.self, forCellReuseIdentifier: Sample_TableViewCell.reuseIdentifier)
-            some.rx.modelSelected(Bliss.ChoiceElementResponseDto.self)
+            some.rx
+                .modelSelected(Bliss.ChoiceElementResponseDto.self)
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
+                .log(whereAmI())
                 .subscribe(onNext: { [weak self]  item in
                     guard let self = self else { return }
                     DevTools.Log.message("Tapped [\(item)]")

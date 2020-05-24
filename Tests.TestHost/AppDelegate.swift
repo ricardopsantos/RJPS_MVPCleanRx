@@ -12,12 +12,12 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        self.window?.rootViewController = ViewController()
+        self.window?.rootViewController = SomeViewController()
         return true
     }
 }
 
-class ViewController: UIViewController {
+class SomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red

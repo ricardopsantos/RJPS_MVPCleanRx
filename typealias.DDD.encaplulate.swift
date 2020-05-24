@@ -5,9 +5,6 @@
 //  Copyright ©  Ricardo P Santos. All rights reserved.
 //
 
-import Foundation
-import UIKit
-
 // Common to all Modules
 
 public typealias E = Enums

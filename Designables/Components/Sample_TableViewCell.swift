@@ -49,18 +49,21 @@ open class Sample_TableViewCell: UITableViewCell, GenericTableViewCell_Protocol 
 
         rxBehaviorRelay_title
             .asObservable()
+            .log(whereAmI())
             .subscribe(onNext: { [weak self] (some) in
                 self?.lblTitle.label.text = some
             }).disposed(by: disposeBag)
 
         rxBehaviorRelay_textColor
             .asObservable()
+            .log(whereAmI())
             .subscribe(onNext: { [weak self] (some) in
                 self?.lblTitle.label.textColor = some
             }).disposed(by: disposeBag)
 
         rxBehaviorRelay_image
             .asObservable()
+            .log(whereAmI())
             .subscribe(onNext: { [weak self] (some) in
                 self?.imgView.image = some
                 self?.setNeedsLayout()

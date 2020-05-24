@@ -40,6 +40,7 @@ extension VC {
             some.addDismissButton()
             some.rxSignal_btnDismissTapped
                 .asObservable()
+                .log(whereAmI())
                 .subscribe(onNext: { (_) in
                     self.router?.routeToLogin()
                 }).disposed(by: disposeBag)

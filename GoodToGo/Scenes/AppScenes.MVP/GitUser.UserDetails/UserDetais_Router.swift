@@ -30,8 +30,8 @@ extension Router {
             //
             // Dismiss : Option 1
             //
-            rxPublishRelay_dismissView.asSignal()
-                .debug("rxPublishRelay_dismissView.asSignal")
+            rxPublishRelay_dismissView
+                .asSignal()
                 .emit(onNext: { [weak self] _ in self?.generalDismiss() })
                 .disposed(by: disposeBag)
             
@@ -39,7 +39,7 @@ extension Router {
             // Dismiss : Option 2
             //
             rxPublishRelay_dismissView.asObservable()
-                .debug("rxPublishRelay_dismissView.asObservable ")
+                .log("rxPublishRelay_dismissView.asObservable ")
                 .subscribe(onNext: { [weak self] _ in self?.generalDismiss() })
                 .disposed(by: disposeBag)
         }

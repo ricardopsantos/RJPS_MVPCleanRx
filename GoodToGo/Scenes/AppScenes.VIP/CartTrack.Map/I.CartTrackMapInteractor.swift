@@ -85,7 +85,9 @@ extension I.CartTrackMapInteractor: CartTrackMapBusinessLogicProtocol {
         presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
         CarTrackResolver.shared.api?
             .getUserDetailV3(cacheStrategy: .cacheAndLatestValue)
-            .asObservable().subscribe(onNext: { [weak self] (result) in
+            .asObservable()
+            .log(whereAmI())
+            .subscribe(onNext: { [weak self] (result) in
                 guard let self = self else { return }
                 switch result {
                 case .success(let elements):

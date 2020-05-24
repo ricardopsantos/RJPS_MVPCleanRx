@@ -46,12 +46,15 @@ public extension V {
             some.rx.text
                 .orEmpty
                 .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
+                .log(whereAmI())
                 .subscribe(onNext: { [weak self] _ in
                     guard let self = self else { return }
                     self.presenter.searchUserWith(username: some.text ?? "")
                 })
                 .disposed(by: disposeBag)
-            some.rx.textDidEndEditing
+            some.rx
+                .textDidEndEditing
+                .log(whereAmI())
                 .subscribe(onNext: { [weak self] (_) in
                     guard let self = self else { return }
                     if self.searchBar.text!.count>0 {

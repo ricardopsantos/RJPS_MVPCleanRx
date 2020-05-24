@@ -8,11 +8,15 @@
 
 import XCTest
 
-//@testable import GoodToGo
-//@testable import Core
-@testable import Domain
+@testable import GoodToGo
 
-class Test_TestCases: XCTestCase {
+@testable import Core
+@testable import Core_CarTrack
+
+@testable import Domain
+@testable import Domain_CarTrack
+
+class Test_GoodToGo: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -24,7 +28,13 @@ class Test_TestCases: XCTestCase {
 
     func testExample() throws {
 
+        //print(GoodToGo.CarTrackResolver.shared.api)
+
         print(Domain.AppCodes.ignored)
+
+        print(GoodToGo.CarTrackResolver.shared.api)
+       // let vc = VC.CartTrackMapViewController()
+
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }

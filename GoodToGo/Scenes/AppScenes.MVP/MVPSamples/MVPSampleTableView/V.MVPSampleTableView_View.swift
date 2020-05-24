@@ -42,6 +42,7 @@ extension V {
             some.register(Sample_TableViewCell.self, forCellReuseIdentifier: Sample_TableViewCell.reuseIdentifier)
             some.rx.modelSelected(Employee.ResponseDto.self)
                 .debounce(.milliseconds(AppConstants.Rx.tappingDefaultDebounce), scheduler: MainScheduler.instance)
+                .log(whereAmI())
                 .subscribe(onNext: { [weak self]  item in
                     guard let self = self else { return }
                     DevTools.Log.message("Tapped [\(item)]")
@@ -53,6 +54,7 @@ extension V {
                 .disposed(by: disposeBag)
             some.rx
                 .itemAccessoryButtonTapped
+                .log(whereAmI())
                 .subscribe(onNext: { [weak self] indexPath in
                     guard let self = self else { return }
                     DevTools.Log.message("AccessoryButtonTapped Tapped [\(indexPath)]")
@@ -62,7 +64,9 @@ extension V {
                     }
                 })
                 .disposed(by: disposeBag)
-            some.rx.willDisplayCell
+            some.rx
+                .willDisplayCell
+                .log(whereAmI())
                 .subscribe(onNext: ({ (cell, _) in
                     cell.alpha = 0
                     let transform = CATransform3DTranslate(CATransform3DIdentity, 0, -250, 0)

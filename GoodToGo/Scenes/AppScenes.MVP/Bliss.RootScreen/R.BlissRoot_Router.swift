@@ -12,6 +12,7 @@ import RxCocoa
 //
 import Domain
 import UIBase
+import PointFreeFunctions
 
 protocol BlissRoot_RouterProtocol: class {
     func dismissView()                                // Mandatory in all Routers
@@ -41,6 +42,7 @@ extension Router {
             rxPublishRelay_ShowQuestionsList.asObservable()
                 .map { vm -> UINavigationController? in return self.controllerWith(vm: vm) }
                 .ignoreNil()
+                .log(whereAmI())
                 .subscribe(onNext: { [weak self] in
                     $0.modalPresentationStyle = .overFullScreen
                     self?.baseView?.present($0, animated: true, completion: { })
