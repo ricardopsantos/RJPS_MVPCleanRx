@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-class CarTrackResolver {
+public class CarTrackResolver {
     private init() { }
-    static var shared = CarTrackResolver()
+    public static var shared = CarTrackResolver()
 
-    let api = AppDelegate.shared.container.resolve(AppProtocols.carTrackAPI_UseCase.self)
-    let genericBusiness = AppDelegate.shared.container.resolve(AppProtocols.carTrackGenericAppBusiness_UseCase.self)
+    public let api = AppDelegate.shared.container.resolve(AppProtocols.carTrackAPI_UseCase.self)
+    public let genericBusiness = AppDelegate.shared.container.resolve(AppProtocols.carTrackGenericAppBusiness_UseCase.self)
 }

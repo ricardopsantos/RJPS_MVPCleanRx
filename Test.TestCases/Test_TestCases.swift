@@ -1,18 +1,18 @@
 //
-//  GoodToGoTests.swift
-//  GoodToGoTests
+//  Test_TestCases.swift
+//  Test.TestCases
 //
-//  Created by Ricardo Santos on 23/05/2020.
+//  Created by Ricardo Santos on 24/05/2020.
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
 //
 
 import XCTest
-import Nimble
 
-@testable import Core
-@testable import GoodToGo
+//@testable import GoodToGo
+//@testable import Core
+@testable import Domain
 
-class GoodToGoTests: XCTestCase {
+class Test_TestCases: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -24,16 +24,7 @@ class GoodToGoTests: XCTestCase {
 
     func testExample() throws {
 
-        CarTrackResolver.shared.api?.getUserDetailV1(completionHandler: { (result) in
-            switch result {
-            case .success(_):
-                _ = 1
-            case .failure(_):
-                _ = 2
-            }
-        })
-
-
+        print(Domain.AppCodes.ignored)
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }

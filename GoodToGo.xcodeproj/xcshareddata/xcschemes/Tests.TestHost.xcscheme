@@ -15,15 +15,15 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D77824F62479FB8C0071776F"
-               BuildableName = "TestHost.app"
-               BlueprintName = "TestHost"
+               BuildableName = "Tests.TestHost.app"
+               BlueprintName = "Tests.TestHost"
                ReferencedContainer = "container:GoodToGo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug.Dev"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
@@ -33,8 +33,18 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D77824E02479DF870071776F"
-               BuildableName = "GoodToGoTests.xctest"
-               BlueprintName = "GoodToGoTests"
+               BuildableName = "Tests.TestCases.xctest"
+               BlueprintName = "Tests.TestCases"
+               ReferencedContainer = "container:GoodToGo.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D7782520247A59D40071776F"
+               BuildableName = "Test.TestCases.xctest"
+               BlueprintName = "Test.TestCases"
                ReferencedContainer = "container:GoodToGo.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -55,8 +65,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D77824F62479FB8C0071776F"
-            BuildableName = "TestHost.app"
-            BlueprintName = "TestHost"
+            BuildableName = "Tests.TestHost.app"
+            BlueprintName = "Tests.TestHost"
             ReferencedContainer = "container:GoodToGo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -72,8 +82,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D77824F62479FB8C0071776F"
-            BuildableName = "TestHost.app"
-            BlueprintName = "TestHost"
+            BuildableName = "Tests.TestHost.app"
+            BlueprintName = "Tests.TestHost"
             ReferencedContainer = "container:GoodToGo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
