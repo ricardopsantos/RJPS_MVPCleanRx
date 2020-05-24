@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import RJPSLib
 
 @testable import GoodToGo
 
@@ -43,4 +44,27 @@ class Test_CartTrack: XCTestCase {
         waitForExpectations(timeout: 5)
     }
 
+    func test_genericBusiness_validateUserAndPassword1() {
+        let expectation = self.expectation(description: #function)
+        GoodToGo.CarTrackResolver.shared.genericBusiness?.validate(user: "", password: "12345", completionHandler: { (result) in
+            switch result {
+            case .success: XCTAssert(true)
+            case .failure: XCTAssert(false)
+            }
+            expectation.fulfill()
+        })
+        waitForExpectations(timeout: 5)
+    }
+
+    func test_genericBusiness_validateUserAndPassword2() {
+        let expectation = self.expectation(description: #function)
+        GoodToGo.CarTrackResolver.shared.genericBusiness?.validate(user: "", password: "wrong password", completionHandler: { (result) in
+            switch result {
+            case .success: XCTAssert(false)
+            case .failure(let error): XCTAssert(error.appCode == AppCodes.invalidCredentials)
+            }
+            expectation.fulfill()
+        })
+        waitForExpectations(timeout: 5)
+    }
 }
