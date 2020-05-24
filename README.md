@@ -20,6 +20,7 @@ Just download source code and run  `./_script_installPackages.sh`
 # Features
 
 - [x] Localisable ressources
+- [x] Remote logs with [NSLogger](https://github.com/fpillet/NSLogger)
 - [x] [RJPSLib](https://github.com/ricardopsantos/RJPSLib) to manage logs, caching, network client, generic extensions...
 - [x] RxSwift & RxCocoa usage
 - [x] [.xcconfig](https://nshipster.com/xcconfig/) usage
@@ -28,7 +29,7 @@ Just download source code and run  `./_script_installPackages.sh`
 - [x] Dependency injection with [Swinject](https://github.com/Swinject/Swinject)
 - [x] MVP Pattern design sample screens - `GoodToGo/Scenes/AppScenes.MVP`
 - [x] VIP Pattern design sample screens - `GoodToGo/Scenes/AppScenes.VIP`
-- [x] VIP Custom Xcode Template (`GoodToGoVIP_Schene.xctemplate`)
+- [x] VIP Custom Xcode Template - `GoodToGoVIP_Schene.xctemplate`
 - [x] UnitTests
 
 More info about the project and MVP architecture [here](https://github.com/ricardopsantos/RJPS_MVPCleanRx/tree/master/Docs)

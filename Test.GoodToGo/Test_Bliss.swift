@@ -42,5 +42,4 @@ class Test_Bliss: XCTestCase {
         })
         waitForExpectations(timeout: TestsShared.shared.waitForExpectationsDefaultTime)
     }
-
 }

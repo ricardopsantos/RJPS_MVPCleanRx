@@ -8,6 +8,7 @@
 
 import XCTest
 import RJPSLib
+import RxSwift
 
 @testable import GoodToGo
 
@@ -18,6 +19,8 @@ import RJPSLib
 @testable import Domain_CarTrack
 
 class Test_CartTrack: XCTestCase {
+
+    let disposeBag = DisposeBag()
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -55,6 +58,19 @@ class Test_CartTrack: XCTestCase {
             }
             expectation.fulfill()
         })
+        waitForExpectations(timeout: TestsShared.shared.waitForExpectationsDefaultTime)
+    }
+
+    func test_api_getUserDetailV3() {
+        let expectation = self.expectation(description: #function)
+        GoodToGo.CarTrackResolver.shared.api?.getUserDetailV3(cacheStrategy: .reloadIgnoringCache)
+            .asObservable().subscribe(onNext: { (result) in
+                switch result {
+                case .success: XCTAssert(true)
+                case .failure: XCTAssert(false)
+                }
+                expectation.fulfill()
+            }).disposed(by: disposeBag)
         waitForExpectations(timeout: TestsShared.shared.waitForExpectationsDefaultTime)
     }
 
