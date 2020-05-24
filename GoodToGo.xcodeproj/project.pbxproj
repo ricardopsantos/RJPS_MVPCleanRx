@@ -188,6 +188,7 @@
 		D778258E247A79D40071776F /* TestsShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = D778258D247A79D40071776F /* TestsShared.swift */; };
 		D778258F247A85DA0071776F /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC172223BBD8600576498 /* RxCocoa.framework */; };
 		D7782590247A86460071776F /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC176223BBFC600576498 /* RxSwift.framework */; };
+		D7782592247ADA490071776F /* DeeplinkParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7782591247ADA490071776F /* DeeplinkParser.swift */; };
 		D786AE492473CC0400636935 /* UIViewContoller+ExtensionsAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786AE482473CC0400636935 /* UIViewContoller+ExtensionsAlerts.swift */; };
 		D788BD76246892B3007C59D0 /* P.BasePresenterVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788BD75246892B3007C59D0 /* P.BasePresenterVIP.swift */; };
 		D788BD7C246943AB007C59D0 /* I.BaseInteractorVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788BD7B246943AB007C59D0 /* I.BaseInteractorVIP.swift */; };
@@ -1200,6 +1201,7 @@
 		D7782525247A59D40071776F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D778258A247A6FC90071776F /* Test_Bliss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test_Bliss.swift; sourceTree = "<group>"; };
 		D778258D247A79D40071776F /* TestsShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsShared.swift; sourceTree = "<group>"; };
+		D7782591247ADA490071776F /* DeeplinkParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkParser.swift; sourceTree = "<group>"; };
 		D786AE482473CC0400636935 /* UIViewContoller+ExtensionsAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewContoller+ExtensionsAlerts.swift"; sourceTree = "<group>"; };
 		D788BD75246892B3007C59D0 /* P.BasePresenterVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.BasePresenterVIP.swift; sourceTree = "<group>"; };
 		D788BD7B246943AB007C59D0 /* I.BaseInteractorVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.BaseInteractorVIP.swift; sourceTree = "<group>"; };
@@ -2237,6 +2239,7 @@
 				D7AB2444246716DE000142C4 /* Components */,
 				D761FEB42468330600BD41A5 /* ProgramaticUIUtils.swift */,
 				9FE1437021AF1ADC0026BDFC /* Environments.swift */,
+				D7782591247ADA490071776F /* DeeplinkParser.swift */,
 			);
 			path = Comom;
 			sourceTree = "<group>";
@@ -3713,6 +3716,7 @@
 				9F6BB2D922E3673200829A6F /* AppDelegate+URL.swift in Sources */,
 				9F6BB2F022E3A97F00829A6F /* P.BlissQuestionsList_Presenter.swift in Sources */,
 				9F58FB4922BE5DE700042A8C /* R.SearchUser_Router.swift in Sources */,
+				D7782592247ADA490071776F /* DeeplinkParser.swift in Sources */,
 				9F58FB4522BE5DE700042A8C /* UserDetais_Router.swift in Sources */,
 				D7711F63246B340C00B6963A /* R.___FILEBASENAME___Router.swift in Sources */,
 				D7979DBB246D6B370039031C /* R.CarTrackLoginRouter.swift in Sources */,

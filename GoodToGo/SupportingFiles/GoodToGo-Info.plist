@@ -22,15 +22,15 @@
 	<array>
 		<dict>
 			<key>CFBundleURLName</key>
-			<string>GTG.GoodToGo.mvp</string>
+			<string>gtg.goodtogo</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>myappdeeplink</string>
+				<string>gtgdeeplink</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2824</string>
+	<string>2868</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

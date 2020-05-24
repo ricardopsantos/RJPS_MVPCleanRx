@@ -43,6 +43,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        // handle any deeplink
+        DeepLinkManager.shared.checkDeepLinksToHandle()
+    }
+
     func applicationWillTerminate(_ application: UIApplication) {
         saveContext()
     }

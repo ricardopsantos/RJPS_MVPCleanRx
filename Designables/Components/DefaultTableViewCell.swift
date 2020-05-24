@@ -91,7 +91,7 @@ open class DefaultTableViewCell: UITableViewCell, DefaultTableViewCellProtocol {
     private let disposeBag: DisposeBag = DisposeBag()
     
     private lazy var lblTitle: UILabelWithPadding = {
-        let padding = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
+        let padding = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
         let some = UIKitFactory.labelWithPadding(padding: padding, style: .value)
         self.addSubview(some)
         some.autoLayout.edgesToSuperview()
