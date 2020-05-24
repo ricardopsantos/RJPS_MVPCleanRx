@@ -22,6 +22,10 @@ import Core_GitHub
 public typealias AS = AssembyContainer
 public struct AssembyContainer { private init() {} }
 
+//
+// MARK: - Protocols
+//
+
 struct RootAssemblyContainerProtocols {
 
     //
@@ -55,12 +59,36 @@ struct RootAssemblyContainerProtocols {
 
 }
 
+//
+// MARK: - Resolvers
+//
+
+public class CarTrackResolver {
+    private init() { }
+    public static var shared   = CarTrackResolver()
+    public let api             = AppDelegate.shared.container.resolve(AppProtocols.carTrackAPI_UseCase.self)
+    public let genericBusiness = AppDelegate.shared.container.resolve(AppProtocols.carTrackGenericAppBusiness_UseCase.self)
+}
+
+public class BlissResolver {
+    private init() { }
+    public static var shared   = BlissResolver()
+    public let api             = AppDelegate.shared.container.resolve(AppProtocols.blissQuestions_UseCase.self)
+    public let genericBusiness = AppDelegate.shared.container.resolve(AppProtocols.blissGenericAppBusiness_UseCase.self)
+}
+
+//
+// MARK: - RootAssemblyContainer
+//
+
 final class RootAssemblyContainer: Assembly {
-    //
-    // APENAS Instancias que precisamos no arranque
-    //
+
     func assemble(container: Container) {
 
+        //
+        // Base app repositories
+        //
+        
         container.autoregister(AppProtocols.generic_CacheRepository,
                                initializer: RP.SimpleCacheRepository.init).inObjectScope(.container)
         
@@ -69,19 +97,13 @@ final class RootAssemblyContainer: Assembly {
         
         container.autoregister(AppProtocols.generic_LocalStorageRepository,
                                initializer: RP.KeyValuesStorageRepository.init).inObjectScope(.container)
-        
-        container.autoregister(AppProtocols.gitUser_NetWorkRepository,
-                               initializer: API.GitUser.NetWorkRepository.init).inObjectScope(.container)
-
-        container.autoregister(AppProtocols.bliss_NetWorkRepository,
-                               initializer: API.Bliss.NetWorkRepository.init).inObjectScope(.container)
-
-        container.autoregister(AppProtocols.carTrack_NetWorkRepository,
-                               initializer: API.CarTrack.NetWorkRepository.init).inObjectScope(.container)
 
         //
         // CarTrack
         //
+
+        container.autoregister(AppProtocols.carTrack_NetWorkRepository,
+                               initializer: API.CarTrack.NetWorkRepository.init).inObjectScope(.container)
 
         container.register(AppProtocols.carTrackAPI_UseCase) { resolver in
             let uc = CarTrackAPI_UseCase()
@@ -127,6 +149,9 @@ final class RootAssemblyContainer: Assembly {
         // GitHub
         //
 
+        container.autoregister(AppProtocols.gitUser_NetWorkRepository,
+                               initializer: API.GitUser.NetWorkRepository.init).inObjectScope(.container)
+
         container.register(AppProtocols.gitUser_UseCase) { resolver in
             let uc = GitUser_UseCase()
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
@@ -137,6 +162,9 @@ final class RootAssemblyContainer: Assembly {
         //
         // Bliss
         //
+
+        container.autoregister(AppProtocols.bliss_NetWorkRepository,
+                               initializer: API.Bliss.NetWorkRepository.init).inObjectScope(.container)
 
         container.register(AppProtocols.blissQuestions_UseCase) { resolver in
             let uc = BlissQuestionsAPI_UseCase()
