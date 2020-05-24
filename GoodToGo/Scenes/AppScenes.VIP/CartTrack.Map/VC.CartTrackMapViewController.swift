@@ -25,7 +25,7 @@ import UIBase
 extension VC {
 
     class CartTrackMapViewController: BaseGenericViewControllerVIP<V.CartTrackMapView> {
-        private var interactor: CartTrackMapBusinessLogicProtocol?
+        var interactor: CartTrackMapBusinessLogicProtocol?
         var router: (CartTrackMapRoutingLogicProtocol &
             CartTrackMapDataPassingProtocol &
             CartTrackMapRoutingLogicProtocol)?

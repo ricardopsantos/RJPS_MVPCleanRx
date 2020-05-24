@@ -32,6 +32,20 @@ class Test_CartTrack: XCTestCase {
         XCTAssert(GoodToGo.CarTrackResolver.shared.genericBusiness != nil)
     }
 
+    func test_viewController_mapWithData() {
+        let expectation = self.expectation(description: #function)
+        let vc = GoodToGo.VC.CartTrackMapViewController(presentationStyle: .regularVC)
+        let request = GoodToGo.VM.CartTrackMap.MapData.Request()
+        vc.interactor?.requestMapData(request: request)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + TestsShared.shared.waitForExpectationsDefaultTime - 1, execute: {
+            XCTAssert(vc.genericView.mapView.annotations.count > 0)
+            expectation.fulfill()
+        })
+
+        waitForExpectations(timeout: TestsShared.shared.waitForExpectationsDefaultTime)
+    }
+
     func test_api_getUserDetailV1() {
         let expectation = self.expectation(description: #function)
         GoodToGo.CarTrackResolver.shared.api?.getUserDetailV1(completionHandler: { (result) in
@@ -41,7 +55,7 @@ class Test_CartTrack: XCTestCase {
             }
             expectation.fulfill()
         })
-        waitForExpectations(timeout: 5)
+        waitForExpectations(timeout: TestsShared.shared.waitForExpectationsDefaultTime)
     }
 
     func test_genericBusiness_validateUserAndPassword1() {
@@ -53,7 +67,7 @@ class Test_CartTrack: XCTestCase {
             }
             expectation.fulfill()
         })
-        waitForExpectations(timeout: 5)
+        waitForExpectations(timeout: TestsShared.shared.waitForExpectationsDefaultTime)
     }
 
     func test_genericBusiness_validateUserAndPassword2() {
@@ -65,6 +79,6 @@ class Test_CartTrack: XCTestCase {
             }
             expectation.fulfill()
         })
-        waitForExpectations(timeout: 5)
+        waitForExpectations(timeout: TestsShared.shared.waitForExpectationsDefaultTime)
     }
 }

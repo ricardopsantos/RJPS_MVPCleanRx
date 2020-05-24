@@ -93,15 +93,15 @@ protocol CartTrackMapDataStoreProtocol {
 // MARK: - Models
 //
 
-extension VM {
+public extension VM {
     enum CartTrackMap {
         enum CellType {
             case cellType1
             case cellType2
         }
 
-        struct MapData {
-            struct Request { } /* ViewController -> Interactor */
+        public struct MapData {
+            public struct Request { } /* ViewController -> Interactor */
             struct Response { /* Interactor -> Presenter */
                 let list: [CarTrack.UserModel]
             }
@@ -111,7 +111,7 @@ extension VM {
             }
         }
 
-        struct MapDataFilter { /* ViewController -> Interactor */
+        public struct MapDataFilter { /* ViewController -> Interactor */
             struct Request {
                 let filter: String
             }

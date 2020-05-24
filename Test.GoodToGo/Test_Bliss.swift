@@ -40,7 +40,7 @@ class Test_Bliss: XCTestCase {
             }
             expectation.fulfill()
         })
-        waitForExpectations(timeout: 5)
+        waitForExpectations(timeout: TestsShared.shared.waitForExpectationsDefaultTime)
     }
 
 }

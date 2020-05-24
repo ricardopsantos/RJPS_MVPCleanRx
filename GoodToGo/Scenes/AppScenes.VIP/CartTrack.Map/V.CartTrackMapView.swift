@@ -47,7 +47,7 @@ extension V {
         private var lastModel: [Domain_CarTrack.CarTrack.UserModel] = []
         // MARK: - UI Elements (Private and lazy by default)
 
-        private lazy var mapView: MKMapView = {
+        lazy var mapView: MKMapView = {
             return MKMapView()
         }()
 
