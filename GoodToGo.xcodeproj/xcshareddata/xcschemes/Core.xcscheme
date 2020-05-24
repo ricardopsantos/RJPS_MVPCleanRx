@@ -45,8 +45,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D7782520247A59D40071776F"
-               BuildableName = "Test.TestCasesHost.xctest"
-               BlueprintName = "Test.TestCasesHost"
+               BuildableName = "Test.GoodToGo.xctest"
+               BlueprintName = "Test.GoodToGo"
                ReferencedContainer = "container:GoodToGo.xcodeproj">
             </BuildableReference>
          </TestableReference>
