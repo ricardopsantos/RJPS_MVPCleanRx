@@ -16,13 +16,13 @@ import PointFreeFunctions
 
 open class BaseGenericViewControllerVIP<T: StylableView>: BaseViewControllerVIP {
 
-    required public override init(presentationStyle: ViewControllerPresentedLike) {
+    required public override init(presentationStyle: VCPresentationStyle) {
         super.init(presentationStyle: presentationStyle)
         setup()
     }
 
     public required init?(coder aDecoder: NSCoder) {
-        fatalError("Use instead [init(presentationStyle: \(ViewControllerPresentedLike.self)]")
+        fatalError("Use instead [init(presentationStyle: \(VCPresentationStyle.self)]")
     }
 
     public var disposeBag = DisposeBag()

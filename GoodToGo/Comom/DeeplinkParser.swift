@@ -12,13 +12,17 @@ import UIKit
 import DevTools
 import AppResources
 import Designables
+import UIBase
 
 // https://medium.com/@stasost/ios-how-to-open-deep-links-notifications-and-shortcuts-253fb38e1696
 // xcrun simctl openurl booted "gtgdeeplink://thisIsTheHost?queryItem1=1&queryItem2=2"
 
+// xcrun simctl openurl booted "gtgdeeplink://goToScreen?name=list"
+// xcrun simctl openurl booted "gtgdeeplink://goToScreen?name=details&id=1"
+
 struct DeepLinks {
-    indirect enum RoutingOptions {
-        case viewControllerE(RoutingOptions)
+    indirect enum RoutingPath {
+        case path(vc: BaseViewControllerVIP.Type, objectIdentifier: String, style: VCPresentationStyle, next: [RoutingPath])
         case viewControllerA
         case viewControllerB(id: String)
         case viewControllerC(ViewControllerCChilds)
@@ -26,22 +30,23 @@ struct DeepLinks {
             case root
             case viewControllerD(id: String)
         }
-        static func withNotification(_ userInfo: [AnyHashable: Any]) -> RoutingOptions? {
+        static func withNotification(_ userInfo: [AnyHashable: Any]) -> RoutingPath? {
             if let data = userInfo["data"] as? [String: Any] {
                 if let messageId = data["messageId"] as? String {
-                    return RoutingOptions.viewControllerC(.viewControllerD(id: messageId))
+                    return RoutingPath.viewControllerC(.viewControllerD(id: messageId))
                 }
             }
             DevTools.Log.error("Couldnt found a route for [\(userInfo)] ")
             return nil
         }
 
-        static func withDeepLink(_ url: URL) -> RoutingOptions? {
+        static func withDeepLink(_ url: URL) -> RoutingPath? {
             guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true),
                 let host = components.host else {
                     return nil
             }
 
+            var queryItems: [String: String] = [:]
             var debug = "\n"
             if !components.path.trim.isEmpty { debug += "# Path      : \(components.path)\n" }
             if components.string != nil {      debug += "# FullLink  : \(components.string!)\n" }
@@ -50,25 +55,27 @@ struct DeepLinks {
             if components.queryItems != nil {  debug += "# QueryItems: \(components.queryItems!)\n" }
             components.queryItems?.forEach({ (some) in
                 debug += " - QueryItem [\(some.name)] = [\(some.value!)]\n"
+                queryItems[some.name] = some.value!
             })
             DevTools.Log.message("\(debug)")
 
-            var pathComponents = components.path.components(separatedBy: "?")
-            pathComponents.removeFirst() // the first component is empty
+            //var pathComponents = components.path.components(separatedBy: "?")
+            //pathComponents.removeFirst() // the first component is empty
             switch host {
-            case "messages": if let messageId = pathComponents.first { return RoutingOptions.viewControllerC(.viewControllerD(id: messageId)) }
-            case "request": if let requestId = pathComponents.first { return RoutingOptions.viewControllerB(id: requestId) }
-            default: break
+            case "goToScreen": if let theId = queryItems["name"] { return RoutingPath.path(vc: Tests.SomeViewControllerA.self, objectIdentifier: theId, style: .regularVC, next: []) }
+            //case "goToScreen": if let theId = queryItems["name"] { return RoutingPath.viewControllerC(.viewControllerD(id: theId)) }
+            //case "request": if let requestId = pathComponents.first { return RoutingPath.viewControllerB(id: requestId) }
+            default:
+                DevTools.Log.error("Couldn't found a route for [\(url)] ")
             }
-            DevTools.Log.error("Couldnt found a route for [\(url)] ")
             return nil
         }
 
-        static func withShortcut(_ shortcut: UIApplicationShortcutItem) -> RoutingOptions? {
+        static func withShortcut(_ shortcut: UIApplicationShortcutItem) -> RoutingPath? {
             switch shortcut.type {
-            case ShortcutKey.shortCut1.rawValue: return RoutingOptions.viewControllerC(.viewControllerD(id: "1"))
-            case ShortcutKey.shortCut2.rawValue: return RoutingOptions.viewControllerA
-            case ShortcutKey.shortCut3.rawValue: return RoutingOptions.viewControllerC(.root)
+            case ShortcutKey.shortCut1.rawValue: return RoutingPath.viewControllerC(.viewControllerD(id: "1"))
+            case ShortcutKey.shortCut2.rawValue: return RoutingPath.viewControllerA
+            case ShortcutKey.shortCut3.rawValue: return RoutingPath.viewControllerC(.root)
             default: break
             }
             DevTools.Log.error("Couldnt found a route for [\(shortcut)] ")
@@ -97,8 +104,8 @@ extension DeepLinks {
                 UIApplication.shared.registerForRemoteNotifications()
             }
 
-            func handleNotification(_ userInfo: [AnyHashable: Any]) -> RoutingOptions? {
-                return DeepLinks.RoutingOptions.withNotification(userInfo)
+            func handleNotification(_ userInfo: [AnyHashable: Any]) -> RoutingPath? {
+                return DeepLinks.RoutingPath.withNotification(userInfo)
             }
         }
 
@@ -106,8 +113,8 @@ extension DeepLinks {
             private init() { }
             static let shared = DeeplinkParser()
             func setup() { }
-            func parseDeepLink(_ url: URL) -> RoutingOptions? {
-                return DeepLinks.RoutingOptions.withDeepLink(url)
+            func parseDeepLink(_ url: URL) -> RoutingPath? {
+                return DeepLinks.RoutingPath.withDeepLink(url)
             }
         }
 
@@ -137,8 +144,8 @@ extension DeepLinks {
                 UIApplication.shared.shortcutItems = [shortcutItem1, shortcutItem2, shortcutItem3]
             }
 
-            func handleShortcut(_ shortcut: UIApplicationShortcutItem) -> RoutingOptions? {
-                DeepLinks.RoutingOptions.withShortcut(shortcut)
+            func handleShortcut(_ shortcut: UIApplicationShortcutItem) -> RoutingPath? {
+                DeepLinks.RoutingPath.withShortcut(shortcut)
             }
         }
     }
@@ -148,7 +155,7 @@ extension DeepLinks {
 class DeepLinkManager {
     fileprivate init() {}
     static var shared = DeepLinkManager()
-    private var deeplinkType: DeepLinks.RoutingOptions? {
+    private var deeplinkType: DeepLinks.RoutingPath? {
         didSet {
             if let deeplinkType = deeplinkType {
                 DevTools.Log.message("deeplinkType set to [\(deeplinkType)]")
@@ -196,36 +203,43 @@ private class DeeplinkRouter {
 
     var alertController = UIAlertController()
 
-    func proceedToDeeplink(_ type: DeepLinks.RoutingOptions) {
+    func proceedToDeeplink(_ type: DeepLinks.RoutingPath) {
         switch type {
-        case .viewControllerA: displayAlert(title: "Activity")
-        case .viewControllerC(.root): displayAlert(title: "Messages Root")
-        case .viewControllerC(.viewControllerD(id: let id)): displayAlert(title: "Messages Details \(id)")
-        case .viewControllerB(id: let id): displayAlert(title: "Request Details \(id)")
-        case .viewControllerE(_): DevTools.Log.message(DevTools.Strings.notPredicted.rawValue)
+        case .path(_): displayVC(path: type)
+        case .viewControllerA: ()
+        case .viewControllerB(_): ()
+        case .viewControllerC(_): ()
         }
+        DevTools.assert(false, message: "Fail to proceed to DL")
     }
 
-    private func displayAlert(title: String) {
-        alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alertController.addAction(okButton)
-        alertController.title = title
-        if let vc = UIApplication.shared.keyWindow?.rootViewController {
-            if vc.presentedViewController != nil {
-                alertController.dismiss(animated: false, completion: {
-                    vc.present(self.alertController, animated: true, completion: nil)
-                })
-            } else {
-                vc.present(alertController, animated: true, completion: nil)
+    private func displayVC(path: DeepLinks.RoutingPath) {
+        switch path {
+        case .path(vc: let vc, objectIdentifier: let objectIdentifier, style: let style, next: let next):
+            if let vc = UIApplication.shared.keyWindow?.rootViewController {
+                if vc.presentedViewController != nil {
+                    let instance = (vc as! DeepLinkableViewControllerProtocol).makeInstance(id: objectIdentifier, style: style)
+                    vc.present(instance, animated: true) {
+                        
+                    }
+                } else {
+                    vc.present(alertController, animated: true, completion: nil)
+                }
             }
+        case .viewControllerA: ()
+        case .viewControllerB(id: let id): ()
+        case .viewControllerC(_): ()
         }
     }
 }
 
-class DeepLinkableViewController: UIViewController {
-    func link() -> DeepLinks.RoutingOptions { fatalError("override me") }
+protocol DeepLinkableViewControllerProtocol {
+    static var deepLinkableIdentifier: String { get }
+    var objectId: String? { get set }
+    static func makeInstance(id: String, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol
+}
 
+class DeepLinkableViewController: BaseViewControllerVIP {
     let label = UIKitFactory.label(title: "", style: .value)
     func setLabel(text: String) {
         self.view.addSubview(label)
@@ -234,26 +248,46 @@ class DeepLinkableViewController: UIViewController {
     }
 }
 
-class SomeViewControllerA: DeepLinkableViewController {
-    override func link() -> DeepLinks.RoutingOptions { return .viewControllerA }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setLabel(text: "\(SomeViewControllerA.self)")
+struct Tests {
+    class SomeViewControllerA: DeepLinkableViewController, DeepLinkableViewControllerProtocol {
+        static var deepLinkableIdentifier: String { return "\(self.className)" }
+        var objectId: String?
+        static func makeInstance(id: String, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol {
+            let some = SomeViewControllerA(presentationStyle: style)
+            some.objectId = id
+            return some
+        }
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            setLabel(text: "\(SomeViewControllerA.self)")
+        }
     }
-}
 
-class SomeViewControllerB: DeepLinkableViewController {
-    override func link() -> DeepLinks.RoutingOptions { return .viewControllerB(id: "") }
-    public var id: String? { didSet { setLabel(text: "\(SomeViewControllerA.self)") } }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setLabel(text: "\(SomeViewControllerA.self)")
+    class SomeViewControllerB: DeepLinkableViewController, DeepLinkableViewControllerProtocol {
+        static var deepLinkableIdentifier: String { return "\(self.className)" }
+        var objectId: String?
+        static func makeInstance(id: String, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol {
+            let some = SomeViewControllerB(presentationStyle: style)
+            some.objectId = id
+            return some
+        }
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            setLabel(text: "\(SomeViewControllerA.self)")
+        }
     }
-}
 
-class SomeViewControllerC: DeepLinkableViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setLabel(text: "\(SomeViewControllerA.self)")
+    class SomeViewControllerC: DeepLinkableViewController, DeepLinkableViewControllerProtocol {
+        static var deepLinkableIdentifier: String { return "\(self.className)" }
+        var objectId: String?
+        static func makeInstance(id: String, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol {
+            let some = SomeViewControllerC(presentationStyle: style)
+            some.objectId = id
+            return some
+        }
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            setLabel(text: "\(SomeViewControllerA.self)")
+        }
     }
 }

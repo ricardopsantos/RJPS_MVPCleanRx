@@ -15,8 +15,8 @@ import DevTools
 
 open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtocol {
 
-    public var presentationStyle: ViewControllerPresentedLike?
-    public init(presentationStyle: ViewControllerPresentedLike) {
+    public var presentationStyle: VCPresentationStyle?
+    public init(presentationStyle: VCPresentationStyle) {
         super.init(nibName: nil, bundle: nil)
         self.presentationStyle = presentationStyle
     }
@@ -26,7 +26,7 @@ open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtoco
     }
     
     public required init?(coder aDecoder: NSCoder) {
-        fatalError("Use instead [init(presentationStyle: \(ViewControllerPresentedLike.self)]")
+        fatalError("Use instead [init(presentationStyle: \(VCPresentationStyle.self)]")
     }
 
     deinit {

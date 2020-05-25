@@ -344,7 +344,7 @@
 		D7F2DE342474A718008CE3DA /* R.DataStoreReceiverRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2DE262474A6D4008CE3DA /* R.DataStoreReceiverRouter.swift */; };
 		D7F2DE352474A718008CE3DA /* D.DataStoreReceiverDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2DE272474A6D4008CE3DA /* D.DataStoreReceiverDomain.swift */; };
 		D7F2DE362474A718008CE3DA /* I.DataStoreReceiverInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2DE292474A6D4008CE3DA /* I.DataStoreReceiverInteractor.swift */; };
-		D7F2DE3924754758008CE3DA /* ViewControllerPresentedLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2DE3824754758008CE3DA /* ViewControllerPresentedLike.swift */; };
+		D7F2DE3924754758008CE3DA /* VCPresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2DE3824754758008CE3DA /* VCPresentationStyle.swift */; };
 		D7FA21F724708B9C001DD9D5 /* ReachabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA21F324706A32001DD9D5 /* ReachabilityView.swift */; };
 		D7FA2207247189B9001DD9D5 /* TokenRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA2206247189B9001DD9D5 /* TokenRefresh.swift */; };
 		D7FCAC2024685B7A00DBECA2 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FCAC1F24685B7A00DBECA2 /* RxDataSources.framework */; };
@@ -1329,7 +1329,7 @@
 		D7F2DE262474A6D4008CE3DA /* R.DataStoreReceiverRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.DataStoreReceiverRouter.swift; sourceTree = "<group>"; };
 		D7F2DE272474A6D4008CE3DA /* D.DataStoreReceiverDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D.DataStoreReceiverDomain.swift; sourceTree = "<group>"; };
 		D7F2DE292474A6D4008CE3DA /* I.DataStoreReceiverInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.DataStoreReceiverInteractor.swift; sourceTree = "<group>"; };
-		D7F2DE3824754758008CE3DA /* ViewControllerPresentedLike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPresentedLike.swift; sourceTree = "<group>"; };
+		D7F2DE3824754758008CE3DA /* VCPresentationStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCPresentationStyle.swift; sourceTree = "<group>"; };
 		D7FA21F324706A32001DD9D5 /* ReachabilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityView.swift; sourceTree = "<group>"; };
 		D7FA21FC24715A9A001DD9D5 /* no_internet_usage_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_internet_usage_1.png; sourceTree = "<group>"; };
 		D7FA21FD24715A9A001DD9D5 /* map_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_1.png; sourceTree = "<group>"; };
@@ -1905,7 +1905,7 @@
 				D788BD7E246943D0007C59D0 /* VIP */,
 				D788BD7D246943C9007C59D0 /* MVP */,
 				D7AB24B724673F00000142C4 /* README.md */,
-				D7F2DE3824754758008CE3DA /* ViewControllerPresentedLike.swift */,
+				D7F2DE3824754758008CE3DA /* VCPresentationStyle.swift */,
 				D72922D82466AFC600DAD480 /* typealias.UIBase.swift */,
 				9F15CF2722BFA0A300FB402A /* AppConstants+UIBase.swift */,
 				D729228F2466A04200DAD480 /* UIBase.h */,
@@ -3791,7 +3791,7 @@
 				D7782572247A5FBF0071776F /* typealias.VIP.encaplulate.swift in Sources */,
 				D729238D2466C67800DAD480 /* AppConstants+UIBase.swift in Sources */,
 				D761FEBC2468358B00BD41A5 /* BaseViewControllerMVP+Keyboard.swift in Sources */,
-				D7F2DE3924754758008CE3DA /* ViewControllerPresentedLike.swift in Sources */,
+				D7F2DE3924754758008CE3DA /* VCPresentationStyle.swift in Sources */,
 				D788BD83246944A9007C59D0 /* VC.BaseGenericViewControllerVIP.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
