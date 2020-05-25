@@ -43,7 +43,7 @@ extension VC {
             if DevTools.FeatureFlag.showScene_vipTemplate.isTrue { viewControllersList.append(vipTemplate) }
             if DevTools.FeatureFlag.showScene_rxTests.isTrue { viewControllersList.append(vcRx) }
 
-            viewControllers = [SomeViewController()] + viewControllersList + [vipDebug]
+            viewControllers = viewControllersList + [vipDebug]
             
         }
 
