@@ -12,6 +12,10 @@ import AppResources
 
 public extension AppCodes {
 
+    static func initWith(error: Error) -> AppCodes {
+        return AppCodes.unknownError
+    }
+
     func makeErrorWith(code: AppCodes) -> Error {
         return code.toError
     }

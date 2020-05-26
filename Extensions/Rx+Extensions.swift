@@ -32,6 +32,28 @@ public extension Observable where Element: OptionalTypeProtocol {
     }
 }
 
+// MARK: - Erros handling
+
+public extension PrimitiveSequence where Trait == CompletableTrait, Element == Never {
+
+    func ignoreError() -> Completable {
+        return catchError { (_: Error) -> Completable in
+            return Completable.empty()
+        }
+    }
+
+    func mapError(swallow: Bool) -> Completable {
+        return catchError { (error: Error) -> Completable in
+            if swallow {
+                DevTools.Log.error("Error shallowed on RxChain")
+                return Completable.empty()
+            } else {
+                DevTools.Log.error("Error shallowed on RxChain")
+                return Completable.error(error)
+            }
+        }
+    }
+}
 // MARK: - Reactive.UIButton
 
 extension Reactive where Base == UIButton {
@@ -56,7 +78,7 @@ extension Reactive where Base == UIButton {
 // MARK: - ObservableType
 
 extension ObservableType {
-
+/*
     func subscribeNext(bag: DisposeBag, next: @escaping (Self.Element) -> Void) {
         subscribe(onNext: next).disposed(by: bag)
     }
@@ -64,7 +86,7 @@ extension ObservableType {
     func subscribeNext(bag: DisposeBag, next: @escaping (Self.Element) -> Void, error: @escaping (Error) -> Void) {
         subscribe(onNext: next, onError: error).disposed(by: bag)
     }
-
+*/
     public func asSingleSafe() -> Single<Element> {
         return take(1)
             .asSingle()
