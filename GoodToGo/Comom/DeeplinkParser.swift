@@ -14,60 +14,72 @@ import AppResources
 import Designables
 import UIBase
 
+// swiftlint:disable rule_Coding
+
 // https://medium.com/@stasost/ios-how-to-open-deep-links-notifications-and-shortcuts-253fb38e1696
 // xcrun simctl openurl booted "gtgdeeplink://thisIsTheHost?queryItem1=1&queryItem2=2"
 
 // xcrun simctl openurl booted "gtgdeeplink://goToScreen?name=list"
 // xcrun simctl openurl booted "gtgdeeplink://goToScreen?name=details&id=1"
 
-let routeToSomeViewControllerD = DeepLinks.RoutingPath.path(vcType: Tests.SomeViewControllerC.self, objectIdentifier: "", style: .regularVC)
-let routeToSomeViewControllerC = DeepLinks.RoutingPath.path(vcType: Tests.SomeViewControllerC.self, objectIdentifier: "", style: .regularVC)
-let routeToSomeViewControllerB = DeepLinks.RoutingPath.path(vcType: Tests.SomeViewControllerB.self, objectIdentifier: "", style: .regularVC)
-let routeToSomeViewControllerA = DeepLinks.RoutingPath.recursivePath(vcType: Tests.SomeViewControllerA.self, objectIdentifier: "", style: .regularVC, next: [routeToSomeViewControllerB, routeToSomeViewControllerC, routeToSomeViewControllerD])
+let pushViewControllerA = DeepLinks.RoutingPath.path(vcType: Tests.SomeViewControllerA.self, object: nil, style: .regularVC)
+let pushViewControllerB = DeepLinks.RoutingPath.path(vcType: Tests.SomeViewControllerB.self, object: nil, style: .regularVC)
+let pushViewControllerC = DeepLinks.RoutingPath.path(vcType: Tests.SomeViewControllerC.self, object: nil, style: .regularVC)
+let pushViewControllerD = DeepLinks.RoutingPath.path(vcType: Tests.SomeViewControllerD.self, object: nil, style: .regularVC)
+
+var testRoute: DeepLinks.RoutingPath {
+    var step1 = pushViewControllerA
+    step1 = step1.add(step: pushViewControllerB)
+    step1 = step1.add(step: pushViewControllerC)
+    step1 = step1.add(step: pushViewControllerD)
+    return step1
+}
 
 struct DeepLinks {
     indirect enum RoutingPath {
-        case recursivePath(vcType: DeepLinkableViewControllerProtocol.Type, objectIdentifier: String, style: VCPresentationStyle, next: [RoutingPath])
-        case path(vcType: DeepLinkableViewControllerProtocol.Type, objectIdentifier: String, style: VCPresentationStyle)
-        //case recursivePath(path: RoutingPath, next: [RoutingPath])
+        case recursivePath(vcType: DeepLinkableViewControllerProtocol.Type, object: Codable?, style: VCPresentationStyle, next: [RoutingPath])
+        case path(vcType: DeepLinkableViewControllerProtocol.Type, object: Codable?, style: VCPresentationStyle)
+
+        func add(step: RoutingPath) -> RoutingPath {
+            return .recursivePath(vcType: self.vcType, object: self.object, style: self.style, next: self.childs + [step])
+        }
 
         var childs: [RoutingPath] {
             switch self {
-            case .recursivePath(vcType: _, objectIdentifier: _, style: _, next: let next): return next
-            case .path(vcType: _, objectIdentifier: _, style: _):  return []
+            case .recursivePath(vcType: _, object: _, style: _, next: let next): return next
+            case .path(vcType: _, object: _, style: _):  return []
             }
         }
 
         var vcType: DeepLinkableViewControllerProtocol.Type {
             switch self {
-            case .recursivePath(vcType: let vcType, objectIdentifier: _, style: _, next: _): return vcType
-            case .path(vcType: let vcType, objectIdentifier: _, style: _): return vcType
+            case .recursivePath(vcType: let vcType, object: _, style: _, next: _): return vcType
+            case .path(vcType: let vcType, object: _, style: _): return vcType
             }
         }
 
-        var objectIdentifier: String {
+        var object: Codable? {
             switch self {
-            case .recursivePath(vcType: _, objectIdentifier: let objectIdentifier, style: _, next: _): return objectIdentifier
-            case .path(vcType: _, objectIdentifier: let objectIdentifier, style: _): return objectIdentifier
+            case .recursivePath(vcType: _, object: let object, style: _, next: _): return object
+            case .path(vcType: _, object: let object, style: _): return object
             }
         }
 
         var style: VCPresentationStyle {
             switch self {
-            case .recursivePath(vcType: _, objectIdentifier: _, style: let style, next: _): return style
-            case .path(vcType: _, objectIdentifier: _, style: let style): return style
+            case .recursivePath(vcType: _, object: _, style: let style, next: _): return style
+            case .path(vcType: _, object: _, style: let style): return style
             }
         }
 
-        var next: RoutingPath? {
+        var calculateNext: RoutingPath? {
             switch self {
-            case .recursivePath(vcType: _, objectIdentifier: _, style: _, next: let next1):
+            case .recursivePath(vcType: _, object: _, style: _, next: let next1):
                 if let first = next1.first {
                     // Use the child's from the beginning of the flow
-                    print(self.childs.count)
                     let nextChilds = [] + self.childs.dropFirst()
-                    print(nextChilds.count)
-                    return RoutingPath.recursivePath(vcType: first.vcType, objectIdentifier: first.objectIdentifier, style: first.style, next: nextChilds)
+                   // devia ser os filhos do pais e os actuais
+                    return RoutingPath.recursivePath(vcType: first.vcType, object: first.object, style: first.style, next: nextChilds)
                 }
             default: ()
             }
@@ -76,7 +88,7 @@ struct DeepLinks {
         static func withNotification(_ userInfo: [AnyHashable: Any]) -> RoutingPath? {
             if let data = userInfo["data"] as? [String: Any] {
                 if let messageId = data["messageId"] as? String {
-                    return routeToSomeViewControllerA
+                    return testRoute
                 }
             }
             DevTools.Log.error("Couldn't found a route for [\(userInfo)] ")
@@ -104,7 +116,7 @@ struct DeepLinks {
             switch host {
             case "goToScreen":
                 if let theId = queryItems["id"] {
-                    return routeToSomeViewControllerA
+                    return testRoute
                 }
             default:
                 DevTools.Log.error("Couldn't found a route for [\(url)] ")
@@ -114,9 +126,9 @@ struct DeepLinks {
 
         static func withShortcut(_ shortcut: UIApplicationShortcutItem) -> RoutingPath? {
             switch shortcut.type {
-            case ShortcutKey.shortCut1.rawValue: return routeToSomeViewControllerA
-            case ShortcutKey.shortCut2.rawValue: return routeToSomeViewControllerB
-            case ShortcutKey.shortCut3.rawValue: return routeToSomeViewControllerB
+            case ShortcutKey.shortCut1.rawValue: return testRoute
+            case ShortcutKey.shortCut2.rawValue: return testRoute
+            case ShortcutKey.shortCut3.rawValue: return testRoute
             default: break
             }
             DevTools.Log.error("Couldn't found a route for [\(shortcut)] ")
@@ -248,41 +260,37 @@ private class DeeplinkRouter {
 
     private func displayVC(path: DeepLinks.RoutingPath?) {
         guard let path = path else {
-            print("flow ended!")
             return
         }
-        func doReport(_ somePath: DeepLinks.RoutingPath) {
-            print("Path: \(somePath.vcType)")
-            print("Remaing: \(somePath.childs.count)")
-        }
-        doReport(path)
-        func present(instance: UIViewController) {
-            DevTools.topViewController()?.present(instance, animated: true, completion: {
-                let next = path.next
-                if let some = next {
-                    doReport(some)
-                }
-                self.displayVC(path: next)
-            })
-        }
 
+        var instance: UIViewController?
         switch path {
-        case .recursivePath(vcType: let vcType, objectIdentifier: let objectIdentifier, style: let style, next: let next):
-            let instance = vcType.makeInstance(id: objectIdentifier, style: style)
-            present(instance: instance as! UIViewController)
-        case .path(vcType: let vcType, objectIdentifier: let objectIdentifier, style: let style):
-            let instance = vcType.makeInstance(id: objectIdentifier, style: style)
-            present(instance: instance as! UIViewController)
+        case .recursivePath(vcType: let vcType, object: let object, style: let style, next: _):
+            instance = vcType.makeInstance(object: object, style: style) as! UIViewController
+        case .path(vcType: let vcType, object: let object, style: let style):
+            instance = vcType.makeInstance(object: object, style: style) as! UIViewController
         }
+        guard instance != nil else { return }
+        DevTools.topViewController()?.present(instance!, animated: true, completion: {
+            DispatchQueue.executeWithDelay(delay: 1) { [weak self] in
+                self?.displayVC(path: path.calculateNext)
+            }
+        })
+
     }
 }
 
-protocol DeepLinkableViewControllerProtocol {
+protocol DeepLinkableViewControllerProtocol: class {
     static var deepLinkableIdentifier: String { get }
-    var objectId: String? { get set }
+    var object: Codable? { get set }
     func isReadyToRouteNext() -> Bool // When is fully loaded
-    static func makeInstance(id: String, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol
-    func makeInstance(id: String, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol
+    static func makeInstance(object: Codable?, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol
+    func makeInstance(object: Codable?, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol
+}
+
+extension DeepLinkableViewControllerProtocol {
+    func isReadyToRouteNext() -> Bool { return true }
+    static var deepLinkableIdentifier: String { return "\(String(describing: self))" }
 }
 
 class DeepLinkableViewController: BaseViewControllerVIP {
@@ -305,52 +313,60 @@ class DeepLinkableViewController: BaseViewControllerVIP {
 }
 
 struct Tests {
+
     class SomeViewControllerA: DeepLinkableViewController, DeepLinkableViewControllerProtocol {
-        static var deepLinkableIdentifier: String { return "\(self.className)" }
-        func isReadyToRouteNext() -> Bool { return true }
-         #warning("to codable")
-        var objectId: String?
-        func makeInstance(id: String, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol { SomeViewControllerA.makeInstance(id: id, style: style) }
-        static func makeInstance(id: String, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol {
+        var object: Codable?
+        func makeInstance(object: Codable?, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol { SomeViewControllerA.makeInstance(object: object, style: style) }
+        static func makeInstance(object: Codable?, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol {
             let some = SomeViewControllerA(presentationStyle: style)
-            some.objectId = id
+            some.object = object
             return some
         }
         override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-            setLabel(text: "\(Self.self)")
-        }
+             super.viewWillAppear(animated)
+             setLabel(text: "\(Self.deepLinkableIdentifier)")
+         }
     }
 
     class SomeViewControllerB: DeepLinkableViewController, DeepLinkableViewControllerProtocol {
-        func isReadyToRouteNext() -> Bool { return true }
-        static var deepLinkableIdentifier: String { return "\(self.className)" }
-        var objectId: String?
-        func makeInstance(id: String, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol { SomeViewControllerB.makeInstance(id: id, style: style) }
-        static func makeInstance(id: String, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol {
+        var object: Codable?
+        func makeInstance(object: Codable?, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol { SomeViewControllerB.makeInstance(object: object, style: style) }
+        static func makeInstance(object: Codable?, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol {
             let some = SomeViewControllerB(presentationStyle: style)
-            some.objectId = id
+            some.object = object
             return some
         }
         override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-            setLabel(text: "\(Self.self)")
-        }
+             super.viewWillAppear(animated)
+             setLabel(text: "\(Self.deepLinkableIdentifier)")
+         }
     }
 
     class SomeViewControllerC: DeepLinkableViewController, DeepLinkableViewControllerProtocol {
-        static var deepLinkableIdentifier: String { return "\(self.className)" }
-        func isReadyToRouteNext() -> Bool { return true }
-        var objectId: String?
-        func makeInstance(id: String, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol { SomeViewControllerC.makeInstance(id: id, style: style) }
-        static func makeInstance(id: String, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol {
+        var object: Codable?
+        func makeInstance(object: Codable?, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol { SomeViewControllerC.makeInstance(object: object, style: style) }
+        static func makeInstance(object: Codable?, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol {
             let some = SomeViewControllerC(presentationStyle: style)
-            some.objectId = id
+            some.object = object
             return some
         }
         override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-            setLabel(text: "\(Self.self)")
+             super.viewWillAppear(animated)
+             setLabel(text: "\(Self.deepLinkableIdentifier)")
+         }
+    }
+
+    class SomeViewControllerD: DeepLinkableViewController, DeepLinkableViewControllerProtocol {
+        var object: Codable?
+        func makeInstance(object: Codable?, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol { SomeViewControllerC.makeInstance(object: object, style: style) }
+        static func makeInstance(object: Codable?, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol {
+            let some = SomeViewControllerD(presentationStyle: style)
+            some.object = object
+            return some
         }
+        override func viewWillAppear(_ animated: Bool) {
+             super.viewWillAppear(animated)
+             setLabel(text: "\(Self.deepLinkableIdentifier)")
+         }
     }
 }
