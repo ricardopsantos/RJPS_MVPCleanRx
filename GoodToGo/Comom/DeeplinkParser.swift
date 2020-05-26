@@ -270,9 +270,7 @@ private class DeeplinkRouter {
         guard instance != nil else { return }
 
         func goToNext() {
-            DispatchQueue.executeWithDelay(delay: 0.5) { [weak self] in
-                self?.proceedToDeeplink(path.calculateNext)
-            }
+            DispatchQueue.executeWithDelay(delay: 0.5) { [weak self] in self?.proceedToDeeplink(path.calculateNext) }
         }
         if path.style == .navigationController {
             DevTools.topViewController()?.present(instance!, animated: true, completion: {
