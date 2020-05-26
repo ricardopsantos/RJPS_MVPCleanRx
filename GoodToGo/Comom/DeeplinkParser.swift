@@ -25,7 +25,7 @@ import UIBase
 let pushViewControllerA = DeepLinks.RoutingPath.path(vcType: Tests.SomeViewControllerA.self, object: nil, style: .regularVC)
 let pushViewControllerB = DeepLinks.RoutingPath.path(vcType: Tests.SomeViewControllerB.self, object: nil, style: .regularVC)
 let pushViewControllerC = DeepLinks.RoutingPath.path(vcType: Tests.SomeViewControllerC.self, object: nil, style: .regularVC)
-let pushViewControllerD = DeepLinks.RoutingPath.path(vcType: Tests.SomeViewControllerD.self, object: nil, style: .regularVC)
+let pushViewControllerD = DeepLinks.RoutingPath.path(vcType: Tests.SomeViewControllerD.self, object: nil, style: .navigationController)
 
 var testRoute: DeepLinks.RoutingPath {
     var step1 = pushViewControllerA
@@ -268,11 +268,21 @@ private class DeeplinkRouter {
             instance = vcType.makeInstance(object: object, style: style) as! UIViewController
         }
         guard instance != nil else { return }
-        DevTools.topViewController()?.present(instance!, animated: true, completion: {
+
+        func goToNext() {
             DispatchQueue.executeWithDelay(delay: 0.5) { [weak self] in
                 self?.proceedToDeeplink(path.calculateNext)
             }
-        })
+        }
+        if path.style == .navigationController {
+            DevTools.topViewController()?.present(instance!, animated: true, completion: {
+                goToNext()
+            })
+        } else {
+            DevTools.topViewController()?.present(instance!, animated: true, completion: {
+                goToNext()
+            })
+        }
     }
 
 }
