@@ -68,29 +68,3 @@ public extension Bliss.QuestionElementResponseDto {
         return questionElement
     }
 }
-
-public extension Bliss {
-
-    struct NewQuestionResponse: ModelEntityProtocol {
-        public let id: Int
-        public let imageURL: String
-        public let thumbURL: String
-        public let question, publishedAt: String
-        public let choices: [Choice]
-        
-        enum CodingKeys: String, CodingKey {
-            case id
-            case imageURL = "image_url"
-            case thumbURL = "thumb_url"
-            case question
-            case publishedAt = "published_at"
-            case choices
-        }
-    }
-    
-    // MARK: - Choice
-    struct Choice: ModelEntityProtocol {
-        public let choice: String
-        public let votes: Int
-    }
-}

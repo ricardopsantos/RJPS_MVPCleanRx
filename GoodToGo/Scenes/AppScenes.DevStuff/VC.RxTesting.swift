@@ -124,13 +124,12 @@ extension VC {
          
          [PublishSubject] can have parameters, but does not need to have one on start with
          [PublishSubject] fire with [onNext(someValue)]
-         [PublishSubject] Good to bing with sutff (amimations?)
+         [PublishSubject] Good to bing with stuff (animations?)
          [PublishSubject] A Subject is a reactive type that is both an Observable Sequence and an Observer
          [PublishSubject] Is concerned only with emitting new events to its subscribers.
          
         */
-        var rxPublishSubject_a: PublishSubject  = PublishSubject<Void>()
-        
+
         var rxPublishRelay_a: PublishRelay  = PublishRelay<Void>()
         var rxPublishRelay_b: PublishRelay  = PublishRelay<String>()
         

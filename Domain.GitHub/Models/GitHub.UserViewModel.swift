@@ -15,7 +15,7 @@ public extension GitHub {
         public init(some: UserResponseDto) {
             name = some.name ?? ""
         }
-        public func pretyDescription() -> String {
+        public func prettyDescription() -> String {
             if let name = name {
                 return "\(name)"
             }

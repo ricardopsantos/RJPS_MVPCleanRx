@@ -61,9 +61,6 @@ extension Presenter {
         var sample_UseCase: Sample_UseCaseProtocol!
         var sampleB_UseCase: SampleB_UseCaseProtocol!
         
-        // BehaviorRelay model a State
-        private var rxBehaviorRelay_tableDataSource = BehaviorRelay<[Employee.ResponseDto]>(value: [])
-
         var disposeBag = DisposeBag()
         public var reachabilityService: ReachabilityService! = DevTools.reachabilityService
 

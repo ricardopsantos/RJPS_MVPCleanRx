@@ -31,14 +31,11 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
     public static var shared = BaseViewControllerMVP()
 
     public var firstAppearance = true
-    //var keyboardHeigthAux: CGFloat = 0
     var keyboardIsVisible = false
 
     public var reachabilityService: ReachabilityService! = DevTools.reachabilityService
     public var disposeBag: DisposeBag = DisposeBag()
 
-    private var lblReachabilityHeight: CGFloat = 25
-    private var margin: CGFloat = 20
     private var stats: Stats?
 
     open override func loadView() {

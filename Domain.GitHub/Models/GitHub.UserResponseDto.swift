@@ -42,16 +42,12 @@ public extension GitHub {
             self = object
         }
 
-        func isValid() -> Bool {
+        var isValid: Bool {
             if let name = self.name {
                 return name.count > 0
             }
             return false
         }
 
-        static func listFrom(jsonList: [[String: Any]]) -> [UserResponseDto] {
-            let result: [UserResponseDto] = jsonList.compactMap { (some) -> UserResponseDto? in return UserResponseDto(json: some) }
-            return result
-        }
     }
 }

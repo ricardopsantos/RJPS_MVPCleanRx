@@ -111,14 +111,14 @@ protocol CarTrackLoginDataStoreProtocol {
 //
 
 // DataStore
-
+/*
 struct CarTrackLoginDataStoreModelA {
     let aString: String
 }
 
 struct CarTrackLoginDataStoreModelB {
     let aString: String
-}
+}*/
 
 // Other Models
 

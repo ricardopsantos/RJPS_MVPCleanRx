@@ -26,14 +26,6 @@ public struct DevTools {
     public static var isQualityApp    = appMode == "Debug.QA"
     public static var isStagingApp    = appMode == "Debug.Dev"
 
-    public static var environmentsDescription: String {
-        let target: String = DevTools.onDebug ? "debug" : "release"
-        if DevTools.isProductionApp { return "Prod \(target)" }
-        if DevTools.isQualityApp { return "QA \(target)" }
-        if DevTools.isStagingApp { return "Dev \(target)" }
-        return ""
-    }
-
     public static var onRealDevice: Bool {
         return !onSimulator
     }
