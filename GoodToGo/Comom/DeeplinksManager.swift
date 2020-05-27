@@ -274,32 +274,6 @@ class DeepLinkManager {
     }
 }
 
-extension UIViewController {
-    func pushGeneric(_ instance: BaseViewControllerVIP, animated: Bool, completion: @escaping (() -> Void)) {
-
-        if instance.presentationStyle == .modal {
-            instance.modalPresentationStyle = .overFullScreen
-            self.present(instance, animated: true, completion: {
-                completion()
-            })
-        } else {
-            if let navigationController = self.navigationController {
-                navigationController.pushViewController(instance, animated: animated)
-                DispatchQueue.executeWithDelay(delay: animated ? 0.3 : 0) {
-                    completion()
-                }
-            } else {
-                // We want to present a navigation controller, but the root is not not one!
-                DevTools.assert(false)
-/*                self.embeddedInNavigationController().pushViewController(instance, animated: animated)
-                DispatchQueue.executeWithDelay(delay: animated ? 0.3 : 0) {
-                    completion()
-                }*/
-            }
-        }
-    }
-}
-
 private class DeeplinkRouter {
 
     static let shared = DeeplinkRouter()
@@ -343,18 +317,6 @@ private class DeeplinkRouter {
             }
         }
 
-        //DevTools.topViewController()?.pushGeneric(instance as! BaseViewControllerVIP, animated: path.animated, completion: {
-        //    goToNext()
-        //})
-/*        if path.style == .navigation {
-            DevTools.topViewController()?.pushViewController(instance!, animated: path.animated, completion: {
-                goToNext()
-            })
-        } else {
-            DevTools.topViewController()?.present(instance!, animated: path.animated, completion: {
-                goToNext()
-            })
-        }*/
     }
 
 }
