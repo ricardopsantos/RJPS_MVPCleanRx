@@ -295,9 +295,12 @@ private class DeeplinkRouter {
             DispatchQueue.executeWithDelay(delay: 0.1) { [weak self] in self?.proceedToDeeplink(path.calculateNext) }
         }
 
-        if path.calculateNext?.style == .navigation && DevTools.topViewController()?.navigationController == nil {
-            // The next element will be presented as a navigation controller, and current one
-            // is not! We need to transform it on navigation controller
+        let nextInstanceIsNavController = path.calculateNext?.style == .navigation
+        let currentTopInstanceIsNavController = DevTools.topViewController()?.navigationController != nil
+        let nextVCIsNavControllerAndTopCurrentOneIsNot = nextInstanceIsNavController && !currentTopInstanceIsNavController
+        if nextVCIsNavControllerAndTopCurrentOneIsNot {
+            // The next element will be presented as a navigation controller, and current one is not!
+            // We need to transform it on navigation controller else will fail on [pushViewController]
             instance = instance?.embeddedInNavigationController()
         }
 
