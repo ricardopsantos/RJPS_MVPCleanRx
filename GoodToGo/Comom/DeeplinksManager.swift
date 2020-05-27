@@ -22,24 +22,24 @@ import UIBase
 // xcrun simctl openurl booted "gtgdeeplink://goToScreen?name=list"
 // xcrun simctl openurl booted "gtgdeeplink://goToScreen?name=details&id=1"
 
-let pushViewControllerA = DeepLinks.RoutingPath.path(vcType: Tests.SomeViewControllerA.self, object: nil, style: .regularVC, animated: true)
-let pushViewControllerB = DeepLinks.RoutingPath.path(vcType: Tests.SomeViewControllerB.self, object: nil, style: .regularVC, animated: true)
-let pushViewControllerC = DeepLinks.RoutingPath.path(vcType: Tests.SomeViewControllerC.self, object: nil, style: .regularVC, animated: true)
-let pushViewControllerD = DeepLinks.RoutingPath.path(vcType: Tests.SomeViewControllerD.self, object: nil, style: .navigationController, animated: true)
-let pushViewControllerE = DeepLinks.RoutingPath.path(vcType: Tests.SomeViewControllerE.self, object: nil, style: .navigationController, animated: true)
+let pushViewControllerA = DeeplinksManager.RoutingPath.path(vcType: Tests.SomeViewControllerA.self, object: nil, style: .regularVC, animated: true)
+let pushViewControllerB = DeeplinksManager.RoutingPath.path(vcType: Tests.SomeViewControllerB.self, object: nil, style: .regularVC, animated: true)
+let pushViewControllerC = DeeplinksManager.RoutingPath.path(vcType: Tests.SomeViewControllerC.self, object: nil, style: .regularVC, animated: true)
+let pushViewControllerD = DeeplinksManager.RoutingPath.path(vcType: Tests.SomeViewControllerD.self, object: nil, style: .navigationController, animated: true)
+let pushViewControllerE = DeeplinksManager.RoutingPath.path(vcType: Tests.SomeViewControllerE.self, object: nil, style: .navigationController, animated: true)
 
-var routeToE: DeepLinks.RoutingPath {
+var routeToE: DeeplinksManager.RoutingPath {
     var step = pushViewControllerE
     return step
 }
 
-var routeFromB2D: DeepLinks.RoutingPath {
+var routeFromB2D: DeeplinksManager.RoutingPath {
     var step = pushViewControllerC
     step = step.add(step: pushViewControllerD)
     return step
 }
 
-var routeFromA2D: DeepLinks.RoutingPath {
+var routeFromA2D: DeeplinksManager.RoutingPath {
     var step = pushViewControllerA
     step = step.add(step: pushViewControllerB)
     step = step.add(step: routeFromB2D)
@@ -47,7 +47,7 @@ var routeFromA2D: DeepLinks.RoutingPath {
     return step
 }
 
-struct DeepLinks {
+struct DeeplinksManager {
     indirect enum RoutingPath {
         case path(vcType: DeepLinkableViewControllerProtocol.Type, object: Codable?, style: VCPresentationStyle, animated: Bool)
         case recursivePath(path: RoutingPath, next: [RoutingPath])
@@ -169,7 +169,9 @@ struct DeepLinks {
     }
 }
 
-extension DeepLinks {
+// MARK: - Parsers
+
+extension DeeplinksManager {
     struct Parsers {
 
         class NotificationParser {
@@ -184,7 +186,7 @@ extension DeepLinks {
             }
 
             func handleNotification(_ userInfo: [AnyHashable: Any]) -> RoutingPath? {
-                return DeepLinks.RoutingPath.withNotification(userInfo)
+                return DeeplinksManager.RoutingPath.withNotification(userInfo)
             }
         }
 
@@ -193,7 +195,7 @@ extension DeepLinks {
             static let shared = DeeplinkParser()
             func setup() { }
             func parseDeepLink(_ url: URL) -> RoutingPath? {
-                return DeepLinks.RoutingPath.withDeepLink(url)
+                return DeeplinksManager.RoutingPath.withDeepLink(url)
             }
         }
 
@@ -224,7 +226,7 @@ extension DeepLinks {
             }
 
             func handleShortcut(_ shortcut: UIApplicationShortcutItem) -> RoutingPath? {
-                DeepLinks.RoutingPath.withShortcut(shortcut)
+                DeeplinksManager.RoutingPath.withShortcut(shortcut)
             }
         }
     }
@@ -234,7 +236,7 @@ extension DeepLinks {
 class DeepLinkManager {
     fileprivate init() {}
     static var shared = DeepLinkManager()
-    private var deeplinkType: DeepLinks.RoutingPath? {
+    private var deeplinkType: DeeplinksManager.RoutingPath? {
         didSet {
             if let deeplinkType = deeplinkType {
                 DevTools.Log.message("[deeplinkType] set to [\(deeplinkType)]")
@@ -245,18 +247,18 @@ class DeepLinkManager {
     }
 
     func handleRemoteNotification(_ notification: [AnyHashable: Any]) {
-        deeplinkType = DeepLinks.Parsers.NotificationParser.shared.handleNotification(notification)
+        deeplinkType = DeeplinksManager.Parsers.NotificationParser.shared.handleNotification(notification)
     }
 
     @discardableResult
     func handleShortcut(item: UIApplicationShortcutItem) -> Bool {
-        deeplinkType = DeepLinks.Parsers.ShortcutParser.shared.handleShortcut(item)
+        deeplinkType = DeeplinksManager.Parsers.ShortcutParser.shared.handleShortcut(item)
         return deeplinkType != nil
     }
 
     @discardableResult
     func handleDeeplink(url: URL) -> Bool {
-        deeplinkType = DeepLinks.Parsers.DeeplinkParser.shared.parseDeepLink(url)
+        deeplinkType = DeeplinksManager.Parsers.DeeplinkParser.shared.parseDeepLink(url)
         if deeplinkType == nil {
             DevTools.Log.warning("Fail to handle [\(url)]")
         }
@@ -277,7 +279,7 @@ private class DeeplinkRouter {
     static let shared = DeeplinkRouter()
     private init() { }
 
-    func proceedToDeeplink(_ path: DeepLinks.RoutingPath?) {
+    func proceedToDeeplink(_ path: DeeplinksManager.RoutingPath?) {
         guard let path = path else { return }
 
         var instance: UIViewController?
@@ -341,7 +343,9 @@ struct Tests {
 
     class SomeViewControllerA: DeepLinkableViewController, DeepLinkableViewControllerProtocol {
         var object: Codable?
-        func makeInstance(object: Codable?, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol { SomeViewControllerA.makeInstance(object: object, style: style) }
+        func makeInstance(object: Codable?, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol {
+            SomeViewControllerA.makeInstance(object: object, style: style)
+        }
         static func makeInstance(object: Codable?, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol {
             let some = SomeViewControllerA(presentationStyle: style)
             some.object = object
@@ -355,7 +359,9 @@ struct Tests {
 
     class SomeViewControllerB: DeepLinkableViewController, DeepLinkableViewControllerProtocol {
         var object: Codable?
-        func makeInstance(object: Codable?, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol { SomeViewControllerB.makeInstance(object: object, style: style) }
+        func makeInstance(object: Codable?, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol {
+            SomeViewControllerB.makeInstance(object: object, style: style)
+        }
         static func makeInstance(object: Codable?, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol {
             let some = SomeViewControllerB(presentationStyle: style)
             some.object = object
@@ -369,7 +375,9 @@ struct Tests {
 
     class SomeViewControllerC: DeepLinkableViewController, DeepLinkableViewControllerProtocol {
         var object: Codable?
-        func makeInstance(object: Codable?, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol { SomeViewControllerC.makeInstance(object: object, style: style) }
+        func makeInstance(object: Codable?, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol {
+            SomeViewControllerC.makeInstance(object: object, style: style)
+        }
         static func makeInstance(object: Codable?, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol {
             let some = SomeViewControllerC(presentationStyle: style)
             some.object = object
@@ -383,7 +391,9 @@ struct Tests {
 
     class SomeViewControllerD: DeepLinkableViewController, DeepLinkableViewControllerProtocol {
         var object: Codable?
-        func makeInstance(object: Codable?, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol { SomeViewControllerC.makeInstance(object: object, style: style) }
+        func makeInstance(object: Codable?, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol {
+            SomeViewControllerC.makeInstance(object: object, style: style)
+        }
         static func makeInstance(object: Codable?, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol {
             let some = SomeViewControllerD(presentationStyle: style)
             some.object = object
@@ -397,7 +407,9 @@ struct Tests {
 
     class SomeViewControllerE: DeepLinkableViewController, DeepLinkableViewControllerProtocol {
         var object: Codable?
-        func makeInstance(object: Codable?, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol { SomeViewControllerC.makeInstance(object: object, style: style) }
+        func makeInstance(object: Codable?, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol {
+            SomeViewControllerC.makeInstance(object: object, style: style)
+        }
         static func makeInstance(object: Codable?, style: VCPresentationStyle) -> DeepLinkableViewControllerProtocol {
             let some = SomeViewControllerE(presentationStyle: style)
             some.object = object

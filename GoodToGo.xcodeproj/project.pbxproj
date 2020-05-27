@@ -64,7 +64,7 @@
 		9FE0572C22E8D8F000802747 /* D.MVPSampleView_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF809522BFB5CF003C4562 /* D.MVPSampleView_ViewModel.swift */; };
 		9FE0572D22E8D8F000802747 /* V.MVPSampleView_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF809622BFB5CF003C4562 /* V.MVPSampleView_View.swift */; };
 		9FE1439721AF2F520026BDFC /* typealias.Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE1438821AF2D8B0026BDFC /* typealias.Application.swift */; };
-		9FE143B821AF2F520026BDFC /* Environments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE1437021AF1ADC0026BDFC /* Environments.swift */; };
+		9FE143B821AF2F520026BDFC /* AppEnvironments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE1437021AF1ADC0026BDFC /* AppEnvironments.swift */; };
 		9FE143C021AF2F520026BDFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F288F2720F8089F008A9539 /* AppDelegate.swift */; };
 		9FE143F021AF2F520026BDFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F288F3120F808A2008A9539 /* Assets.xcassets */; };
 		D725A69F246C6302005664CB /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
@@ -188,7 +188,7 @@
 		D778258E247A79D40071776F /* TestsShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = D778258D247A79D40071776F /* TestsShared.swift */; };
 		D778258F247A85DA0071776F /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC172223BBD8600576498 /* RxCocoa.framework */; };
 		D7782590247A86460071776F /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC176223BBFC600576498 /* RxSwift.framework */; };
-		D7782592247ADA490071776F /* DeeplinkParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7782591247ADA490071776F /* DeeplinkParser.swift */; };
+		D7782592247ADA490071776F /* DeeplinksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7782591247ADA490071776F /* DeeplinksManager.swift */; };
 		D786AE492473CC0400636935 /* UIViewContoller+ExtensionsAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786AE482473CC0400636935 /* UIViewContoller+ExtensionsAlerts.swift */; };
 		D788BD76246892B3007C59D0 /* P.BasePresenterVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788BD75246892B3007C59D0 /* P.BasePresenterVIP.swift */; };
 		D788BD7C246943AB007C59D0 /* I.BaseInteractorVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788BD7B246943AB007C59D0 /* I.BaseInteractorVIP.swift */; };
@@ -1109,7 +1109,7 @@
 		9FE0572122E8D75400802747 /* P.MVPSampleRxView_Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = P.MVPSampleRxView_Presenter.swift; sourceTree = "<group>"; };
 		9FE0572222E8D75400802747 /* D.MVPSampleRxView_ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = D.MVPSampleRxView_ViewModel.swift; sourceTree = "<group>"; };
 		9FE0572322E8D75400802747 /* MVPSampleRxView_View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSampleRxView_View.swift; sourceTree = "<group>"; };
-		9FE1437021AF1ADC0026BDFC /* Environments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environments.swift; sourceTree = "<group>"; };
+		9FE1437021AF1ADC0026BDFC /* AppEnvironments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEnvironments.swift; sourceTree = "<group>"; };
 		9FE1437721AF1ADC0026BDFC /* BaseViewControllerMVP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewControllerMVP.swift; sourceTree = "<group>"; };
 		9FE1438821AF2D8B0026BDFC /* typealias.Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = typealias.Application.swift; sourceTree = "<group>"; };
 		9FE1438A21AF2EBD0026BDFC /* UITextField+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
@@ -1201,7 +1201,7 @@
 		D7782525247A59D40071776F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D778258A247A6FC90071776F /* Test_Bliss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test_Bliss.swift; sourceTree = "<group>"; };
 		D778258D247A79D40071776F /* TestsShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsShared.swift; sourceTree = "<group>"; };
-		D7782591247ADA490071776F /* DeeplinkParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkParser.swift; sourceTree = "<group>"; };
+		D7782591247ADA490071776F /* DeeplinksManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinksManager.swift; sourceTree = "<group>"; };
 		D786AE482473CC0400636935 /* UIViewContoller+ExtensionsAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewContoller+ExtensionsAlerts.swift"; sourceTree = "<group>"; };
 		D788BD75246892B3007C59D0 /* P.BasePresenterVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.BasePresenterVIP.swift; sourceTree = "<group>"; };
 		D788BD7B246943AB007C59D0 /* I.BaseInteractorVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.BaseInteractorVIP.swift; sourceTree = "<group>"; };
@@ -1634,7 +1634,10 @@
 			isa = PBXGroup;
 			children = (
 				9FE1438821AF2D8B0026BDFC /* typealias.Application.swift */,
-				9FFF99A42247B1FA00783EE2 /* Application */,
+				9F288F2720F8089F008A9539 /* AppDelegate.swift */,
+				9FACC18A223BFB0F00576498 /* AppDelegate+Setup.swift */,
+				9F6BB2D822E3673200829A6F /* AppDelegate+URL.swift */,
+				9F58FB1622BE5DE700042A8C /* VC.TabBarController.swift */,
 				9F58FB0F22BE5DE700042A8C /* Scenes */,
 				9F103A2D2236C08900C57BC0 /* DependencyInjection */,
 				D7AB24BC24674323000142C4 /* Comom */,
@@ -1851,17 +1854,6 @@
 				9FFF809C22BFB5CF003C4562 /* R.MVPSampleTableView_Router.swift */,
 			);
 			path = MVPSampleTableView;
-			sourceTree = "<group>";
-		};
-		9FFF99A42247B1FA00783EE2 /* Application */ = {
-			isa = PBXGroup;
-			children = (
-				9F288F2720F8089F008A9539 /* AppDelegate.swift */,
-				9FACC18A223BFB0F00576498 /* AppDelegate+Setup.swift */,
-				9F6BB2D822E3673200829A6F /* AppDelegate+URL.swift */,
-				9F58FB1622BE5DE700042A8C /* VC.TabBarController.swift */,
-			);
-			path = Application;
 			sourceTree = "<group>";
 		};
 		9FFF99D12247D15700783EE2 /* Protocol.Misc */ = {
@@ -2240,8 +2232,8 @@
 			children = (
 				D7AB2444246716DE000142C4 /* Components */,
 				D761FEB42468330600BD41A5 /* ProgramaticUIUtils.swift */,
-				9FE1437021AF1ADC0026BDFC /* Environments.swift */,
-				D7782591247ADA490071776F /* DeeplinkParser.swift */,
+				9FE1437021AF1ADC0026BDFC /* AppEnvironments.swift */,
+				D7782591247ADA490071776F /* DeeplinksManager.swift */,
 			);
 			path = Comom;
 			sourceTree = "<group>";
@@ -3697,7 +3689,7 @@
 				9F58FB4B22BE5DE700042A8C /* P.SearchUser_Presenter.swift in Sources */,
 				9F103A302236C08900C57BC0 /* DependencyInjectionManager.swift in Sources */,
 				9F6BB2D022E3470200829A6F /* AS.MVPSampleTableView_AssemblyContainer.swift in Sources */,
-				9FE143B821AF2F520026BDFC /* Environments.swift in Sources */,
+				9FE143B821AF2F520026BDFC /* AppEnvironments.swift in Sources */,
 				9F58FB4C22BE5DE700042A8C /* V.SearchUser_View.swift in Sources */,
 				9F6BB2EE22E3A97F00829A6F /* AS.BlissQuestionsList_AssemblyContainer.swift in Sources */,
 				D7979DB2246D6B370039031C /* V.CartTrackMapView.swift in Sources */,
@@ -3719,7 +3711,7 @@
 				9F6BB2D922E3673200829A6F /* AppDelegate+URL.swift in Sources */,
 				9F6BB2F022E3A97F00829A6F /* P.BlissQuestionsList_Presenter.swift in Sources */,
 				9F58FB4922BE5DE700042A8C /* R.SearchUser_Router.swift in Sources */,
-				D7782592247ADA490071776F /* DeeplinkParser.swift in Sources */,
+				D7782592247ADA490071776F /* DeeplinksManager.swift in Sources */,
 				9F58FB4522BE5DE700042A8C /* UserDetais_Router.swift in Sources */,
 				D7711F63246B340C00B6963A /* R.___FILEBASENAME___Router.swift in Sources */,
 				D7979DBB246D6B370039031C /* R.CarTrackLoginRouter.swift in Sources */,
