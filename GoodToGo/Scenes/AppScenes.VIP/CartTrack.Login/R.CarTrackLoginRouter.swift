@@ -39,7 +39,7 @@ extension R.CarTrackLoginRouter: CarTrackLoginRoutingLogicProtocol {
     }
 
     func routeToNextScreen() {
-        let target = VC.CartTrackMapViewController(presentationStyle: .regularVC)
+        let target = VC.CartTrackMapViewController(presentationStyle: .modal)
         target.modalPresentationStyle = .fullScreen 
         viewController?.present(target, animated: true) { }
     }

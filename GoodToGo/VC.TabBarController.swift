@@ -29,13 +29,13 @@ extension VC {
 
             let mvpGitUser   = createControllers(tabName: "GitUser", vc: AppDelegate.shared.container.resolve(V.SearchUser_View.self)!)
             let mvpBliss     = createControllers(tabName: "Bliss", vc: AppDelegate.shared.container.resolve(V.BlissRoot_View.self)!)
-            let vipCarTrack1 = createControllers(tabName: "CarTrack", vc: VC.CarTrackLoginViewController(presentationStyle: .regularVC))
-            let vipCarTrack2 = createControllers(tabName: "CarTrack", vc: VC.CartTrackMapViewController(presentationStyle: .regularVC))
+            let vipCarTrack1 = createControllers(tabName: "CarTrack", vc: VC.CarTrackLoginViewController(presentationStyle: .modal))
+            let vipCarTrack2 = createControllers(tabName: "CarTrack", vc: VC.CartTrackMapViewController(presentationStyle: .modal))
 
             let vcRx = createControllers(tabName: "RxTesting", vc: RxTesting())
 
-            let vipTemplate = createControllers(tabName: "Template", vc: VC.___VARIABLE_sceneName___ViewController(presentationStyle: .regularVC))
-            let vipDebug    = createControllers(tabName: "DebugView", vc: VC.DebugViewController(presentationStyle: .regularVC))
+            let vipTemplate = createControllers(tabName: "Template", vc: VC.___VARIABLE_sceneName___ViewController(presentationStyle: .modal))
+            let vipDebug    = createControllers(tabName: "DebugView", vc: VC.DebugViewController(presentationStyle: .modal))
 
             var viewControllersList: [UIViewController] = []
             if DevTools.FeatureFlag.showScene_bliss.isTrue { viewControllersList.append(mvpBliss) }

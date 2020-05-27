@@ -11,7 +11,7 @@ import Foundation
 // When we show a ViewController, we pick the style.
 // Latter the Router knows how to dismiss it
 public enum VCPresentationStyle {
-    case regularVC
-    case navigationController
+    case modal
+    case navigation
     case unknown
 }

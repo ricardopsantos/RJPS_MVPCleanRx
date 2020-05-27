@@ -47,7 +47,7 @@ extension R.___VARIABLE_sceneName___Router: ___VARIABLE_sceneName___RoutingLogic
             destination.dsSomeKindOfModelAToBeSettedByOtherRouter = source.dsSomeKindOfModelAThatWillBePassedToOtherRouter
             //destination.dsSomeKindOfModelBToBeSettedByOtherRouter = source.dsSomeKindOfModelBThatWillBePassedToOtherRouter
         }
-        let destinationVC = VC.DataStoreReceiverViewController(presentationStyle: .regularVC)    // <<-- DS Sample : Take notice
+        let destinationVC = VC.DataStoreReceiverViewController(presentationStyle: .modal)    // <<-- DS Sample : Take notice
         if var destinationDS = destinationVC.router?.dsToBeSetted { // <<-- DS Sample : Take notice
             passDataToSomewhere(source: dsSource!, destination: &destinationDS)
         }

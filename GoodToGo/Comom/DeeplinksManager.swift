@@ -22,11 +22,11 @@ import UIBase
 // xcrun simctl openurl booted "gtgdeeplink://goToScreen?name=list"
 // xcrun simctl openurl booted "gtgdeeplink://goToScreen?name=details&id=1"
 
-let pushViewControllerA = DeeplinksManager.RoutingPath.path(vcType: Tests.SomeViewControllerA.self, object: nil, style: .regularVC, animated: true)
-let pushViewControllerB = DeeplinksManager.RoutingPath.path(vcType: Tests.SomeViewControllerB.self, object: nil, style: .regularVC, animated: true)
-let pushViewControllerC = DeeplinksManager.RoutingPath.path(vcType: Tests.SomeViewControllerC.self, object: nil, style: .regularVC, animated: true)
-let pushViewControllerD = DeeplinksManager.RoutingPath.path(vcType: Tests.SomeViewControllerD.self, object: nil, style: .navigationController, animated: true)
-let pushViewControllerE = DeeplinksManager.RoutingPath.path(vcType: Tests.SomeViewControllerE.self, object: nil, style: .navigationController, animated: true)
+let pushViewControllerA = DeeplinksManager.RoutingPath.path(vcType: Tests.SomeViewControllerA.self, object: nil, style: .modal, animated: true)
+let pushViewControllerB = DeeplinksManager.RoutingPath.path(vcType: Tests.SomeViewControllerB.self, object: nil, style: .modal, animated: true)
+let pushViewControllerC = DeeplinksManager.RoutingPath.path(vcType: Tests.SomeViewControllerC.self, object: nil, style: .modal, animated: true)
+let pushViewControllerD = DeeplinksManager.RoutingPath.path(vcType: Tests.SomeViewControllerD.self, object: nil, style: .navigation, animated: true)
+let pushViewControllerE = DeeplinksManager.RoutingPath.path(vcType: Tests.SomeViewControllerE.self, object: nil, style: .navigation, animated: true)
 
 var routeToE: DeeplinksManager.RoutingPath {
     var step = pushViewControllerE
@@ -274,6 +274,32 @@ class DeepLinkManager {
     }
 }
 
+extension UIViewController {
+    func pushGeneric(_ instance: BaseViewControllerVIP, animated: Bool, completion: @escaping (() -> Void)) {
+
+        if instance.presentationStyle == .modal {
+            instance.modalPresentationStyle = .overFullScreen
+            self.present(instance, animated: true, completion: {
+                completion()
+            })
+        } else {
+            if let navigationController = self.navigationController {
+                navigationController.pushViewController(instance, animated: animated)
+                DispatchQueue.executeWithDelay(delay: animated ? 0.3 : 0) {
+                    completion()
+                }
+            } else {
+                // We want to present a navigation controller, but the root is not not one!
+                DevTools.assert(false)
+/*                self.embeddedInNavigationController().pushViewController(instance, animated: animated)
+                DispatchQueue.executeWithDelay(delay: animated ? 0.3 : 0) {
+                    completion()
+                }*/
+            }
+        }
+    }
+}
+
 private class DeeplinkRouter {
 
     static let shared = DeeplinkRouter()
@@ -292,17 +318,43 @@ private class DeeplinkRouter {
         guard instance != nil else { return }
 
         func goToNext() {
-            DispatchQueue.executeWithDelay(delay: 0.5) { [weak self] in self?.proceedToDeeplink(path.calculateNext) }
+            DispatchQueue.executeWithDelay(delay: 0.1) { [weak self] in self?.proceedToDeeplink(path.calculateNext) }
         }
-        if path.style == .navigationController {
+
+        if path.calculateNext?.style == .navigation && DevTools.topViewController()?.navigationController == nil {
+            // The next element will be presented as a navigation controller, and current one
+            // is not! We need to transform it on navigation controller
+            instance = instance?.embeddedInNavigationController()
+        }
+
+        if path.style == .modal {
+            //instance!.modalPresentationStyle = .overFullScreen
             DevTools.topViewController()?.present(instance!, animated: path.animated, completion: {
+                goToNext()
+            })
+        } else {
+            if let navigationController = DevTools.topViewController()?.navigationController {
+                navigationController.pushViewController(instance!, animated: path.animated)
+                DispatchQueue.executeWithDelay(delay: path.animated ? 0.3 : 0) {
+                    goToNext()
+                }
+            } else {
+                DevTools.assert(false)
+            }
+        }
+
+        //DevTools.topViewController()?.pushGeneric(instance as! BaseViewControllerVIP, animated: path.animated, completion: {
+        //    goToNext()
+        //})
+/*        if path.style == .navigation {
+            DevTools.topViewController()?.pushViewController(instance!, animated: path.animated, completion: {
                 goToNext()
             })
         } else {
             DevTools.topViewController()?.present(instance!, animated: path.animated, completion: {
                 goToNext()
             })
-        }
+        }*/
     }
 
 }
