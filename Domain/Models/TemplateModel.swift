@@ -29,17 +29,3 @@ public struct TemplateModel: ModelEntityProtocol {
         return "ID: \(id ?? "nil") | State: \(state ?? "nil")"
     }
 }
-
-public extension TemplateModel {
-    static func generateMockedValue() -> TemplateModel {
-        var accounts: [String] = []
-        var funds: [Int] = []
-        for _ in 0..<randomInt(min: 0, max: 5) {
-            funds.append(randomInt(min: 0, max: 5))
-        }
-        for _ in 0..<randomInt(min: 0, max: 5) {
-            accounts.append("hiii")
-        }
-        return TemplateModel(id: randomStringWith(prefix: "id"), state: randomStringWith(prefix: "state"))
-    }
-}

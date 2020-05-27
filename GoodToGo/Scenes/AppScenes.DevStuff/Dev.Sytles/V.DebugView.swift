@@ -25,6 +25,7 @@ import Extensions
 import PointFreeFunctions
 import UIBase
 import AppResources
+import Pulsator
 
 extension V {
     class DebugView: BaseGenericViewVIP {
@@ -58,7 +59,6 @@ extension V {
             let sectionSmallSeparatorColor = AppColors.primary.withAlphaComponent(FadeType.superLight.rawValue)
             func buttonWithAction(title: String, block:@escaping () -> Void) -> UIButton {
                 let some = UIKitFactory.raisedButton(title: title, backgroundColor: AppColors.primary)
-                //let some = UIKitFactory.button(title: title, style: .regular)
                 some.onTouchUpInside {
                     block()
                 }
@@ -146,6 +146,9 @@ extension V {
             UIButton.LayoutStyle.allCases.forEach { (some) in
                 let btn = UIKitFactory.button(title: "\(some)", style: some)
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(btn)
+                btn.rx.tapSmart(disposeBag).asObservable().subscribe { (_) in
+                    print("tap")
+                }.disposed(by: disposeBag)
                 btn.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
                 //stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
             }

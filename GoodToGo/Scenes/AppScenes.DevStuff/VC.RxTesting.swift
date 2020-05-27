@@ -494,14 +494,5 @@ extension VC.RxTesting {
         }
         
     }
-    
-    func sampleDisposing() {
-        let scheduler = SerialDispatchQueueScheduler(qos: .default)
-        let subscription = Observable<Int>.interval(.milliseconds(300), scheduler: scheduler)
-            .subscribe { event in print(event) }
-        Thread.sleep(forTimeInterval: 2.0)
-        subscription.dispose()
-        // Will print number from 0 to 5
-    }
-    
+
 }

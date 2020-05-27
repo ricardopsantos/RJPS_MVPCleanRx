@@ -3491,6 +3491,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/NSLoggerSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Lottie.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Nimble.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Pulsator.framework",
 			);
 			outputFileListPaths = (
 			);

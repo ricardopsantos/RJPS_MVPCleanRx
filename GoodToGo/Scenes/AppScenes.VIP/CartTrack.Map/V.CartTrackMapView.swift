@@ -16,6 +16,7 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 import TinyConstraints
+import Pulsator
 //
 import AppConstants
 import AppTheme
@@ -284,10 +285,10 @@ extension MKMapView {
             return
         }
 
-        let maxLongitude = annotations.max { (a, b) -> Bool in a.coordinate.longitude > b.coordinate.longitude }!.coordinate.longitude
-        let minLongitude = annotations.min { (a, b) -> Bool in a.coordinate.longitude > b.coordinate.longitude }!.coordinate.longitude
-        let maxLatitude = annotations.max { (a, b) -> Bool in a.coordinate.latitude > b.coordinate.latitude }!.coordinate.longitude
-        let minLatitude = annotations.min { (a, b) -> Bool in a.coordinate.latitude > b.coordinate.latitude }!.coordinate.longitude
+        //let maxLongitude = annotations.max { (a, b) -> Bool in a.coordinate.longitude > b.coordinate.longitude }!.coordinate.longitude
+        //let minLongitude = annotations.min { (a, b) -> Bool in a.coordinate.longitude > b.coordinate.longitude }!.coordinate.longitude
+        //let maxLatitude = annotations.max { (a, b) -> Bool in a.coordinate.latitude > b.coordinate.latitude }!.coordinate.longitude
+        //let minLatitude = annotations.min { (a, b) -> Bool in a.coordinate.latitude > b.coordinate.latitude }!.coordinate.longitude
 
         let span = MKCoordinateSpan(latitudeDelta: 4, longitudeDelta: 4)
         let region = MKCoordinateRegion.init(center: center, span: span)

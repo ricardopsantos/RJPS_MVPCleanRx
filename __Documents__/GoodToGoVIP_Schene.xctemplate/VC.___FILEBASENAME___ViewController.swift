@@ -146,10 +146,7 @@ extension VC {
 // MARK: Public Misc Stuff
 
 extension VC.___VARIABLE_sceneName___ViewController {
-    #warning("THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE")
-    public func somePublicStuff() {
-        // Do some public stuff
-    }
+
 }
 
 // MARK: Private Misc Stuff

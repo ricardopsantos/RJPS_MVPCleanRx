@@ -38,7 +38,7 @@ public struct Designables {
 
         public struct TableView {
             private init() {}
-            public static let defaultHeightForHeaderInSection: CGFloat = 10//25
+            public static let defaultHeightForHeaderInSection: CGFloat = 25
             public static let defaultHeightForCell: CGFloat = 40
 
         }

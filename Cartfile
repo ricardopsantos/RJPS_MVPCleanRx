@@ -11,8 +11,15 @@
 # brew upgrade carthage
 
 ###
-### MORE LIBRARIES HERE : https://github.com/Wolg/awesome-swift
-###
+### MORE LIBRARIES HERE :
+###  https://github.com/Wolg/awesome-swift
+###  https://github.com/vsouza/awesome-ios
+###  https://github.com/duemunk/awesome-swiftui
+
+####################################################################
+# https://github.com/shu223/Pulsator/
+# Pulse animation for iOS
+github "shu223/Pulsator"
 
 ####################################################################
 # A Matcher Framework for Swift and Objective-C

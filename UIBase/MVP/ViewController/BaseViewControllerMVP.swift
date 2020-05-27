@@ -37,7 +37,6 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
     public var reachabilityService: ReachabilityService! = DevTools.reachabilityService
     public var disposeBag: DisposeBag = DisposeBag()
 
-    private var lblReachabilityDistanceFromTop: NSLayoutConstraint?
     private var lblReachabilityHeight: CGFloat = 25
     private var margin: CGFloat = 20
     private var stats: Stats?

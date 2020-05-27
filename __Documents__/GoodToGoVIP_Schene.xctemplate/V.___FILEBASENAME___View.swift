@@ -207,11 +207,7 @@ extension V.___VARIABLE_sceneName___View: UITableViewDelegate {
         }
         return nil
     }
-/*
-    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return Designables.Sizes.TableView.defaultHeightForHeaderInSection
-    }
-*/
+
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let sectionItem = try? rxTableItems.value() {
             let item = sectionItem[indexPath.section].items[indexPath.row]

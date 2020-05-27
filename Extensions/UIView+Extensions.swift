@@ -9,7 +9,15 @@ import UIKit
 import Foundation
 //
 import RJPSLib
+import Pulsator
 
 public extension UIView {
     func lazyLoad() { /* Lazy loading aux */ }
+
+    func addPulse() {
+        let pulsator = Pulsator()
+        pulsator.numPulse = 1
+        self.layer.addSublayer(pulsator)
+        pulsator.start()
+    }
 }

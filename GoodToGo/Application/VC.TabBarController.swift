@@ -27,9 +27,10 @@ extension VC {
             let mvpSample2 = createControllers(tabName: "MVP.Rx", vc: AppDelegate.shared.container.resolve(V.MVPSampleRxView_View.self)!)
             let mvpSample3 = createControllers(tabName: "MVP.Rx.Table", vc: AppDelegate.shared.container.resolve(V.MVPSampleTableView_View.self)!)
 
-            let mvpGitUser  = createControllers(tabName: "GitUser", vc: AppDelegate.shared.container.resolve(V.SearchUser_View.self)!)
-            let mvpBliss    = createControllers(tabName: "Bliss", vc: AppDelegate.shared.container.resolve(V.BlissRoot_View.self)!)
-            let vipCarTrack = createControllers(tabName: "CarTrack", vc: VC.CarTrackLoginViewController(presentationStyle: .regularVC))
+            let mvpGitUser   = createControllers(tabName: "GitUser", vc: AppDelegate.shared.container.resolve(V.SearchUser_View.self)!)
+            let mvpBliss     = createControllers(tabName: "Bliss", vc: AppDelegate.shared.container.resolve(V.BlissRoot_View.self)!)
+            let vipCarTrack1 = createControllers(tabName: "CarTrack", vc: VC.CarTrackLoginViewController(presentationStyle: .regularVC))
+            let vipCarTrack2 = createControllers(tabName: "CarTrack", vc: VC.CartTrackMapViewController(presentationStyle: .regularVC))
 
             let vcRx = createControllers(tabName: "RxTesting", vc: RxTesting())
 
@@ -38,12 +39,12 @@ extension VC {
 
             var viewControllersList: [UIViewController] = []
             if DevTools.FeatureFlag.showScene_bliss.isTrue { viewControllersList.append(mvpBliss) }
-            if DevTools.FeatureFlag.showScene_carTrack.isTrue { viewControllersList.append(vipCarTrack) }
+            if DevTools.FeatureFlag.showScene_carTrack.isTrue { viewControllersList.append(vipCarTrack1) }
             if DevTools.FeatureFlag.showShene_gitHub.isTrue { viewControllersList.append(mvpGitUser) }
             if DevTools.FeatureFlag.showScene_vipTemplate.isTrue { viewControllersList.append(vipTemplate) }
             if DevTools.FeatureFlag.showScene_rxTests.isTrue { viewControllersList.append(vcRx) }
 
-            viewControllers = viewControllersList + [vipDebug]
+            viewControllers = viewControllersList + [vipDebug] + [vipCarTrack2]
             
         }
 

@@ -116,13 +116,4 @@ private extension UIButton {
         self.layer.borderColor  = UIColor.App.error.cgColor
     }
 
-    func applyStyleDismiss() {
-        applySharedProperties()
-        self.titleLabel?.font = UIButton.defaultFont
-        self.backgroundColor  = UIColor.App.UIButton.backgroundColorDefault
-        self.setTextColorForAllStates(UIColor.App.UIButton.textColorDefault)
-        self.setTitleForAllStates(Messages.dismiss.localised)
-        self.layer.cornerRadius = 4.0
-        self.clipsToBounds      = true
-    }
 }

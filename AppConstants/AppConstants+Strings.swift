@@ -10,6 +10,6 @@ import Foundation
 
 extension AppConstants {
     public struct Strings {
-        public static let devOptionAlertTitle = "Dev options"
+    //    public static let devOptionAlertTitle = "Dev options"
     }
 }

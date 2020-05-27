@@ -19,12 +19,12 @@ import Domain_GitHub
 public extension Mappers {
     struct GitUser {
         private init() {}
-        static func toViewModelList(_ list: [GitHub.UserResponseDto]) -> [GitHub.UserViewModel] {
+        /*static func toViewModelList(_ list: [GitHub.UserResponseDto]) -> [GitHub.UserViewModel] {
             var result: [GitHub.UserViewModel] = []
             for element in list {
                 result.append(GitHub.UserViewModel(some: element))
             }
             return result
-        }
+        }*/
     }
 }
