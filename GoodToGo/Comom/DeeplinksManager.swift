@@ -25,12 +25,11 @@ import UIBase
 let pushViewControllerA = DeeplinksManager.RoutingPath.path(vcType: Tests.SomeViewControllerA.self, object: nil, style: .modal, animated: true)
 let pushViewControllerB = DeeplinksManager.RoutingPath.path(vcType: Tests.SomeViewControllerB.self, object: nil, style: .modal, animated: true)
 let pushViewControllerC = DeeplinksManager.RoutingPath.path(vcType: Tests.SomeViewControllerC.self, object: nil, style: .modal, animated: true)
-let pushViewControllerD = DeeplinksManager.RoutingPath.path(vcType: Tests.SomeViewControllerD.self, object: nil, style: .navigation, animated: true)
-let pushViewControllerE = DeeplinksManager.RoutingPath.path(vcType: Tests.SomeViewControllerE.self, object: nil, style: .navigation, animated: true)
+let pushViewControllerD = DeeplinksManager.RoutingPath.path(vcType: Tests.SomeViewControllerD.self, object: nil, style: .modal, animated: true)
+let pushViewControllerE = DeeplinksManager.RoutingPath.path(vcType: Tests.SomeViewControllerE.self, object: nil, style: .modal, animated: true)
 
 var routeToE: DeeplinksManager.RoutingPath {
-    var step = pushViewControllerE
-    return step
+    return pushViewControllerE
 }
 
 var routeFromB2D: DeeplinksManager.RoutingPath {
@@ -274,13 +273,23 @@ class DeepLinkManager {
     }
 }
 
+extension UIViewController {
+    var isNavigationController: Bool {
+        return self.navigationController != nil
+    }
+}
+
 private class DeeplinkRouter {
 
     static let shared = DeeplinkRouter()
     private init() { }
 
+    static var rootWasOverrided = false
     func proceedToDeeplink(_ path: DeeplinksManager.RoutingPath?) {
-        guard let path = path else { return }
+        guard let path = path else {
+            DeeplinkRouter.rootWasOverrided = false
+            return
+        }
 
         var instance: UIViewController?
         switch path {
@@ -292,34 +301,62 @@ private class DeeplinkRouter {
         guard instance != nil else { return }
 
         func goToNext() {
-            DispatchQueue.executeWithDelay(delay: 0.1) { [weak self] in self?.proceedToDeeplink(path.calculateNext) }
+            DispatchQueue.executeWithDelay(delay: 1) { [weak self] in self?.proceedToDeeplink(path.calculateNext) }
         }
 
+        DevTools.Log.message("\(path.calculateNext?.vcType)")
+        DevTools.Log.message("\(path.calculateNext?.style)")
         let nextInstanceIsNavController = path.calculateNext?.style == .navigation
-        let currentTopInstanceIsNavController = DevTools.topViewController()?.navigationController != nil
-        let nextVCIsNavControllerAndTopCurrentOneIsNot = nextInstanceIsNavController && !currentTopInstanceIsNavController
-        if nextVCIsNavControllerAndTopCurrentOneIsNot {
+        let currentTopInstanceIsNavController = DevTools.topViewController()!.isNavigationController
+        let thisInstanceToIsModalController = path.style == .modal
+
+        // Is the first item on the stack. Lets override the rootViewController
+        guard DeeplinkRouter.rootWasOverrided else {
+            if nextInstanceIsNavController {
+                AppDelegate.shared.window?.rootViewController = instance!.embeddedInNavigationController()
+            } else {
+                AppDelegate.shared.window?.rootViewController = instance
+            }
+            DeeplinkRouter.rootWasOverrided = true
+            goToNext()
+            return
+        }
+
+        if nextInstanceIsNavController && !currentTopInstanceIsNavController {
             // The next element will be presented as a navigation controller, and current one is not!
             // We need to transform it on navigation controller else will fail on [pushViewController]
             instance = instance?.embeddedInNavigationController()
+        } else if nextInstanceIsNavController && thisInstanceToIsModalController {
+            // We will push a modal, and after that a navigation
+            // We need to transform the instance on navigation controller else will fail on [pushViewController]
+            instance = instance?.embeddedInNavigationController()
+            instance?.navigationController?.isNavigationBarHidden = true
         }
 
+        var baseViewController = DevTools.topViewController()
+
         if path.style == .modal {
-            //instance!.modalPresentationStyle = .overFullScreen
-            DevTools.topViewController()?.present(instance!, animated: path.animated, completion: {
+            baseViewController?.present(instance!, animated: path.animated, completion: {
                 goToNext()
             })
         } else {
-            if let navigationController = DevTools.topViewController()?.navigationController {
+            if let navigationController = baseViewController?.navigationController {
                 navigationController.pushViewController(instance!, animated: path.animated)
                 DispatchQueue.executeWithDelay(delay: path.animated ? 0.3 : 0) {
                     goToNext()
                 }
             } else {
-                DevTools.assert(false)
+                DevTools.assert(false, message: "\(DevTools.topViewController())")
             }
         }
 
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
+        if (appDelegate.window?.rootViewController?.presentedViewController) != nil {
+            // Array of all viewcontroller even after presented
+        } else if (appDelegate.window?.rootViewController?.children) != nil {
+            // Array of all viewcontroller after push
+        }
     }
 
 }
