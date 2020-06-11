@@ -13,6 +13,7 @@ import ToastSwiftFramework
 import RJPSLib
 import PointFreeFunctions
 
+
 public struct DevTools {
     private init() { }
 
@@ -61,6 +62,30 @@ public struct DevTools {
 
     public static func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
         return UIApplication.topViewController(base: controller)
+    }
+}
+
+extension DevTools {
+    public struct DebugView {
+        public static func paint(view: UIView, enabled: Bool = true, useBorderColors: Bool = false) {
+            guard onSimulator else { return }
+            guard enabled else { return }
+
+            if useBorderColors {
+                view.layer.borderColor = UIColor.random.cgColor
+                view.layer.borderWidth = 1
+                view.devTools_getAllSubviews().forEach { (some) in
+                    some.layer.borderColor = UIColor.random.cgColor
+                    some.layer.borderWidth = 1
+                }
+            } else {
+                view.backgroundColor = UIColor.random
+                view.devTools_getAllSubviews().forEach { (some) in
+                    some.backgroundColor = UIColor.random.withAlphaComponent(0.3)
+                    some.alpha = 0.6
+                }
+            }
+        }
     }
 }
 
@@ -118,4 +143,78 @@ public extension DevTools {
             }
         }
     }
+}
+
+fileprivate extension UIView {
+
+    class func devTools_getAllSubviews<T: UIView>(from parenView: UIView) -> [T] {
+        return parenView.subviews.flatMap { subView -> [T] in
+            var result = devTools_getAllSubviews(from: subView) as [T]
+            if let view = subView as? T { result.append(view) }
+            return result
+        }
+    }
+
+    class func devTools_getAllSubviews(from parenView: UIView, types: [UIView.Type]) -> [UIView] {
+        return parenView.subviews.flatMap { subView -> [UIView] in
+            var result = devTools_getAllSubviews(from: subView) as [UIView]
+            for type in types {
+                if subView.classForCoder == type {
+                    result.append(subView)
+                    return result
+                }
+            }
+            return result
+        }
+    }
+
+    func devTools_getAllSubviews<T: UIView>() -> [T] { return UIView.devTools_getAllSubviews(from: self) as [T] }
+    func devTools_get<T: UIView>(all type: T.Type) -> [T] { return UIView.devTools_getAllSubviews(from: self) as [T] }
+    func devTools_get(all types: [UIView.Type]) -> [UIView] { return UIView.devTools_getAllSubviews(from: self, types: types) }
+}
+
+
+extension DevTools {
+
+    struct Install {
+        private init() { }
+
+        static func debugViewUI(on view: UIView) {
+            guard !DevTools.isProductionReleaseApp else { return }                     //If production bail out immediately
+            guard DevTools.devModeIsEnabled else { return }                            // Not dev mode? bail out immediately
+
+            let tapGesture = createTapGesture()
+            tapGesture.numberOfTouchesRequired = 2
+            view.addGestureRecognizer(tapGesture)
+            tapGesture.rx.event.bind(onNext: { _ in
+                DevTools.DebugView.paint(view: view, enabled: true)
+            }).disposed(by: disposeBag)
+        }
+
+        private static let numberOfTapsRequired = 3
+
+        private static func createTapGesture() -> UITapGestureRecognizer {
+            let tapGesture = UITapGestureRecognizer()
+            tapGesture.numberOfTapsRequired = numberOfTapsRequired
+            return tapGesture
+        }
+
+        private static func debugViewController(on view: UIView?) {
+            guard !DevTools.isProductionReleaseApp else { return } //If production bail out immediately
+            guard DevTools.devModeIsEnabled else { return } // Not dev mode? bail out immediately
+
+            let tapGesture = createTapGesture()
+            tapGesture.numberOfTouchesRequired = 1
+            view?.addGestureRecognizer(tapGesture)
+            tapGesture.rx.event.bind(onNext: { _ in
+                DevTools.launchDebugViewController()
+            }).disposed(by: disposeBag)
+        }
+    }
+
+    static func launchDebugViewController() {
+        let controller = VC.DebugScreenViewController(presentationStyle: .regularVC).embeddedInNavigationController()
+        AppRouter.shared.topViewController()?.present(controller, animated: true) { }
+    }
+
 }

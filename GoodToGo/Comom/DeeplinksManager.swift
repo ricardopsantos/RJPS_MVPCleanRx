@@ -286,6 +286,7 @@ private class DeeplinkRouter {
 
     static var rootWasOverrided = false
     func proceedToDeeplink(_ path: DeeplinksManager.RoutingPath?) {
+
         guard let path = path else {
             DeeplinkRouter.rootWasOverrided = false
             return
@@ -298,7 +299,11 @@ private class DeeplinkRouter {
         case .path(vcType: let vcType, object: let object, style: let style, animated: _):
             instance = vcType.makeInstance(object: object, style: style) as! UIViewController
         }
-        guard instance != nil else { return }
+        guard instance != nil else {
+            let topViewController = DevTools.topViewController()
+            topViewController.debugStack()
+            return
+        }
 
         func goToNext() {
             DispatchQueue.executeWithDelay(delay: 1) { [weak self] in self?.proceedToDeeplink(path.calculateNext) }

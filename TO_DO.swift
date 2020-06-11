@@ -37,3 +37,25 @@ periphery scan \
  --retain-public
 
 */
+
+/*
+
+ private func setupRefreshControl() {
+     refreshControl.rx.controlEvent(.valueChanged).subscribe { [interactor] _ in
+         interactor?.fetchTableItems()
+     }.disposed(by: disposeBag)
+
+     tableView.refreshControl = refreshControl
+
+     tableView.rx.contentOffset
+         .asObservable()
+         .filter { [weak self] _ -> Bool in
+             guard let self = self else { return false }
+             return self.tableView.isNearTheBottomEdge()
+         }
+         .subscribe(onNext: { [weak self] _ in
+             self?.interactor.loadNextTimelinePage(forceReload: false)
+         })
+         .disposed(by: disposeBag)
+ }
+ */

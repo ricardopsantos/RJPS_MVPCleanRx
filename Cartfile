@@ -3,7 +3,7 @@
 
 # Edit File        : open -a Xcode Cartfile
 # Update (iPhone)  : carthage update --platform iOS
-# Update (RJPSLib) : carthage update RJPSLib
+# Update (RJPSLib) : carthage update RJPSLib --platform iOS
 # Open compiled    : open Carthage
 
 # brew update
