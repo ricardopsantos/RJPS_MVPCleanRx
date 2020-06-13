@@ -16,13 +16,13 @@ extension AssembyContainer {
         
             // Router
             let routerProtocol = SearchUser_RouterProtocol.self
-            container.register(routerProtocol) { (_, viewController: V.SearchUser_View) in
+            container.register(routerProtocol) { (_, viewController: GoodToGo.V.SearchUser_View) in
                 return R.SearchUser_Router(viewController: viewController)
             }
             
             // Presenter
             let presenterProtocol = SearchUser_PresenterProtocol.self
-            container.register(presenterProtocol) { (r, viewController: V.SearchUser_View) in
+            container.register(presenterProtocol) { (r, viewController: GoodToGo.V.SearchUser_View) in
                 let presenter         = P.SearchUser_Presenter()
                 presenter.view        = viewController
                 presenter.genericView = viewController
@@ -33,8 +33,8 @@ extension AssembyContainer {
             }
             
             // View
-            container.register(V.SearchUser_View.self) { r in
-                let controller = V.SearchUser_View()
+            container.register(GoodToGo.V.SearchUser_View.self) { r in
+                let controller = GoodToGo.V.SearchUser_View()
                 controller.presenter = r.resolve(presenterProtocol, argument: controller)
                 return controller
             }

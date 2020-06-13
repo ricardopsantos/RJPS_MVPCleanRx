@@ -19,7 +19,7 @@ protocol SearchUser_RouterProtocol: class {
     func dismissView()
     var rxPublishRelay_dismissView: PublishRelay<Void> { get }  // PublishRelay model Events
 
-    func presentUserDetails(vm: VM.UserDetais)
+    func presentUserDetails(vm: VM.UserDetails)
 }
 
 extension Router {
@@ -27,7 +27,7 @@ extension Router {
         
         private weak var baseView: V.SearchUser_View?
         // PublishRelay model Events
-        private var rxPublishRelay_ShowDetails = PublishRelay<VM.UserDetais>()
+        private var rxPublishRelay_ShowDetails = PublishRelay<VM.UserDetails>()
         init(viewController: V.SearchUser_View) {
             super.init()
             baseView = viewController
@@ -36,7 +36,7 @@ extension Router {
             }
             rxPublishRelay_ShowDetails
                 .asObservable()
-                .map { vm -> V.UserDetais_View? in return self.controllerWith(vm: vm) }
+                .map { vm -> V.UserDetails_View? in return self.controllerWith(vm: vm) }
                 .ignoreNil()
                 .log(whereAmI())
                 .subscribe(onNext: { [weak self] in
@@ -51,8 +51,8 @@ extension Router {
             
         }
     
-        private func controllerWith(vm: VM.UserDetais) -> V.UserDetais_View? {
-            guard let controller = AppDelegate.shared.container.resolve(V.UserDetais_View.self) else { return nil }
+        private func controllerWith(vm: VM.UserDetails) -> V.UserDetails_View? {
+            guard let controller = AppDelegate.shared.container.resolve(V.UserDetails_View.self) else { return nil }
             controller.presenter.viewModel = vm
             return controller
         }
@@ -61,7 +61,7 @@ extension Router {
             rxPublishRelay_dismissView.accept(())
         }
         
-        func presentUserDetails(vm: VM.UserDetais) {
+        func presentUserDetails(vm: VM.UserDetails) {
             rxPublishRelay_ShowDetails.accept(vm)
         }
     }

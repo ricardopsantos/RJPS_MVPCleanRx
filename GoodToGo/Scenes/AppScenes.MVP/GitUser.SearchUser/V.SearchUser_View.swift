@@ -7,6 +7,7 @@
 
 import UIKit
 import Foundation
+import SwiftUI
 //
 import RJPSLib
 import RxSwift
@@ -115,13 +116,35 @@ public extension V {
         
         public override func prepareLayoutByFinishingPrepareLayout() {
             
-        }    }
+        }
+    }
 }
 
 // MARK: - View Protocol
 
-extension V.SearchUser_View: SearchUser_ViewProtocol {
-    func viewDataToScreen(some: VM.SearchUser) {
+extension GoodToGo.V.SearchUser_View: SearchUser_ViewProtocol {
+    func viewDataToScreen(some: GoodToGo.VM.SearchUser) {
         searchBar.text = some.user
+    }
+}
+
+// MARK: - Preview
+
+struct SearchUser_UIViewControllerRepresentable: UIViewControllerRepresentable {
+
+    func makeUIViewController(context: Context) -> GoodToGo.V.SearchUser_View {
+        let vc = GoodToGo.V.SearchUser_View()
+        return vc
+    }
+
+    func updateUIViewController(_ uiViewController: GoodToGo.V.SearchUser_View, context: Context) {
+
+    }
+}
+
+struct SearchUser_Previews: PreviewProvider {
+    @available(iOS 13.0.0, *)
+    static var previews: some SwiftUI.View {
+        return SearchUser_UIViewControllerRepresentable()
     }
 }

@@ -14,16 +14,12 @@ import Extensions
 import Domain
 import UIBase
 
-protocol UserDetais_RouterProtocol: class {
-    func dismissView()
-}
-
 extension Router {
-    class UserDetais_Router: BaseRouter, BaseRouterProtocol, UserDetais_RouterProtocol {
+    class UserDetails_Router: BaseRouter, BaseRouterProtocol, UserDetails_RouterProtocol {
         
-        private weak var baseView: V.UserDetais_View?
+        private weak var baseView: V.UserDetails_View?
 
-        init(viewController: V.UserDetais_View) {
+        init(viewController: V.UserDetails_View) {
             super.init()
             baseView = viewController
             

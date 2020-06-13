@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import SwiftUI
 //
 import RxCocoa
 import RxSwift
@@ -28,7 +29,7 @@ import UIBase
 import AppResources
 import Lottie
 
-extension V {
+extension GoodToGo.V {
     class CarTrackLoginView: BaseGenericViewVIP {
 
         deinit {
@@ -169,11 +170,11 @@ extension V {
         // We can set the view data by : 2 - Custom Setters / Computed Vars         ---> var subTitle: String <---
         // We can set the view data by : 3 - Passing the view model inside the view ---> func setupWith(viewModel: ... <---
 
-        func setupWith(screenState viewModel: VM.CarTrackLogin.ScreenState.ViewModel) {
+        func setupWith(screenState viewModel: GoodToGo.VM.CarTrackLogin.ScreenState.ViewModel) {
             screenLayout = viewModel.layout
         }
 
-        func setupWith(screenInitialState viewModel: VM.CarTrackLogin.ScreenInitialState.ViewModel) {
+        func setupWith(screenInitialState viewModel: GoodToGo.VM.CarTrackLogin.ScreenInitialState.ViewModel) {
             lblTitle.textAnimated = viewModel.title
             txtUserName.text = viewModel.userName
             txtPassword.text = viewModel.password
@@ -187,7 +188,7 @@ extension V {
                 btnLogin.disable()
             }
         }
-        func setupWith(nextButtonState viewModel: VM.CarTrackLogin.NextButtonState.ViewModel) {
+        func setupWith(nextButtonState viewModel: GoodToGo.VM.CarTrackLogin.NextButtonState.ViewModel) {
             userCanProceed(viewModel.isEnabled)
         }
 
@@ -230,10 +231,33 @@ extension V {
 
 // MARK: - Events capture
 
-extension V.CarTrackLoginView {
+extension GoodToGo.V.CarTrackLoginView {
     var rxBtnLoginTap: Observable<Void> { btnLogin.rx.tapSmart(disposeBag) }
     var rxTxtPassword: Reactive<SkyFloatingLabelTextField> { txtPassword.rx }
     var rxTxtUsername: Reactive<SkyFloatingLabelTextField> { txtUserName.rx }
     var txtUsernameIsFirstResponder: Bool { txtUserName.isFirstResponder }
     var txtPasswordIsFirstResponder: Bool { txtPassword.isFirstResponder }
+}
+
+// MARK: - Preview
+
+struct CarTrackLogin_UIViewControllerRepresentable: UIViewControllerRepresentable {
+
+    func makeUIViewController(context: Context) -> GoodToGo.VC.CarTrackLoginViewController {
+        let vc = GoodToGo.VC.CarTrackLoginViewController(presentationStyle: .modal)
+        let model = VM.CarTrackLogin.Login.ViewModel(message: "Hi", success: false)
+        vc.displayLogin(viewModel: model)
+        return vc
+    }
+
+    func updateUIViewController(_ uiViewController: GoodToGo.VC.CarTrackLoginViewController, context: Context) {
+
+    }
+}
+
+struct CarTrackLogin_Previews: PreviewProvider {
+    @available(iOS 13.0.0, *)
+    static var previews: some SwiftUI.View {
+        return CarTrackLogin_UIViewControllerRepresentable()
+    }
 }

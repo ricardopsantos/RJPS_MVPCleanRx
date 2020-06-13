@@ -15,15 +15,15 @@ extension AssembyContainer {
         func assemble(container: Container) {
          
             // Router
-            let routerProtocol = UserDetais_RouterProtocol.self
-            container.register(routerProtocol) { (_, viewController: V.UserDetais_View) in
-                return R.UserDetais_Router(viewController: viewController)
+            let routerProtocol = UserDetails_RouterProtocol.self
+            container.register(routerProtocol) { (_, viewController: V.UserDetails_View) in
+                return R.UserDetails_Router(viewController: viewController)
             }
    
             // Presenter
             let presenterProtocol = UserDetais_PresenterProtocol.self
-            container.register(presenterProtocol) { (r, viewController: V.UserDetais_View) in
-                let presenter         = P.UserDetais_Presenter()
+            container.register(presenterProtocol) { (r, viewController: V.UserDetails_View) in
+                let presenter         = P.UserDetails_Presenter()
                 presenter.view        = viewController
                 presenter.genericView = viewController
                 presenter.generic     = presenter
@@ -33,8 +33,8 @@ extension AssembyContainer {
             }
        
             // View
-            container.register(V.UserDetais_View.self) { r in
-                let controller = V.UserDetais_View()
+            container.register(V.UserDetails_View.self) { r in
+                let controller = V.UserDetails_View()
                 controller.presenter = r.resolve(presenterProtocol, argument: controller)
                 return controller
             }

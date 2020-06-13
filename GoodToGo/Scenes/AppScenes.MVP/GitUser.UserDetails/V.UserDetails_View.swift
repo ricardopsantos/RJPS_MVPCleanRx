@@ -22,7 +22,7 @@ import PointFreeFunctions
 import Designables
 
 extension V {
-    class UserDetais_View: BaseViewControllerMVP {
+    class UserDetails_View: BaseViewControllerMVP {
         
         deinit {
             DevTools.Log.logDeInit("\(self.className) was killed")
@@ -117,12 +117,12 @@ extension V {
 
 // MARK: - View Protocol
 
-extension V.UserDetais_View: UserDetais_ViewProtocol {
+extension V.UserDetails_View: UserDetails_ViewProtocol {
     func setAvatarWith(image: UIImage) {
         imgAvatar.image = image
     }
     
-    func viewDataToScreen(some: VM.UserDetais) {
+    func viewDataToScreen(some: VM.UserDetails) {
         lblUserName.textAnimated = some.user.name
         tableView.reloadData()
     }
@@ -130,7 +130,7 @@ extension V.UserDetais_View: UserDetais_ViewProtocol {
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
-extension V.UserDetais_View: UITableViewDelegate, UITableViewDataSource {
+extension V.UserDetails_View: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.tableView.numberOfRows(section)
     }

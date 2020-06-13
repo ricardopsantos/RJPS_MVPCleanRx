@@ -10,6 +10,7 @@
 
 import UIKit
 import Foundation
+import SwiftUI
 //
 import RxCocoa
 import RxSwift
@@ -27,7 +28,7 @@ import UIBase
 import AppResources
 import Pulsator
 
-extension V {
+extension GoodToGo.V {
     class DebugView: BaseGenericViewVIP {
 
         deinit {
@@ -316,6 +317,23 @@ extension V {
 
 // MARK: - Events capture
 
-extension V.DebugView {
+extension GoodToGo.V.DebugView {
 
+}
+
+// MARK: - Preview
+
+struct DebugView_UIViewControllerRepresentable: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> GoodToGo.VC.DebugViewController {
+        return GoodToGo.VC.DebugViewController(presentationStyle: .modal)
+    }
+
+    func updateUIViewController(_ uiViewController: GoodToGo.VC.DebugViewController, context: Context) { }
+}
+
+struct DebugView_Previews: PreviewProvider {
+    @available(iOS 13.0.0, *)
+    static var previews: some SwiftUI.View {
+        return DebugView_UIViewControllerRepresentable()
+    }
 }

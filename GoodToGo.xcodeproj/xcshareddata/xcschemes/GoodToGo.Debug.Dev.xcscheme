@@ -20,6 +20,20 @@
                ReferencedContainer = "container:GoodToGo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D7782520247A59D40071776F"
+               BuildableName = "Test.GoodToGo.xctest"
+               BlueprintName = "Test.GoodToGo"
+               ReferencedContainer = "container:GoodToGo.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

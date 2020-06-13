@@ -11,6 +11,7 @@
 import UIKit
 import Foundation
 import MapKit
+import SwiftUI
 //
 import RxCocoa
 import RxSwift
@@ -29,7 +30,7 @@ import PointFreeFunctions
 import UIBase
 import AppResources
 
-extension V {
+extension GoodToGo.V {
     class CartTrackMapView: BaseGenericViewVIP {
 
         deinit {
@@ -144,17 +145,17 @@ extension V {
 
         // MARK: - Custom Getter/Setters
 
-        func setupWith(mapData viewModel: VM.CartTrackMap.MapData.ViewModel) {
+        func setupWith(mapData viewModel: GoodToGo.VM.CartTrackMap.MapData.ViewModel) {
             lblInfo.textAnimated = viewModel.report
             updateMapWith(list: viewModel.list)
         }
 
-        func setupWith(screenInitialState viewModel: VM.CartTrackMap.ScreenInitialState.ViewModel) {
+        func setupWith(screenInitialState viewModel: GoodToGo.VM.CartTrackMap.ScreenInitialState.ViewModel) {
             //subTitle = viewModel.subTitle
             //screenLayout = viewModel.screenLayout
         }
 
-        func setupWith(mapDataFilter viewModel: VM.CartTrackMap.MapDataFilter.ViewModel) {
+        func setupWith(mapDataFilter viewModel: GoodToGo.VM.CartTrackMap.MapDataFilter.ViewModel) {
             lblInfo.textAnimated = viewModel.report
             updateMapWith(list: viewModel.list)
         }
@@ -164,7 +165,7 @@ extension V {
 
 // MARK: - Private
 
-extension V.CartTrackMapView {
+extension GoodToGo.V.CartTrackMapView {
 
     private func updateMapWith(list: [CarTrack.UserModel]) {
         lastModel = list
@@ -175,7 +176,7 @@ extension V.CartTrackMapView {
             return
         }
 
-        if V.CartTrackMapView.selectedAnnotationsTypeForMap == .pinAnnotationView {
+        if GoodToGo.V.CartTrackMapView.selectedAnnotationsTypeForMap == .pinAnnotationView {
             let mkPointAnnotationList: [MKPointAnnotation] = list.map {
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = $0.mapLocation
@@ -202,7 +203,7 @@ extension V.CartTrackMapView {
 
 // MARK: - MKMapViewDelegate
 
-extension V.CartTrackMapView: MKMapViewDelegate {
+extension GoodToGo.V.CartTrackMapView: MKMapViewDelegate {
 
     // Called when the region displayed by the map view is about to change
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
@@ -216,7 +217,7 @@ extension V.CartTrackMapView: MKMapViewDelegate {
 
         let reuseIdentifier = MKMapViewDefaultAnnotationViewReuseIdentifier
 
-        if V.CartTrackMapView.selectedAnnotationsTypeForMap == .pinAnnotationView {
+        if GoodToGo.V.CartTrackMapView.selectedAnnotationsTypeForMap == .pinAnnotationView {
             var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier) as? MKPinAnnotationView
             if pinView == nil {
                 pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
@@ -230,7 +231,7 @@ extension V.CartTrackMapView: MKMapViewDelegate {
                 pinView?.annotation = annotation
             }
             return pinView
-        } else if V.CartTrackMapView.selectedAnnotationsTypeForMap == .markerAnnotationView {
+        } else if GoodToGo.V.CartTrackMapView.selectedAnnotationsTypeForMap == .markerAnnotationView {
             guard let annotation = annotation as? CarTrackMKAnnotation else { return nil }
             var view: CarTrackMKMarkerAnnotationView
             if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier) as? CarTrackMKMarkerAnnotationView {
@@ -269,7 +270,7 @@ extension V.CartTrackMapView: MKMapViewDelegate {
 
 // MARK: - Events capture
 
-extension V.CartTrackMapView {
+extension GoodToGo.V.CartTrackMapView {
 
 }
 
@@ -296,45 +297,6 @@ extension MKMapView {
     }
 }
 
-// MARK: MKMapViewUtils
-
-class CarTrackMKAnnotation: NSObject, MKAnnotation {
-
-    let model: Domain_CarTrack.CarTrack.UserModel
-    let title: String?
-    let subTitle: String?
-    let coordinate: CLLocationCoordinate2D
-
-    init(title: String, subTitle: String, coordinate: CLLocationCoordinate2D, model: Domain_CarTrack.CarTrack.UserModel) {
-        self.title = title
-        self.subTitle = subTitle
-        self.coordinate = coordinate
-        self.model = model
-        super.init()
-    }
-}
-
-class CarTrackMKMarkerAnnotationView: MKMarkerAnnotationView {
-
-    override var annotation: MKAnnotation? {
-        willSet {
-            guard let carTrackMKAnnotation = newValue as? CarTrackMKAnnotation else { return }
-            canShowCallout = true
-            calloutOffset = CGPoint(x: -5, y: 5)
-            markerTintColor = carTrackMKAnnotation.model.mapColor
-            glyphText       = carTrackMKAnnotation.model.mapGlyphText
-            rightCalloutAccessoryView = carTrackMKAnnotation.model.mapButton
-
-            let detailLabel = UILabel()
-            detailLabel.numberOfLines = 0
-            detailLabel.font = UIFont.App.Styles.caption.rawValue 
-            detailLabel.text = carTrackMKAnnotation.model.mapSubTitle
-            detailCalloutAccessoryView = detailLabel
-
-        }
-    }
-}
-
 // MARK: Extension
 
 extension Domain_CarTrack.CarTrack.UserModel {
@@ -356,5 +318,26 @@ extension Domain_CarTrack.CarTrack.UserModel {
         let lng: CLLocationDegrees = CLLocationDegrees(Double(longitude)!)
         let coordinate = CLLocationCoordinate2DMake(lat, lng)
         return coordinate
+    }
+}
+
+// MARK: - Preview
+
+struct CartTrackMap_UIViewControllerRepresentable: UIViewControllerRepresentable {
+
+    func makeUIViewController(context: Context) -> GoodToGo.VC.CartTrackMapViewController {
+        let vc = GoodToGo.VC.CartTrackMapViewController(presentationStyle: .modal)
+        return vc
+    }
+
+    func updateUIViewController(_ uiViewController: GoodToGo.VC.CartTrackMapViewController, context: Context) {
+
+    }
+}
+
+struct CartTrackMap_Previews: PreviewProvider {
+    @available(iOS 13.0.0, *)
+    static var previews: some SwiftUI.View {
+        return CartTrackMap_UIViewControllerRepresentable()
     }
 }

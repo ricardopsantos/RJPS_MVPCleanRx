@@ -37,7 +37,7 @@ class Test_CartTrack: XCTestCase {
 
     func test_vc_mapWithData() {
         let expectation = self.expectation(description: #function)
-        let vc = GoodToGo.VC.CartTrackMapViewController(presentationStyle: .regularVC)
+        let vc = GoodToGo.VC.CartTrackMapViewController(presentationStyle: .modal)
         let request = GoodToGo.VM.CartTrackMap.MapData.Request()
         vc.interactor?.requestMapData(request: request)
 

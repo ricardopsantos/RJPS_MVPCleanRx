@@ -301,7 +301,7 @@ private class DeeplinkRouter {
         }
         guard instance != nil else {
             let topViewController = DevTools.topViewController()
-            topViewController.debugStack()
+            topViewController?.debugStack()
             return
         }
 

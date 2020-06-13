@@ -12,11 +12,13 @@ import UIKit
 import ToastSwiftFramework
 import RJPSLib
 import PointFreeFunctions
-
+import RxCocoa
+import RxSwift
 
 public struct DevTools {
     private init() { }
 
+    private static var disposeBag = DisposeBag()
     public static var reachabilityService: ReachabilityService! = try! DefaultReachabilityService()
 
     private static var appMode: String? {
@@ -173,7 +175,6 @@ fileprivate extension UIView {
     func devTools_get(all types: [UIView.Type]) -> [UIView] { return UIView.devTools_getAllSubviews(from: self, types: types) }
 }
 
-
 extension DevTools {
 
     struct Install {
@@ -213,8 +214,9 @@ extension DevTools {
     }
 
     static func launchDebugViewController() {
-        let controller = VC.DebugScreenViewController(presentationStyle: .regularVC).embeddedInNavigationController()
-        AppRouter.shared.topViewController()?.present(controller, animated: true) { }
+        fatalError("not implemented")
+      //  let controller = VC.DebugScreenViewController(presentationStyle: .regularVC).embeddedInNavigationController()
+      //  AppRouter.shared.topViewController()?.present(controller, animated: true) { }
     }
 
 }

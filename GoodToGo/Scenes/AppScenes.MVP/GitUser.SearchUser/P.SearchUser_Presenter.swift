@@ -111,7 +111,7 @@ extension P.SearchUser_Presenter: BasePresenterVMPProtocol {
                     self.genericView?.displayMessage(Messages.pleaseTryAgainLater.localised, type: .error)
                     return
                 }
-                let vm = VM.UserDetais(user: $0!, friends: $1!)
+                let vm = VM.UserDetails(user: $0!, friends: $1!)
                 self.router.presentUserDetails(vm: vm)
             })
             .disposed(by: disposeBag)
