@@ -15,25 +15,7 @@
                     <view key="view" contentMode="scaleToFill" id="jIV-vj-UfK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBK-zn-u2Y">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="101"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1eP-Wk-4Rm">
-                                <rect key="frame" x="10" y="10" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </mapView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="nBK-zn-u2Y" firstAttribute="trailing" secondItem="Ee0-fg-Uyv" secondAttribute="trailing" id="3fb-An-6iK"/>
-                            <constraint firstItem="nBK-zn-u2Y" firstAttribute="bottom" secondItem="Ee0-fg-Uyv" secondAttribute="bottom" id="Hfx-6t-ymy"/>
-                            <constraint firstItem="nBK-zn-u2Y" firstAttribute="top" secondItem="Ee0-fg-Uyv" secondAttribute="top" id="elv-dT-xFu"/>
-                            <constraint firstItem="nBK-zn-u2Y" firstAttribute="leading" secondItem="Ee0-fg-Uyv" secondAttribute="leading" id="yyt-H8-883"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Ee0-fg-Uyv"/>
                     </view>
                 </viewController>
