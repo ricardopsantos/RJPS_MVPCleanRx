@@ -44,6 +44,66 @@ struct CategoriesPickerView_Previews: PreviewProvider {
     }
 }
 
+extension V {
+
+    open class CategoryButton: UIView {
+        static let defaultSize: CGFloat = screenWidth / 4.0
+        private let label = UILabel()
+        private let back = UIView()
+        private let image = UIImageView()
+
+        required public init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+
+        public override init(frame: CGRect) {
+            super.init(frame: frame)
+            setupView()
+        }
+
+        public convenience init(text: String="", imageSystemName: String) {
+            self.init(frame: .zero)
+            label.text = text
+            if #available(iOS 13.0, *) {
+                image.image = UIImage(systemName: imageSystemName)
+            }
+        }
+
+        open override func layoutSubviews() {
+            super.layoutSubviews()
+        }
+
+        private func setupView() {
+            addSubview(back)
+            addSubview(image)
+            addSubview(label)
+
+            label.autoLayout.bottomToSuperview()
+            label.autoLayout.widthToSuperview()
+            label.textAlignment = .center
+            label.apply(style: .title)
+
+            back.addCorner(radius: 10)
+            back.autoLayout.centerXToSuperview()
+            back.autoLayout.centerYToSuperview(offset: -10)
+            back.autoLayout.widthToSuperview(multiplier: 0.6)
+            back.autoLayout.heightToSuperview(multiplier: 0.6)
+            back.backgroundColor = .red
+
+            image.autoLayout.centerXToSuperview()
+            image.autoLayout.centerYToSuperview(offset: -10)
+            image.autoLayout.widthToSuperview(multiplier: 0.5)
+            image.autoLayout.heightToSuperview(multiplier: 0.5)
+            image.contentMode = .scaleAspectFit
+            image.backgroundColor = .clear
+            
+            self.backgroundColor = UIColor.blue.withAlphaComponent(0.1)
+
+        }
+    }
+
+}
+
 // MARK: - View
 
 extension V {
@@ -62,9 +122,9 @@ extension V {
 
         func makeVerticalStackView() -> UIStackView {
             let stackView = UIKitFactory.stackView(axis: .horizontal, distribution: .fillEqually)
-            let b1 = UIKitFactory.button(title: "1", style: .primary)
-            let b2 = UIKitFactory.button(title: "2", style: .primary)
-            let b3 = UIKitFactory.button(title: "3", style: .primary)
+            let b1 = V.CategoryButton(text: "1", imageSystemName: "trash.fill")
+            let b2 = V.CategoryButton(text: "1", imageSystemName: "trash.fill")
+            let b3 = V.CategoryButton(text: "1", imageSystemName: "trash.fill")
             stackView.addArrangedSubview(b1)
             stackView.addArrangedSubview(b2)
             stackView.addArrangedSubview(b3)
