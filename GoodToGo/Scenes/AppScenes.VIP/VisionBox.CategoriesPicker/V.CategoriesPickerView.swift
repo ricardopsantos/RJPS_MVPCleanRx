@@ -114,35 +114,22 @@ extension V {
             NotificationCenter.default.removeObserver(self)
         }
 
-        // MARK: - UI Elements (Private and lazy by default)
-
-        private lazy var stackViewVLevel1: UIStackView = {
-            UIKitFactory.stackView(axis: .vertical, alignment: .fill, layoutMargins: nil)
-        }()
-
-        func makeVerticalStackView() -> UIStackView {
-            let stackView = UIKitFactory.stackView(axis: .horizontal, distribution: .fillEqually)
-            let b1 = V.CategoryButton(text: "1", imageSystemName: "trash.fill")
-            let b2 = V.CategoryButton(text: "1", imageSystemName: "trash.fill")
-            let b3 = V.CategoryButton(text: "1", imageSystemName: "trash.fill")
-            stackView.addArrangedSubview(b1)
-            stackView.addArrangedSubview(b2)
-            stackView.addArrangedSubview(b3)
-            b1.autoLayout.width(screenWidth / 5)
-            b2.autoLayout.width(screenWidth / 5)
-            b3.autoLayout.width(screenWidth / 5)
-            b1.autoLayout.height(screenWidth / 5)
-            b2.autoLayout.height(screenWidth / 5)
-            b3.autoLayout.height(screenWidth / 5)
-            return stackView
-        }
-
-        var verticalStackView1: UIStackView!
-        var verticalStackView2: UIStackView!
-        var verticalStackView3: UIStackView!
+        private let b1 = V.CategoryButton(text: "1", imageSystemName: "trash.fill")
+        private let b2 = V.CategoryButton(text: "2", imageSystemName: "trash.fill")
+        private let b3 = V.CategoryButton(text: "3", imageSystemName: "trash.fill")
+        private let b4 = V.CategoryButton(text: "4", imageSystemName: "trash.fill")
+        private let b5 = V.CategoryButton(text: "5", imageSystemName: "trash.fill")
+        private let b6 = V.CategoryButton(text: "6", imageSystemName: "trash.fill")
+        private let b7 = V.CategoryButton(text: "7", imageSystemName: "trash.fill")
+        private let b8 = V.CategoryButton(text: "8", imageSystemName: "trash.fill")
+        private let b9 = V.CategoryButton(text: "9", imageSystemName: "trash.fill")
 
         private lazy var lblTitle: UILabel = {
             UIKitFactory.label(style: .value)
+        }()
+
+        private lazy var searchBar: CustomSearchBar = {
+            return UIKitFactory.searchBar(placeholder: Messages.search.localised)
         }()
 
         // MARK: - Mandatory
@@ -152,39 +139,55 @@ extension V {
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 1/3 : JUST to add stuff to the view....
         override func prepareLayoutCreateHierarchy() {
-            addSubview(stackViewVLevel1)
-
-            verticalStackView1 = makeVerticalStackView()
-            verticalStackView2 = makeVerticalStackView()
-            verticalStackView3 = makeVerticalStackView()
-
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(lblTitle)
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(verticalStackView1)
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(verticalStackView2)
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(verticalStackView3)
+            addSubview(searchBar)
+            addSubview(lblTitle)
+            [b1, b2, b3, b4, b5, b6, b7, b8, b9].forEach { (some) in
+                self.addSubview(some)
+            }
         }
 
         // This function is called automatically by super BaseGenericViewVIP
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 2/3 : JUST to setup layout rules zone....
         override func prepareLayoutBySettingAutoLayoutsRules() {
-            let defaultMargin = Designables.Sizes.Margins.defaultMargin
 
-            stackViewVLevel1.autoLayout.widthToSuperview()
-            stackViewVLevel1.autoLayout.topToSuperview()
-            //stackViewVLevel1.uiUtils.edgeStackViewToSuperView()
-            verticalStackView1.autoLayout.widthToSuperview()
-            verticalStackView2.autoLayout.widthToSuperview()
-            verticalStackView3.autoLayout.widthToSuperview()
-            //scrollView.autoLayout.edgesToSuperview(excluding: .bottom, insets: .zero)
-            //scrollView.autoLayout.height(scrollViewHeight)
+            let marginH = (screenWidth - V.CategoryButton.defaultSize * 3) / 4
 
-            self.subViewsOf(types: [.label], recursive: true).forEach { (some) in
-                some.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
-                some.autoLayout.widthToSuperview()
-                some.autoLayout.marginToSuperVerticalStackView(trailing: defaultMargin, leading: defaultMargin)
+            searchBar.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
+            searchBar.autoLayout.widthToSuperview()
+            searchBar.autoLayout.topToSuperview()
+
+            lblTitle.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
+            lblTitle.autoLayout.widthToSuperview()
+            lblTitle.autoLayout.topToBottom(of: searchBar, offset: marginH)
+
+            [b1, b2, b3, b4, b5, b6, b7, b8, b9].forEach { (some) in
+                some.autoLayout.width(V.CategoryButton.defaultSize)
+                some.autoLayout.height(V.CategoryButton.defaultSize)
+            }
+
+            [b1, b2, b3].forEach { (some) in
+                some.autoLayout.topToBottom(of: lblTitle, offset: marginH)
+            }
+
+            [b2, b5, b8].forEach { (some) in
+                some.autoLayout.centerXToSuperview()
+            }
+
+            [b4, b5, b6].forEach { (some) in
+                some.autoLayout.centerYToSuperview()
+            }
+
+            [b6, b3, b9].forEach { (some) in
+                some.autoLayout.trailingToSuperview(offset: marginH)
+            }
+
+            [b1, b4, b7].forEach { (some) in
+                  some.autoLayout.leadingToSuperview(offset: marginH)
+              }
+
+            [b7, b8, b9].forEach { (some) in
+                some.bottomToSuperview(offset: -marginH)
             }
 
         }
@@ -194,6 +197,7 @@ extension V {
         // Function 3/3 : Stuff that is not included in [prepareLayoutCreateHierarchy] and [prepareLayoutBySettingAutoLayoutsRules]
         override func prepareLayoutByFinishingPrepareLayout() {
             lblTitle.textAlignment = .center
+            lblTitle.text = "123123"
             DevTools.DebugView.paint(view: self, useBorderColors: true)
         }
 
@@ -208,11 +212,6 @@ extension V {
         }
 
         // MARK: - Custom Getter/Setters
-
-        // We can set the view data by : 1 - Rx                                     ---> var rxTableItems = BehaviorRelay <---
-        // We can set the view data by : 2 - Custom Setters / Computed Vars         ---> var subTitle: String <---
-        // We can set the view data by : 3 - Passing the view model inside the view ---> func setupWith(viewModel: ... <---
-
         public var title: String {
             get { return  lblTitle.text ?? "" }
             set(newValue) {

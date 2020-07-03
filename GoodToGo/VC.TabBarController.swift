@@ -44,7 +44,7 @@ extension VC {
             if DevTools.FeatureFlag.showScene_vipTemplate.isTrue { viewControllersList.append(vipTemplate) }
             if DevTools.FeatureFlag.showScene_rxTests.isTrue { viewControllersList.append(vcRx) }
 
-            viewControllers = [VC.CategoriesPickerViewController(presentationStyle: .modal)] + viewControllersList + [vipDebug] + [vipCarTrack2]
+            viewControllers = [VC.ProdutsListViewController(presentationStyle: .modal), VC.CategoriesPickerViewController(presentationStyle: .modal)] + viewControllersList + [vipDebug] + [vipCarTrack2]
             
         }
 
