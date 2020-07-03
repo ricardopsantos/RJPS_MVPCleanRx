@@ -33,6 +33,7 @@ extension AppDelegate {
     }
 
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        guard DevTools.onRealDevice else { return }
         DevTools.Log.error("App did fail register for push notifications with error [\(error)]")
     }
 

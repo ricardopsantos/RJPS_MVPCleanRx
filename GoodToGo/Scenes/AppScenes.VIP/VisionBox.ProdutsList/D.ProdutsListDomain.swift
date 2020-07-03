@@ -22,19 +22,6 @@ import Extensions
 import PointFreeFunctions
 import UIBase
 
-//
-// MARK: - Enums & Other Models
-//
-
-extension E {
-    struct ProdutsListView {
-        enum ScreenLayout {
-            case layoutA
-            case layoutB
-        }
-    }
-}
-
 // DataStore shared model
 /*
 struct ProdutsListDataStoreModelA {
@@ -147,7 +134,7 @@ extension VM {
             struct ViewModel {
                 let title: String
                 let subTitle: String
-                let screenLayout: E.ProdutsListView.ScreenLayout
+                let products: [ProductModel]
             }
         }
     }

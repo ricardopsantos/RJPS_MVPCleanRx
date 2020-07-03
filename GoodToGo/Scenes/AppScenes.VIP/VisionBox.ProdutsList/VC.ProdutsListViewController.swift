@@ -86,6 +86,18 @@ extension VC {
                 interactor?.requestSomething(request: VM.ProdutsList.Something.Request(userId: ""))
 
             }
+
+            let products = [
+                ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
+                ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
+                ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
+                ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
+                ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
+                ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
+                ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey")
+            ]
+            let screenInitialState = VM.ProdutsList.ScreenInitialState.ViewModel(title: "", subTitle: "", products: products)
+            genericView.setupWith(screenInitialState: screenInitialState)
         }
 
         // Order in View life-cycle : 9

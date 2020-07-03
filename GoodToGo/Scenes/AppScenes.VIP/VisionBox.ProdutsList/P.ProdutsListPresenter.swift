@@ -79,8 +79,7 @@ extension P.ProdutsListPresenter: ProdutsListPresentationLogicProtocol {
         let title = response.title.uppercased()
         let subTitle = response.subTitle.lowercased()
         let viewModel = VM.ProdutsList.ScreenInitialState.ViewModel(title: title,
-                                                                                 subTitle: subTitle,
-                                                                                 screenLayout: .layoutA)
+                                                                                 subTitle: subTitle, products: [])
         viewController?.displayScreenInitialState(viewModel: viewModel)
     }
 
