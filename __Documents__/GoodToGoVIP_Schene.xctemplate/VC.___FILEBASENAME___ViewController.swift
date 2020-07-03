@@ -7,6 +7,7 @@
 //
 import Foundation
 import UIKit
+import SwiftUI
 //
 import RxCocoa
 import RxSwift
@@ -21,6 +22,27 @@ import Extensions
 import PointFreeFunctions
 import AppResources
 import UIBase
+
+// MARK: - Preview
+ 
+@available(iOS 13.0.0, *)
+struct ___VARIABLE_sceneName___ViewController_UIViewControllerRepresentable: UIViewControllerRepresentable {
+    func updateUIViewController(_ uiViewController: VC.___VARIABLE_sceneName___ViewController, context: Context) { }
+    func makeUIViewController(context: Context) -> VC.___VARIABLE_sceneName___ViewController {
+        let vc = VC.___VARIABLE_sceneName___ViewController(presentationStyle: .modal)
+        //vc.something(viewModel: dashboardVM)
+        return vc
+    }
+}
+
+@available(iOS 13.0.0, *)
+struct ___VARIABLE_sceneName___ViewController_Preview: PreviewProvider {
+    static var previews: some SwiftUI.View {
+        return ___VARIABLE_sceneName___ViewController_UIViewControllerRepresentable()
+    }
+}
+
+// MARK: - ViewController
 
 extension VC {
 

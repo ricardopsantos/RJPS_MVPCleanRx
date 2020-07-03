@@ -28,7 +28,7 @@ protocol ___VARIABLE_sceneName___TableViewCellProtocol: GenericTableViewCell_Pro
 }
 
 extension V {
-    class ___VARIABLE_sceneName___TableViewCell: DefaultTableViewCell {
+    public class ___VARIABLE_sceneName___TableViewCell: DefaultTableViewCell {
         func configWith(viewModel: VM.___VARIABLE_sceneName___.TableItem) {
             self.set(title: viewModel.subtitle)
         }

@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import SwiftUI
 //
 import RxCocoa
 import RxSwift
@@ -23,6 +24,25 @@ import Extensions
 import PointFreeFunctions
 import UIBase
 import AppResources
+
+// MARK: - Preview
+
+@available(iOS 13.0.0, *)
+struct ___VARIABLE_sceneName___View_UIViewRepresentable: UIViewRepresentable {
+    func updateUIView(_ uiView: V.___VARIABLE_sceneName___View, context: Context) { }
+    func makeUIView(context: Context) -> V.___VARIABLE_sceneName___View {
+        return V.___VARIABLE_sceneName___View()
+    }
+}
+
+@available(iOS 13.0.0, *)
+struct ___VARIABLE_sceneName___View_Previews: PreviewProvider {
+    static var previews: some SwiftUI.View {
+        ___VARIABLE_sceneName___View_UIViewRepresentable()
+    }
+}
+
+// MARK: - View
 
 extension V {
     class ___VARIABLE_sceneName___View: BaseGenericViewVIP {
@@ -127,19 +147,18 @@ extension V {
                 configureCell: { _, tableView, indexPath, item in
                     let row = indexPath.row
                     let section = indexPath.section
-                    print(row, section)
                     switch item.cellType {
                     case .cellType1:
-                        let reuseIdentifier = ___VARIABLE_sceneName___TableViewCell.reuseIdentifier
+                        let reuseIdentifier = V.___VARIABLE_sceneName___TableViewCell.reuseIdentifier
                         if let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier,
-                                                                    for: IndexPath(row: row, section: section)) as? ___VARIABLE_sceneName___TableViewCell {
+                                                                    for: IndexPath(row: row, section: section)) as? V.___VARIABLE_sceneName___TableViewCell {
                             cell.configWith(viewModel: item)
                             return cell
                         }
                     case .cellType2:
-                        let reuseIdentifier = ___VARIABLE_sceneName___TableViewCell.reuseIdentifier
+                        let reuseIdentifier = V.___VARIABLE_sceneName___TableViewCell.reuseIdentifier
                         if let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier,
-                                                                    for: IndexPath(row: row, section: section)) as? ___VARIABLE_sceneName___TableViewCell {
+                                                                    for: IndexPath(row: row, section: section)) as? V.___VARIABLE_sceneName___TableViewCell {
                             cell.configWith(viewModel: item)
                             return cell
                         }
