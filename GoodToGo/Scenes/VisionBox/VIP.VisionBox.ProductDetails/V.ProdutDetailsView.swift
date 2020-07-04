@@ -32,10 +32,10 @@ struct ProductDetailsView_UIViewRepresentable: UIViewRepresentable {
     func updateUIView(_ uiView: V.ProdutDetailsView, context: Context) { }
     func makeUIView(context: Context) -> V.ProdutDetailsView {
         let view = V.ProdutDetailsView()
-        let screenInitialState = VM.ProdutDetails.ScreenInitialState.ViewModel(productDetails: ProductModel.mockData.first!,
+        let screenInitialState = VM.ProdutDetails.ScreenInitialState.ViewModel(productDetails: VisionBox.ProductModel.mockData.first!,
                                                                                userAvatarImage: Images.notFound.rawValue,
                                                                                userAvatarName: "userAvatarName",
-                                                                               productsList: ProductModel.mockData)
+                                                                               productsList: VisionBox.ProductModel.mockData)
         view.setupWith(screenInitialState: screenInitialState)
         return view
     }
@@ -58,7 +58,7 @@ extension V {
             NotificationCenter.default.removeObserver(self)
         }
 
-        private var collectionViewDataSource: [ProductModel] = [] {
+        private var collectionViewDataSource: [VisionBox.ProductModel] = [] {
             didSet {
                 collectionView.reloadData()
             }
@@ -361,7 +361,7 @@ extension V {
             fatalError("init(coder:) has not been implemented")
         }
 
-        func setup(viewModel: ProductModel) {
+        func setup(viewModel: VisionBox.ProductModel) {
             let image = UIImage(named: viewModel.productImage)
             imgProduct.image = image
         }

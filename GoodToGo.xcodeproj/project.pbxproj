@@ -245,14 +245,11 @@
 		D7B9BF2A24AFA90F0093A82D /* D.CategoriesPickerDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9BF2224AFA90F0093A82D /* D.CategoriesPickerDomain.swift */; };
 		D7B9BF2D24AFA90F0093A82D /* I.CategoriesPickerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9BF2524AFA90F0093A82D /* I.CategoriesPickerInteractor.swift */; };
 		D7B9BF2E24AFA90F0093A82D /* P.CategoriesPickerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9BF2624AFA90F0093A82D /* P.CategoriesPickerPresenter.swift */; };
-		D7B9BF3024AFA9230093A82D /* V.CategoriesPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9BF2F24AFA9230093A82D /* V.CategoriesPickerTableViewCell.swift */; };
-		D7B9BF3924AFCEF40093A82D /* V.ProdutsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9BF3124AFCEF40093A82D /* V.ProdutsListView.swift */; };
-		D7B9BF3A24AFCEF40093A82D /* VC.ProdutsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9BF3224AFCEF40093A82D /* VC.ProdutsListViewController.swift */; };
-		D7B9BF3B24AFCEF40093A82D /* R.ProdutsListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9BF3324AFCEF40093A82D /* R.ProdutsListRouter.swift */; };
-		D7B9BF3C24AFCEF40093A82D /* D.ProdutsListDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9BF3424AFCEF40093A82D /* D.ProdutsListDomain.swift */; };
-		D7B9BF3F24AFCEF40093A82D /* I.ProdutsListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9BF3724AFCEF40093A82D /* I.ProdutsListInteractor.swift */; };
-		D7B9BF4024AFCEF40093A82D /* P.ProdutsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9BF3824AFCEF40093A82D /* P.ProdutsListPresenter.swift */; };
-		D7B9BF4224AFCEFB0093A82D /* V.ProdutsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9BF4124AFCEFB0093A82D /* V.ProdutsListTableViewCell.swift */; };
+		D7B9BF3924AFCEF40093A82D /* V.ProductsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9BF3124AFCEF40093A82D /* V.ProductsListView.swift */; };
+		D7B9BF3A24AFCEF40093A82D /* VC.ProductsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9BF3224AFCEF40093A82D /* VC.ProductsListViewController.swift */; };
+		D7B9BF3B24AFCEF40093A82D /* R.ProductsListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9BF3324AFCEF40093A82D /* R.ProductsListRouter.swift */; };
+		D7B9BF3F24AFCEF40093A82D /* I.ProductsListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9BF3724AFCEF40093A82D /* I.ProductsListInteractor.swift */; };
+		D7B9BF4024AFCEF40093A82D /* P.ProductsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9BF3824AFCEF40093A82D /* P.ProductsListPresenter.swift */; };
 		D7B9BF4B24B080B80093A82D /* V.ProdutDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9BF4324B080B80093A82D /* V.ProdutDetailsView.swift */; };
 		D7B9BF4C24B080B80093A82D /* VC.ProdutDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9BF4424B080B80093A82D /* VC.ProdutDetailsViewController.swift */; };
 		D7B9BF4D24B080B80093A82D /* R.ProdutDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9BF4524B080B80093A82D /* R.ProdutDetailsRouter.swift */; };
@@ -297,6 +294,8 @@
 		D7D9E80D2468173B005B4313 /* Employee copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E80C2468173B005B4313 /* Employee copy.swift */; };
 		D7D9E81824681899005B4313 /* Employee copy 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E81724681899005B4313 /* Employee copy 2.swift */; };
 		D7D9E870246827E3005B4313 /* E.Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80BB22BFB9A6003C4562 /* E.Images.swift */; };
+		D7DD0C5524B0CE7700740095 /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD0C5424B0CE7700740095 /* CategoryButton.swift */; };
+		D7DD0C5724B0E63C00740095 /* D.ProductsListDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD0C5624B0E63C00740095 /* D.ProductsListDomain.swift */; };
 		D7E25A7E246699FC003BBEA0 /* PointFreeFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = D7E25A7C246699FC003BBEA0 /* PointFreeFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D7E25A8E24669B02003BBEA0 /* PointFreeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E25A8D24669B02003BBEA0 /* PointFreeFunctions.swift */; };
 		D7E25A9824669B9B003BBEA0 /* AppConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D7E25A9624669B9B003BBEA0 /* AppConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1275,14 +1274,11 @@
 		D7B9BF2224AFA90F0093A82D /* D.CategoriesPickerDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D.CategoriesPickerDomain.swift; sourceTree = "<group>"; };
 		D7B9BF2524AFA90F0093A82D /* I.CategoriesPickerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.CategoriesPickerInteractor.swift; sourceTree = "<group>"; };
 		D7B9BF2624AFA90F0093A82D /* P.CategoriesPickerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.CategoriesPickerPresenter.swift; sourceTree = "<group>"; };
-		D7B9BF2F24AFA9230093A82D /* V.CategoriesPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V.CategoriesPickerTableViewCell.swift; sourceTree = "<group>"; };
-		D7B9BF3124AFCEF40093A82D /* V.ProdutsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V.ProdutsListView.swift; sourceTree = "<group>"; };
-		D7B9BF3224AFCEF40093A82D /* VC.ProdutsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.ProdutsListViewController.swift; sourceTree = "<group>"; };
-		D7B9BF3324AFCEF40093A82D /* R.ProdutsListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.ProdutsListRouter.swift; sourceTree = "<group>"; };
-		D7B9BF3424AFCEF40093A82D /* D.ProdutsListDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D.ProdutsListDomain.swift; sourceTree = "<group>"; };
-		D7B9BF3724AFCEF40093A82D /* I.ProdutsListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.ProdutsListInteractor.swift; sourceTree = "<group>"; };
-		D7B9BF3824AFCEF40093A82D /* P.ProdutsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.ProdutsListPresenter.swift; sourceTree = "<group>"; };
-		D7B9BF4124AFCEFB0093A82D /* V.ProdutsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V.ProdutsListTableViewCell.swift; sourceTree = "<group>"; };
+		D7B9BF3124AFCEF40093A82D /* V.ProductsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V.ProductsListView.swift; sourceTree = "<group>"; };
+		D7B9BF3224AFCEF40093A82D /* VC.ProductsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.ProductsListViewController.swift; sourceTree = "<group>"; };
+		D7B9BF3324AFCEF40093A82D /* R.ProductsListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.ProductsListRouter.swift; sourceTree = "<group>"; };
+		D7B9BF3724AFCEF40093A82D /* I.ProductsListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.ProductsListInteractor.swift; sourceTree = "<group>"; };
+		D7B9BF3824AFCEF40093A82D /* P.ProductsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.ProductsListPresenter.swift; sourceTree = "<group>"; };
 		D7B9BF4324B080B80093A82D /* V.ProdutDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V.ProdutDetailsView.swift; sourceTree = "<group>"; };
 		D7B9BF4424B080B80093A82D /* VC.ProdutDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.ProdutDetailsViewController.swift; sourceTree = "<group>"; };
 		D7B9BF4524B080B80093A82D /* R.ProdutDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.ProdutDetailsRouter.swift; sourceTree = "<group>"; };
@@ -1328,6 +1324,8 @@
 		D7D9E81B24681BBE005B4313 /* CarTrack_NetWorkRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTrack_NetWorkRepositoryProtocol.swift; sourceTree = "<group>"; };
 		D7D9E82424682161005B4313 /* CarTrackGenericAppBusiness_UseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTrackGenericAppBusiness_UseCaseProtocol.swift; sourceTree = "<group>"; };
 		D7D9E86E2468264A005B4313 /* CarTrackAPIRelated_UseCaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTrackAPIRelated_UseCaseProtocol.swift; sourceTree = "<group>"; };
+		D7DD0C5424B0CE7700740095 /* CategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
+		D7DD0C5624B0E63C00740095 /* D.ProductsListDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = D.ProductsListDomain.swift; sourceTree = "<group>"; };
 		D7E25A6C2465E5A6003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7E25A702465E5F1003BBEA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D7E25A71246695EE003BBEA0 /* AppConstants+Mocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppConstants+Mocks.swift"; sourceTree = "<group>"; };
@@ -2274,7 +2272,6 @@
 				D7B9BF2024AFA90F0093A82D /* VC.CategoriesPickerViewController.swift */,
 				D7B9BF2124AFA90F0093A82D /* R.CategoriesPickerRouter.swift */,
 				D7B9BF2224AFA90F0093A82D /* D.CategoriesPickerDomain.swift */,
-				D7B9BF2F24AFA9230093A82D /* V.CategoriesPickerTableViewCell.swift */,
 				D7B9BF2524AFA90F0093A82D /* I.CategoriesPickerInteractor.swift */,
 				D7B9BF2624AFA90F0093A82D /* P.CategoriesPickerPresenter.swift */,
 			);
@@ -2284,13 +2281,12 @@
 		D7B9BF1C24AFA88D0093A82D /* VIP.VisionBox.ProductsList */ = {
 			isa = PBXGroup;
 			children = (
-				D7B9BF3124AFCEF40093A82D /* V.ProdutsListView.swift */,
-				D7B9BF3224AFCEF40093A82D /* VC.ProdutsListViewController.swift */,
-				D7B9BF3324AFCEF40093A82D /* R.ProdutsListRouter.swift */,
-				D7B9BF3424AFCEF40093A82D /* D.ProdutsListDomain.swift */,
-				D7B9BF4124AFCEFB0093A82D /* V.ProdutsListTableViewCell.swift */,
-				D7B9BF3724AFCEF40093A82D /* I.ProdutsListInteractor.swift */,
-				D7B9BF3824AFCEF40093A82D /* P.ProdutsListPresenter.swift */,
+				D7B9BF3124AFCEF40093A82D /* V.ProductsListView.swift */,
+				D7B9BF3224AFCEF40093A82D /* VC.ProductsListViewController.swift */,
+				D7B9BF3324AFCEF40093A82D /* R.ProductsListRouter.swift */,
+				D7DD0C5624B0E63C00740095 /* D.ProductsListDomain.swift */,
+				D7B9BF3724AFCEF40093A82D /* I.ProductsListInteractor.swift */,
+				D7B9BF3824AFCEF40093A82D /* P.ProductsListPresenter.swift */,
 			);
 			path = VIP.VisionBox.ProductsList;
 			sourceTree = "<group>";
@@ -2315,8 +2311,8 @@
 				D7B9BF1E24AFA8CB0093A82D /* VisionBox_Preview.jpg */,
 				D79B623D24B0CA4C00ACC3EA /* VisionBoxModels.swift */,
 				D7B9BF5D24B084E10093A82D /* VisionBox.Designables */,
-				D7B9BF1C24AFA88D0093A82D /* VIP.VisionBox.ProductsList */,
 				D7B9BF1B24AFA82B0093A82D /* VIP.VisionBox.CategoriesPicker */,
+				D7B9BF1C24AFA88D0093A82D /* VIP.VisionBox.ProductsList */,
 				D7B9BF1D24AFA8A80093A82D /* VIP.VisionBox.ProductDetails */,
 			);
 			path = VisionBox;
@@ -2363,6 +2359,7 @@
 			children = (
 				D79B623924B0876100ACC3EA /* ProductCardView.swift */,
 				D79B623B24B0877D00ACC3EA /* ProductCollectionViewCell.swift */,
+				D7DD0C5424B0CE7700740095 /* CategoryButton.swift */,
 			);
 			path = VisionBox.Designables;
 			sourceTree = "<group>";
@@ -3791,7 +3788,6 @@
 				9F6BB2FD22E3C0E400829A6F /* VM.BlissDetails_ViewModel.swift in Sources */,
 				9FE1439721AF2F520026BDFC /* typealias.Application.swift in Sources */,
 				9F6BB2FB22E3C0E400829A6F /* P.BlissDetails_Presenter.swift in Sources */,
-				D7B9BF3C24AFCEF40093A82D /* D.ProdutsListDomain.swift in Sources */,
 				D7979DBA246D6B370039031C /* I.CarTrackLoginInteractor.swift in Sources */,
 				9F6BB2ED22E3A97F00829A6F /* D.BlissQuestionsList_ViewModel.swift in Sources */,
 				9F6BB2D122E3470200829A6F /* V.MVPSampleTableView_View.swift in Sources */,
@@ -3806,10 +3802,9 @@
 				D7711F69246B340C00B6963A /* V.___FILEBASENAME___View.swift in Sources */,
 				9F6BB2FA22E3C0E400829A6F /* R.BlissDetails_Router.swift in Sources */,
 				D7711F6B246B340C00B6963A /* P.___FILEBASENAME___Presenter.swift in Sources */,
-				D7B9BF3024AFA9230093A82D /* V.CategoriesPickerTableViewCell.swift in Sources */,
 				9F6BB2D222E3470200829A6F /* P.MVPSampleTableView_Presenter.swift in Sources */,
 				D7F2DE332474A718008CE3DA /* VC.DataStoreReceiverViewController.swift in Sources */,
-				D7B9BF3924AFCEF40093A82D /* V.ProdutsListView.swift in Sources */,
+				D7B9BF3924AFCEF40093A82D /* V.ProductsListView.swift in Sources */,
 				D79B623E24B0CA4C00ACC3EA /* VisionBoxModels.swift in Sources */,
 				D7F2DE342474A718008CE3DA /* R.DataStoreReceiverRouter.swift in Sources */,
 				9FE0572822E8D75400802747 /* MVPSampleRxView_View.swift in Sources */,
@@ -3828,7 +3823,7 @@
 				9FE0572722E8D75400802747 /* D.MVPSampleRxView_ViewModel.swift in Sources */,
 				9F6BB2FF22E3CB2D00829A6F /* P.BlissRoot_Presenter.swift in Sources */,
 				9FE143C021AF2F520026BDFC /* AppDelegate.swift in Sources */,
-				D7B9BF3F24AFCEF40093A82D /* I.ProdutsListInteractor.swift in Sources */,
+				D7B9BF3F24AFCEF40093A82D /* I.ProductsListInteractor.swift in Sources */,
 				9FACC17B223BDD5B00576498 /* TO_DO.swift in Sources */,
 				9FE0572922E8D8F000802747 /* R.MVPSampleView_Router.swift in Sources */,
 				9FE0572422E8D75400802747 /* R.MVPSampleRxView_Router.swift in Sources */,
@@ -3843,24 +3838,24 @@
 				9F6BB30022E3CB2D00829A6F /* AC.BlissRoot_AssemblyContainer.swift in Sources */,
 				9FACC18B223BFB0F00576498 /* AppDelegate+Setup.swift in Sources */,
 				9F6BB2D922E3673200829A6F /* AppDelegate+URL.swift in Sources */,
-				D7B9BF3A24AFCEF40093A82D /* VC.ProdutsListViewController.swift in Sources */,
+				D7B9BF3A24AFCEF40093A82D /* VC.ProductsListViewController.swift in Sources */,
 				9F6BB2F022E3A97F00829A6F /* P.BlissQuestionsList_Presenter.swift in Sources */,
 				9F58FB4922BE5DE700042A8C /* R.SearchUser_Router.swift in Sources */,
 				9F58FB4522BE5DE700042A8C /* R.UserDetails_Router.swift in Sources */,
 				D7711F63246B340C00B6963A /* R.___FILEBASENAME___Router.swift in Sources */,
 				D7979DBB246D6B370039031C /* R.CarTrackLoginRouter.swift in Sources */,
 				D72923892466BF4700DAD480 /* VC.TabBarController.swift in Sources */,
-				D7B9BF3B24AFCEF40093A82D /* R.ProdutsListRouter.swift in Sources */,
+				D7B9BF3B24AFCEF40093A82D /* R.ProductsListRouter.swift in Sources */,
 				D7711F82246B691600B6963A /* ProgramaticUIUtils.swift in Sources */,
 				9F58FB4822BE5DE700042A8C /* D.UserDetails_Domain.swift in Sources */,
 				D7AB2443246716C6000142C4 /* V.UserTableViewCell.swift in Sources */,
 				9F58FB4A22BE5DE700042A8C /* D.SearchUser_ViewModel.swift in Sources */,
 				D7711F6D246B3B4400B6963A /* V.___FILEBASENAME___TableViewCell.swift in Sources */,
-				D7B9BF4224AFCEFB0093A82D /* V.ProdutsListTableViewCell.swift in Sources */,
 				D7B9BF4E24B080B80093A82D /* D.ProdutDetailsDomain.swift in Sources */,
-				D7B9BF4024AFCEF40093A82D /* P.ProdutsListPresenter.swift in Sources */,
+				D7B9BF4024AFCEF40093A82D /* P.ProductsListPresenter.swift in Sources */,
 				9F58FB4D22BE5DE700042A8C /* AS.SearchUser_AssemblyContainer.swift in Sources */,
 				9F6BB2D322E3470200829A6F /* R.MVPSampleTableView_Router.swift in Sources */,
+				D7DD0C5524B0CE7700740095 /* CategoryButton.swift in Sources */,
 				D7979DB6246D6B370039031C /* VC.CarTrackLoginViewController.swift in Sources */,
 				D7BC2019247EE02200D546F0 /* DeeplinksManager.swift in Sources */,
 				9FE0572B22E8D8F000802747 /* P.MVPSampleView_Presenter.swift in Sources */,
@@ -3873,6 +3868,7 @@
 				D7979DB3246D6B370039031C /* R.CartTrackMapRouter.swift in Sources */,
 				D7B9BF5424B080C40093A82D /* V.ProdutDetailsTableViewCell.swift in Sources */,
 				D7C4CB872494D3990087E999 /* CarTrackMKMarkerAnnotationView.swift in Sources */,
+				D7DD0C5724B0E63C00740095 /* D.ProductsListDomain.swift in Sources */,
 				D7B9BF2D24AFA90F0093A82D /* I.CategoriesPickerInteractor.swift in Sources */,
 				D7B9BF5224B080B80093A82D /* P.ProdutDetailsPresenter.swift in Sources */,
 				9F103A332236C08900C57BC0 /* RootAssemblyContainer.swift in Sources */,

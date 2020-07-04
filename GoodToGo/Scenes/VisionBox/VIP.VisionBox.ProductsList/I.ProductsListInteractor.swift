@@ -34,18 +34,14 @@ import Factory
 //
 
 extension I {
-    class ProdutsListInteractor: BaseInteractorVIP, ProdutsListDataStoreProtocol {
-
+    class ProdutsListInteractor: BaseInteractorVIP, ProductsListDataStoreProtocol {
         deinit {
             DevTools.Log.logDeInit("\(ProdutsListInteractor.self) was killed")
             NotificationCenter.default.removeObserver(self)
         }
         var presenter: ProdutsListPresentationLogicProtocol?
         weak var basePresenter: BasePresenterVIPProtocol? { return presenter }
-
-        // DataStoreProtocol Protocol vars...
-        var dsSomeKindOfModelAThatWillBePassedToOtherRouter: SomeRandomModelA?
-        var dsSomeKindOfModelBThatWillBePassedToOtherRouter: SomeRandomModelB?
+        var dsSelectedCategory: VisionBox.Category?
     }
 }
 
@@ -56,15 +52,9 @@ extension I.ProdutsListInteractor: BaseInteractorVIPMandatoryBusinessLogicProtoc
     /// When the screen is loaded, this function is responsible to bind the View with some (temporary or final) data
     /// till the user have all the data loaded on the view. This will improve user experience.
     func requestScreenInitialState() {
-        var response: VM.ProdutsList.ScreenInitialState.Response!
-        response = VM.ProdutsList.ScreenInitialState.Response(title: "Template Scene 1", subTitle: "Tap one of the buttons")
+        let products = VisionBox.ProductModel.mockData.filter({$0.category == dsSelectedCategory})
+        let response = VM.ProductsList.ScreenInitialState.Response(products: products)
         presenter?.presentScreenInitialState(response: response)
-
-        // Update DataStore // <<-- DS Sample : Take notice
-        // When passing Data from the Scene Router to other one, this will be the value that will be passed
-        dsSomeKindOfModelAThatWillBePassedToOtherRouter = SomeRandomModelA(s1: "A: \(Date())")
-        dsSomeKindOfModelBThatWillBePassedToOtherRouter = SomeRandomModelB(s2: "B: \(Date())")
-
     }
 
 }
@@ -78,23 +68,6 @@ extension I.ProdutsListInteractor {
 // MARK: BusinessLogicProtocol
 
 extension I.ProdutsListInteractor: ProdutsListBusinessLogicProtocol {
-
-    #warning("THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE")
-    func requestSomething(request: VM.ProdutsList.Something.Request) {
-
-        presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
-        DispatchQueue.executeWithDelay(delay: 0.5) { [weak self] in
-            let mockA1 = TemplateModel(id: "some id 1", state: "state_a - \(Date())")
-            let mockA2 = TemplateModel(id: "some id 2", state: "state_a - \(Date())")
-            let response = VM.ProdutsList.Something.Response(listA: [mockA1],
-                                                                          listB: [mockA2],
-                                                                          subTitle: "New subtitle \(Date())")
-            self?.presenter?.presentSomething(response: response)
-            self?.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
-            //self?.presenter?.presentError(error: error)
-            self?.presenter?.presentStatus(response: BaseDisplayLogicModels.Status(message: Messages.success.localised))
-        }
-    }
 
 }
 

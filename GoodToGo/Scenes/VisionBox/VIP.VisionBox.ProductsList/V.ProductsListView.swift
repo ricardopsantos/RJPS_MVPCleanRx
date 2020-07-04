@@ -29,10 +29,10 @@ import AppResources
 
 @available(iOS 13.0.0, *)
 struct ProductsListView_UIViewRepresentable: UIViewRepresentable {
-    func updateUIView(_ uiView: V.ProdutsListView, context: Context) { }
-    func makeUIView(context: Context) -> V.ProdutsListView {
-        let view = V.ProdutsListView()
-        let screenInitialState = VM.ProdutsList.ScreenInitialState.ViewModel(title: "", subTitle: "", products: ProductModel.mockData)
+    func updateUIView(_ uiView: V.ProductsListView, context: Context) { }
+    func makeUIView(context: Context) -> V.ProductsListView {
+        let view = V.ProductsListView()
+        let screenInitialState = VM.ProductsList.ScreenInitialState.ViewModel(products: VisionBox.ProductModel.mockData)
         view.setupWith(screenInitialState: screenInitialState)
         return view
     }
@@ -48,7 +48,7 @@ struct ProductsListView_Previews: PreviewProvider {
 // MARK: - View
 
 extension V {
-    class ProdutsListView: BaseGenericViewVIP {
+    class ProductsListView: BaseGenericViewVIP {
 
         deinit {
             DevTools.Log.logDeInit("\(self.className) was killed")
@@ -56,6 +56,10 @@ extension V {
         }
 
         // MARK: - UI Elements (Private and lazy by default)
+
+        private lazy var lblTitle: UILabel = {
+            UIKitFactory.label(style: .title)
+         }()
 
         private lazy var collectionView: UICollectionView = {
              let viewLayout = UICollectionViewFlowLayout()
@@ -68,6 +72,7 @@ extension V {
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 1/3 : JUST to add stuff to the view....
         override func prepareLayoutCreateHierarchy() {
+            addSubview(lblTitle)
             addSubview(collectionView)
         }
 
@@ -75,7 +80,14 @@ extension V {
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 2/3 : JUST to setup layout rules zone....
         override func prepareLayoutBySettingAutoLayoutsRules() {
-            collectionView.edgesToSuperview(usingSafeArea: true)
+            lblTitle.autoLayout.topToSuperview(usingSafeArea: true)
+            lblTitle.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+            lblTitle.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+
+            collectionView.topToBottom(of: lblTitle, offset: Designables.Sizes.Margins.defaultMargin)
+            collectionView.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+            collectionView.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+            collectionView.bottomToSuperview(usingSafeArea: true)
         }
 
         // This function is called automatically by super BaseGenericViewVIP
@@ -103,18 +115,17 @@ extension V {
         // We can set the view data by : 2 - Custom Setters / Computed Vars         ---> var subTitle: String <---
         // We can set the view data by : 3 - Passing the view model inside the view ---> func setupWith(viewModel: ... <---
 
-        private var collectionViewDataSource: [ProductModel] = [] {
+        private var collectionViewDataSource: [VisionBox.ProductModel] = [] {
             didSet {
                 collectionView.reloadData()
             }
         }
 
-        func setupWith(someStuff viewModel: VM.ProdutsList.Something.ViewModel) {
-
-        }
-
-        func setupWith(screenInitialState viewModel: VM.ProdutsList.ScreenInitialState.ViewModel) {
+        func setupWith(screenInitialState viewModel: VM.ProductsList.ScreenInitialState.ViewModel) {
             collectionViewDataSource = viewModel.products
+            if let title = viewModel.products.first?.category.toString {
+                lblTitle.text = title
+            }
         }
 
     }
@@ -122,7 +133,7 @@ extension V {
 
 // MARK: - Events capture
 
-extension V.ProdutsListView {
+extension V.ProductsListView {
    /* var rxBtnSample1Tap: Observable<Void> { btnSample1.rx.tapSmart(disposeBag) }
     var rxBtnSample2Tap: Observable<Void> { btnSample2.rx.tapSmart(disposeBag) }
     var rxModelSelected: ControlEvent<VM.ProdutsList.TableItem> {
@@ -132,7 +143,7 @@ extension V.ProdutsListView {
 
 // MARK: - UICollectionViewDataSource
 
-extension V.ProdutsListView: UICollectionViewDataSource {
+extension V.ProductsListView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionViewDataSource.count
     }
@@ -148,7 +159,7 @@ extension V.ProdutsListView: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension V.ProdutsListView: UICollectionViewDelegateFlowLayout {
+extension V.ProductsListView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         //let width = itemWidth(for: self.frame.width, spacing: LayoutConstant.spacing)
         let width = screenWidth * 0.8
@@ -233,7 +244,7 @@ extension V {
             fatalError("init(coder:) has not been implemented")
         }
 
-        func setup(viewModel: ProductModel) {
+        func setup(viewModel: VisionBox.ProductModel) {
             productCardView.setup(viewModel: viewModel)
             imgBackground.image = UIImage(named: viewModel.backgroundImage)
             let image = UIImage(named: viewModel.productImage)
@@ -308,7 +319,7 @@ extension V {
             fatalError("init(coder:) has not been implemented")
         }
 
-        func setup(viewModel: ProductModel) {
+        func setup(viewModel: VisionBox.ProductModel) {
             lblTitle.text = viewModel.name
             lblSpecification.text = "\(viewModel.specification) \(viewModel.inventory)"
             lblPrice.text = viewModel.price

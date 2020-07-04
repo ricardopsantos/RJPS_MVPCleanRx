@@ -27,10 +27,9 @@ import UIBase
  
 @available(iOS 13.0.0, *)
 struct ProdutsListViewController_UIViewControllerRepresentable: UIViewControllerRepresentable {
-    func updateUIViewController(_ uiViewController: VC.ProdutsListViewController, context: Context) { }
-    func makeUIViewController(context: Context) -> VC.ProdutsListViewController {
-        let vc = VC.ProdutsListViewController(presentationStyle: .modal)
-        //vc.something(viewModel: dashboardVM)
+    func updateUIViewController(_ uiViewController: VC.ProductsListViewController, context: Context) { }
+    func makeUIViewController(context: Context) -> VC.ProductsListViewController {
+        let vc = VC.ProductsListViewController(presentationStyle: .modal)
         return vc
     }
 }
@@ -46,7 +45,7 @@ struct ProdutsListViewController_Preview: PreviewProvider {
 
 extension VC {
 
-    class ProdutsListViewController: BaseGenericViewControllerVIP<V.ProdutsListView> {
+    class ProductsListViewController: BaseGenericViewControllerVIP<V.ProductsListView> {
 
         deinit {
             DevTools.Log.logDeInit("\(self.className) was killed")
@@ -55,7 +54,7 @@ extension VC {
         
         private var interactor: ProdutsListBusinessLogicProtocol?
         var router: (ProdutsListRoutingLogicProtocol &
-            ProdutsListDataPassingProtocol &
+            ProductsListDataPassingProtocol &
             ProdutsListRoutingLogicProtocol)?
 
         private lazy var reachabilityView: ReachabilityView = {
@@ -80,8 +79,6 @@ extension VC {
             super.viewWillAppear(animated)
             if firstAppearance {
                 interactor?.requestScreenInitialState()
-                interactor?.requestSomething(request: VM.ProdutsList.Something.Request(userId: ""))
-
             }
         }
 
@@ -107,7 +104,7 @@ extension VC {
             let viewController = self
             let interactor = I.ProdutsListInteractor()
             let presenter  = P.ProdutsListPresenter()
-            let router     = R.ProdutsListRouter()
+            let router     = R.ProductsListRouter()
             viewController.interactor = interactor
             viewController.router    = router
             interactor.presenter     = presenter
@@ -124,29 +121,7 @@ extension VC {
 
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
-/*
-            genericView
-                .rxModelSelected
-                .log(whereAmI())
-                .subscribe(onNext: { /* [router] */ (some) in
-                    DevTools.Log.message("Received [\(some)]")
-                })
-                .disposed(by: disposeBag)
 
-            genericView.rxBtnSample1Tap
-                .do(onNext: { [weak self] in
-                    self?.router?.routeSomewhereWithDataStore()
-                })
-                .subscribe()
-                .disposed(by: disposeBag)
-
-            genericView.rxBtnSample2Tap
-                .do(onNext: { [weak self] in
-                    self?.doPrivateStuff()
-                })
-                .subscribe()
-                .disposed(by: disposeBag)
-*/
         }
 
         // This function is called automatically by super BaseGenericView
@@ -158,33 +133,25 @@ extension VC {
 
 // MARK: Public Misc Stuff
 
-extension VC.ProdutsListViewController {
+extension VC.ProductsListViewController {
 
 }
 
 // MARK: Private Misc Stuff
 
-extension VC.ProdutsListViewController {
-    #warning("THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE")
-    private func doPrivateStuff() {
-       // let userId = genericView.subTitle
-        //let request = VM.ProdutsList.Something.Request(userId: userId)
-        //self.interactor?.requestSomething(request: request)
-    }
+extension VC.ProductsListViewController {
+
 }
 
 // MARK: DisplayLogicProtocolProtocol
 
-extension VC.ProdutsListViewController: ProdutsListDisplayLogicProtocol {
+extension VC.ProductsListViewController: ProdutsListDisplayLogicProtocol {
 
-    func displaySomething(viewModel: VM.ProdutsList.Something.ViewModel) {
-        // Setting up the view, option 1 : passing the view model
-        genericView.setupWith(someStuff: viewModel)
+    func displaySomething(viewModel: VM.ProductsList.Something.ViewModel) {
+
     }
 
-    func displayScreenInitialState(viewModel: VM.ProdutsList.ScreenInitialState.ViewModel) {
-        title = viewModel.title
-        // Setting up the view, option 2 : setting the vars one by one
-       // genericView.subTitle = viewModel.subTitle
+    func displayScreenInitialState(viewModel: VM.ProductsList.ScreenInitialState.ViewModel) {
+        genericView.setupWith(screenInitialState: viewModel)
     }
 }

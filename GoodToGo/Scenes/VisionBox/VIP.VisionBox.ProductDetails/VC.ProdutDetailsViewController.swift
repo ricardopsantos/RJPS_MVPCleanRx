@@ -83,10 +83,10 @@ extension VC {
                 interactor?.requestSomething(request: VM.ProdutDetails.Something.Request(userId: ""))
 
             }
-            let screenInitialState = VM.ProdutDetails.ScreenInitialState.ViewModel(productDetails: ProductModel.mockData.first!,
+            let screenInitialState = VM.ProdutDetails.ScreenInitialState.ViewModel(productDetails: VisionBox.ProductModel.mockData.first!,
                                                                                    userAvatarImage: Images.notFound.rawValue,
                                                                                    userAvatarName: "userAvatarName",
-                                                                                   productsList: ProductModel.mockData)
+                                                                                   productsList: VisionBox.ProductModel.mockData)
             genericView.setupWith(screenInitialState: screenInitialState)
         }
 

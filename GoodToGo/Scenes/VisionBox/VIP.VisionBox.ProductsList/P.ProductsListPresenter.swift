@@ -1,5 +1,5 @@
 //
-//  P.CategoriesPickerPresenter.swift
+//  P.ProdutsListPresenter.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 03/07/2020.
@@ -33,12 +33,12 @@ import UIBase
 //
 
 extension P {
-    class CategoriesPickerPresenter: BasePresenterVIP {
+    class ProdutsListPresenter: BasePresenterVIP {
         deinit {
-            DevTools.Log.logDeInit("\(CategoriesPickerPresenter.self) was killed")
+            DevTools.Log.logDeInit("\(ProdutsListPresenter.self) was killed")
             NotificationCenter.default.removeObserver(self)
         }
-        weak var viewController: (CategoriesPickerDisplayLogicProtocol)?
+        weak var viewController: (ProdutsListDisplayLogicProtocol)?
 
         override weak var baseViewController: BaseViewControllerVIPProtocol? {
             return viewController
@@ -48,18 +48,17 @@ extension P {
 
 // MARK: PresentationLogicProtocol
 
-extension P.CategoriesPickerPresenter: CategoriesPickerPresentationLogicProtocol {
+extension P.ProdutsListPresenter: ProdutsListPresentationLogicProtocol {
 
     // Used By Interactor (exclusively)
-    func presentScreenInitialState(response: VM.CategoriesPicker.ScreenInitialState.Response) {
-        let viewModel = VM.CategoriesPicker.ScreenInitialState.ViewModel()
+    func presentScreenInitialState(response: VM.ProductsList.ScreenInitialState.Response) {
+        let viewModel = VM.ProductsList.ScreenInitialState.ViewModel(products: response.products)
         viewController?.displayScreenInitialState(viewModel: viewModel)
     }
 
     // Used By Interactor (exclusively)
-    func presentCategoryChange(response: VM.CategoriesPicker.CategoryChange.Response) {
-        let viewModel = VM.CategoriesPicker.CategoryChange.ViewModel()
-        viewController?.displayCategoryChange(viewModel: viewModel)
+    func presentSomething(response: VM.ProductsList.Something.Response) {
+
     }
 
 }

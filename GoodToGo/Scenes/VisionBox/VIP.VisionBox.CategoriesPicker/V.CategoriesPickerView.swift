@@ -44,66 +44,6 @@ struct CategoriesPickerView_Previews: PreviewProvider {
     }
 }
 
-extension V {
-
-    open class CategoryButton: UIView {
-        static let defaultSize: CGFloat = screenWidth / 4.0
-        private let label = UILabel()
-        private let back = UIView()
-        private let image = UIImageView()
-
-        required public init?(coder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
-
-        public override init(frame: CGRect) {
-            super.init(frame: frame)
-            setupView()
-        }
-
-        public convenience init(text: String="", imageSystemName: String) {
-            self.init(frame: .zero)
-            label.text = text
-            if #available(iOS 13.0, *) {
-                image.image = UIImage(systemName: imageSystemName)
-            }
-        }
-
-        open override func layoutSubviews() {
-            super.layoutSubviews()
-        }
-
-        private func setupView() {
-            addSubview(back)
-            addSubview(image)
-            addSubview(label)
-
-            label.autoLayout.bottomToSuperview()
-            label.autoLayout.widthToSuperview()
-            label.textAlignment = .center
-            label.apply(style: .title)
-
-            back.addCorner(radius: 10)
-            back.autoLayout.centerXToSuperview()
-            back.autoLayout.centerYToSuperview(offset: -10)
-            back.autoLayout.widthToSuperview(multiplier: 0.6)
-            back.autoLayout.heightToSuperview(multiplier: 0.6)
-            back.backgroundColor = .red
-
-            image.autoLayout.centerXToSuperview()
-            image.autoLayout.centerYToSuperview(offset: -10)
-            image.autoLayout.widthToSuperview(multiplier: 0.5)
-            image.autoLayout.heightToSuperview(multiplier: 0.5)
-            image.contentMode = .scaleAspectFit
-            image.backgroundColor = .clear
-            
-            self.backgroundColor = UIColor.blue.withAlphaComponent(0.1)
-
-        }
-    }
-
-}
-
 // MARK: - View
 
 extension V {
@@ -114,22 +54,23 @@ extension V {
             NotificationCenter.default.removeObserver(self)
         }
 
-        private let b1 = V.CategoryButton(text: "1", imageSystemName: "trash.fill")
-        private let b2 = V.CategoryButton(text: "2", imageSystemName: "trash.fill")
-        private let b3 = V.CategoryButton(text: "3", imageSystemName: "trash.fill")
-        private let b4 = V.CategoryButton(text: "4", imageSystemName: "trash.fill")
-        private let b5 = V.CategoryButton(text: "5", imageSystemName: "trash.fill")
-        private let b6 = V.CategoryButton(text: "6", imageSystemName: "trash.fill")
-        private let b7 = V.CategoryButton(text: "7", imageSystemName: "trash.fill")
-        private let b8 = V.CategoryButton(text: "8", imageSystemName: "trash.fill")
-        private let b9 = V.CategoryButton(text: "9", imageSystemName: "trash.fill")
+        var rxFilter = BehaviorSubject<String?>(value: nil)
+        var rxCategoryTap = BehaviorSubject<VisionBox.Category?>(value: nil)
 
-        private lazy var lblTitle: UILabel = {
-            UIKitFactory.label(style: .value)
-        }()
+        private lazy var b1: CategoryButton = { V.CategoryButton(category: .cat1) }()
+        private lazy var b2: CategoryButton = { V.CategoryButton(category: .cat2) }()
+        private lazy var b3: CategoryButton = { V.CategoryButton(category: .cat3) }()
+        private lazy var b4: CategoryButton = { V.CategoryButton(category: .cat4) }()
+        private lazy var b5: CategoryButton = { V.CategoryButton(category: .cat5) }()
+        private lazy var b6: CategoryButton = { V.CategoryButton(category: .cat6) }()
+        private lazy var b7: CategoryButton = { V.CategoryButton(category: .cat7) }()
+        private lazy var b8: CategoryButton = { V.CategoryButton(category: .cat8) }()
+        private lazy var b9: CategoryButton = { V.CategoryButton(category: .cat9) }()
+
+        private lazy var lblTitle: UILabel = { UIKitFactory.label(style: .value) }()
 
         private lazy var searchBar: CustomSearchBar = {
-            return UIKitFactory.searchBar(placeholder: Messages.search.localised)
+            UIKitFactory.searchBar(placeholder: Messages.search.localised)
         }()
 
         // MARK: - Mandatory
@@ -207,6 +148,32 @@ extension V {
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
 
+            [b1, b2, b3, b4, b5, b6, b7, b8, b9].forEach { (some) in
+                let tapGesture = UITapGestureRecognizer()
+                some.addGestureRecognizer(tapGesture)
+                tapGesture.rx.event.bind(onNext: { [weak self] recognizer in
+                    guard let self = self else { return }
+                    let category = VisionBox.Category(rawValue: recognizer.view!.tag)
+                    self.rxCategoryTap.onNext(category)
+                }).disposed(by: disposeBag)
+            }
+
+            searchBar.rx.text
+                .orEmpty
+                .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
+                .log(whereAmI())
+                .subscribe(onNext: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.rxFilter.onNext(self.searchBar.text)
+                })
+                .disposed(by: disposeBag)
+            searchBar.rx.textDidEndEditing
+                .subscribe(onNext: { [weak self] (_) in
+                    guard let self = self else { return }
+                    guard self.searchBar.text!.count>0 else { return }
+                    self.rxFilter.onNext(self.searchBar.text)
+                })
+                .disposed(by: self.disposeBag)
         }
 
         // MARK: - Custom Getter/Setters
@@ -223,19 +190,13 @@ extension V {
             }
         }
 
-        func setupWith(someStuff viewModel: VM.CategoriesPicker.Something.ViewModel) {
-            title = viewModel.subTitle
+        func setupWith(someStuff viewModel: VM.CategoriesPicker.CategoryChange.ViewModel) {
+            // route to
         }
 
         func setupWith(screenInitialState viewModel: VM.CategoriesPicker.ScreenInitialState.ViewModel) {
-            title = viewModel.subTitle
-            screenLayout = viewModel.screenLayout
-        }
-
-        var screenLayout: E.CategoriesPickerView.ScreenLayout = .layoutA {
-            didSet {
-                // show or hide stuff
-            }
+           // title = viewModel.subTitle
+           // screenLayout = viewModel.screenLayout
         }
     }
 }
@@ -243,9 +204,5 @@ extension V {
 // MARK: - Events capture
 
 extension V.CategoriesPickerView {
-    //var rxBtnSample1Tap: Observable<Void> { btnSample1.rx.tapSmart(disposeBag) }
-    //var rxBtnSample2Tap: Observable<Void> { btnSample2.rx.tapSmart(disposeBag) }
-    //var rxModelSelected: ControlEvent<VM.CategoriesPicker.TableItem> {
-    //    tableView.rx.modelSelected(VM.CategoriesPicker.TableItem.self)
-    //}
+
 }

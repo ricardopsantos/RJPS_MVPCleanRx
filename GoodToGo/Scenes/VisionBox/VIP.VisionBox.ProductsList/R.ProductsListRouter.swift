@@ -22,27 +22,26 @@ import PointFreeFunctions
 import UIBase
 
 extension R {
-    class ProdutsListRouter: ProdutsListDataPassingProtocol {
+    class ProductsListRouter: ProductsListDataPassingProtocol {
         deinit {
-            DevTools.Log.logDeInit("\(ProdutsListRouter.self) was killed")
+            DevTools.Log.logDeInit("\(ProductsListRouter.self) was killed")
             NotificationCenter.default.removeObserver(self)
         }
-        weak var viewController: VC.ProdutsListViewController?
+        weak var viewController: VC.ProductsListViewController?
 
-        // DataPassingProtocol Protocol vars...
-        var dsSource: ProdutsListDataStoreProtocol? { didSet { DevTools.Log.message("DataStore changed") } }
+        var dsSource: ProductsListDataStoreProtocol? { didSet { DevTools.Log.message("DataStore changed") } }
      }
 }
 
 // MARK: RoutingLogicProtocol
 
-extension R.ProdutsListRouter: ProdutsListRoutingLogicProtocol {
+extension R.ProductsListRouter: ProdutsListRoutingLogicProtocol {
     func dismissMe() {
         viewController?.dismissMe()
     }
 
     func routeSomewhereWithDataStore() {
-        func passDataToSomewhere(source: ProdutsListDataStoreProtocol,
+        /*func passDataToSomewhere(source: ProdutsListDataStoreProtocol,
                                  destination: inout DataStoreReceiverDataStoreProtocol) { // <<-- DS Sample : Take notice
             destination.dsSomeKindOfModelAToBeSettedByOtherRouter = source.dsSomeKindOfModelAThatWillBePassedToOtherRouter
             //destination.dsSomeKindOfModelBToBeSettedByOtherRouter = source.dsSomeKindOfModelBThatWillBePassedToOtherRouter
@@ -51,7 +50,7 @@ extension R.ProdutsListRouter: ProdutsListRoutingLogicProtocol {
         if var destinationDS = destinationVC.router?.dsToBeSetted { // <<-- DS Sample : Take notice
             passDataToSomewhere(source: dsSource!, destination: &destinationDS)
         }
-        viewController?.present(destinationVC, animated: true, completion: nil)
+        viewController?.present(destinationVC, animated: true, completion: nil)*/
     }
 
     func routeToTemplateWithParentDataStore() {

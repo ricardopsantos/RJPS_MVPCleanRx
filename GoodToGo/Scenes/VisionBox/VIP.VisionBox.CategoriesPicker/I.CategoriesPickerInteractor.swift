@@ -44,8 +44,7 @@ extension I {
         weak var basePresenter: BasePresenterVIPProtocol? { return presenter }
 
         // DataStoreProtocol Protocol vars...
-        var dsSomeKindOfModelAThatWillBePassedToOtherRouter: SomeRandomModelA?
-        var dsSomeKindOfModelBThatWillBePassedToOtherRouter: SomeRandomModelB?
+        var dsSelectedCategory: VisionBox.Category?
     }
 }
 
@@ -56,15 +55,8 @@ extension I.CategoriesPickerInteractor: BaseInteractorVIPMandatoryBusinessLogicP
     /// When the screen is loaded, this function is responsible to bind the View with some (temporary or final) data
     /// till the user have all the data loaded on the view. This will improve user experience.
     func requestScreenInitialState() {
-        var response: VM.CategoriesPicker.ScreenInitialState.Response!
-        response = VM.CategoriesPicker.ScreenInitialState.Response(title: "Template Scene 1", subTitle: "Tap one of the buttons")
+        let response = VM.CategoriesPicker.ScreenInitialState.Response()
         presenter?.presentScreenInitialState(response: response)
-
-        // Update DataStore // <<-- DS Sample : Take notice
-        // When passing Data from the Scene Router to other one, this will be the value that will be passed
-        dsSomeKindOfModelAThatWillBePassedToOtherRouter = SomeRandomModelA(s1: "A: \(Date())")
-        dsSomeKindOfModelBThatWillBePassedToOtherRouter = SomeRandomModelB(s2: "B: \(Date())")
-
     }
 
 }
@@ -79,21 +71,10 @@ extension I.CategoriesPickerInteractor {
 
 extension I.CategoriesPickerInteractor: CategoriesPickerBusinessLogicProtocol {
 
-    #warning("THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE")
-    func requestSomething(request: VM.CategoriesPicker.Something.Request) {
-
-        presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
-        DispatchQueue.executeWithDelay(delay: 0.5) { [weak self] in
-            let mockA1 = TemplateModel(id: "some id 1", state: "state_a - \(Date())")
-            let mockA2 = TemplateModel(id: "some id 2", state: "state_a - \(Date())")
-            let response = VM.CategoriesPicker.Something.Response(listA: [mockA1],
-                                                                          listB: [mockA2],
-                                                                          subTitle: "New subtitle \(Date())")
-            self?.presenter?.presentSomething(response: response)
-            self?.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
-            //self?.presenter?.presentError(error: error)
-            self?.presenter?.presentStatus(response: BaseDisplayLogicModels.Status(message: Messages.success.localised))
-        }
+    func requestCategoryChange(request: VM.CategoriesPicker.CategoryChange.Request) {
+        dsSelectedCategory = request.category
+        let response = VM.CategoriesPicker.CategoryChange.Response()
+        self.presenter?.presentCategoryChange(response: response)
     }
 
 }

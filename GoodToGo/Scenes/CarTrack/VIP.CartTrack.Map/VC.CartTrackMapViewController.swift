@@ -111,6 +111,10 @@ extension VC {
         override func setupViewIfNeed() {
             // Use it to configure stuff on the genericView, depending on the value external/public variables
             // that are set after we instantiate the view controller, but before if has been presented
+        }
+
+        // This function is called automatically by super BaseGenericView
+        override func setupViewUIRx() {
             genericView.rxFilter.asObserver().bind { [weak self] (search) in
                 guard let self = self else { return }
                 guard let search = search else { return }
@@ -118,11 +122,6 @@ extension VC {
                 let viewModel = VM.CartTrackMap.MapDataFilter.Request(filter: search)
                 self.interactor?.requestMapDataFilter(viewModel: viewModel)
             }.disposed(by: disposeBag)
-        }
-
-        // This function is called automatically by super BaseGenericView
-        override func setupViewUIRx() {
-
         }
 
         // This function is called automatically by super BaseGenericView

@@ -80,8 +80,6 @@ extension VC {
             super.viewWillAppear(animated)
             if firstAppearance {
                 interactor?.requestScreenInitialState()
-                interactor?.requestSomething(request: VM.CategoriesPicker.Something.Request(userId: ""))
-
             }
         }
 
@@ -124,29 +122,14 @@ extension VC {
 
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
-/*
-            genericView
-                .rxModelSelected
-                .log(whereAmI())
-                .subscribe(onNext: { /* [router] */ (some) in
-                    DevTools.Log.message("Received [\(some)]")
-                })
-                .disposed(by: disposeBag)
 
-            genericView.rxBtnSample1Tap
-                .do(onNext: { [weak self] in
-                    self?.router?.routeSomewhereWithDataStore()
-                })
-                .subscribe()
-                .disposed(by: disposeBag)
-
-            genericView.rxBtnSample2Tap
-                .do(onNext: { [weak self] in
-                    self?.doPrivateStuff()
-                })
-                .subscribe()
-                .disposed(by: disposeBag)
-*/
+            genericView.rxCategoryTap.asObserver().bind { [weak self] (category) in
+                guard let self = self else { return }
+                guard self.isVisible else { return }
+                guard let category = category else { return }
+                let request = VM.CategoriesPicker.CategoryChange.Request(category: category)
+                self.interactor?.requestCategoryChange(request: request)
+            }.disposed(by: disposeBag)
         }
 
         // This function is called automatically by super BaseGenericView
@@ -177,14 +160,12 @@ extension VC.CategoriesPickerViewController {
 
 extension VC.CategoriesPickerViewController: CategoriesPickerDisplayLogicProtocol {
 
-    func displaySomething(viewModel: VM.CategoriesPicker.Something.ViewModel) {
+    func displayCategoryChange(viewModel: VM.CategoriesPicker.CategoryChange.ViewModel) {
         // Setting up the view, option 1 : passing the view model
-        genericView.setupWith(someStuff: viewModel)
+        router?.routeToCategoriesList()
     }
 
     func displayScreenInitialState(viewModel: VM.CategoriesPicker.ScreenInitialState.ViewModel) {
-       // title = viewModel.title
-        // Setting up the view, option 2 : setting the vars one by one
-      //  genericView.subTitle = viewModel.subTitle
+
     }
 }

@@ -41,21 +41,20 @@ extension R.CategoriesPickerRouter: CategoriesPickerRoutingLogicProtocol {
         viewController?.dismissMe()
     }
 
-    func routeSomewhereWithDataStore() {
+    func routeToCategoriesList() {
         func passDataToSomewhere(source: CategoriesPickerDataStoreProtocol,
-                                 destination: inout DataStoreReceiverDataStoreProtocol) { // <<-- DS Sample : Take notice
-            destination.dsSomeKindOfModelAToBeSettedByOtherRouter = source.dsSomeKindOfModelAThatWillBePassedToOtherRouter
-            //destination.dsSomeKindOfModelBToBeSettedByOtherRouter = source.dsSomeKindOfModelBThatWillBePassedToOtherRouter
+                                 destination: inout ProductsListDataStoreProtocol) {
+            destination.dsSelectedCategory = source.dsSelectedCategory
         }
-        let destinationVC = VC.DataStoreReceiverViewController(presentationStyle: .modal)    // <<-- DS Sample : Take notice
-        if var destinationDS = destinationVC.router?.dsToBeSetted { // <<-- DS Sample : Take notice
+        let destinationVC = VC.ProductsListViewController(presentationStyle: .modal)
+        if var destinationDS = destinationVC.router?.dsSource {
             passDataToSomewhere(source: dsSource!, destination: &destinationDS)
         }
         viewController?.present(destinationVC, animated: true, completion: nil)
     }
 
     func routeToTemplateWithParentDataStore() {
-        routeSomewhereWithDataStore()
+        routeToCategoriesList()
     }
 
 }

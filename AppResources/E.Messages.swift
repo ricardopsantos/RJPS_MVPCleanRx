@@ -31,6 +31,8 @@ public enum Messages: Int {
     case email
     case noRecords
     case search
+    case select
+    case category
 
     public static var defaultErrorMessage: String {
         return Messages.pleaseTryAgainLater.localised
@@ -59,6 +61,8 @@ public enum Messages: Int {
         case .invalidURL: return AppResources.get("Invalid URL")
         case .invalidEmail: return AppResources.get("Invalid email")
         case .invalidCredentials: return AppResources.get("Invalid user credentials")
+        case .select: return AppResources.get("Select")
+        case .category: return AppResources.get("Category")
         }
     }
 
