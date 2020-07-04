@@ -94,7 +94,7 @@ extension V {
         override func prepareLayoutByFinishingPrepareLayout() {
             collectionView.dataSource = self
             collectionView.delegate = self
-            collectionView.register(ProductCollectioViewCell.self, forCellWithReuseIdentifier: ProductCollectioViewCell.identifier)
+            collectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: ProductCollectionViewCell.identifier)
         }
 
         override func setupColorsAndStyles() {
@@ -147,10 +147,9 @@ extension V.ProdutsListView: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectioViewCell.identifier, for: indexPath) as! ProductCollectioViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: V.ProductCollectionViewCell.identifier, for: indexPath) as! V.ProductCollectionViewCell
 
-        let profile = collectionViewDataSource[indexPath.row]
-        cell.setup(with: profile)
+        cell.setup(viewModel: collectionViewDataSource[indexPath.row])
         cell.contentView.backgroundColor = .red
         return cell
     }
@@ -164,7 +163,7 @@ extension V.ProdutsListView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         //let width = itemWidth(for: self.frame.width, spacing: LayoutConstant.spacing)
         let width = screenWidth * 0.8
-        return CGSize(width: width, height: ProductCollectioViewCell.defaultHeight)
+        return CGSize(width: width, height: V.ProductCollectionViewCell.defaultHeight)
     }
 
     func itemWidth(for width: CGFloat, spacing: CGFloat) -> CGFloat {
@@ -198,107 +197,133 @@ struct ProductModel {
     let productImage: String
 }
 
-final class ProductCollectioViewCell: UICollectionViewCell {
+extension V {
+    final class ProductCardView: UIView {
 
-    static let defaultHeight: CGFloat = screenHeight * 0.8
-    static let defaultWidth: CGFloat = screenWidth * 0.9
+        private lazy var lblTitle: UILabel = {
+            UIKitFactory.label(style: .notApplied)
+        }()
 
-    static var identifier: String {
-        return String(describing: self)
+        private lazy var lblSpecification: UILabel = {
+            UIKitFactory.label(style: .notApplied)
+        }()
+
+        private lazy var lblPrice: UILabel = {
+            UIKitFactory.label(style: .notApplied)
+        }()
+
+        private lazy var btnBuy: UIButton = {
+            UIKitFactory.button(style: .accept)
+        }()
+
+        override init(frame: CGRect) {
+            super.init(frame: .zero)
+            setupView()
+        }
+
+        private func setupView() {
+
+            let cardView = UIView()
+            addSubview(cardView)
+            cardView.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+            cardView.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+            cardView.autoLayout.bottomToSuperview(offset: -Designables.Sizes.Margins.defaultMargin)
+            cardView.autoLayout.heightToSuperview(multiplier: 0.25)
+            cardView.addCorner(radius: 5)
+            cardView.backgroundColor = UIColor.white.withAlphaComponent(FadeType.heavy.rawValue)
+            let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            blurEffectView.alpha = 0.5
+            cardView.addSubview(blurEffectView)
+            blurEffectView.edgesToSuperview()
+
+            cardView.addSubview(lblTitle)
+            lblTitle.autoLayout.topToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+            lblTitle.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+            lblTitle.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+
+            cardView.addSubview(lblSpecification)
+            lblSpecification.autoLayout.topToBottom(of: lblTitle, offset: Designables.Sizes.Margins.defaultMargin)
+            lblSpecification.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+            lblSpecification.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+
+            cardView.addSubview(btnBuy)
+            btnBuy.autoLayout.bottomToSuperview(offset: -Designables.Sizes.Margins.defaultMargin)
+            btnBuy.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+            btnBuy.autoLayout.widthToSuperview(multiplier: 0.4)
+
+            cardView.addSubview(lblPrice)
+            lblPrice.autoLayout.bottomToSuperview(offset: -Designables.Sizes.Margins.defaultMargin)
+            lblPrice.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+            lblPrice.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+
+        }
+
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+
+        func setup(viewModel: ProductModel) {
+            lblTitle.text = viewModel.name
+            lblSpecification.text = "\(viewModel.specification) \(viewModel.inventory)"
+            lblPrice.text = viewModel.price
+        }
     }
+}
 
-    private lazy var lblTitle: UILabel = {
-        UIKitFactory.label(style: .notApplied)
-    }()
+extension V {
+    class ProductCollectionViewCell: UICollectionViewCell {
 
-    private lazy var lblSpecification: UILabel = {
-        UIKitFactory.label(style: .notApplied)
-    }()
+        static let defaultHeight: CGFloat = screenHeight * 0.8
+        static let defaultWidth: CGFloat = screenWidth * 0.9
 
-    private lazy var lblPrice: UILabel = {
-        UIKitFactory.label(style: .notApplied)
-    }()
+        static var identifier: String {
+            return String(describing: self)
+        }
 
-    private lazy var imgBackground: UIImageView = {
-        UIKitFactory.imageView()
-    }()
+        private lazy var productCardView: ProductCardView = {
+            V.ProductCardView()
+        }()
 
-    private lazy var imgProduct: UIImageView = {
-        UIKitFactory.imageView()
-    }()
+        private lazy var imgBackground: UIImageView = {
+            UIKitFactory.imageView()
+        }()
 
-    private lazy var btnBuy: UIButton = {
-        UIKitFactory.button(style: .accept)
-    }()
+        private lazy var imgProduct: UIImageView = {
+            UIKitFactory.imageView()
+        }()
 
-    override init(frame: CGRect) {
-        super.init(frame: .zero)
-        setupView()
-    }
+        override init(frame: CGRect) {
+            super.init(frame: .zero)
+            setupView()
+        }
 
-    private func setupView() {
+        private func setupView() {
+            contentView.clipsToBounds = true
+            contentView.layer.cornerRadius = 5
+            contentView.backgroundColor = .white
+            contentView.addShadow()
+            contentView.addSubview(imgBackground)
+            imgBackground.autoLayout.edgesToSuperview()
+            contentView.addSubview(productCardView)
 
-        contentView.clipsToBounds = true
-        contentView.layer.cornerRadius = 5
-        contentView.backgroundColor = .white
-        contentView.addShadow()
+            productCardView.autoLayout.bottomToSuperview()
+            productCardView.autoLayout.leadingToSuperview()
+            productCardView.autoLayout.trailingToSuperview()
+            productCardView.autoLayout.heightToSuperview(multiplier: 0.3)
 
-        contentView.addSubview(imgBackground)
-        imgBackground.autoLayout.edgesToSuperview()
+        }
 
-        contentView.addSubview(imgProduct)
-        imgProduct.autoLayout.topToSuperview(offset: 50)
-        imgProduct.autoLayout.trailingToSuperview()
-        imgProduct.heightToSuperview(multiplier: 0.5)
-        imgProduct.widthToSuperview(multiplier: 0.5)
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
 
-        let cardView = UIView()
-        contentView.addSubview(cardView)
-        cardView.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
-        cardView.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
-        cardView.autoLayout.bottomToSuperview(offset: -Designables.Sizes.Margins.defaultMargin)
-        cardView.autoLayout.heightToSuperview(multiplier: 0.25)
-        cardView.addCorner(radius: 5)
-        cardView.backgroundColor = UIColor.white.withAlphaComponent(FadeType.heavy.rawValue)
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        blurEffectView.alpha = 0.5
-        cardView.addSubview(blurEffectView)
-        blurEffectView.edgesToSuperview()
-
-        cardView.addSubview(lblTitle)
-        lblTitle.autoLayout.topToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
-        lblTitle.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
-        lblTitle.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
-
-        cardView.addSubview(lblSpecification)
-        lblSpecification.autoLayout.topToBottom(of: lblTitle, offset: Designables.Sizes.Margins.defaultMargin)
-        lblSpecification.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
-        lblSpecification.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
-
-        cardView.addSubview(btnBuy)
-        btnBuy.autoLayout.bottomToSuperview(offset: -Designables.Sizes.Margins.defaultMargin)
-        btnBuy.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
-        btnBuy.autoLayout.widthToSuperview(multiplier: 0.4)
-
-        cardView.addSubview(lblPrice)
-        lblPrice.autoLayout.bottomToSuperview(offset: -Designables.Sizes.Margins.defaultMargin)
-        lblPrice.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
-        lblPrice.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
-
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    func setup(with viewModel: ProductModel) {
-        lblTitle.text = viewModel.name
-        lblSpecification.text = "\(viewModel.specification) \(viewModel.inventory)"
-        lblPrice.text = viewModel.price
-        imgBackground.image = UIImage(named: viewModel.backgroundImage)
-        let image = UIImage(named: viewModel.productImage)
-        imgProduct.image = image
+        func setup(viewModel: ProductModel) {
+            productCardView.setup(viewModel: viewModel)
+            imgBackground.image = UIImage(named: viewModel.backgroundImage)
+            let image = UIImage(named: viewModel.productImage)
+            imgProduct.image = image
+        }
     }
 }
