@@ -35,6 +35,7 @@ public extension UIView {
     }
 
     func addCorner(radius: CGFloat) {
+        self.layoutIfNeeded()
         self.layer.cornerRadius = radius
         self.layer.masksToBounds = true
     }

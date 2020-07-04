@@ -36,7 +36,7 @@ extension VisionBox {
                     specification: "\(Int.random(in: 100 ... 300))",
                     inventory: "\(Int.random(in: 100 ... 500))",
                     price: "\(Int.random(in: 10 ... 20))",
-                    backgroundImage: "back.\(Int.random(in: 1 ... 2))",
+                    backgroundImage: "back.3",
                     productImage: "product.\(Int.random(in: 1 ... 3))",
                     category: VisionBox.Category(rawValue: category)!)
                 products.append(product)

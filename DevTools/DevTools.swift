@@ -69,11 +69,11 @@ public struct DevTools {
 
 extension DevTools {
     public struct DebugView {
-        public static func paint(view: UIView, enabled: Bool = true, useBorderColors: Bool = false) {
+        public static func paint(view: UIView, enabled: Bool = true, method: Int = 1) {
             guard onSimulator else { return }
             guard enabled else { return }
 
-            if useBorderColors {
+            if method == 1 {
                 view.layer.borderColor = UIColor.random.cgColor
                 view.layer.borderWidth = 1
                 view.devTools_getAllSubviews().forEach { (some) in
@@ -181,14 +181,14 @@ extension DevTools {
         private init() { }
 
         static func debugViewUI(on view: UIView) {
-            guard !DevTools.isProductionReleaseApp else { return }                     //If production bail out immediately
-            guard DevTools.devModeIsEnabled else { return }                            // Not dev mode? bail out immediately
+            guard !DevTools.isProductionReleaseApp else { return } // If production bail out immediately
+            guard DevTools.devModeIsEnabled else { return }        // Not dev mode? bail out immediately
 
             let tapGesture = createTapGesture()
             tapGesture.numberOfTouchesRequired = 2
             view.addGestureRecognizer(tapGesture)
             tapGesture.rx.event.bind(onNext: { _ in
-                DevTools.DebugView.paint(view: view, enabled: true)
+                DevTools.DebugView.paint(view: view, method: 1)
             }).disposed(by: disposeBag)
         }
 

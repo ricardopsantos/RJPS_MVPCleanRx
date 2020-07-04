@@ -14,6 +14,7 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 import TinyConstraints
+import RJPSLib
 //
 import AppConstants
 import AppTheme
@@ -55,11 +56,20 @@ extension V {
             NotificationCenter.default.removeObserver(self)
         }
 
+        var rxFilter = BehaviorSubject<String?>(value: nil)
+
         // MARK: - UI Elements (Private and lazy by default)
 
         private lazy var lblTitle: UILabel = {
-            UIKitFactory.label(style: .title)
+            let some = UIKitFactory.label(style: .title)
+            some.font = UIFont.App.Styles.headingBold.rawValue
+            some.textColor = UIColor.black
+            return some
          }()
+
+        private lazy var searchBar: CustomSearchBar = {
+            UIKitFactory.searchBar(placeholder: Messages.search.localised)
+        }()
 
         private lazy var collectionView: UICollectionView = {
              let viewLayout = UICollectionViewFlowLayout()
@@ -72,6 +82,7 @@ extension V {
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 1/3 : JUST to add stuff to the view....
         override func prepareLayoutCreateHierarchy() {
+            addSubview(searchBar)
             addSubview(lblTitle)
             addSubview(collectionView)
         }
@@ -80,11 +91,16 @@ extension V {
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 2/3 : JUST to setup layout rules zone....
         override func prepareLayoutBySettingAutoLayoutsRules() {
-            lblTitle.autoLayout.topToSuperview(usingSafeArea: true)
+
+            searchBar.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
+            searchBar.autoLayout.widthToSuperview()
+            searchBar.autoLayout.topToSuperview(usingSafeArea: true)
+
+            lblTitle.autoLayout.topToBottom(of: searchBar)
             lblTitle.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
             lblTitle.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
 
-            collectionView.topToBottom(of: lblTitle, offset: Designables.Sizes.Margins.defaultMargin)
+            collectionView.topToBottom(of: lblTitle, offset: 0)
             collectionView.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
             collectionView.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
             collectionView.bottomToSuperview(usingSafeArea: true)
@@ -99,25 +115,44 @@ extension V {
             collectionView.register(V.ProductPreviewBigCollectionViewCell.self, forCellWithReuseIdentifier: V.ProductPreviewBigCollectionViewCell.identifier)
         }
 
+        // This function is called automatically by super BaseGenericView
+        override func setupViewUIRx() {
+
+            searchBar.rx.text
+                .orEmpty
+                .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
+                .log(whereAmI())
+                .subscribe(onNext: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.rxFilter.onNext(self.searchBar.text)
+                })
+                .disposed(by: disposeBag)
+            searchBar.rx.textDidEndEditing
+                .subscribe(onNext: { [weak self] (_) in
+                    guard let self = self else { return }
+                    guard self.searchBar.text!.count>0 else { return }
+                    self.rxFilter.onNext(self.searchBar.text)
+                })
+                .disposed(by: self.disposeBag)
+        }
+
         override func setupColorsAndStyles() {
             self.backgroundColor = AppColors.backgroundColor
             collectionView.backgroundColor = .white
         }
 
-        // This function is called automatically by super BaseGenericView
-        override func setupViewUIRx() {
-
-        }
-
         // MARK: - Custom Getter/Setters
-
-        // We can set the view data by : 1 - Rx                                     ---> var rxTableItems = BehaviorRelay <---
-        // We can set the view data by : 2 - Custom Setters / Computed Vars         ---> var subTitle: String <---
-        // We can set the view data by : 3 - Passing the view model inside the view ---> func setupWith(viewModel: ... <---
 
         private var collectionViewDataSource: [VisionBox.ProductModel] = [] {
             didSet {
-                collectionView.reloadData()
+                collectionView.fadeTo(0)
+                DispatchQueue.executeWithDelay(delay: RJS_Constants.defaultAnimationsTime) { [weak self] in
+                    self?.collectionView.reloadData()
+                    if let text = self?.collectionViewDataSource.first?.category.toString {
+                        self?.lblTitle.textAnimated = text
+                    }
+                    self?.collectionView.fadeTo(1)
+                }
             }
         }
 
@@ -134,11 +169,7 @@ extension V {
 // MARK: - Events capture
 
 extension V.ProductsListView {
-   /* var rxBtnSample1Tap: Observable<Void> { btnSample1.rx.tapSmart(disposeBag) }
-    var rxBtnSample2Tap: Observable<Void> { btnSample2.rx.tapSmart(disposeBag) }
-    var rxModelSelected: ControlEvent<VM.ProdutsList.TableItem> {
-        tableView.rx.modelSelected(VM.ProdutsList.TableItem.self)
-    }*/
+
 }
 
 // MARK: - UICollectionViewDataSource
@@ -149,10 +180,11 @@ extension V.ProductsListView: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: V.ProductPreviewBigCollectionViewCell.identifier, for: indexPath) as! V.ProductPreviewBigCollectionViewCell
+        let identifier = V.ProductPreviewBigCollectionViewCell.identifier
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier,
+                                                      for: indexPath) as! V.ProductPreviewBigCollectionViewCell
 
         cell.setup(viewModel: collectionViewDataSource[indexPath.row])
-        cell.contentView.backgroundColor = .red
         return cell
     }
 }
@@ -167,7 +199,7 @@ extension V.ProductsListView: UICollectionViewDelegateFlowLayout {
     }
 
     func itemWidth(for width: CGFloat, spacing: CGFloat) -> CGFloat {
-        let itemsInRow: CGFloat = 2
+        let itemsInRow: CGFloat = 1
         let totalSpacing: CGFloat = 2 * spacing + (itemsInRow - 1) * spacing
         let finalWidth = (width - totalSpacing) / itemsInRow
         return floor(finalWidth)
@@ -175,7 +207,7 @@ extension V.ProductsListView: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let defaultMargin = Designables.Sizes.Margins.defaultMargin
-        return UIEdgeInsets(top: defaultMargin, left: defaultMargin, bottom: defaultMargin, right: defaultMargin)
+        return UIEdgeInsets(top: 0, left: defaultMargin, bottom: 0, right: defaultMargin)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -217,27 +249,33 @@ extension V {
         }
 
         private func setupView() {
-            contentView.clipsToBounds = true
-            contentView.layer.cornerRadius = 5
-            contentView.backgroundColor = .white
-            contentView.addShadow()
+
+            contentView.backgroundColor = .clear
 
             contentView.addSubview(imgBackground)
-            imgBackground.autoLayout.edgesToSuperview()
+            let offsetA: CGFloat = 10
+            let offsetB: CGFloat = offsetA * 5
+            imgBackground.autoLayout.topToSuperview(offset: offsetA)
+            imgBackground.autoLayout.bottomToSuperview(offset: -offsetA)
+            imgBackground.autoLayout.leadingToSuperview(offset: offsetA)
+            imgBackground.autoLayout.trailingToSuperview(offset: offsetB)
+            imgBackground.addShadow(offset: CGSize(width: 1, height: 3), shadowType: .heavyRegular)
 
             contentView.addSubview(imgProduct)
-            imgProduct.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
-            imgProduct.autoLayout.trailingToSuperview(offset: -Designables.Sizes.Margins.defaultMargin)
-            imgProduct.autoLayout.topToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+            imgProduct.autoLayout.trailingToSuperview(offset: 0)
+            imgProduct.autoLayout.centerYToSuperview(offset: -offsetB)
             imgProduct.autoLayout.heightToSuperview(multiplier: 0.5)
-            imgProduct.addShadow()
+            imgProduct.autoLayout.widthToSuperview(multiplier: 0.5)
+            imgProduct.contentMode = .scaleAspectFit
+            imgProduct.addShadow(offset: CGSize(width: 5, height: 10), shadowType: .superHeavy)
 
-            contentView.addSubview(productCardView)
+            imgBackground.addSubview(productCardView)
             productCardView.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
             productCardView.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
             productCardView.autoLayout.bottomToSuperview(offset: -Designables.Sizes.Margins.defaultMargin)
             productCardView.autoLayout.heightToSuperview(multiplier: 0.25)
 
+            DevTools.DebugView.paint(view: self)
         }
 
         required init?(coder: NSCoder) {
@@ -259,19 +297,28 @@ extension V {
         static let defaultHeight: CGFloat = 150
 
         private lazy var lblTitle: UILabel = {
-            UIKitFactory.label(style: .notApplied)
+            let some = UIKitFactory.label(style: .notApplied)
+            some.font = UIFont.App.Styles.headingSmall.rawValue
+            some.textColor = UIColor.white
+            return some
         }()
 
         private lazy var lblSpecification: UILabel = {
-            UIKitFactory.label(style: .notApplied)
+            let some = UIKitFactory.label(style: .notApplied)
+            some.font = UIFont.App.Styles.paragraphBold.rawValue
+            some.textColor = UIColor.white
+            return some
         }()
 
         private lazy var lblPrice: UILabel = {
-            UIKitFactory.label(style: .notApplied)
+            let some = UIKitFactory.label(style: .notApplied)
+            some.font = UIFont.App.Styles.headingBold.rawValue
+            some.textColor = UIColor.Pack2.orange.color
+            return some
         }()
 
         private lazy var btnBuy: UIButton = {
-            UIKitFactory.button(style: .accept)
+            UIKitFactory.button(title: "Buy now", style: .accept)
         }()
 
         override init(frame: CGRect) {
@@ -286,7 +333,7 @@ extension V {
             cardView.edgesToSuperview()
             cardView.addCorner(radius: 5)
             cardView.backgroundColor = UIColor.white.withAlphaComponent(FadeType.heavy.rawValue)
-            let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
+            let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
             let blurEffectView = UIVisualEffectView(effect: blurEffect)
             blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             blurEffectView.alpha = 0.5
@@ -307,6 +354,7 @@ extension V {
             btnBuy.autoLayout.bottomToSuperview(offset: -Designables.Sizes.Margins.defaultMargin)
             btnBuy.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
             btnBuy.autoLayout.widthToSuperview(multiplier: 0.4)
+            btnBuy.height(Designables.Sizes.Button.defaultSize.height)
 
             cardView.addSubview(lblPrice)
             lblPrice.autoLayout.bottomToSuperview(offset: -Designables.Sizes.Margins.defaultMargin)
@@ -321,8 +369,9 @@ extension V {
 
         func setup(viewModel: VisionBox.ProductModel) {
             lblTitle.text = viewModel.name
-            lblSpecification.text = "\(viewModel.specification) \(viewModel.inventory)"
-            lblPrice.text = viewModel.price
+            lblSpecification.text = "Specifications \(viewModel.specification) | Inventory \(viewModel.inventory)"
+            lblPrice.text = viewModel.priceForCountry
+
         }
     }
 }

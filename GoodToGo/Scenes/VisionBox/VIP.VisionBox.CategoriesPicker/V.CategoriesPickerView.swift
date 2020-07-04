@@ -54,7 +54,6 @@ extension V {
             NotificationCenter.default.removeObserver(self)
         }
 
-        var rxFilter = BehaviorSubject<String?>(value: nil)
         var rxCategoryTap = BehaviorSubject<VisionBox.Category?>(value: nil)
 
         private lazy var b1: CategoryButton = { V.CategoryButton(category: .cat1) }()
@@ -68,18 +67,13 @@ extension V {
         private lazy var b9: CategoryButton = { V.CategoryButton(category: .cat9) }()
 
         private lazy var lblTitle: UILabel = { UIKitFactory.label(style: .value) }()
-
-        private lazy var searchBar: CustomSearchBar = {
-            UIKitFactory.searchBar(placeholder: Messages.search.localised)
-        }()
-
+        
         // MARK: - Mandatory
 
         // This function is called automatically by super BaseGenericViewVIP
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 1/3 : JUST to add stuff to the view....
         override func prepareLayoutCreateHierarchy() {
-            addSubview(searchBar)
             addSubview(lblTitle)
             [b1, b2, b3, b4, b5, b6, b7, b8, b9].forEach { (some) in
                 self.addSubview(some)
@@ -93,13 +87,9 @@ extension V {
 
             let marginH = (screenWidth - V.CategoryButton.defaultSize * 3) / 4
 
-            searchBar.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
-            searchBar.autoLayout.widthToSuperview()
-            searchBar.autoLayout.topToSuperview()
-
             lblTitle.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
             lblTitle.autoLayout.widthToSuperview()
-            lblTitle.autoLayout.topToBottom(of: searchBar, offset: marginH)
+            lblTitle.autoLayout.topToSuperview()
 
             [b1, b2, b3, b4, b5, b6, b7, b8, b9].forEach { (some) in
                 some.autoLayout.width(V.CategoryButton.defaultSize)
@@ -138,7 +128,7 @@ extension V {
         override func prepareLayoutByFinishingPrepareLayout() {
             lblTitle.textAlignment = .center
             lblTitle.text = "123123"
-            DevTools.DebugView.paint(view: self, useBorderColors: true)
+            DevTools.DebugView.paint(view: self, method: 1)
         }
 
         override func setupColorsAndStyles() {
@@ -157,23 +147,6 @@ extension V {
                     self.rxCategoryTap.onNext(category)
                 }).disposed(by: disposeBag)
             }
-
-            searchBar.rx.text
-                .orEmpty
-                .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
-                .log(whereAmI())
-                .subscribe(onNext: { [weak self] _ in
-                    guard let self = self else { return }
-                    self.rxFilter.onNext(self.searchBar.text)
-                })
-                .disposed(by: disposeBag)
-            searchBar.rx.textDidEndEditing
-                .subscribe(onNext: { [weak self] (_) in
-                    guard let self = self else { return }
-                    guard self.searchBar.text!.count>0 else { return }
-                    self.rxFilter.onNext(self.searchBar.text)
-                })
-                .disposed(by: self.disposeBag)
         }
 
         // MARK: - Custom Getter/Setters

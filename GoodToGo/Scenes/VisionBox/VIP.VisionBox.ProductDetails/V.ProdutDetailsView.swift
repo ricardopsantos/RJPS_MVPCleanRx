@@ -208,7 +208,7 @@ extension V {
             collectionView.dataSource = self
             collectionView.delegate = self
             collectionView.register(V.ProductPreviewSmallCollectionViewCell.self, forCellWithReuseIdentifier: V.ProductPreviewSmallCollectionViewCell.identifier)
-            DevTools.DebugView.paint(view: self, useBorderColors: true)
+            DevTools.DebugView.paint(view: self, method: 1)
         }
 
         override func setupColorsAndStyles() {
