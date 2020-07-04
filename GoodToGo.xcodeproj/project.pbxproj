@@ -214,6 +214,7 @@
 		D7979DCE246DC46C0039031C /* LabelWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979DCD246DC46C0039031C /* LabelWithPadding.swift */; };
 		D79B623A24B0876100ACC3EA /* ProductCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B623924B0876100ACC3EA /* ProductCardView.swift */; };
 		D79B623C24B0877D00ACC3EA /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B623B24B0877D00ACC3EA /* ProductCollectionViewCell.swift */; };
+		D79B623E24B0CA4C00ACC3EA /* VisionBoxModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B623D24B0CA4C00ACC3EA /* VisionBoxModels.swift */; };
 		D7AB2443246716C6000142C4 /* V.UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1522BE5DE700042A8C /* V.UserTableViewCell.swift */; };
 		D7AB2445246718A9000142C4 /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
 		D7AB2446246718AA000142C4 /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
@@ -1256,6 +1257,7 @@
 		D7979DCD246DC46C0039031C /* LabelWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithPadding.swift; sourceTree = "<group>"; };
 		D79B623924B0876100ACC3EA /* ProductCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCardView.swift; sourceTree = "<group>"; };
 		D79B623B24B0877D00ACC3EA /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		D79B623D24B0CA4C00ACC3EA /* VisionBoxModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionBoxModels.swift; sourceTree = "<group>"; };
 		D7A620B0246556A1008B1722 /* _script_installPackages.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = _script_installPackages.sh; sourceTree = SOURCE_ROOT; };
 		D7AB244D24671CBF000142C4 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7AB245024671CBF000142C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -2311,6 +2313,7 @@
 			isa = PBXGroup;
 			children = (
 				D7B9BF1E24AFA8CB0093A82D /* VisionBox_Preview.jpg */,
+				D79B623D24B0CA4C00ACC3EA /* VisionBoxModels.swift */,
 				D7B9BF5D24B084E10093A82D /* VisionBox.Designables */,
 				D7B9BF1C24AFA88D0093A82D /* VIP.VisionBox.ProductsList */,
 				D7B9BF1B24AFA82B0093A82D /* VIP.VisionBox.CategoriesPicker */,
@@ -3807,6 +3810,7 @@
 				9F6BB2D222E3470200829A6F /* P.MVPSampleTableView_Presenter.swift in Sources */,
 				D7F2DE332474A718008CE3DA /* VC.DataStoreReceiverViewController.swift in Sources */,
 				D7B9BF3924AFCEF40093A82D /* V.ProdutsListView.swift in Sources */,
+				D79B623E24B0CA4C00ACC3EA /* VisionBoxModels.swift in Sources */,
 				D7F2DE342474A718008CE3DA /* R.DataStoreReceiverRouter.swift in Sources */,
 				9FE0572822E8D75400802747 /* MVPSampleRxView_View.swift in Sources */,
 				D7C4CB892494D3B20087E999 /* CarTrackMKAnnotation.swift in Sources */,

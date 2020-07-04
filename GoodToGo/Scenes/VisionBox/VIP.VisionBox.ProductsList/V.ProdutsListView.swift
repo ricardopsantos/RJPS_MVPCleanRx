@@ -176,32 +176,7 @@ extension V.ProdutsListView: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension V.ProdutsListView {
-
-}
-
-// Put on domain
-struct ProductModel {
-    let name: String
-    let specification: String
-    let inventory: String
-    let price: String
-    let backgroundImage: String
-    let productImage: String
-
-    static var mockData: [ProductModel] {
-       let products = [
-            ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
-            ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
-            ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
-            ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
-            ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
-            ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
-            ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey")
-        ]
-        return products
-    }
-}
+// MARK: - UICollectionViewCell
 
 extension V {
     class ProductPreviewBigCollectionViewCell: UICollectionViewCell {

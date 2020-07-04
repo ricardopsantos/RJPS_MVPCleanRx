@@ -83,9 +83,6 @@ extension VC {
                 interactor?.requestSomething(request: VM.ProdutsList.Something.Request(userId: ""))
 
             }
-
-            let screenInitialState = VM.ProdutsList.ScreenInitialState.ViewModel(title: "", subTitle: "", products: ProductModel.mockData)
-            genericView.setupWith(screenInitialState: screenInitialState)
         }
 
         override func viewDidAppear(_ animated: Bool) {
