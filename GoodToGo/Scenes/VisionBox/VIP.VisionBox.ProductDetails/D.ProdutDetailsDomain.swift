@@ -136,8 +136,10 @@ extension VM {
                 let subTitle: String
             }
             struct ViewModel {
-                let title: String
-                let subTitle: String
+                let productDetails: ProductModel
+                let userAvatarImage: String
+                let userAvatarName: String
+                let productsList: [ProductModel]
             }
         }
     }

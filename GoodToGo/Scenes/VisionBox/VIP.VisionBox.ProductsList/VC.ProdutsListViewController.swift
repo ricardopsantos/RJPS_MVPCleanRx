@@ -84,16 +84,7 @@ extension VC {
 
             }
 
-            let products = [
-                ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
-                ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
-                ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
-                ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
-                ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
-                ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
-                ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey")
-            ]
-            let screenInitialState = VM.ProdutsList.ScreenInitialState.ViewModel(title: "", subTitle: "", products: products)
+            let screenInitialState = VM.ProdutsList.ScreenInitialState.ViewModel(title: "", subTitle: "", products: ProductModel.mockData)
             genericView.setupWith(screenInitialState: screenInitialState)
         }
 

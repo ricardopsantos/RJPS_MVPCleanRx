@@ -32,16 +32,7 @@ struct ProductsListView_UIViewRepresentable: UIViewRepresentable {
     func updateUIView(_ uiView: V.ProdutsListView, context: Context) { }
     func makeUIView(context: Context) -> V.ProdutsListView {
         let view = V.ProdutsListView()
-        let products = [
-            ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
-            ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
-            ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
-            ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
-            ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
-            ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
-            ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey")
-        ]
-        let screenInitialState = VM.ProdutsList.ScreenInitialState.ViewModel(title: "", subTitle: "", products: products)
+        let screenInitialState = VM.ProdutsList.ScreenInitialState.ViewModel(title: "", subTitle: "", products: ProductModel.mockData)
         view.setupWith(screenInitialState: screenInitialState)
         return view
     }
@@ -93,7 +84,7 @@ extension V {
         override func prepareLayoutByFinishingPrepareLayout() {
             collectionView.dataSource = self
             collectionView.delegate = self
-            collectionView.register(V.ProductCollectionViewCell.self, forCellWithReuseIdentifier: V.ProductCollectionViewCell.identifier)
+            collectionView.register(V.ProductPreviewBigCollectionViewCell.self, forCellWithReuseIdentifier: V.ProductPreviewBigCollectionViewCell.identifier)
         }
 
         override func setupColorsAndStyles() {
@@ -139,13 +130,15 @@ extension V.ProdutsListView {
     }*/
 }
 
+// MARK: - UICollectionViewDataSource
+
 extension V.ProdutsListView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionViewDataSource.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: V.ProductCollectionViewCell.identifier, for: indexPath) as! V.ProductCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: V.ProductPreviewBigCollectionViewCell.identifier, for: indexPath) as! V.ProductPreviewBigCollectionViewCell
 
         cell.setup(viewModel: collectionViewDataSource[indexPath.row])
         cell.contentView.backgroundColor = .red
@@ -153,15 +146,13 @@ extension V.ProdutsListView: UICollectionViewDataSource {
     }
 }
 
-extension V.ProdutsListView {
-
-}
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension V.ProdutsListView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         //let width = itemWidth(for: self.frame.width, spacing: LayoutConstant.spacing)
         let width = screenWidth * 0.8
-        return CGSize(width: width, height: V.ProductCollectionViewCell.defaultHeight)
+        return CGSize(width: width, height: V.ProductPreviewBigCollectionViewCell.defaultHeight)
     }
 
     func itemWidth(for width: CGFloat, spacing: CGFloat) -> CGFloat {
@@ -185,6 +176,10 @@ extension V.ProdutsListView: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension V.ProdutsListView {
+
+}
+
 // Put on domain
 struct ProductModel {
     let name: String
@@ -193,10 +188,23 @@ struct ProductModel {
     let price: String
     let backgroundImage: String
     let productImage: String
+
+    static var mockData: [ProductModel] {
+       let products = [
+            ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
+            ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
+            ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
+            ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
+            ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
+            ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey"),
+            ProductModel(name: "1 Thor", specification: "Boston", inventory: "astronomy", price: "astronomy", backgroundImage: "back1", productImage: "honey")
+        ]
+        return products
+    }
 }
 
 extension V {
-    class ProductCollectionViewCell: UICollectionViewCell {
+    class ProductPreviewBigCollectionViewCell: UICollectionViewCell {
 
         static let defaultHeight: CGFloat = screenHeight * 0.8
         static let defaultWidth: CGFloat = screenWidth * 0.9

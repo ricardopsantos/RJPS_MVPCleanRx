@@ -25,6 +25,7 @@ open class BaseGenericViewControllerVIP<T: StylableView>: BaseViewControllerVIP 
         fatalError("Use instead [init(presentationStyle: \(VCPresentationStyle.self)]")
     }
 
+    #warning("fix leak here")
     public var disposeBag = DisposeBag()
     public var firstAppearance: Bool = true
     public var genericView: T { return view as! T }

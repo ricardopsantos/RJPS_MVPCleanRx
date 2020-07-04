@@ -83,6 +83,11 @@ extension VC {
                 interactor?.requestSomething(request: VM.ProdutDetails.Something.Request(userId: ""))
 
             }
+            let screenInitialState = VM.ProdutDetails.ScreenInitialState.ViewModel(productDetails: ProductModel.mockData.first!,
+                                                                                   userAvatarImage: Images.notFound.rawValue,
+                                                                                   userAvatarName: "userAvatarName",
+                                                                                   productsList: ProductModel.mockData)
+            genericView.setupWith(screenInitialState: screenInitialState)
         }
 
         override func viewDidAppear(_ animated: Bool) {
@@ -182,7 +187,7 @@ extension VC.ProdutDetailsViewController: ProdutDetailsDisplayLogicProtocol {
     }
 
     func displayScreenInitialState(viewModel: VM.ProdutDetails.ScreenInitialState.ViewModel) {
-        title = viewModel.title
+       // title = viewModel.title
         // Setting up the view, option 2 : setting the vars one by one
 //        genericView.subTitle = viewModel.subTitle
     }

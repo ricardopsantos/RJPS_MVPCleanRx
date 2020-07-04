@@ -76,10 +76,10 @@ extension P.ProdutDetailsPresenter: ProdutDetailsPresentationLogicProtocol {
 
     // Used By Interactor (exclusively)
     func presentScreenInitialState(response: VM.ProdutDetails.ScreenInitialState.Response) {
-        let title = response.title.uppercased()
-        let subTitle = response.subTitle.lowercased()
-        let viewModel = VM.ProdutDetails.ScreenInitialState.ViewModel(title: title,
-                                                                                 subTitle: subTitle)
+        let viewModel = VM.ProdutDetails.ScreenInitialState.ViewModel(productDetails: ProductModel.mockData.first!,
+                                                                      userAvatarImage: Images.notFound.rawValue,
+                                                                      userAvatarName: "Name",
+                                                                      productsList: ProductModel.mockData)
         viewController?.displayScreenInitialState(viewModel: viewModel)
     }
 
