@@ -64,29 +64,29 @@ extension VisionBox {
 
         var toString: String {
             switch self {
-            case .cat1: return "Cat1"
-            case .cat2: return "Cat2"
-            case .cat3: return "Cat3"
-            case .cat4: return "Cat4"
-            case .cat5: return "Cat5"
-            case .cat6: return "Cat6"
-            case .cat7: return "Cat7"
-            case .cat8: return "Cat8"
-            case .cat9: return "Cat9"
+            case .cat1: return imageName.capitalized.replace(".", with: " ")
+            case .cat2: return imageName.capitalized.replace(".", with: " ")
+            case .cat3: return imageName.capitalized.replace(".", with: " ")
+            case .cat4: return imageName.capitalized.replace(".", with: " ")
+            case .cat5: return imageName.capitalized.replace(".", with: " ")
+            case .cat6: return imageName.capitalized.replace(".", with: " ")
+            case .cat7: return imageName.capitalized.replace(".", with: " ")
+            case .cat8: return imageName.capitalized.replace(".", with: " ")
+            case .cat9: return imageName.capitalized.replace(".", with: " ")
             }
         }
 
         var imageName: String {
             switch self {
-            case .cat1: return "trash.fill"
-            case .cat2: return "trash.fill"
-            case .cat3: return "trash.fill"
-            case .cat4: return "trash.fill"
-            case .cat5: return "trash.fill"
-            case .cat6: return "trash.fill"
-            case .cat7: return "trash.fill"
-            case .cat8: return "trash.fill"
-            case .cat9: return "trash.fill"
+            case .cat1: return "message"
+            case .cat2: return "bag"
+            case .cat3: return "cart"
+            case .cat4: return "heart"
+            case .cat5: return "bed.double"
+            case .cat6: return "skew"
+            case .cat7: return "car"
+            case .cat8: return "tv"
+            case .cat9: return "envelope"
             }
         }
     }
