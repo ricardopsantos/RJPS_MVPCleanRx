@@ -56,7 +56,7 @@ extension VC {
         var router: (ProdutsListRoutingLogicProtocol &
             ProductsListDataPassingProtocol &
             ProdutsListRoutingLogicProtocol)?
-
+/*
         private lazy var topGenericView: TopBar = {
             let some = TopBar()
             some.injectOn(viewController: self, usingSafeArea: false)
@@ -69,7 +69,7 @@ extension VC {
                 }).disposed(by: disposeBag)
             return some
         }()
-
+*/
         //
         // MARK: View lifecycle
         //
@@ -81,7 +81,7 @@ extension VC {
 
         override func viewDidLoad() {
             super.viewDidLoad()
-            topGenericView.lazyLoad()
+            //topGenericView.lazyLoad()
         }
 
         override func viewWillAppear(_ animated: Bool) {

@@ -87,7 +87,8 @@ extension V {
             let marginH = (screenWidth - V.CategoryButton.defaultSize * 3) / 4
 
             lblTitle.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
-            lblTitle.autoLayout.widthToSuperview()
+            lblTitle.autoLayout.leftToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+            lblTitle.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
             lblTitle.autoLayout.topToSuperview(usingSafeArea: true)
 
             [b1, b2, b3, b4, b5, b6, b7, b8, b9].forEach { (some) in
@@ -128,10 +129,10 @@ extension V {
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 3/3 : Stuff that is not included in [prepareLayoutCreateHierarchy] and [prepareLayoutBySettingAutoLayoutsRules]
         override func prepareLayoutByFinishingPrepareLayout() {
-            lblTitle.textAlignment = .center
+            lblTitle.textAlignment = .left
             lblTitle.font = UIFont.App.Styles.headingMedium.rawValue
             lblTitle.text = "Select a category"
-            DevTools.DebugView.paint(view: self, method: 1)
+            //DevTools.DebugView.paint(view: self, method: 1)
         }
 
         override func setupColorsAndStyles() {
@@ -167,5 +168,68 @@ extension V {
 // MARK: - Events capture
 
 extension V.CategoriesPickerView {
+
+}
+
+extension V {
+
+    open class CategoryButton: UIView {
+        static let defaultSize: CGFloat = screenWidth / 4.0
+        private let label = UILabel()
+        private let image = UIImageView()
+        private let imageBack = UIImageView()
+
+        required public init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+
+        public override init(frame: CGRect) {
+            super.init(frame: frame)
+            setupView()
+        }
+
+        public convenience init(category: VisionBox.Category) {
+            self.init(frame: .zero)
+            label.text = category.toString
+            tag = category.tag
+            if #available(iOS 13.0, *) {
+                image.image = UIImage(systemName: category.imageName)
+                imageBack.image = UIImage(systemName: "circle.fill")
+            }
+
+        }
+
+        open override func layoutSubviews() {
+            super.layoutSubviews()
+        }
+
+        private func setupView() {
+            addSubview(imageBack)
+            addSubview(image)
+            addSubview(label)
+
+            label.autoLayout.bottomToSuperview()
+            label.autoLayout.widthToSuperview()
+            label.textAlignment = .center
+            label.font = UIFont.App.Styles.paragraphBold.rawValue
+            label.textColor = UIColor.Pack1.grey_2.color
+
+            image.autoLayout.centerXToSuperview()
+            image.autoLayout.centerYToSuperview(offset: -10)
+            image.autoLayout.widthToSuperview(multiplier: 0.35)
+            image.autoLayout.heightToSuperview(multiplier: 0.35)
+            image.contentMode = .scaleAspectFit
+            image.tintColor = .black
+            
+            imageBack.autoLayout.centerXToSuperview()
+            imageBack.autoLayout.centerYToSuperview(offset: -10)
+            imageBack.autoLayout.widthToSuperview(multiplier: 0.8)
+            imageBack.autoLayout.heightToSuperview(multiplier: 0.8)
+            imageBack.tintColor = UIColor.Pack1.grey_3.color.withAlphaComponent(0.2)
+
+            DevTools.DebugView.paint(view: self)
+
+        }
+    }
 
 }

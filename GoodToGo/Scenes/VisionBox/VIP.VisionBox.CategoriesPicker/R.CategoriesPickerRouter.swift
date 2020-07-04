@@ -50,7 +50,7 @@ extension R.CategoriesPickerRouter: CategoriesPickerRoutingLogicProtocol {
         if var destinationDS = destinationVC.router?.dsSource {
             passDataToSomewhere(source: dsSource!, destination: &destinationDS)
         }
-        destinationVC.modalPresentationStyle = .fullScreen 
+        //destinationVC.modalPresentationStyle = .fullScreen 
         viewController?.present(destinationVC, animated: true, completion: nil)
     }
 

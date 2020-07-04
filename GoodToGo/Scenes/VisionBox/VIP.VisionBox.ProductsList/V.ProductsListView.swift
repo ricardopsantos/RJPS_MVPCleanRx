@@ -68,6 +68,7 @@ extension V {
          }()
 
         private lazy var searchBar: CustomSearchBar = {
+            //UISearchBar()
             UIKitFactory.searchBar(placeholder: Messages.search.localised)
         }()
 
@@ -94,15 +95,15 @@ extension V {
 
             searchBar.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
             searchBar.autoLayout.widthToSuperview()
-            searchBar.autoLayout.topToSuperview(offset: TopBar.defaultHeight(usingSafeArea: true))
+            searchBar.autoLayout.topToSuperview(offset: Designables.Sizes.Margins.defaultMargin, usingSafeArea: true)
 
-            lblTitle.autoLayout.topToBottom(of: searchBar)
+            lblTitle.autoLayout.topToBottom(of: searchBar, offset: Designables.Sizes.Margins.defaultMargin)
             lblTitle.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
             lblTitle.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
 
-            collectionView.topToBottom(of: lblTitle, offset: 0)
-            collectionView.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
-            collectionView.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+            collectionView.topToBottom(of: lblTitle, offset: 5)
+            collectionView.autoLayout.leadingToSuperview()
+            collectionView.autoLayout.trailingToSuperview()
             collectionView.bottomToSuperview(usingSafeArea: true)
         }
 
@@ -139,7 +140,10 @@ extension V {
 
         override func setupColorsAndStyles() {
             self.backgroundColor = AppColors.backgroundColor
-            collectionView.backgroundColor = .white
+            collectionView.backgroundColor = .clear
+            searchBar.backgroundColor = self.backgroundColor
+            searchBar.tintColor = self.backgroundColor
+            searchBar.barTintColor = self.backgroundColor
         }
 
         // MARK: - Custom Getter/Setters
@@ -226,6 +230,61 @@ extension V.ProductsListView: UICollectionViewDelegateFlowLayout {
 
 // MARK: - UICollectionViewCell
 
+class ViewWithRoundShadow: UIView {
+
+    private var ADD_SHADOW = true
+
+    // fillColor : the color applied to the shadowLayer, rather than the view's backgroundColor
+    static var cornerRadius: CGFloat = 5
+    private var _fillColor: UIColor = UIColor.clear
+    private var _shadowColor: CGColor = UIView.Shadows.shadowColor.cgColor
+    private var _shadowLayer: CAShapeLayer!
+    private var _shadowOpacity: Float = 1
+    private var _shadowRadius: CGFloat = 4
+    private var _borderColor: CGColor = UIColor.clear.cgColor
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        // Corner
+        self.backgroundColor = .white
+        self.layer.cornerRadius = Self.cornerRadius
+        self.layer.borderWidth = 1
+        self.layer.borderColor = _borderColor
+
+        // Shadow
+        if _shadowLayer == nil && ADD_SHADOW {
+            _shadowLayer = CAShapeLayer()
+            _shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: Self.cornerRadius).cgPath
+            _shadowLayer.fillColor = _fillColor.cgColor
+            _shadowLayer.shadowColor = _shadowColor
+            _shadowLayer.shadowPath = _shadowLayer.path
+            _shadowLayer.shadowOffset = UIView.Shadows.offset
+            _shadowLayer.shadowOpacity = _shadowOpacity
+            _shadowLayer.shadowRadius  = _shadowRadius
+            layer.insertSublayer(_shadowLayer, at: 0)
+        }
+    }
+}
+
+class ImageViewWithRoundedShadow: ViewWithRoundShadow {
+    var imageView = UIImageView()
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
+        setupView()
+     }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func setupView() {
+        addSubview(imageView)
+        imageView.autoLayout.edgesToSuperview()
+        imageView.addCorner(radius: Self.cornerRadius)
+    }
+}
+
 extension V {
     class ProductPreviewBigCollectionViewCell: UICollectionViewCell {
 
@@ -240,8 +299,8 @@ extension V {
             V.ProductCardView()
         }()
 
-        private lazy var imgBackground: UIImageView = {
-            UIKitFactory.imageView()
+        private lazy var imgBackground: ImageViewWithRoundedShadow = {
+            ImageViewWithRoundedShadow()
         }()
 
         private lazy var imgProduct: UIImageView = {
@@ -258,13 +317,12 @@ extension V {
             contentView.backgroundColor = .clear
 
             contentView.addSubview(imgBackground)
-            let offsetA: CGFloat = 10
-            let offsetB: CGFloat = offsetA * 5
+            let offsetA: CGFloat = Designables.Sizes.Margins.defaultMargin
+            let offsetB: CGFloat = offsetA * 3
             imgBackground.autoLayout.topToSuperview(offset: offsetA)
             imgBackground.autoLayout.bottomToSuperview(offset: -offsetA)
             imgBackground.autoLayout.leadingToSuperview(offset: offsetA)
             imgBackground.autoLayout.trailingToSuperview(offset: offsetB)
-            imgBackground.addShadow(offset: CGSize(width: 1, height: 3), shadowType: .heavyRegular)
 
             contentView.addSubview(imgProduct)
             imgProduct.autoLayout.trailingToSuperview(offset: 0)
@@ -280,7 +338,7 @@ extension V {
             productCardView.autoLayout.bottomToSuperview(offset: -Designables.Sizes.Margins.defaultMargin)
             productCardView.autoLayout.heightToSuperview(multiplier: 0.25)
 
-            DevTools.DebugView.paint(view: self)
+            //DevTools.DebugView.paint(view: self)
         }
 
         required init?(coder: NSCoder) {
@@ -289,7 +347,8 @@ extension V {
 
         func setup(viewModel: VisionBox.ProductModel) {
             productCardView.setup(viewModel: viewModel)
-            imgBackground.image = UIImage(named: viewModel.backgroundImage)
+            //imgBackground.image = UIImage(named: viewModel.backgroundImage)
+            imgBackground.imageView.image = UIImage(named: viewModel.backgroundImage)
             let image = UIImage(named: viewModel.productImage)
             imgProduct.image = image
         }
