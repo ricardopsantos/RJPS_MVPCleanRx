@@ -55,15 +55,55 @@ extension V {
         // MARK: - UI Elements (Private and lazy by default)
 
         private lazy var viewContainerTop: UIView = {
-            UIView()
+            let some = UIView()
+            some.backgroundColor = .yellow
+            return some
         }()
 
         private lazy var viewContainerBottom: UIView = {
             UIView()
         }()
 
+        private lazy var viewContainerCollection: UIView = {
+            UIView()
+        }()
+
+        private lazy var imgDescriptionTitle: UIImageView = {
+            UIKitFactory.imageView(image: Images.notFound.image)
+        }()
+
+        private lazy var lblDescriptionTitle: UILabel = {
+            UIKitFactory.label(title: "lblDescriptionTitle", style: .title)
+        }()
+
+        private lazy var lblDescriptionValue: UILabel = {
+            UIKitFactory.label(title: "lblDescriptionValue", style: .title)
+        }()
+
+        private lazy var lblEvaluateTitle: UILabel = {
+            UIKitFactory.label(title: "lblEvaluateTitle", style: .title)
+        }()
+
+        private lazy var lblUserName: UILabel = {
+            UIKitFactory.label(title: "lblUserName", style: .title)
+        }()
+
+        private lazy var imgEvaluateTitle: UIImageView = {
+            UIKitFactory.imageView(image: Images.notFound.image)
+        }()
+
         private lazy var productCardView: V.ProductCardView = {
             V.ProductCardView()
+        }()
+
+        private lazy var avatarView: V.AvatarView = {
+            V.AvatarView()
+        }()
+
+        private lazy var viewSeparator: UIView = {
+            let some = UIView()
+            some.backgroundColor = UIColor.Pack1.grey_1.color
+            return some
         }()
 
         // MARK: - Mandatory
@@ -74,7 +114,16 @@ extension V {
         override func prepareLayoutCreateHierarchy() {
             addSubview(viewContainerTop)
             addSubview(viewContainerBottom)
+            viewContainerBottom.addSubview(viewContainerCollection)
             addSubview(productCardView)
+            addSubview(imgDescriptionTitle)
+            addSubview(lblDescriptionTitle)
+            addSubview(lblDescriptionValue)
+            addSubview(viewSeparator)
+            addSubview(lblEvaluateTitle)
+            addSubview(imgEvaluateTitle)
+            addSubview(avatarView)
+            addSubview(lblUserName)
         }
 
         // This function is called automatically by super BaseGenericViewVIP
@@ -97,13 +146,44 @@ extension V {
             viewContainerBottom.autoLayout.trailingToSuperview()
             viewContainerBottom.autoLayout.topToBottom(of: viewContainerTop)
 
+            lblDescriptionTitle.autoLayout.topToBottom(of: productCardView, offset: Designables.Sizes.Margins.defaultMargin)
+            lblDescriptionTitle.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+            lblDescriptionTitle.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+
+            lblDescriptionValue.autoLayout.topToBottom(of: lblDescriptionTitle, offset: Designables.Sizes.Margins.defaultMargin)
+            lblDescriptionValue.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+            lblDescriptionValue.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+
+            viewSeparator.autoLayout.topToBottom(of: lblDescriptionValue, offset: Designables.Sizes.Margins.defaultMargin)
+            viewSeparator.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+            viewSeparator.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+            viewSeparator.autoLayout.height(3)
+
+            lblEvaluateTitle.autoLayout.topToBottom(of: viewSeparator, offset: Designables.Sizes.Margins.defaultMargin)
+            lblEvaluateTitle.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+            lblEvaluateTitle.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+
+            avatarView.autoLayout.topToBottom(of: lblEvaluateTitle, offset: Designables.Sizes.Margins.defaultMargin)
+            avatarView.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+            avatarView.autoLayout.width(V.AvatarView.defaultSize)
+            avatarView.autoLayout.height(V.AvatarView.defaultSize)
+
+            lblUserName.autoLayout.topToBottom(of: lblEvaluateTitle, offset: Designables.Sizes.Margins.defaultMargin)
+            lblUserName.autoLayout.leadingToTrailing(of: avatarView, offset: Designables.Sizes.Margins.defaultMargin)
+            lblUserName.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+
+            viewContainerCollection.autoLayout.bottomToSuperview(offset: -Designables.Sizes.Margins.defaultMargin)
+            viewContainerCollection.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+            viewContainerCollection.autoLayout.leading(to: lblUserName)
+            viewContainerCollection.autoLayout.topToBottom(of: lblUserName, offset: Designables.Sizes.Margins.defaultMargin)
+
         }
 
         // This function is called automatically by super BaseGenericViewVIP
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 3/3 : Stuff that is not included in [prepareLayoutCreateHierarchy] and [prepareLayoutBySettingAutoLayoutsRules]
         override func prepareLayoutByFinishingPrepareLayout() {
-            DevTools.DebugView.paint(view: self)
+            DevTools.DebugView.paint(view: self, useBorderColors: true)
         }
 
         override func setupColorsAndStyles() {
@@ -139,4 +219,37 @@ extension V.ProdutDetailsView {
     var rxModelSelected: ControlEvent<VM.ProdutDetails.TableItem> {
         tableView.rx.modelSelected(VM.ProdutDetails.TableItem.self)
     }*/
+}
+
+extension V {
+    final class AvatarView: UIView {
+
+        public struct ViewModel {
+            let image: UIImage
+        }
+        static let defaultSize: CGFloat = 50
+
+        private lazy var imgAvatar: UIImageView = {
+            UIKitFactory.imageView(image: Images.notFound.image)
+        }()
+
+        override init(frame: CGRect) {
+            super.init(frame: .zero)
+            setupView()
+        }
+
+        private func setupView() {
+            addSubview(imgAvatar)
+            imgAvatar.edgesToSuperview()
+            imgAvatar.addCorner(radius: Self.defaultSize / 2.0)
+        }
+
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+
+        func setup(viewModel: V.AvatarView.ViewModel) {
+            imgAvatar.image = viewModel.image
+        }
+    }
 }

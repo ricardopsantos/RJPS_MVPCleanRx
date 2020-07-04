@@ -290,10 +290,6 @@ extension V {
             let cardView = UIView()
             addSubview(cardView)
             cardView.edgesToSuperview()
-/*            cardView.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
-            cardView.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
-            cardView.autoLayout.bottomToSuperview(offset: -Designables.Sizes.Margins.defaultMargin)
-            cardView.autoLayout.heightToSuperview(multiplier: 0.25)*/
             cardView.addCorner(radius: 5)
             cardView.backgroundColor = UIColor.white.withAlphaComponent(FadeType.heavy.rawValue)
             let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
