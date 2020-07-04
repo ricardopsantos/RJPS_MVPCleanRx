@@ -167,9 +167,8 @@ extension VC.ProdutDetailsViewController {
 extension VC.ProdutDetailsViewController {
     #warning("THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE")
     private func doPrivateStuff() {
-        let userId = genericView.subTitle
-        let request = VM.ProdutDetails.Something.Request(userId: userId)
-        self.interactor?.requestSomething(request: request)
+     //   let request = VM.ProdutDetails.Something.Request(userId:)
+       // self.interactor?.requestSomething(request: request)
     }
 }
 
@@ -185,6 +184,6 @@ extension VC.ProdutDetailsViewController: ProdutDetailsDisplayLogicProtocol {
     func displayScreenInitialState(viewModel: VM.ProdutDetails.ScreenInitialState.ViewModel) {
         title = viewModel.title
         // Setting up the view, option 2 : setting the vars one by one
-        genericView.subTitle = viewModel.subTitle
+//        genericView.subTitle = viewModel.subTitle
     }
 }

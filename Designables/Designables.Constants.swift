@@ -13,5 +13,6 @@ public extension Designables {
     struct Constants {
         private init() {}
         public static let disabledViewAlpha: CGFloat = FadeType.heavy.rawValue
+        public static let defaultMargin: CGFloat = Designables.Sizes.Margins.defaultMargin
     }
 }

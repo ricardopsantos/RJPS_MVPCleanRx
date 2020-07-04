@@ -28,7 +28,7 @@ import AppResources
 // MARK: - Preview
 
 @available(iOS 13.0.0, *)
-struct ProdutDetailsView_UIViewRepresentable: UIViewRepresentable {
+struct ProductDetailsView_UIViewRepresentable: UIViewRepresentable {
     func updateUIView(_ uiView: V.ProdutDetailsView, context: Context) { }
     func makeUIView(context: Context) -> V.ProdutDetailsView {
         return V.ProdutDetailsView()
@@ -36,9 +36,9 @@ struct ProdutDetailsView_UIViewRepresentable: UIViewRepresentable {
 }
 
 @available(iOS 13.0.0, *)
-struct ProdutDetailsView_Previews: PreviewProvider {
+struct ProductDetailsView_Previews: PreviewProvider {
     static var previews: some SwiftUI.View {
-        ProdutDetailsView_UIViewRepresentable()
+        ProductDetailsView_UIViewRepresentable()
     }
 }
 
@@ -54,16 +54,16 @@ extension V {
 
         // MARK: - UI Elements (Private and lazy by default)
 
-        private lazy var scrollView: UIScrollView = {
-            UIKitFactory.scrollView()
+        private lazy var viewContainerTop: UIView = {
+            UIView()
         }()
 
-        private lazy var stackViewVLevel1: UIStackView = {
-            UIKitFactory.stackView(axis: .vertical)
+        private lazy var viewContainerBottom: UIView = {
+            UIView()
         }()
 
-        private lazy var lblTitle: UILabel = {
-            UIKitFactory.label(style: .value)
+        private lazy var productCardView: V.ProductCardView = {
+            V.ProductCardView()
         }()
 
         // MARK: - Mandatory
@@ -72,35 +72,38 @@ extension V {
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 1/3 : JUST to add stuff to the view....
         override func prepareLayoutCreateHierarchy() {
-            addSubview(scrollView)
-            scrollView.addSubview(stackViewVLevel1)
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(lblTitle)
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
+            addSubview(viewContainerTop)
+            addSubview(viewContainerBottom)
+            addSubview(productCardView)
         }
 
         // This function is called automatically by super BaseGenericViewVIP
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 2/3 : JUST to setup layout rules zone....
         override func prepareLayoutBySettingAutoLayoutsRules() {
-            let defaultMargin = Designables.Sizes.Margins.defaultMargin
 
-            stackViewVLevel1.uiUtils.edgeStackViewToSuperView()
-            let scrollViewHeight = screenHeight/2
-            scrollView.autoLayout.edgesToSuperview(excluding: .bottom, insets: .zero)
-            scrollView.autoLayout.height(scrollViewHeight)
+            viewContainerTop.autoLayout.topToSuperview()
+            viewContainerTop.autoLayout.leadingToSuperview()
+            viewContainerTop.autoLayout.trailingToSuperview()
+            viewContainerTop.autoLayout.heightToSuperview(multiplier: 0.4)
 
-            self.subViewsOf(types: [.button, .label], recursive: true).forEach { (some) in
-                some.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
-                some.autoLayout.marginToSuperVerticalStackView(trailing: defaultMargin, leading: defaultMargin)
-            }
+            productCardView.autoLayout.topToBottom(of: viewContainerTop, offset: (-V.ProductCardView.defaultHeight * 0.25))
+            productCardView.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+            productCardView.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
+            productCardView.autoLayout.height(V.ProductCardView.defaultHeight)
+
+            viewContainerBottom.autoLayout.bottomToSuperview()
+            viewContainerBottom.autoLayout.leadingToSuperview()
+            viewContainerBottom.autoLayout.trailingToSuperview()
+            viewContainerBottom.autoLayout.topToBottom(of: viewContainerTop)
+
         }
 
         // This function is called automatically by super BaseGenericViewVIP
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 3/3 : Stuff that is not included in [prepareLayoutCreateHierarchy] and [prepareLayoutBySettingAutoLayoutsRules]
         override func prepareLayoutByFinishingPrepareLayout() {
-            lblTitle.textAlignment = .center
+            DevTools.DebugView.paint(view: self)
         }
 
         override func setupColorsAndStyles() {
@@ -118,32 +121,12 @@ extension V {
         // We can set the view data by : 2 - Custom Setters / Computed Vars         ---> var subTitle: String <---
         // We can set the view data by : 3 - Passing the view model inside the view ---> func setupWith(viewModel: ... <---
 
-        public var subTitle: String {
-            get { return  lblTitle.text ?? "" }
-            set(newValue) {
-                lblTitle.textAnimated = newValue
-            }
-        }
-
-        public var titleStyleType: UILabel.LayoutStyle = .value {
-            didSet {
-                lblTitle.layoutStyle = titleStyleType
-            }
-        }
-
         func setupWith(someStuff viewModel: VM.ProdutDetails.Something.ViewModel) {
-            subTitle = viewModel.subTitle
+
         }
 
         func setupWith(screenInitialState viewModel: VM.ProdutDetails.ScreenInitialState.ViewModel) {
-            subTitle = viewModel.subTitle
-            screenLayout = viewModel.screenLayout
-        }
-
-        var screenLayout: E.ProdutDetailsView.ScreenLayout = .layoutA {
-            didSet {
-                // show or hide stuff
-            }
+        //    screenLayout = viewModel.screenLayout
         }
     }
 }

@@ -26,15 +26,6 @@ import UIBase
 // MARK: - Enums & Other Models
 //
 
-extension E {
-    struct ProdutDetailsView {
-        enum ScreenLayout {
-            case layoutA
-            case layoutB
-        }
-    }
-}
-
 // DataStore shared model
 /*
 struct ProdutDetailsDataStoreModelA {
@@ -147,7 +138,6 @@ extension VM {
             struct ViewModel {
                 let title: String
                 let subTitle: String
-                let screenLayout: E.ProdutDetailsView.ScreenLayout
             }
         }
     }

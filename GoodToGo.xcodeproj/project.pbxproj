@@ -2279,7 +2279,7 @@
 			path = VIP.VisionBox.CategoriesPicker;
 			sourceTree = "<group>";
 		};
-		D7B9BF1C24AFA88D0093A82D /* VIP.VisionBox.ProdutsList */ = {
+		D7B9BF1C24AFA88D0093A82D /* VIP.VisionBox.ProductsList */ = {
 			isa = PBXGroup;
 			children = (
 				D7B9BF3124AFCEF40093A82D /* V.ProdutsListView.swift */,
@@ -2290,10 +2290,10 @@
 				D7B9BF3724AFCEF40093A82D /* I.ProdutsListInteractor.swift */,
 				D7B9BF3824AFCEF40093A82D /* P.ProdutsListPresenter.swift */,
 			);
-			path = VIP.VisionBox.ProdutsList;
+			path = VIP.VisionBox.ProductsList;
 			sourceTree = "<group>";
 		};
-		D7B9BF1D24AFA8A80093A82D /* VIP.VisionBox.ProdutDetails */ = {
+		D7B9BF1D24AFA8A80093A82D /* VIP.VisionBox.ProductDetails */ = {
 			isa = PBXGroup;
 			children = (
 				D7B9BF4324B080B80093A82D /* V.ProdutDetailsView.swift */,
@@ -2304,7 +2304,7 @@
 				D7B9BF4924B080B80093A82D /* I.ProdutDetailsInteractor.swift */,
 				D7B9BF4A24B080B80093A82D /* P.ProdutDetailsPresenter.swift */,
 			);
-			path = VIP.VisionBox.ProdutDetails;
+			path = VIP.VisionBox.ProductDetails;
 			sourceTree = "<group>";
 		};
 		D7B9BF5824B0845D0093A82D /* VisionBox */ = {
@@ -2312,9 +2312,9 @@
 			children = (
 				D7B9BF1E24AFA8CB0093A82D /* VisionBox_Preview.jpg */,
 				D7B9BF5D24B084E10093A82D /* VisionBox.Designables */,
-				D7B9BF1C24AFA88D0093A82D /* VIP.VisionBox.ProdutsList */,
+				D7B9BF1C24AFA88D0093A82D /* VIP.VisionBox.ProductsList */,
 				D7B9BF1B24AFA82B0093A82D /* VIP.VisionBox.CategoriesPicker */,
-				D7B9BF1D24AFA8A80093A82D /* VIP.VisionBox.ProdutDetails */,
+				D7B9BF1D24AFA8A80093A82D /* VIP.VisionBox.ProductDetails */,
 			);
 			path = VisionBox;
 			sourceTree = "<group>";

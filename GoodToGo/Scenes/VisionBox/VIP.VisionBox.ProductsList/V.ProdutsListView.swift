@@ -28,7 +28,7 @@ import AppResources
 // MARK: - Preview
 
 @available(iOS 13.0.0, *)
-struct ProdutsListView_UIViewRepresentable: UIViewRepresentable {
+struct ProductsListView_UIViewRepresentable: UIViewRepresentable {
     func updateUIView(_ uiView: V.ProdutsListView, context: Context) { }
     func makeUIView(context: Context) -> V.ProdutsListView {
         let view = V.ProdutsListView()
@@ -48,9 +48,9 @@ struct ProdutsListView_UIViewRepresentable: UIViewRepresentable {
 }
 
 @available(iOS 13.0.0, *)
-struct ProdutsListView_Previews: PreviewProvider {
+struct ProductsListView_Previews: PreviewProvider {
     static var previews: some SwiftUI.View {
-        ProdutsListView_UIViewRepresentable()
+        ProductsListView_UIViewRepresentable()
     }
 }
 
@@ -261,6 +261,8 @@ extension V {
 
 extension V {
     final class ProductCardView: UIView {
+
+        static let defaultHeight: CGFloat = 150
 
         private lazy var lblTitle: UILabel = {
             UIKitFactory.label(style: .notApplied)
