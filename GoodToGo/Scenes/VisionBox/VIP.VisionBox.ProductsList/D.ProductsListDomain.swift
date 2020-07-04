@@ -25,6 +25,7 @@ import UIBase
 protocol ProdutsListBusinessLogicProtocol: BaseInteractorVIPMandatoryBusinessLogicProtocol {
     // Naming convention : func request__XXX__(viewModel: VM.ProdutsList.__XXX__.Request)
     func requestScreenInitialState()
+    func requestSomething(viewModel: VM.ProductsList.Something.Request)
 }
 
 //
@@ -84,9 +85,15 @@ extension VM {
     enum ProductsList {
         struct Something {
             private init() { }
-            struct Request { }
-            struct Response { }
-            struct ViewModel { }
+            struct Request {
+                let search: String
+            }
+            struct Response {
+                let products: [VisionBox.ProductModel]
+            }
+            struct ViewModel {
+                let products: [VisionBox.ProductModel]
+            }
         }
 
         struct ScreenInitialState {

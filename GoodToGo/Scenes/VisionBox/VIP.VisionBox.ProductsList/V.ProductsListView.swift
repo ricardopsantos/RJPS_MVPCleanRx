@@ -120,6 +120,7 @@ extension V {
 
             searchBar.rx.text
                 .orEmpty
+                .skip(1)
                 .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
                 .log(whereAmI())
                 .subscribe(onNext: { [weak self] _ in
@@ -130,7 +131,7 @@ extension V {
             searchBar.rx.textDidEndEditing
                 .subscribe(onNext: { [weak self] (_) in
                     guard let self = self else { return }
-                    guard self.searchBar.text!.count>0 else { return }
+                    guard self.searchBar.text!.count > 0 else { return }
                     self.rxFilter.onNext(self.searchBar.text)
                 })
                 .disposed(by: self.disposeBag)
@@ -147,20 +148,24 @@ extension V {
             didSet {
                 collectionView.fadeTo(0)
                 DispatchQueue.executeWithDelay(delay: RJS_Constants.defaultAnimationsTime) { [weak self] in
-                    self?.collectionView.reloadData()
-                    if let text = self?.collectionViewDataSource.first?.category.toString {
-                        self?.lblTitle.textAnimated = text
-                    }
-                    self?.collectionView.fadeTo(1)
+                    guard let self = self else { return }
+                    self.collectionView.reloadData()
+                    if self.collectionViewDataSource.count > 0 {
+                        self.collectionView.fadeTo(1)
+                        if let text = self.collectionViewDataSource.first?.category.toString {
+                            self.lblTitle.textAnimated = text
+                        }
+                    } 
                 }
             }
         }
 
+        func setupWith(filter viewModel: VM.ProductsList.Something.ViewModel) {
+            collectionViewDataSource = viewModel.products
+        }
+
         func setupWith(screenInitialState viewModel: VM.ProductsList.ScreenInitialState.ViewModel) {
             collectionViewDataSource = viewModel.products
-            if let title = viewModel.products.first?.category.toString {
-                lblTitle.text = title
-            }
         }
 
     }

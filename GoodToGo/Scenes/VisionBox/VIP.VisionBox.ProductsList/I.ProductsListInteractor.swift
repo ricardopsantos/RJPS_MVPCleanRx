@@ -68,7 +68,14 @@ extension I.ProdutsListInteractor {
 // MARK: BusinessLogicProtocol
 
 extension I.ProdutsListInteractor: ProdutsListBusinessLogicProtocol {
-
+    func requestSomething(viewModel: VM.ProductsList.Something.Request) {
+        var products = VisionBox.ProductModel.mockData.filter({ $0.category == dsSelectedCategory })
+        if !viewModel.search.isEmpty {
+            products = products.filter({ "\($0)".contains(subString: viewModel.search) })
+        }
+        let response = VM.ProductsList.Something.Response(products: products)
+        presenter?.presentSomething(response: response)
+    }
 }
 
 // MARK: Utils {

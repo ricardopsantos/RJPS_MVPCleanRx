@@ -121,7 +121,13 @@ extension VC {
 
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
-
+            genericView.rxFilter.asObserver().bind { [weak self] (search) in
+                guard let self = self else { return }
+                guard let search = search else { return }
+                guard self.isVisible else { return }
+                let viewModel = VM.ProductsList.Something.Request(search: search)
+                self.interactor?.requestSomething(viewModel: viewModel)
+            }.disposed(by: disposeBag)
         }
 
         // This function is called automatically by super BaseGenericView
@@ -148,10 +154,16 @@ extension VC.ProductsListViewController {
 extension VC.ProductsListViewController: ProdutsListDisplayLogicProtocol {
 
     func displaySomething(viewModel: VM.ProductsList.Something.ViewModel) {
-
+        if viewModel.products.count == 0 {
+            displayError(viewModel: BaseDisplayLogicModels.Error(title: Messages.noRecords.localised))
+        }
+        genericView.setupWith(filter: viewModel)
     }
 
     func displayScreenInitialState(viewModel: VM.ProductsList.ScreenInitialState.ViewModel) {
+        if viewModel.products.count == 0 {
+            displayError(viewModel: BaseDisplayLogicModels.Error(title: Messages.noRecords.localised))
+        }
         genericView.setupWith(screenInitialState: viewModel)
     }
 }

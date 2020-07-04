@@ -42,7 +42,11 @@ open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtoco
     }
 
     open func displayStatus(viewModel: BaseDisplayLogicModels.Status) {
-        BaseViewControllerMVP.shared.displayMessage(viewModel.message, type: .success)
+        var message = "\(viewModel.title)"
+        if !viewModel.message.isEmpty {
+            message = "\(message)\n\n\(viewModel.message)"
+        }
+        BaseViewControllerMVP.shared.displayMessage(message, type: .success)
     }
 
     open func displayLoading(viewModel: BaseDisplayLogicModels.Loading) {
@@ -50,7 +54,11 @@ open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtoco
     }
 
     open func displayError(viewModel: BaseDisplayLogicModels.Error) {
-        BaseViewControllerMVP.shared.displayMessage(viewModel.message, type: .error)
+        var message = "\(viewModel.title)"
+        if !viewModel.message.isEmpty {
+            message = "\(message)\n\n\(viewModel.message)"
+        }
+        BaseViewControllerMVP.shared.displayMessage(message, type: .error)
     }
 
     open func setupColorsAndStyles() {
