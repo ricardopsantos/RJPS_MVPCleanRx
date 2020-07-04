@@ -71,7 +71,7 @@ extension I.ProdutsListInteractor: ProdutsListBusinessLogicProtocol {
     func requestSomething(viewModel: VM.ProductsList.Something.Request) {
         var products = VisionBox.ProductModel.mockData.filter({ $0.category == dsSelectedCategory })
         if !viewModel.search.isEmpty {
-            products = products.filter({ "\($0)".contains(subString: viewModel.search) })
+            products = products.filter({ "\($0)".lowercased().contains(subString: viewModel.search.trim.lowercased()) })
         }
         let response = VM.ProductsList.Something.Response(products: products)
         presenter?.presentSomething(response: response)

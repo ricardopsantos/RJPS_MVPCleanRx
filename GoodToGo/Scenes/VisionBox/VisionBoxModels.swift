@@ -27,9 +27,12 @@ extension VisionBox {
             return "\(price) €"
         }
 
+        static var  _mockData: [ProductModel] = []
         static var mockData: [ProductModel] {
-            var products: [ProductModel] = []
-            let numberOfRecords = VisionBox.Category.allCases.capacity * 5
+            if !_mockData.isEmpty {
+                return _mockData
+            }
+            let numberOfRecords = VisionBox.Category.allCases.capacity * 10
             (0...numberOfRecords).forEach { (some) in
                 let category = Int.random(in: VisionBox.Category.cat1.rawValue ... VisionBox.Category.cat9.rawValue)
                 let product = ProductModel(name: "Product \(some)",
@@ -39,9 +42,9 @@ extension VisionBox {
                     backgroundImage: "back.3",
                     productImage: "product.\(Int.random(in: 1 ... 3))",
                     category: VisionBox.Category(rawValue: category)!)
-                products.append(product)
+                _mockData.append(product)
             }
-            return products
+            return _mockData
         }
     }
 }

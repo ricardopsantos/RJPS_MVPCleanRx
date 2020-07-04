@@ -57,8 +57,17 @@ extension VC {
             ProductsListDataPassingProtocol &
             ProdutsListRoutingLogicProtocol)?
 
-        private lazy var reachabilityView: ReachabilityView = {
-           return self.addReachabilityView()
+        private lazy var topGenericView: TopBar = {
+            let some = TopBar()
+            some.injectOn(viewController: self, usingSafeArea: false)
+            some.addDismissButton()
+            some.rxSignal_btnDismissTapped
+                .asObservable()
+                .log(whereAmI())
+                .subscribe(onNext: { (_) in
+                    self.dismissMe()
+                }).disposed(by: disposeBag)
+            return some
         }()
 
         //
@@ -68,11 +77,11 @@ extension VC {
         override func loadView() {
             super.loadView()
             view.accessibilityIdentifier = self.genericAccessibilityIdentifier
-            reachabilityView.load()
         }
 
         override func viewDidLoad() {
             super.viewDidLoad()
+            topGenericView.lazyLoad()
         }
 
         override func viewWillAppear(_ animated: Bool) {

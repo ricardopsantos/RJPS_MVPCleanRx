@@ -58,10 +58,6 @@ extension VC {
             CategoriesPickerDataPassingProtocol &
             CategoriesPickerRoutingLogicProtocol)?
 
-        private lazy var reachabilityView: ReachabilityView = {
-           return self.addReachabilityView()
-        }()
-
         //
         // MARK: View lifecycle
         //
@@ -69,7 +65,6 @@ extension VC {
         override func loadView() {
             super.loadView()
             view.accessibilityIdentifier = self.genericAccessibilityIdentifier
-            reachabilityView.load()
         }
 
         override func viewDidLoad() {

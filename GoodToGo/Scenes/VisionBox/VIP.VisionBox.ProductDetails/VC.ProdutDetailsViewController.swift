@@ -62,6 +62,12 @@ extension VC {
            return self.addReachabilityView()
         }()
 
+        private lazy var topGenericView: TopBar = {
+            let some = UIKitFactory.topBar(baseController: self, usingSafeArea: true)
+            some.setTitle("Browser Products")
+            return some
+        }()
+
         //
         // MARK: View lifecycle
         //
@@ -125,6 +131,7 @@ extension VC {
         override func setupViewIfNeed() {
             // Use it to configure stuff on the genericView, depending on the value external/public variables
             // that are set after we instantiate the view controller, but before if has been presented
+            topGenericView.lazyLoad()
         }
 
         // This function is called automatically by super BaseGenericView

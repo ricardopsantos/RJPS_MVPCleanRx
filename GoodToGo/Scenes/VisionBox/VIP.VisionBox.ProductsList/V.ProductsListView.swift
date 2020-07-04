@@ -94,7 +94,7 @@ extension V {
 
             searchBar.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
             searchBar.autoLayout.widthToSuperview()
-            searchBar.autoLayout.topToSuperview(usingSafeArea: true)
+            searchBar.autoLayout.topToSuperview(offset: TopBar.defaultHeight(usingSafeArea: true))
 
             lblTitle.autoLayout.topToBottom(of: searchBar)
             lblTitle.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)

@@ -44,7 +44,7 @@ open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtoco
     open func displayStatus(viewModel: BaseDisplayLogicModels.Status) {
         var message = "\(viewModel.title)"
         if !viewModel.message.isEmpty {
-            message = "\(message)\n\n\(viewModel.message)"
+            message = message.isEmpty ? viewModel.message : "\(message)\n\n\(viewModel.message)"
         }
         BaseViewControllerMVP.shared.displayMessage(message, type: .success)
     }
@@ -56,7 +56,7 @@ open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtoco
     open func displayError(viewModel: BaseDisplayLogicModels.Error) {
         var message = "\(viewModel.title)"
         if !viewModel.message.isEmpty {
-            message = "\(message)\n\n\(viewModel.message)"
+            message = message.isEmpty ? viewModel.message : "\(message)\n\n\(viewModel.message)"
         }
         BaseViewControllerMVP.shared.displayMessage(message, type: .error)
     }

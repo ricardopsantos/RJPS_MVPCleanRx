@@ -32,7 +32,6 @@ struct CategoriesPickerView_UIViewRepresentable: UIViewRepresentable {
     func updateUIView(_ uiView: V.CategoriesPickerView, context: Context) { }
     func makeUIView(context: Context) -> V.CategoriesPickerView {
         let some = V.CategoriesPickerView()
-        some.title = "Hi"
         return some
     }
 }
@@ -66,7 +65,7 @@ extension V {
         private lazy var b8: CategoryButton = { V.CategoryButton(category: .cat8) }()
         private lazy var b9: CategoryButton = { V.CategoryButton(category: .cat9) }()
 
-        private lazy var lblTitle: UILabel = { UIKitFactory.label(style: .value) }()
+        private lazy var lblTitle: UILabel = { UIKitFactory.label(style: .notApplied) }()
         
         // MARK: - Mandatory
 
@@ -89,7 +88,7 @@ extension V {
 
             lblTitle.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
             lblTitle.autoLayout.widthToSuperview()
-            lblTitle.autoLayout.topToSuperview()
+            lblTitle.autoLayout.topToSuperview(usingSafeArea: true)
 
             [b1, b2, b3, b4, b5, b6, b7, b8, b9].forEach { (some) in
                 some.autoLayout.width(V.CategoryButton.defaultSize)
@@ -97,7 +96,8 @@ extension V {
             }
 
             [b1, b2, b3].forEach { (some) in
-                some.autoLayout.topToBottom(of: lblTitle, offset: marginH)
+                //some.autoLayout.topToBottom(of: lblTitle, offset: marginH)
+                some.autoLayout.bottomToTop(of: b5, offset: -marginH)
             }
 
             [b2, b5, b8].forEach { (some) in
@@ -117,7 +117,9 @@ extension V {
               }
 
             [b7, b8, b9].forEach { (some) in
-                some.bottomToSuperview(offset: -marginH)
+                //some.bottomToSuperview(offset: -marginH)
+                some.autoLayout.topToBottom(of: b5, offset: marginH)
+
             }
 
         }
@@ -127,7 +129,8 @@ extension V {
         // Function 3/3 : Stuff that is not included in [prepareLayoutCreateHierarchy] and [prepareLayoutBySettingAutoLayoutsRules]
         override func prepareLayoutByFinishingPrepareLayout() {
             lblTitle.textAlignment = .center
-            lblTitle.text = "123123"
+            lblTitle.font = UIFont.App.Styles.headingMedium.rawValue
+            lblTitle.text = "Select a category"
             DevTools.DebugView.paint(view: self, method: 1)
         }
 
@@ -150,26 +153,13 @@ extension V {
         }
 
         // MARK: - Custom Getter/Setters
-        public var title: String {
-            get { return  lblTitle.text ?? "" }
-            set(newValue) {
-                lblTitle.textAnimated = newValue
-            }
-        }
-
-        public var titleStyleType: UILabel.LayoutStyle = .value {
-            didSet {
-                lblTitle.layoutStyle = titleStyleType
-            }
-        }
 
         func setupWith(someStuff viewModel: VM.CategoriesPicker.CategoryChange.ViewModel) {
-            // route to
+
         }
 
         func setupWith(screenInitialState viewModel: VM.CategoriesPicker.ScreenInitialState.ViewModel) {
-           // title = viewModel.subTitle
-           // screenLayout = viewModel.screenLayout
+
         }
     }
 }
