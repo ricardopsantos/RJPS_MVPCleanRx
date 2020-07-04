@@ -71,7 +71,6 @@ extension GoodToGo.V {
 
         // MARK: - Mandatory
 
-        // Order in View life-cycle : 1
         // This function is called automatically by super BaseGenericViewVIP
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 1/3 : JUST to add stuff to the view....
@@ -122,7 +121,6 @@ extension GoodToGo.V {
             self.backgroundColor = TopBar.defaultColor
         }
 
-        // Order in View life-cycle : 2
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
             searchBar.rx.text

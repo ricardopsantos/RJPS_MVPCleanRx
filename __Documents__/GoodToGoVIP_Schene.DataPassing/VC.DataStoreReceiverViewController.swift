@@ -51,13 +51,11 @@ extension VC {
             & DataStoreReceiverDataPassingProtocol // <<-- DS Sample : Take notice
         )?
 
-        // Order in View life-cycle : 6
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             if firstAppearance { interactor?.requestScreenInitialState() }
         }
 
-        // Order in View life-cycle : 1
         override func setup() {
             // This function is called automatically by super BaseGenericView
             let viewController = self

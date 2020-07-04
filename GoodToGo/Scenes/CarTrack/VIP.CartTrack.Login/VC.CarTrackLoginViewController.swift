@@ -39,18 +39,15 @@ extension VC {
         // MARK: View lifecycle
         //
 
-        // Order in View life-cycle : 2
         override func loadView() {
             super.loadView()
             self.title = Messages.login.localised
         }
 
-        // Order in View life-cycle : 4
         override func viewDidLoad() {
             super.viewDidLoad()
         }
 
-        // Order in View life-cycle : 6
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             if firstAppearance {
@@ -58,7 +55,6 @@ extension VC {
             }
         }
 
-        // Order in View life-cycle : 9
         override func viewDidAppear(_ animated: Bool) {
             super.viewDidAppear(animated)
             reachabilityView.lazyLoad()
@@ -68,7 +64,6 @@ extension VC {
         // MARK: Dark Mode
         //
 
-        // Order in View life-cycle : 8
         public override func setupColorsAndStyles() {
             //super.setupColorsAndStyles()
             // Setup UI on dark mode (if needed)
@@ -78,7 +73,6 @@ extension VC {
         // MARK: Mandatory methods
         //
 
-        // Order in View life-cycle : 1
         override func setup() {
             // This function is called automatically by super BaseGenericView
             let viewController = self
@@ -100,7 +94,6 @@ extension VC {
             return some
         }()
 
-        // Order in View life-cycle : 5
         // This function is called automatically by super BaseGenericView
         override func setupViewIfNeed() {
             // Use it to configure stuff on the genericView, depending on the value external/public variables
@@ -108,7 +101,6 @@ extension VC {
             topGenericView.lazyLoad()
         }
 
-        // Order in View life-cycle : 3
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
 
@@ -143,7 +135,6 @@ extension VC {
                 .disposed(by: disposeBag)
         }
 
-        // Order in View life-cycle : 7
         // This function is called automatically by super BaseGenericView
         override func setupNavigationUIRx() {
             // Add options to navigation bar

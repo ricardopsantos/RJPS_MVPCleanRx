@@ -212,6 +212,8 @@
 		D7979DCA246DC1960039031C /* I.DebugInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979DC3246DC1960039031C /* I.DebugInteractor.swift */; };
 		D7979DCB246DC1960039031C /* P.DebugPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979DC4246DC1960039031C /* P.DebugPresenter.swift */; };
 		D7979DCE246DC46C0039031C /* LabelWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979DCD246DC46C0039031C /* LabelWithPadding.swift */; };
+		D79B623A24B0876100ACC3EA /* ProductCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B623924B0876100ACC3EA /* ProductCardView.swift */; };
+		D79B623C24B0877D00ACC3EA /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B623B24B0877D00ACC3EA /* ProductCollectionViewCell.swift */; };
 		D7AB2443246716C6000142C4 /* V.UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1522BE5DE700042A8C /* V.UserTableViewCell.swift */; };
 		D7AB2445246718A9000142C4 /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
 		D7AB2446246718AA000142C4 /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
@@ -1252,6 +1254,8 @@
 		D7979DC3246DC1960039031C /* I.DebugInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.DebugInteractor.swift; sourceTree = "<group>"; };
 		D7979DC4246DC1960039031C /* P.DebugPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.DebugPresenter.swift; sourceTree = "<group>"; };
 		D7979DCD246DC46C0039031C /* LabelWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithPadding.swift; sourceTree = "<group>"; };
+		D79B623924B0876100ACC3EA /* ProductCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCardView.swift; sourceTree = "<group>"; };
+		D79B623B24B0877D00ACC3EA /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		D7A620B0246556A1008B1722 /* _script_installPackages.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = _script_installPackages.sh; sourceTree = SOURCE_ROOT; };
 		D7AB244D24671CBF000142C4 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7AB245024671CBF000142C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -2354,6 +2358,8 @@
 		D7B9BF5D24B084E10093A82D /* VisionBox.Designables */ = {
 			isa = PBXGroup;
 			children = (
+				D79B623924B0876100ACC3EA /* ProductCardView.swift */,
+				D79B623B24B0877D00ACC3EA /* ProductCollectionViewCell.swift */,
 			);
 			path = VisionBox.Designables;
 			sourceTree = "<group>";
@@ -3810,6 +3816,7 @@
 				9F6BB2D022E3470200829A6F /* AS.MVPSampleTableView_AssemblyContainer.swift in Sources */,
 				9FE143B821AF2F520026BDFC /* AppEnvironments.swift in Sources */,
 				9F58FB4C22BE5DE700042A8C /* V.SearchUser_View.swift in Sources */,
+				D79B623A24B0876100ACC3EA /* ProductCardView.swift in Sources */,
 				9F6BB2EE22E3A97F00829A6F /* AS.BlissQuestionsList_AssemblyContainer.swift in Sources */,
 				D7979DB2246D6B370039031C /* V.CartTrackMapView.swift in Sources */,
 				D7B9BF5124B080B80093A82D /* I.ProdutDetailsInteractor.swift in Sources */,
@@ -3828,6 +3835,7 @@
 				9F6BB2CF22E3470200829A6F /* D.MVPSampleTableView_ViewModel.swift in Sources */,
 				D7979DB8246D6B370039031C /* D.CarTrackLoginDomain.swift in Sources */,
 				D7B9BF2824AFA90F0093A82D /* VC.CategoriesPickerViewController.swift in Sources */,
+				D79B623C24B0877D00ACC3EA /* ProductCollectionViewCell.swift in Sources */,
 				9F6BB30022E3CB2D00829A6F /* AC.BlissRoot_AssemblyContainer.swift in Sources */,
 				9FACC18B223BFB0F00576498 /* AppDelegate+Setup.swift in Sources */,
 				9F6BB2D922E3673200829A6F /* AppDelegate+URL.swift in Sources */,
