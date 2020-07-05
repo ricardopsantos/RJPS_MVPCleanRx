@@ -33,8 +33,8 @@ struct ProductDetailsView_UIViewRepresentable: UIViewRepresentable {
     func makeUIView(context: Context) -> V.ProdutDetailsView {
         let view = V.ProdutDetailsView()
         let screenInitialState = VM.ProductDetails.ScreenInitialState.ViewModel(productDetails: VisionBox.ProductModel.mockData.first!,
-                                                                               userAvatarImage: Images.notFound.rawValue,
-                                                                               userAvatarName: "userAvatarName",
+                                                                               userAvatarImage: Images.avatar.rawValue,
+                                                                               userAvatarName: "Joe",
                                                                                productsList: VisionBox.ProductModel.mockData)
         view.setupWith(screenInitialState: screenInitialState)
         return view
@@ -92,11 +92,13 @@ extension V {
         }()
 
         private lazy var lblDescriptionTitle: UILabel = {
-            UIKitFactory.label(title: "lblDescriptionTitle", style: .title)
+            let some = UIKitFactory.label(title: Messages.description.localised, style: .title)
+            return some
         }()
 
         private lazy var lblDescriptionValue: UILabel = {
-            UIKitFactory.label(title: "lblDescriptionValue", style: .title)
+            let some = UIKitFactory.label(title: "lblDescriptionValue", style: .title)
+            return some
         }()
 
         private lazy var lblEvaluateTitle: UILabel = {
@@ -205,15 +207,19 @@ extension V {
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 3/3 : Stuff that is not included in [prepareLayoutCreateHierarchy] and [prepareLayoutBySettingAutoLayoutsRules]
         override func prepareLayoutByFinishingPrepareLayout() {
+            productCardView.applySecondaryStyle()
             collectionView.dataSource = self
             collectionView.delegate = self
             collectionView.register(V.ProductPreviewSmallCollectionViewCell.self, forCellWithReuseIdentifier: V.ProductPreviewSmallCollectionViewCell.identifier)
-            DevTools.DebugView.paint(view: self, method: 1)
+            //DevTools.DebugView.paint(view: self, method: 1)
         }
 
         override func setupColorsAndStyles() {
             self.backgroundColor = AppColors.backgroundColor
             collectionView.backgroundColor = .blue
+            lblDescriptionTitle.font = UIFont.App.Styles.paragraphBold.rawValue
+            lblDescriptionTitle.textColor = UIColor.black
+            lblDescriptionValue.textColor = lblDescriptionTitle.textColor.withAlphaComponent(FadeType.regular.rawValue)
         }
 
         // This function is called automatically by super BaseGenericView
@@ -226,6 +232,9 @@ extension V {
         func setupWith(screenInitialState viewModel: VM.ProductDetails.ScreenInitialState.ViewModel) {
             collectionViewDataSource = viewModel.productsList
             lblUserName.text = viewModel.userAvatarName
+            lblDescriptionValue.text = viewModel.productDetails.description
+            avatarView.setup(viewModel: V.AvatarView.ViewModel(image: nil, imageName: viewModel.userAvatarImage))
+            productCardView.setup(viewModel: viewModel.productDetails)
         }
     }
 }
@@ -287,9 +296,10 @@ extension V {
     final class AvatarView: UIView {
 
         public struct ViewModel {
-            let image: UIImage
+            let image: UIImage?
+            let imageName: String?
         }
-        static let defaultSize: CGFloat = 50
+        static let defaultSize: CGFloat = Designables.Sizes.AvatarView.defaultSize.width
 
         private lazy var imgAvatar: UIImageView = {
             UIKitFactory.imageView(image: Images.notFound.image)
@@ -311,7 +321,13 @@ extension V {
         }
 
         func setup(viewModel: V.AvatarView.ViewModel) {
-            imgAvatar.image = viewModel.image
+            if let image = viewModel.image {
+                imgAvatar.image = image
+            } else if let imageName = viewModel.imageName, let image = UIImage(named: imageName) {
+                imgAvatar.image = image
+            } else {
+                imgAvatar.image = Images.notFound.image
+            }
         }
     }
 }

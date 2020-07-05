@@ -257,7 +257,7 @@ class ViewWithRoundShadow: UIView {
         if _shadowLayer == nil && ADD_SHADOW {
             _shadowLayer = CAShapeLayer()
             _shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: Self.cornerRadius).cgPath
-            _shadowLayer.fillColor = _fillColor.cgColor
+            //_shadowLayer.fillColor = _fillColor.cgColor
             _shadowLayer.shadowColor = _shadowColor
             _shadowLayer.shadowPath = _shadowLayer.path
             _shadowLayer.shadowOffset = UIView.Shadows.offset
@@ -360,12 +360,19 @@ extension V {
 }
 
 extension V {
+
+    //final class ProductCardView: ViewWithRoundShadow {
     final class ProductCardView: UIView {
 
         static let defaultHeight: CGFloat = 150
         var disposeBag = DisposeBag()
 
         var rxBtnBuyTap: Observable<Void> { btnBuy.rx.tapSmart(disposeBag) }
+        var blurEffectView: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffect.Style.dark))
+
+        private lazy var viewBackground: UIView = {
+            return UIView()
+        }()
 
         private lazy var lblTitle: UILabel = {
             let some = UIKitFactory.label(style: .notApplied)
@@ -398,19 +405,25 @@ extension V {
         }
 
         private func setupView() {
+            let radius: CGFloat = 10
             disposeBag = DisposeBag()
+
+            // Background
+            addSubview(viewBackground)
+            viewBackground.edgesToSuperview()
+            viewBackground.backgroundColor = .clear
+            viewBackground.addCorner(radius: radius)
+
+            // Blur
+            blurEffectView = viewBackground.addBlur()
+
             let cardView = UIView()
             addSubview(cardView)
             cardView.edgesToSuperview()
-            cardView.addCorner(radius: 5)
+            cardView.addCorner(radius: radius)
             cardView.backgroundColor = UIColor.white.withAlphaComponent(FadeType.heavy.rawValue)
-            let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
-            let blurEffectView = UIVisualEffectView(effect: blurEffect)
-            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            blurEffectView.alpha = 0.5
-            cardView.addSubview(blurEffectView)
-            blurEffectView.edgesToSuperview()
 
+            // Title
             cardView.addSubview(lblTitle)
             lblTitle.autoLayout.topToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
             lblTitle.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
@@ -440,6 +453,17 @@ extension V {
 
         required init?(coder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
+        }
+
+        func applySecondaryStyle() {
+            lblTitle.textColor = UIColor.black
+            lblTitle.textColor = lblTitle.textColor.withAlphaComponent(FadeType.regular.rawValue)
+            blurEffectView.removeFromSuperview()
+            viewBackground.backgroundColor = UIColor.white
+
+            // Blur
+            blurEffectView.removeFromSuperview()
+
         }
 
         func setup(viewModel: VisionBox.ProductModel) {

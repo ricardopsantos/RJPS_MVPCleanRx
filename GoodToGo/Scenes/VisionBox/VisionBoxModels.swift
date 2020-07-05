@@ -22,6 +22,7 @@ extension VisionBox {
         let backgroundImage: String
         let productImage: String
         let category: VisionBox.Category
+        let `description`: String
 
         var priceForCountry: String {
             return "\(price) €"
@@ -41,7 +42,8 @@ extension VisionBox {
                     price: "\(Int.random(in: 10 ... 20))",
                     backgroundImage: "back.1",
                     productImage: "product.\(Int.random(in: 1 ... 3))",
-                    category: VisionBox.Category(rawValue: category)!)
+                    category: VisionBox.Category(rawValue: category)!,
+                    description: "This is cool description for product \(some)")
                 _mockData.append(product)
             }
             return _mockData

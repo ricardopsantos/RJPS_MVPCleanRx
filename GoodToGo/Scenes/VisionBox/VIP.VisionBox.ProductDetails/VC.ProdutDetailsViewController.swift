@@ -30,7 +30,7 @@ struct ProdutDetailsViewController_UIViewControllerRepresentable: UIViewControll
     func updateUIViewController(_ uiViewController: VC.ProdutDetailsViewController, context: Context) { }
     func makeUIViewController(context: Context) -> VC.ProdutDetailsViewController {
         let vc = VC.ProdutDetailsViewController(presentationStyle: .modal)
-        //vc.something(viewModel: dashboardVM)
+        vc.interactor?.requestScreenInitialState()
         return vc
     }
 }
@@ -53,14 +53,10 @@ extension VC {
             NotificationCenter.default.removeObserver(self)
         }
         
-        private var interactor: ProductDetailsBusinessLogicProtocol?
+        fileprivate var interactor: ProductDetailsBusinessLogicProtocol?
         var router: (ProductDetailsRoutingLogicProtocol &
             ProductDetailsDataPassingProtocol &
             ProductDetailsRoutingLogicProtocol)?
-
-        private lazy var reachabilityView: ReachabilityView = {
-           return self.addReachabilityView()
-        }()
 
         //
         // MARK: View lifecycle
@@ -69,7 +65,6 @@ extension VC {
         override func loadView() {
             super.loadView()
             view.accessibilityIdentifier = self.genericAccessibilityIdentifier
-            reachabilityView.load()
         }
 
         override func viewDidLoad() {

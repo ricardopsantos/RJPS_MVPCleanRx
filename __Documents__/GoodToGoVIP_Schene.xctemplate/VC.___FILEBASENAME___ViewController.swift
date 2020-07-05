@@ -30,7 +30,7 @@ struct ___VARIABLE_sceneName___ViewController_UIViewControllerRepresentable: UIV
     func updateUIViewController(_ uiViewController: VC.___VARIABLE_sceneName___ViewController, context: Context) { }
     func makeUIViewController(context: Context) -> VC.___VARIABLE_sceneName___ViewController {
         let vc = VC.___VARIABLE_sceneName___ViewController(presentationStyle: .modal)
-        //vc.something(viewModel: dashboardVM)
+        vc.interactor?.requestScreenInitialState()
         return vc
     }
 }
@@ -53,7 +53,7 @@ extension VC {
             NotificationCenter.default.removeObserver(self)
         }
         
-        private var interactor: ___VARIABLE_sceneName___BusinessLogicProtocol?
+        fileprivate var interactor: ___VARIABLE_sceneName___BusinessLogicProtocol?
         var router: (___VARIABLE_sceneName___RoutingLogicProtocol &
             ___VARIABLE_sceneName___DataPassingProtocol &
             ___VARIABLE_sceneName___RoutingLogicProtocol)?

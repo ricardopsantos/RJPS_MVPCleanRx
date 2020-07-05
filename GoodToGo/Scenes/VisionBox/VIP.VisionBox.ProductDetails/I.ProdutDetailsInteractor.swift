@@ -53,10 +53,10 @@ extension I.ProdutDetailsInteractor: BaseInteractorVIPMandatoryBusinessLogicProt
     /// till the user have all the data loaded on the view. This will improve user experience.
     func requestScreenInitialState() {
         var response: VM.ProductDetails.ScreenInitialState.Response!
-        response = VM.ProductDetails.ScreenInitialState.Response(productDetails: dsProduct!,
-                                                                 userAvatarImage: "",
-                                                                 userAvatarName: "",
-                                                                 productsList: [])
+        response = VM.ProductDetails.ScreenInitialState.Response(productDetails: (dsProduct ?? VisionBox.ProductModel.mockData.first)!,
+                                                                 userAvatarImage: Images.avatar.rawValue,
+                                                                 userAvatarName: "Joe",
+                                                                 productsList: VisionBox.ProductModel.mockData)
         presenter?.presentScreenInitialState(response: response)
     }
 

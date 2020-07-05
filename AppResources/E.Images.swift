@@ -11,6 +11,7 @@ import Foundation
  public enum Images: String {
     case notFound
     case noInternet
+    case avatar = "avatar.1"
 
     struct TopBar {
         private init() {}

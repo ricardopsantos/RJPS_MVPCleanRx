@@ -13,6 +13,14 @@ import AppConstants
 
 public extension UIView {
 
+    func addBlur(style: UIBlurEffect.Style = .dark) -> UIVisualEffectView {
+        let blurEffectView: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: style))
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurEffectView.alpha = 0.5
+        self.addSubview(blurEffectView)
+        return blurEffectView
+    }
+
     struct Shadows {
         private init() { }
         public static func offsetWith(k: CGFloat) -> CGSize {

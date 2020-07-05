@@ -31,6 +31,11 @@ public struct Designables {
             public static var defaultSize: CGSize { return AppConstants.buttonDefaultSize }
         }
 
+        public struct AvatarView {
+            private init() {}
+            public static var defaultSize: CGSize { return CGSize(width: 44, height: 44) }
+        }
+
         public struct Misc {
             private init() {}
             public static let defaultMargin: CGFloat = 25
