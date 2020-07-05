@@ -60,6 +60,6 @@ All the connections are _protocols/interfaces_
 
 * Multi language support prepared  (see `E.Messages.swift` file)
 
-* Its easier to find the exam related files inside the project (that have a lot os architecture and helper files) by searching _cartrack_ on Xcode
+* Its easier to find the exam related files inside the project (that have a lot os architecture and helper files) by searching _VisionBox_ on Xcode
 ![Drag Racing](extra_1.png)
 
