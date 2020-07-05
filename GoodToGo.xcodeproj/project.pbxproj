@@ -1718,9 +1718,8 @@
 		9F36ADE321B1612600FADBB1 /* __Documents__ */ = {
 			isa = PBXGroup;
 			children = (
-				D755FE3A24B1AB91009BA6BD /* VisionBoxReport */,
+				D755FE8124B29179009BA6BD /* exams */,
 				D7F2DE232474A69E008CE3DA /* GoodToGoVIP_Schene.DataPassing */,
-				D7FA21FB24715A9A001DD9D5 /* CarTrackReport */,
 				D7FA21FA247159A5001DD9D5 /* Arquitecture */,
 				D761FE9A2468304A00BD41A5 /* GoodToGoVIP_Schene.xctemplate */,
 				9F55525522E9A73D009364D1 /* README.md */,
@@ -2084,6 +2083,15 @@
 				D755FE7324B1FF28009BA6BD /* VisionBox.Category.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D755FE8124B29179009BA6BD /* exams */ = {
+			isa = PBXGroup;
+			children = (
+				D7FA21FB24715A9A001DD9D5 /* CarTrackReport */,
+				D755FE3A24B1AB91009BA6BD /* VisionBoxReport */,
+			);
+			path = exams;
 			sourceTree = "<group>";
 		};
 		D761FE9A2468304A00BD41A5 /* GoodToGoVIP_Schene.xctemplate */ = {
