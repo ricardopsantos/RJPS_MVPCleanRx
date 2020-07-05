@@ -44,6 +44,7 @@ Just download source code and run  `./_script_installPackages.sh`
 - [x] VIP Pattern design sample screens - `GoodToGo/Scenes/AppScenes.VIP`
 - [x] VIP Custom Xcode Template - `GoodToGoVIP_Schene.xctemplate`
 - [x] UnitTests
+- [x] `SwiftUI` Preview for all `UIViewControllers`
 
 More info about the project and MVP architecture [here](https://github.com/ricardopsantos/RJPS_MVPCleanRx/tree/master/Docs)
  
