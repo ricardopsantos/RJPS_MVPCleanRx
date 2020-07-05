@@ -19,11 +19,8 @@ public extension DevTools {
         case logDeInitEvent            = "Logs: log deinit event"
         case nsLogger                  = "If [true] log to console, else to NSLogger"
 
-        case showScene_bliss       = "Scene Enabled: Bliss"
         case showScene_rxTests     = "Scene Enabled: RxTests"
         case showScene_carTrack    = "Scene Enabled: CarTrack"
-        case showScene_gitHub      = "Scene Enabled: GitHub"
-        case showScene_VisionBox   = "Scene Enabled: VisionBox "
 
         case showScene_vipTemplate = "Scene Enabled: VIP Template"
 
@@ -37,12 +34,9 @@ public extension DevTools {
             case .showDebugStatsViewOnView: return DevTools.devModeIsEnabled
             case .nsLogger:                 return false
 
-            case .showScene_bliss:       return false
             case .showScene_rxTests:     return false
-            case .showScene_carTrack:    return false
-            case .showScene_gitHub:      return false
+            case .showScene_carTrack:    return true
             case .showScene_vipTemplate: return false
-            case .showScene_VisionBox:   return true
             }
         }
 
@@ -55,12 +49,9 @@ public extension DevTools {
              case .nsLogger:                 return true
              case .logDeInitEvent:           return true
              case .showDebugStatsViewOnView: return true
-             case .showScene_bliss:          return true
              case .showScene_rxTests:        return true
              case .showScene_carTrack:       return true
-             case .showScene_gitHub:         return true
              case .showScene_vipTemplate:    return true
-             case .showScene_VisionBox:      return true
             }
         }
 

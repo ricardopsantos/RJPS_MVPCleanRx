@@ -23,14 +23,7 @@ extension VC {
         override func viewDidLoad() {
             super.viewDidLoad()
 
-            //let mvpSample1 = createControllers(tabName: "MVP", vc: AppDelegate.shared.container.resolve(V.MVPSampleView_View.self)!)
-            //let mvpSample2 = createControllers(tabName: "MVP.Rx", vc: AppDelegate.shared.container.resolve(V.MVPSampleRxView_View.self)!)
-            //let mvpSample3 = createControllers(tabName: "MVP.Rx.Table", vc: AppDelegate.shared.container.resolve(V.MVPSampleTableView_View.self)!)
-
-            let mvpGitUser   = createControllers(tabName: "GitUser", vc: AppDelegate.shared.container.resolve(V.SearchUser_View.self)!)
-            let mvpBliss     = createControllers(tabName: "Bliss", vc: AppDelegate.shared.container.resolve(V.BlissRoot_View.self)!)
             let vipCarTrack  = createControllers(tabName: "CarTrack", vc: VC.CarTrackLoginViewController(presentationStyle: .modal))
-            let vipVisionBox = createControllers(tabName: "VisionBox", vc: VC.CategoriesPickerViewController(presentationStyle: .modal))
 
             let vcRx = createControllers(tabName: "RxTesting", vc: RxTesting())
 
@@ -38,10 +31,7 @@ extension VC {
             let vipDebug    = createControllers(tabName: "DebugView", vc: VC.DebugViewController(presentationStyle: .modal))
 
             var viewControllersList: [UIViewController] = []
-            if DevTools.FeatureFlag.showScene_VisionBox.isTrue { viewControllersList.append(vipVisionBox) }
-            if DevTools.FeatureFlag.showScene_bliss.isTrue { viewControllersList.append(mvpBliss) }
             if DevTools.FeatureFlag.showScene_carTrack.isTrue { viewControllersList.append(vipCarTrack) }
-            if DevTools.FeatureFlag.showScene_gitHub.isTrue { viewControllersList.append(mvpGitUser) }
             if DevTools.FeatureFlag.showScene_vipTemplate.isTrue { viewControllersList.append(vipTemplate) }
             if DevTools.FeatureFlag.showScene_rxTests.isTrue { viewControllersList.append(vcRx) }
 
