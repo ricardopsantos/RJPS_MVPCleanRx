@@ -27,6 +27,7 @@ public extension DevTools {
 
         case showScene_vipTemplate = "Scene Enabled: VIP Template"
 
+        // Default value
         public var defaultValue: Bool {
             switch self {
             case .showToastsOnErrors:       return DevTools.devModeIsEnabled
@@ -36,15 +37,16 @@ public extension DevTools {
             case .showDebugStatsViewOnView: return DevTools.devModeIsEnabled
             case .nsLogger:                 return false
 
-            case .showScene_bliss:       return true
-            case .showScene_rxTests:     return true
-            case .showScene_carTrack:    return true
-            case .showScene_gitHub:      return true
-            case .showScene_vipTemplate: return true
+            case .showScene_bliss:       return false
+            case .showScene_rxTests:     return false
+            case .showScene_carTrack:    return false
+            case .showScene_gitHub:      return false
+            case .showScene_vipTemplate: return false
             case .showScene_VisionBox:   return true
             }
         }
 
+        // If FF is visbible on debug screen
         public var isVisible: Bool {
              switch self {
              case .showToastsOnErrors:       return true
@@ -58,7 +60,7 @@ public extension DevTools {
              case .showScene_carTrack:       return true
              case .showScene_gitHub:         return true
              case .showScene_vipTemplate:    return true
-            case .showScene_VisionBox:       return true
+             case .showScene_VisionBox:      return true
             }
         }
 

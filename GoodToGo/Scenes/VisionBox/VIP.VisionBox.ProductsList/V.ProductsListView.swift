@@ -339,7 +339,7 @@ extension V {
             productCardView.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
             productCardView.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
             productCardView.autoLayout.bottomToSuperview(offset: -Designables.Sizes.Margins.defaultMargin)
-            productCardView.autoLayout.heightToSuperview(multiplier: 0.25)
+            productCardView.autoLayout.heightToSuperview(multiplier: 0.3)
 
             //DevTools.DebugView.paint(view: self)
         }
@@ -383,7 +383,7 @@ extension V {
 
         private lazy var lblSpecification: UILabel = {
             let some = UIKitFactory.label(style: .notApplied)
-            some.font = UIFont.App.Styles.paragraphBold.rawValue
+            some.font = UIFont.App.Styles.paragraphMedium.rawValue
             some.textColor = UIColor.white
             return some
         }()
