@@ -46,7 +46,10 @@ extension P.UserDetails_Presenter: UserDetais_PresenterProtocol {
     // PublishRelay model Events
     var rxPublishRelay_dismissView: PublishRelay<Void> {
         let relay = PublishRelay<Void>()
-        relay.bind(to: (router as! BaseRouter).rxPublishRelay_dismissView).disposed(by: disposeBag)
+        if let router = router as? BaseRouter {
+            relay.bind(to: router.rxPublishRelay_dismissView).disposed(by: disposeBag)
+            return relay
+        } 
         return relay
     }
 }

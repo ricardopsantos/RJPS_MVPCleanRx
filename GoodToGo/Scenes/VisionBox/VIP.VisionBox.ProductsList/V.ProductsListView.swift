@@ -192,11 +192,12 @@ extension V.ProductsListView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let identifier = V.ProductPreviewBigCollectionViewCell.identifier
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier,
-                                                      for: indexPath) as! V.ProductPreviewBigCollectionViewCell
-
-        cell.setup(viewModel: collectionViewDataSource[indexPath.row])
-        return cell
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier,
+                                                         for: indexPath) as? V.ProductPreviewBigCollectionViewCell {
+            cell.setup(viewModel: collectionViewDataSource[indexPath.row])
+            return cell
+        }
+        return UICollectionViewCell()
     }
 }
 

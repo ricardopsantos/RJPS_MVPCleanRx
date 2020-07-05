@@ -8,23 +8,44 @@
 
 import Foundation
 import UIKit
-
+import SwiftUI
+//
 import RxCocoa
 import RxSwift
 import TinyConstraints
-
+//
 import AppConstants
 import AppTheme
 import DevTools
 import PointFreeFunctions
 import UIBase
 
-//
-// Its just a view with a UILabel inside.
-// For fast label access just use [public lazy var label: UILabel] property
-//
+// MARK: - Preview
+
+@available(iOS 13.0.0, *)
+struct UILabelWithPadding_UIViewRepresentable: UIViewRepresentable {
+    func updateUIView(_ uiView: UILabelWithPadding, context: Context) { }
+    func makeUIView(context: Context) -> UILabelWithPadding {
+        let some = UILabelWithPadding()
+        return some
+    }
+}
+
+@available(iOS 13.0.0, *)
+struct UILabelWithPadding_Previews: PreviewProvider {
+    static var previews: some SwiftUI.View {
+        UILabelWithPadding_UIViewRepresentable()
+    }
+}
+
+// MARK: - View
 
 open class UILabelWithPadding: UIView {
+
+    //
+    // Its just a view with a UILabel inside.
+    // For fast label access just use [public lazy var label: UILabel] property
+    //
 
     var _padding: UIEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     public var padding: UIEdgeInsets { _padding }
@@ -98,9 +119,6 @@ open class UILabelWithPadding: UIView {
         if padding != nil {
             self._padding = padding!
         }
-        //if self._padding .top + self._padding .left + self._padding .right + self._padding .bottom == 0 {
-        //    DevTools.Log.warning("No padding")
-        //}
         applyPadding()
     }
 

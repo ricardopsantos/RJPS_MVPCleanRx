@@ -26,6 +26,28 @@ import PointFreeFunctions
 import UIBase
 import AppResources
 
+// MARK: - Preview
+
+@available(iOS 13.0.0, *)
+struct ProductCardView_UIViewRepresentable: UIViewRepresentable {
+    func updateUIView(_ uiView: V.ProductCardView, context: Context) { }
+    func makeUIView(context: Context) -> V.ProductCardView {
+        let some = V.ProductCardView()
+        let viewModel = VisionBox.ProductModel.mockData.first
+        some.setup(viewModel: viewModel!)
+        return some
+    }
+}
+
+@available(iOS 13.0.0, *)
+struct ProductCardView_Previews: PreviewProvider {
+    static var previews: some SwiftUI.View {
+        ProductCardView_UIViewRepresentable()
+    }
+}
+
+// MARK: - View
+
 extension V {
 
     //final class ProductCardView: ViewWithRoundShadow {

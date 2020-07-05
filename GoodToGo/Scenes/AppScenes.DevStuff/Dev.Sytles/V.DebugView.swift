@@ -294,17 +294,12 @@ extension GoodToGo.V {
         override func prepareLayoutBySettingAutoLayoutsRules() {
             stackViewVLevel1.uiUtils.edgeStackViewToSuperView()
 
-            if false {
-                scrollView.autoLayout.edgesToSuperview(excluding: .bottom, insets: .zero)
-                scrollView.autoLayout.height(screenHeight - BottomBar.backgroundHeight - AppleSizes.tabBarControllerDefaultSize)
-            } else {
-                let topBarSize    = TopBar.defaultHeight(usingSafeArea: false)
-                let bottomBarSize = BottomBar.backgroundHeight
-                scrollView.autoLayout.trailingToSuperview()
-                scrollView.autoLayout.leftToSuperview()
-                scrollView.autoLayout.topToSuperview(offset: topBarSize, usingSafeArea: false)
-                scrollView.autoLayout.height(screenHeight - topBarSize  - bottomBarSize - AppleSizes.tabBarControllerDefaultSize)
-            }
+            let topBarSize    = TopBar.defaultHeight(usingSafeArea: false)
+            let bottomBarSize = BottomBar.backgroundHeight
+            scrollView.autoLayout.trailingToSuperview()
+            scrollView.autoLayout.leftToSuperview()
+            scrollView.autoLayout.topToSuperview(offset: topBarSize, usingSafeArea: false)
+            scrollView.autoLayout.height(screenHeight - topBarSize  - bottomBarSize - AppleSizes.tabBarControllerDefaultSize)
 
         }
 

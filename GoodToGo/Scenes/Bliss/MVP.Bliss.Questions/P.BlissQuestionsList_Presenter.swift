@@ -126,7 +126,7 @@ extension P.BlissQuestionsList_Presenter: BlissQuestionsList_PresenterProtocol {
             if let self = self {
                 self.blissQuestions_UseCase.getQuestions(limit: 10, filter: filter, offSet: offSet, checkHealth: true, completionHandler: { (result) in
                     switch result {
-                    //case .success(let questionsList): observer.onNext(questionsList)
+                        //case .success(let questionsList): observer.onNext(questionsList)
                     //case .failure(let error) : observer.onError(error)
                     case .success(let questionsList): observer(.success(questionsList))
                     case .failure(let error) : observer(.error(error))
@@ -137,7 +137,7 @@ extension P.BlissQuestionsList_Presenter: BlissQuestionsList_PresenterProtocol {
                 DevTools.Log.appCode( .referenceLost)
             }
             return Disposables.create()
-            }.retry(3)
+        }.retry(3)
             .retryOnBecomesReachable([], reachabilityService: reachabilityService)
     }
 }
@@ -168,7 +168,7 @@ extension P.BlissQuestionsList_Presenter: BasePresenterVMPProtocol {
 //
 
 extension P.BlissQuestionsList_Presenter {
-  
+
     private func viewModelChanged() {
         if let vm = viewModel {
             view.viewNeedsToDisplay(list: vm.questionsList)
@@ -208,12 +208,12 @@ extension P.BlissQuestionsList_Presenter {
                     self.genericView?.displayMessage(Messages.pleaseTryAgainLater.localised, type: .error)
                     self.genericView?.setActivityState(false)
                 }
-            )
+        )
             .disposed(by: disposeBag)
     }
     
     func rxSetup() {
-    
+
         func checkDataToHandle() {
             if let data = blissGeneric_UseCase.screenHaveDataToHandle(screen: V.BlissQuestionsList_View.className) {
                 let key   = data.0
@@ -225,25 +225,19 @@ extension P.BlissQuestionsList_Presenter {
                     }
                     blissGeneric_UseCase.screenHaveHandledData(screen: V.BlissQuestionsList_View.className)
                 }
-            } else if blissGeneric_UseCase.screenHaveDataToHandle(screen: V.BlissDetails_View.className) != nil {
-                #warning("comentado nos deeplinks. apagar depois a variavel")
-                //if self.genericView!.isVisible {
-                //    // If we are on the list, jump to details screen
-                //    router.goToDetails()
-                //}
             }
-        }
-        
-        blissGeneric_UseCase.rxPublishRelayApplicationDidReceivedData.asSignal()
-            .emit(onNext: {
-                _ = checkDataToHandle()
-            }).disposed(by: disposeBag)
-        
-        reachabilityService.reachability.subscribe(
-            onNext: { [weak self] some in
-                guard let self = self else { return }
-                self.genericView?.setNoConnectionViewVisibility(to: !some.reachable, withMessage: Messages.noInternet.localised)
-            }
+
+            blissGeneric_UseCase.rxPublishRelayApplicationDidReceivedData.asSignal()
+                .emit(onNext: {
+                    _ = checkDataToHandle()
+                }).disposed(by: disposeBag)
+
+            reachabilityService.reachability.subscribe(
+                onNext: { [weak self] some in
+                    guard let self = self else { return }
+                    self.genericView?.setNoConnectionViewVisibility(to: !some.reachable, withMessage: Messages.noInternet.localised)
+                }
             ).disposed(by: disposeBag)
+        }
     }
 }

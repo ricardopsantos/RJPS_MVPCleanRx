@@ -27,6 +27,25 @@ import PointFreeFunctions
 import UIBase
 import AppResources
 
+// MARK: - Preview
+
+@available(iOS 13.0.0, *)
+struct CategoryButton_UIViewRepresentable: UIViewRepresentable {
+    func updateUIView(_ uiView: V.CategoryButton, context: Context) { }
+    func makeUIView(context: Context) -> V.CategoryButton {
+        V.CategoryButton(category: .cat1)
+    }
+}
+
+@available(iOS 13.0.0, *)
+struct CategoryButton_Previews: PreviewProvider {
+    static var previews: some SwiftUI.View {
+        CategoryButton_UIViewRepresentable()
+    }
+}
+
+// MARK: - View
+
 extension V {
 
     open class CategoryButton: UIView {

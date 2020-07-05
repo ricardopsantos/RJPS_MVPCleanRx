@@ -27,6 +27,27 @@ import PointFreeFunctions
 import UIBase
 import AppResources
 
+// MARK: - Preview
+
+@available(iOS 13.0.0, *)
+struct ProductPreviewSmallCollectionViewCell_UIViewRepresentable: UIViewRepresentable {
+    func updateUIView(_ uiView: V.ProductPreviewSmallCollectionViewCell, context: Context) { }
+    func makeUIView(context: Context) -> V.ProductPreviewSmallCollectionViewCell {
+        let some = V.ProductPreviewSmallCollectionViewCell()
+        some.setup(viewModel: VisionBox.ProductModel.mockData.first!)
+        return some
+    }
+}
+
+@available(iOS 13.0.0, *)
+struct ProductPreviewSmallCollectionViewCell_Previews: PreviewProvider {
+    static var previews: some SwiftUI.View {
+        ProductPreviewSmallCollectionViewCell_UIViewRepresentable()
+    }
+}
+
+// MARK: - View
+
 extension V {
     class ProductPreviewSmallCollectionViewCell: UICollectionViewCell {
 

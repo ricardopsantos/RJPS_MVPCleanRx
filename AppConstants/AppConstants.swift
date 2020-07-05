@@ -6,15 +6,16 @@
 //
 
 import UIKit
+//
 import RJPSLib
 
 public struct AppConstants {
     private init() {}
 
-    #warning("fix latter")
     public static var propertiesList: NSDictionary? {
         var nsDictionary: NSDictionary?
-        if let path = Bundle.main.path(forResource: "AppConstants.PropertiesList", ofType: "plist") {
+        let fileName = "AppConstants.PropertiesList" // Must be on the app [GoodToGo] Target
+        if let path = Bundle.main.path(forResource: fileName, ofType: "plist") {
            nsDictionary = NSDictionary(contentsOfFile: path)
         }
         return nsDictionary
