@@ -14,6 +14,7 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 import TinyConstraints
+import RJPSLib
 //
 import AppConstants
 import AppTheme
@@ -130,7 +131,7 @@ extension V {
         // Function 3/3 : Stuff that is not included in [prepareLayoutCreateHierarchy] and [prepareLayoutBySettingAutoLayoutsRules]
         override func prepareLayoutByFinishingPrepareLayout() {
             lblTitle.textAlignment = .left
-            lblTitle.font = UIFont.App.Styles.headingMedium.rawValue
+            lblTitle.font = UIFont.App.Styles.headingBold.rawValue
             lblTitle.text = "Select a category"
             //DevTools.DebugView.paint(view: self, method: 1)
         }
@@ -147,6 +148,7 @@ extension V {
                 some.addGestureRecognizer(tapGesture)
                 tapGesture.rx.event.bind(onNext: { [weak self] recognizer in
                     guard let self = self else { return }
+                    (recognizer.view as? CategoryButton)?.layoutColorsForPressed()
                     let category = VisionBox.Category(rawValue: recognizer.view!.tag)
                     self.rxCategoryTap.onNext(category)
                 }).disposed(by: disposeBag)
@@ -211,24 +213,36 @@ extension V {
             label.autoLayout.bottomToSuperview()
             label.autoLayout.widthToSuperview()
             label.textAlignment = .center
-            label.font = UIFont.App.Styles.paragraphBold.rawValue
-            label.textColor = UIColor.Pack1.grey_2.color
+            label.font = UIFont.App.Styles.paragraphMedium.rawValue
 
             image.autoLayout.centerXToSuperview()
             image.autoLayout.centerYToSuperview(offset: -10)
             image.autoLayout.widthToSuperview(multiplier: 0.35)
             image.autoLayout.heightToSuperview(multiplier: 0.35)
             image.contentMode = .scaleAspectFit
-            image.tintColor = .black
-            
+
             imageBack.autoLayout.centerXToSuperview()
             imageBack.autoLayout.centerYToSuperview(offset: -10)
-            imageBack.autoLayout.widthToSuperview(multiplier: 0.8)
-            imageBack.autoLayout.heightToSuperview(multiplier: 0.8)
+            imageBack.autoLayout.widthToSuperview(multiplier: 0.9)
+            imageBack.autoLayout.heightToSuperview(multiplier: 0.9)
+
+            layoutColorsForNormal()
+        }
+
+        private func layoutColorsForNormal() {
+            image.tintColor = .black
+            label.textColor = UIColor.Pack1.grey_2.color
             imageBack.tintColor = UIColor.Pack1.grey_3.color.withAlphaComponent(0.2)
 
-            DevTools.DebugView.paint(view: self)
+        }
 
+        func layoutColorsForPressed() {
+            image.tintColor = .white
+            label.textColor = UIColor.Pack1.grey_2.color
+            imageBack.tintColor = UIColor.Pack2.orange.color
+            DispatchQueue.executeWithDelay(delay: RJS_Constants.defaultAnimationsTime) { [weak self] in
+                self?.layoutColorsForNormal()
+            }
         }
     }
 

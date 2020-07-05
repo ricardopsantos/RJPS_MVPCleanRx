@@ -175,12 +175,6 @@ extension V {
     }
 }
 
-// MARK: - Events capture
-
-extension V.ProductsListView {
-
-}
-
 // MARK: - UICollectionViewDataSource
 
 extension V.ProductsListView: UICollectionViewDataSource {
@@ -295,6 +289,8 @@ extension V {
             return String(describing: self)
         }
 
+        var rxBtnBuyTap: Observable<Void> { productCardView.rxBtnBuyTap }
+
         private lazy var productCardView: ProductCardView = {
             V.ProductCardView()
         }()
@@ -352,6 +348,7 @@ extension V {
             let image = UIImage(named: viewModel.productImage)
             imgProduct.image = image
         }
+
     }
 }
 
@@ -359,6 +356,9 @@ extension V {
     final class ProductCardView: UIView {
 
         static let defaultHeight: CGFloat = 150
+        var disposeBag = DisposeBag()
+
+        var rxBtnBuyTap: Observable<Void> { btnBuy.rx.tapSmart(disposeBag) }
 
         private lazy var lblTitle: UILabel = {
             let some = UIKitFactory.label(style: .notApplied)
@@ -391,7 +391,7 @@ extension V {
         }
 
         private func setupView() {
-
+            disposeBag = DisposeBag()
             let cardView = UIView()
             addSubview(cardView)
             cardView.edgesToSuperview()
@@ -425,6 +425,10 @@ extension V {
             lblPrice.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
             lblPrice.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
 
+            rxBtnBuyTap.bind { (_) in
+                DevTools.Log.message("Tap")
+                DevTools.makeToast("rxBtnBuyTap")
+            }.disposed(by: disposeBag)
         }
 
         required init?(coder: NSCoder) {

@@ -31,7 +31,7 @@ extension VC {
             let mvpBliss     = createControllers(tabName: "Bliss", vc: AppDelegate.shared.container.resolve(V.BlissRoot_View.self)!)
             let vipCarTrack1 = createControllers(tabName: "CarTrack", vc: VC.CarTrackLoginViewController(presentationStyle: .modal))
             let vipCarTrack2 = createControllers(tabName: "CarTrack", vc: VC.CartTrackMapViewController(presentationStyle: .modal))
-            let vipVisionBox = createControllers(tabName: "CarTrack", vc: VC.CategoriesPickerViewController(presentationStyle: .modal))
+            let vipVisionBox = createControllers(tabName: "VisionBox", vc: VC.CategoriesPickerViewController(presentationStyle: .modal))
 
             let vcRx = createControllers(tabName: "RxTesting", vc: RxTesting())
 

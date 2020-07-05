@@ -56,20 +56,6 @@ extension VC {
         var router: (ProdutsListRoutingLogicProtocol &
             ProductsListDataPassingProtocol &
             ProdutsListRoutingLogicProtocol)?
-/*
-        private lazy var topGenericView: TopBar = {
-            let some = TopBar()
-            some.injectOn(viewController: self, usingSafeArea: false)
-            some.addDismissButton()
-            some.rxSignal_btnDismissTapped
-                .asObservable()
-                .log(whereAmI())
-                .subscribe(onNext: { (_) in
-                    self.dismissMe()
-                }).disposed(by: disposeBag)
-            return some
-        }()
-*/
         //
         // MARK: View lifecycle
         //
