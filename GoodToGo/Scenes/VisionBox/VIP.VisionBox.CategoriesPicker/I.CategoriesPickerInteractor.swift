@@ -18,6 +18,7 @@ import AppTheme
 import Designables
 import DevTools
 import Domain
+import Domain_VisionBox
 import Extensions
 import PointFreeFunctions
 import UIBase
@@ -77,13 +78,4 @@ extension I.CategoriesPickerInteractor: CategoriesPickerBusinessLogicProtocol {
         self.presenter?.presentCategoryChange(response: response)
     }
 
-}
-
-// MARK: Utils {
-
-extension I.CategoriesPickerInteractor {
-    func presentError(error: Error) {
-        let response = BaseDisplayLogicModels.Error(title: error.localisedMessageForView)
-        basePresenter?.presentError(response: response)
-    }
 }

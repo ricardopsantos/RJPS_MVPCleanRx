@@ -1,5 +1,5 @@
 //
-//  I.ProdutsListInteractor.swift
+//  I.ProductsListInteractor.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 03/07/2020.
@@ -18,6 +18,7 @@ import AppTheme
 import Designables
 import DevTools
 import Domain
+import Domain_VisionBox
 import Extensions
 import PointFreeFunctions
 import UIBase
@@ -34,9 +35,9 @@ import Factory
 //
 
 extension I {
-    class ProdutsListInteractor: BaseInteractorVIP, ProductsListDataStoreProtocol {
+    class ProductsListInteractor: BaseInteractorVIP, ProductsListDataStoreProtocol {
         deinit {
-            DevTools.Log.logDeInit("\(ProdutsListInteractor.self) was killed")
+            DevTools.Log.logDeInit("\(ProductsListInteractor.self) was killed")
             NotificationCenter.default.removeObserver(self)
         }
         var presenter: ProductsListPresentationLogicProtocol?
@@ -48,7 +49,7 @@ extension I {
 
 // MARK: Interator Mandatory BusinessLogicProtocol
 
-extension I.ProdutsListInteractor: BaseInteractorVIPMandatoryBusinessLogicProtocol {
+extension I.ProductsListInteractor: BaseInteractorVIPMandatoryBusinessLogicProtocol {
 
     /// When the screen is loaded, this function is responsible to bind the View with some (temporary or final) data
     /// till the user have all the data loaded on the view. This will improve user experience.
@@ -62,13 +63,13 @@ extension I.ProdutsListInteractor: BaseInteractorVIPMandatoryBusinessLogicProtoc
 
 // MARK: Private Stuff
 
-extension I.ProdutsListInteractor {
+extension I.ProductsListInteractor {
 
 }
 
 // MARK: BusinessLogicProtocol
 
-extension I.ProdutsListInteractor: ProductsListBusinessLogicProtocol {
+extension I.ProductsListInteractor: ProductsListBusinessLogicProtocol {
 
     func requestShowProductDetails(viewModel: VM.ProductsList.ShowProductDetails.Request) {
         dsSelectedProduct = viewModel.product
@@ -88,7 +89,7 @@ extension I.ProdutsListInteractor: ProductsListBusinessLogicProtocol {
 
 // MARK: Utils {
 
-extension I.ProdutsListInteractor {
+extension I.ProductsListInteractor {
     func presentError(error: Error) {
         let response = BaseDisplayLogicModels.Error(title: error.localisedMessageForView)
         basePresenter?.presentError(response: response)

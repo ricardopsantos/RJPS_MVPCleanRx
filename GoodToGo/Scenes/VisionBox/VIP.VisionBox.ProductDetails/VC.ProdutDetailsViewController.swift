@@ -1,5 +1,5 @@
 //
-//  VC.ProdutDetailsViewController.swift
+//  VC.ProductDetailsViewController.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 04/07/2020.
@@ -26,19 +26,19 @@ import UIBase
 // MARK: - Preview
  
 @available(iOS 13.0.0, *)
-struct ProdutDetailsViewController_UIViewControllerRepresentable: UIViewControllerRepresentable {
-    func updateUIViewController(_ uiViewController: VC.ProdutDetailsViewController, context: Context) { }
-    func makeUIViewController(context: Context) -> VC.ProdutDetailsViewController {
-        let vc = VC.ProdutDetailsViewController(presentationStyle: .modal)
+struct ProductDetailsViewController_UIViewControllerRepresentable: UIViewControllerRepresentable {
+    func updateUIViewController(_ uiViewController: VC.ProductDetailsViewController, context: Context) { }
+    func makeUIViewController(context: Context) -> VC.ProductDetailsViewController {
+        let vc = VC.ProductDetailsViewController(presentationStyle: .modal)
         vc.interactor?.requestScreenInitialState()
         return vc
     }
 }
 
 @available(iOS 13.0.0, *)
-struct ProdutDetailsViewController_Preview: PreviewProvider {
+struct ProductDetailsViewController_Preview: PreviewProvider {
     static var previews: some SwiftUI.View {
-        return ProdutDetailsViewController_UIViewControllerRepresentable()
+        return ProductDetailsViewController_UIViewControllerRepresentable()
     }
 }
 
@@ -46,7 +46,7 @@ struct ProdutDetailsViewController_Preview: PreviewProvider {
 
 extension VC {
 
-    class ProdutDetailsViewController: BaseGenericViewControllerVIP<V.ProdutDetailsView> {
+    class ProductDetailsViewController: BaseGenericViewControllerVIP<V.ProductDetailsView> {
 
         deinit {
             DevTools.Log.logDeInit("\(self.className) was killed")
@@ -98,9 +98,9 @@ extension VC {
         override func setup() {
             // This function is called automatically by super BaseGenericView
             let viewController = self
-            let interactor = I.ProdutDetailsInteractor()
-            let presenter  = P.ProdutDetailsPresenter()
-            let router     = R.ProdutDetailsRouter()
+            let interactor = I.ProductDetailsInteractor()
+            let presenter  = P.ProductDetailsPresenter()
+            let router     = R.ProductDetailsRouter()
             viewController.interactor = interactor
             viewController.router    = router
             interactor.presenter     = presenter
@@ -129,19 +129,19 @@ extension VC {
 
 // MARK: Public Misc Stuff
 
-extension VC.ProdutDetailsViewController {
+extension VC.ProductDetailsViewController {
 
 }
 
 // MARK: Private Misc Stuff
 
-extension VC.ProdutDetailsViewController {
+extension VC.ProductDetailsViewController {
 
 }
 
 // MARK: DisplayLogicProtocolProtocol
 
-extension VC.ProdutDetailsViewController: ProductDetailsDisplayLogicProtocol {
+extension VC.ProductDetailsViewController: ProductDetailsDisplayLogicProtocol {
 
     func displayScreenInitialState(viewModel: VM.ProductDetails.ScreenInitialState.ViewModel) {
         genericView.setupWith(screenInitialState: viewModel)

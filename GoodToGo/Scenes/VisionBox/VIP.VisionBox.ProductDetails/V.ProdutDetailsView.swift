@@ -1,5 +1,5 @@
 //
-//  V.ProdutDetailsView.swift
+//  V.ProductDetailsView.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 04/07/2020.
@@ -20,6 +20,7 @@ import AppTheme
 import Designables
 import DevTools
 import Domain
+import Domain_VisionBox
 import Extensions
 import PointFreeFunctions
 import UIBase
@@ -29,9 +30,9 @@ import AppResources
 
 @available(iOS 13.0.0, *)
 struct ProductDetailsView_UIViewRepresentable: UIViewRepresentable {
-    func updateUIView(_ uiView: V.ProdutDetailsView, context: Context) { }
-    func makeUIView(context: Context) -> V.ProdutDetailsView {
-        let view = V.ProdutDetailsView()
+    func updateUIView(_ uiView: V.ProductDetailsView, context: Context) { }
+    func makeUIView(context: Context) -> V.ProductDetailsView {
+        let view = V.ProductDetailsView()
         let screenInitialState = VM.ProductDetails.ScreenInitialState.ViewModel(productDetails: VisionBox.ProductModel.mockData.first!,
                                                                                userAvatarImage: Images.avatar.rawValue,
                                                                                userAvatarName: "Joe",
@@ -51,7 +52,7 @@ struct ProductDetailsView_Previews: PreviewProvider {
 // MARK: - View
 
 extension V {
-    class ProdutDetailsView: BaseGenericViewVIP {
+    class ProductDetailsView: BaseGenericViewVIP {
 
         deinit {
             DevTools.Log.logDeInit("\(self.className) was killed")
@@ -121,8 +122,8 @@ extension V {
             V.ProductCardView()
         }()
 
-        private lazy var avatarView: V.AvatarView = {
-            V.AvatarView()
+        private lazy var avatarView: AvatarView = {
+            AvatarView()
         }()
 
         private lazy var viewSeparator: UIView = {
@@ -197,8 +198,8 @@ extension V {
 
             avatarView.autoLayout.topToBottom(of: lblEvaluateTitle, offset: Designables.Sizes.Margins.defaultMargin)
             avatarView.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
-            avatarView.autoLayout.width(V.AvatarView.defaultSize)
-            avatarView.autoLayout.height(V.AvatarView.defaultSize)
+            avatarView.autoLayout.width(AvatarView.defaultSize)
+            avatarView.autoLayout.height(AvatarView.defaultSize)
 
             lblUserName.autoLayout.topToBottom(of: lblEvaluateTitle, offset: Designables.Sizes.Margins.defaultMargin)
             lblUserName.autoLayout.leadingToTrailing(of: avatarView, offset: Designables.Sizes.Margins.defaultMargin)
@@ -245,7 +246,7 @@ extension V {
             collectionViewDataSource = viewModel.productsList
             lblUserName.text = viewModel.userAvatarName
             lblDescriptionValue.text = viewModel.productDetails.description
-            avatarView.setup(viewModel: V.AvatarView.ViewModel(image: nil, imageName: viewModel.userAvatarImage))
+            avatarView.setup(viewModel: AvatarView.ViewModel(image: nil, imageName: viewModel.userAvatarImage))
             productCardView.setup(viewModel: viewModel.productDetails)
         }
     }
@@ -253,13 +254,13 @@ extension V {
 
 // MARK: - Events capture
 
-extension V.ProdutDetailsView {
+extension V.ProductDetailsView {
 
 }
 
 // MARK: - UICollectionViewDataSource
 
-extension V.ProdutDetailsView: UICollectionViewDataSource {
+extension V.ProductDetailsView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionViewDataSource.count
     }
@@ -274,7 +275,7 @@ extension V.ProdutDetailsView: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension V.ProdutDetailsView: UICollectionViewDelegateFlowLayout {
+extension V.ProductDetailsView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: V.ProductPreviewSmallCollectionViewCell.defaultWidth, height: V.ProductPreviewSmallCollectionViewCell.defaultHeight)
     }
@@ -297,90 +298,5 @@ extension V.ProdutDetailsView: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return Designables.Sizes.Margins.defaultMargin
-    }
-}
-
-extension V {
-    final class AvatarView: UIView {
-
-        public struct ViewModel {
-            let image: UIImage?
-            let imageName: String?
-        }
-        static let defaultSize: CGFloat = Designables.Sizes.AvatarView.defaultSize.width
-
-        private lazy var imgAvatar: UIImageView = {
-            UIKitFactory.imageView(image: Images.notFound.image)
-        }()
-
-        override init(frame: CGRect) {
-            super.init(frame: .zero)
-            setupView()
-        }
-
-        private func setupView() {
-            addSubview(imgAvatar)
-            imgAvatar.edgesToSuperview()
-            imgAvatar.addCorner(radius: Self.defaultSize / 2.0)
-        }
-
-        required init?(coder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
-
-        func setup(viewModel: V.AvatarView.ViewModel) {
-            if let image = viewModel.image {
-                imgAvatar.image = image
-            } else if let imageName = viewModel.imageName, let image = UIImage(named: imageName) {
-                imgAvatar.image = image
-            } else {
-                imgAvatar.image = Images.notFound.image
-            }
-        }
-    }
-}
-
-extension V {
-    class ProductPreviewSmallCollectionViewCell: UICollectionViewCell {
-
-        static let defaultHeight: CGFloat = screenHeight * 0.2
-        static let defaultWidth: CGFloat  = screenWidth * 0.2
-
-        static var identifier: String {
-            return String(describing: self)
-        }
-
-        private lazy var imgProduct: UIImageView = {
-            UIKitFactory.imageView()
-        }()
-
-        override init(frame: CGRect) {
-            super.init(frame: .zero)
-            setupView()
-        }
-
-        private func setupView() {
-            let cellColor = UIColor.white.withAlphaComponent(0.4)
-            contentView.clipsToBounds = true
-            contentView.layer.cornerRadius = 10
-            contentView.addShadow()
-
-            contentView.addSubview(imgProduct)
-            imgProduct.autoLayout.edgesToSuperview()
-            imgProduct.contentMode = .scaleAspectFit
-            imgProduct.addShadow()
-
-            contentView.backgroundColor = cellColor
-            self.backgroundColor = cellColor
-        }
-
-        required init?(coder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
-
-        func setup(viewModel: VisionBox.ProductModel) {
-            let image = UIImage(named: viewModel.productImage)
-            imgProduct.image = image
-        }
     }
 }

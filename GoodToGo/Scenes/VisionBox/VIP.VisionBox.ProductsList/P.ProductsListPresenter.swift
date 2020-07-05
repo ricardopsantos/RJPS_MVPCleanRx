@@ -1,5 +1,5 @@
 //
-//  P.ProdutsListPresenter.swift
+//  P.ProductsListPresenter.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 03/07/2020.

@@ -1,5 +1,5 @@
 //
-//  P.ProdutDetailsPresenter.swift
+//  P.ProductDetailsPresenter.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 04/07/2020.
@@ -17,6 +17,7 @@ import AppTheme
 import Designables
 import DevTools
 import Domain
+import Domain_VisionBox
 import Extensions
 import PointFreeFunctions
 import AppResources
@@ -33,9 +34,9 @@ import UIBase
 //
 
 extension P {
-    class ProdutDetailsPresenter: BasePresenterVIP {
+    class ProductDetailsPresenter: BasePresenterVIP {
         deinit {
-            DevTools.Log.logDeInit("\(ProdutDetailsPresenter.self) was killed")
+            DevTools.Log.logDeInit("\(ProductDetailsPresenter.self) was killed")
             NotificationCenter.default.removeObserver(self)
         }
         weak var viewController: (ProductDetailsDisplayLogicProtocol)?
@@ -48,7 +49,7 @@ extension P {
 
 // MARK: PresentationLogicProtocol
 
-extension P.ProdutDetailsPresenter: ProductDetailsPresentationLogicProtocol {
+extension P.ProductDetailsPresenter: ProductDetailsPresentationLogicProtocol {
 
     // Used By Interactor (exclusively)
     func presentScreenInitialState(response: VM.ProductDetails.ScreenInitialState.Response) {

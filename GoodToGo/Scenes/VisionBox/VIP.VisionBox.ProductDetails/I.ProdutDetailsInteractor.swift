@@ -1,5 +1,5 @@
 //
-//  I.ProdutDetailsInteractor.swift
+//  I.ProductDetailsInteractor.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 04/07/2020.
@@ -18,6 +18,7 @@ import AppTheme
 import Designables
 import DevTools
 import Domain
+import Domain_VisionBox
 import Extensions
 import PointFreeFunctions
 import UIBase
@@ -34,9 +35,9 @@ import Factory
 //
 
 extension I {
-    class ProdutDetailsInteractor: BaseInteractorVIP, ProductDetailsDataStoreProtocol {
+    class ProductDetailsInteractor: BaseInteractorVIP, ProductDetailsDataStoreProtocol {
         deinit {
-            DevTools.Log.logDeInit("\(ProdutDetailsInteractor.self) was killed")
+            DevTools.Log.logDeInit("\(ProductDetailsInteractor.self) was killed")
             NotificationCenter.default.removeObserver(self)
         }
         var presenter: ProductDetailsPresentationLogicProtocol?
@@ -47,7 +48,7 @@ extension I {
 
 // MARK: Interator Mandatory BusinessLogicProtocol
 
-extension I.ProdutDetailsInteractor: BaseInteractorVIPMandatoryBusinessLogicProtocol {
+extension I.ProductDetailsInteractor: BaseInteractorVIPMandatoryBusinessLogicProtocol {
 
     /// When the screen is loaded, this function is responsible to bind the View with some (temporary or final) data
     /// till the user have all the data loaded on the view. This will improve user experience.
@@ -64,19 +65,19 @@ extension I.ProdutDetailsInteractor: BaseInteractorVIPMandatoryBusinessLogicProt
 
 // MARK: Private Stuff
 
-extension I.ProdutDetailsInteractor {
+extension I.ProductDetailsInteractor {
 
 }
 
 // MARK: BusinessLogicProtocol
 
-extension I.ProdutDetailsInteractor: ProductDetailsBusinessLogicProtocol {
+extension I.ProductDetailsInteractor: ProductDetailsBusinessLogicProtocol {
 
 }
 
 // MARK: Utils {
 
-extension I.ProdutDetailsInteractor {
+extension I.ProductDetailsInteractor {
     func presentError(error: Error) {
         let response = BaseDisplayLogicModels.Error(title: error.localisedMessageForView)
         basePresenter?.presentError(response: response)

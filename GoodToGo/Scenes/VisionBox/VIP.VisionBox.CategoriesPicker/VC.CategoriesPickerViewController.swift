@@ -143,12 +143,7 @@ extension VC.CategoriesPickerViewController {
 // MARK: Private Misc Stuff
 
 extension VC.CategoriesPickerViewController {
-    #warning("THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE")
-    private func doPrivateStuff() {
-       // let userId = genericView.title
-       // let request = VM.CategoriesPicker.Something.Request(userId: userId)
-       // self.interactor?.requestSomething(request: request)
-    }
+
 }
 
 // MARK: DisplayLogicProtocolProtocol
@@ -156,7 +151,6 @@ extension VC.CategoriesPickerViewController {
 extension VC.CategoriesPickerViewController: CategoriesPickerDisplayLogicProtocol {
 
     func displayCategoryChange(viewModel: VM.CategoriesPicker.CategoryChange.ViewModel) {
-        // Setting up the view, option 1 : passing the view model
         router?.routeToCategoriesList()
     }
 

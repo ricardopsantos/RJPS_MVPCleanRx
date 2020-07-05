@@ -1,5 +1,5 @@
 //
-//  R.ProdutsListRouter.swift
+//  R.ProductsListRouter.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 03/07/2020.
@@ -46,7 +46,7 @@ extension R.ProductsListRouter: ProductsListRoutingLogicProtocol {
                                  destination: inout ProductDetailsDataStoreProtocol) {
             destination.dsProduct  = source.dsSelectedProduct
         }
-        let destinationVC = VC.ProdutDetailsViewController(presentationStyle: .modal)
+        let destinationVC = VC.ProductDetailsViewController(presentationStyle: .modal)
         if var destinationDS = destinationVC.router?.dsSource {
             passDataToSomewhere(source: dsSource!, destination: &destinationDS)
         }

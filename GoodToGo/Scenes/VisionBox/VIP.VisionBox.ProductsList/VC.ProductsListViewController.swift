@@ -1,5 +1,5 @@
 //
-//  VC.ProdutsListViewController.swift
+//  VC.ProductsListViewController.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 03/07/2020.
@@ -26,7 +26,7 @@ import UIBase
 // MARK: - Preview
  
 @available(iOS 13.0.0, *)
-struct ProdutsListViewController_UIViewControllerRepresentable: UIViewControllerRepresentable {
+struct ProductsListViewController_UIViewControllerRepresentable: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: VC.ProductsListViewController, context: Context) { }
     func makeUIViewController(context: Context) -> VC.ProductsListViewController {
         let vc = VC.ProductsListViewController(presentationStyle: .modal)
@@ -35,9 +35,9 @@ struct ProdutsListViewController_UIViewControllerRepresentable: UIViewController
 }
 
 @available(iOS 13.0.0, *)
-struct ProdutsListViewController_Preview: PreviewProvider {
+struct ProductsListViewController_Preview: PreviewProvider {
     static var previews: some SwiftUI.View {
-        return ProdutsListViewController_UIViewControllerRepresentable()
+        return ProductsListViewController_UIViewControllerRepresentable()
     }
 }
 
@@ -97,7 +97,7 @@ extension VC {
         override func setup() {
             // This function is called automatically by super BaseGenericView
             let viewController = self
-            let interactor = I.ProdutsListInteractor()
+            let interactor = I.ProductsListInteractor()
             let presenter  = P.ProductsListPresenter()
             let router     = R.ProductsListRouter()
             viewController.interactor = interactor

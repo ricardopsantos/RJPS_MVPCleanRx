@@ -1,5 +1,5 @@
 //
-//  D.ProdutDetailsDomain.swift
+//  D.ProductDetailsDomain.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 04/07/2020.
@@ -18,6 +18,7 @@ import AppTheme
 import Designables
 import DevTools
 import Domain
+import Domain_VisionBox
 import Extensions
 import PointFreeFunctions
 import UIBase

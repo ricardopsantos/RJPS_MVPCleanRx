@@ -21,6 +21,7 @@ import AppTheme
 import Designables
 import DevTools
 import Domain
+import Domain_VisionBox
 import Extensions
 import PointFreeFunctions
 import UIBase
@@ -56,15 +57,15 @@ extension V {
 
         var rxCategoryTap = BehaviorSubject<VisionBox.Category?>(value: nil)
 
-        private lazy var b1: CategoryButton = { V.CategoryButton(category: .cat1) }()
-        private lazy var b2: CategoryButton = { V.CategoryButton(category: .cat2) }()
-        private lazy var b3: CategoryButton = { V.CategoryButton(category: .cat3) }()
-        private lazy var b4: CategoryButton = { V.CategoryButton(category: .cat4) }()
-        private lazy var b5: CategoryButton = { V.CategoryButton(category: .cat5) }()
-        private lazy var b6: CategoryButton = { V.CategoryButton(category: .cat6) }()
-        private lazy var b7: CategoryButton = { V.CategoryButton(category: .cat7) }()
-        private lazy var b8: CategoryButton = { V.CategoryButton(category: .cat8) }()
-        private lazy var b9: CategoryButton = { V.CategoryButton(category: .cat9) }()
+        private lazy var b1: V.CategoryButton = { V.CategoryButton(category: .cat1) }()
+        private lazy var b2: V.CategoryButton = { V.CategoryButton(category: .cat2) }()
+        private lazy var b3: V.CategoryButton = { V.CategoryButton(category: .cat3) }()
+        private lazy var b4: V.CategoryButton = { V.CategoryButton(category: .cat4) }()
+        private lazy var b5: V.CategoryButton = { V.CategoryButton(category: .cat5) }()
+        private lazy var b6: V.CategoryButton = { V.CategoryButton(category: .cat6) }()
+        private lazy var b7: V.CategoryButton = { V.CategoryButton(category: .cat7) }()
+        private lazy var b8: V.CategoryButton = { V.CategoryButton(category: .cat8) }()
+        private lazy var b9: V.CategoryButton = { V.CategoryButton(category: .cat9) }()
 
         private lazy var lblTitle: UILabel = { UIKitFactory.label(style: .notApplied) }()
         
@@ -148,7 +149,7 @@ extension V {
                 some.addGestureRecognizer(tapGesture)
                 tapGesture.rx.event.bind(onNext: { [weak self] recognizer in
                     guard let self = self else { return }
-                    (recognizer.view as? CategoryButton)?.layoutColorsForPressed()
+                    (recognizer.view as? V.CategoryButton)?.layoutColorsForPressed()
                     let category = VisionBox.Category(rawValue: recognizer.view!.tag)
                     self.rxCategoryTap.onNext(category)
                 }).disposed(by: disposeBag)
@@ -170,80 +171,5 @@ extension V {
 // MARK: - Events capture
 
 extension V.CategoriesPickerView {
-
-}
-
-extension V {
-
-    open class CategoryButton: UIView {
-        static let defaultSize: CGFloat = screenWidth / 4.0
-        private let label = UILabel()
-        private let image = UIImageView()
-        private let imageBack = UIImageView()
-
-        required public init?(coder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
-
-        public override init(frame: CGRect) {
-            super.init(frame: frame)
-            setupView()
-        }
-
-        public convenience init(category: VisionBox.Category) {
-            self.init(frame: .zero)
-            label.text = category.toString
-            tag = category.tag
-            if #available(iOS 13.0, *) {
-                image.image = UIImage(systemName: category.imageName)
-                imageBack.image = UIImage(systemName: "circle.fill")
-            }
-
-        }
-
-        open override func layoutSubviews() {
-            super.layoutSubviews()
-        }
-
-        private func setupView() {
-            addSubview(imageBack)
-            addSubview(image)
-            addSubview(label)
-
-            label.autoLayout.bottomToSuperview()
-            label.autoLayout.widthToSuperview()
-            label.textAlignment = .center
-            label.font = UIFont.App.Styles.paragraphMedium.rawValue
-
-            image.autoLayout.centerXToSuperview()
-            image.autoLayout.centerYToSuperview(offset: -10)
-            image.autoLayout.widthToSuperview(multiplier: 0.35)
-            image.autoLayout.heightToSuperview(multiplier: 0.35)
-            image.contentMode = .scaleAspectFit
-
-            imageBack.autoLayout.centerXToSuperview()
-            imageBack.autoLayout.centerYToSuperview(offset: -10)
-            imageBack.autoLayout.widthToSuperview(multiplier: 0.9)
-            imageBack.autoLayout.heightToSuperview(multiplier: 0.9)
-
-            layoutColorsForNormal()
-        }
-
-        private func layoutColorsForNormal() {
-            image.tintColor = .black
-            label.textColor = UIColor.Pack1.grey_2.color
-            imageBack.tintColor = UIColor.Pack1.grey_3.color.withAlphaComponent(0.2)
-
-        }
-
-        func layoutColorsForPressed() {
-            image.tintColor = .white
-            label.textColor = UIColor.Pack1.grey_2.color
-            imageBack.tintColor = UIColor.Pack2.orange.color
-            DispatchQueue.executeWithDelay(delay: RJS_Constants.defaultAnimationsTime) { [weak self] in
-                self?.layoutColorsForNormal()
-            }
-        }
-    }
 
 }
