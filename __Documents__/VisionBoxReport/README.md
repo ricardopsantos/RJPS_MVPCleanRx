@@ -17,6 +17,14 @@ As an exercise to test your technical skills we would like you to reproduce the 
 
 ---
 
+# Result Preview
+
+![Preview](preview.gif)
+
+# Design Pattern
+
+---
+
 # Design Pattern
 
 [VIP - Clean Swift Architecture](https://medium.com/crazy-minds/vip-clean-swift-architecture-in-ios-bb1d71680542)
