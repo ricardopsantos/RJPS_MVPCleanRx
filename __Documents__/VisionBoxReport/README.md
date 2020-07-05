@@ -10,11 +10,10 @@ Requires iOS 11.0+ and XCode 11.1, Swift 5.1
 
 As an exercise to test your technical skills we would like you to reproduce the attached design in iOS.
 
-• You will have two days to do this task.
-• Please send us a zipped file with the final code once you've finished.
-• You are free to write the code in any manner you see fit and to the best of your abilities.
-• The functionality between views is up to you, make it as simple or as complex as you see fit.
-
+* You will have two days to do this task.
+* Please send us a zipped file with the final code once you've finished.
+* You are free to write the code in any manner you see fit and to the best of your abilities.
+* The functionality between views is up to you, make it as simple or as complex as you see fit.
 
 ![Preview](VisionBox_Preview.jpg)
 
