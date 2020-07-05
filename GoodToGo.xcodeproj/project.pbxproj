@@ -2053,7 +2053,7 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		D755FE3A24B1AB91009BA6BD /* VisionBoxReport */ = {
+		D755FE3A24B1AB91009BA6BD /* VisionBox.Report */ = {
 			isa = PBXGroup;
 			children = (
 				D755FE3C24B1ABEF009BA6BD /* extra_1.png */,
@@ -2062,7 +2062,7 @@
 				D755FE3E24B1ABEF009BA6BD /* vip_2.png */,
 				D755FE3D24B1ABEF009BA6BD /* vip_3.png */,
 			);
-			path = VisionBoxReport;
+			path = VisionBox.Report;
 			sourceTree = "<group>";
 		};
 		D755FE6124B1FE0C009BA6BD /* Domain.VisionBox */ = {
@@ -2088,8 +2088,8 @@
 		D755FE8124B29179009BA6BD /* exams */ = {
 			isa = PBXGroup;
 			children = (
-				D7FA21FB24715A9A001DD9D5 /* CarTrackReport */,
-				D755FE3A24B1AB91009BA6BD /* VisionBoxReport */,
+				D7FA21FB24715A9A001DD9D5 /* CarTrack.Report */,
+				D755FE3A24B1AB91009BA6BD /* VisionBox.Report */,
 			);
 			path = exams;
 			sourceTree = "<group>";
@@ -2709,7 +2709,7 @@
 			path = Arquitecture;
 			sourceTree = "<group>";
 		};
-		D7FA21FB24715A9A001DD9D5 /* CarTrackReport */ = {
+		D7FA21FB24715A9A001DD9D5 /* CarTrack.Report */ = {
 			isa = PBXGroup;
 			children = (
 				D7FA220124715A9A001DD9D5 /* README.md */,
@@ -2723,7 +2723,7 @@
 				D7FA220324715A9A001DD9D5 /* vip_3.png */,
 				D7FA220524715A9A001DD9D5 /* login_1.png */,
 			);
-			path = CarTrackReport;
+			path = CarTrack.Report;
 			sourceTree = "<group>";
 		};
 		D7FCAC28246874CE00DBECA2 /* Extensions */ = {
