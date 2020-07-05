@@ -35,17 +35,13 @@ import Factory
 
 extension I {
     class ProdutDetailsInteractor: BaseInteractorVIP, ProductDetailsDataStoreProtocol {
-
         deinit {
             DevTools.Log.logDeInit("\(ProdutDetailsInteractor.self) was killed")
             NotificationCenter.default.removeObserver(self)
         }
         var presenter: ProductDetailsPresentationLogicProtocol?
         weak var basePresenter: BasePresenterVIPProtocol? { return presenter }
-
-        // DataStoreProtocol Protocol vars...
-        var dsSomeKindOfModelAThatWillBePassedToOtherRouter: SomeRandomModelA?
-        var dsSomeKindOfModelBThatWillBePassedToOtherRouter: SomeRandomModelB?
+        var dsProduct: VisionBox.ProductModel?
     }
 }
 
@@ -57,14 +53,11 @@ extension I.ProdutDetailsInteractor: BaseInteractorVIPMandatoryBusinessLogicProt
     /// till the user have all the data loaded on the view. This will improve user experience.
     func requestScreenInitialState() {
         var response: VM.ProductDetails.ScreenInitialState.Response!
-        response = VM.ProductDetails.ScreenInitialState.Response(title: "Template Scene 1", subTitle: "Tap one of the buttons")
+        response = VM.ProductDetails.ScreenInitialState.Response(productDetails: dsProduct!,
+                                                                 userAvatarImage: "",
+                                                                 userAvatarName: "",
+                                                                 productsList: [])
         presenter?.presentScreenInitialState(response: response)
-
-        // Update DataStore // <<-- DS Sample : Take notice
-        // When passing Data from the Scene Router to other one, this will be the value that will be passed
-        dsSomeKindOfModelAThatWillBePassedToOtherRouter = SomeRandomModelA(s1: "A: \(Date())")
-        dsSomeKindOfModelBThatWillBePassedToOtherRouter = SomeRandomModelB(s2: "B: \(Date())")
-
     }
 
 }

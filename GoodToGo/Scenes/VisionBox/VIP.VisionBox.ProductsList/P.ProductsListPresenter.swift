@@ -51,7 +51,8 @@ extension P {
 extension P.ProductsListPresenter: ProductsListPresentationLogicProtocol {
 
     func presentShowProductDetails(response: VM.ProductsList.ShowProductDetails.Response) {
-
+        let viewModel = VM.ProductsList.ShowProductDetails.ViewModel()
+        viewController?.displayShowProductDetails(viewModel: viewModel)
     }
 
     // Used By Interactor (exclusively)

@@ -52,10 +52,10 @@ extension P.ProdutDetailsPresenter: ProductDetailsPresentationLogicProtocol {
 
     // Used By Interactor (exclusively)
     func presentScreenInitialState(response: VM.ProductDetails.ScreenInitialState.Response) {
-        let viewModel = VM.ProductDetails.ScreenInitialState.ViewModel(productDetails: VisionBox.ProductModel.mockData.first!,
-                                                                      userAvatarImage: Images.notFound.rawValue,
-                                                                      userAvatarName: "Name",
-                                                                      productsList: VisionBox.ProductModel.mockData)
+        let viewModel = VM.ProductDetails.ScreenInitialState.ViewModel(productDetails: response.productDetails,
+                                                                       userAvatarImage: response.userAvatarImage,
+                                                                       userAvatarName: response.userAvatarName,
+                                                                       productsList: VisionBox.ProductModel.mockData)
         viewController?.displayScreenInitialState(viewModel: viewModel)
     }
 }

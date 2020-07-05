@@ -41,8 +41,8 @@ extension R.ProdutDetailsRouter: ProductDetailsRoutingLogicProtocol {
         viewController?.dismissMe()
     }
 
-    func routeSomewhereWithDataStore() {
-        func passDataToSomewhere(source: ProductDetailsDataStoreProtocol,
+    func routeToSomeWhere() {
+       /* func passDataToSomewhere(source: ProductDetailsDataStoreProtocol,
                                  destination: inout DataStoreReceiverDataStoreProtocol) { // <<-- DS Sample : Take notice
             destination.dsSomeKindOfModelAToBeSettedByOtherRouter = source.dsSomeKindOfModelAThatWillBePassedToOtherRouter
             //destination.dsSomeKindOfModelBToBeSettedByOtherRouter = source.dsSomeKindOfModelBThatWillBePassedToOtherRouter
@@ -51,11 +51,11 @@ extension R.ProdutDetailsRouter: ProductDetailsRoutingLogicProtocol {
         if var destinationDS = destinationVC.router?.dsToBeSetted { // <<-- DS Sample : Take notice
             passDataToSomewhere(source: dsSource!, destination: &destinationDS)
         }
-        viewController?.present(destinationVC, animated: true, completion: nil)
+        viewController?.present(destinationVC, animated: true, completion: nil)*/
     }
 
     func routeToTemplateWithParentDataStore() {
-        routeSomewhereWithDataStore()
+        routeToSomeWhere()
     }
 
 }

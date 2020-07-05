@@ -158,7 +158,7 @@ extension VC.ProductsListViewController {
 extension VC.ProductsListViewController: ProductsListDisplayLogicProtocol {
 
     func displayShowProductDetails(viewModel: VM.ProductsList.ShowProductDetails.ViewModel) {
-        
+        router?.routeToProductDetails()
     }
 
     func displayFilterProducts(viewModel: VM.ProductsList.FilterProducts.ViewModel) {

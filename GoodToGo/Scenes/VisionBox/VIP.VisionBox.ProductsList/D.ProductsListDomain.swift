@@ -59,7 +59,7 @@ protocol ProductsListDisplayLogicProtocol: BaseViewControllerVIPProtocol {
 // Routing Logic Protocol - all the methods used for routing are kept under this protocol.
 protocol ProductsListRoutingLogicProtocol {
     // Naming convention : func routeTo__XXX__MaybeSomeExtraInfo()
-    func routeSomewhereWithDataStore()
+    func routeToProductDetails()
 }
 
 //

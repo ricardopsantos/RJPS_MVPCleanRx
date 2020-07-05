@@ -62,12 +62,6 @@ extension VC {
            return self.addReachabilityView()
         }()
 
-        private lazy var topGenericView: TopBar = {
-            let some = UIKitFactory.topBar(baseController: self, usingSafeArea: true)
-            some.setTitle("Browser Products")
-            return some
-        }()
-
         //
         // MARK: View lifecycle
         //
@@ -86,13 +80,7 @@ extension VC {
             super.viewWillAppear(animated)
             if firstAppearance {
                 interactor?.requestScreenInitialState()
-
             }
-            let screenInitialState = VM.ProductDetails.ScreenInitialState.ViewModel(productDetails: VisionBox.ProductModel.mockData.first!,
-                                                                                   userAvatarImage: Images.notFound.rawValue,
-                                                                                   userAvatarName: "userAvatarName",
-                                                                                   productsList: VisionBox.ProductModel.mockData)
-            genericView.setupWith(screenInitialState: screenInitialState)
         }
 
         override func viewDidAppear(_ animated: Bool) {
@@ -130,7 +118,6 @@ extension VC {
         override func setupViewIfNeed() {
             // Use it to configure stuff on the genericView, depending on the value external/public variables
             // that are set after we instantiate the view controller, but before if has been presented
-            topGenericView.lazyLoad()
         }
 
         // This function is called automatically by super BaseGenericView
@@ -162,6 +149,6 @@ extension VC.ProdutDetailsViewController {
 extension VC.ProdutDetailsViewController: ProductDetailsDisplayLogicProtocol {
 
     func displayScreenInitialState(viewModel: VM.ProductDetails.ScreenInitialState.ViewModel) {
-
+        genericView.setupWith(screenInitialState: viewModel)
     }
 }

@@ -23,20 +23,6 @@ import PointFreeFunctions
 import UIBase
 
 //
-// MARK: - Enums & Other Models
-//
-
-// DataStore shared model
-/*
-struct ProdutDetailsDataStoreModelA {
-    let aString: String
-}
-
-struct ProdutDetailsDataStoreModelB {
-    let aString: String
-}
-*/
-//
 // MARK: - Interactor (Business Logic)
 //
 
@@ -70,7 +56,7 @@ protocol ProductDetailsDisplayLogicProtocol: BaseViewControllerVIPProtocol {
 // Routing Logic Protocol - all the methods used for routing are kept under this protocol.
 protocol ProductDetailsRoutingLogicProtocol {
     // Naming convention : func routeTo__XXX__MaybeSomeExtraInfo()
-    func routeSomewhereWithDataStore()
+    func routeToSomeWhere()
 }
 
 //
@@ -87,9 +73,7 @@ protocol ProductDetailsDataPassingProtocol {
 // DataStore : Implemented by the Interactor, and the Router
 protocol ProductDetailsDataStoreProtocol {
     // must have a reference like [var dataStore: ProductDetailsDataStoreProtocol?]
-    var dsSomeKindOfModelAThatWillBePassedToOtherRouter: SomeRandomModelA? { get set }
-    var dsSomeKindOfModelBThatWillBePassedToOtherRouter: SomeRandomModelB? { get set }
-
+    var dsProduct: VisionBox.ProductModel? { get set }
 }
 
 //
@@ -101,11 +85,13 @@ protocol ProductDetailsDataStoreProtocol {
 extension VM {
     enum ProductDetails {
         struct ScreenInitialState {
-            private init() {}
-            struct Request {}
+            private init() { }
+            struct Request { }
             struct Response {
-                let title: String
-                let subTitle: String
+                let productDetails: VisionBox.ProductModel
+                let userAvatarImage: String
+                let userAvatarName: String
+                let productsList: [VisionBox.ProductModel]
             }
             struct ViewModel {
                 let productDetails: VisionBox.ProductModel
