@@ -22,7 +22,7 @@ import PointFreeFunctions
 import UIBase
 
 extension R {
-    class ProdutDetailsRouter: ProdutDetailsDataPassingProtocol {
+    class ProdutDetailsRouter: ProductDetailsDataPassingProtocol {
         deinit {
             DevTools.Log.logDeInit("\(ProdutDetailsRouter.self) was killed")
             NotificationCenter.default.removeObserver(self)
@@ -30,19 +30,19 @@ extension R {
         weak var viewController: VC.ProdutDetailsViewController?
 
         // DataPassingProtocol Protocol vars...
-        var dsSource: ProdutDetailsDataStoreProtocol? { didSet { DevTools.Log.message("DataStore changed") } }
+        var dsSource: ProductDetailsDataStoreProtocol? { didSet { DevTools.Log.message("DataStore changed") } }
      }
 }
 
 // MARK: RoutingLogicProtocol
 
-extension R.ProdutDetailsRouter: ProdutDetailsRoutingLogicProtocol {
+extension R.ProdutDetailsRouter: ProductDetailsRoutingLogicProtocol {
     func dismissMe() {
         viewController?.dismissMe()
     }
 
     func routeSomewhereWithDataStore() {
-        func passDataToSomewhere(source: ProdutDetailsDataStoreProtocol,
+        func passDataToSomewhere(source: ProductDetailsDataStoreProtocol,
                                  destination: inout DataStoreReceiverDataStoreProtocol) { // <<-- DS Sample : Take notice
             destination.dsSomeKindOfModelAToBeSettedByOtherRouter = source.dsSomeKindOfModelAThatWillBePassedToOtherRouter
             //destination.dsSomeKindOfModelBToBeSettedByOtherRouter = source.dsSomeKindOfModelBThatWillBePassedToOtherRouter

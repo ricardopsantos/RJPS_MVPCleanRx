@@ -52,10 +52,10 @@ extension VC {
             NotificationCenter.default.removeObserver(self)
         }
         
-        private var interactor: ProdutsListBusinessLogicProtocol?
-        var router: (ProdutsListRoutingLogicProtocol &
+        private var interactor: ProductsListBusinessLogicProtocol?
+        var router: (ProductsListRoutingLogicProtocol &
             ProductsListDataPassingProtocol &
-            ProdutsListRoutingLogicProtocol)?
+            ProductsListRoutingLogicProtocol)?
         //
         // MARK: View lifecycle
         //
@@ -98,7 +98,7 @@ extension VC {
             // This function is called automatically by super BaseGenericView
             let viewController = self
             let interactor = I.ProdutsListInteractor()
-            let presenter  = P.ProdutsListPresenter()
+            let presenter  = P.ProductsListPresenter()
             let router     = R.ProductsListRouter()
             viewController.interactor = interactor
             viewController.router    = router
@@ -116,12 +116,21 @@ extension VC {
 
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
+
+            genericView.rxSelected.asObserver().bind { [weak self] (selected) in
+                guard let self = self else { return }
+                guard let selected = selected else { return }
+                guard self.isVisible else { return }
+                let viewModel = VM.ProductsList.ShowProductDetails.Request(product: selected)
+                self.interactor?.requestShowProductDetails(viewModel: viewModel)
+            }.disposed(by: disposeBag)
+
             genericView.rxFilter.asObserver().bind { [weak self] (search) in
                 guard let self = self else { return }
                 guard let search = search else { return }
                 guard self.isVisible else { return }
-                let viewModel = VM.ProductsList.Something.Request(search: search)
-                self.interactor?.requestSomething(viewModel: viewModel)
+                let viewModel = VM.ProductsList.FilterProducts.Request(search: search)
+                self.interactor?.requestFilterProducts(viewModel: viewModel)
             }.disposed(by: disposeBag)
         }
 
@@ -146,9 +155,13 @@ extension VC.ProductsListViewController {
 
 // MARK: DisplayLogicProtocolProtocol
 
-extension VC.ProductsListViewController: ProdutsListDisplayLogicProtocol {
+extension VC.ProductsListViewController: ProductsListDisplayLogicProtocol {
 
-    func displaySomething(viewModel: VM.ProductsList.Something.ViewModel) {
+    func displayShowProductDetails(viewModel: VM.ProductsList.ShowProductDetails.ViewModel) {
+        
+    }
+
+    func displayFilterProducts(viewModel: VM.ProductsList.FilterProducts.ViewModel) {
         if viewModel.products.count == 0 {
             displayError(viewModel: BaseDisplayLogicModels.Error(title: Messages.noRecords.localised))
         }

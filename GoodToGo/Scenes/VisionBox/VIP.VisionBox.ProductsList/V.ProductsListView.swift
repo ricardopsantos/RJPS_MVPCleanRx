@@ -57,6 +57,7 @@ extension V {
         }
 
         var rxFilter = BehaviorSubject<String?>(value: nil)
+        var rxSelected = BehaviorSubject<VisionBox.ProductModel?>(value: nil)
 
         // MARK: - UI Elements (Private and lazy by default)
 
@@ -164,7 +165,7 @@ extension V {
             }
         }
 
-        func setupWith(filter viewModel: VM.ProductsList.Something.ViewModel) {
+        func setupWith(filter viewModel: VM.ProductsList.FilterProducts.ViewModel) {
             collectionViewDataSource = viewModel.products
         }
 
@@ -178,6 +179,12 @@ extension V {
 // MARK: - UICollectionViewDataSource
 
 extension V.ProductsListView: UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selected = collectionViewDataSource[indexPath.row]
+        rxSelected.onNext(selected)
+    }
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionViewDataSource.count
     }

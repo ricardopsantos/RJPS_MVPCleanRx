@@ -33,12 +33,12 @@ import UIBase
 //
 
 extension P {
-    class ProdutsListPresenter: BasePresenterVIP {
+    class ProductsListPresenter: BasePresenterVIP {
         deinit {
-            DevTools.Log.logDeInit("\(ProdutsListPresenter.self) was killed")
+            DevTools.Log.logDeInit("\(ProductsListPresenter.self) was killed")
             NotificationCenter.default.removeObserver(self)
         }
-        weak var viewController: (ProdutsListDisplayLogicProtocol)?
+        weak var viewController: (ProductsListDisplayLogicProtocol)?
 
         override weak var baseViewController: BaseViewControllerVIPProtocol? {
             return viewController
@@ -48,7 +48,11 @@ extension P {
 
 // MARK: PresentationLogicProtocol
 
-extension P.ProdutsListPresenter: ProdutsListPresentationLogicProtocol {
+extension P.ProductsListPresenter: ProductsListPresentationLogicProtocol {
+
+    func presentShowProductDetails(response: VM.ProductsList.ShowProductDetails.Response) {
+
+    }
 
     // Used By Interactor (exclusively)
     func presentScreenInitialState(response: VM.ProductsList.ScreenInitialState.Response) {
@@ -57,9 +61,9 @@ extension P.ProdutsListPresenter: ProdutsListPresentationLogicProtocol {
     }
 
     // Used By Interactor (exclusively)
-    func presentSomething(response: VM.ProductsList.Something.Response) {
-        let viewModel = VM.ProductsList.Something.ViewModel(products: response.products)
-        viewController?.displaySomething(viewModel: viewModel)
+    func presentSomething(response: VM.ProductsList.FilterProducts.Response) {
+        let viewModel = VM.ProductsList.FilterProducts.ViewModel(products: response.products)
+        viewController?.displayFilterProducts(viewModel: viewModel)
     }
 
 }

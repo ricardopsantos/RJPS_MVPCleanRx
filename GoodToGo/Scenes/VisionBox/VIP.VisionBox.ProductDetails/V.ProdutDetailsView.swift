@@ -32,7 +32,7 @@ struct ProductDetailsView_UIViewRepresentable: UIViewRepresentable {
     func updateUIView(_ uiView: V.ProdutDetailsView, context: Context) { }
     func makeUIView(context: Context) -> V.ProdutDetailsView {
         let view = V.ProdutDetailsView()
-        let screenInitialState = VM.ProdutDetails.ScreenInitialState.ViewModel(productDetails: VisionBox.ProductModel.mockData.first!,
+        let screenInitialState = VM.ProductDetails.ScreenInitialState.ViewModel(productDetails: VisionBox.ProductModel.mockData.first!,
                                                                                userAvatarImage: Images.notFound.rawValue,
                                                                                userAvatarName: "userAvatarName",
                                                                                productsList: VisionBox.ProductModel.mockData)
@@ -223,15 +223,7 @@ extension V {
 
         // MARK: - Custom Getter/Setters
 
-        // We can set the view data by : 1 - Rx                                     ---> var rxTableItems = BehaviorRelay <---
-        // We can set the view data by : 2 - Custom Setters / Computed Vars         ---> var subTitle: String <---
-        // We can set the view data by : 3 - Passing the view model inside the view ---> func setupWith(viewModel: ... <---
-
-        func setupWith(someStuff viewModel: VM.ProdutDetails.Something.ViewModel) {
-
-        }
-
-        func setupWith(screenInitialState viewModel: VM.ProdutDetails.ScreenInitialState.ViewModel) {
+        func setupWith(screenInitialState viewModel: VM.ProductDetails.ScreenInitialState.ViewModel) {
             collectionViewDataSource = viewModel.productsList
             lblUserName.text = viewModel.userAvatarName
         }

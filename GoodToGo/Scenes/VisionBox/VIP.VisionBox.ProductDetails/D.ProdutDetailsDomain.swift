@@ -40,30 +40,27 @@ struct ProdutDetailsDataStoreModelB {
 // MARK: - Interactor (Business Logic)
 //
 
-protocol ProdutDetailsBusinessLogicProtocol: BaseInteractorVIPMandatoryBusinessLogicProtocol {
-    // Naming convention : func request__XXX__(viewModel: VM.ProdutDetails.__XXX__.Request)
+protocol ProductDetailsBusinessLogicProtocol: BaseInteractorVIPMandatoryBusinessLogicProtocol {
+    // Naming convention : func request__XXX__(viewModel: VM.ProductDetails.__XXX__.Request)
     func requestScreenInitialState()
-    func requestSomething(request: VM.ProdutDetails.Something.Request)
 }
 
 //
 // MARK: - Presenter (Presentation Logic)
 //
 
-protocol ProdutDetailsPresentationLogicProtocol: BasePresenterVIPProtocol {
-    // Naming convention : func present__XXX__(response: VM.ProdutDetails.__XXX__.Response)
-    func presentScreenInitialState(response: VM.ProdutDetails.ScreenInitialState.Response)
-    func presentSomething(response: VM.ProdutDetails.Something.Response)
+protocol ProductDetailsPresentationLogicProtocol: BasePresenterVIPProtocol {
+    // Naming convention : func present__XXX__(response: VM.ProductDetails.__XXX__.Response)
+    func presentScreenInitialState(response: VM.ProductDetails.ScreenInitialState.Response)
 }
 
 //
 // MARK: - ViewController (Display Logic)
 //
 
-protocol ProdutDetailsDisplayLogicProtocol: BaseViewControllerVIPProtocol {
-    // Naming convention : func display__XXX__(viewModel: VM.ProdutDetails.__XXX__.ViewModel)
-    func displayScreenInitialState(viewModel: VM.ProdutDetails.ScreenInitialState.ViewModel)
-    func displaySomething(viewModel: VM.ProdutDetails.Something.ViewModel)
+protocol ProductDetailsDisplayLogicProtocol: BaseViewControllerVIPProtocol {
+    // Naming convention : func display__XXX__(viewModel: VM.ProductDetails.__XXX__.ViewModel)
+    func displayScreenInitialState(viewModel: VM.ProductDetails.ScreenInitialState.ViewModel)
 }
 
 //
@@ -71,7 +68,7 @@ protocol ProdutDetailsDisplayLogicProtocol: BaseViewControllerVIPProtocol {
 //
 
 // Routing Logic Protocol - all the methods used for routing are kept under this protocol.
-protocol ProdutDetailsRoutingLogicProtocol {
+protocol ProductDetailsRoutingLogicProtocol {
     // Naming convention : func routeTo__XXX__MaybeSomeExtraInfo()
     func routeSomewhereWithDataStore()
 }
@@ -81,15 +78,15 @@ protocol ProdutDetailsRoutingLogicProtocol {
 //
 
 // DataStore : Data Passing Protocol - a protocol that contains the data that needs to be passed to the destination controller.
-protocol ProdutDetailsDataPassingProtocol {
+protocol ProductDetailsDataPassingProtocol {
 
     // DataStore
-    var dsSource: ProdutDetailsDataStoreProtocol? { get }
+    var dsSource: ProductDetailsDataStoreProtocol? { get }
 }
 
 // DataStore : Implemented by the Interactor, and the Router
-protocol ProdutDetailsDataStoreProtocol {
-    // must have a reference like [var dataStore: ProdutDetailsDataStoreProtocol?]
+protocol ProductDetailsDataStoreProtocol {
+    // must have a reference like [var dataStore: ProductDetailsDataStoreProtocol?]
     var dsSomeKindOfModelAThatWillBePassedToOtherRouter: SomeRandomModelA? { get set }
     var dsSomeKindOfModelBThatWillBePassedToOtherRouter: SomeRandomModelB? { get set }
 
@@ -102,32 +99,7 @@ protocol ProdutDetailsDataStoreProtocol {
 // Other Models
 
 extension VM {
-    enum ProdutDetails {
-        enum CellType {
-            case cellType1
-            case cellType2
-        }
-
-        struct Something {
-            private init() {}
-            struct Request { /* ViewController -> Interactor */
-                let userId: String
-            }
-            struct Response { /* Interactor -> Presenter */
-                let listA: [TemplateModel]
-                let listB: [TemplateModel]
-                let subTitle: String
-            }
-            struct ViewModel { /* Presenter -> ViewController */
-                let subTitle: String
-                let someValue: String
-                let someListSectionATitle: String
-                let someListSectionBTitle: String
-                let someListSectionAElements: [VM.ProdutDetails.TableItem]
-                let someListSectionBElements: [VM.ProdutDetails.TableItem]
-            }
-        }
-
+    enum ProductDetails {
         struct ScreenInitialState {
             private init() {}
             struct Request {}
@@ -141,32 +113,6 @@ extension VM {
                 let userAvatarName: String
                 let productsList: [VisionBox.ProductModel]
             }
-        }
-    }
-}
-
-extension VM.ProdutDetails {
-    struct TableItem: IdentifiableType, Hashable {
-
-        public typealias Identity = VM.ProdutDetails.CellType
-        public var identity: VM.ProdutDetails.CellType { return cellType }
-
-        let enabled: Bool
-        let image: String
-        let title: String
-        let subtitle: String
-        let cellType: VM.ProdutDetails.CellType
-
-        init(enabled: Bool,
-             image: String,
-             title: String,
-             subtitle: String,
-             cellType: VM.ProdutDetails.CellType) {
-            self.enabled = enabled
-            self.image = image
-            self.title = title
-            self.subtitle = subtitle
-            self.cellType = cellType
         }
     }
 }

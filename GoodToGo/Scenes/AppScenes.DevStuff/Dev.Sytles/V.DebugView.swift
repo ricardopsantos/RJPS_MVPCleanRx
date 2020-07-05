@@ -306,10 +306,6 @@ extension GoodToGo.V {
 
         // MARK: - Custom Getter/Setters
 
-        // We can set the view data by : 1 - Rx                                     ---> var rxTableItems = BehaviorRelay <---
-        // We can set the view data by : 2 - Custom Setters / Computed Vars         ---> var subTitle: String <---
-        // We can set the view data by : 3 - Passing the view model inside the view ---> func setupWith(viewModel: ... <---
-
     }
 }
 

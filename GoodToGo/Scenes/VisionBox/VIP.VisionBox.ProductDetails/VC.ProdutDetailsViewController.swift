@@ -53,10 +53,10 @@ extension VC {
             NotificationCenter.default.removeObserver(self)
         }
         
-        private var interactor: ProdutDetailsBusinessLogicProtocol?
-        var router: (ProdutDetailsRoutingLogicProtocol &
-            ProdutDetailsDataPassingProtocol &
-            ProdutDetailsRoutingLogicProtocol)?
+        private var interactor: ProductDetailsBusinessLogicProtocol?
+        var router: (ProductDetailsRoutingLogicProtocol &
+            ProductDetailsDataPassingProtocol &
+            ProductDetailsRoutingLogicProtocol)?
 
         private lazy var reachabilityView: ReachabilityView = {
            return self.addReachabilityView()
@@ -86,10 +86,9 @@ extension VC {
             super.viewWillAppear(animated)
             if firstAppearance {
                 interactor?.requestScreenInitialState()
-                interactor?.requestSomething(request: VM.ProdutDetails.Something.Request(userId: ""))
 
             }
-            let screenInitialState = VM.ProdutDetails.ScreenInitialState.ViewModel(productDetails: VisionBox.ProductModel.mockData.first!,
+            let screenInitialState = VM.ProductDetails.ScreenInitialState.ViewModel(productDetails: VisionBox.ProductModel.mockData.first!,
                                                                                    userAvatarImage: Images.notFound.rawValue,
                                                                                    userAvatarName: "userAvatarName",
                                                                                    productsList: VisionBox.ProductModel.mockData)
@@ -136,29 +135,7 @@ extension VC {
 
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
-/*
-            genericView
-                .rxModelSelected
-                .log(whereAmI())
-                .subscribe(onNext: { /* [router] */ (some) in
-                    DevTools.Log.message("Received [\(some)]")
-                })
-                .disposed(by: disposeBag)
 
-            genericView.rxBtnSample1Tap
-                .do(onNext: { [weak self] in
-                    self?.router?.routeSomewhereWithDataStore()
-                })
-                .subscribe()
-                .disposed(by: disposeBag)
-
-            genericView.rxBtnSample2Tap
-                .do(onNext: { [weak self] in
-                    self?.doPrivateStuff()
-                })
-                .subscribe()
-                .disposed(by: disposeBag)
-*/
         }
 
         // This function is called automatically by super BaseGenericView
@@ -177,25 +154,14 @@ extension VC.ProdutDetailsViewController {
 // MARK: Private Misc Stuff
 
 extension VC.ProdutDetailsViewController {
-    #warning("THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE")
-    private func doPrivateStuff() {
-     //   let request = VM.ProdutDetails.Something.Request(userId:)
-       // self.interactor?.requestSomething(request: request)
-    }
+
 }
 
 // MARK: DisplayLogicProtocolProtocol
 
-extension VC.ProdutDetailsViewController: ProdutDetailsDisplayLogicProtocol {
+extension VC.ProdutDetailsViewController: ProductDetailsDisplayLogicProtocol {
 
-    func displaySomething(viewModel: VM.ProdutDetails.Something.ViewModel) {
-        // Setting up the view, option 1 : passing the view model
-        genericView.setupWith(someStuff: viewModel)
-    }
+    func displayScreenInitialState(viewModel: VM.ProductDetails.ScreenInitialState.ViewModel) {
 
-    func displayScreenInitialState(viewModel: VM.ProdutDetails.ScreenInitialState.ViewModel) {
-       // title = viewModel.title
-        // Setting up the view, option 2 : setting the vars one by one
-//        genericView.subTitle = viewModel.subTitle
     }
 }

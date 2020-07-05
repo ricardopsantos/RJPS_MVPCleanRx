@@ -39,9 +39,10 @@ extension I {
             DevTools.Log.logDeInit("\(ProdutsListInteractor.self) was killed")
             NotificationCenter.default.removeObserver(self)
         }
-        var presenter: ProdutsListPresentationLogicProtocol?
+        var presenter: ProductsListPresentationLogicProtocol?
         weak var basePresenter: BasePresenterVIPProtocol? { return presenter }
         var dsSelectedCategory: VisionBox.Category?
+        var dsSelectedProduct: VisionBox.ProductModel?
     }
 }
 
@@ -67,13 +68,20 @@ extension I.ProdutsListInteractor {
 
 // MARK: BusinessLogicProtocol
 
-extension I.ProdutsListInteractor: ProdutsListBusinessLogicProtocol {
-    func requestSomething(viewModel: VM.ProductsList.Something.Request) {
+extension I.ProdutsListInteractor: ProductsListBusinessLogicProtocol {
+
+    func requestShowProductDetails(viewModel: VM.ProductsList.ShowProductDetails.Request) {
+        dsSelectedProduct = viewModel.product
+        let response = VM.ProductsList.ShowProductDetails.Response()
+        presenter?.presentShowProductDetails(response: response)
+    }
+
+    func requestFilterProducts(viewModel: VM.ProductsList.FilterProducts.Request) {
         var products = VisionBox.ProductModel.mockData.filter({ $0.category == dsSelectedCategory })
         if !viewModel.search.isEmpty {
             products = products.filter({ "\($0)".lowercased().contains(subString: viewModel.search.trim.lowercased()) })
         }
-        let response = VM.ProductsList.Something.Response(products: products)
+        let response = VM.ProductsList.FilterProducts.Response(products: products)
         presenter?.presentSomething(response: response)
     }
 }

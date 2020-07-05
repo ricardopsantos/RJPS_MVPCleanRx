@@ -34,13 +34,13 @@ import Factory
 //
 
 extension I {
-    class ProdutDetailsInteractor: BaseInteractorVIP, ProdutDetailsDataStoreProtocol {
+    class ProdutDetailsInteractor: BaseInteractorVIP, ProductDetailsDataStoreProtocol {
 
         deinit {
             DevTools.Log.logDeInit("\(ProdutDetailsInteractor.self) was killed")
             NotificationCenter.default.removeObserver(self)
         }
-        var presenter: ProdutDetailsPresentationLogicProtocol?
+        var presenter: ProductDetailsPresentationLogicProtocol?
         weak var basePresenter: BasePresenterVIPProtocol? { return presenter }
 
         // DataStoreProtocol Protocol vars...
@@ -56,8 +56,8 @@ extension I.ProdutDetailsInteractor: BaseInteractorVIPMandatoryBusinessLogicProt
     /// When the screen is loaded, this function is responsible to bind the View with some (temporary or final) data
     /// till the user have all the data loaded on the view. This will improve user experience.
     func requestScreenInitialState() {
-        var response: VM.ProdutDetails.ScreenInitialState.Response!
-        response = VM.ProdutDetails.ScreenInitialState.Response(title: "Template Scene 1", subTitle: "Tap one of the buttons")
+        var response: VM.ProductDetails.ScreenInitialState.Response!
+        response = VM.ProductDetails.ScreenInitialState.Response(title: "Template Scene 1", subTitle: "Tap one of the buttons")
         presenter?.presentScreenInitialState(response: response)
 
         // Update DataStore // <<-- DS Sample : Take notice
@@ -77,24 +77,7 @@ extension I.ProdutDetailsInteractor {
 
 // MARK: BusinessLogicProtocol
 
-extension I.ProdutDetailsInteractor: ProdutDetailsBusinessLogicProtocol {
-
-    #warning("THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE")
-    func requestSomething(request: VM.ProdutDetails.Something.Request) {
-
-        presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
-        DispatchQueue.executeWithDelay(delay: 0.5) { [weak self] in
-            let mockA1 = TemplateModel(id: "some id 1", state: "state_a - \(Date())")
-            let mockA2 = TemplateModel(id: "some id 2", state: "state_a - \(Date())")
-            let response = VM.ProdutDetails.Something.Response(listA: [mockA1],
-                                                                          listB: [mockA2],
-                                                                          subTitle: "New subtitle \(Date())")
-            self?.presenter?.presentSomething(response: response)
-            self?.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
-            //self?.presenter?.presentError(error: error)
-            self?.presenter?.presentStatus(response: BaseDisplayLogicModels.Status(message: Messages.success.localised))
-        }
-    }
+extension I.ProdutDetailsInteractor: ProductDetailsBusinessLogicProtocol {
 
 }
 

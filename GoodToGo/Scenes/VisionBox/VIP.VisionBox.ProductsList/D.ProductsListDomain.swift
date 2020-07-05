@@ -22,30 +22,34 @@ import Extensions
 import PointFreeFunctions
 import UIBase
 
-protocol ProdutsListBusinessLogicProtocol: BaseInteractorVIPMandatoryBusinessLogicProtocol {
-    // Naming convention : func request__XXX__(viewModel: VM.ProdutsList.__XXX__.Request)
+protocol ProductsListBusinessLogicProtocol: BaseInteractorVIPMandatoryBusinessLogicProtocol {
+    // Naming convention : func request__XXX__(viewModel: VM.ProductsList.__XXX__.Request)
     func requestScreenInitialState()
-    func requestSomething(viewModel: VM.ProductsList.Something.Request)
+    func requestFilterProducts(viewModel: VM.ProductsList.FilterProducts.Request)
+    func requestShowProductDetails(viewModel: VM.ProductsList.ShowProductDetails.Request)
 }
 
 //
 // MARK: - Presenter (Presentation Logic)
 //
 
-protocol ProdutsListPresentationLogicProtocol: BasePresenterVIPProtocol {
-    // Naming convention : func present__XXX__(response: VM.ProdutsList.__XXX__.Response)
+protocol ProductsListPresentationLogicProtocol: BasePresenterVIPProtocol {
+    // Naming convention : func present__XXX__(response: VM.ProductsList.__XXX__.Response)
     func presentScreenInitialState(response: VM.ProductsList.ScreenInitialState.Response)
-    func presentSomething(response: VM.ProductsList.Something.Response)
+    func presentSomething(response: VM.ProductsList.FilterProducts.Response)
+    func presentShowProductDetails(response: VM.ProductsList.ShowProductDetails.Response)
+
 }
 
 //
 // MARK: - ViewController (Display Logic)
 //
 
-protocol ProdutsListDisplayLogicProtocol: BaseViewControllerVIPProtocol {
-    // Naming convention : func display__XXX__(viewModel: VM.ProdutsList.__XXX__.ViewModel)
+protocol ProductsListDisplayLogicProtocol: BaseViewControllerVIPProtocol {
+    // Naming convention : func display__XXX__(viewModel: VM.ProductsList.__XXX__.ViewModel)
     func displayScreenInitialState(viewModel: VM.ProductsList.ScreenInitialState.ViewModel)
-    func displaySomething(viewModel: VM.ProductsList.Something.ViewModel)
+    func displayFilterProducts(viewModel: VM.ProductsList.FilterProducts.ViewModel)
+    func displayShowProductDetails(viewModel: VM.ProductsList.ShowProductDetails.ViewModel)
 }
 
 //
@@ -53,7 +57,7 @@ protocol ProdutsListDisplayLogicProtocol: BaseViewControllerVIPProtocol {
 //
 
 // Routing Logic Protocol - all the methods used for routing are kept under this protocol.
-protocol ProdutsListRoutingLogicProtocol {
+protocol ProductsListRoutingLogicProtocol {
     // Naming convention : func routeTo__XXX__MaybeSomeExtraInfo()
     func routeSomewhereWithDataStore()
 }
@@ -73,6 +77,7 @@ protocol ProductsListDataPassingProtocol {
 protocol ProductsListDataStoreProtocol {
     // must have a reference like [var dataStore: ProductsListDataStoreProtocol?]
     var dsSelectedCategory: VisionBox.Category? { get set }
+    var dsSelectedProduct: VisionBox.ProductModel? { get set }
 }
 
 //
@@ -83,7 +88,19 @@ protocol ProductsListDataStoreProtocol {
 
 extension VM {
     enum ProductsList {
-        struct Something {
+
+        struct ShowProductDetails {
+            private init() { }
+            struct Request {
+                let product: VisionBox.ProductModel
+            }
+            struct Response {
+            }
+            struct ViewModel {
+            }
+        }
+
+        struct FilterProducts {
             private init() { }
             struct Request {
                 let search: String

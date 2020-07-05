@@ -35,7 +35,7 @@ extension R {
 
 // MARK: RoutingLogicProtocol
 
-extension R.ProductsListRouter: ProdutsListRoutingLogicProtocol {
+extension R.ProductsListRouter: ProductsListRoutingLogicProtocol {
     func dismissMe() {
         viewController?.dismissMe()
     }

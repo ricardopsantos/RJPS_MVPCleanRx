@@ -149,24 +149,14 @@ extension GoodToGo.V {
         func setupLottie() {
             // https://lottiefiles.com/blog/working-with-lottie/how-to-add-lottie-animation-ios-app-swift
             animationView = .init(name: "23038-animatonblue")
-            //animationView!.frame = self.bounds
             animationView!.contentMode = .scaleAspectFit
             animationView!.loopMode = .loop
             animationView!.animationSpeed = 0.5
-           // addSubview(animationView!)
-
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(lblErrorMessage)
-
-//            animationView?.autoLayout.edgesToSuperview()
-
             animationView!.play()
         }
 
         // MARK: - Custom Getter/Setters
-
-        // We can set the view data by : 1 - Rx                                     ---> var rxTableItems = BehaviorRelay <---
-        // We can set the view data by : 2 - Custom Setters / Computed Vars         ---> var subTitle: String <---
-        // We can set the view data by : 3 - Passing the view model inside the view ---> func setupWith(viewModel: ... <---
 
         func setupWith(screenState viewModel: GoodToGo.VM.CarTrackLogin.ScreenState.ViewModel) {
             screenLayout = viewModel.layout
