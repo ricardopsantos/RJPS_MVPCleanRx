@@ -97,12 +97,12 @@ extension V {
         }()
 
         private lazy var lblDescriptionValue: UILabel = {
-            let some = UIKitFactory.label(title: "lblDescriptionValue", style: .title)
+            let some = UIKitFactory.label(title: Messages.description.localised, style: .title)
             return some
         }()
 
         private lazy var lblEvaluateTitle: UILabel = {
-            UIKitFactory.label(title: "lblEvaluateTitle", style: .title)
+            UIKitFactory.label(title: "Evaluate", style: .title)
         }()
 
         private lazy var lblUserName: UILabel = {
@@ -110,6 +110,10 @@ extension V {
         }()
 
         private lazy var imgEvaluateTitle: UIImageView = {
+            UIKitFactory.imageView(image: Images.notFound.image)
+        }()
+
+        private lazy var imgProduct: UIImageView = {
             UIKitFactory.imageView(image: Images.notFound.image)
         }()
 
@@ -123,7 +127,7 @@ extension V {
 
         private lazy var viewSeparator: UIView = {
             let some = UIView()
-            some.backgroundColor = UIColor.Pack1.grey_1.color
+            some.backgroundColor = UIColor.Pack1.grey_1.color.withAlphaComponent(FadeType.heavy.rawValue)
             return some
         }()
 
@@ -134,6 +138,7 @@ extension V {
         // Function 1/3 : JUST to add stuff to the view....
         override func prepareLayoutCreateHierarchy() {
             addSubview(viewContainerTop)
+            viewContainerTop.addSubview(imgProduct)
             addSubview(viewContainerBottom)
             viewContainerBottom.addSubview(viewContainerCollection)
             viewContainerCollection.addSubview(collectionView)
@@ -158,6 +163,11 @@ extension V {
             viewContainerTop.autoLayout.trailingToSuperview()
             viewContainerTop.autoLayout.heightToSuperview(multiplier: 0.4)
 
+            imgProduct.autoLayout.centerInSuperview()
+            imgProduct.autoLayout.widthToSuperview(multiplier: 0.75)
+            imgProduct.autoLayout.heightToSuperview(multiplier: 0.75)
+            imgProduct.addShadow()
+
             productCardView.autoLayout.topToBottom(of: viewContainerTop, offset: (-V.ProductCardView.defaultHeight * 0.25))
             productCardView.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
             productCardView.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
@@ -179,7 +189,7 @@ extension V {
             viewSeparator.autoLayout.topToBottom(of: lblDescriptionValue, offset: Designables.Sizes.Margins.defaultMargin)
             viewSeparator.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
             viewSeparator.autoLayout.trailingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
-            viewSeparator.autoLayout.height(3)
+            viewSeparator.autoLayout.height(0.5)
 
             lblEvaluateTitle.autoLayout.topToBottom(of: viewSeparator, offset: Designables.Sizes.Margins.defaultMargin)
             lblEvaluateTitle.autoLayout.leadingToSuperview(offset: Designables.Sizes.Margins.defaultMargin)
@@ -216,10 +226,11 @@ extension V {
 
         override func setupColorsAndStyles() {
             self.backgroundColor = AppColors.backgroundColor
-            collectionView.backgroundColor = .blue
-            lblDescriptionTitle.font = UIFont.App.Styles.paragraphBold.rawValue
+            collectionView.backgroundColor = .clear
+            lblDescriptionTitle.font = UIFont.App.Styles.paragraphMedium.rawValue
             lblDescriptionTitle.textColor = UIColor.black
             lblDescriptionValue.textColor = lblDescriptionTitle.textColor.withAlphaComponent(FadeType.regular.rawValue)
+            lblDescriptionTitle.font = UIFont.App.Styles.paragraphMedium.rawValue
         }
 
         // This function is called automatically by super BaseGenericView
@@ -230,6 +241,7 @@ extension V {
         // MARK: - Custom Getter/Setters
 
         func setupWith(screenInitialState viewModel: VM.ProductDetails.ScreenInitialState.ViewModel) {
+            imgProduct.image = UIImage(named: viewModel.productDetails.productImage)
             collectionViewDataSource = viewModel.productsList
             lblUserName.text = viewModel.userAvatarName
             lblDescriptionValue.text = viewModel.productDetails.description
@@ -242,11 +254,7 @@ extension V {
 // MARK: - Events capture
 
 extension V.ProdutDetailsView {
-  /*  var rxBtnSample1Tap: Observable<Void> { btnSample1.rx.tapSmart(disposeBag) }
-    var rxBtnSample2Tap: Observable<Void> { btnSample2.rx.tapSmart(disposeBag) }
-    var rxModelSelected: ControlEvent<VM.ProdutDetails.TableItem> {
-        tableView.rx.modelSelected(VM.ProdutDetails.TableItem.self)
-    }*/
+
 }
 
 // MARK: - UICollectionViewDataSource
@@ -352,14 +360,15 @@ extension V {
         }
 
         private func setupView() {
-            let cellColor = UIColor.white
+            let cellColor = UIColor.white.withAlphaComponent(0.4)
             contentView.clipsToBounds = true
-            contentView.layer.cornerRadius = 5
+            contentView.layer.cornerRadius = 10
             contentView.addShadow()
 
             contentView.addSubview(imgProduct)
             imgProduct.autoLayout.edgesToSuperview()
             imgProduct.contentMode = .scaleAspectFit
+            imgProduct.addShadow()
 
             contentView.backgroundColor = cellColor
             self.backgroundColor = cellColor

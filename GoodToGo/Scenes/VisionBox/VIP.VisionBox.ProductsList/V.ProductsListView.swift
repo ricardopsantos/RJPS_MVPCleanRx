@@ -457,9 +457,9 @@ extension V {
 
         func applySecondaryStyle() {
             lblTitle.textColor = UIColor.black
-            lblTitle.textColor = lblTitle.textColor.withAlphaComponent(FadeType.regular.rawValue)
-            blurEffectView.removeFromSuperview()
+            lblSpecification.textColor = lblTitle.textColor.withAlphaComponent(FadeType.regular.rawValue)
             viewBackground.backgroundColor = UIColor.white
+            viewBackground.addShadow()
 
             // Blur
             blurEffectView.removeFromSuperview()
