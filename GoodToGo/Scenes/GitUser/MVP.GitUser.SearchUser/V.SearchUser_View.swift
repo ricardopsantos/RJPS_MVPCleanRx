@@ -22,6 +22,27 @@ import DevTools
 import PointFreeFunctions
 import Designables
 
+// MARK: - Preview
+
+@available(iOS 13.0.0, *)
+struct SearchUser_ViewUI_ViewControllerRepresentable: UIViewControllerRepresentable {
+    func updateUIViewController(_ uiViewController: V.SearchUser_View, context: Context) { }
+    func makeUIViewController(context: Context) -> V.SearchUser_View {
+        let vc = AppDelegate.shared.container.resolve(V.SearchUser_View.self)!
+        //vc.something(viewModel: dashboardVM)
+        return vc
+    }
+}
+
+@available(iOS 13.0.0, *)
+struct SearchUser_View_Preview: PreviewProvider {
+    static var previews: some SwiftUI.View {
+        return SearchUser_ViewUI_ViewControllerRepresentable()
+    }
+}
+
+// MARK: - ViewController
+
 public extension V {
     internal class SearchUser_View: BaseViewControllerMVP {
         
@@ -95,7 +116,6 @@ public extension V {
         open override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             presenter.generic?.viewWillAppear()
-            DevTools.Log.error("Error")
         }
         
         open override func viewDidAppear(_ animated: Bool) {
@@ -125,26 +145,5 @@ public extension V {
 extension GoodToGo.V.SearchUser_View: SearchUser_ViewProtocol {
     func viewDataToScreen(some: GoodToGo.VM.SearchUser) {
         searchBar.text = some.user
-    }
-}
-
-// MARK: - Preview
-
-struct SearchUser_UIViewControllerRepresentable: UIViewControllerRepresentable {
-
-    func makeUIViewController(context: Context) -> GoodToGo.V.SearchUser_View {
-        let vc = GoodToGo.V.SearchUser_View()
-        return vc
-    }
-
-    func updateUIViewController(_ uiViewController: GoodToGo.V.SearchUser_View, context: Context) {
-
-    }
-}
-
-struct SearchUser_Previews: PreviewProvider {
-    @available(iOS 13.0.0, *)
-    static var previews: some SwiftUI.View {
-        return SearchUser_UIViewControllerRepresentable()
     }
 }

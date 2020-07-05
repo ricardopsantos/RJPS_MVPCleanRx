@@ -7,6 +7,7 @@
 
 import UIKit
 import Foundation
+import SwiftUI
 //
 import RJPSLib
 import RxSwift
@@ -22,6 +23,27 @@ import PointFreeFunctions
 import Designables
 import Domain
 import Domain_Bliss
+
+// MARK: - Preview
+
+@available(iOS 13.0.0, *)
+struct BlissDetails_View_ViewControllerRepresentable: UIViewControllerRepresentable {
+    func updateUIViewController(_ uiViewController: V.BlissDetails_View, context: Context) { }
+    func makeUIViewController(context: Context) -> V.BlissDetails_View {
+        let vc = AppDelegate.shared.container.resolve(V.BlissDetails_View.self)!
+        //vc.something(viewModel: dashboardVM)
+        return vc
+    }
+}
+
+@available(iOS 13.0.0, *)
+struct BlissDetails_View_Preview: PreviewProvider {
+    static var previews: some SwiftUI.View {
+        return BlissDetails_View_ViewControllerRepresentable()
+    }
+}
+
+// MARK: - View
 
 extension V {
     class BlissDetails_View: BaseViewControllerMVP {

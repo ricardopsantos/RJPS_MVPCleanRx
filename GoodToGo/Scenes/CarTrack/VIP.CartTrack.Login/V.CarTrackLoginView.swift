@@ -29,6 +29,26 @@ import UIBase
 import AppResources
 import Lottie
 
+// MARK: - Preview
+
+@available(iOS 13.0.0, *)
+struct CarTrackLoginView_UIViewRepresentable: UIViewRepresentable {
+    func updateUIView(_ uiView: V.CarTrackLoginView, context: Context) { }
+    func makeUIView(context: Context) -> V.CarTrackLoginView {
+        let some = V.CarTrackLoginView()
+        return some
+    }
+}
+
+@available(iOS 13.0.0, *)
+struct CarTrackLoginView_Previews: PreviewProvider {
+    static var previews: some SwiftUI.View {
+        CarTrackLoginView_UIViewRepresentable()
+    }
+}
+
+// MARK: - View
+
 extension GoodToGo.V {
     class CarTrackLoginView: BaseGenericViewVIP {
 
@@ -36,9 +56,6 @@ extension GoodToGo.V {
             DevTools.Log.logDeInit("\(self.className) was killed")
             NotificationCenter.default.removeObserver(self)
         }
-
-        //var rxUserName = BehaviorSubject<String?>(value: nil)
-        //var rxPassword = BehaviorSubject<String?>(value: nil)
 
         // MARK: - UI Elements (Private and lazy by default)
 

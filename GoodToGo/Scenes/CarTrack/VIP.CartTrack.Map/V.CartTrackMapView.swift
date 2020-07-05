@@ -30,6 +30,26 @@ import PointFreeFunctions
 import UIBase
 import AppResources
 
+// MARK: - Preview
+
+@available(iOS 13.0.0, *)
+struct CartTrackMapView_UIViewRepresentable: UIViewRepresentable {
+    func updateUIView(_ uiView: V.CartTrackMapView, context: Context) { }
+    func makeUIView(context: Context) -> V.CartTrackMapView {
+        let some = V.CartTrackMapView()
+        return some
+    }
+}
+
+@available(iOS 13.0.0, *)
+struct CartTrackMapView_Previews: PreviewProvider {
+    static var previews: some SwiftUI.View {
+        CartTrackMapView_UIViewRepresentable()
+    }
+}
+
+// MARK: - View
+
 extension GoodToGo.V {
     class CartTrackMapView: BaseGenericViewVIP {
 
@@ -316,26 +336,5 @@ extension Domain_CarTrack.CarTrack.UserModel {
         let lng: CLLocationDegrees = CLLocationDegrees(Double(longitude)!)
         let coordinate = CLLocationCoordinate2DMake(lat, lng)
         return coordinate
-    }
-}
-
-// MARK: - Preview
-
-struct CartTrackMap_UIViewControllerRepresentable: UIViewControllerRepresentable {
-
-    func makeUIViewController(context: Context) -> GoodToGo.VC.CartTrackMapViewController {
-        let vc = GoodToGo.VC.CartTrackMapViewController(presentationStyle: .modal)
-        return vc
-    }
-
-    func updateUIViewController(_ uiViewController: GoodToGo.VC.CartTrackMapViewController, context: Context) {
-
-    }
-}
-
-struct CartTrackMap_Previews: PreviewProvider {
-    @available(iOS 13.0.0, *)
-    static var previews: some SwiftUI.View {
-        return CartTrackMap_UIViewControllerRepresentable()
     }
 }

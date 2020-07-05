@@ -1782,10 +1782,10 @@
 		9F58FB1F22BE5DE700042A8C /* MVP.GitUser.SearchUser */ = {
 			isa = PBXGroup;
 			children = (
+				9F58FB2322BE5DE700042A8C /* V.SearchUser_View.swift */,
 				9F58FB2022BE5DE700042A8C /* R.SearchUser_Router.swift */,
 				9F58FB2122BE5DE700042A8C /* D.SearchUser_ViewModel.swift */,
 				9F58FB2222BE5DE700042A8C /* P.SearchUser_Presenter.swift */,
-				9F58FB2322BE5DE700042A8C /* V.SearchUser_View.swift */,
 				9F58FB2422BE5DE700042A8C /* AS.SearchUser_AssemblyContainer.swift */,
 			);
 			path = MVP.GitUser.SearchUser;
@@ -1794,9 +1794,9 @@
 		9F6BB2C422E3450E00829A6F /* MVP.Bliss.Questions */ = {
 			isa = PBXGroup;
 			children = (
+				9F6BB2C722E3450E00829A6F /* V.BlissQuestionsList_View.swift */,
 				9F6BB2C522E3450E00829A6F /* D.BlissQuestionsList_ViewModel.swift */,
 				9F6BB2C622E3450E00829A6F /* AS.BlissQuestionsList_AssemblyContainer.swift */,
-				9F6BB2C722E3450E00829A6F /* V.BlissQuestionsList_View.swift */,
 				9F6BB2C822E3450E00829A6F /* P.BlissQuestionsList_Presenter.swift */,
 				9F6BB2C922E3450E00829A6F /* R.BlissQuestionsList_Router.swift */,
 			);
@@ -1806,10 +1806,10 @@
 		9F6BB2E222E3A61F00829A6F /* MVP.Bliss.RootScreen */ = {
 			isa = PBXGroup;
 			children = (
+				9F6BB2E622E3A61F00829A6F /* V.BlissRoot_View.swift */,
 				9F6BB2E322E3A61F00829A6F /* P.BlissRoot_Presenter.swift */,
 				9F6BB2E422E3A61F00829A6F /* AC.BlissRoot_AssemblyContainer.swift */,
 				9F6BB2E522E3A61F00829A6F /* R.BlissRoot_Router.swift */,
-				9F6BB2E622E3A61F00829A6F /* V.BlissRoot_View.swift */,
 				9F6BB2E722E3A61F00829A6F /* D.BlissRoot_ViewModel.swift */,
 			);
 			path = MVP.Bliss.RootScreen;
@@ -1818,9 +1818,9 @@
 		9F6BB2F422E3C0E400829A6F /* MVP.Bliss.Details */ = {
 			isa = PBXGroup;
 			children = (
+				9F6BB2F722E3C0E400829A6F /* V.BlissDetails_View.swift */,
 				9F6BB2F522E3C0E400829A6F /* R.BlissDetails_Router.swift */,
 				9F6BB2F622E3C0E400829A6F /* P.BlissDetails_Presenter.swift */,
-				9F6BB2F722E3C0E400829A6F /* V.BlissDetails_View.swift */,
 				9F6BB2F822E3C0E400829A6F /* VM.BlissDetails_ViewModel.swift */,
 				9F6BB2F922E3C0E400829A6F /* AS.BlissDetails_AssemblyContainer.swift */,
 			);
@@ -2243,8 +2243,8 @@
 		D7979DA1246D6B370039031C /* VIP.CartTrack.Login */ = {
 			isa = PBXGroup;
 			children = (
-				D7979DA2246D6B370039031C /* VC.CarTrackLoginViewController.swift */,
 				D7979DA3246D6B370039031C /* V.CarTrackLoginView.swift */,
+				D7979DA2246D6B370039031C /* VC.CarTrackLoginViewController.swift */,
 				D7979DA4246D6B370039031C /* D.CarTrackLoginDomain.swift */,
 				D7979DA5246D6B370039031C /* P.CarTrackLoginPresenter.swift */,
 				D7979DA6246D6B370039031C /* I.CarTrackLoginInteractor.swift */,

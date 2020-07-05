@@ -7,6 +7,7 @@
 
 import UIKit
 import Foundation
+import SwiftUI
 //
 import RJPSLib
 import RxSwift
@@ -20,6 +21,27 @@ import Extensions
 import DevTools
 import PointFreeFunctions
 import Designables
+
+// MARK: - Preview
+
+@available(iOS 13.0.0, *)
+struct UserDetails_View_ViewControllerRepresentable: UIViewControllerRepresentable {
+    func updateUIViewController(_ uiViewController: V.UserDetails_View, context: Context) { }
+    func makeUIViewController(context: Context) -> V.UserDetails_View {
+        let vc = AppDelegate.shared.container.resolve(V.UserDetails_View.self)!
+        //vc.something(viewModel: dashboardVM)
+        return vc
+    }
+}
+
+@available(iOS 13.0.0, *)
+struct UserDetails_View_Preview: PreviewProvider {
+    static var previews: some SwiftUI.View {
+        return UserDetails_View_ViewControllerRepresentable()
+    }
+}
+
+// MARK: - ViewController
 
 extension V {
     class UserDetails_View: BaseViewControllerMVP {

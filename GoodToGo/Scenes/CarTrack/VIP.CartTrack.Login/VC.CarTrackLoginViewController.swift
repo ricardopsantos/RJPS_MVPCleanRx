@@ -7,6 +7,7 @@
 //
 import Foundation
 import UIKit
+import SwiftUI
 //
 import RxCocoa
 import RxSwift
@@ -22,6 +23,27 @@ import Extensions
 import PointFreeFunctions
 import AppResources
 import UIBase
+
+// MARK: - Preview
+
+@available(iOS 13.0.0, *)
+struct CarTrackLoginViewController_UIViewControllerRepresentable: UIViewControllerRepresentable {
+    func updateUIViewController(_ uiViewController: VC.CarTrackLoginViewController, context: Context) { }
+    func makeUIViewController(context: Context) -> VC.CarTrackLoginViewController {
+        let vc = VC.CarTrackLoginViewController(presentationStyle: .modal)
+        //vc.something(viewModel: dashboardVM)
+        return vc
+    }
+}
+
+@available(iOS 13.0.0, *)
+struct CarTrackLoginViewController_Preview: PreviewProvider {
+    static var previews: some SwiftUI.View {
+        return CarTrackLoginViewController_UIViewControllerRepresentable()
+    }
+}
+
+// MARK: - ViewController
 
 extension VC {
 

@@ -7,6 +7,7 @@
 
 import UIKit
 import Foundation
+import SwiftUI
 //
 import RJPSLib
 import RxSwift
@@ -19,6 +20,27 @@ import AppConstants
 import Extensions
 import DevTools
 import PointFreeFunctions
+
+// MARK: - Preview
+
+@available(iOS 13.0.0, *)
+struct BlissRoot_View_ViewControllerRepresentable: UIViewControllerRepresentable {
+    func updateUIViewController(_ uiViewController: V.BlissRoot_View, context: Context) { }
+    func makeUIViewController(context: Context) -> V.BlissRoot_View {
+        let vc = AppDelegate.shared.container.resolve(V.BlissRoot_View.self)!
+        //vc.something(viewModel: dashboardVM)
+        return vc
+    }
+}
+
+@available(iOS 13.0.0, *)
+struct BlissRoot_View_Preview: PreviewProvider {
+    static var previews: some SwiftUI.View {
+        return BlissRoot_View_ViewControllerRepresentable()
+    }
+}
+
+// MARK: - ViewController
 
 extension V {
     class BlissRoot_View: BaseViewControllerMVP {

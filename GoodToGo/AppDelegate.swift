@@ -40,7 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         setup(application: application)
         self.window?.rootViewController = VC.TabBarController()
-        //self.window?.rootViewController = VC.CategoriesPickerViewController(presentationStyle: .modal)
 
         return true
     }

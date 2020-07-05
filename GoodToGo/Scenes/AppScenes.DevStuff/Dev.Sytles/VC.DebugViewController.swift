@@ -7,6 +7,7 @@
 //
 import Foundation
 import UIKit
+import SwiftUI
 //
 import RxCocoa
 import RxSwift
@@ -21,6 +22,27 @@ import Extensions
 import PointFreeFunctions
 import AppResources
 import UIBase
+
+// MARK: - Preview
+
+@available(iOS 13.0.0, *)
+struct DebugViewController_UIViewControllerRepresentable: UIViewControllerRepresentable {
+    func updateUIViewController(_ uiViewController: VC.DebugViewController, context: Context) { }
+    func makeUIViewController(context: Context) -> VC.DebugViewController {
+        let vc = VC.DebugViewController(presentationStyle: .modal)
+        //vc.something(viewModel: dashboardVM)
+        return vc
+    }
+}
+
+@available(iOS 13.0.0, *)
+struct DebugViewController_Preview: PreviewProvider {
+    static var previews: some SwiftUI.View {
+        return DebugViewController_UIViewControllerRepresentable()
+    }
+}
+
+// MARK: - ViewController
 
 extension VC {
 
@@ -68,11 +90,6 @@ extension VC {
 
         override func viewDidAppear(_ animated: Bool) {
             super.viewDidAppear(animated)
-
-            DevTools.Log.message("message")
-            DevTools.Log.warning("warning")
-            DevTools.Log.error("error")
-
         }
 
         //

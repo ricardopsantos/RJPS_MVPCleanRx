@@ -28,6 +28,26 @@ import UIBase
 import AppResources
 import Pulsator
 
+// MARK: - Preview
+
+@available(iOS 13.0.0, *)
+struct DebugView_UIViewRepresentable: UIViewRepresentable {
+    func updateUIView(_ uiView: V.DebugView, context: Context) { }
+    func makeUIView(context: Context) -> V.DebugView {
+        let some = V.DebugView()
+        return some
+    }
+}
+
+@available(iOS 13.0.0, *)
+struct DebugView_Previews: PreviewProvider {
+    static var previews: some SwiftUI.View {
+        DebugView_UIViewRepresentable()
+    }
+}
+
+// MARK: - View
+
 extension GoodToGo.V {
     class DebugView: BaseGenericViewVIP {
 
@@ -313,21 +333,4 @@ extension GoodToGo.V {
 
 extension GoodToGo.V.DebugView {
 
-}
-
-// MARK: - Preview
-
-struct DebugView_UIViewControllerRepresentable: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> GoodToGo.VC.DebugViewController {
-        return GoodToGo.VC.DebugViewController(presentationStyle: .modal)
-    }
-
-    func updateUIViewController(_ uiViewController: GoodToGo.VC.DebugViewController, context: Context) { }
-}
-
-struct DebugView_Previews: PreviewProvider {
-    @available(iOS 13.0.0, *)
-    static var previews: some SwiftUI.View {
-        return DebugView_UIViewControllerRepresentable()
-    }
 }
