@@ -63,7 +63,6 @@ public class GitUser_UseCase: GenericUseCase, GitHubAPIRelated_UseCaseProtocol {
             return
         }
         
-        #warning("Old cache version. Change it to new version")
         let cacheKey      = "\(AppConstants.Cache.servicesCache).\(GitUser_UseCase.self).getFriendsOfUserWith\(userName)"
         let coreDatakey   = "\(cacheKey).lastUpdate"
         let cacheLifeSpam = AppConstants.Cache.serverRequestCacheLifeSpam

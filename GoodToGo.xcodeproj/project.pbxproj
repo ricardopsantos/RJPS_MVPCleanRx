@@ -144,6 +144,7 @@
 		D755FE7B24B20365009BA6BD /* ProductPreviewBigCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D755FE7A24B20365009BA6BD /* ProductPreviewBigCollectionViewCell.swift */; };
 		D755FE7D24B20550009BA6BD /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D755FE7C24B20550009BA6BD /* AvatarView.swift */; };
 		D755FE7F24B20E8C009BA6BD /* VisionBox.ProductPreviewSmallCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D755FE7E24B20E8C009BA6BD /* VisionBox.ProductPreviewSmallCollectionViewCell.swift */; };
+		D755FE8024B253B3009BA6BD /* AppConstants.PropertiesList.plist in Resources */ = {isa = PBXBuildFile; fileRef = D77824BE2479C83F0071776F /* AppConstants.PropertiesList.plist */; };
 		D761FEB72468334D00BD41A5 /* E.UIKitViewFactoryElementTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEB62468334D00BD41A5 /* E.UIKitViewFactoryElementTag.swift */; };
 		D761FEBC2468358B00BD41A5 /* BaseViewControllerMVP+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEBB2468358B00BD41A5 /* BaseViewControllerMVP+Keyboard.swift */; };
 		D761FEC02468385100BD41A5 /* TemplateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEBF2468385100BD41A5 /* TemplateModel.swift */; };
@@ -3515,6 +3516,7 @@
 			files = (
 				9F58FB4022BE5DE700042A8C /* Main.storyboard in Resources */,
 				9FB35E0A22EC611000326092 /* Localizable.strings in Resources */,
+				D755FE8024B253B3009BA6BD /* AppConstants.PropertiesList.plist in Resources */,
 				9FE143F021AF2F520026BDFC /* Assets.xcassets in Resources */,
 				D77824BA247906A60071776F /* 23038-animatonblue.json in Resources */,
 			);
