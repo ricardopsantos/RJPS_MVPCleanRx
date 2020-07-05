@@ -15,6 +15,9 @@ As an exercise to test your technical skills we would like you to reproduce the 
 • You are free to write the code in any manner you see fit and to the best of your abilities.
 • The functionality between views is up to you, make it as simple or as complex as you see fit.
 
+
+![Preview](VisionBox_Preview.jpg)
+
 ---
 
 # Result Preview
