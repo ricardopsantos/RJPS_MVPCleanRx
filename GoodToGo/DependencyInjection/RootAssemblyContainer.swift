@@ -15,9 +15,6 @@ import Domain_GitHub
 import Repositories
 import Repositories_WebAPI
 import Core
-import Core_Bliss
-import Core_CarTrack
-import Core_GitHub
 
 public typealias AS = AssembyContainer
 public struct AssembyContainer { private init() {} }
@@ -34,7 +31,6 @@ struct RootAssemblyContainerProtocols {
     static let networkClient                      = RJSLibNetworkClient_Protocol.self
     static let generic_CacheRepository            = SimpleCacheRepositoryProtocol.self
     static let generic_LocalStorageRepository     = KeyValuesStorageRepositoryProtocol.self
-    static let bliss_NetWorkRepository            = Bliss_NetWorkRepositoryProtocol.self
     static let gitUser_NetWorkRepository          = GitUser_NetWorkRepositoryProtocol.self
     static let carTrack_NetWorkRepository         = CarTrack_NetWorkRepositoryProtocol.self
 
@@ -49,32 +45,6 @@ struct RootAssemblyContainerProtocols {
     static let sampleB_UseCase                    = SampleB_UseCaseProtocol.self
     static let gitUser_UseCase                    = GitHubAPIRelated_UseCaseProtocol.self
 
-    // Bliss
-    static let blissQuestions_UseCase             = BlissQuestionsAPIUseCaseProtocol.self
-    static let blissGenericAppBusiness_UseCase    = BlissGenericAppBusinessUseCaseProtocol.self
-
-    // CarTrack
-    static let carTrackGenericAppBusiness_UseCase = CarTrackGenericAppBusiness_UseCaseProtocol.self
-    static let carTrackAPI_UseCase                = CarTrackAPIRelated_UseCaseProtocol.self
-
-}
-
-//
-// MARK: - Resolvers
-//
-
-public class CarTrackResolver {
-    private init() { }
-    public static var shared   = CarTrackResolver()
-    public let api             = AppDelegate.shared.container.resolve(AppProtocols.carTrackAPI_UseCase.self)
-    public let genericBusiness = AppDelegate.shared.container.resolve(AppProtocols.carTrackGenericAppBusiness_UseCase.self)
-}
-
-public class BlissResolver {
-    private init() { }
-    public static var shared   = BlissResolver()
-    public let api             = AppDelegate.shared.container.resolve(AppProtocols.blissQuestions_UseCase.self)
-    public let genericBusiness = AppDelegate.shared.container.resolve(AppProtocols.blissGenericAppBusiness_UseCase.self)
 }
 
 //
@@ -97,28 +67,6 @@ final class RootAssemblyContainer: Assembly {
         
         container.autoregister(AppProtocols.generic_LocalStorageRepository,
                                initializer: RP.KeyValuesStorageRepository.init).inObjectScope(.container)
-
-        //
-        // CarTrack
-        //
-
-        container.autoregister(AppProtocols.carTrack_NetWorkRepository,
-                               initializer: API.CarTrack.NetWorkRepository.init).inObjectScope(.container)
-
-        container.register(AppProtocols.carTrackAPI_UseCase) { resolver in
-            let uc = CarTrackAPI_UseCase()
-            uc.repositoryNetwork               = resolver.resolve(AppProtocols.carTrack_NetWorkRepository)
-            uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
-            uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
-            return uc
-        }
-
-        container.register(AppProtocols.carTrackGenericAppBusiness_UseCase) { resolver in
-            let uc = Core_CarTrack.CarTrackGenericAppBusinessUseCase()
-            uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
-            uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
-            return uc
-        }
 
         //
         // Sample (min)
@@ -144,42 +92,5 @@ final class RootAssemblyContainer: Assembly {
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
             return uc
         }
-
-        //
-        // GitHub
-        //
-
-        container.autoregister(AppProtocols.gitUser_NetWorkRepository,
-                               initializer: API.GitUser.NetWorkRepository.init).inObjectScope(.container)
-
-        container.register(AppProtocols.gitUser_UseCase) { resolver in
-            let uc = GitUser_UseCase()
-            uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
-            uc.repositoryNetwork               = resolver.resolve(AppProtocols.gitUser_NetWorkRepository)
-            return uc
-        }
-
-        //
-        // Bliss
-        //
-
-        container.autoregister(AppProtocols.bliss_NetWorkRepository,
-                               initializer: API.Bliss.NetWorkRepository.init).inObjectScope(.container)
-
-        container.register(AppProtocols.blissQuestions_UseCase) { resolver in
-            let uc = BlissQuestionsAPI_UseCase()
-            uc.repositoryNetwork               = resolver.resolve(AppProtocols.bliss_NetWorkRepository)
-            uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
-            uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
-            return uc
-        }
-        
-        container.register(AppProtocols.blissGenericAppBusiness_UseCase) { resolver in
-            let uc = BlissGenericAppBusiness_UseCase()
-            uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
-            uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
-            return uc
-        }
-    
     }
 }

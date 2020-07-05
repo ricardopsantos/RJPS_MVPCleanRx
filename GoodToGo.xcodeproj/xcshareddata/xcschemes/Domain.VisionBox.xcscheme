@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D7F2DD7E2474587C008CE3DA"
-               BuildableName = "Domain_CarTrack.framework"
-               BlueprintName = "Domain.CarTrack"
+               BlueprintIdentifier = "D755FE5F24B1FE0B009BA6BD"
+               BuildableName = "Domain_VisionBox.framework"
+               BlueprintName = "Domain.VisionBox"
                ReferencedContainer = "container:GoodToGo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -50,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D7F2DD7E2474587C008CE3DA"
-            BuildableName = "Domain_CarTrack.framework"
-            BlueprintName = "Domain.CarTrack"
+            BlueprintIdentifier = "D755FE5F24B1FE0B009BA6BD"
+            BuildableName = "Domain_VisionBox.framework"
+            BlueprintName = "Domain.VisionBox"
             ReferencedContainer = "container:GoodToGo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
