@@ -16,6 +16,12 @@ import PointFreeFunctions
 
 open class BaseGenericViewControllerVIP<T: StylableView>: BaseViewControllerVIP {
 
+    deinit {
+        if genericView != nil {
+            genericView.removeFromSuperview()
+        }
+     }
+
     required public override init(presentationStyle: VCPresentationStyle) {
         super.init(presentationStyle: presentationStyle)
         setup()
@@ -25,13 +31,16 @@ open class BaseGenericViewControllerVIP<T: StylableView>: BaseViewControllerVIP 
         fatalError("Use instead [init(presentationStyle: \(VCPresentationStyle.self)]")
     }
 
-    #warning("fix leak here")
     public var disposeBag = DisposeBag()
     public var firstAppearance: Bool = true
-    public var genericView: T { return view as! T }
+    public var genericView: T!
+
     open override func loadView() {
         super.loadView()
-        view = T()
+        // Setup Generic View
+        genericView = T()
+        view.addSubview(genericView)
+        genericView.autoLayout.edgesToSuperview()
         setupViewUIRx()
     }
 

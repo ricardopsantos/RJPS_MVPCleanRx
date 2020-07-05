@@ -24,7 +24,7 @@ public extension UIViewController {
         if let navigationController = self.navigationController {
             if navigationController.children.count > 0 {
                 DevTools.Log.message("Childrens : \(navigationController.children.count)")
-                DevTools.Log.message("Fist Nav : \(navigationController.children.first?.className)")
+                DevTools.Log.message("Fist Nav : \(String(describing: navigationController.children.first?.className))")
                 var childrensInfo = ""
                 navigationController.children.forEach { (some) in
                     childrensInfo += " -\(some.className)\n"

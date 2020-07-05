@@ -40,7 +40,6 @@ struct UILabelWithPadding_Previews: PreviewProvider {
 
 // MARK: - View
 
-
 open class UILabelWithPadding: UIView {
 
     //

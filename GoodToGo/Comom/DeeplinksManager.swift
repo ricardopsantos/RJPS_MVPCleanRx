@@ -141,6 +141,7 @@ struct DeeplinksManager {
             switch host {
             case "goToScreen":
                 if let theId = queryItems["id"] {
+                    _ = theId
                     return routeFromA2D
                 }
             default:
@@ -295,9 +296,9 @@ private class DeeplinkRouter {
         var instance: UIViewController?
         switch path {
         case .recursivePath(path: let path, next: _):
-            instance = path.vcType.makeInstance(object: path.object, style: path.style) as! UIViewController
+            instance = path.vcType.makeInstance(object: path.object, style: path.style) as? UIViewController
         case .path(vcType: let vcType, object: let object, style: let style, animated: _):
-            instance = vcType.makeInstance(object: object, style: style) as! UIViewController
+            instance = vcType.makeInstance(object: object, style: style)  as? UIViewController
         }
         guard instance != nil else {
             let topViewController = DevTools.topViewController()
@@ -309,8 +310,8 @@ private class DeeplinkRouter {
             DispatchQueue.executeWithDelay(delay: 1) { [weak self] in self?.proceedToDeeplink(path.calculateNext) }
         }
 
-        DevTools.Log.message("\(path.calculateNext?.vcType)")
-        DevTools.Log.message("\(path.calculateNext?.style)")
+        DevTools.Log.message("\(String(describing: path.calculateNext?.vcType))")
+        DevTools.Log.message("\(String(describing: path.calculateNext?.style))")
         let nextInstanceIsNavController = path.calculateNext?.style == .navigation
         let currentTopInstanceIsNavController = DevTools.topViewController()!.isNavigationController
         let thisInstanceToIsModalController = path.style == .modal
@@ -338,7 +339,7 @@ private class DeeplinkRouter {
             instance?.navigationController?.isNavigationBarHidden = true
         }
 
-        var baseViewController = DevTools.topViewController()
+        let baseViewController = DevTools.topViewController()
 
         if path.style == .modal {
             baseViewController?.present(instance!, animated: path.animated, completion: {
@@ -351,16 +352,16 @@ private class DeeplinkRouter {
                     goToNext()
                 }
             } else {
-                DevTools.assert(false, message: "\(DevTools.topViewController())")
+                DevTools.assert(false, message: "\(String(describing: DevTools.topViewController()))")
             }
         }
 
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-
-        if (appDelegate.window?.rootViewController?.presentedViewController) != nil {
-            // Array of all viewcontroller even after presented
-        } else if (appDelegate.window?.rootViewController?.children) != nil {
-            // Array of all viewcontroller after push
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            if (appDelegate.window?.rootViewController?.presentedViewController) != nil {
+                // Array of all viewcontroller even after presented
+            } else if (appDelegate.window?.rootViewController?.children) != nil {
+                // Array of all viewcontroller after push
+            }
         }
     }
 
