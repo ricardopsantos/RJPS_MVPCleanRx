@@ -34,7 +34,9 @@ public class CarTrackGenericAppBusinessUseCase: GenericUseCase, CarTrackGenericA
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         DispatchQueue.executeWithDelay(delay: 1) {
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            let success = user == AppConstants.Misc.sampleEmail && password ==  AppConstants.Misc.samplePassword
+            let success = user.lowercased() == AppConstants.Misc.sampleEmail.lowercased()
+                &&
+                password.lowercased() ==  AppConstants.Misc.samplePassword.lowercased()
             if success {
                 completionHandler(Result.success(success))
             } else {
