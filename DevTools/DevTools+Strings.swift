@@ -13,5 +13,6 @@ public extension DevTools {
         case notImplemented
         case overrideMe
         case notPredicted
+        case not_iOS13
     }
 }

@@ -96,12 +96,12 @@ extension P.SearchUser_Presenter: SearchUser_PresenterProtocol {
 
 extension P.SearchUser_Presenter: BasePresenterVMPProtocol {
     func view_deinit() { }
-    func loadView() { rxSetup() }
+    func loadView() { setupViewRx() }
     func viewDidAppear() { }
     func viewDidLoad() { }
     func viewWillAppear() { if viewModel != nil { updateViewWith(vm: viewModel) } }
     
-    func rxSetup() {
+    func setupViewRx() {
         Observable.zip(rxPublishRelay_userInfo, rxPublishRelay_userFriends, resultSelector: { return ($0, $1) })
             .observeOn(MainScheduler.instance)
             .subscribe( onNext: { [weak self] in
@@ -134,7 +134,7 @@ extension P.SearchUser_Presenter: BasePresenterVMPProtocol {
 
 extension P.SearchUser_Presenter {
     
-    private func viewModelChanged() {
+    func viewModelChanged() {
         updateViewWith(vm: viewModel)
     }
     
@@ -145,42 +145,36 @@ extension P.SearchUser_Presenter {
     
     private func rxObservable_getUserInfo(for username: String) -> Observable<Bool?> {
         return Observable.create { [weak self] _ -> Disposable in
-            if let self = self {
-                self.useCase_1.getInfoOfUserWith(userName: username, canUseCache: true) { [weak self] result in
-                    guard let self = self else { return }
-                    switch result {
-                    case .success(let some): self.rxPublishRelay_userInfo.accept(some)
-                    case .failure(let error):
-                        self.rxPublishRelay_userInfo.accept(nil)
-                        self.rxPublishRelay_error.accept(error)
-                    }
+            guard let self = self else { return Disposables.create() }
+            self.useCase_1.getInfoOfUserWith(userName: username, canUseCache: true) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let some): self.rxPublishRelay_userInfo.accept(some)
+                case .failure(let error):
+                    self.rxPublishRelay_userInfo.accept(nil)
+                    self.rxPublishRelay_error.accept(error)
                 }
-            } else {
-                DevTools.Log.appCode( .referenceLost)
             }
             return Disposables.create()
-            }.retry(3)
-            .retryOnBecomesReachable(nil, reachabilityService: reachabilityService)
+            }//.retry(3)
+            //
     }
     
     private func rxObservable_getUserFriends(for username: String) -> Observable<Bool?> {
         return Observable.create { [weak self] _ -> Disposable in
-            if let self = self {
-                self.useCase_1.getFriendsOfUserWith(userName: username, canUseCache: true, completionHandler: { [weak self] result in
-                    guard let self = self else { return }
-                    switch result {
-                    case .success(let some) : self.rxPublishRelay_userFriends.accept(some)
-                    case .failure(let error):
-                        self.rxPublishRelay_userFriends.accept(nil)
-                        self.rxPublishRelay_error.accept(error)
-                    }
-                })
-            } else {
-                DevTools.Log.appCode( .referenceLost)
-            }
+            guard let self = self else { return Disposables.create() }
+            self.useCase_1.getFriendsOfUserWith(userName: username, canUseCache: true, completionHandler: { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let some) : self.rxPublishRelay_userFriends.accept(some)
+                case .failure(let error):
+                    self.rxPublishRelay_userFriends.accept(nil)
+                    self.rxPublishRelay_error.accept(error)
+                }
+            })
             return Disposables.create()
-            }.retry(3)
-            .retryOnBecomesReachable(nil, reachabilityService: reachabilityService)
+            }//.retry(3)
+            //.retryOnBecomesReachable(nil, reachabilityService: reachabilityService)
     }
     
 }

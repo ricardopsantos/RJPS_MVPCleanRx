@@ -12,5 +12,4 @@ import AppConstants
 public protocol BaseViewControllerMVPProtocol: AnyObject {
     func setActivityState(_ state: Bool)
     func displayMessage(_ message: String, type: AlertType)
-    func setNoConnectionViewVisibility(to: Bool, withMessage: String)
 }

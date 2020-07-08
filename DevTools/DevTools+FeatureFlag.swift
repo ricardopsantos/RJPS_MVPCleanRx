@@ -19,11 +19,10 @@ public extension DevTools {
         case logDeInitEvent            = "Logs: log deinit event"
         case nsLogger                  = "If [true] log to console, else to NSLogger"
 
-        case showScene_bliss       = "Scene Enabled: Bliss"
         case showScene_rxTests     = "Scene Enabled: RxTests"
-        case showScene_carTrack    = "Scene Enabled: CarTrack"
-        case showScene_gitHub      = "Scene Enabled: GitHub"
-        case showScene_VisionBox   = "Scene Enabled: VisionBox "
+        case showScene_carTrack    = "Scene Enabled: Exam.CarTrack"
+        case showScene_gitHub      = "Scene Enabled: Exam.GitHub"
+        case showScene_visionBox   = "Scene Enabled: Exam.VisionBox "
 
         case showScene_vipTemplate = "Scene Enabled: VIP Template"
 
@@ -31,22 +30,21 @@ public extension DevTools {
         public var defaultValue: Bool {
             switch self {
             case .showToastsOnErrors:       return DevTools.devModeIsEnabled
-            case .devTeam_useMockedData:    return false
             case .appLogsEnabled:           return DevTools.devModeIsEnabled
-            case .logDeInitEvent:           return false
             case .showDebugStatsViewOnView: return DevTools.devModeIsEnabled
+            case .devTeam_useMockedData:    return false
+            case .logDeInitEvent:           return false
             case .nsLogger:                 return false
 
-            case .showScene_bliss:       return false
             case .showScene_rxTests:     return false
             case .showScene_carTrack:    return false
             case .showScene_gitHub:      return false
             case .showScene_vipTemplate: return false
-            case .showScene_VisionBox:   return true
+            case .showScene_visionBox:   return true
             }
         }
 
-        // If FF is visbible on debug screen
+        // If FF is visible is visible on DebugScreen to be changed
         public var isVisible: Bool {
              switch self {
              case .showToastsOnErrors:       return true
@@ -55,12 +53,12 @@ public extension DevTools {
              case .nsLogger:                 return true
              case .logDeInitEvent:           return true
              case .showDebugStatsViewOnView: return true
-             case .showScene_bliss:          return true
+
              case .showScene_rxTests:        return true
              case .showScene_carTrack:       return true
              case .showScene_gitHub:         return true
              case .showScene_vipTemplate:    return true
-             case .showScene_VisionBox:      return true
+             case .showScene_visionBox:      return true
             }
         }
 

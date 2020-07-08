@@ -104,6 +104,8 @@ public extension V {
                 view.overrideUserInterfaceStyle = .unspecified
                 self.view = darkView
                 //let isDark = traitCollection.userInterfaceStyle == .dark
+            } else {
+                DevTools.Log.error(DevTools.Strings.not_iOS13)
             }
             
         }

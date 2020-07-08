@@ -24,5 +24,5 @@ public protocol BasePresenterVMPProtocol: AppUtils_Protocol {
     func viewWillAppear()
     func viewDidAppear()
     
-    func rxSetup() // Called on loadView (ussually)
+    func setupViewRx() // Called on loadView (ussually)
 }

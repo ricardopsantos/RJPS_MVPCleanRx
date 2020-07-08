@@ -85,12 +85,12 @@ extension P.MVPSampleView_Presenter: MVPSampleView_PresenterProtocol {
 
 extension P.MVPSampleView_Presenter: BasePresenterVMPProtocol {
     func view_deinit() { }
-    func loadView() { rxSetup() }
+    func loadView() { setupViewRx() }
     func viewDidAppear() { }
     func viewDidLoad() { }
     func viewWillAppear() { }
     
-    func rxSetup() { }
+    func setupViewRx() { }
 
 }
 
@@ -100,7 +100,7 @@ extension P.MVPSampleView_Presenter: BasePresenterVMPProtocol {
 
 extension P.MVPSampleView_Presenter {
     
-    private func viewModelChanged() {
+    func viewModelChanged() {
         updateViewWith(vm: viewModel)
     }
     

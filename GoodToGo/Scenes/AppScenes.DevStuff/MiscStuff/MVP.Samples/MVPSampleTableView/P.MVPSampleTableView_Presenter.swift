@@ -122,7 +122,7 @@ extension P.MVPSampleTableView_Presenter: BasePresenterVMPProtocol {
         viewModel = VM.MVPSampleTableView_ViewModel()
     }
     func viewWillAppear() {
-        rxSetup()
+        setupViewRx()
     }
 }
 
@@ -132,7 +132,7 @@ extension P.MVPSampleTableView_Presenter: BasePresenterVMPProtocol {
 
 extension P.MVPSampleTableView_Presenter {
     
-    private func viewModelChanged() {
+    func viewModelChanged() {
         updateViewWith(vm: viewModel)
     }
     
@@ -145,7 +145,7 @@ extension P.MVPSampleTableView_Presenter {
         }
     }
     
-    func rxSetup() {
+    func setupViewRx() {
         
         reachabilityService.reachability.subscribe(
             onNext: { [weak self] some in

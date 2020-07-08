@@ -87,19 +87,16 @@ extension P.MVPSampleRxView_Presenter: MVPSampleRxView_PresenterProtocol {
     func rxObservable_doAssynTask(user: String, password: String) -> Observable<String> {
         return Observable.create { [weak self] observer -> Disposable in
             DevTools.Log.message("Creating observable...")
-            if let self = self {
-                self.sample_UseCase.operation1(canUseCache: true) { (result) in
-                    switch result {
-                    case .success(let some): observer.onNext("\(some)")
-                    case .failure(let error) : observer.onError(error)
-                    }
+            guard let self = self else { return Disposables.create() }
+            self.sample_UseCase.operation1(canUseCache: true) { (result) in
+                switch result {
+                case .success(let some): observer.onNext("\(some)")
+                case .failure(let error) : observer.onError(error)
                 }
-            } else {
-                DevTools.Log.appCode( .referenceLost)
             }
             return Disposables.create()
-            }.retry(3)
-            .retryOnBecomesReachable("", reachabilityService: reachabilityService)
+            }//.retry(3)
+            //.retryOnBecomesReachable("", reachabilityService: reachabilityService)
     }
 }
 
@@ -109,7 +106,7 @@ extension P.MVPSampleRxView_Presenter: MVPSampleRxView_PresenterProtocol {
 
 extension P.MVPSampleRxView_Presenter: BasePresenterVMPProtocol {
     func view_deinit() { }
-    func loadView() { rxSetup() }
+    func loadView() { setupViewRx() }
     func viewDidAppear() { }
     func viewDidLoad() { }
     func viewWillAppear() { }
@@ -117,7 +114,7 @@ extension P.MVPSampleRxView_Presenter: BasePresenterVMPProtocol {
 
 extension P.MVPSampleRxView_Presenter {
     
-    private func viewModelChanged() {
+    func viewModelChanged() {
         updateViewWith(vm: viewModel)
     }
     
@@ -126,7 +123,7 @@ extension P.MVPSampleRxView_Presenter {
         view.updateViewWith(message: viewModel!.someString)
     }
     
-    func rxSetup() {
+    func setupViewRx() {
         
     }
 }

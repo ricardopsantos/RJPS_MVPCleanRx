@@ -74,12 +74,12 @@ extension P.UserDetails_Presenter: GenericTableView_Protocol {
 
 extension P.UserDetails_Presenter: BasePresenterVMPProtocol {
     func view_deinit() { }
-    func loadView() { rxSetup() }
+    func loadView() { setupViewRx() }
     func viewDidAppear() { }
     func viewDidLoad() { }
     func viewWillAppear() { if viewModel != nil { updateViewWith(vm: viewModel) } }
     
-    func rxSetup() { }
+    func setupViewRx() { }
 
 }
 
@@ -97,7 +97,7 @@ extension P.UserDetails_Presenter {
         }
     }
     
-    private func viewModelChanged() {
+    func viewModelChanged() {
         updateViewWith(vm: viewModel)
     }
 }

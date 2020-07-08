@@ -70,6 +70,8 @@ extension V {
             if #available(iOS 13.0, *) {
                 image.image = UIImage(systemName: category.imageName)
                 imageBack.image = UIImage(systemName: "circle.fill")
+            } else {
+                DevTools.Log.error("\(DevTools.Strings.not_iOS13) : Cant set imageBack")
             }
 
         }

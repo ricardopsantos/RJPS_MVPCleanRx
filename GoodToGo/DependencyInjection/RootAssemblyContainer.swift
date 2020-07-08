@@ -70,12 +70,14 @@ public class CarTrackResolver {
     public let genericBusiness = AppDelegate.shared.container.resolve(AppProtocols.carTrackGenericAppBusiness_UseCase.self)
 }
 
+/*
 public class BlissResolver {
     private init() { }
     public static var shared   = BlissResolver()
     public let api             = AppDelegate.shared.container.resolve(AppProtocols.blissQuestions_UseCase.self)
     public let genericBusiness = AppDelegate.shared.container.resolve(AppProtocols.blissGenericAppBusiness_UseCase.self)
 }
+*/
 
 //
 // MARK: - RootAssemblyContainer
@@ -162,7 +164,7 @@ final class RootAssemblyContainer: Assembly {
         //
         // Bliss
         //
-
+/*
         container.autoregister(AppProtocols.bliss_NetWorkRepository,
                                initializer: API.Bliss.NetWorkRepository.init).inObjectScope(.container)
 
@@ -180,6 +182,6 @@ final class RootAssemblyContainer: Assembly {
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
             return uc
         }
-    
+*/
     }
 }

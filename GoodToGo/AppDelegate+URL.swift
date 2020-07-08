@@ -23,7 +23,6 @@ extension AppDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         DevTools.Log.message("App is handling url [\(url)] with option [\(options)]")
         DeepLinkManager.shared.handleDeeplink(url: url)
-        BlissResolver.shared.genericBusiness?.handle(url: url)
         return true
     }
 

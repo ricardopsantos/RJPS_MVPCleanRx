@@ -70,11 +70,7 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
         style.messageColor = .white
         DevTools.topViewController()?.view.makeToast(message, duration: 5, position: .top, style: style)
     }
-    
-    open func setNoConnectionViewVisibility(to: Bool, withMessage: String = Messages.noInternet.localised) {
-        DevTools.assert(false, message: "Deprecated")
-    }
-    
+
     func keyboardDidShow() { }
     func keyboardDidHide() { }
     func dismissKeyboard() { }
