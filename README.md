@@ -75,6 +75,7 @@ This mean that if we want to take out the `Bliss` logic from the project, we jus
 - [x] VIP Pattern design sample screens - `GoodToGo/Scenes/VIP.*`
 - [x] VIP Custom Xcode Template - `GoodToGoVIP_Schene.xctemplate`
 - [x] UnitTests
+- [x] `SwiftUI` Preview for all `UIViewControllers`
 
 More info about the project and MVP|VIP architecture [here](https://github.com/ricardopsantos/RJPS_MVPCleanRx/tree/master/__Documents__/Arquitecture)
  
