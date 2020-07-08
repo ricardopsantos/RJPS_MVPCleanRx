@@ -243,26 +243,3 @@ extension GoodToGo.V.CarTrackLoginView {
     var txtUsernameIsFirstResponder: Bool { txtUserName.isFirstResponder }
     var txtPasswordIsFirstResponder: Bool { txtPassword.isFirstResponder }
 }
-
-// MARK: - Preview
-
-struct CarTrackLogin_UIViewControllerRepresentable: UIViewControllerRepresentable {
-
-    func makeUIViewController(context: Context) -> GoodToGo.VC.CarTrackLoginViewController {
-        let vc = GoodToGo.VC.CarTrackLoginViewController(presentationStyle: .modal)
-        let model = VM.CarTrackLogin.Login.ViewModel(message: "Hi", success: false)
-        vc.displayLogin(viewModel: model)
-        return vc
-    }
-
-    func updateUIViewController(_ uiViewController: GoodToGo.VC.CarTrackLoginViewController, context: Context) {
-
-    }
-}
-
-struct CarTrackLogin_Previews: PreviewProvider {
-    @available(iOS 13.0.0, *)
-    static var previews: some SwiftUI.View {
-        return CarTrackLogin_UIViewControllerRepresentable()
-    }
-}

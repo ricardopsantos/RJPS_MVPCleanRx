@@ -48,7 +48,7 @@ open class BaseGenericViewVIP: StylableView {
     // ...
     //
     open func prepareLayoutCreateHierarchy() {
-        DevTools.Log.warning(DevTools.Strings.overrideMe.rawValue)
+        DevTools.Log.warning("\(self.className) : \(DevTools.Strings.overrideMe.rawValue)")
     }
 
     // What should this function be used for? Setup layout rules zone....
@@ -58,7 +58,7 @@ open class BaseGenericViewVIP: StylableView {
     // ...
     //
     open func prepareLayoutBySettingAutoLayoutsRules() {
-        DevTools.Log.warning(DevTools.Strings.overrideMe.rawValue)
+        DevTools.Log.warning("\(self.className) : \(DevTools.Strings.overrideMe.rawValue)")
     }
 
     // What should this function be used for? Extra stuff zone (not included in [prepareLayoutCreateHierarchy]
@@ -69,14 +69,14 @@ open class BaseGenericViewVIP: StylableView {
     // label.textAlignment = .center
     // ...
     open func prepareLayoutByFinishingPrepareLayout() {
-        DevTools.Log.warning(DevTools.Strings.overrideMe.rawValue)
+        DevTools.Log.warning("\(self.className) : \(DevTools.Strings.overrideMe.rawValue)")
     }
 
     open func setupColorsAndStyles() {
-        DevTools.Log.warning(DevTools.Strings.overrideMe.rawValue)
+        DevTools.Log.warning("\(self.className) : \(DevTools.Strings.overrideMe.rawValue)")
     }
 
     open func setupViewUIRx() {
-        DevTools.Log.warning(DevTools.Strings.overrideMe.rawValue)
+        DevTools.Log.warning("\(self.className) : \(DevTools.Strings.overrideMe.rawValue)")
     }
 }

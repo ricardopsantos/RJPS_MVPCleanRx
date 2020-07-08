@@ -77,6 +77,20 @@ extension VC {
 
         override func viewDidLoad() {
             super.viewDidLoad()
+            if DevTools.onSimulator {
+                DispatchQueue.executeOnce(token: "\(VC.DebugViewController.self).info") {
+                    let message = """
+                    Debug Screen to help developers to know:
+                        - Installed Feature Flags
+                        - App available fonts
+                        - App available colors
+                        - App available alert styles
+                        - App UI components
+                        - ...
+                    """
+                    DevTools.makeToast(message, duration: 5)
+                }
+            }
         }
 
         override func viewWillAppear(_ animated: Bool) {

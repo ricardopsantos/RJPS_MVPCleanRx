@@ -2167,8 +2167,8 @@
 		D7B9BF5924B084650093A82D /* CarTrack */ = {
 			isa = PBXGroup;
 			children = (
-				D7979D99246D6B370039031C /* VIP.CartTrack.Map */,
 				D7979DA1246D6B370039031C /* VIP.CartTrack.Login */,
+				D7979D99246D6B370039031C /* VIP.CartTrack.Map */,
 			);
 			path = CarTrack;
 			sourceTree = "<group>";

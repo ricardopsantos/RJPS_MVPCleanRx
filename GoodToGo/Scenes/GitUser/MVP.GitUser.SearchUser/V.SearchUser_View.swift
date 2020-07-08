@@ -65,25 +65,6 @@ public extension V {
             some.rjsALayouts.setMargin(0, on: .right)
             some.rjsALayouts.setMargin(0, on: .left)
             some.rjsALayouts.setHeight(50)
-            some.rx.text
-                .orEmpty
-                .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
-                .log(whereAmI())
-                .subscribe(onNext: { [weak self] _ in
-                    guard let self = self else { return }
-                    self.presenter.searchUserWith(username: some.text ?? "")
-                })
-                .disposed(by: disposeBag)
-            some.rx
-                .textDidEndEditing
-                .log(whereAmI())
-                .subscribe(onNext: { [weak self] (_) in
-                    guard let self = self else { return }
-                    if self.searchBar.text!.count>0 {
-                        self.presenter.searchUserWith(username: some.text ?? "")
-                    }
-                })
-                .disposed(by: self.disposeBag)
             return some
         }()
         
@@ -107,12 +88,21 @@ public extension V {
             } else {
                 DevTools.Log.error(DevTools.Strings.not_iOS13)
             }
-            
         }
         
         open override func viewDidLoad() {
             super.viewDidLoad()
             presenter.generic?.viewDidLoad()
+            if DevTools.onSimulator {
+                DispatchQueue.executeOnce(token: "\(V.SearchUser_View.self).info") {
+                    let message = """
+                    GitHub
+
+                    Just playing with GitHub using MVP Pattern
+                    """
+                    DevTools.makeToast(message, duration: 5)
+                }
+            }
         }
         
         open override func viewWillAppear(_ animated: Bool) {
@@ -138,6 +128,28 @@ public extension V {
         
         public override func prepareLayoutByFinishingPrepareLayout() {
             
+        }
+
+        public override func setupViewUIRx() {
+            searchBar.rx.text
+                .orEmpty
+                .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
+                .log(whereAmI())
+                .subscribe(onNext: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.presenter.searchUserWith(username: self.searchBar.text ?? "")
+                })
+                .disposed(by: disposeBag)
+            searchBar.rx
+                .textDidEndEditing
+                .log(whereAmI())
+                .subscribe(onNext: { [weak self] (_) in
+                    guard let self = self else { return }
+                    if self.searchBar.text!.count>0 {
+                        self.presenter.searchUserWith(username: self.searchBar.text ?? "")
+                    }
+                })
+                .disposed(by: self.disposeBag)
         }
     }
 }

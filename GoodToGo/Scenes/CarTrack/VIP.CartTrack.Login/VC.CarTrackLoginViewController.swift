@@ -68,6 +68,19 @@ extension VC {
 
         override func viewDidLoad() {
             super.viewDidLoad()
+            if DevTools.onSimulator {
+                DispatchQueue.executeOnce(token: "\(VC.CarTrackLoginViewController.self).info") {
+                    let message = """
+                    Exam: CarTrack
+
+                    Check `__Documents__/exams/CarTrack.Report/README.md` for more details
+
+                    User: \(AppConstants.Misc.sampleEmail)
+                    Password: \(AppConstants.Misc.samplePassword)
+                    """
+                    DevTools.makeToast(message, duration: 10)
+                }
+            }
         }
 
         override func viewWillAppear(_ animated: Bool) {

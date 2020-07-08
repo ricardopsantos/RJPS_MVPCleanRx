@@ -81,7 +81,6 @@ extension VC {
             super.loadView()
             view.accessibilityIdentifier = self.genericAccessibilityIdentifier
             self.title = "Map"
-           // topGenericView.lazyLoad()
             topGenericView.setTitle(self.title!)
         }
 

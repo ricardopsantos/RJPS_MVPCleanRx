@@ -86,6 +86,21 @@ open class TopBar: BaseViewControllerMVP {
                 lblTitle.textAnimated = baseViewControllerTitle
             }
         }
+    }
+
+    open override func prepareLayoutCreateHierarchy() {
+
+    }
+
+    open override func prepareLayoutBySettingAutoLayoutsRules() {
+
+    }
+
+    open override func prepareLayoutByFinishingPrepareLayout() {
+
+    }
+
+    override open func setupViewUIRx() {
 
     }
 }

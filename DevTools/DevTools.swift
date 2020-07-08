@@ -122,7 +122,7 @@ public extension DevTools {
         }
     }
     /// if [searchForErrors] = true, the message will be scaned in order to decide if its an error and should present a different toast specific for error
-    static func makeToast(_ message: String, isError: Bool = false, function: String = #function, file: String = #file, line: Int = #line) {
+    static func makeToast(_ message: String, isError: Bool = false, function: String = #function, file: String = #file, line: Int = #line, duration: TimeInterval? = nil) {
         guard !DevTools.isProductionReleaseApp else { return } //If production bail out immediately
         guard DevTools.devModeIsEnabled else { return } // Not dev mode? bail out immediately
         if isError {
@@ -138,12 +138,14 @@ public extension DevTools {
             if isError {
                 style.backgroundColor = UIColor.red.withAlphaComponent(0.9)
                 style.messageColor = .white
-                DevTools.topViewController()?.view.makeToast(messageFinal, duration: 10.0, position: .top, style: style)
+                let duration: TimeInterval = (duration != nil) ? duration! : 10.0
+                DevTools.topViewController()?.view.makeToast(messageFinal, duration: duration, position: .top, style: style)
             } else {
                 var style = ToastStyle()
                 style.backgroundColor = UIColor.darkGray.withAlphaComponent(0.9)
                 style.messageColor = .white
-                DevTools.topViewController()?.view.makeToast(messageFinal, duration: 3.0, position: .top, style: style)
+                let duration: TimeInterval = (duration != nil) ? duration! : 3.0
+                DevTools.topViewController()?.view.makeToast(messageFinal, duration: duration, position: .top, style: style)
             }
         }
     }

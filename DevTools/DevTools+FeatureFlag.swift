@@ -32,7 +32,7 @@ public extension DevTools {
             case .showToastsOnErrors:       return DevTools.devModeIsEnabled
             case .appLogsEnabled:           return DevTools.devModeIsEnabled
             case .showDebugStatsViewOnView: return DevTools.devModeIsEnabled
-            case .devTeam_useMockedData:    return false
+            case .devTeam_useMockedData:    return true
             case .logDeInitEvent:           return false
             case .nsLogger:                 return false
 

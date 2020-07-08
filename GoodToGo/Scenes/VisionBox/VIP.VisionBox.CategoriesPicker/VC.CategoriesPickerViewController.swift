@@ -69,6 +69,16 @@ extension VC {
 
         override func viewDidLoad() {
             super.viewDidLoad()
+            if DevTools.onSimulator {
+                DispatchQueue.executeOnce(token: "\(VC.CategoriesPickerViewController.self).info") {
+                    let message = """
+                    Exam: Vision Box
+
+                    Check `__Documents__/exams/VisionBox.Report/README.md` for more details
+                    """
+                    DevTools.makeToast(message, duration: 5)
+                }
+            }
         }
 
         override func viewWillAppear(_ animated: Bool) {

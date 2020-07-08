@@ -22,7 +22,12 @@ public struct AppConstants {
     }
 
     public static let defaultAnimationsTime = RJS_Constants.defaultAnimationsTime
-    
+
+    public struct Misc {
+        public static let sampleEmail = "joe@joe.com"
+        public static let samplePassword = "12345"
+    }
+
     public struct Rx {
         // https://medium.com/fantageek/throttle-vs-debounce-in-rxswift-86f8b303d5d4
         // Throttle : Will ignore events between the time span of xxxx milliseconds

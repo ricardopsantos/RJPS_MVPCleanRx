@@ -45,7 +45,7 @@ open class BaseGenericViewControllerVIP<T: StylableView>: BaseViewControllerVIP 
     }
 
     open func setup() {
-        DevTools.Log.warning(DevTools.Strings.overrideMe.rawValue)
+        DevTools.Log.warning("\(self.className) : \(DevTools.Strings.overrideMe.rawValue)")
     }
 
     open override func viewDidLoad() {
@@ -66,14 +66,14 @@ open class BaseGenericViewControllerVIP<T: StylableView>: BaseViewControllerVIP 
     }
 
     open func setupViewIfNeed() {
-        DevTools.Log.warning(DevTools.Strings.overrideMe.rawValue)
+        DevTools.Log.warning("\(self.className) : \(DevTools.Strings.overrideMe.rawValue)")
     }
 
     open func setupNavigationUIRx() {
-        DevTools.Log.warning(DevTools.Strings.overrideMe.rawValue)
+        DevTools.Log.warning("\(self.className) : \(DevTools.Strings.overrideMe.rawValue)")
     }
 
     open func setupViewUIRx() {
-        DevTools.Log.warning(DevTools.Strings.overrideMe.rawValue)
+        DevTools.Log.warning("\(self.className) : \(DevTools.Strings.overrideMe.rawValue)")
     }
 }

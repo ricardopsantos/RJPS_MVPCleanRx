@@ -74,6 +74,14 @@ extension VC {
 
         override func viewDidLoad() {
             super.viewDidLoad()
+            if DevTools.onSimulator {
+                DispatchQueue.executeOnce(token: "\(VC.___VARIABLE_sceneName___ViewController.self).info") {
+                    let message = """
+                    Personal VIP Template. Contains already UI elements ready to use/change/delete.
+                    """
+                    DevTools.makeToast(message, duration: 5)
+                }
+            }
         }
 
         override func viewWillAppear(_ animated: Bool) {

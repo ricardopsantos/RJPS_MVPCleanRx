@@ -326,6 +326,14 @@ extension VC {
            
         override func viewDidLoad() {
             super.viewDidLoad()
+            if DevTools.onSimulator {
+                DispatchQueue.executeOnce(token: "\(VC.RxTesting.self).info") {
+                    let message = """
+                    Testing stuff with RxSwift/RxCocoa
+                    """
+                    DevTools.makeToast(message, duration: 5)
+                }
+            }
         }
     }
 }
