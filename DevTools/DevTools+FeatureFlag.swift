@@ -36,10 +36,10 @@ public extension DevTools {
             case .logDeInitEvent:           return false
             case .nsLogger:                 return false
 
-            case .showScene_rxTests:     return false
-            case .showScene_carTrack:    return false
-            case .showScene_gitHub:      return false
-            case .showScene_vipTemplate: return false
+            case .showScene_rxTests:     return true
+            case .showScene_carTrack:    return true
+            case .showScene_gitHub:      return true
+            case .showScene_vipTemplate: return true
             case .showScene_visionBox:   return true
             }
         }
