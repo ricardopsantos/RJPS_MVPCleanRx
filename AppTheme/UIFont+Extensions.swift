@@ -48,9 +48,6 @@ public extension UIFont {
             public init?(rawValue: RawValue) { return nil }
 
             public var rawValue: RawValue {
-                //let boldFontName    = "Gloriola-Bold"    // Bold
-                //let mediumFontName  = "Gloriola-Medium"  // Regular/Bold
-                //let regularFontName = "Gloriola-Regular" // Regular
 
                 let boldFontName    = UIFont.App.StylesBuilder.bold.fontName     // Bold
                 let mediumFontName  = UIFont.App.StylesBuilder.regular.fontName  // Regular/Bold

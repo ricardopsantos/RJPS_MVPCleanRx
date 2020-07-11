@@ -48,13 +48,12 @@ public func randomInt(min: Int, max: Int) -> Int {
     return Int.random(in: min ..< max)
 }
 
-public func randomStringWith(length: Int) -> String {
-    let letters = "\n abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+public func randomStringWith(length: Int, letters: String = "\n abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
     return String((0..<length).map { _ in letters.randomElement()! })
 }
 
 public func randomStringWith(prefix: String) -> String {
-    return "# \(prefix) | \(randomStringWith(length: randomInt(min: 5, max: 10)))"
+    return "\(prefix)\(randomStringWith(length: randomInt(min: 5, max: 10)))"
 }
 
 public func randomDate(d: Int?=nil, m: Int?=nil, y: Int?=nil) -> Date {
