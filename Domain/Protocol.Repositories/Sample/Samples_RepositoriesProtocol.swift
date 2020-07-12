@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 //
-import RJPSLib
+import RJPSLib_Networking
 
 public typealias Samples_LocalRepositoryCompletionHandler = (_ result: Result<Void>) -> Void
 //public protocol Samples_LocalRepositoryProtocol: class {

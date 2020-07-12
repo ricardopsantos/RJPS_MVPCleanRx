@@ -9,7 +9,6 @@ import UIKit
 import Foundation
 import SwiftUI
 //
-import RJPSLib
 import RxSwift
 import RxCocoa
 //

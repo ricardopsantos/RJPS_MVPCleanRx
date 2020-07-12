@@ -8,7 +8,6 @@
 
 import Foundation
 
-import RJPSLib
 import DevTools
 
 open class BasePresenterVIP: BasePresenterVIPProtocol {

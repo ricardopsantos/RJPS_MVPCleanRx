@@ -8,9 +8,9 @@
 
 import Foundation
 //
-import RJPSLib
+import RJPSLib_Networking
 //
 import DevTools
 import Domain
 
-typealias AppSimpleNetworkClient = RJS_SimpleNetworkClient
+typealias AppSimpleNetworkClient = RJS_BasicNetworkClient

@@ -8,7 +8,8 @@
 import UIKit
 import Foundation
 //
-import RJPSLib
+import RJPSLib_Base
+import RJPSLib_Storage
 import RxSwift
 import RxCocoa
 //
@@ -26,7 +27,7 @@ public extension AppUtils_Protocol {
 
     func genericCacheObserver<T: Codable>(_ some: T.Type, cacheKey: String, keyParams: [String], apiObserver: Single<T>) -> Observable<T> {
         let cacheObserver = Observable<T>.create { observer in
-            if let domainObject = RJS_DataModel.SimpleCache.getObject(some, withKey: cacheKey, keyParams: keyParams) {
+            if let domainObject = RJS_DataModel.PersistentSimpleCacheWithTTL.shared.getObject(some, withKey: cacheKey, keyParams: keyParams) {
                 if let array = domainObject as? [Codable], array.count > 0 {
                     // If the response is an array, we only consider it if the array have elements
                      observer.on(.next(domainObject))

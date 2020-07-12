@@ -7,7 +7,8 @@
 
 import Foundation
 import UIKit
-import RJPSLib
+//
+import RJPSLib_Storage
 
 public protocol KeyValuesStorageRepositoryProtocol {
     @discardableResult func save(key: String, value: String, expireDate: Date?) -> Bool

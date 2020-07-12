@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 //
-import RJPSLib
 import AppResources
 
 // MARK: - Interactor - Business Logic

@@ -11,7 +11,7 @@ import UIKit
 //
 import RxSwift
 import RxCocoa
-import RJPSLib
+import RJPSLib_Networking
 //
 import AppConstants
 import PointFreeFunctions

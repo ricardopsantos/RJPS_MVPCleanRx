@@ -11,7 +11,8 @@ import UIKit
 //
 import RxSwift
 import RxCocoa
-import RJPSLib
+import RJPSLib_Networking
+import RJPSLib_Storage
 //
 import AppConstants
 import PointFreeFunctions
@@ -85,7 +86,7 @@ public class CarTrackAPI_UseCase: GenericUseCase, CarTrackAPIRelated_UseCaseProt
             self?.getUserDetailV1 { (result) in
                 switch result {
                 case .success(let some) :
-                    _ = RJS_DataModel.SimpleCache.saveObject(some, withKey: cacheKey, keyParams: cacheKeyParams, lifeSpam: 60)
+                    _ = RJS_DataModel.PersistentSimpleCacheWithTTL.shared.saveObject(some, withKey: cacheKey, keyParams: cacheKeyParams, lifeSpam: 60)
                     observer.on(.next(some))
                 case .failure(let error): observer.on(.error(error))
                 }

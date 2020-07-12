@@ -6,7 +6,9 @@
 //
 
 import Foundation
-import RJPSLib
+//
+import RJPSLib_Storage
+//
 import Domain
 
 public extension RP {
@@ -39,7 +41,7 @@ public extension RP {
         }
 
         @discardableResult public func deleteAll() -> Bool {
-            return RJS_DataModel.StorableKeyValue.deleteAll()
+            return RJS_DataModel.StorableKeyValue.clean()
         }
 
         @discardableResult public func deleteWith(key: String) -> Bool {

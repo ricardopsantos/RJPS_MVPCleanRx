@@ -10,7 +10,8 @@
 
 import Foundation
 import UIKit
-import RJPSLib
+//
+import RJPSLib_Storage
 
 public var screenWidth: CGFloat { return UIScreen.main.bounds.width }
 public var screenHeight: CGFloat { return UIScreen.main.bounds.height }

@@ -8,7 +8,6 @@
 import UIKit
 import Foundation
 //
-import RJPSLib
 import RxSwift
 import RxCocoa
 import Swinject

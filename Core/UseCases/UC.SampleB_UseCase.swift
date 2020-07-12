@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 //
-import RJPSLib
+import RJPSLib_Networking
 //
 import DevTools
 import Domain

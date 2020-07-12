@@ -37,7 +37,6 @@
 		9FACC18B223BFB0F00576498 /* AppDelegate+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FACC18A223BFB0F00576498 /* AppDelegate+Setup.swift */; };
 		9FB35E0A22EC611000326092 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB35E0722EC611000326092 /* Localizable.strings */; };
 		9FB8DFCA2233E67100095420 /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
-		9FBF4B0822BEBC3B00E0D1AB /* RJPSLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBF4B0722BEBC3B00E0D1AB /* RJPSLib.framework */; };
 		9FE0572422E8D75400802747 /* R.MVPSampleRxView_Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0571F22E8D75400802747 /* R.MVPSampleRxView_Router.swift */; };
 		9FE0572522E8D75400802747 /* AS.MVPSampleRxView_AssemblyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0572022E8D75400802747 /* AS.MVPSampleRxView_AssemblyContainer.swift */; };
 		9FE0572622E8D75400802747 /* P.MVPSampleRxView_Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0572122E8D75400802747 /* P.MVPSampleRxView_Presenter.swift */; };
@@ -129,6 +128,10 @@
 		D755FE7D24B20550009BA6BD /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D755FE7C24B20550009BA6BD /* AvatarView.swift */; };
 		D755FE7F24B20E8C009BA6BD /* VisionBox.ProductPreviewSmallCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D755FE7E24B20E8C009BA6BD /* VisionBox.ProductPreviewSmallCollectionViewCell.swift */; };
 		D755FE8024B253B3009BA6BD /* AppConstants.PropertiesList.plist in Resources */ = {isa = PBXBuildFile; fileRef = D77824BE2479C83F0071776F /* AppConstants.PropertiesList.plist */; };
+		D75A71C424BBA24600CC8463 /* RJPSLib_ALayouts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D75A71C024BBA24500CC8463 /* RJPSLib_ALayouts.framework */; };
+		D75A71C524BBA24600CC8463 /* RJPSLib_Storage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D75A71C124BBA24500CC8463 /* RJPSLib_Storage.framework */; };
+		D75A71C624BBA24600CC8463 /* RJPSLib_Base.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D75A71C224BBA24500CC8463 /* RJPSLib_Base.framework */; };
+		D75A71C724BBA24600CC8463 /* RJPSLib_Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D75A71C324BBA24500CC8463 /* RJPSLib_Networking.framework */; };
 		D761FEB72468334D00BD41A5 /* E.UIKitViewFactoryElementTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEB62468334D00BD41A5 /* E.UIKitViewFactoryElementTag.swift */; };
 		D761FEBC2468358B00BD41A5 /* BaseViewControllerMVP+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEBB2468358B00BD41A5 /* BaseViewControllerMVP+Keyboard.swift */; };
 		D761FEC02468385100BD41A5 /* TemplateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEBF2468385100BD41A5 /* TemplateModel.swift */; };
@@ -275,7 +278,6 @@
 		D7D9E7F32467FB98005B4313 /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
 		D7D9E7F42467FB99005B4313 /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
 		D7D9E7F52467FB9A005B4313 /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
-		D7D9E7F62467FE63005B4313 /* E.Message+Bliss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BB2E022E39DF600829A6F /* E.Message+Bliss.swift */; };
 		D7D9E7F82467FEE3005B4313 /* E.LayoutStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E7F72467FEE3005B4313 /* E.LayoutStyle.swift */; };
 		D7D9E7FA2467FFBA005B4313 /* E.AppCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E7F92467FFBA005B4313 /* E.AppCodes.swift */; };
 		D7D9E7FE2468016D005B4313 /* E.AppMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F15CF2922BFA56E00FB402A /* E.AppMode.swift */; };
@@ -925,7 +927,6 @@
 		9F6BB2BB22E31D0400829A6F /* MVPClean_Arquitecture.pptx */ = {isa = PBXFileReference; lastKnownFileType = file; path = MVPClean_Arquitecture.pptx; sourceTree = "<group>"; };
 		9F6BB2D822E3673200829A6F /* AppDelegate+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+URL.swift"; sourceTree = "<group>"; };
 		9F6BB2DC22E38C0300829A6F /* GitUser_NetWorkRepositoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitUser_NetWorkRepositoryProtocol.swift; sourceTree = "<group>"; };
-		9F6BB2E022E39DF600829A6F /* E.Message+Bliss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "E.Message+Bliss.swift"; sourceTree = "<group>"; };
 		9F6BB2F222E3BEB300829A6F /* Notification+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification+Extensions.swift"; sourceTree = "<group>"; };
 		9F7CE25B22CE279700B1AC31 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		9F8666EF22E7C5CA00A1B9A0 /* GenericTableViewCell_Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericTableViewCell_Protocol.swift; sourceTree = "<group>"; };
@@ -1044,6 +1045,10 @@
 		D755FE7A24B20365009BA6BD /* ProductPreviewBigCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPreviewBigCollectionViewCell.swift; sourceTree = "<group>"; };
 		D755FE7C24B20550009BA6BD /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		D755FE7E24B20E8C009BA6BD /* VisionBox.ProductPreviewSmallCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionBox.ProductPreviewSmallCollectionViewCell.swift; sourceTree = "<group>"; };
+		D75A71C024BBA24500CC8463 /* RJPSLib_ALayouts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RJPSLib_ALayouts.framework; path = Carthage/Build/iOS/RJPSLib_ALayouts.framework; sourceTree = "<group>"; };
+		D75A71C124BBA24500CC8463 /* RJPSLib_Storage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RJPSLib_Storage.framework; path = Carthage/Build/iOS/RJPSLib_Storage.framework; sourceTree = "<group>"; };
+		D75A71C224BBA24500CC8463 /* RJPSLib_Base.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RJPSLib_Base.framework; path = Carthage/Build/iOS/RJPSLib_Base.framework; sourceTree = "<group>"; };
+		D75A71C324BBA24500CC8463 /* RJPSLib_Networking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RJPSLib_Networking.framework; path = Carthage/Build/iOS/RJPSLib_Networking.framework; sourceTree = "<group>"; };
 		D761FEB42468330600BD41A5 /* ProgramaticUIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramaticUIUtils.swift; sourceTree = "<group>"; };
 		D761FEB62468334D00BD41A5 /* E.UIKitViewFactoryElementTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E.UIKitViewFactoryElementTag.swift; sourceTree = "<group>"; };
 		D761FEB82468339F00BD41A5 /* TinyConstraints.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyConstraints.framework; path = Carthage/Build/iOS/TinyConstraints.framework; sourceTree = "<group>"; };
@@ -1245,6 +1250,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D75A71C424BBA24600CC8463 /* RJPSLib_ALayouts.framework in Frameworks */,
+				D75A71C524BBA24600CC8463 /* RJPSLib_Storage.framework in Frameworks */,
+				D75A71C624BBA24600CC8463 /* RJPSLib_Base.framework in Frameworks */,
+				D75A71C724BBA24600CC8463 /* RJPSLib_Networking.framework in Frameworks */,
 				D77824B2247900650071776F /* Lottie.framework in Frameworks */,
 				D77824B024784BBF0071776F /* NSLoggerSwift.framework in Frameworks */,
 				D7E25AAA24669D1A003BBEA0 /* AppConstants.framework in Frameworks */,
@@ -1266,7 +1275,6 @@
 				D788BDA624698D74007C59D0 /* Factory.framework in Frameworks */,
 				D7E25AA724669D13003BBEA0 /* PointFreeFunctions.framework in Frameworks */,
 				9FACC173223BBD8600576498 /* RxCocoa.framework in Frameworks */,
-				9FBF4B0822BEBC3B00E0D1AB /* RJPSLib.framework in Frameworks */,
 				9FACC177223BBFC700576498 /* RxSwift.framework in Frameworks */,
 				D7D9E7DA2467958F005B4313 /* Repositories.framework in Frameworks */,
 				9F103A0D2236BD1B00C57BC0 /* Swinject.framework in Frameworks */,
@@ -1422,6 +1430,10 @@
 		4546C3C321B570CD00127A20 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D75A71C024BBA24500CC8463 /* RJPSLib_ALayouts.framework */,
+				D75A71C224BBA24500CC8463 /* RJPSLib_Base.framework */,
+				D75A71C324BBA24500CC8463 /* RJPSLib_Networking.framework */,
+				D75A71C124BBA24500CC8463 /* RJPSLib_Storage.framework */,
 				D77824F02479F5BD0071776F /* Nimble.framework */,
 				D77824B1247900650071776F /* Lottie.framework */,
 				D77824AD24784B850071776F /* NSLoggerSwift.framework */,
@@ -1800,7 +1812,6 @@
 				9F8AE14A2205DD0300DF75F6 /* AppResources+Private.swift */,
 				9FFF80BB22BFB9A6003C4562 /* E.Images.swift */,
 				D72923B72467089700DAD480 /* E.Messages.swift */,
-				9F6BB2E022E39DF600829A6F /* E.Message+Bliss.swift */,
 				9F15CF2C22BFA56F00FB402A /* E.AppCodes+Extension.swift */,
 				D72923B52467076000DAD480 /* E.SelectedLanguage.swift */,
 				D72923402466B78300DAD480 /* AppResources.h */,
@@ -3335,7 +3346,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwinjectAutoregistration.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RJPSLib.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxGesture.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/TinyConstraints.framework",
@@ -3348,6 +3358,10 @@
 				"$(SRCROOT)/Carthage/Build/iOS/NSLoggerSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Lottie.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Pulsator.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RJPSLib_Storage.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RJPSLib_Networking.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RJPSLib_ALayouts.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RJPSLib_Base.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -3716,7 +3730,6 @@
 			files = (
 				D72923692466B8EA00DAD480 /* AppLogger+Extension.swift in Sources */,
 				D7D9E870246827E3005B4313 /* E.Images.swift in Sources */,
-				D7D9E7F62467FE63005B4313 /* E.Message+Bliss.swift in Sources */,
 				D72923B62467076000DAD480 /* E.SelectedLanguage.swift in Sources */,
 				D72923652466B80B00DAD480 /* E.AppCodes+Extension.swift in Sources */,
 				D72923672466B84100DAD480 /* typealias.AppResources.swift in Sources */,

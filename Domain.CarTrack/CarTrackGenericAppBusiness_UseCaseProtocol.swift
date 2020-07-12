@@ -8,7 +8,7 @@
 
 import Foundation
 //
-import RJPSLib
+import RJPSLib_Networking
 //
 
 /**

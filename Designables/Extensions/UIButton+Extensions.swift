@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import RJPSLib
 
 public extension UIButton {
     func disable() {

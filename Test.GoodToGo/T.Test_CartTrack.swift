@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import RJPSLib
 import RxSwift
 
 @testable import GoodToGo

@@ -24,7 +24,7 @@ github "shu223/Pulsator"
 ####################################################################
 # A Matcher Framework for Swift and Objective-C
 # https://github.com/Quick/Nimble
-github "quick/nimble" "master"
+#github "quick/nimble" "master"
 
 ####################################################################
 # An iOS library to natively render After Effects vector animations http://airbnb.io/lottie/
@@ -34,7 +34,7 @@ github "airbnb/lottie-ios" "master"
 ####################################################################
 # Elegant transition library for iOS & tvOS
 # https://github.com/HeroTransitions/Hero
-github "HeroTransitions/Hero" "1.5.0"
+#github "HeroTransitions/Hero" "1.5.0"
 
 ####################################################################
 # https://github.com/fpillet/NSLogger
@@ -45,7 +45,7 @@ github "fpillet/NSLogger"
 
 # https://github.com/stephencelis/SQLite.swift
 # A type-safe, Swift-language layer over SQLite3.
-github "stephencelis/SQLite.swift" ~> 0.12.0
+#github "stephencelis/SQLite.swift" ~> 0.12.0
 
 ####################################################################
 # A beautiful and flexible text field control implementation of "Float Label Pattern". Written in Swift.

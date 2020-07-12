@@ -14,7 +14,7 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 import TinyConstraints
-import RJPSLib
+import RJPSLib_Base
 //
 import AppConstants
 import AppTheme

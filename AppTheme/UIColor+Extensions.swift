@@ -8,8 +8,6 @@
 import UIKit
 import Foundation
 //
-import RJPSLib
-//
 
 public extension UIColor {
 

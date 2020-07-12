@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-import RJPSLib
+import RJPSLib_Networking
 
 public typealias Sample_UseCaseCompletionHandler = (_ result: Result<[String]>) -> Void
 public protocol Sample_UseCaseProtocol: class {

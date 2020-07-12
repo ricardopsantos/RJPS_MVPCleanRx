@@ -9,7 +9,7 @@ import UIKit
 //
 import RxSwift
 import RxCocoa
-import RJPSLib
+import RJPSLib_Base
 import NSLoggerSwift
 //
 import AppConstants

@@ -14,13 +14,13 @@ Only after a valid email address is entered, and a password with at least 5 char
 
 Any email can be used to unlock the app, but the password __MUST__ be `12345`
 
-![Drag Racing](login_1.png)
+![Image](login_1.png)
 
 ## Map
 
 The map allows tap and filter.
 
-![Drag Racing](map_1.png)
+![Image](map_1.png)
 
 ## Extra : Cache Suport
 
@@ -32,7 +32,7 @@ What happens is : the user have to wait for a server response for the first time
 
 If theres no internet connection, a red bar will appear automatically on the top (and disappear automatically again) when the connection returns
 
-![Drag Racing](no_internet_usage_1.png)
+![Image](no_internet_usage_1.png)
 
 __Because the app have a cache system integrated, we are able the use the app with out internet connection__. The map it self will no appear, but the data on it will appear. 
 
@@ -41,7 +41,7 @@ __Because the app have a cache system integrated, we are able the use the app wi
 The server data had inaccurate information (some of the coordinates were on the sea). For a better developing experience and testing; the application can use [mock data](https://en.wikipedia.org/wiki/Mock_object). The enable the [mock data](https://en.wikipedia.org/wiki/Mock_object) close the map, then go to the second screen (a developer screen) and switch __on__ the _Mock Data_ option. Going now to the map, it will have more friendly information. The mock file is `
 AppConstants+Mock+CarTrack.swift`
 
-![Drag Racing](mock_1.png)
+![Image](mock_1.png)
 
 ---
 
@@ -49,13 +49,13 @@ AppConstants+Mock+CarTrack.swift`
 
 [VIP - Clean Swift Architecture](https://medium.com/crazy-minds/vip-clean-swift-architecture-in-ios-bb1d71680542)
 
-![Drag Racing](vip_1.png)
+![Image](vip_1.png)
 
-![Drag Racing](vip_2.png)
+![Image](vip_2.png)
 
 ## About app architecture with VIP
 
-![Drag Racing](vip_3.png)
+![Image](vip_3.png)
 
 
 All the connections are _protocols/interfaces_
@@ -81,5 +81,5 @@ All the connections are _protocols/interfaces_
 * Multi language support prepared  (see `E.Messages.swift` file)
 
 * Its easier to find the exam related files inside the project (that have a lot os architecture and helper files) by searching _cartrack_ on Xcode
-![Drag Racing](extra_1.png)
+![Image](extra_1.png)
 

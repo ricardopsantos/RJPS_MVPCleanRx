@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 //
 import RxSwift
-import RJPSLib
+import RJPSLib_Base
 import RxCocoa
 import ToastSwiftFramework
 //
@@ -35,8 +35,6 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
 
     public var reachabilityService: ReachabilityService! = DevTools.reachabilityService
     public var disposeBag: DisposeBag = DisposeBag()
-
-    private var stats: Stats?
 
     open override func loadView() {
         super.loadView()
@@ -138,7 +136,10 @@ public extension BaseViewControllerMVP {
 extension BaseViewControllerMVP {
 
     private func addStatsView() {
-        guard DevTools.FeatureFlag.showDebugStatsViewOnView.isTrue else { return }
+
+    /*
+         private var stats: Stats?
+         guard DevTools.FeatureFlag.showDebugStatsViewOnView.isTrue else { return }
         guard self.stats == nil else { return }
         self.stats = Stats()//frame: CGRect(x: 20, y: 40, width: 100.0, height: 60.0))
         self.view.addSubview(self.stats!)
@@ -146,7 +147,6 @@ extension BaseViewControllerMVP {
         self.stats?.autoLayout.bottomToSuperview(offset: 40)
         self.stats?.autoLayout.width(100)
         self.stats?.addShadow()
-        self.stats?.addCorner(radius: 5)
-//        self.stats?.superview?.bringSubviewToFront(self.stats!)
+        self.stats?.addCorner(radius: 5)*/
     }
 }

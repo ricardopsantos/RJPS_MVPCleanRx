@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 //
-import RJPSLib
 import RxSwift
 import RxCocoa
 //

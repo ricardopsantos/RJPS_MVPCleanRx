@@ -12,7 +12,6 @@ import Pulsator
 //
 import RxSwift
 import RxCocoa
-import RJPSLib
 import DevTools
 
 // MARK: - ignoreNil

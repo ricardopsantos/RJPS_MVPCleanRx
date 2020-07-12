@@ -9,7 +9,7 @@ import UIKit
 //
 import RxSwift
 import RxCocoa
-import RJPSLib
+import RJPSLib_Networking
 //
 import AppConstants
 import PointFreeFunctions
@@ -39,11 +39,9 @@ public class Sample_UseCase: GenericUseCase, Sample_UseCaseProtocol {
             }
         }
 
-        DispatchQueue.executeWithDelay(delay: 1) { [weak self] in
-            let response = ["\(Date.utcNow)"]
-            completionHandler(Result.success(response))
-            self?.generic_CacheRepositoryProtocol.add(object: response as AnyObject, withKey: cacheKey)
-        }
+        let response = ["\(Date.utcNow)"]
+        completionHandler(Result.success(response))
+        self.generic_CacheRepositoryProtocol.add(object: response as AnyObject, withKey: cacheKey)
     }
 
     public func operation2(param: String, completionHandler: @escaping Sample_UseCaseCompletionHandler) {
@@ -52,9 +50,8 @@ public class Sample_UseCase: GenericUseCase, Sample_UseCaseProtocol {
             return
         }
 
-        DispatchQueue.executeWithDelay(delay: 1) {
-            let response = ["\(Date.utcNow)"]
-            completionHandler(Result.success(response))
-        }
+        let response = ["\(Date.utcNow)"]
+        completionHandler(Result.success(response))
+
     }
 }

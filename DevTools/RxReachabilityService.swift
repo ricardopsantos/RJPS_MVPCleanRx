@@ -7,7 +7,6 @@
 //
 
 import RxSwift
-import RJPSLib
 
 import class Dispatch.DispatchQueue
 

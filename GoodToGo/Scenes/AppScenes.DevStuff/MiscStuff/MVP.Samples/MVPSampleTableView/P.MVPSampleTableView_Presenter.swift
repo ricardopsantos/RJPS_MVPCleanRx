@@ -8,7 +8,8 @@
 import UIKit
 import Foundation
 //
-import RJPSLib
+import RJPSLib_Base
+import RJPSLib_Networking
 import RxSwift
 import RxCocoa
 //

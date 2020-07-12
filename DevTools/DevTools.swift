@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 //
 import ToastSwiftFramework
-import RJPSLib
+import RJPSLib_Base
 import PointFreeFunctions
 import RxCocoa
 import RxSwift

@@ -7,11 +7,8 @@
 
 import UIKit
 //
-import RJPSLib
-//
 import DevTools
 import Domain
-import Domain_Bliss
 
 extension AppDelegate {
     
@@ -26,7 +23,7 @@ extension AppDelegate {
         return true
     }
 
-    // MARK: Notificatons
+    // MARK: Notifications
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         DevTools.Log.message("App did register for push notifications with token [\(deviceToken)]")
     }

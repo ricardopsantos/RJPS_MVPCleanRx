@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-import RJPSLib
+import RJPSLib_Networking
 
 public typealias SampleB_UseCaseCompletionHandler = (_ result: Result<[Employee.ResponseDto]>) -> Void
 public protocol SampleB_UseCaseProtocol: class {

@@ -6,7 +6,9 @@
 //
 
 import Foundation
-import RJPSLib
+//
+import RJPSLib_Storage
+//
 import UIKit
 import AVFoundation
 import Domain
@@ -17,15 +19,15 @@ public extension RP {
         public init () {}
 
         public func add(object: AnyObject, withKey: String) {
-            RJS_CacheLive.add(object: object, withKey: withKey)
+            RJS_LiveCache.shared.add(object: object, withKey: withKey)
         }
 
         public func get(key: String) -> AnyObject? {
-            return RJS_CacheLive.get(key: key)
+            return RJS_LiveCache.shared.get(key: key)
         }
 
         public func clean(sender: String) {
-            RJS_CacheLive.clean(sender: sender)
+            RJS_LiveCache.shared.clean()
         }
     }
 }

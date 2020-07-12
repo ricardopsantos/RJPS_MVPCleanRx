@@ -8,7 +8,9 @@
 import UIKit
 import Foundation
 //
-import RJPSLib
+import RJPSLib_Base
+import RJPSLib_Storage
+import RJPSLib_Networking
 //
 import AppConstants
 import AppTheme
@@ -21,7 +23,7 @@ import Designables
 
 typealias AppInfo                = RJS_AppInfo
 typealias AppCoreDataManager     = RJS_DataModel
-typealias AppSimpleNetworkClient = RJS_SimpleNetworkClient
+typealias AppSimpleNetworkClient = RJS_NetworkClient
 typealias AppUtils               = RJS_Utils
 typealias AppUserDefaultsVars    = RJS_UserDefaultsVars
 typealias AppUserDefaults        = RJS_UserDefaults

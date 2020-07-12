@@ -8,7 +8,6 @@
 import UIKit
 import Foundation
 //
-import RJPSLib
 import Pulsator
 
 public extension UIView {

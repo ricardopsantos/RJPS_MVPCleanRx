@@ -9,7 +9,7 @@
 import Foundation
 //
 import AppResources
-import RJPSLib
+import RJPSLib_Base
 
 public typealias CustomSearchBar = RJS_Designables_SearchBar
 public typealias AppSizes = Designables.Sizes

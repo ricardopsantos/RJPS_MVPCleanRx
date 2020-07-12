@@ -7,7 +7,8 @@
 //
 
 import Foundation
-import RJPSLib
+//
+import RJPSLib_Storage
 
 public extension DevTools {
     enum FeatureFlag: String, CaseIterable {
@@ -73,8 +74,8 @@ public extension DevTools {
                 return defaultValue
             }
 
-            if RJSLib.Storages.NSUserDefaults.existsWith(flagName.rawValue) {
-                if let value = RJSLib.Storages.NSUserDefaults.getWith(flagName.rawValue) {
+            if RJSLib.Storages.NSUserDefaults.existsWith(key: flagName.rawValue) {
+                if let value = RJSLib.Storages.NSUserDefaults.getWith(key: flagName.rawValue) {
                     return "\(value)" == "\(true)"
                 }
             }
