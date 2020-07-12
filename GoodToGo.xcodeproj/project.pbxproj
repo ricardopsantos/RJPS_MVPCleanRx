@@ -161,7 +161,6 @@
 		D778255D247A5FAE0071776F /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
 		D778255F247A5FB20071776F /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
 		D7782560247A5FB50071776F /* typealias.VIP.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78F27EF246E718D008F7E54 /* typealias.VIP.encaplulate.swift */; };
-		D778258C247A75790071776F /* RJPSLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBF4B0722BEBC3B00E0D1AB /* RJPSLib.framework */; };
 		D778258E247A79D40071776F /* T.TestsShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = D778258D247A79D40071776F /* T.TestsShared.swift */; };
 		D778258F247A85DA0071776F /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC172223BBD8600576498 /* RxCocoa.framework */; };
 		D7782590247A86460071776F /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC176223BBFC600576498 /* RxSwift.framework */; };
@@ -1343,7 +1342,6 @@
 			files = (
 				D7782590247A86460071776F /* RxSwift.framework in Frameworks */,
 				D778258F247A85DA0071776F /* RxCocoa.framework in Frameworks */,
-				D778258C247A75790071776F /* RJPSLib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3481,7 +3479,6 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/RJPSLib.framwork",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framwork",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framwork",
 			);
