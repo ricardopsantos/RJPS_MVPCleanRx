@@ -350,7 +350,7 @@ extension GoodToGo.V {
         }
 
         override func setupColorsAndStyles() {
-            self.backgroundColor = UIColor.white // mais facil para ver os filtros
+            self.backgroundColor = ColorName.background.color
         }
 
         // This function is called automatically by super BaseGenericView

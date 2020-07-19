@@ -5,10 +5,11 @@
 //  Copyright ©  Ricardo P Santos. All rights reserved.
 //
 
+//swiftlint:disable rule_UIColor_2 rule_UIColor_3
+
 import UIKit
 import Foundation
 //
-
 public extension UIColor {
 
     struct App {
@@ -211,9 +212,6 @@ public extension UIColor {
         case onDanger
         case warning
         case onWarning
-        case startBackground
-        case onStartBackground
-        case startPrimary
 
         public var rawValue: RawValue {
             let onLigthMode = true
@@ -240,9 +238,6 @@ public extension UIColor {
              case .onDanger: return UIColor.Pack2.white.color
              case .warning: return UIColor.Pack2.orange.color
              case .onWarning: return UIColor.Pack2.white.color
-             case .startBackground: return UIColor.Pack2.cerulean.color
-             case .onStartBackground: return UIColor.Pack2.white.color
-             case .startPrimary: return UIColor.Pack2.yellow.color
             }
         }
     }

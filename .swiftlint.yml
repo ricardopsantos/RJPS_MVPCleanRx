@@ -10,23 +10,51 @@ custom_rules:
 
     rule_UIColor_1:
         included: ".*\\.swift"
-        name: "Forbiden UIColor.App"
+        name: "Avoid UIColor.App"
         regex: 'UIColor.App.'
         message: "Don't use [UIColor.App]. Use [typealias AppColors = UIColor.App]"
         severity: error
+
+    rule_UIColor_2:
+        included: ".*\\.swift"
+        name: "Avoid UIColor.Pack1"
+        regex: 'UIColor.Pack1'
+        message: "Avoid [UIColor.Pack1]. Use [ColorName]"
+        severity: warning
+
+    rule_UIColor_3:
+        included: ".*\\.swift"
+        name: "Avoid AppColors.Pack1"
+        regex: 'AppColors.Pack1'
+        message: "Avoid [AppColors.Pack1]. Use [ColorName]"
+        severity: warning
+
+    rule_UIColor_3:
+        included: ".*\\.swift"
+        name: "Avoid UIColor.Pack2"
+        regex: 'UIColor.Pack2'
+        message: "Avoid [UIColor.Pack2]. Use [ColorName]"
+        severity: error
+
+    rule_UIColor_4:
+        included: ".*\\.swift"
+        name: "Avoid AppColors.Pack2"
+        regex: 'AppColors.Pack2'
+        message: "Avoid [AppColors.Pack2]. Use [ColorName]"
+        severity: warning
 
     rule_UIFont_1:
         included: ".*\\.swift"
         name: "Forbiden UIFont.App"
         regex: 'UIFont.App.'
         message: "Don't use [UIFont.App]. Use [typealias AppColors = AppFonts.App]"
-        severity: warning
+        severity: error
 
     rule_Coding:
         included: ".*\\.swift"
         name: "Forbiden Codable= ..."
         regex: 'Codable'
-        message: "Don't use Codable alone. Use ModelEntityProtocol or ResponseDtoProtocol"
+        message: "Don't use Codable alone. Use [ModelEntityProtocol] or [ResponseDtoProtocol]"
         severity: error
 
     no_letUnderscore:

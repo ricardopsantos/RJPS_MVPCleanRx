@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+//
+import AppTheme
 
 open class DefaultTableViewSection: UILabelWithPadding {
 
@@ -18,7 +20,7 @@ open class DefaultTableViewSection: UILabelWithPadding {
 
     // To override
     func prepareLayout() {
-        self.backgroundColor = UIColor.Pack2.lightGray.color
+        self.backgroundColor = ColorName.background.color
     }
 
     public var title: String? {

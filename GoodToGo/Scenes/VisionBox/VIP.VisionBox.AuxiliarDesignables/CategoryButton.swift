@@ -114,7 +114,7 @@ extension V {
         func layoutColorsForPressed() {
             image.tintColor = .white
             label.textColor = UIColor.Pack1.grey_2.color
-            imageBack.tintColor = UIColor.Pack2.orange.color
+            imageBack.tintColor = ColorName.warning.color
             DispatchQueue.executeWithDelay(delay: RJS_Constants.defaultAnimationsTime) { [weak self] in
                 self?.layoutColorsForNormal()
             }

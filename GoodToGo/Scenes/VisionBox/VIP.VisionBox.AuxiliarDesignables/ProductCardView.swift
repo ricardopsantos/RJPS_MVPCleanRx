@@ -80,7 +80,7 @@ extension V {
         private lazy var lblPrice: UILabel = {
             let some = UIKitFactory.label(style: .notApplied)
             some.font = AppFonts.Styles.headingBold.rawValue
-            some.textColor = UIColor.Pack2.orange.color
+            some.tintColor = ColorName.warning.color
             return some
         }()
 
