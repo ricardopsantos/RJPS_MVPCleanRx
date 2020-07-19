@@ -28,6 +28,22 @@ import UIBase
 import AppResources
 import Pulsator
 
+extension String {
+    func attributedStringWithColor(_ strings: [String], color: UIColor, characterSpacing: UInt? = nil) -> NSAttributedString {
+        let attributedString = NSMutableAttributedString(string: self)
+        for string in strings {
+            let range = (self as NSString).range(of: string)
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
+        }
+
+        guard let characterSpacing = characterSpacing else {return attributedString}
+
+        attributedString.addAttribute(NSAttributedString.Key.kern, value: characterSpacing, range: NSRange(location: 0, length: attributedString.length))
+
+        return attributedString
+    }
+}
+
 // MARK: - Preview
 
 @available(iOS 13.0.0, *)
@@ -154,6 +170,11 @@ extension GoodToGo.V {
                     some.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
                     stackViewVLevel1.uiUtils.safeAddArrangedSubview(some)
                 }
+                let some = UIKitFactory.label(title: "\(some)", style: some)
+                some.backgroundColor = some.textColor.inverse.withAlphaComponent(FadeType.superHeavy.rawValue)
+                some.textAlignment = .center
+                some.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
+                stackViewVLevel1.uiUtils.safeAddArrangedSubview(some)
                 stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
             }
 
@@ -259,7 +280,7 @@ extension GoodToGo.V {
                 let view = UILabel()
                 view.text = "\(some)"
                 view.apply(style: .value)
-                view.textColor = UIColor.white
+                view.textColor = some.color.inverse
                 view.backgroundColor = some.color
                 view.textAlignment = .center
                 view.addCorner(radius: 1)
@@ -276,7 +297,7 @@ extension GoodToGo.V {
                 let view = UILabel()
                 view.text = "\(some)"
                 view.apply(style: .value)
-                view.textColor = UIColor.white
+                view.textColor = some.color.inverse
                 view.backgroundColor = some.color
                 view.textAlignment = .center
                 view.addCorner(radius: 1)
@@ -286,6 +307,24 @@ extension GoodToGo.V {
 
             stackViewVLevel1.uiUtils.addArrangedSeparator()
 
+            //
+            // UIColor.Pack3 / ColorName
+            //
+
+            makeSection("UIColor.Pack3/ColorName", size: sectionSize)
+            UIColor.Pack3.allCases.forEach { (some) in
+                let view = UILabel()
+                view.text = "\(some)"
+                view.apply(style: .value)
+                view.textColor = some.color.inverse
+                view.backgroundColor = some.color
+                view.textAlignment = .center
+                view.addCorner(radius: 1)
+                stackViewVLevel1.uiUtils.safeAddArrangedSubview(view)
+                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
+            }
+
+            stackViewVLevel1.uiUtils.addArrangedSeparator()
         }
 
         // This function is called automatically by super BaseGenericViewVIP

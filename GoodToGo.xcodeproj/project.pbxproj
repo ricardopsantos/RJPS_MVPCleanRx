@@ -2612,10 +2612,12 @@
 				9FE143EB21AF2F520026BDFC /* Frameworks */,
 				9FE143EC21AF2F520026BDFC /* Resources */,
 				9F5D1D0B22E5FE9600C0AF38 /* Embed App Extensions */,
+				D729225F24669D5000DAD480 /* Embed Frameworks */,
 				9F8D4A6C2237325600777976 /* ShellScript */,
+				D734B62924C2EE0F0042C0C8 /* ShellScript */,
 				9F574F0E2235B473007DAA58 /* ShellScript */,
 				9F47A7B22204CCE100EB6139 /* ShellScript */,
-				D729225F24669D5000DAD480 /* Embed Frameworks */,
+				D734B62A24C2F1380042C0C8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -3470,6 +3472,40 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# The carthage copy-frameworks command strips out these extra architectures. w00t!\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+		D734B62924C2EE0F0042C0C8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\necho \"----> {BUILT_PRODUCTS_DIR} <----\"\necho \"${BUILT_PRODUCTS_DIR}\"\n\necho \"----> {UNLOCALIZED_RESOURCES_FOLDER_PATH} <----\"\necho \"${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\n\necho \"----> {SRCROOT} <----\"\necho \"${SRCROOT}\"\n";
+		};
+		D734B62A24C2F1380042C0C8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#BUILD_NUMBER=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\n#ASSETS_PATH=\"${SRCROOT}/GoodToGo/SupportingFiles/Assets.xcassets\"\n#ORIGINAL_ASSETS_PATH=\"${ASSETS_PATH}/AppIcon.Original.appiconset\"\n#FINAL_ASSETS_PATH=\"${ASSETS_PATH}/AppIcon.appiconset\"\n\n#LIST=(\"icon_60pt@2x.png\" \"icon_60pt@3x.png\")\n\n#for i in \"${LIST[@]}\"\n#do\n#    convert \"${ORIGINAL_ASSETS_PATH}/${i}\" -fill black -font Times-Bold -pointsize 35 -gravity south -annotate 0 \"V_${BUILD_NUMBER}\" \"${FINAL_ASSETS_PATH}/${i}\"\n#done\n\n";
 		};
 		D7782555247A5C8C0071776F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

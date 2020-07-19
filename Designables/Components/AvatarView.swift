@@ -11,7 +11,7 @@ import UIKit
 //
 import AppResources
 
-#warning("Put on UIKitFactury")
+#warning("Put on UIKitFactory")
 
 open class AvatarView: UIView {
 

@@ -16,15 +16,15 @@ public extension UIColor {
 
         public struct TopBar {
             private init() {}
-            public static var background: UIColor { return primary }
-            public static var titleColor: UIColor { return UIColor.Pack1.grey_7.color }
+            public static var background: UIColor { return ColorName.primary.color }
+            public static var titleColor: UIColor { return ColorName.onPrimary.color }
         }
 
         public struct UIButton {
             public static var backgroundColorInnGage: UIColor { return UIColor.Pack1.grey_6.color }
             public static var textColorInnGage: UIColor { return UIColor.Pack1.grey_1.color }
-            public static var backgroundColorDefault: UIColor { return primary }
-            public static var textColorDefault: UIColor { return onPrimary }
+            public static var backgroundColorDefault: UIColor { return  ColorName.primary.color }
+            public static var textColorDefault: UIColor { return  ColorName.onPrimary.color }
         }
 
         public struct UILabel {
@@ -32,18 +32,18 @@ public extension UIColor {
             public static var lblTextColor: UIColor { return UIColor.Pack1.grey_1.color }
         }
 
-        public static var backgroundColor: UIColor { return onPrimary }
+        public static var backgroundColor: UIColor { return ColorName.onPrimary.color }
 
-        public static var primary: UIColor { return UIColor.Pack1.blue1.color }
-        public static var onPrimary: UIColor { return UIColor.Pack1.grey_7.color }
+        public static var primary: UIColor { return ColorName.primary.color }
+        public static var onPrimary: UIColor { return ColorName.onPrimary.color }
 
-        public static var error: UIColor { return UIColor.Pack1.red1.color }
-        public static var success: UIColor { return UIColor.Pack1.blue2.color }
-        public static var warning: UIColor { return UIColor.Pack1.orange.color }
+        public static var error: UIColor { return ColorName.danger.color }
+        public static var success: UIColor { return ColorName.success.color }
+        public static var warning: UIColor { return ColorName.warning.color }
 
-        public static var accept: UIColor { return UIColor.Pack2.green.color }
-        public static var reject: UIColor { return UIColor.Pack2.gray.color }
-        public static var remind: UIColor { return UIColor.Pack1.orange.color }
+        public static var accept: UIColor { return ColorName.success.color }
+        public static var reject: UIColor { return ColorName.warning.color }
+        public static var remind: UIColor { return ColorName.danger.color }
 
     }
 }
@@ -178,5 +178,72 @@ public extension UIColor {
             }
         }
 
+    }
+}
+
+public typealias ColorName = UIColor.Pack3
+public extension UIColor {
+
+    enum Pack3: CaseIterable {
+        public typealias RawValue = UIColor
+        public init?(rawValue: RawValue) { return nil }
+        public var color: UIColor { return self.rawValue }
+
+        case background
+        case onBackground
+        case surface
+        case onSurface
+        case detail
+        case onDetail
+        case divider
+        case overlayBackground
+        case void
+        case onVoid
+        case primary
+        case onPrimary
+        case primaryVariant
+        case onPrimaryVariant
+        case secondary
+        case onSecondary
+        case success
+        case onSuccess
+        case danger
+        case onDanger
+        case warning
+        case onWarning
+        case startBackground
+        case onStartBackground
+        case startPrimary
+
+        public var rawValue: RawValue {
+            let onLigthMode = true
+             switch self {
+             case .background: return onLigthMode ? UIColor.Pack2.dirtyWhite.color : UIColor.Pack2.obsidian.color
+             case .onBackground: return onLigthMode ? UIColor.Pack2.darkBlue.color : UIColor.Pack2.white.color
+             case .surface: return onLigthMode ? UIColor.Pack2.white.color  : UIColor.Pack2.charcoal.color
+             case .onSurface: return onLigthMode ? UIColor.Pack2.darkBlue.color : UIColor.Pack2.white.color
+             case .detail: return onLigthMode ? UIColor.Pack2.silver.color : UIColor.Pack2.darkSilver.color
+             case .onDetail: return onLigthMode ?  UIColor.Pack2.white.color : UIColor.Pack2.silver.color
+             case .divider: return onLigthMode ? UIColor.Pack2.lightGray.color  : UIColor.Pack2.darkGray.color
+             case .overlayBackground: return UIColor.Pack2.dirtyWhite.color.withAlphaComponent(0.5)
+             case .void: return UIColor.Pack2.black.color
+             case .onVoid: return UIColor.Pack2.white.color
+             case .primary: return UIColor.Pack2.lightBlue.color
+             case .onPrimary: return UIColor.Pack2.white.color
+             case .primaryVariant: return UIColor.Pack2.lightBlue.color.withAlphaComponent(0.1)
+             case .onPrimaryVariant: return UIColor.Pack2.lightBlue.color
+             case .secondary: return UIColor.Pack2.yellow.color
+             case .onSecondary: return UIColor.Pack2.darkBlue.color
+             case .success: return UIColor.Pack2.green.color
+             case .onSuccess: return UIColor.Pack2.white.color
+             case .danger: return UIColor.Pack2.red.color
+             case .onDanger: return UIColor.Pack2.white.color
+             case .warning: return UIColor.Pack2.orange.color
+             case .onWarning: return UIColor.Pack2.white.color
+             case .startBackground: return UIColor.Pack2.cerulean.color
+             case .onStartBackground: return UIColor.Pack2.white.color
+             case .startPrimary: return UIColor.Pack2.yellow.color
+            }
+        }
     }
 }
