@@ -47,9 +47,9 @@ open class TopBar: BaseViewControllerMVP {
         some.rjsALayouts.setSize(CGSize(width: btnSize, height: btnSize))
         some.setTitleForAllStates("X")
         some.addCorner(radius: 5)
-        some.backgroundColor = UIColor.App.onPrimary.withAlphaComponent(FadeType.regular.rawValue)
-        some.titleLabel?.textColor = UIColor.App.primary
-        some.setTitleColor(UIColor.App.primary, for: .normal)
+        some.backgroundColor = AppColors.onPrimary.withAlphaComponent(FadeType.regular.rawValue)
+        some.titleLabel?.textColor = AppColors.primary
+        some.setTitleColor(AppColors.primary, for: .normal)
         some.isHidden = true
         some.isUserInteractionEnabled = false
         return some
@@ -110,7 +110,7 @@ open class TopBar: BaseViewControllerMVP {
  */
 extension TopBar {
     public var height: CGFloat { return TopBar.defaultHeight(usingSafeArea: self.usingSafeArea ) }
-    public static var defaultColor: UIColor { UIColor.App.TopBar.background }
+    public static var defaultColor: UIColor { AppColors.TopBar.background }
     public static func defaultHeight(usingSafeArea: Bool) -> CGFloat {
         // [usingSafeArea=false] will make the TopBar go up and use space on the safe area
         return 60 + (!usingSafeArea ? AppleSizes.safeAreaTop : 0)

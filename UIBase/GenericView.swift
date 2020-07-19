@@ -56,9 +56,9 @@ open class BaseViewController: UIViewController, GenericViewProtocol {
 
     private lazy var _lblReachability: UILabel = {
         let some             = label(baseView: self.view, style: .title)
-        some.textColor       = UIColor.App.TopBar.titleColor
+        some.textColor       = AppColors.TopBar.titleColor
         some.textAlignment   = .center
-        some.backgroundColor = UIColor.App.error
+        some.backgroundColor = AppColors.error
         some.alpha           = 0
         some.rjsALayouts.setMargin(0, on: .left)
         some.rjsALayouts.setMargin(0, on: .right)
@@ -69,7 +69,7 @@ open class BaseViewController: UIViewController, GenericViewProtocol {
     
     private lazy var _lblMessage: UILabel = {
         let some           = label(baseView: self.view, style: .title)
-        some.textColor     = UIColor.App.TopBar.titleColor
+        some.textColor     = AppColors.TopBar.titleColor
         some.textAlignment = .center
         some.alpha         = 0
         some.numberOfLines = 0
@@ -226,9 +226,9 @@ extension BaseViewController {
             if state {
                 self1._lblMessage.text = message
                 switch type {
-                case .sucess : self1._lblMessage.backgroundColor = UIColor.App.success
-                case .warning: self1._lblMessage.backgroundColor = UIColor.App.warning
-                case .error  : self1._lblMessage.backgroundColor = UIColor.App.error
+                case .sucess : self1._lblMessage.backgroundColor = AppColors.success
+                case .warning: self1._lblMessage.backgroundColor = AppColors.warning
+                case .error  : self1._lblMessage.backgroundColor = AppColors.error
                 }
             }
             self1._lblMessage.fadeTo(value ? 0 : 0.95, duration: duration)

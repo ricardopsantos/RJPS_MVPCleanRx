@@ -106,9 +106,9 @@ extension GoodToGo.V {
                 stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: size, color: UIColor.lightGray)
                 let label = UILabel()
                 label.text = name
-                label.font = UIFont.App.Styles.headingSmall.rawValue
+                label.font = AppFonts.Styles.headingSmall.rawValue
                 label.textAlignment = .center
-                label.textColor = UIColor.App.primary
+                label.textColor = AppColors.primary
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(label)
                 stackViewVLevel1.uiUtils.addArrangedSeparator()
             }
@@ -117,11 +117,11 @@ extension GoodToGo.V {
                 let label = UIKitFactory.label(style: .title)
                 label.text = text
                 label.textAlignment = .center
-                label.font = UIFont.App.Styles.caption.rawValue 
+                label.font = AppFonts.Styles.caption.rawValue 
                 return label
             }
 
-            let testBackgroundColors = [UIColor.white, UIColor.App.primary]
+            let testBackgroundColors = [UIColor.white, AppColors.primary]
 
             //
             // FeatureFlag
@@ -218,7 +218,7 @@ extension GoodToGo.V {
             makeSection("FadeType", size: sectionSize)
             FadeType.allCases.forEach { (some) in
                 let view = pureLabel(text: "\(some)")
-                view.backgroundColor = UIColor.App.primary.withAlphaComponent(some.rawValue)
+                view.backgroundColor = AppColors.primary.withAlphaComponent(some.rawValue)
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(view)
                 view.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
                 //stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
@@ -231,7 +231,7 @@ extension GoodToGo.V {
             makeSection("Components", size: sectionSize)
 
             let labelWithPadding = UIKitFactory.labelWithPadding(title: "labelWithPadding", style: .title)
-            labelWithPadding.backgroundColor = UIColor.App.primary.withAlphaComponent(FadeType.heavy.rawValue)
+            labelWithPadding.backgroundColor = AppColors.primary.withAlphaComponent(FadeType.heavy.rawValue)
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(labelWithPadding)
 
             stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
@@ -250,11 +250,11 @@ extension GoodToGo.V {
             stackViewVLevel1.uiUtils.addArrangedSeparator()
 
             //
-            // UIFont.App.Alternative
+            // AppFonts.Alternative
             //
 
-            makeSection("UIFont.App.Alternative", size: sectionSize)
-            let allFonts = UIFont.App.Styles.allCases
+            makeSection("AppFonts.Alternative", size: sectionSize)
+            let allFonts = AppFonts.Styles.allCases
             let allFontsSorted = allFonts.sorted { (f1, f2) -> Bool in return f1.rawValue.pointSize > f2.rawValue.pointSize }
             allFontsSorted.forEach { (font) in
                 let some1 = UILabel()
@@ -264,7 +264,7 @@ extension GoodToGo.V {
                 some1.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
                 let some2 = UILabel()
                 some2.text = "\(font.rawValue.fontName) \(font.rawValue.pointSize)"
-                some2.font = UIFont.App.Styles.caption.rawValue
+                some2.font = AppFonts.Styles.caption.rawValue
                 some2.textAlignment = .center
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(some1)
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(some2)

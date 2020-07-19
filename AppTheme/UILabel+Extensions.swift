@@ -23,31 +23,31 @@ public extension UILabel {
 
     func apply(style: UILabel.LayoutStyle) {
         let navigationBarTitle = {
-            self.textColor       = UIColor.App.TopBar.titleColor
-            self.font            = UIFont.App.Styles.headingMedium.rawValue
+            self.textColor       = AppColors.TopBar.titleColor
+            self.font            = AppFonts.Styles.headingMedium.rawValue
         }
         let title = {
-            self.textColor       = UIColor.App.UILabel.lblTextColor
-            self.font            = UIFont.App.Styles.paragraphBold.rawValue
+            self.textColor       = AppColors.UILabel.lblTextColor
+            self.font            = AppFonts.Styles.paragraphBold.rawValue
         }
         let value = {
-            self.textColor       = UIColor.App.UILabel.lblTextColor.withAlphaComponent(FadeType.superLight.rawValue)
-            self.font            = UIFont.App.Styles.paragraphSmall.rawValue
+            self.textColor       = AppColors.UILabel.lblTextColor.withAlphaComponent(FadeType.superLight.rawValue)
+            self.font            = AppFonts.Styles.paragraphSmall.rawValue
         }
         let text = {
-            self.textColor       = UIColor.App.UILabel.lblTextColor
-            self.font            = UIFont.App.Styles.caption.rawValue
+            self.textColor       = AppColors.UILabel.lblTextColor
+            self.font            = AppFonts.Styles.caption.rawValue
         }
         let error = {
-            self.textColor       = UIColor.App.error
-            self.font            = UIFont.App.Styles.captionSmall.rawValue
+            self.textColor       = AppColors.error
+            self.font            = AppFonts.Styles.captionSmall.rawValue
         }
 
         #warning("this should be a component, not a style")
         let info = {
-            self.backgroundColor = UIColor.App.primary.withAlphaComponent(FadeType.regular.rawValue)
-            self.textColor       = UIColor.App.onPrimary
-            self.font            = UIFont.App.Styles.captionLarge.rawValue
+            self.backgroundColor = AppColors.primary.withAlphaComponent(FadeType.regular.rawValue)
+            self.textColor       = AppColors.onPrimary
+            self.font            = AppFonts.Styles.captionLarge.rawValue
             self.addShadow()
             self.addCorner(radius: 5)
         }

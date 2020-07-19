@@ -49,9 +49,9 @@ public extension UIFont {
 
             public var rawValue: RawValue {
 
-                let boldFontName    = UIFont.App.StylesBuilder.bold.fontName     // Bold
-                let mediumFontName  = UIFont.App.StylesBuilder.regular.fontName  // Regular/Bold
-                let regularFontName = UIFont.App.StylesBuilder.light.fontName    // Regular
+                let boldFontName    = AppFonts.StylesBuilder.bold.fontName     // Bold
+                let mediumFontName  = AppFonts.StylesBuilder.regular.fontName  // Regular/Bold
+                let regularFontName = AppFonts.StylesBuilder.light.fontName    // Regular
 
                 switch self {
                 case .headingJumbo: return UIFont(name: regularFontName, size: 38.0)!

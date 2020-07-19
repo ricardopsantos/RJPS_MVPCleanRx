@@ -228,10 +228,10 @@ extension V {
         override func setupColorsAndStyles() {
             self.backgroundColor = AppColors.backgroundColor
             collectionView.backgroundColor = .clear
-            lblDescriptionTitle.font = UIFont.App.Styles.paragraphMedium.rawValue
+            lblDescriptionTitle.font = AppFonts.Styles.paragraphMedium.rawValue
             lblDescriptionTitle.textColor = UIColor.black
             lblDescriptionValue.textColor = lblDescriptionTitle.textColor.withAlphaComponent(FadeType.regular.rawValue)
-            lblDescriptionTitle.font = UIFont.App.Styles.paragraphMedium.rawValue
+            lblDescriptionTitle.font = AppFonts.Styles.paragraphMedium.rawValue
         }
 
         // This function is called automatically by super BaseGenericView

@@ -73,11 +73,11 @@ open class BaseViewControllerMVP: BaseViewController, BaseViewControllerMVPProto
         var style = ToastStyle()
         style.cornerRadius = 5
         style.displayShadow = true
-        style.messageFont = UIFont.App.regular(size: .regularBig)
+        style.messageFont = AppFonts.regular(size: .regularBig)
         switch type {
-        case .success: style.backgroundColor = UIColor.App.success.withAlphaComponent(FadeType.superLight.rawValue)
-        case .warning: style.backgroundColor = UIColor.App.warning.withAlphaComponent(FadeType.superLight.rawValue)
-        case .error: style.backgroundColor = UIColor.App.error.withAlphaComponent(FadeType.superLight.rawValue)
+        case .success: style.backgroundColor = AppColors.success.withAlphaComponent(FadeType.superLight.rawValue)
+        case .warning: style.backgroundColor = AppColors.warning.withAlphaComponent(FadeType.superLight.rawValue)
+        case .error: style.backgroundColor = AppColors.error.withAlphaComponent(FadeType.superLight.rawValue)
         }
         style.messageColor = .white
         DevTools.topViewController()?.view.makeToast(message, duration: 5, position: .top, style: style)

@@ -88,7 +88,7 @@ extension V {
             label.autoLayout.bottomToSuperview()
             label.autoLayout.widthToSuperview()
             label.textAlignment = .center
-            label.font = UIFont.App.Styles.paragraphMedium.rawValue
+            label.font = AppFonts.Styles.paragraphMedium.rawValue
 
             image.autoLayout.centerXToSuperview()
             image.autoLayout.centerYToSuperview(offset: -10)

@@ -28,8 +28,8 @@ public struct UIKitFactory {
     private init() {}
 
     public static func raisedButton(title: String,
-                                    pulseColor: UIColor = UIColor.App.onPrimary,
-                                    backgroundColor: UIColor = UIColor.App.primary) -> UIButton {
+                                    pulseColor: UIColor = AppColors.onPrimary,
+                                    backgroundColor: UIColor = AppColors.primary) -> UIButton {
         let button = RaisedButton(title: title, titleColor: pulseColor)
         //button.
         button.pulseColor = pulseColor
@@ -45,17 +45,17 @@ public struct UIKitFactory {
         some.placeholder = placeholder
         some.title = title
 
-        some.titleColor         = UIColor.App.UILabel.lblTextColor.withAlphaComponent(FadeType.regular.rawValue)
-        some.selectedTitleColor = UIColor.App.UILabel.lblTextColor
-        some.textColor          = UIColor.App.UILabel.lblTextColor
+        some.titleColor         = AppColors.UILabel.lblTextColor.withAlphaComponent(FadeType.regular.rawValue)
+        some.selectedTitleColor = AppColors.UILabel.lblTextColor
+        some.textColor          = AppColors.UILabel.lblTextColor
 
-        some.errorColor      = UIColor.App.error
-        some.titleErrorColor = UIColor.App.error
-        some.textErrorColor  = UIColor.App.error
-        some.lineErrorColor  = UIColor.App.error
+        some.errorColor      = AppColors.error
+        some.titleErrorColor = AppColors.error
+        some.textErrorColor  = AppColors.error
+        some.lineErrorColor  = AppColors.error
 
-        some.selectedLineColor = UIColor.App.primary
-        some.lineColor         = UIColor.App.primary.withAlphaComponent(FadeType.regular.rawValue)
+        some.selectedLineColor = AppColors.primary
+        some.lineColor         = AppColors.primary.withAlphaComponent(FadeType.regular.rawValue)
         some.tag = UIKitViewFactoryElementTag.textField.rawValue
         return some
     }
@@ -117,13 +117,13 @@ public struct UIKitFactory {
     public static func searchBar(baseView: UIView? = nil, placeholder: String) -> CustomSearchBar {
         let some = CustomSearchBar()
         baseView?.addSubview(some)
-        some.tintColor = UIColor.App.primary
+        some.tintColor = AppColors.primary
         some.tag =  UIKitViewFactoryElementTag.searchBar.rawValue
         some.barStyle = .default
 
         let searchBarTextAttributes = [
-            NSAttributedString.Key.font: UIFont.App.Styles.paragraphSmall.rawValue ,
-            NSAttributedString.Key.foregroundColor: UIColor.App.UILabel.lblTextColor
+            NSAttributedString.Key.font: AppFonts.Styles.paragraphSmall.rawValue ,
+            NSAttributedString.Key.foregroundColor: AppColors.UILabel.lblTextColor
         ]
         // Default attributes for search text
         UITextField.appearance(whenContainedInInstancesOf: [CustomSearchBar.self]).defaultTextAttributes = searchBarTextAttributes
@@ -149,14 +149,14 @@ public struct UIKitFactory {
         stackView.alignment = .center
         stackView.spacing = AppSizes.Margins.defaultMargin
         let label = UILabel()
-        label.font = UIFont.App.Styles.caption.rawValue 
+        label.font = AppFonts.Styles.caption.rawValue 
         label.backgroundColor = .clear
         let uiSwitch = UISwitch()
         label.numberOfLines = 0
         label.apply(style: .value)
         label.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .horizontal)
         label.text = caption
-        uiSwitch.tintColor = UIColor.App.primary
+        uiSwitch.tintColor = AppColors.primary
         uiSwitch.isOn = defaultValue
         uiSwitch.setContentHuggingPriority(UILayoutPriority.required, for: .horizontal)
         stackView.addArrangedSubview(label)

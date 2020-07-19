@@ -91,7 +91,7 @@ open class BottomBar: BaseViewControllerMVP {
     public override func viewDidLoad() {
         super.viewDidLoad()
         view.accessibilityIdentifier = self.genericAccessibilityIdentifier
-        self.view.backgroundColor = UIColor.App.primary
+        self.view.backgroundColor = AppColors.primary
     }
 
     public override func viewWillAppear(_ animated: Bool) {
@@ -125,7 +125,7 @@ open class BottomBar: BaseViewControllerMVP {
         let btnSize = CGSize(width: dimW, height: dimH)
         btns.forEach { (some) in
             if some == btn3 {
-                btn3.backgroundColor = UIColor.App.primary
+                btn3.backgroundColor = AppColors.primary
                 some.rjsALayouts.setWidth(dimW)
                 some.rjsALayouts.setMargin(margin, on: .top)
             } else {

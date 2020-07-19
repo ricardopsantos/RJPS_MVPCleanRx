@@ -8,6 +8,20 @@ excluded:
 
 custom_rules:
 
+    rule_UIColor_1:
+        included: ".*\\.swift"
+        name: "Forbiden UIColor.App"
+        regex: 'UIColor.App.'
+        message: "Don't use [UIColor.App]. Use [typealias AppColors = UIColor.App]"
+        severity: error
+
+    rule_UIFont_1:
+        included: ".*\\.swift"
+        name: "Forbiden UIFont.App"
+        regex: 'UIFont.App.'
+        message: "Don't use [UIFont.App]. Use [typealias AppColors = AppFonts.App]"
+        severity: warning
+
     rule_Coding:
         included: ".*\\.swift"
         name: "Forbiden Codable= ..."

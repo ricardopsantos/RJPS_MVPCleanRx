@@ -65,21 +65,21 @@ extension V {
 
         private lazy var lblTitle: UILabel = {
             let some = UIKitFactory.label(style: .notApplied)
-            some.font = UIFont.App.Styles.headingSmall.rawValue
+            some.font = AppFonts.Styles.headingSmall.rawValue
             some.textColor = UIColor.white
             return some
         }()
 
         private lazy var lblSpecification: UILabel = {
             let some = UIKitFactory.label(style: .notApplied)
-            some.font = UIFont.App.Styles.paragraphMedium.rawValue
+            some.font = AppFonts.Styles.paragraphMedium.rawValue
             some.textColor = UIColor.white
             return some
         }()
 
         private lazy var lblPrice: UILabel = {
             let some = UIKitFactory.label(style: .notApplied)
-            some.font = UIFont.App.Styles.headingBold.rawValue
+            some.font = AppFonts.Styles.headingBold.rawValue
             some.textColor = UIColor.Pack2.orange.color
             return some
         }()

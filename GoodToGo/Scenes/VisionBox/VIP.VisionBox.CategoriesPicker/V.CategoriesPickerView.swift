@@ -131,7 +131,7 @@ extension V {
         // Function 3/3 : Stuff that is not included in [prepareLayoutCreateHierarchy] and [prepareLayoutBySettingAutoLayoutsRules]
         override func prepareLayoutByFinishingPrepareLayout() {
             lblTitle.textAlignment = .left
-            lblTitle.font = UIFont.App.Styles.headingBold.rawValue
+            lblTitle.font = AppFonts.Styles.headingBold.rawValue
             lblTitle.text = "Select a category"
             //DevTools.DebugView.paint(view: self, method: 1)
         }

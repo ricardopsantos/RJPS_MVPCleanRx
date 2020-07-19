@@ -64,7 +64,7 @@ extension V {
 
         private lazy var lblTitle: UILabel = {
             let some = UIKitFactory.label(style: .title)
-            some.font = UIFont.App.Styles.headingBold.rawValue
+            some.font = AppFonts.Styles.headingBold.rawValue
             some.textColor = UIColor.black
             return some
          }()

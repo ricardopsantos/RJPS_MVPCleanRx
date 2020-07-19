@@ -5,6 +5,8 @@
 //  Copyright ©  Ricardo P Santos. All rights reserved.
 //
 
+//swiftlint:disable rule_UIColor_1 rule_UIFont_1
+
 import UIKit
 import Foundation
 //
