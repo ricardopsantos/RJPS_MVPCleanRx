@@ -12,7 +12,7 @@ import RJPSLib_Networking
 //
 import DevTools
 
-typealias WebAPIRequest_Protocol = RJS_NetworkClientRequestProtocol
+typealias WebAPIRequest_Protocol = RJS_SimpleNetworkClientRequestProtocol
 
 public typealias API = WebAPI
 public struct WebAPI { private init() {} }

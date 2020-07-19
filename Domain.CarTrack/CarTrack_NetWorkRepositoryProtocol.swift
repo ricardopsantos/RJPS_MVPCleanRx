@@ -16,7 +16,7 @@ import RJPSLib_Networking
 Web API Requests Protocol
  */
 
-public typealias CarTrack_NetWorkRepositoryCompletionHandler = (_ result: Result<RJSLibNetworkClientResponse<[CarTrack.CarTrackUserResponseDtoElement]>>) -> Void
+public typealias CarTrack_NetWorkRepositoryCompletionHandler = (_ result: Result<RJS_SimpleNetworkClientResponse<[CarTrack.CarTrackUserResponseDtoElement]>>) -> Void
 
 public protocol CarTrack_NetWorkRepositoryProtocol: class {
     func userDetails(completionHandler: @escaping CarTrack_NetWorkRepositoryCompletionHandler)

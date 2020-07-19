@@ -7,28 +7,12 @@
 //
 
 import Foundation
+//
 import Domain
 import AppResources
 
-public extension AppCodes {
-
-    static func initWith(error: Error) -> AppCodes {
-        return AppCodes.unknownError
-    }
-
-    func makeErrorWith(code: AppCodes) -> Error {
-        return code.toError
-    }
-    
-    var toError: Error {
-        return Factory.Errors.with(appCode: self)
-    }
-}
-
-public struct Factory {
-    private init() {}
-
-    public struct Errors {
+public extension Factory {
+    struct Errors {
         private init() {}
         public static func with(appCode: AppCodes, info: String="") -> Error {
             let domain: String = "\(Bundle.main.bundleIdentifier!)"
@@ -43,7 +27,21 @@ public struct Factory {
     }
 }
 
+// NSError to AppCode!
+
+public extension NSError {
+    var appCode: AppCodes? {
+        if let appCodeString = self.userInfo["userInfo.appCode"] {
+            if let appCode = AppCodes(rawValue: Int("\(appCodeString)") ?? -1) {
+                return appCode
+            }
+        }
+        return AppCodes.unknownError
+    }
+}
+
 // Error to AppCode!
+
 public extension Error {
 
     var localisedMessageForView: String {
@@ -59,14 +57,17 @@ public extension Error {
     }
 }
 
-// NSError to AppCode!
-public extension NSError {
-    var appCode: AppCodes? {
-        if let appCodeString = self.userInfo["userInfo.appCode"] {
-            if let appCode = AppCodes(rawValue: Int("\(appCodeString)") ?? -1) {
-                return appCode
-            }
-        }
+public extension AppCodes {
+
+    static func initWith(error: Error) -> AppCodes {
         return AppCodes.unknownError
+    }
+
+    func makeErrorWith(code: AppCodes) -> Error {
+        return code.toError
+    }
+
+    var toError: Error {
+        return Factory.Errors.with(appCode: self)
     }
 }

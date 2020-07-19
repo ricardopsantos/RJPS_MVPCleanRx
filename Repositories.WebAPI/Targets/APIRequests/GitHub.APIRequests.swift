@@ -16,7 +16,7 @@ import PointFreeFunctions
 import Domain
 import DevTools
 
-public extension API.GitUserAPIRequest {
+public extension API.GitHubAPIRequest {
 
     enum Target {
         case getUser(userName: String)
@@ -35,8 +35,8 @@ public extension API.GitUserAPIRequest {
 
         var httpMethod: String {
             switch self {
-            case .getUser   : return RJS_NetworkClient.HttpMethod.get.rawValue
-            case .getFriends: return RJS_NetworkClient.HttpMethod.get.rawValue
+            case .getUser   : return RJS_SimpleNetworkClient.HttpMethod.get.rawValue
+            case .getFriends: return RJS_SimpleNetworkClient.HttpMethod.get.rawValue
             }
         }
     }
@@ -44,14 +44,15 @@ public extension API.GitUserAPIRequest {
 
 // MARK: - GetUserInfo
 
-public extension API.GitUserAPIRequest {
+public extension API.GitHubAPIRequest {
 
     struct GetUserInfo: WebAPIRequest_Protocol {
         public var returnOnMainTread: Bool
         public var debugRequest: Bool
         public var urlRequest: URLRequest
-        public var responseType: RJSLibNetworkClientResponseType
-        public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.GitHub.getUser_200 : nil }
+        public var responseType: RJS_SimpleNetworkClientResponseType
+        //public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.GitHub.getUser_200 : nil }
+        public var mockedData: String? { return AppConstants.Mocks.GitHub.getUser_200 }
 
         init(userName: String) throws {
             let urlString = Target.getUser(userName: userName).endpoint
@@ -69,12 +70,12 @@ public extension API.GitUserAPIRequest {
 
 // MARK: - GetFriends
 
-public extension API.GitUserAPIRequest {
+public extension API.GitHubAPIRequest {
     struct GetFriends: WebAPIRequest_Protocol {
         public var returnOnMainTread: Bool
         public var debugRequest: Bool
         public var urlRequest: URLRequest
-        public var responseType: RJSLibNetworkClientResponseType
+        public var responseType: RJS_SimpleNetworkClientResponseType
         public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.GitHub.getUser_200 : nil }
 
         init(userName: String) throws {

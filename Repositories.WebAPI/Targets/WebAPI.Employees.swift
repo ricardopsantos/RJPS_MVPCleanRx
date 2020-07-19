@@ -24,8 +24,8 @@ public extension API.Employees {
         public func netWork_OperationA(completionHandler: @escaping Samples_NetWorkRepositoryCompletionHandler) {
             do {
                 let apiRequest: WebAPIRequest_Protocol = try WebAPI.EmployeesAPIRequest.GetEmployees_APIRequest()
-                let apiClient: RJSLibNetworkClient_Protocol  = RJSLib.NetworkClient()
-                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<RJSLibNetworkClientResponse<[Employee.ResponseDto]>>) in
+                let apiClient: RJS_SimpleNetworkClientProtocol = RJS_SimpleNetworkClient()
+                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<RJS_SimpleNetworkClientResponse<[Employee.ResponseDto]>>) in
                     completionHandler(result)
                 })
             } catch let error {

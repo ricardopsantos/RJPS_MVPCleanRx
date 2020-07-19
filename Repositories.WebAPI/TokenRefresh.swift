@@ -40,7 +40,7 @@ class WEBAPI {
     func asyncRequest(param: String, result: @escaping(String) -> Void) {
 
         func requestThatNeedsToken(_ token: String) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { result("assyncRequestA.response.[\(param)][\(token)]") }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { result("asyncRequestA.response.[\(param)][\(token)]") }
         }
 
         _rxObservableGetTokenRequest.subscribe(onSuccess: { _ in
@@ -51,19 +51,19 @@ class WEBAPI {
     private var _rxObservableGetTokenRequest: Single<Void> {
         return Single<Void>.create { observer -> Disposable in
             let identifier = "# TokenRefresh: "
-            let endSequecence = {
+            let endSequeence = {
                 DevTools.Log.message("\(identifier)Returned valid token.")
                 observer(.success(()))
             }
             if self.rxTokenState.value == .valid {
-                endSequecence()
+                endSequeence()
             } else {
                 if self.rxTokenState.value == .refreshing {
-                    DevTools.Log.message("\(identifier)A new Token is allready refreshing. Will observe for a change....")
+                    DevTools.Log.message("\(identifier)A new Token is already refreshing. Will observe for a change....")
                     self.rxTokenState.subscribe(onNext: { state in
                         if state == .valid {
                             DevTools.Log.message("\(identifier)Theres a new token available!")
-                            endSequecence()
+                            endSequeence()
                         }
                         }).disposed(by: disposeBag)
                 } else {
@@ -75,7 +75,7 @@ class WEBAPI {
                             DevTools.Log.message("\(identifier)New Token generated!".uppercased() + " -> " + newToken)
                             self.rxTokenValue.accept(newToken)
                             self.rxTokenState.accept(.valid)
-                            endSequecence()
+                            endSequeence()
                         } else {
                             DevTools.Log.message("\(identifier)Fail generating token!".uppercased())
                             self.rxTokenState.accept(.invalid)

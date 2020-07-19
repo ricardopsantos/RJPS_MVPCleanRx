@@ -16,10 +16,10 @@ public extension API {
 }
 
 public extension API {
-    struct GitUser {
+    struct GitHub {
         private init() { }
     }
-    struct GitUserAPIRequest { private init() {} }
+    struct GitHubAPIRequest { private init() {} }
 }
 
 public extension API {

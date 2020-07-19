@@ -12,9 +12,9 @@ import RJPSLib_Networking
 //
 import Domain
 
-public typealias GitUser_Single_NetWorkRepositoryCompletionHandler = (_ result: Result<RJSLibNetworkClientResponse<GitHub.UserResponseDto>>) -> Void
+public typealias GitUser_Single_NetWorkRepositoryCompletionHandler = (_ result: Result<RJS_SimpleNetworkClientResponse<GitHub.UserResponseDto>>) -> Void
 
-public typealias GitUser_Friends_NetWorkRepositoryCompletionHandler = (_ result: Result<RJSLibNetworkClientResponse<[GitHub.UserResponseDto]>>) -> Void
+public typealias GitUser_Friends_NetWorkRepositoryCompletionHandler = (_ result: Result<RJS_SimpleNetworkClientResponse<[GitHub.UserResponseDto]>>) -> Void
 
 public protocol GitUser_NetWorkRepositoryProtocol: class {
 

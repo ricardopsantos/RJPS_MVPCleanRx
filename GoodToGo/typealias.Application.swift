@@ -23,11 +23,11 @@ import Designables
 
 typealias AppInfo                = RJS_AppInfo
 typealias AppCoreDataManager     = RJS_DataModel
-typealias AppSimpleNetworkClient = RJS_NetworkClient
+typealias AppSimpleNetworkClient = RJS_SimpleNetworkClient
 typealias AppUtils               = RJS_Utils
 typealias AppUserDefaultsVars    = RJS_UserDefaultsVars
 typealias AppUserDefaults        = RJS_UserDefaults
-typealias WebAPIRequest_Protocol = RJS_NetworkClientRequestProtocol
+typealias WebAPIRequest_Protocol = RJS_SimpleNetworkClientRequestProtocol
 
 // MARK: - App Shortcuts
 

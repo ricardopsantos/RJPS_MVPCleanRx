@@ -15,17 +15,13 @@ import Domain
 
 public extension RP {
     class SimpleCacheRepository: SimpleCacheRepositoryProtocol {
-
         public init () {}
-
         public func add(object: AnyObject, withKey: String) {
             RJS_LiveCache.shared.add(object: object, withKey: withKey)
         }
-
         public func get(key: String) -> AnyObject? {
             return RJS_LiveCache.shared.get(key: key)
         }
-
         public func clean(sender: String) {
             RJS_LiveCache.shared.clean()
         }

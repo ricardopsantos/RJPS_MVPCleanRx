@@ -35,7 +35,7 @@ public extension API.EmployeesAPIRequest {
 
         public var httpMethod: String {
             switch self {
-            case .getEmployees: return RJS_NetworkClient.HttpMethod.get.rawValue
+            case .getEmployees: return RJS_SimpleNetworkClient.HttpMethod.get.rawValue
             }
         }
     }
@@ -49,7 +49,7 @@ public extension API.EmployeesAPIRequest {
         public var returnOnMainTread: Bool = true
         public var debugRequest: Bool = DevTools.devModeIsEnabled
         public var urlRequest: URLRequest
-        public var responseType: RJSLibNetworkClientResponseType
+        public var responseType: RJS_SimpleNetworkClientResponseType
         public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.Employees.getEmployees_200 : nil }
 
         public init() throws {

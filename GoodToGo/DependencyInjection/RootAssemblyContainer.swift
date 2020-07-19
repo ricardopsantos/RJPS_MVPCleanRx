@@ -29,7 +29,7 @@ struct RootAssemblyContainerProtocols {
     //
     // Repositories
     //
-    static let networkClient                      = RJSLibNetworkClient_Protocol.self
+    static let networkClient                      = RJS_SimpleNetworkClientProtocol.self
     static let generic_CacheRepository            = SimpleCacheRepositoryProtocol.self
     static let generic_LocalStorageRepository     = KeyValuesStorageRepositoryProtocol.self
     static let gitUser_NetWorkRepository          = GitUser_NetWorkRepositoryProtocol.self
@@ -79,7 +79,7 @@ final class RootAssemblyContainer: Assembly {
                                initializer: RP.SimpleCacheRepository.init).inObjectScope(.container)
         
         container.autoregister(AppProtocols.networkClient,
-                               initializer: RJSLib.NetworkClient.init).inObjectScope(.container)
+                               initializer: RJS_SimpleNetworkClient.init).inObjectScope(.container)
         
         container.autoregister(AppProtocols.generic_LocalStorageRepository,
                                initializer: RP.KeyValuesStorageRepository.init).inObjectScope(.container)
@@ -136,7 +136,7 @@ final class RootAssemblyContainer: Assembly {
         //
 
         container.autoregister(AppProtocols.gitUser_NetWorkRepository,
-                               initializer: API.GitUser.NetWorkRepository.init).inObjectScope(.container)
+                               initializer: API.GitHub.NetWorkRepository.init).inObjectScope(.container)
 
         container.register(AppProtocols.gitUser_UseCase) { resolver in
             let uc = GitUser_UseCase()

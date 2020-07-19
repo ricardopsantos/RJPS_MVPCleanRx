@@ -92,7 +92,7 @@ extension GoodToGo.V {
 
         private lazy var txtUserName: SkyFloatingLabelTextField = {
             let some = UIKitFactory.skyFloatingLabelTextField(title: Messages.email.localised,
-                                                              placeholder: "Your \(Messages.invalidEmail.localised)")
+                                                              placeholder: "Your \(Messages.email.localised)")
             some.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
             return some
         }()

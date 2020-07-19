@@ -34,7 +34,7 @@ public extension API.CarTrackAPIRequest {
 
         public var httpMethod: String {
             switch self {
-            case .getUsers: return RJS_NetworkClient.HttpMethod.get.rawValue
+            case .getUsers: return RJS_SimpleNetworkClient.HttpMethod.get.rawValue
             }
         }
     }
@@ -47,7 +47,7 @@ public extension API.CarTrackAPIRequest {
         public var returnOnMainTread: Bool
         public var debugRequest: Bool
         public var urlRequest: URLRequest
-        public var responseType: RJSLibNetworkClientResponseType
+        public var responseType: RJS_SimpleNetworkClientResponseType
         public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.CarTrack.get_200 : nil }
 
         init(userName: String) throws {

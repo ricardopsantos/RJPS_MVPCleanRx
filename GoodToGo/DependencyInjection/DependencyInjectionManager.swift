@@ -17,9 +17,8 @@ final class ApplicationAssembly {
             AS.SearchUser_AssemblyContainer(),
             AS.UserDetails_AssemblyContainer(),
             AS.MVPSampleView_AssemblyContainer(),
-            AS.MVPSampleRxView_AssemblyContainer(),
-            AS.MVPSampleTableView_AssemblyContainer()
-            
+            AS.MVPSampleRxView_AssemblyContainer()
+
             //AS.BlissQuestionsList_AssemblyContainer(),
             //AS.BlissRoot_AssemblyContainer(),
             //AS.BlissDetails_AssemblyContainer()

@@ -26,8 +26,8 @@ public extension API.CarTrack {
         public func userDetails(completionHandler: @escaping CarTrack_NetWorkRepositoryCompletionHandler) {
             do {
                 let apiRequest: WebAPIRequest_Protocol = try WebAPI.CarTrackAPIRequest.GetUserInfo(userName: "")
-                let apiClient: RJSLibNetworkClient_Protocol  = RJSLib.NetworkClient()
-                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<RJSLibNetworkClientResponse<[CarTrack.CarTrackUserResponseDtoElement]>>) in
+                let apiClient: RJS_SimpleNetworkClientProtocol = RJS_SimpleNetworkClient()
+                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<RJS_SimpleNetworkClientResponse<[CarTrack.CarTrackUserResponseDtoElement]>>) in
                     completionHandler(result)
                 })
             } catch let error {
