@@ -11,8 +11,10 @@
 import UIKit
 import Foundation
 //
+import RJSPLib_AppThemes
+//
 import DevTools
 import AppResources
 
-typealias AppColors = UIColor.App
-typealias AppFonts  = UIFont.App
+public typealias AppColors = UIColor.App
+public typealias AppFonts  = RJSPLib_AppThemes.RJS_Fonts

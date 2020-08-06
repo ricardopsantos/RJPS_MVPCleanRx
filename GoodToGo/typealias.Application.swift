@@ -13,6 +13,7 @@ import Foundation
 import RJPSLib_Base
 import RJPSLib_Storage
 import RJPSLib_Networking
+import RJSPLib_AppThemes
 //
 import AppConstants
 import AppTheme
@@ -33,8 +34,8 @@ typealias WebAPIRequest_Protocol = RJS_SimpleNetworkClientRequestProtocol
 
 // MARK: - App Shortcuts
 
-typealias AppColors              = UIColor.App
-typealias AppFonts               = UIFont.App
-typealias AppProtocols           = RootAssemblyContainerProtocols
+typealias AppColors    = UIColor.App
+typealias AppFonts     = RJSPLib_AppThemes.RJS_Fonts
+typealias AppProtocols = RootAssemblyContainerProtocols
 
 // MARK: - DevTools

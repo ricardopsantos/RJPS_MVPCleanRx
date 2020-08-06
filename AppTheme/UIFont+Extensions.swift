@@ -7,7 +7,7 @@
 
 import UIKit
 import Foundation
-
+/*
 public extension UIFont {
     struct App {
 
@@ -69,3 +69,4 @@ public extension UIFont {
         }
     }
 }
+*/

@@ -8,6 +8,8 @@
 import UIKit
 import Foundation
 //
+import RJSPLib_AppThemes
+//
 import AppConstants
 
 public extension UILabel {
@@ -15,10 +17,6 @@ public extension UILabel {
     var layoutStyle: UILabel.LayoutStyle {
         set { apply(style: newValue) }
         get { return .notApplied }
-    }
-    var textAnimated: String? {
-        set { fadeTransition(); self.text = newValue ?? "" }
-        get { return self.text }
     }
 
     func apply(style: UILabel.LayoutStyle) {
@@ -66,7 +64,7 @@ public extension UILabel {
 //
 // Private
 //
-
+/*
 extension UILabel {
     
     private func fadeTransition(_ duration: CFTimeInterval=0.5) {
@@ -78,3 +76,4 @@ extension UILabel {
     }
     
 }
+*/

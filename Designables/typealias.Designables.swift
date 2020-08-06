@@ -13,10 +13,11 @@ import Foundation
 //
 import AppResources
 import RJPSLib_Base
+import RJSPLib_AppThemes
 
 public typealias CustomSearchBar = RJS_Designables_SearchBar
 public typealias AppSizes = Designables.Sizes
 public typealias AppleSizes = Designables.Sizes.Apple
 
 public typealias AppColors = UIColor.App
-public typealias AppFonts  = UIFont.App
+public typealias AppFonts  = RJSPLib_AppThemes.RJS_Fonts

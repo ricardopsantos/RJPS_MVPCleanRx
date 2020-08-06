@@ -322,6 +322,7 @@
 		D7F2DE3924754758008CE3DA /* VCPresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2DE3824754758008CE3DA /* VCPresentationStyle.swift */; };
 		D7FA21F724708B9C001DD9D5 /* ReachabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA21F324706A32001DD9D5 /* ReachabilityView.swift */; };
 		D7FA2207247189B9001DD9D5 /* TokenRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA2206247189B9001DD9D5 /* TokenRefresh.swift */; };
+		D7FC6D2724DC807A00D01B42 /* RJSPLib_AppThemes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FC6D2624DC807A00D01B42 /* RJSPLib_AppThemes.framework */; };
 		D7FCAC2024685B7A00DBECA2 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FCAC1F24685B7A00DBECA2 /* RxDataSources.framework */; };
 		D7FCAC27246874C900DBECA2 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FCAC242468748B00DBECA2 /* UIView+Extensions.swift */; };
 		D7FCAC292468753500DBECA2 /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FECF2468412100BD41A5 /* UIView+Autolayout.swift */; };
@@ -1216,6 +1217,7 @@
 		D7F2DE3824754758008CE3DA /* VCPresentationStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCPresentationStyle.swift; sourceTree = "<group>"; };
 		D7FA21F324706A32001DD9D5 /* ReachabilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityView.swift; sourceTree = "<group>"; };
 		D7FA2206247189B9001DD9D5 /* TokenRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRefresh.swift; sourceTree = "<group>"; };
+		D7FC6D2624DC807A00D01B42 /* RJSPLib_AppThemes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RJSPLib_AppThemes.framework; path = Carthage/Build/iOS/RJSPLib_AppThemes.framework; sourceTree = "<group>"; };
 		D7FCAC1F24685B7A00DBECA2 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
 		D7FCAC222468697000DBECA2 /* Factory+Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Factory+Errors.swift"; sourceTree = "<group>"; };
 		D7FCAC242468748B00DBECA2 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
@@ -1233,6 +1235,7 @@
 				D77824B2247900650071776F /* Lottie.framework in Frameworks */,
 				D77824B024784BBF0071776F /* NSLoggerSwift.framework in Frameworks */,
 				D7E25AAA24669D1A003BBEA0 /* AppConstants.framework in Frameworks */,
+				D7FC6D2724DC807A00D01B42 /* RJSPLib_AppThemes.framework in Frameworks */,
 				9F69CB1422BE8544008D305D /* AVKit.framework in Frameworks */,
 				D72922E62466B06300DAD480 /* AppTheme.framework in Frameworks */,
 				D7F2DD862474587C008CE3DA /* Domain_CarTrack.framework in Frameworks */,
@@ -1405,6 +1408,7 @@
 		4546C3C321B570CD00127A20 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D7FC6D2624DC807A00D01B42 /* RJSPLib_AppThemes.framework */,
 				D75A71C024BBA24500CC8463 /* RJPSLib_ALayouts.framework */,
 				D75A71C224BBA24500CC8463 /* RJPSLib_Base.framework */,
 				D75A71C324BBA24500CC8463 /* RJPSLib_Networking.framework */,
@@ -3288,6 +3292,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RJPSLib_Networking.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RJPSLib_ALayouts.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RJPSLib_Base.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RJSPLib_AppThemes.framework",
 			);
 			outputFileListPaths = (
 			);
