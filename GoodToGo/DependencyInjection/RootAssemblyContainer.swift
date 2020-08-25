@@ -11,11 +11,13 @@ import RJPSLib_Networking
 import Domain
 import Domain_CarTrack
 import Domain_GitHub
+import Domain_GalleryApp
 import Repositories
 import Repositories_WebAPI
 import Core
 import Core_CarTrack
 import Core_GitHub
+import Core_GalleryApp
 
 public typealias AS = AssembyContainer
 public struct AssembyContainer { private init() {} }
@@ -34,6 +36,7 @@ struct RootAssemblyContainerProtocols {
     static let generic_LocalStorageRepository     = KeyValuesStorageRepositoryProtocol.self
     static let gitUser_NetWorkRepository          = GitUser_NetWorkRepositoryProtocol.self
     static let carTrack_NetWorkRepository         = CarTrack_NetWorkRepositoryProtocol.self
+    static let galleryApp_NetWorkRepository       = GalleryAppNetWorkRepositoryProtocol.self
 
     //
     // Use Cases
@@ -50,6 +53,10 @@ struct RootAssemblyContainerProtocols {
     static let carTrackGenericAppBusiness_UseCase = CarTrackGenericAppBusiness_UseCaseProtocol.self
     static let carTrackAPI_UseCase                = CarTrackAPIRelated_UseCaseProtocol.self
 
+    // GalleryApp
+    static let galleryAppGenericAppBusiness_UseCase = GalleryAppGenericBusinessUseCaseProtocol.self
+    static let galleryAPI_UseCase                   = GalleryAppAPIUseCase.self
+
 }
 
 //
@@ -61,6 +68,13 @@ public class CarTrackResolver {
     public static var shared   = CarTrackResolver()
     public let api             = AppDelegate.shared.container.resolve(AppProtocols.carTrackAPI_UseCase.self)
     public let genericBusiness = AppDelegate.shared.container.resolve(AppProtocols.carTrackGenericAppBusiness_UseCase.self)
+}
+
+public class GalleryAppResolver {
+    private init() { }
+    public static var shared   = GalleryAppResolver()
+    public let api             = AppDelegate.shared.container.resolve(AppProtocols.galleryAPI_UseCase.self)
+    public let genericBusiness = AppDelegate.shared.container.resolve(AppProtocols.galleryAppGenericAppBusiness_UseCase.self)
 }
 
 //
@@ -83,6 +97,28 @@ final class RootAssemblyContainer: Assembly {
         
         container.autoregister(AppProtocols.generic_LocalStorageRepository,
                                initializer: RP.KeyValuesStorageRepository.init).inObjectScope(.container)
+
+        //
+        // GalleryApp
+        //
+
+        container.autoregister(AppProtocols.galleryApp_NetWorkRepository,
+                               initializer: API.GalleryApp.NetWorkRepository.init).inObjectScope(.container)
+
+        container.register(AppProtocols.galleryAPI_UseCase) { resolver in
+            let uc = GalleryAppAPIUseCase()
+            uc.repositoryNetwork               = resolver.resolve(AppProtocols.galleryApp_NetWorkRepository)
+            uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
+            uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
+            return uc
+        }
+
+        container.register(AppProtocols.galleryAppGenericAppBusiness_UseCase) { resolver in
+            let uc = Core_GalleryApp.GalleryAppGenericAppBusinessUseCase()
+            uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
+            uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
+            return uc
+        }
 
         //
         // CarTrack

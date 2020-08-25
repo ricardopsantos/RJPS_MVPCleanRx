@@ -7,6 +7,7 @@
 
 import UIKit
 //
+import RJPSLib_Base
 import RxSwift
 import RxCocoa
 import RJPSLib_Networking
@@ -14,11 +15,11 @@ import RJPSLib_Networking
 import AppConstants
 import PointFreeFunctions
 import Domain
+import Domain_GalleryApp
 import DevTools
 
 // MARK: - Target
 
-let hummmm = "f9cc-014f-a76b-098f-9e82-f1c2-8837-9ea1".replace("-", with: "")
 public extension API.GalleryAppAPIRequest {
     enum Target {
         case search
@@ -27,9 +28,13 @@ public extension API.GalleryAppAPIRequest {
             return "https://api.flickr.com/services/rest"
         }
 
+        public var key: String {
+            "DTBfK2jeRNQ3ABo9l+elSOK9hYeMkKhoTt6f9L43aU7iq+Y7rId+k4TSJDIVNZy6LNaL2uHVkyVy2CEC".aesDecrypt()
+        }
+
         public var endpoint: String {
             switch self {
-            case .search: return "\(baseURL)/?method=flickr.photos.search&api_key=\(hummmm)&tags=kitten&page=1&format=json&nojsoncallback=1"
+            case .search: return "\(baseURL)/?method=flickr.photos.search&api_key=\(key)&tags=kitten&page=1&format=json&nojsoncallback=1"
             }
         }
 
@@ -59,11 +64,12 @@ public extension API.GalleryAppAPIRequest {
             guard let url = URL(string: urlString) else {
                 throw APIErrors.invalidURL(url: urlString)
             }
+           // print(url)
             urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = Target.search.httpMethod
             responseType      = .json
             debugRequest      = DevTools.devModeIsEnabled
-            returnOnMainTread = false
+            returnOnMainTread = true
         }
     }
 }

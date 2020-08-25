@@ -11,6 +11,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import Swinject
+import RJPSLib_Base
 //
 import AppResources
 import UIBase
@@ -25,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    //"f9cc-014f-a76b-098f-9e82-f1c2-8837-9ea1".e
     static var shared: AppDelegate { return UIApplication.shared.delegate as! AppDelegate }
     public var reachabilityService: ReachabilityService? = DevTools.reachabilityService
 
@@ -32,6 +34,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let container: Container = { return ApplicationAssembly.assembler.resolver as! Container }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+        GoodToGo.GalleryAppResolver.shared.api?.repositoryNetwork.search(completionHandler: { (x) in
+            print(x)
+        })
 
         if CommandLine.arguments.contains(AppConstants.Testing.CommandLineArguments.deleteUserData) {
             //resetAllData = true

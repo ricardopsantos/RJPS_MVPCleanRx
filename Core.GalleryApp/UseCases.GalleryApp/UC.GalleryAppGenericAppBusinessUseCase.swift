@@ -15,18 +15,18 @@ import Domain_GalleryApp
 import Factory
 import Core
 
-public class GalleryAppGenericAppBusinessUseCase: GenericUseCase, GalleryAppGenericAppBusiness_UseCaseProtocol {
+public class GalleryAppGenericAppBusinessUseCase: GenericUseCase, GalleryAppGenericBusinessUseCaseProtocol {
 
     public override init() { super.init() }
 
     public var generic_CacheRepositoryProtocol: SimpleCacheRepositoryProtocol!
     public var generic_LocalStorageRepository: KeyValuesStorageRepositoryProtocol!
 
-    public func validate(user: String,
+   /* public func validate(user: String,
                          password: String,
                          completionHandler: @escaping GalleryAppGenericAppBusinessUseCaseCompletionHandler) {
 
         //completionHandler(Result.success(success))
         completionHandler(Result.failure(Factory.Errors.with(appCode: .invalidCredentials)))
-    }
+    }*/
 }
