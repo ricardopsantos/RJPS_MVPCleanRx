@@ -8,20 +8,20 @@ import Foundation
 import RJPSLib_Networking
 //
 import DevTools
-import Domain_CarTrack
+import Domain_GalleryApp
 
 /**
 * WE CANT HAVE BUSINESS RULES HERE! THE CLIENT JUST DO THE OPERATION AND LEAVE
 */
 
-public extension API.CarTrack {
+public extension API.GalleryApp {
 
-    class NetWorkRepository: CarTrack_NetWorkRepositoryProtocol {
+    class NetWorkRepository: GalleryAppNetWorkRepositoryProtocol {
 
         public init() { }
 
-        public func userDetails(completionHandler: @escaping CarTrack_NetWorkRepositoryCompletionHandler) {
-            do {
+        public func userDetails(completionHandler: @escaping GalleryAppNetWorkRepositoryCompletionHandler) {
+          /*  do {
                 let apiRequest: WebAPIRequest_Protocol = try WebAPI.CarTrackAPIRequest.GetUserInfo(userName: "")
                 let apiClient: RJS_SimpleNetworkClientProtocol = RJS_SimpleNetworkClient()
                 apiClient.execute(request: apiRequest, completionHandler: { (result: Result<RJS_SimpleNetworkClientResponse<[CarTrack.CarTrackUserResponseDtoElement]>>) in
@@ -29,7 +29,7 @@ public extension API.CarTrack {
                 })
             } catch let error {
                 completionHandler(Result.failure(error))
-            }
+            }*/
         }
     }
 }

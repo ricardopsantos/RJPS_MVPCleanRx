@@ -35,3 +35,10 @@ public extension API {
     }
     struct CarTrackAPIRequest { private init() {} }
 }
+
+public extension API {
+    struct GalleryApp {
+        private init() { }
+    }
+    struct GalleryAppAPIRequest { private init() {} }
+}

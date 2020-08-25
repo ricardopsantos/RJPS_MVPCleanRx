@@ -16,6 +16,8 @@ import PointFreeFunctions
 import Domain
 import DevTools
 
+// MARK: - Target
+
 public extension API.GitHubAPIRequest {
 
     enum Target {
