@@ -69,7 +69,6 @@ extension V {
         }()
 
         private lazy var searchBar: CustomSearchBar = {
-            //UISearchBar()
             UIKitFactory.searchBar(placeholder: Messages.search.localised)
         }()
 
@@ -85,9 +84,6 @@ extension V {
                     self.collectionView.reloadData()
                     if self.collectionViewDataSource.count > 0 {
                         self.collectionView.fadeTo(1)
-                        //if let text = self.collectionViewDataSource.first?.category.toString {
-                        //    self.lblTitle.textAnimated = text
-                        //}
                     }
                 }
             }
@@ -104,7 +100,7 @@ extension V {
 
         private lazy var collectionView: UICollectionView = {
              let viewLayout = UICollectionViewFlowLayout()
-             viewLayout.scrollDirection = .horizontal
+             viewLayout.scrollDirection = .vertical
              let some = UICollectionView(frame: .zero, collectionViewLayout: viewLayout)
              return some
          }()
@@ -123,8 +119,7 @@ extension V {
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(lblTitle)
             stackViewVLevel1.uiUtils.addArrangedSeparator()
             addSubview(tableView)
-
-            tableView.addSubview(collectionView)
+            addSubview(collectionView)
         }
 
         // This function is called automatically by super BaseGenericViewVIP
@@ -145,7 +140,10 @@ extension V {
             tableView.autoLayout.trailingToSuperview()
             tableView.autoLayout.bottomToSuperview()
 
-            collectionView.autoLayout.edgesToSuperview()
+            collectionView.autoLayout.topToBottom(of: searchBar, offset: Designables.Sizes.Margins.defaultMargin)
+            collectionView.autoLayout.leadingToSuperview()
+            collectionView.autoLayout.trailingToSuperview()
+            collectionView.autoLayout.bottomToSuperview()
 
         }
 
@@ -160,7 +158,7 @@ extension V {
             tableView.rx.setDelegate(self).disposed(by: disposeBag)
             lblTitle.textAlignment = .center
 
-            collectionView.rx.setDelegate(self).disposed(by: disposeBag)
+           // collectionView.rx.setDelegate(self).disposed(by: disposeBag)
             collectionView.register(V.CustomCollectionViewCell.self, forCellWithReuseIdentifier: V.CustomCollectionViewCell.identifier)
             collectionView.delegate = self
             collectionView.dataSource = self
@@ -168,6 +166,7 @@ extension V {
 
         override func setupColorsAndStyles() {
             self.backgroundColor = AppColors.backgroundColor
+          //  collectionView.backgroundColor = self.backgroundColor
             tableView.backgroundColor = self.backgroundColor
             searchBar.backgroundColor = self.backgroundColor
             searchBar.tintColor = self.backgroundColor
