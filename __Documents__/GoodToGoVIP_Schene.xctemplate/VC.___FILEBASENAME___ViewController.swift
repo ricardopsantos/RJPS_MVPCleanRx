@@ -181,7 +181,7 @@ extension VC.___VARIABLE_sceneName___ViewController {
     }
 }
 
-// MARK: DisplayLogicProtocolProtocol
+// MARK: DisplayLogicProtocol
 
 extension VC.___VARIABLE_sceneName___ViewController: ___VARIABLE_sceneName___DisplayLogicProtocol {
 

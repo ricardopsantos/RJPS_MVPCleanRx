@@ -147,22 +147,11 @@ extension V {
                 configureCell: { _, tableView, indexPath, item in
                     let row = indexPath.row
                     let section = indexPath.section
-                    switch item.cellType {
-                    case .cellType1:
-                        let reuseIdentifier = V.GalleryAppS1TableViewCell.reuseIdentifier
-                        if let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier,
-                                                                    for: IndexPath(row: row, section: section)) as? V.GalleryAppS1TableViewCell {
-                            cell.configWith(viewModel: item)
-                            return cell
-                        }
-                    case .cellType2:
-                        let reuseIdentifier = V.GalleryAppS1TableViewCell.reuseIdentifier
-                        if let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier,
-                                                                    for: IndexPath(row: row, section: section)) as? V.GalleryAppS1TableViewCell {
-                            cell.configWith(viewModel: item)
-                            return cell
-                        }
-                    }
+                    let reuseIdentifier = V.GalleryAppS1TableViewCell.reuseIdentifier
+                     if let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: IndexPath(row: row, section: section)) as? V.GalleryAppS1TableViewCell {
+                         cell.configWith(viewModel: item)
+                         return cell
+                     }
                     return UITableViewCell()
             })
             dataSource.animationConfiguration = AnimationConfiguration(insertAnimation: .fade, reloadAnimation: .fade, deleteAnimation: .fade)
@@ -193,22 +182,13 @@ extension V {
             }
         }
 
-        func setupWith(someStuff viewModel: VM.GalleryAppS1.Something.ViewModel) {
-            subTitle = viewModel.subTitle
-            let sectionA = Section(model: viewModel.someListSectionATitle, items: viewModel.someListSectionAElements)
-            let sectionB = Section(model: viewModel.someListSectionBTitle, items: viewModel.someListSectionBElements)
-            rxTableItems.onNext([sectionA, sectionB])
+        func setupWith(searchByTag viewModel: VM.GalleryAppS1.SearchByTag.ViewModel) {
+            let section = Section(model: viewModel.dataSourceTitle, items: viewModel.dataSource)
+            rxTableItems.onNext([section])
         }
 
         func setupWith(screenInitialState viewModel: VM.GalleryAppS1.ScreenInitialState.ViewModel) {
             subTitle = viewModel.subTitle
-            screenLayout = viewModel.screenLayout
-        }
-
-        var screenLayout: E.GalleryAppS1View.ScreenLayout = .layoutA {
-            didSet {
-                // show or hide stuff
-            }
         }
     }
 }
@@ -228,14 +208,10 @@ extension V.GalleryAppS1View: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if let sectionItem = try? rxTableItems.value() {
-            let item = sectionItem[indexPath.section].items[indexPath.row]
-            switch item.cellType {
-            case .cellType1: return V.GalleryAppS1TableViewCell.cellSize
-            case .cellType2: return V.GalleryAppS1TableViewCell.cellSize
-            }
-        }
-        return 0
+        //if let sectionItem = try? rxTableItems.value() {
+        //    let item = sectionItem[indexPath.section].items[indexPath.row]
+        //}
+        return V.GalleryAppS1TableViewCell.cellSize
     }
 }
 

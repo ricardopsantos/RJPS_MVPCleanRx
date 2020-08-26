@@ -73,6 +73,6 @@ extension VC {
     }
 }
 
-// MARK: DisplayLogicProtocolProtocol
+// MARK: DisplayLogicProtocol
 
 extension VC.DataStoreReceiverViewController: DataStoreReceiverDisplayLogicProtocol { }

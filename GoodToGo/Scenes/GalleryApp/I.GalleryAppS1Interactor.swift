@@ -35,7 +35,7 @@ import Domain_GalleryApp
 //
 
 extension I {
-    class GalleryAppS1Interactor: BaseInteractorVIP, GalleryAppS1DataStoreProtocol {
+    class GalleryAppS1Interactor: BaseInteractorVIP {
 
         deinit {
             DevTools.Log.logDeInit("\(GalleryAppS1Interactor.self) was killed")
@@ -44,10 +44,6 @@ extension I {
         var presenter: GalleryAppS1PresentationLogicProtocol?
         weak var basePresenter: BasePresenterVIPProtocol? { return presenter }
         var worker = GalleryAppResolver.shared.worker
-
-        // DataStoreProtocol Protocol vars...
-        var dsSomeKindOfModelAThatWillBePassedToOtherRouter: SomeRandomModelA?
-        var dsSomeKindOfModelBThatWillBePassedToOtherRouter: SomeRandomModelB?
     }
 }
 
@@ -59,35 +55,8 @@ extension I.GalleryAppS1Interactor: BaseInteractorVIPMandatoryBusinessLogicProto
     /// till the user have all the data loaded on the view. This will improve user experience.
     func requestScreenInitialState() {
         var response: VM.GalleryAppS1.ScreenInitialState.Response!
-        response = VM.GalleryAppS1.ScreenInitialState.Response(title: "Template Scene 1", subTitle: "Tap one of the buttons")
+        response = VM.GalleryAppS1.ScreenInitialState.Response(title: "", subTitle: "")
         presenter?.presentScreenInitialState(response: response)
-
-        // Update DataStore // <<-- DS Sample : Take notice
-        // When passing Data from the Scene Router to other one, this will be the value that will be passed
-        dsSomeKindOfModelAThatWillBePassedToOtherRouter = SomeRandomModelA(s1: "A: \(Date())")
-        dsSomeKindOfModelBThatWillBePassedToOtherRouter = SomeRandomModelB(s2: "B: \(Date())")
-
-        self.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
-      /*  let request = GalleryAppRequests.Search(tags: ["dog"])
-        worker!.search(request, cacheStrategy: .cacheElseLoad).asObservable()
-            .subscribe(onNext: { [weak self] (result) in
-            guard let self = self else { return }
-            switch result {
-            case .success(let elements):
-                print(elements)
-               /* self.list = elements.map({ $0.toDomain! })
-                let response = VM.CartTrackMap.MapData.Response(list: self.list)
-                self.presenter?.presentMapData(response: response)*/
-            case .failure(let error):
-                self.presentError(error: error)
-            }
-        }, onError: { (error) in
-            DevTools.Log.error(error)
-            self.presentError(error: error)
-        }, onCompleted: {
-            self.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
-        }).disposed(by: disposeBag)*/
-
     }
 
 }
@@ -102,21 +71,27 @@ extension I.GalleryAppS1Interactor {
 
 extension I.GalleryAppS1Interactor: GalleryAppS1BusinessLogicProtocol {
 
-    #warning("THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE")
-    func requestSomething(request: VM.GalleryAppS1.Something.Request) {
+    func requestSearchByTag(request: VM.GalleryAppS1.SearchByTag.Request) {
 
-        presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
-        DispatchQueue.executeWithDelay(delay: 0.5) { [weak self] in
-            let mockA1 = TemplateModel(id: "some id 1", state: "state_a - \(Date())")
-            let mockA2 = TemplateModel(id: "some id 2", state: "state_a - \(Date())")
-            let response = VM.GalleryAppS1.Something.Response(listA: [mockA1],
-                                                                          listB: [mockA2],
-                                                                          subTitle: "New subtitle \(Date())")
-            self?.presenter?.presentSomething(response: response)
-            self?.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
-            //self?.presenter?.presentError(error: error)
-            self?.presenter?.presentStatus(response: BaseDisplayLogicModels.Status(message: Messages.success.localised))
-        }
+        self.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
+        let request = GalleryAppRequests.Search(tags: request.tags, page: request.page)
+        worker!.search(request, cacheStrategy: .cacheElseLoad).asObservable()
+            .subscribe(onNext: { [weak self] (result) in
+            guard let self = self else { return }
+            switch result {
+            case .success(let some):
+                let response = VM.GalleryAppS1.SearchByTag.Response(photos: some.photos.photo)
+                self.presenter?.presentSearchByTag(response: response)
+            case .failure(let error):
+                self.presentError(error: error)
+            }
+        }, onError: { (error) in
+            DevTools.Log.error(error)
+            self.presentError(error: error)
+        }, onCompleted: {
+            self.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
+        }).disposed(by: disposeBag)
+
     }
 
 }

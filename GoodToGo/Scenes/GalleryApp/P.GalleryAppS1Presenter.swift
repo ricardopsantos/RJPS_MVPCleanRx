@@ -78,38 +78,24 @@ extension P.GalleryAppS1Presenter: GalleryAppS1PresentationLogicProtocol {
     func presentScreenInitialState(response: VM.GalleryAppS1.ScreenInitialState.Response) {
         let title = response.title.uppercased()
         let subTitle = response.subTitle.lowercased()
-        let viewModel = VM.GalleryAppS1.ScreenInitialState.ViewModel(title: title,
-                                                                                 subTitle: subTitle,
-                                                                                 screenLayout: .layoutA)
+        let viewModel = VM.GalleryAppS1.ScreenInitialState.ViewModel(title: title, subTitle: subTitle)
         viewController?.displayScreenInitialState(viewModel: viewModel)
     }
 
     // Used By Interactor (exclusively)
-    func presentSomething(response: VM.GalleryAppS1.Something.Response) {
+    func presentSearchByTag(response: VM.GalleryAppS1.SearchByTag.Response) {
         // Presenter will transform response object in something that the View can process/read
-        let subTitle = response.subTitle.uppercased()
-        let someListA = response.listA
-            .map { VM.GalleryAppS1.TableItem(enabled: true,
+        let items = response.photos
+            .map { VM.GalleryAppS1.TableItem(enabled: false,
                                                   image: Images.noInternet.rawValue,
-                                                  title: $0.id ?? "N.A.",
-                                                  subtitle: $0.state?.uppercased() ?? "N.A.",
-                                                  cellType: .cellType1)
+                                                  title: $0.id,
+                                                  subtitle: $0.id,
+                                                  id: $0.id)
             }
-        let someListB = response.listB
-            .map { VM.GalleryAppS1.TableItem(enabled: true,
-                                                         image: Images.noInternet.rawValue,
-                                                  title: $0.id ?? "N.A.",
-                                                  subtitle: $0.state?.uppercased() ?? "N.A.",
-                                                  cellType: .cellType2)
-            }
-        let sum = someListA.count + someListB.count
-        let viewModel = VM.GalleryAppS1.Something.ViewModel(subTitle: subTitle,
-                                                                        someValue: "\(sum)",
-            someListSectionATitle: "\(someListA.count) A elements",
-            someListSectionBTitle: "\(someListB.count) B elements",
-            someListSectionAElements: someListA,
-            someListSectionBElements: someListB)
-        viewController?.displaySomething(viewModel: viewModel)
+
+        let dataSourceTitle = "Records (\(items.count)"
+        let viewModel = VM.GalleryAppS1.SearchByTag.ViewModel(dataSourceTitle: dataSourceTitle, dataSource: items)
+        viewController?.displaySearchByTag(viewModel: viewModel)
     }
 
 }

@@ -163,7 +163,7 @@ extension VC.DebugViewController {
 
 }
 
-// MARK: DisplayLogicProtocolProtocol
+// MARK: DisplayLogicProtocol
 
 extension VC.DebugViewController: DebugDisplayLogicProtocol {
 

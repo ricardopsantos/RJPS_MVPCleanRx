@@ -156,7 +156,7 @@ extension VC.CategoriesPickerViewController {
 
 }
 
-// MARK: DisplayLogicProtocolProtocol
+// MARK: DisplayLogicProtocol
 
 extension VC.CategoriesPickerViewController: CategoriesPickerDisplayLogicProtocol {
 

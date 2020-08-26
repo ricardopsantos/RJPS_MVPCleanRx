@@ -1725,6 +1725,7 @@
 				D7B9BF5B24B084860093A82D /* GitHub */,
 				D7B9BF5924B084650093A82D /* CarTrack */,
 				D725A6A4246C837E005664CB /* AppScenes.DevStuff */,
+				D774F5AE24F6C86C00D01370 /* Workers */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -2049,7 +2050,6 @@
 				D774F59B24F6865000D01370 /* R.GalleryAppS1Router.swift */,
 				D774F59C24F6865000D01370 /* D.GalleryAppS1Domain.swift */,
 				D774F5A924F6874E00D01370 /* V.GalleryAppS1TableViewCell.swift */,
-				D774F5AB24F6A4F900D01370 /* W.GalleryAppS1Worker.swift */,
 			);
 			path = GalleryApp;
 			sourceTree = "<group>";
@@ -2096,6 +2096,14 @@
 				D774F59524F67B4100D01370 /* Mappers+GalleryApp.swift */,
 			);
 			path = Mappers;
+			sourceTree = "<group>";
+		};
+		D774F5AE24F6C86C00D01370 /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				D774F5AB24F6A4F900D01370 /* W.GalleryAppS1Worker.swift */,
+			);
+			path = Workers;
 			sourceTree = "<group>";
 		};
 		D77824B3247902830071776F /* Lotties */ = {

@@ -54,9 +54,7 @@ extension VC {
         }
         
         private var interactor: GalleryAppS1BusinessLogicProtocol?
-        var router: (GalleryAppS1RoutingLogicProtocol &
-            GalleryAppS1DataPassingProtocol &
-            GalleryAppS1RoutingLogicProtocol)?
+        var router: (GalleryAppS1RoutingLogicProtocol & GalleryAppS1RoutingLogicProtocol)?
 
         private lazy var reachabilityView: ReachabilityView = {
            return self.addReachabilityView()
@@ -83,9 +81,8 @@ extension VC {
             super.viewWillAppear(animated)
             if firstAppearance {
                 interactor?.requestScreenInitialState()
-
-                let request = VM.GalleryAppS1.Something.Request(tags: ["cat"], page: 1)
-                self.interactor?.requestSomething(request: request)
+                let request = VM.GalleryAppS1.SearchByTag.Request(tags: ["cat"], page: 1)
+                self.interactor?.requestSearchByTag(request: request)
 
             }
         }
@@ -121,7 +118,6 @@ extension VC {
             interactor.presenter     = presenter
             presenter.viewController = viewController
             router.viewController    = viewController
-            router.dsSource          = interactor
         }
 
         // Order in View life-cycle : 5
@@ -141,13 +137,6 @@ extension VC {
                 .subscribe(onNext: { /* [router] */ (some) in
                     DevTools.Log.message("Received [\(some)]")
                 })
-                .disposed(by: disposeBag)
-
-            genericView.rxBtnSample1Tap
-                .do(onNext: { [weak self] in
-                    self?.router?.routeSomewhereWithDataStore()
-                })
-                .subscribe()
                 .disposed(by: disposeBag)
 
         }
@@ -172,13 +161,13 @@ extension VC.GalleryAppS1ViewController {
 
 }
 
-// MARK: DisplayLogicProtocolProtocol
+// MARK: DisplayLogicProtocol
 
 extension VC.GalleryAppS1ViewController: GalleryAppS1DisplayLogicProtocol {
 
-    func displaySomething(viewModel: VM.GalleryAppS1.Something.ViewModel) {
+    func displaySearchByTag(viewModel: VM.GalleryAppS1.SearchByTag.ViewModel) {
         // Setting up the view, option 1 : passing the view model
-        genericView.setupWith(someStuff: viewModel)
+        genericView.setupWith(searchByTag: viewModel)
     }
 
     func displayScreenInitialState(viewModel: VM.GalleryAppS1.ScreenInitialState.ViewModel) {

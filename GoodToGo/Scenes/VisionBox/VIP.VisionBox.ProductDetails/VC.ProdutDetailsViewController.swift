@@ -139,7 +139,7 @@ extension VC.ProductDetailsViewController {
 
 }
 
-// MARK: DisplayLogicProtocolProtocol
+// MARK: DisplayLogicProtocol
 
 extension VC.ProductDetailsViewController: ProductDetailsDisplayLogicProtocol {
 
