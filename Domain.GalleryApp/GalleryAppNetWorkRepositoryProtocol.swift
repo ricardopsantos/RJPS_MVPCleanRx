@@ -13,8 +13,8 @@ import RJPSLib_Networking
 __Web API__ Requests Protocol
  */
 
-public typealias GalleryAppNetWorkRepositoryCompletionHandler = (_ result: Result<RJS_SimpleNetworkClientResponse<GalleryApp.AvailabilityResponseDto>>) -> Void
+public typealias GalleryAppNetWorkRepositoryCompletionHandler = (_ result: Result<RJS_SimpleNetworkClientResponse<GalleryAppResponseDto.Availability>>) -> Void
 
 public protocol GalleryAppNetWorkRepositoryProtocol: class {
-    func search(completionHandler: @escaping GalleryAppNetWorkRepositoryCompletionHandler)
+    func search(_ request: GalleryAppRequests.Search, completionHandler: @escaping GalleryAppNetWorkRepositoryCompletionHandler)
 }

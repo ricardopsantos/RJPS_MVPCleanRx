@@ -150,7 +150,7 @@
 		D774F53E24F57D1B00D01370 /* Domain_GalleryApp.h in Headers */ = {isa = PBXBuildFile; fileRef = D774F53C24F57D1B00D01370 /* Domain_GalleryApp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D774F54124F57D1B00D01370 /* Domain_GalleryApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D774F53A24F57D1B00D01370 /* Domain_GalleryApp.framework */; };
 		D774F54224F57D1B00D01370 /* Domain_GalleryApp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D774F53A24F57D1B00D01370 /* Domain_GalleryApp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D774F54B24F57E6200D01370 /* GalleryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F54A24F57E6200D01370 /* GalleryApp.swift */; };
+		D774F54B24F57E6200D01370 /* GalleryAppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F54A24F57E6200D01370 /* GalleryAppModel.swift */; };
 		D774F55324F57FFC00D01370 /* GalleryAppGenericBusinessUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F55024F57FFC00D01370 /* GalleryAppGenericBusinessUseCaseProtocol.swift */; };
 		D774F55424F57FFC00D01370 /* GalleryAppAPIRelatedUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F55124F57FFC00D01370 /* GalleryAppAPIRelatedUseCaseProtocol.swift */; };
 		D774F55524F57FFC00D01370 /* GalleryAppNetWorkRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F55224F57FFC00D01370 /* GalleryAppNetWorkRepositoryProtocol.swift */; };
@@ -159,10 +159,13 @@
 		D774F58024F5889500D01370 /* GalleryApp.APIRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F57F24F5889500D01370 /* GalleryApp.APIRequests.swift */; };
 		D774F58224F5898900D01370 /* WebAPI.GalleryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F58124F5898900D01370 /* WebAPI.GalleryApp.swift */; };
 		D774F58424F58C3200D01370 /* AppConstants+Mock+GalleryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F58324F58C3200D01370 /* AppConstants+Mock+GalleryApp.swift */; };
-		D774F58824F5916900D01370 /* GalleryApp.SampleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F58524F5916900D01370 /* GalleryApp.SampleRequest.swift */; };
-		D774F58924F5916900D01370 /* GalleryApp.SampleResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F58624F5916900D01370 /* GalleryApp.SampleResponseDto.swift */; };
-		D774F58A24F5916900D01370 /* GalleryApp.SampleModelResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F58724F5916900D01370 /* GalleryApp.SampleModelResponseDto.swift */; };
+		D774F58824F5916900D01370 /* GalleryAppModel+Availability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F58524F5916900D01370 /* GalleryAppModel+Availability.swift */; };
+		D774F58A24F5916900D01370 /* GalleryAppResponseDto.Availability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F58724F5916900D01370 /* GalleryAppResponseDto.Availability.swift */; };
 		D774F58C24F5AB7900D01370 /* T.Test_GalleryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F58B24F5AB7900D01370 /* T.Test_GalleryApp.swift */; };
+		D774F58F24F678EE00D01370 /* GalleryAppResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F58E24F678EE00D01370 /* GalleryAppResponseDto.swift */; };
+		D774F59124F6790400D01370 /* GalleryAppRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F59024F6790400D01370 /* GalleryAppRequests.swift */; };
+		D774F59624F67B4100D01370 /* Mappers+GalleryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F59524F67B4100D01370 /* Mappers+GalleryApp.swift */; };
+		D774F59824F67FFC00D01370 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F59724F67FFC00D01370 /* File.swift */; };
 		D77824B024784BBF0071776F /* NSLoggerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77824AD24784B850071776F /* NSLoggerSwift.framework */; };
 		D77824B2247900650071776F /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77824B1247900650071776F /* Lottie.framework */; };
 		D77824B7247903C60071776F /* 23038-animatonblue.json in Resources */ = {isa = PBXBuildFile; fileRef = D77824B6247903C60071776F /* 23038-animatonblue.json */; };
@@ -1168,7 +1171,7 @@
 		D774F53A24F57D1B00D01370 /* Domain_GalleryApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain_GalleryApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D774F53C24F57D1B00D01370 /* Domain_GalleryApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Domain_GalleryApp.h; sourceTree = "<group>"; };
 		D774F53D24F57D1B00D01370 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D774F54A24F57E6200D01370 /* GalleryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryApp.swift; sourceTree = "<group>"; };
+		D774F54A24F57E6200D01370 /* GalleryAppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryAppModel.swift; sourceTree = "<group>"; };
 		D774F55024F57FFC00D01370 /* GalleryAppGenericBusinessUseCaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryAppGenericBusinessUseCaseProtocol.swift; sourceTree = "<group>"; };
 		D774F55124F57FFC00D01370 /* GalleryAppAPIRelatedUseCaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryAppAPIRelatedUseCaseProtocol.swift; sourceTree = "<group>"; };
 		D774F55224F57FFC00D01370 /* GalleryAppNetWorkRepositoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryAppNetWorkRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -1177,10 +1180,13 @@
 		D774F57F24F5889500D01370 /* GalleryApp.APIRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryApp.APIRequests.swift; sourceTree = "<group>"; };
 		D774F58124F5898900D01370 /* WebAPI.GalleryApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebAPI.GalleryApp.swift; sourceTree = "<group>"; };
 		D774F58324F58C3200D01370 /* AppConstants+Mock+GalleryApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppConstants+Mock+GalleryApp.swift"; sourceTree = "<group>"; };
-		D774F58524F5916900D01370 /* GalleryApp.SampleRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryApp.SampleRequest.swift; sourceTree = "<group>"; };
-		D774F58624F5916900D01370 /* GalleryApp.SampleResponseDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryApp.SampleResponseDto.swift; sourceTree = "<group>"; };
-		D774F58724F5916900D01370 /* GalleryApp.SampleModelResponseDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryApp.SampleModelResponseDto.swift; sourceTree = "<group>"; };
+		D774F58524F5916900D01370 /* GalleryAppModel+Availability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GalleryAppModel+Availability.swift"; sourceTree = "<group>"; };
+		D774F58724F5916900D01370 /* GalleryAppResponseDto.Availability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryAppResponseDto.Availability.swift; sourceTree = "<group>"; };
 		D774F58B24F5AB7900D01370 /* T.Test_GalleryApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = T.Test_GalleryApp.swift; sourceTree = "<group>"; };
+		D774F58E24F678EE00D01370 /* GalleryAppResponseDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryAppResponseDto.swift; sourceTree = "<group>"; };
+		D774F59024F6790400D01370 /* GalleryAppRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryAppRequests.swift; sourceTree = "<group>"; };
+		D774F59524F67B4100D01370 /* Mappers+GalleryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mappers+GalleryApp.swift"; sourceTree = "<group>"; };
+		D774F59724F67FFC00D01370 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		D77824A82478488B0071776F /* NSLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NSLogger.framework; path = Carthage/Build/iOS/NSLogger.framework; sourceTree = "<group>"; };
 		D77824AD24784B850071776F /* NSLoggerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NSLoggerSwift.framework; path = Carthage/Build/iOS/NSLoggerSwift.framework; sourceTree = "<group>"; };
 		D77824B1247900650071776F /* Lottie.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lottie.framework; path = Carthage/Build/iOS/Lottie.framework; sourceTree = "<group>"; };
@@ -1994,6 +2000,7 @@
 		D774F52824F57D0C00D01370 /* Core.GalleryApp */ = {
 			isa = PBXGroup;
 			children = (
+				D774F59424F67B3500D01370 /* Mappers */,
 				D774F56324F5845B00D01370 /* UseCases.GalleryApp */,
 				D774F52924F57D0C00D01370 /* Core_GalleryApp.h */,
 				D774F52A24F57D0C00D01370 /* Info.plist */,
@@ -2007,6 +2014,8 @@
 				D774F55224F57FFC00D01370 /* GalleryAppNetWorkRepositoryProtocol.swift */,
 				D774F55124F57FFC00D01370 /* GalleryAppAPIRelatedUseCaseProtocol.swift */,
 				D774F55024F57FFC00D01370 /* GalleryAppGenericBusinessUseCaseProtocol.swift */,
+				D774F59224F6792B00D01370 /* Requests */,
+				D774F58D24F6784100D01370 /* ResponseDto */,
 				D774F54924F57E4D00D01370 /* Models */,
 				D774F53C24F57D1B00D01370 /* Domain_GalleryApp.h */,
 				D774F53D24F57D1B00D01370 /* Info.plist */,
@@ -2024,10 +2033,8 @@
 		D774F54924F57E4D00D01370 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D774F54A24F57E6200D01370 /* GalleryApp.swift */,
-				D774F58724F5916900D01370 /* GalleryApp.SampleModelResponseDto.swift */,
-				D774F58524F5916900D01370 /* GalleryApp.SampleRequest.swift */,
-				D774F58624F5916900D01370 /* GalleryApp.SampleResponseDto.swift */,
+				D774F54A24F57E6200D01370 /* GalleryAppModel.swift */,
+				D774F58524F5916900D01370 /* GalleryAppModel+Availability.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2039,6 +2046,32 @@
 				D774F56524F5845B00D01370 /* UC.GalleryAppAPIRelatedUseCase.swift */,
 			);
 			path = UseCases.GalleryApp;
+			sourceTree = "<group>";
+		};
+		D774F58D24F6784100D01370 /* ResponseDto */ = {
+			isa = PBXGroup;
+			children = (
+				D774F58E24F678EE00D01370 /* GalleryAppResponseDto.swift */,
+				D774F58724F5916900D01370 /* GalleryAppResponseDto.Availability.swift */,
+			);
+			path = ResponseDto;
+			sourceTree = "<group>";
+		};
+		D774F59224F6792B00D01370 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				D774F59024F6790400D01370 /* GalleryAppRequests.swift */,
+				D774F59724F67FFC00D01370 /* File.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		D774F59424F67B3500D01370 /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				D774F59524F67B4100D01370 /* Mappers+GalleryApp.swift */,
+			);
+			path = Mappers;
 			sourceTree = "<group>";
 		};
 		D77824B3247902830071776F /* Lotties */ = {
@@ -3995,6 +4028,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D774F56724F5845C00D01370 /* UC.GalleryAppAPIRelatedUseCase.swift in Sources */,
+				D774F59624F67B4100D01370 /* Mappers+GalleryApp.swift in Sources */,
 				D774F56624F5845C00D01370 /* UC.GalleryAppMicBusinessUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4003,12 +4037,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D774F58A24F5916900D01370 /* GalleryApp.SampleModelResponseDto.swift in Sources */,
+				D774F58A24F5916900D01370 /* GalleryAppResponseDto.Availability.swift in Sources */,
 				D774F55524F57FFC00D01370 /* GalleryAppNetWorkRepositoryProtocol.swift in Sources */,
-				D774F58824F5916900D01370 /* GalleryApp.SampleRequest.swift in Sources */,
-				D774F58924F5916900D01370 /* GalleryApp.SampleResponseDto.swift in Sources */,
-				D774F54B24F57E6200D01370 /* GalleryApp.swift in Sources */,
+				D774F58F24F678EE00D01370 /* GalleryAppResponseDto.swift in Sources */,
+				D774F58824F5916900D01370 /* GalleryAppModel+Availability.swift in Sources */,
+				D774F54B24F57E6200D01370 /* GalleryAppModel.swift in Sources */,
+				D774F59124F6790400D01370 /* GalleryAppRequests.swift in Sources */,
 				D774F55424F57FFC00D01370 /* GalleryAppAPIRelatedUseCaseProtocol.swift in Sources */,
+				D774F59824F67FFC00D01370 /* File.swift in Sources */,
 				D774F55324F57FFC00D01370 /* GalleryAppGenericBusinessUseCaseProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

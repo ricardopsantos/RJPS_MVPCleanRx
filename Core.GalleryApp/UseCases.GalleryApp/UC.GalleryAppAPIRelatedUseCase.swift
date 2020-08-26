@@ -28,17 +28,25 @@ public class GalleryAppAPIRelatedUseCase: GenericUseCase, GalleryAppAPIRelatedUs
     public var generic_CacheRepositoryProtocol: SimpleCacheRepositoryProtocol!
     public var generic_LocalStorageRepository: KeyValuesStorageRepositoryProtocol!
 
-    public func search(cacheStrategy: CacheStrategy) -> Observable<Result<GalleryApp.AvailabilityResponseDto>> {
+    // Will
+    // - Call the API
+    // - Manage the Cache
+    // Convert Dto entities to Model entities
+    public func search(_ request: GalleryAppRequests.Search, cacheStrategy: CacheStrategy) -> Observable<Result<GalleryAppModel.Availability>> {
         let cacheKey = "\(GalleryAppAPIRelatedUseCase.self).\(#function)"
-        //let cacheKey = "maria"
 
-        var apiObserver: Observable<GalleryApp.AvailabilityResponseDto> {
-            return Observable<GalleryApp.AvailabilityResponseDto>.create { observer in
-                self.repositoryNetwork.search { (result) in
+        // Call
+        var apiObserver: Observable<GalleryAppModel.Availability> {
+            return Observable<GalleryAppModel.Availability>.create { observer in
+                self.repositoryNetwork.search(request) { (result) in
                     switch result {
                     case .success(let some) :
-                        _ = RJS_DataModel.PersistentSimpleCacheWithTTL.shared.saveObject(some.entity, withKey: cacheKey, keyParams: [], lifeSpam: 60)
-                        observer.on(.next(some.entity))
+                        _ = RJS_DataModel.PersistentSimpleCacheWithTTL.shared.saveObject(some.entity.toDomain, withKey: cacheKey, keyParams: [], lifeSpam: 60)
+                        if let domain = some.entity.toDomain {
+                            observer.on(.next(domain))
+                        } else {
+                            observer.on(.error(Factory.Errors.with(appCode: .parsingError)))
+                        }
                     case .failure(let error): observer.on(.error(error))
                     }
                     observer.on(.completed)
@@ -47,21 +55,22 @@ public class GalleryAppAPIRelatedUseCase: GenericUseCase, GalleryAppAPIRelatedUs
             }
         }
 
-        let apiObserverResult = apiObserver.flatMap { (results) -> Observable<Result<GalleryApp.AvailabilityResponseDto>> in
-            //print(results)
+        // API Obj
+        let apiObserverResult = apiObserver.flatMap { (results) -> Observable<Result<GalleryAppModel.Availability>> in
             return Observable.just(Result.success(results))
-        }.catchError { (error) -> Observable<Result<GalleryApp.AvailabilityResponseDto>> in
+        }.catchError { (error) -> Observable<Result<GalleryAppModel.Availability>> in
             return Observable.just(Result.failure(error))
         }
 
-        let cacheObserver = genericCacheObserver(GalleryApp.AvailabilityResponseDto.self,
+        // Cache
+        let cacheObserver = genericCacheObserver(GalleryAppModel.Availability.self,
                                                  cacheKey: cacheKey,
                                                  keyParams: [],
                                                  apiObserver: apiObserver.asSingle())
 
-        let cacheObserverResult = cacheObserver.flatMap { (results) -> Observable<Result<GalleryApp.AvailabilityResponseDto>> in
+        let cacheObserverResult = cacheObserver.flatMap { (results) -> Observable<Result<GalleryAppModel.Availability>> in
             return Observable.just(Result.success(results))
-        }.catchError { (error) -> Observable<Result<GalleryApp.AvailabilityResponseDto>> in
+        }.catchError { (error) -> Observable<Result<GalleryAppModel.Availability>> in
             return Observable.just(Result.failure(error))
         }
 
@@ -72,15 +81,4 @@ public class GalleryAppAPIRelatedUseCase: GenericUseCase, GalleryAppAPIRelatedUs
         case .cacheNoLoad: fatalError("Not safe!")
         }
     }
-
-    public func getUserDetailV1(completionHandler: @escaping XXXXCompletionHandler) {
-        self.repositoryNetwork.search { (result) in
-            switch result {
-            case .success(let some) : completionHandler(Result.success(some.entity))
-            case .failure(let error): completionHandler(Result.failure(error))
-            }
-        }
-    }
 }
-
-public typealias XXXXCompletionHandler = (_ result: Result<GalleryApp.AvailabilityResponseDto>) -> Void

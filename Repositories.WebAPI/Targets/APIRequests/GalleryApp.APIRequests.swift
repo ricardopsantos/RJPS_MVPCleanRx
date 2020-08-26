@@ -34,7 +34,7 @@ public extension API.GalleryAppAPIRequest {
 
         public var endpoint: String {
             switch self {
-            case .search: return "\(baseURL)/?method=flickr.photos.search&api_key=\(key)&tags=kitten&page=1&format=json&nojsoncallback=1"
+            case .search: return "\(baseURL)/?method=flickr.photos.search&api_key=\(key)&format=json&nojsoncallback=1"
             }
         }
 
@@ -49,9 +49,6 @@ public extension API.GalleryAppAPIRequest {
 // MARK: - GetUserInfo
 
 public extension API.GalleryAppAPIRequest {
-    struct SearchRequest {
-        let tags: [String]
-    }
     struct Search: WebAPIRequest_Protocol {
         public var returnOnMainTread: Bool
         public var debugRequest: Bool
@@ -59,8 +56,8 @@ public extension API.GalleryAppAPIRequest {
         public var responseType: RJS_SimpleNetworkClientResponseType
         public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.GalleryApp.search_200 : nil }
 
-        init(request: SearchRequest) throws {
-            let urlString = Target.search.endpoint
+        init(request: GalleryAppRequests.Search) throws {
+            let urlString = Target.search.endpoint + request.urlEscaped
             guard let url = URL(string: urlString) else {
                 throw APIErrors.invalidURL(url: urlString)
             }

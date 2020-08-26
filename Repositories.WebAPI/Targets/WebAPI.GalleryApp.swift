@@ -20,12 +20,11 @@ public extension API.GalleryApp {
 
         public init() { }
 
-        public func search(completionHandler: @escaping GalleryAppNetWorkRepositoryCompletionHandler) {
+        public func search(_ request: GalleryAppRequests.Search, completionHandler: @escaping GalleryAppNetWorkRepositoryCompletionHandler) {
             do {
-                let request = WebAPI.GalleryAppAPIRequest.SearchRequest(tags: [])
                 let apiRequest: WebAPIRequest_Protocol = try WebAPI.GalleryAppAPIRequest.Search(request: request)
                 let apiClient: RJS_SimpleNetworkClientProtocol = RJS_SimpleNetworkClient()
-                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<RJS_SimpleNetworkClientResponse<GalleryApp.AvailabilityResponseDto>>) in
+                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<RJS_SimpleNetworkClientResponse<GalleryAppResponseDto.Availability>>) in
                     completionHandler(result)
                 })
              } catch let error {

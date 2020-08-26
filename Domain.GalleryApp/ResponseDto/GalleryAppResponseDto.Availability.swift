@@ -10,20 +10,22 @@ import DevTools
 //
 import Domain
 
-public extension GalleryApp {
-    struct AvailabilityResponseDto: ResponseDtoProtocol {
-        public let photos: Photos
+public extension GalleryAppResponseDto {
+    struct Availability: ResponseDtoProtocol {
+        public let photos: GalleryAppResponseDto.Photos
         public let stat: String
     }
+}
 
-    // MARK: - Photos
+public extension GalleryAppResponseDto {
     struct Photos: ResponseDtoProtocol {
-       public let page, pages, perpage: Int
-       public let total: String
-       public let photo: [Photo]
+        public let page, pages, perpage: Int
+        public let total: String
+        public let photo: [GalleryAppResponseDto.Photo]
     }
+}
 
-    // MARK: - Photo
+public extension GalleryAppResponseDto {
     struct Photo: ResponseDtoProtocol {
         public let id, owner, secret, server: String
         public let farm: Int

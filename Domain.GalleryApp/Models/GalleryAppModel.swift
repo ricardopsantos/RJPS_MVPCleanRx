@@ -5,8 +5,7 @@
 
 import Foundation
 
-public extension GalleryApp {
-    struct SampleModel {
-
-    }
+// Encapsulate View Model "objects"
+public struct GalleryAppModel {
+    private init() { }
 }

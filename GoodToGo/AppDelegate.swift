@@ -21,12 +21,13 @@ import Extensions
 import DevTools
 import PointFreeFunctions
 
+import Domain_GalleryApp
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    //"f9cc-014f-a76b-098f-9e82-f1c2-8837-9ea1".e
     static var shared: AppDelegate { return UIApplication.shared.delegate as! AppDelegate }
     public var reachabilityService: ReachabilityService? = DevTools.reachabilityService
     let disposeBag = DisposeBag()
@@ -37,7 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var acc = 0
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        let observable = container.resolve(AppProtocols.galleryAppAPI_UseCase)?.search(cacheStrategy: .noCacheLoad).asObservable()
+        let request = GalleryAppRequests.Search(tags: ["cat", "dog"])
+        let observable = container.resolve(AppProtocols.galleryAppAPI_UseCase)?.search(request, cacheStrategy: .noCacheLoad).asObservable()
         observable?.bind(onNext: { (some) in
             print(some)
             }).disposed(by: disposeBag)
