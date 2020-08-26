@@ -29,15 +29,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //"f9cc-014f-a76b-098f-9e82-f1c2-8837-9ea1".e
     static var shared: AppDelegate { return UIApplication.shared.delegate as! AppDelegate }
     public var reachabilityService: ReachabilityService? = DevTools.reachabilityService
+    let disposeBag = DisposeBag()
 
     // Where we have all the dependencies
     let container: Container = { return ApplicationAssembly.assembler.resolver as! Container }()
 
+    var acc = 0
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        GoodToGo.GalleryAppResolver.shared.api?.repositoryNetwork.search(completionHandler: { (x) in
-            print(x)
-        })
+        let observable = container.resolve(AppProtocols.galleryAppAPI_UseCase)?.search(cacheStrategy: .noCacheLoad).asObservable()
+        observable?.bind(onNext: { (some) in
+            print(some)
+            }).disposed(by: disposeBag)
 
         if CommandLine.arguments.contains(AppConstants.Testing.CommandLineArguments.deleteUserData) {
             //resetAllData = true

@@ -62,7 +62,7 @@ class Test_CartTrack: XCTestCase {
 
     func test_api_getUserDetailV3() {
         let expectation = self.expectation(description: #function)
-        GoodToGo.CarTrackResolver.shared.api?.getUserDetailV3(cacheStrategy: .reloadIgnoringCache)
+        GoodToGo.CarTrackResolver.shared.api?.getUserDetailV3(cacheStrategy: .cacheAndLoad)
             .asObservable().subscribe(onNext: { (result) in
                 switch result {
                 case .success: XCTAssert(true)

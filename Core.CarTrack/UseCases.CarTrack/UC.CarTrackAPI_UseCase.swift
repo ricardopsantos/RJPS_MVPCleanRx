@@ -55,9 +55,9 @@ public class CarTrackAPI_UseCase: GenericUseCase, CarTrackAPIRelated_UseCaseProt
         }
 
         switch cacheStrategy {
-        case .reloadIgnoringCache: return apiObserverResult.asObservable()
-        case .returnCacheElseLoad: return cacheObserverResult.asObservable()
-        case .cacheAndLatestValue: return Observable.merge(cacheObserverResult, apiObserverResult.asObservable() )
+        case .noCacheLoad, .cacheNoLoad: return apiObserverResult.asObservable()
+        case .cacheElseLoad: return cacheObserverResult.asObservable()
+        case .cacheAndLoad: return Observable.merge(cacheObserverResult, apiObserverResult.asObservable() )
         }
     }
 
@@ -73,9 +73,9 @@ public class CarTrackAPI_UseCase: GenericUseCase, CarTrackAPIRelated_UseCaseProt
                                                     apiObserver: apiObserver.asSingle())
 
         switch cacheStrategy {
-        case .reloadIgnoringCache: return apiObserver.asObservable()
-        case .returnCacheElseLoad: return cacheObserver.asObservable()
-        case .cacheAndLatestValue: return Observable.merge(cacheObserver, apiObserver.asObservable() )
+        case .noCacheLoad, .cacheNoLoad: return apiObserver.asObservable()
+        case .cacheElseLoad: return cacheObserver.asObservable()
+        case .cacheAndLoad: return Observable.merge(cacheObserver, apiObserver.asObservable() )
         }
     }
 

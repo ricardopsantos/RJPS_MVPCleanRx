@@ -64,11 +64,10 @@ public extension API.GalleryAppAPIRequest {
             guard let url = URL(string: urlString) else {
                 throw APIErrors.invalidURL(url: urlString)
             }
-           // print(url)
             urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = Target.search.httpMethod
             responseType      = .json
-            debugRequest      = DevTools.devModeIsEnabled
+            debugRequest      = false//DevTools.devModeIsEnabled
             returnOnMainTread = true
         }
     }

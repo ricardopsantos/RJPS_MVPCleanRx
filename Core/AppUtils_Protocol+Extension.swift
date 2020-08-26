@@ -24,6 +24,24 @@ import Factory
 public extension AppUtils_Protocol {
 
     // swiftlint:disable rule_Coding
+    func genericCacheObserverFallible<T: Codable>(_ some: T.Type, cacheKey: String, keyParams: [String]) -> Observable<T> {
+        let cacheObserver = Observable<T>.create { observer in
+            if let domainObject = RJS_DataModel.PersistentSimpleCacheWithTTL.shared.getObject(some, withKey: cacheKey, keyParams: keyParams) {
+                if let array = domainObject as? [Codable], array.count > 0 {
+                    // If the response is an array, we only consider it if the array have elements
+                     observer.on(.next(domainObject))
+                     observer.on(.completed)
+                 } else {
+                     observer.on(.next(domainObject))
+                     observer.on(.completed)
+                 }
+            }
+            observer.on(.error(Factory.Errors.with(appCode: .notFound)))
+            observer.on(.completed)
+            return Disposables.create()
+        }
+        return cacheObserver
+    }
 
     func genericCacheObserver<T: Codable>(_ some: T.Type, cacheKey: String, keyParams: [String], apiObserver: Single<T>) -> Observable<T> {
         let cacheObserver = Observable<T>.create { observer in

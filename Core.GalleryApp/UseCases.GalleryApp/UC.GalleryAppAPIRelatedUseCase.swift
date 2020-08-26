@@ -20,7 +20,7 @@ import Factory
 
 // swiftlint:disable rule_Coding
 
-public class GalleryAppAPIUseCase: GenericUseCase, GalleryAppAPIRelatedUseCaseProtocol {
+public class GalleryAppAPIRelatedUseCase: GenericUseCase, GalleryAppAPIRelatedUseCaseProtocol {
 
     public override init() { super.init() }
 
@@ -29,49 +29,47 @@ public class GalleryAppAPIUseCase: GenericUseCase, GalleryAppAPIRelatedUseCasePr
     public var generic_LocalStorageRepository: KeyValuesStorageRepositoryProtocol!
 
     public func search(cacheStrategy: CacheStrategy) -> Observable<Result<GalleryApp.AvailabilityResponseDto>> {
-        let cacheKey = "\(GalleryAppAPIUseCase.self).\(#function)"
-        let cacheKeyParams: [String] = []
+        let cacheKey = "\(GalleryAppAPIRelatedUseCase.self).\(#function)"
+        //let cacheKey = "maria"
 
-        let apiObserver = getUserDetailObserver(cacheKey, cacheKeyParams)
+        var apiObserver: Observable<GalleryApp.AvailabilityResponseDto> {
+            return Observable<GalleryApp.AvailabilityResponseDto>.create { observer in
+                self.repositoryNetwork.search { (result) in
+                    switch result {
+                    case .success(let some) :
+                        _ = RJS_DataModel.PersistentSimpleCacheWithTTL.shared.saveObject(some.entity, withKey: cacheKey, keyParams: [], lifeSpam: 60)
+                        observer.on(.next(some.entity))
+                    case .failure(let error): observer.on(.error(error))
+                    }
+                    observer.on(.completed)
+                }
+                return Disposables.create()
+            }
+        }
 
         let apiObserverResult = apiObserver.flatMap { (results) -> Observable<Result<GalleryApp.AvailabilityResponseDto>> in
+            //print(results)
             return Observable.just(Result.success(results))
         }.catchError { (error) -> Observable<Result<GalleryApp.AvailabilityResponseDto>> in
             return Observable.just(Result.failure(error))
         }
-/*
-        let cacheObserver = genericCacheObserver([CarTrack.CarTrackUserResponseDtoElement].self,
+
+        let cacheObserver = genericCacheObserver(GalleryApp.AvailabilityResponseDto.self,
                                                  cacheKey: cacheKey,
-                                                 keyParams: cacheKeyParams,
+                                                 keyParams: [],
                                                  apiObserver: apiObserver.asSingle())
 
-        let cacheObserverResult = cacheObserver.flatMap { (results) -> Observable<Result<[CarTrack.CarTrackUserResponseDtoElement]>> in
+        let cacheObserverResult = cacheObserver.flatMap { (results) -> Observable<Result<GalleryApp.AvailabilityResponseDto>> in
             return Observable.just(Result.success(results))
-        }.catchError { (error) -> Observable<Result<[CarTrack.CarTrackUserResponseDtoElement]>> in
+        }.catchError { (error) -> Observable<Result<GalleryApp.AvailabilityResponseDto>> in
             return Observable.just(Result.failure(error))
         }
 
         switch cacheStrategy {
-        case .reloadIgnoringCache: return apiObserverResult.asObservable()
-        case .returnCacheElseLoad: return cacheObserverResult.asObservable()
-        case .cacheAndLatestValue: return Observable.merge(cacheObserverResult, apiObserverResult.asObservable() )
-        }*/
-
-        return apiObserverResult.asObservable()
-    }
-
-    private func getUserDetailObserver(_ cacheKey: String, _ cacheKeyParams: [String]) -> Observable<GalleryApp.AvailabilityResponseDto> {
-        return Observable<GalleryApp.AvailabilityResponseDto>.create { [weak self] observer in
-            self?.getUserDetailV1 { (result) in
-                switch result {
-                case .success(let some) :
-                    _ = RJS_DataModel.PersistentSimpleCacheWithTTL.shared.saveObject(some, withKey: cacheKey, keyParams: cacheKeyParams, lifeSpam: 60)
-                    observer.on(.next(some))
-                case .failure(let error): observer.on(.error(error))
-                }
-                observer.on(.completed)
-            }
-            return Disposables.create()
+        case .noCacheLoad: return apiObserverResult.asObservable()
+        case .cacheElseLoad: return cacheObserverResult.asObservable()
+        case .cacheAndLoad: return Observable.merge(cacheObserverResult, apiObserverResult.asObservable() )
+        case .cacheNoLoad: fatalError("Not safe!")
         }
     }
 

@@ -25,6 +25,7 @@ public protocol AppUtils_Protocol: class {
 
     // swiftlint:disable rule_Coding
     func genericCacheObserver<T: Codable>(_ some: T.Type, cacheKey: String, keyParams: [String], apiObserver: Single<T>) -> Observable<T>
+    func genericCacheObserverFallible<T: Codable>(_ some: T.Type, cacheKey: String, keyParams: [String]) -> Observable<T>
     // swiftlint:enable rule_Coding
 
 }

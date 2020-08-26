@@ -84,7 +84,7 @@ extension I.CartTrackMapInteractor: CartTrackMapBusinessLogicProtocol {
     func requestMapData(request: VM.CartTrackMap.MapData.Request) {
         presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
         CarTrackResolver.shared.api?
-            .getUserDetailV3(cacheStrategy: .cacheAndLatestValue)
+            .getUserDetailV3(cacheStrategy: .cacheAndLoad)
             .asObservable()
             .log(whereAmI())
             .subscribe(onNext: { [weak self] (result) in
