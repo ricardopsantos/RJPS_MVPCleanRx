@@ -16,8 +16,14 @@ public extension Mappers {
     }
 }
 
-public extension GalleryAppResponseDto.Availability {
-    var toDomain: GalleryAppModel.Availability? {
-        return perfectMapper(inValue: self, outValue: GalleryAppModel.Availability.self)
+public extension GalleryAppResponseDto.Search {
+    var toDomain: GalleryAppModel.Search? {
+        return perfectMapper(inValue: self, outValue: GalleryAppModel.Search.self)
+    }
+}
+
+public extension GalleryAppResponseDto.ImageInfo {
+    var toDomain: GalleryAppModel.ImageInfo? {
+        return perfectMapper(inValue: self, outValue: GalleryAppModel.ImageInfo.self)
     }
 }

@@ -95,6 +95,23 @@ extension I.GalleryAppS1Interactor: GalleryAppS1BusinessLogicProtocol {
             case .success(let some):
                 let response = VM.GalleryAppS1.SearchByTag.Response(photos: some.photos.photo)
                 self.presenter?.presentSearchByTag(response: response)
+
+                some.photos.photo.forEach { (photo) in
+                    //let request = GalleryAppRequests.ImageInfo(photoId: some.photos.photo.first!.id)
+                    let request = GalleryAppRequests.ImageInfo(photoId: photo.id)
+                    self.worker?.imageInfo(request, cacheStrategy: .cacheElseLoad).asObservable().subscribe(onNext: { [weak self] (result) in
+                        guard let self = self else { return }
+                        switch result {
+                        case .success(let some):
+                        self.worker?.download(some, completion: { (image) in
+                            print(image)
+                        })
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }).disposed(by: self.disposeBag)
+                }
+
             case .failure(let error):
                 self.presentError(error: error)
             }

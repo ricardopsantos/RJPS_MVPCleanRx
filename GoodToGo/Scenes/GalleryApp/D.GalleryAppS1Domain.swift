@@ -78,7 +78,7 @@ extension VM {
                 let page: Int
             }
             struct Response { /* Interactor -> Presenter */
-                let photos: [GalleryAppModel.Photo]
+                let photos: [GalleryAppModel.Search.Photo]
             }
             struct ViewModel { /* Presenter -> ViewController */
                 let dataSourceTitle: String

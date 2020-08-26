@@ -23,6 +23,7 @@ import DevTools
 public extension API.GalleryAppAPIRequest {
     enum Target {
         case search
+        case imageInfo
 
         public var baseURL: String {
             return "https://api.flickr.com/services/rest"
@@ -35,12 +36,14 @@ public extension API.GalleryAppAPIRequest {
         public var endpoint: String {
             switch self {
             case .search: return "\(baseURL)/?method=flickr.photos.search&api_key=\(key)&format=json&nojsoncallback=1"
+            case .imageInfo: return "\(baseURL)/?method=flickr.photos.getSizes&api_key=\(key)&format=json&nojsoncallback=1"
             }
         }
 
         public var httpMethod: String {
             switch self {
             case .search: return RJS_SimpleNetworkClient.HttpMethod.get.rawValue
+            case .imageInfo: return RJS_SimpleNetworkClient.HttpMethod.get.rawValue
             }
         }
     }
@@ -58,6 +61,25 @@ public extension API.GalleryAppAPIRequest {
 
         init(request: GalleryAppRequests.Search) throws {
             let urlString = Target.search.endpoint + request.urlEscaped
+            guard let url = URL(string: urlString) else {
+                throw APIErrors.invalidURL(url: urlString)
+            }
+            urlRequest = URLRequest(url: url)
+            urlRequest.httpMethod = Target.search.httpMethod
+            responseType      = .json
+            returnOnMainTread = true
+        }
+    }
+
+    struct ImageInfo: WebAPIRequest_Protocol {
+        public var returnOnMainTread: Bool
+        public var debugRequest: Bool = DevTools.FeatureFlag.debugRequests.isTrue
+        public var urlRequest: URLRequest
+        public var responseType: RJS_SimpleNetworkClientResponseType
+        public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.GalleryApp.imageInfo_200 : nil }
+
+        init(request: GalleryAppRequests.ImageInfo) throws {
+            let urlString = Target.imageInfo.endpoint + request.urlEscaped
             guard let url = URL(string: urlString) else {
                 throw APIErrors.invalidURL(url: urlString)
             }
