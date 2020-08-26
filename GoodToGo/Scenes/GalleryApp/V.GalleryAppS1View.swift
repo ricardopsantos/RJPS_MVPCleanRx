@@ -14,6 +14,7 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 import TinyConstraints
+import RJPSLib_Base
 //
 import AppConstants
 import AppTheme
@@ -76,6 +77,22 @@ extension V {
             UIKitFactory.label(style: .value)
         }()
 
+        private var collectionViewDataSource: [VM.GalleryAppS1.TableItem] = [] {
+            didSet {
+                collectionView.fadeTo(0)
+                DispatchQueue.executeWithDelay(delay: RJS_Constants.defaultAnimationsTime) { [weak self] in
+                    guard let self = self else { return }
+                    self.collectionView.reloadData()
+                    if self.collectionViewDataSource.count > 0 {
+                        self.collectionView.fadeTo(1)
+                        //if let text = self.collectionViewDataSource.first?.category.toString {
+                        //    self.lblTitle.textAnimated = text
+                        //}
+                    }
+                }
+            }
+        }
+
         // Naming convention: rxTbl[MeaningfulTableName]Items
         typealias Section = AnimatableSectionModel<String, VM.GalleryAppS1.TableItem>
         var rxTableItems = BehaviorSubject<[Section]>(value: [])
@@ -84,6 +101,13 @@ extension V {
         private lazy var tableView: UITableView = {
             UIKitFactory.tableView()
         }()
+
+        private lazy var collectionView: UICollectionView = {
+             let viewLayout = UICollectionViewFlowLayout()
+             viewLayout.scrollDirection = .horizontal
+             let some = UICollectionView(frame: .zero, collectionViewLayout: viewLayout)
+             return some
+         }()
 
         // MARK: - Mandatory
 
@@ -99,6 +123,8 @@ extension V {
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(lblTitle)
             stackViewVLevel1.uiUtils.addArrangedSeparator()
             addSubview(tableView)
+
+            tableView.addSubview(collectionView)
         }
 
         // This function is called automatically by super BaseGenericViewVIP
@@ -119,6 +145,8 @@ extension V {
             tableView.autoLayout.trailingToSuperview()
             tableView.autoLayout.bottomToSuperview()
 
+            collectionView.autoLayout.edgesToSuperview()
+
         }
 
         // This function is called automatically by super BaseGenericViewVIP
@@ -131,6 +159,11 @@ extension V {
             tableView.separatorColor = .clear
             tableView.rx.setDelegate(self).disposed(by: disposeBag)
             lblTitle.textAlignment = .center
+
+            collectionView.rx.setDelegate(self).disposed(by: disposeBag)
+            collectionView.register(V.CustomCollectionViewCell.self, forCellWithReuseIdentifier: V.CustomCollectionViewCell.identifier)
+            collectionView.delegate = self
+            collectionView.dataSource = self
         }
 
         override func setupColorsAndStyles() {
@@ -205,6 +238,7 @@ extension V {
         func setupWith(searchByTag viewModel: VM.GalleryAppS1.SearchByTag.ViewModel) {
             let section = Section(model: viewModel.dataSourceTitle, items: viewModel.dataSource)
             rxTableItems.onNext([section])
+            collectionViewDataSource = viewModel.dataSource
         }
 
         func setupWith(screenInitialState viewModel: VM.GalleryAppS1.ScreenInitialState.ViewModel) {
@@ -240,5 +274,50 @@ extension V.GalleryAppS1View: UITableViewDelegate {
 extension V.GalleryAppS1View {
     var rxModelSelected: ControlEvent<VM.GalleryAppS1.TableItem> {
         tableView.rx.modelSelected(VM.GalleryAppS1.TableItem.self)
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+
+extension V.GalleryAppS1View: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return collectionViewDataSource.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let identifier = V.CustomCollectionViewCell.identifier
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? V.CustomCollectionViewCell {
+            cell.setup(viewModel: collectionViewDataSource[indexPath.row])
+            return cell
+        }
+        return UICollectionViewCell()
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension V.GalleryAppS1View: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: V.CustomCollectionViewCell.defaultWidth, height: V.CustomCollectionViewCell.defaultHeight)
+    }
+
+    func itemWidth(for width: CGFloat, spacing: CGFloat) -> CGFloat {
+        let itemsInRow: CGFloat = 2
+        let totalSpacing: CGFloat = 2 * spacing + (itemsInRow - 1) * spacing
+        let finalWidth = (width - totalSpacing) / itemsInRow
+        return floor(finalWidth)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let defaultMargin = Designables.Sizes.Margins.defaultMargin
+        return UIEdgeInsets(top: defaultMargin, left: defaultMargin, bottom: defaultMargin, right: defaultMargin)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return Designables.Sizes.Margins.defaultMargin
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return Designables.Sizes.Margins.defaultMargin
     }
 }

@@ -38,12 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var acc = 0
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        /*let request = GalleryAppRequests.Search(tags: ["cat", "dog"])
-        let observable = container.resolve(AppProtocols.galleryAppAPI_UseCase)?.search(request, cacheStrategy: .noCacheLoad).asObservable()
-        observable?.bind(onNext: { (some) in
-            print(some)
-            }).disposed(by: disposeBag)
-*/
         if CommandLine.arguments.contains(AppConstants.Testing.CommandLineArguments.deleteUserData) {
             //resetAllData = true
         }

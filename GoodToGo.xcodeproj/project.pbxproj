@@ -191,6 +191,7 @@
 		D778258F247A85DA0071776F /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC172223BBD8600576498 /* RxCocoa.framework */; };
 		D7782590247A86460071776F /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC176223BBFC600576498 /* RxSwift.framework */; };
 		D786AE492473CC0400636935 /* UIViewContoller+ExtensionsAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786AE482473CC0400636935 /* UIViewContoller+ExtensionsAlerts.swift */; };
+		D786EF6F24F6E808000F6A2C /* V.CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786EF6E24F6E808000F6A2C /* V.CustomCollectionViewCell.swift */; };
 		D788BD76246892B3007C59D0 /* P.BasePresenterVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788BD75246892B3007C59D0 /* P.BasePresenterVIP.swift */; };
 		D788BD7C246943AB007C59D0 /* I.BaseInteractorVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788BD7B246943AB007C59D0 /* I.BaseInteractorVIP.swift */; };
 		D788BD8124694448007C59D0 /* VC.BaseViewControllerVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788BD7F24694439007C59D0 /* VC.BaseViewControllerVIP.swift */; };
@@ -1217,6 +1218,7 @@
 		D7782525247A59D40071776F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D778258D247A79D40071776F /* T.TestsShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T.TestsShared.swift; sourceTree = "<group>"; };
 		D786AE482473CC0400636935 /* UIViewContoller+ExtensionsAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewContoller+ExtensionsAlerts.swift"; sourceTree = "<group>"; };
+		D786EF6E24F6E808000F6A2C /* V.CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V.CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		D788BD75246892B3007C59D0 /* P.BasePresenterVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.BasePresenterVIP.swift; sourceTree = "<group>"; };
 		D788BD7B246943AB007C59D0 /* I.BaseInteractorVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.BaseInteractorVIP.swift; sourceTree = "<group>"; };
 		D788BD7F24694439007C59D0 /* VC.BaseViewControllerVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.BaseViewControllerVIP.swift; sourceTree = "<group>"; };
@@ -2050,6 +2052,7 @@
 				D774F59B24F6865000D01370 /* R.GalleryAppS1Router.swift */,
 				D774F59C24F6865000D01370 /* D.GalleryAppS1Domain.swift */,
 				D774F5A924F6874E00D01370 /* V.GalleryAppS1TableViewCell.swift */,
+				D786EF6E24F6E808000F6A2C /* V.CustomCollectionViewCell.swift */,
 			);
 			path = GalleryApp;
 			sourceTree = "<group>";
@@ -3928,6 +3931,7 @@
 				D7B9BF5224B080B80093A82D /* P.ProdutDetailsPresenter.swift in Sources */,
 				D755FE7F24B20E8C009BA6BD /* VisionBox.ProductPreviewSmallCollectionViewCell.swift in Sources */,
 				9F103A332236C08900C57BC0 /* RootAssemblyContainer.swift in Sources */,
+				D786EF6F24F6E808000F6A2C /* V.CustomCollectionViewCell.swift in Sources */,
 				D7979DB0246D6B370039031C /* I.CartTrackMapInteractor.swift in Sources */,
 				D7B9BF2924AFA90F0093A82D /* R.CategoriesPickerRouter.swift in Sources */,
 				D7979DB4246D6B370039031C /* D.CartTrackMapDomain.swift in Sources */,

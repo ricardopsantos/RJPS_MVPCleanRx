@@ -111,7 +111,6 @@ extension V {
 
         func setup(viewModel: VisionBox.ProductModel) {
             productCardView.setup(viewModel: viewModel)
-            //imgBackground.image = UIImage(named: viewModel.backgroundImage)
             imgBackground.image = UIImage(named: viewModel.backgroundImage)
             let image = UIImage(named: viewModel.productImage)
             imgProduct.image = image

@@ -23,10 +23,6 @@ extension VC {
         override func viewDidLoad() {
             super.viewDidLoad()
 
-            //let mvpSample1 = createControllers(tabName: "MVP", vc: AppDelegate.shared.container.resolve(V.MVPSampleView_View.self)!)
-            //let mvpSample2 = createControllers(tabName: "MVP.Rx", vc: AppDelegate.shared.container.resolve(V.MVPSampleRxView_View.self)!)
-            //let mvpSample3 = createControllers(tabName: "MVP.Rx.Table", vc: AppDelegate.shared.container.resolve(V.MVPSampleTableView_View.self)!)
-
             // EXAMS
             let mvpGitUser    = createControllers(tabName: "MVP.GitUser", vc: AppDelegate.shared.container.resolve(V.SearchUser_View.self)!)
             let vipCarTrack   = createControllers(tabName: "VIP.CarTrack", vc: VC.CarTrackLoginViewController(presentationStyle: .modal))
@@ -46,7 +42,7 @@ extension VC {
             if DevTools.FeatureFlag.showScene_vipTemplate.isTrue { viewControllersList.append(vipTemplate) }
             if DevTools.FeatureFlag.showScene_rxTests.isTrue { viewControllersList.append(vcRx) }
 
-            viewControllers = [vipDebug] + viewControllersList
+            viewControllers = viewControllersList + [vipDebug]
             
         }
 
