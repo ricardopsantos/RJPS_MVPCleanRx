@@ -31,7 +31,12 @@ import AppResources
 struct GalleryAppS1View_UIViewRepresentable: UIViewRepresentable {
     func updateUIView(_ uiView: V.GalleryAppS1View, context: Context) { }
     func makeUIView(context: Context) -> V.GalleryAppS1View {
-        return V.GalleryAppS1View()
+        let view = V.GalleryAppS1View()
+        let item1 = VM.GalleryAppS1.TableItem(enabled: true, image: Images.noInternet.rawValue, title: "title", subtitle: "subtitle", id: "id")
+        let item2 = VM.GalleryAppS1.TableItem(enabled: true, image: Images.noInternet.rawValue, title: "title", subtitle: "subtitle", id: "id")
+        let viewModel = VM.GalleryAppS1.SearchByTag.ViewModel(dataSourceTitle: "", dataSource: [item1, item2])
+        view.setupWith(searchByTag: viewModel)
+        return view
     }
 }
 
@@ -62,21 +67,19 @@ extension V {
             UIKitFactory.stackView(axis: .vertical)
         }()
 
+        private lazy var searchBar: CustomSearchBar = {
+            //UISearchBar()
+            UIKitFactory.searchBar(placeholder: Messages.search.localised)
+        }()
+
         private lazy var lblTitle: UILabel = {
             UIKitFactory.label(style: .value)
-        }()
-
-        private lazy var btnSample1: UIButton = {
-            UIKitFactory.button(title: "btnSample1", style: .primary)
-        }()
-
-        private lazy var btnSample2: UIButton = {
-            UIKitFactory.button(title: "btnSample", style: .primary)
         }()
 
         // Naming convention: rxTbl[MeaningfulTableName]Items
         typealias Section = AnimatableSectionModel<String, VM.GalleryAppS1.TableItem>
         var rxTableItems = BehaviorSubject<[Section]>(value: [])
+        var rxFilter = BehaviorSubject<String?>(value: nil)
 
         private lazy var tableView: UITableView = {
             UIKitFactory.tableView()
@@ -91,12 +94,10 @@ extension V {
         override func prepareLayoutCreateHierarchy() {
             addSubview(scrollView)
             scrollView.addSubview(stackViewVLevel1)
+            stackViewVLevel1.uiUtils.safeAddArrangedSubview(searchBar)
             stackViewVLevel1.uiUtils.addArrangedSeparator()
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(lblTitle)
             stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(btnSample1)
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(btnSample2)
             addSubview(tableView)
         }
 
@@ -104,20 +105,16 @@ extension V {
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 2/3 : JUST to setup layout rules zone....
         override func prepareLayoutBySettingAutoLayoutsRules() {
-            let defaultMargin = Designables.Sizes.Margins.defaultMargin
 
             stackViewVLevel1.uiUtils.edgeStackViewToSuperView()
-            let scrollViewHeight = screenHeight/2
             scrollView.autoLayout.edgesToSuperview(excluding: .bottom, insets: .zero)
-            scrollView.autoLayout.height(scrollViewHeight)
+            scrollView.autoLayout.height(screenHeight)
 
-            self.subViewsOf(types: [.button, .label], recursive: true).forEach { (some) in
-                some.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
-                some.autoLayout.marginToSuperVerticalStackView(trailing: defaultMargin, leading: defaultMargin)
-            }
+            searchBar.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
+            searchBar.autoLayout.widthToSuperview()
+            searchBar.autoLayout.topToSuperview(offset: Designables.Sizes.Margins.defaultMargin, usingSafeArea: true)
 
-            #warning("Have weird autolayout issue")
-            tableView.autoLayout.topToBottom(of: scrollView, offset: Designables.Sizes.Margins.defaultMargin)
+            tableView.autoLayout.topToBottom(of: searchBar, offset: Designables.Sizes.Margins.defaultMargin)
             tableView.autoLayout.leadingToSuperview()
             tableView.autoLayout.trailingToSuperview()
             tableView.autoLayout.bottomToSuperview()
@@ -138,11 +135,34 @@ extension V {
 
         override func setupColorsAndStyles() {
             self.backgroundColor = AppColors.backgroundColor
+            tableView.backgroundColor = self.backgroundColor
+            searchBar.backgroundColor = self.backgroundColor
+            searchBar.tintColor = self.backgroundColor
+            searchBar.barTintColor = self.backgroundColor
         }
 
         // Order in View life-cycle : 2
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
+
+            searchBar.rx.text
+                .orEmpty
+                .skip(1)
+                .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
+                .log(whereAmI())
+                .subscribe(onNext: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.rxFilter.onNext(self.searchBar.text)
+                })
+                .disposed(by: disposeBag)
+            searchBar.rx.textDidEndEditing
+                .subscribe(onNext: { [weak self] (_) in
+                    guard let self = self else { return }
+                    guard self.searchBar.text!.count > 0 else { return }
+                    self.rxFilter.onNext(self.searchBar.text)
+                })
+                .disposed(by: self.disposeBag)
+
             let dataSource = RxTableViewSectionedAnimatedDataSource<Section>(
                 configureCell: { _, tableView, indexPath, item in
                     let row = indexPath.row
@@ -188,7 +208,7 @@ extension V {
         }
 
         func setupWith(screenInitialState viewModel: VM.GalleryAppS1.ScreenInitialState.ViewModel) {
-            subTitle = viewModel.subTitle
+
         }
     }
 }
@@ -218,8 +238,6 @@ extension V.GalleryAppS1View: UITableViewDelegate {
 // MARK: - Events capture
 
 extension V.GalleryAppS1View {
-    var rxBtnSample1Tap: Observable<Void> { btnSample1.rx.tapSmart(disposeBag) }
-    var rxBtnSample2Tap: Observable<Void> { btnSample2.rx.tapSmart(disposeBag) }
     var rxModelSelected: ControlEvent<VM.GalleryAppS1.TableItem> {
         tableView.rx.modelSelected(VM.GalleryAppS1.TableItem.self)
     }

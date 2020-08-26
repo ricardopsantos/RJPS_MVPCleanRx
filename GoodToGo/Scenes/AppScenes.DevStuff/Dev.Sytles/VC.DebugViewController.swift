@@ -159,7 +159,7 @@ extension VC.DebugViewController {
 
 // MARK: Private Misc Stuff
 
-extension VC.DebugViewController {
+private extension VC.DebugViewController {
 
 }
 

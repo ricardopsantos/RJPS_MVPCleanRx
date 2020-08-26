@@ -149,7 +149,7 @@ extension VC.ProductsListViewController {
 
 // MARK: Private Misc Stuff
 
-extension VC.ProductsListViewController {
+private extension VC.ProductsListViewController {
 
 }
 

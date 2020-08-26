@@ -135,7 +135,7 @@ extension VC.ProductDetailsViewController {
 
 // MARK: Private Misc Stuff
 
-extension VC.ProductDetailsViewController {
+private extension VC.ProductDetailsViewController {
 
 }
 

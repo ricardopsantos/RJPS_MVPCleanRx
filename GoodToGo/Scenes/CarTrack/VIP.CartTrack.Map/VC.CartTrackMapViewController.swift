@@ -160,7 +160,7 @@ extension VC.CartTrackMapViewController {
 
 // MARK: Private Misc Stuff
 
-extension VC.CartTrackMapViewController {
+private extension VC.CartTrackMapViewController {
 
 }
 

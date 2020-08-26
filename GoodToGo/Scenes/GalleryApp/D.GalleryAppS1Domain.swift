@@ -74,7 +74,7 @@ extension VM {
         struct SearchByTag {
             private init() {}
             struct Request { /* ViewController -> Interactor */
-                let tags: [String]
+                let tag: String
                 let page: Int
             }
             struct Response { /* Interactor -> Presenter */
@@ -91,11 +91,9 @@ extension VM {
             struct Request {}
             struct Response {
                 let title: String
-                let subTitle: String
             }
             struct ViewModel {
                 let title: String
-                let subTitle: String
             }
         }
     }

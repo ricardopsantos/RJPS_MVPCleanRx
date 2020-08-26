@@ -55,8 +55,10 @@ extension I.GalleryAppS1Interactor: BaseInteractorVIPMandatoryBusinessLogicProto
     /// till the user have all the data loaded on the view. This will improve user experience.
     func requestScreenInitialState() {
         var response: VM.GalleryAppS1.ScreenInitialState.Response!
-        response = VM.GalleryAppS1.ScreenInitialState.Response(title: "", subTitle: "")
+        response = VM.GalleryAppS1.ScreenInitialState.Response(title: "")
         presenter?.presentScreenInitialState(response: response)
+
+        requestSearchByTag(request: VM.GalleryAppS1.SearchByTag.Request(tag: "cat", page: 1))
     }
 
 }
@@ -72,9 +74,20 @@ extension I.GalleryAppS1Interactor {
 extension I.GalleryAppS1Interactor: GalleryAppS1BusinessLogicProtocol {
 
     func requestSearchByTag(request: VM.GalleryAppS1.SearchByTag.Request) {
+        guard let presenter = presenter, worker != nil else {
+            return
+        }
 
-        self.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
-        let request = GalleryAppRequests.Search(tags: request.tags, page: request.page)
+        // Lets turn things like 'cat, Dog', 'cat   dog ', 'Cat ; dog' into ["cat", "dog"]
+        var escaped = request.tag
+        escaped = escaped.replacingOccurrences(of: " ", with: ",")
+        escaped = escaped.replacingOccurrences(of: ";", with: ",")
+        escaped = escaped.replacingOccurrences(of: "-", with: ",")
+
+        let tags: [String] = escaped.components(separatedBy: ",").map({ $0.trim.lowercased() }).filter({ $0.count > 0 })
+
+        presenter.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
+        let request = GalleryAppRequests.Search(tags: tags, page: request.page)
         worker!.search(request, cacheStrategy: .cacheElseLoad).asObservable()
             .subscribe(onNext: { [weak self] (result) in
             guard let self = self else { return }

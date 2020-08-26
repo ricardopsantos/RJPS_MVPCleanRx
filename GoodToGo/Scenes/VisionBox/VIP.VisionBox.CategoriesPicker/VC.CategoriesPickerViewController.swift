@@ -152,7 +152,7 @@ extension VC.CategoriesPickerViewController {
 
 // MARK: Private Misc Stuff
 
-extension VC.CategoriesPickerViewController {
+private extension VC.CategoriesPickerViewController {
 
 }
 

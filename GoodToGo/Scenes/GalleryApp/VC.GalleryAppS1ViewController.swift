@@ -81,9 +81,6 @@ extension VC {
             super.viewWillAppear(animated)
             if firstAppearance {
                 interactor?.requestScreenInitialState()
-                let request = VM.GalleryAppS1.SearchByTag.Request(tags: ["cat"], page: 1)
-                self.interactor?.requestSearchByTag(request: request)
-
             }
         }
 
@@ -131,6 +128,14 @@ extension VC {
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
 
+            genericView.rxFilter.asObserver().bind { [weak self] (search) in
+                guard let self = self else { return }
+                guard let search = search else { return }
+                guard self.isVisible else { return }
+                let request = VM.GalleryAppS1.SearchByTag.Request(tag: search, page: 1)
+                self.interactor?.requestSearchByTag(request: request)
+            }.disposed(by: disposeBag)
+
             genericView
                 .rxModelSelected
                 .log(whereAmI())
@@ -149,15 +154,9 @@ extension VC {
     }
 }
 
-// MARK: Public Misc Stuff
-
-extension VC.GalleryAppS1ViewController {
-
-}
-
 // MARK: Private Misc Stuff
 
-extension VC.GalleryAppS1ViewController {
+private extension VC.GalleryAppS1ViewController {
 
 }
 
@@ -173,6 +172,6 @@ extension VC.GalleryAppS1ViewController: GalleryAppS1DisplayLogicProtocol {
     func displayScreenInitialState(viewModel: VM.GalleryAppS1.ScreenInitialState.ViewModel) {
         title = viewModel.title
         // Setting up the view, option 2 : setting the vars one by one
-        genericView.subTitle = viewModel.subTitle
+        //genericView.subTitle = viewModel.subTitle
     }
 }

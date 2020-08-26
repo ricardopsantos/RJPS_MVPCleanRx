@@ -77,8 +77,7 @@ extension P.GalleryAppS1Presenter: GalleryAppS1PresentationLogicProtocol {
     // Used By Interactor (exclusively)
     func presentScreenInitialState(response: VM.GalleryAppS1.ScreenInitialState.Response) {
         let title = response.title.uppercased()
-        let subTitle = response.subTitle.lowercased()
-        let viewModel = VM.GalleryAppS1.ScreenInitialState.ViewModel(title: title, subTitle: subTitle)
+        let viewModel = VM.GalleryAppS1.ScreenInitialState.ViewModel(title: title)
         viewController?.displayScreenInitialState(viewModel: viewModel)
     }
 

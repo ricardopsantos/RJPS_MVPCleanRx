@@ -185,7 +185,7 @@ extension VC.CarTrackLoginViewController {
 
 // MARK: Private Misc Stuff
 
-extension VC.CarTrackLoginViewController {
+private extension VC.CarTrackLoginViewController {
 
 }
 
