@@ -50,10 +50,9 @@ public extension API.GitHubAPIRequest {
 
     struct GetUserInfo: WebAPIRequest_Protocol {
         public var returnOnMainTread: Bool
-        public var debugRequest: Bool
+        public var debugRequest: Bool = DevTools.FeatureFlag.debugRequests.isTrue
         public var urlRequest: URLRequest
         public var responseType: RJS_SimpleNetworkClientResponseType
-        //public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.GitHub.getUser_200 : nil }
         public var mockedData: String? { return AppConstants.Mocks.GitHub.getUser_200 }
 
         init(userName: String) throws {
@@ -64,7 +63,6 @@ public extension API.GitHubAPIRequest {
             urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = Target.getUser(userName: userName).httpMethod
             responseType      = .json
-            debugRequest      = DevTools.devModeIsEnabled
             returnOnMainTread = false
         }
     }
@@ -75,7 +73,7 @@ public extension API.GitHubAPIRequest {
 public extension API.GitHubAPIRequest {
     struct GetFriends: WebAPIRequest_Protocol {
         public var returnOnMainTread: Bool
-        public var debugRequest: Bool
+        public var debugRequest: Bool = DevTools.FeatureFlag.debugRequests.isTrue
         public var urlRequest: URLRequest
         public var responseType: RJS_SimpleNetworkClientResponseType
         public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.GitHub.getUser_200 : nil }
@@ -88,7 +86,6 @@ public extension API.GitHubAPIRequest {
             urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = Target.getFriends(userName: userName).httpMethod
             responseType      = .json
-            debugRequest      = DevTools.devModeIsEnabled
             returnOnMainTread = false
         }
     }

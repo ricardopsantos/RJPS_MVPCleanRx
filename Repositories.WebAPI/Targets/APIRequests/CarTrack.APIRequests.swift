@@ -45,7 +45,7 @@ public extension API.CarTrackAPIRequest {
 public extension API.CarTrackAPIRequest {
     struct GetUserInfo: WebAPIRequest_Protocol {
         public var returnOnMainTread: Bool
-        public var debugRequest: Bool
+        public var debugRequest: Bool = DevTools.FeatureFlag.debugRequests.isTrue
         public var urlRequest: URLRequest
         public var responseType: RJS_SimpleNetworkClientResponseType
         public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.CarTrack.get_200 : nil }
@@ -58,7 +58,6 @@ public extension API.CarTrackAPIRequest {
             urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = Target.getUsers.httpMethod
             responseType      = .json
-            debugRequest      = DevTools.devModeIsEnabled
             returnOnMainTread = false
         }
     }

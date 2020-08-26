@@ -47,7 +47,7 @@ public extension API.EmployeesAPIRequest {
 
     struct GetEmployees_APIRequest: WebAPIRequest_Protocol {
         public var returnOnMainTread: Bool = true
-        public var debugRequest: Bool = DevTools.devModeIsEnabled
+        public var debugRequest: Bool = DevTools.FeatureFlag.debugRequests.isTrue
         public var urlRequest: URLRequest
         public var responseType: RJS_SimpleNetworkClientResponseType
         public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.Employees.getEmployees_200 : nil }

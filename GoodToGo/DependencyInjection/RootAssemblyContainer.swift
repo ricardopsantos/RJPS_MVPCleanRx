@@ -55,7 +55,8 @@ struct RootAssemblyContainerProtocols {
 
     // GalleryApp
     static let galleryAppGenericAppBusiness_UseCase = GalleryAppGenericBusinessUseCaseProtocol.self
-    static let galleryAppAPI_UseCase                = GalleryAppAPIRelatedUseCase.self
+    static let galleryAppAPI_UseCase                = GalleryAppAPIRelatedUseCaseProtocol.self
+    static let galleryApp_Worker                    = GalleryAppWorkerProtocol.self
 
 }
 
@@ -75,6 +76,7 @@ public class GalleryAppResolver {
     public static var shared   = GalleryAppResolver()
     public let api             = AppDelegate.shared.container.resolve(AppProtocols.galleryAppAPI_UseCase.self)
     public let genericBusiness = AppDelegate.shared.container.resolve(AppProtocols.galleryAppGenericAppBusiness_UseCase.self)
+    public let worker          = AppDelegate.shared.container.resolve(AppProtocols.galleryApp_Worker.self)
 }
 
 //
@@ -105,6 +107,15 @@ final class RootAssemblyContainer: Assembly {
         container.autoregister(AppProtocols.galleryApp_NetWorkRepository,
                                initializer: API.GalleryApp.NetWorkRepository.init).inObjectScope(.container)
 
+        // use case
+        container.register(AppProtocols.galleryAppGenericAppBusiness_UseCase) { resolver in
+            let uc = GalleryAppMicBusinessUseCase()
+            uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
+            uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
+            return uc
+        }
+
+        // use case
         container.register(AppProtocols.galleryAppAPI_UseCase) { resolver in
             let uc = GalleryAppAPIRelatedUseCase()
             uc.repositoryNetwork               = resolver.resolve(AppProtocols.galleryApp_NetWorkRepository)
@@ -113,11 +124,12 @@ final class RootAssemblyContainer: Assembly {
             return uc
         }
 
-        container.register(AppProtocols.galleryAppGenericAppBusiness_UseCase) { resolver in
-            let uc = GalleryAppMicBusinessUseCase()
-            uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
-            uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
-            return uc
+        // worker
+        container.register(AppProtocols.galleryApp_Worker) { resolver in
+            let w = GalleryAppWorker()
+            w.api             = resolver.resolve(AppProtocols.galleryAppAPI_UseCase)
+            w.genericUseCase  = resolver.resolve(AppProtocols.galleryAppGenericAppBusiness_UseCase)
+            return w
         }
 
         //

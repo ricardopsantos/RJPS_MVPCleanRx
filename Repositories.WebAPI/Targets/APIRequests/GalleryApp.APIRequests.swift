@@ -51,7 +51,7 @@ public extension API.GalleryAppAPIRequest {
 public extension API.GalleryAppAPIRequest {
     struct Search: WebAPIRequest_Protocol {
         public var returnOnMainTread: Bool
-        public var debugRequest: Bool
+        public var debugRequest: Bool = DevTools.FeatureFlag.debugRequests.isTrue
         public var urlRequest: URLRequest
         public var responseType: RJS_SimpleNetworkClientResponseType
         public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.GalleryApp.search_200 : nil }
@@ -64,7 +64,6 @@ public extension API.GalleryAppAPIRequest {
             urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = Target.search.httpMethod
             responseType      = .json
-            debugRequest      = false//DevTools.devModeIsEnabled
             returnOnMainTread = true
         }
     }

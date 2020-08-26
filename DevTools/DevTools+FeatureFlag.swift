@@ -19,11 +19,13 @@ public extension DevTools {
         case appLogsEnabled            = "Logs: enabled"
         case logDeInitEvent            = "Logs: log deinit event"
         case nsLogger                  = "If [true] log to console, else to NSLogger"
+        case debugRequests             = "If [true] log API requests"
 
         case showScene_rxTests     = "Scene Enabled: RxTests"
         case showScene_carTrack    = "Scene Enabled: Exam.CarTrack"
         case showScene_gitHub      = "Scene Enabled: Exam.GitHub"
         case showScene_visionBox   = "Scene Enabled: Exam.VisionBox "
+        case showScene_gallery     = "Scene Enabled: Exam.Gallery "
 
         case showScene_vipTemplate = "Scene Enabled: VIP Template"
 
@@ -36,12 +38,14 @@ public extension DevTools {
             case .devTeam_useMockedData:    return true
             case .logDeInitEvent:           return false
             case .nsLogger:                 return false
+            case .debugRequests:            return false
 
             case .showScene_rxTests:     return true
             case .showScene_carTrack:    return true
             case .showScene_gitHub:      return true
             case .showScene_vipTemplate: return true
             case .showScene_visionBox:   return true
+            case .showScene_gallery:     return true
             }
         }
 
@@ -54,12 +58,14 @@ public extension DevTools {
              case .nsLogger:                 return true
              case .logDeInitEvent:           return true
              case .showDebugStatsViewOnView: return true
+             case .debugRequests:            return true
 
              case .showScene_rxTests:        return true
              case .showScene_carTrack:       return true
              case .showScene_gitHub:         return true
              case .showScene_vipTemplate:    return true
              case .showScene_visionBox:      return true
+             case .showScene_gallery:        return true
             }
         }
 

@@ -166,6 +166,14 @@
 		D774F59124F6790400D01370 /* GalleryAppRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F59024F6790400D01370 /* GalleryAppRequests.swift */; };
 		D774F59624F67B4100D01370 /* Mappers+GalleryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F59524F67B4100D01370 /* Mappers+GalleryApp.swift */; };
 		D774F59824F67FFC00D01370 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F59724F67FFC00D01370 /* File.swift */; };
+		D774F5A124F6865100D01370 /* V.GalleryAppS1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F59924F6865000D01370 /* V.GalleryAppS1View.swift */; };
+		D774F5A224F6865100D01370 /* VC.GalleryAppS1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F59A24F6865000D01370 /* VC.GalleryAppS1ViewController.swift */; };
+		D774F5A324F6865100D01370 /* R.GalleryAppS1Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F59B24F6865000D01370 /* R.GalleryAppS1Router.swift */; };
+		D774F5A424F6865100D01370 /* D.GalleryAppS1Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F59C24F6865000D01370 /* D.GalleryAppS1Domain.swift */; };
+		D774F5A724F6865100D01370 /* I.GalleryAppS1Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F59F24F6865000D01370 /* I.GalleryAppS1Interactor.swift */; };
+		D774F5A824F6865100D01370 /* P.GalleryAppS1Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F5A024F6865000D01370 /* P.GalleryAppS1Presenter.swift */; };
+		D774F5AA24F6874E00D01370 /* V.GalleryAppS1TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F5A924F6874E00D01370 /* V.GalleryAppS1TableViewCell.swift */; };
+		D774F5AC24F6A4F900D01370 /* W.GalleryAppS1Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F5AB24F6A4F900D01370 /* W.GalleryAppS1Worker.swift */; };
 		D77824B024784BBF0071776F /* NSLoggerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77824AD24784B850071776F /* NSLoggerSwift.framework */; };
 		D77824B2247900650071776F /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77824B1247900650071776F /* Lottie.framework */; };
 		D77824B7247903C60071776F /* 23038-animatonblue.json in Resources */ = {isa = PBXBuildFile; fileRef = D77824B6247903C60071776F /* 23038-animatonblue.json */; };
@@ -1187,6 +1195,14 @@
 		D774F59024F6790400D01370 /* GalleryAppRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryAppRequests.swift; sourceTree = "<group>"; };
 		D774F59524F67B4100D01370 /* Mappers+GalleryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mappers+GalleryApp.swift"; sourceTree = "<group>"; };
 		D774F59724F67FFC00D01370 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		D774F59924F6865000D01370 /* V.GalleryAppS1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V.GalleryAppS1View.swift; sourceTree = "<group>"; };
+		D774F59A24F6865000D01370 /* VC.GalleryAppS1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.GalleryAppS1ViewController.swift; sourceTree = "<group>"; };
+		D774F59B24F6865000D01370 /* R.GalleryAppS1Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.GalleryAppS1Router.swift; sourceTree = "<group>"; };
+		D774F59C24F6865000D01370 /* D.GalleryAppS1Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D.GalleryAppS1Domain.swift; sourceTree = "<group>"; };
+		D774F59F24F6865000D01370 /* I.GalleryAppS1Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.GalleryAppS1Interactor.swift; sourceTree = "<group>"; };
+		D774F5A024F6865000D01370 /* P.GalleryAppS1Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.GalleryAppS1Presenter.swift; sourceTree = "<group>"; };
+		D774F5A924F6874E00D01370 /* V.GalleryAppS1TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V.GalleryAppS1TableViewCell.swift; path = Auxiliar/V.GalleryAppS1TableViewCell.swift; sourceTree = "<group>"; };
+		D774F5AB24F6A4F900D01370 /* W.GalleryAppS1Worker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W.GalleryAppS1Worker.swift; sourceTree = "<group>"; };
 		D77824A82478488B0071776F /* NSLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NSLogger.framework; path = Carthage/Build/iOS/NSLogger.framework; sourceTree = "<group>"; };
 		D77824AD24784B850071776F /* NSLoggerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NSLoggerSwift.framework; path = Carthage/Build/iOS/NSLoggerSwift.framework; sourceTree = "<group>"; };
 		D77824B1247900650071776F /* Lottie.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lottie.framework; path = Carthage/Build/iOS/Lottie.framework; sourceTree = "<group>"; };
@@ -2026,6 +2042,14 @@
 		D774F54824F57E0C00D01370 /* GalleryApp */ = {
 			isa = PBXGroup;
 			children = (
+				D774F59924F6865000D01370 /* V.GalleryAppS1View.swift */,
+				D774F59A24F6865000D01370 /* VC.GalleryAppS1ViewController.swift */,
+				D774F59F24F6865000D01370 /* I.GalleryAppS1Interactor.swift */,
+				D774F5A024F6865000D01370 /* P.GalleryAppS1Presenter.swift */,
+				D774F59B24F6865000D01370 /* R.GalleryAppS1Router.swift */,
+				D774F59C24F6865000D01370 /* D.GalleryAppS1Domain.swift */,
+				D774F5A924F6874E00D01370 /* V.GalleryAppS1TableViewCell.swift */,
+				D774F5AB24F6A4F900D01370 /* W.GalleryAppS1Worker.swift */,
 			);
 			path = GalleryApp;
 			sourceTree = "<group>";
@@ -3820,6 +3844,7 @@
 				D7979DB5246D6B370039031C /* P.CartTrackMapPresenter.swift in Sources */,
 				D7B9BF2724AFA90F0093A82D /* V.CategoriesPickerView.swift in Sources */,
 				D7711F68246B340C00B6963A /* I.___FILEBASENAME___Interactor.swift in Sources */,
+				D774F5AA24F6874E00D01370 /* V.GalleryAppS1TableViewCell.swift in Sources */,
 				D7979DC6246DC1960039031C /* VC.DebugViewController.swift in Sources */,
 				D7F2DE362474A718008CE3DA /* I.DataStoreReceiverInteractor.swift in Sources */,
 				9FE1439721AF2F520026BDFC /* typealias.Application.swift in Sources */,
@@ -3845,12 +3870,15 @@
 				D7979DB2246D6B370039031C /* V.CartTrackMapView.swift in Sources */,
 				D7B9BF5124B080B80093A82D /* I.ProdutDetailsInteractor.swift in Sources */,
 				9FE0572C22E8D8F000802747 /* D.MVPSampleView_ViewModel.swift in Sources */,
+				D774F5A824F6865100D01370 /* P.GalleryAppS1Presenter.swift in Sources */,
 				9FE0572722E8D75400802747 /* D.MVPSampleRxView_ViewModel.swift in Sources */,
 				9FE143C021AF2F520026BDFC /* AppDelegate.swift in Sources */,
+				D774F5AC24F6A4F900D01370 /* W.GalleryAppS1Worker.swift in Sources */,
 				D7B9BF3F24AFCEF40093A82D /* I.ProductsListInteractor.swift in Sources */,
 				9FACC17B223BDD5B00576498 /* TO_DO.swift in Sources */,
 				9FE0572922E8D8F000802747 /* R.MVPSampleView_Router.swift in Sources */,
 				9FE0572422E8D75400802747 /* R.MVPSampleRxView_Router.swift in Sources */,
+				D774F5A724F6865100D01370 /* I.GalleryAppS1Interactor.swift in Sources */,
 				D7979DB1246D6B370039031C /* VC.CartTrackMapViewController.swift in Sources */,
 				D7979DB8246D6B370039031C /* D.CarTrackLoginDomain.swift in Sources */,
 				D7B9BF2824AFA90F0093A82D /* VC.CategoriesPickerViewController.swift in Sources */,
@@ -3860,6 +3888,7 @@
 				9F58FB4922BE5DE700042A8C /* R.SearchUser_Router.swift in Sources */,
 				9F58FB4522BE5DE700042A8C /* R.UserDetails_Router.swift in Sources */,
 				D7711F63246B340C00B6963A /* R.___FILEBASENAME___Router.swift in Sources */,
+				D774F5A424F6865100D01370 /* D.GalleryAppS1Domain.swift in Sources */,
 				D7979DBB246D6B370039031C /* R.CarTrackLoginRouter.swift in Sources */,
 				D72923892466BF4700DAD480 /* VC.TabBarController.swift in Sources */,
 				D7B9BF3B24AFCEF40093A82D /* R.ProductsListRouter.swift in Sources */,
@@ -3868,18 +3897,21 @@
 				D7AB2443246716C6000142C4 /* V.UserTableViewCell.swift in Sources */,
 				9F58FB4A22BE5DE700042A8C /* D.SearchUser_ViewModel.swift in Sources */,
 				D7711F6D246B3B4400B6963A /* V.___FILEBASENAME___TableViewCell.swift in Sources */,
+				D774F5A124F6865100D01370 /* V.GalleryAppS1View.swift in Sources */,
 				D7B9BF4E24B080B80093A82D /* D.ProdutDetailsDomain.swift in Sources */,
 				D7B9BF4024AFCEF40093A82D /* P.ProductsListPresenter.swift in Sources */,
 				9F58FB4D22BE5DE700042A8C /* AS.SearchUser_AssemblyContainer.swift in Sources */,
 				D7DD0C5524B0CE7700740095 /* CategoryButton.swift in Sources */,
 				D7979DB6246D6B370039031C /* VC.CarTrackLoginViewController.swift in Sources */,
 				D7BC2019247EE02200D546F0 /* DeeplinksManager.swift in Sources */,
+				D774F5A224F6865100D01370 /* VC.GalleryAppS1ViewController.swift in Sources */,
 				9FE0572B22E8D8F000802747 /* P.MVPSampleView_Presenter.swift in Sources */,
 				D7979DB7246D6B370039031C /* V.CarTrackLoginView.swift in Sources */,
 				9FE0572622E8D75400802747 /* P.MVPSampleRxView_Presenter.swift in Sources */,
 				9FB8DFCA2233E67100095420 /* typealias.DDD.encaplulate.swift in Sources */,
 				D7979DC5246DC1960039031C /* V.DebugView.swift in Sources */,
 				D7B9BF4D24B080B80093A82D /* R.ProdutDetailsRouter.swift in Sources */,
+				D774F5A324F6865100D01370 /* R.GalleryAppS1Router.swift in Sources */,
 				9F58FB4422BE5DE700042A8C /* V.UserDetails_View.swift in Sources */,
 				D7979DB3246D6B370039031C /* R.CartTrackMapRouter.swift in Sources */,
 				D7C4CB872494D3990087E999 /* CarTrackMKMarkerAnnotationView.swift in Sources */,

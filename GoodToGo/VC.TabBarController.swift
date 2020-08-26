@@ -28,9 +28,10 @@ extension VC {
             //let mvpSample3 = createControllers(tabName: "MVP.Rx.Table", vc: AppDelegate.shared.container.resolve(V.MVPSampleTableView_View.self)!)
 
             // EXAMS
-            let mvpGitUser   = createControllers(tabName: "MVP.GitUser", vc: AppDelegate.shared.container.resolve(V.SearchUser_View.self)!)
-            let vipCarTrack  = createControllers(tabName: "VIP.CarTrack", vc: VC.CarTrackLoginViewController(presentationStyle: .modal))
-            let vipVisionBox = createControllers(tabName: "VIP.VisionBox", vc: VC.CategoriesPickerViewController(presentationStyle: .modal))
+            let mvpGitUser    = createControllers(tabName: "MVP.GitUser", vc: AppDelegate.shared.container.resolve(V.SearchUser_View.self)!)
+            let vipCarTrack   = createControllers(tabName: "VIP.CarTrack", vc: VC.CarTrackLoginViewController(presentationStyle: .modal))
+            let vipVisionBox  = createControllers(tabName: "VIP.VisionBox", vc: VC.CategoriesPickerViewController(presentationStyle: .modal))
+            let vipGalleryApp = createControllers(tabName: "VIP.Gallery", vc: VC.GalleryAppS1ViewController(presentationStyle: .modal))
 
             // TESTING / DEBUG/ TEMPLATES
             let vcRx = createControllers(tabName: "Rx.Testing", vc: RxTesting())
@@ -38,6 +39,7 @@ extension VC {
             let vipDebug    = createControllers(tabName: "Debug", vc: VC.DebugViewController(presentationStyle: .modal))
 
             var viewControllersList: [UIViewController] = []
+            if DevTools.FeatureFlag.showScene_gallery.isTrue { viewControllersList.append(vipGalleryApp) }
             if DevTools.FeatureFlag.showScene_visionBox.isTrue { viewControllersList.append(vipVisionBox) }
             if DevTools.FeatureFlag.showScene_carTrack.isTrue { viewControllersList.append(vipCarTrack) }
             if DevTools.FeatureFlag.showScene_gitHub.isTrue { viewControllersList.append(mvpGitUser) }
