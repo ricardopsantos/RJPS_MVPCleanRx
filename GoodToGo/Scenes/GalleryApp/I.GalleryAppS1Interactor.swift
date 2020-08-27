@@ -88,34 +88,13 @@ extension I.GalleryAppS1Interactor: GalleryAppS1BusinessLogicProtocol {
 
         presenter.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
         let request = GalleryAppRequests.Search(tags: tags, page: request.page)
-        worker!.search(request, cacheStrategy: .cacheElseLoad).asObservable()
+        worker!.search(request, cacheStrategy: .cacheElseLoad)
+            .asObservable()
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] (result) in
-            guard let self = self else { return }
-            //switch result {
-            //case .success(let some):
+                guard let self = self else { return }
                 let response = VM.GalleryAppS1.SearchByTag.Response(photos: result.photos.photo)
                 self.presenter?.presentSearchByTag(response: response)
-/*
-                print("\(tags) returned \(some.photos.photo.count) records")
-                some.photos.photo.forEach { (photo) in
-                    print("Requesting info about: \(photo.id)")
-                    //let request = GalleryAppRequests.ImageInfo(photoId: some.photos.photo.first!.id)
-                    let request = GalleryAppRequests.ImageInfo(photoId: photo.id)
-                    self.worker?.imageInfo2(request, cacheStrategy: .cacheElseLoad).asObservable().subscribe(onNext: { [weak self] (info, image) in
-                        switch info {
-                        case .success(let some): print(some)
-                        case .failure(let error): print(error)
-                        }
-                        switch image {
-                        case .success(let some):
-                            print(some)
-                        case .failure(let error): print(error)
-                        }
-                    }).disposed(by: self.disposeBag)
-                }*/
-           // case .failure(let error):
-           //     self.presentError(error: error)
-           // }
         }, onError: { (error) in
             DevTools.Log.error(error)
             self.presentError(error: error)

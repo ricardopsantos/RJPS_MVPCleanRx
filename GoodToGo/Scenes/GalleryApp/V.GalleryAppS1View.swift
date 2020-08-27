@@ -78,25 +78,12 @@ extension V {
 
         private var collectionViewDataSource: [VM.GalleryAppS1.TableItem] = [] {
             didSet {
-                collectionView.fadeTo(0)
-                DispatchQueue.executeWithDelay(delay: RJS_Constants.defaultAnimationsTime) { [weak self] in
-                    guard let self = self else { return }
-                    self.collectionView.reloadData()
-                    if self.collectionViewDataSource.count > 0 {
-                        self.collectionView.fadeTo(1)
-                    }
-                }
+                self.collectionView.reloadData()
             }
         }
 
         // Naming convention: rxTbl[MeaningfulTableName]Items
-        typealias Section = AnimatableSectionModel<String, VM.GalleryAppS1.TableItem>
-        var rxTableItems = BehaviorSubject<[Section]>(value: [])
         var rxFilter = BehaviorSubject<String?>(value: nil)
-
-        private lazy var tableView: UITableView = {
-            UIKitFactory.tableView()
-        }()
 
         private lazy var collectionView: UICollectionView = {
              let viewLayout = UICollectionViewFlowLayout()
@@ -118,7 +105,6 @@ extension V {
             stackViewVLevel1.uiUtils.addArrangedSeparator()
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(lblTitle)
             stackViewVLevel1.uiUtils.addArrangedSeparator()
-            addSubview(tableView)
             addSubview(collectionView)
         }
 
@@ -135,11 +121,6 @@ extension V {
             searchBar.autoLayout.widthToSuperview()
             searchBar.autoLayout.topToSuperview(offset: Designables.Sizes.Margins.defaultMargin, usingSafeArea: true)
 
-            tableView.autoLayout.topToBottom(of: searchBar, offset: Designables.Sizes.Margins.defaultMargin)
-            tableView.autoLayout.leadingToSuperview()
-            tableView.autoLayout.trailingToSuperview()
-            tableView.autoLayout.bottomToSuperview()
-
             collectionView.autoLayout.topToBottom(of: searchBar, offset: Designables.Sizes.Margins.defaultMargin)
             collectionView.autoLayout.leadingToSuperview()
             collectionView.autoLayout.trailingToSuperview()
@@ -151,14 +132,7 @@ extension V {
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 3/3 : Stuff that is not included in [prepareLayoutCreateHierarchy] and [prepareLayoutBySettingAutoLayoutsRules]
         override func prepareLayoutByFinishingPrepareLayout() {
-            V.GalleryAppS1TableViewCell.prepare(tableView: tableView)
-            tableView.estimatedRowHeight = Designables.Sizes.TableView.defaultHeightForCell
-            tableView.rowHeight = UITableView.automaticDimension
-            tableView.separatorColor = .clear
-            tableView.rx.setDelegate(self).disposed(by: disposeBag)
             lblTitle.textAlignment = .center
-
-           // collectionView.rx.setDelegate(self).disposed(by: disposeBag)
             collectionView.register(V.CustomCollectionViewCell.self, forCellWithReuseIdentifier: V.CustomCollectionViewCell.identifier)
             collectionView.delegate = self
             collectionView.dataSource = self
@@ -166,8 +140,6 @@ extension V {
 
         override func setupColorsAndStyles() {
             self.backgroundColor = AppColors.backgroundColor
-          //  collectionView.backgroundColor = self.backgroundColor
-            tableView.backgroundColor = self.backgroundColor
             searchBar.backgroundColor = self.backgroundColor
             searchBar.tintColor = self.backgroundColor
             searchBar.barTintColor = self.backgroundColor
@@ -194,25 +166,6 @@ extension V {
                     self.rxFilter.onNext(self.searchBar.text)
                 })
                 .disposed(by: self.disposeBag)
-
-            let dataSource = RxTableViewSectionedAnimatedDataSource<Section>(
-                configureCell: { _, tableView, indexPath, item in
-                    let row = indexPath.row
-                    let section = indexPath.section
-                    let reuseIdentifier = V.GalleryAppS1TableViewCell.reuseIdentifier
-                     if let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: IndexPath(row: row, section: section)) as? V.GalleryAppS1TableViewCell {
-                         cell.configWith(viewModel: item)
-                         return cell
-                     }
-                    return UITableViewCell()
-            })
-            dataSource.animationConfiguration = AnimationConfiguration(insertAnimation: .fade, reloadAnimation: .fade, deleteAnimation: .fade)
-
-            rxTableItems
-                .asObserver()
-                .log(whereAmI())
-                .bind(to: tableView.rx.items(dataSource: dataSource))
-                .disposed(by: disposeBag)
         }
 
         // MARK: - Custom Getter/Setters
@@ -235,44 +188,12 @@ extension V {
         }
 
         func setupWith(searchByTag viewModel: VM.GalleryAppS1.SearchByTag.ViewModel) {
-            let section = Section(model: viewModel.dataSourceTitle, items: viewModel.dataSource)
-            rxTableItems.onNext([section])
             collectionViewDataSource = viewModel.dataSource
         }
 
         func setupWith(screenInitialState viewModel: VM.GalleryAppS1.ScreenInitialState.ViewModel) {
 
         }
-    }
-}
-
-// MARK: - UITableViewDelegate
-
-extension V.GalleryAppS1View: UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let sectionView = DefaultTableViewSection(frame: .zero)
-        if let sectionItem = try? rxTableItems.value() {
-            guard sectionItem.count > section else { return nil }
-            sectionView.title = sectionItem[section].model
-            return sectionView
-        }
-        return nil
-    }
-
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //if let sectionItem = try? rxTableItems.value() {
-        //    let item = sectionItem[indexPath.section].items[indexPath.row]
-        //}
-        return V.GalleryAppS1TableViewCell.cellSize
-    }
-}
-
-// MARK: - Events capture
-
-extension V.GalleryAppS1View {
-    var rxModelSelected: ControlEvent<VM.GalleryAppS1.TableItem> {
-        tableView.rx.modelSelected(VM.GalleryAppS1.TableItem.self)
     }
 }
 
@@ -298,13 +219,6 @@ extension V.GalleryAppS1View: UICollectionViewDataSource {
 extension V.GalleryAppS1View: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: V.CustomCollectionViewCell.defaultWidth, height: V.CustomCollectionViewCell.defaultHeight)
-    }
-
-    func itemWidth(for width: CGFloat, spacing: CGFloat) -> CGFloat {
-        let itemsInRow: CGFloat = 2
-        let totalSpacing: CGFloat = 2 * spacing + (itemsInRow - 1) * spacing
-        let finalWidth = (width - totalSpacing) / itemsInRow
-        return floor(finalWidth)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

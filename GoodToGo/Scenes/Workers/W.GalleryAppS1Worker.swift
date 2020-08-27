@@ -16,6 +16,7 @@ import PointFreeFunctions
 import RJPSLib_Networking
 import Factory
 //
+import AppResources
 import Core
 import Domain
 import Domain_GalleryApp
@@ -51,8 +52,12 @@ extension GalleryAppWorker: GalleryAppWorkerProtocol {
 
     public func imageInfoZip(_ request: GalleryAppRequests.ImageInfo, cacheStrategy: CacheStrategy) -> Observable<(GalleryAppModel.ImageInfo, UIImage)> {
         let observerA = imageInfo(request, cacheStrategy: cacheStrategy)
+
         let observerB = observerA.flatMapLatest { (some) -> Observable<UIImage> in
             return self.genericUseCase.download(some)
+        }.catchError { (error) -> Observable<UIImage> in
+            print(error)
+            return Observable.just(Images.notFound.image)
         }
         return Observable.zip(observerA, observerB)
     }

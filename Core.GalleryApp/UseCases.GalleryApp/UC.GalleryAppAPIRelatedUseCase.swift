@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 import RJPSLib_Networking
 import RJPSLib_Storage
+import Repositories
 //
 import AppConstants
 import PointFreeFunctions
@@ -28,12 +29,7 @@ public class GalleryAppAPIRelatedUseCase: GenericUseCase, GalleryAppAPIRelatedUs
     public var generic_CacheRepositoryProtocol: SimpleCacheRepositoryProtocol!
     public var generic_LocalStorageRepository: KeyValuesStorageRepositoryProtocol!
 
-    private lazy var imageInfoQueue: OperationQueue = {
-        let queue = OperationQueue()
-        queue.maxConcurrentOperationCount = 1
-        return queue
-    }()
-
+    private static var cacheTTL = 60 * 24 // 24h cache
     // Will
     // - Manage the requests queue
     // - Call the API
@@ -49,8 +45,7 @@ public class GalleryAppAPIRelatedUseCase: GenericUseCase, GalleryAppAPIRelatedUs
                         switch result {
                         case .success(let some) :
                             observer.on(.next(some.entity))
-                            // Update cache (60m cache)
-                            _ = RJS_DataModel.PersistentSimpleCacheWithTTL.shared.saveObject(some.entity.toDomain, withKey: cacheKey, keyParams: [], lifeSpam: 60)
+                            APICacheManager.shared.save(some.entity.toDomain, key: cacheKey, params: [], lifeSpam: Self.cacheTTL)
                         case .failure(let error): observer.on(.error(error))
                         }
                         observer.on(.completed)
@@ -77,20 +72,16 @@ public class GalleryAppAPIRelatedUseCase: GenericUseCase, GalleryAppAPIRelatedUs
 
 // Strong references. fix latter
         return Observable<GalleryAppResponseDto.ImageInfo>.create { observer in
-            let networkingOperation = ImageInfoRequestOperation(block: block)
-            self.imageInfoQueue.addOperations([networkingOperation], waitUntilFinished: false)
-            networkingOperation.completionBlock = {
-                if networkingOperation.isCancelled {
-                    return
-                }
-                if networkingOperation.result != nil {
-                    observer.on(.next(networkingOperation.result!))
-                } else {
+            let operation = ImageInfoRequestOperation(block: block)
+            OperationQueueManager.shared.add(operation)
+            operation.completionBlock = {
+                if operation.isCancelled || operation.result == nil {
                     observer.on(.error(Factory.Errors.with(appCode: .notPredicted)))
+                } else {
+                    observer.on(.next(operation.result!))
                 }
                 observer.on(.completed)
             }
-
             return Disposables.create()
         }
 

@@ -48,6 +48,13 @@ struct ProductPreviewSmallCollectionViewCell_Previews: PreviewProvider {
 extension V {
     class CustomCollectionViewCell: UICollectionViewCell {
 
+        func itemWidth(for width: CGFloat, spacing: CGFloat) -> CGFloat {
+            let itemsInRow: CGFloat = 2
+            let totalSpacing: CGFloat = 2 * spacing + (itemsInRow - 1) * spacing
+            let finalWidth = (width - totalSpacing) / itemsInRow
+            return floor(finalWidth)
+        }
+
         static let defaultHeight: CGFloat = screenHeight * 0.3
         static let defaultWidth: CGFloat  = screenWidth * 0.3
         var worker = GalleryAppResolver.shared.worker
@@ -80,8 +87,6 @@ extension V {
             contentView.backgroundColor = cellColor
             self.backgroundColor = cellColor
 
-            #warning("free dispose bag on reuse indentifier")
-
         }
 
         required init?(coder: NSCoder) {
@@ -89,17 +94,19 @@ extension V {
         }
 
         func setup(viewModel: VM.GalleryAppS1.TableItem) {
-            //let image = UIImage(named: viewModel.productImage)
-            imgProduct.image = UIImage(named: viewModel.image)
 
-            #warning("strong reference!")
-
+            self.imgProduct.image = Images.notFound.image
             let request = GalleryAppRequests.ImageInfo(photoId: viewModel.id)
-            self.worker?.imageInfoZip(request, cacheStrategy: .cacheElseLoad).asObservable().subscribe(onNext: { [weak self] (_, image) in
-                DispatchQueue.main.async {
-                    self!.imgProduct.image = image
-                }
+            self.worker?.imageInfoZip(request, cacheStrategy: .cacheElseLoad)
+                .asObservable()
+                .observeOn(MainScheduler.instance)
+                .subscribe(onNext: { [weak self] (_, image) in
+                self?.imgProduct.image = image
             }).disposed(by: self.disposeBag)
+        }
+
+        override func prepareForReuse() {
+            disposeBag = DisposeBag()
         }
 
     }

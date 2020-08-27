@@ -136,14 +136,6 @@ extension VC {
                 self.interactor?.requestSearchByTag(request: request)
             }.disposed(by: disposeBag)
 
-            genericView
-                .rxModelSelected
-                .log(whereAmI())
-                .subscribe(onNext: { /* [router] */ (some) in
-                    DevTools.Log.message("Received [\(some)]")
-                })
-                .disposed(by: disposeBag)
-
         }
 
         // Order in View life-cycle : 7
@@ -171,7 +163,5 @@ extension VC.GalleryAppS1ViewController: GalleryAppS1DisplayLogicProtocol {
 
     func displayScreenInitialState(viewModel: VM.GalleryAppS1.ScreenInitialState.ViewModel) {
         title = viewModel.title
-        // Setting up the view, option 2 : setting the vars one by one
-        //genericView.subTitle = viewModel.subTitle
     }
 }

@@ -24,23 +24,17 @@ public class GalleryAppMicBusinessUseCase: GenericUseCase, GalleryAppGenericBusi
     public var generic_CacheRepositoryProtocol: SimpleCacheRepositoryProtocol!
     public var generic_LocalStorageRepository: KeyValuesStorageRepositoryProtocol!
 
-    private lazy var operationQueue: OperationQueue = {
-        let queue = OperationQueue()
-        queue.maxConcurrentOperationCount = 1
-        return queue
-    }()
-
     public func download(_ request: GalleryAppModel.ImageInfo) -> Observable<UIImage> {
 
         return Observable<UIImage>.create { [weak self] observer in
             if let size = request.sizes.size.filter({ $0.label == "Large Square" }).last {
-                let networkingOperation = DownloadImageOperation(withURLString: size.source)
-                self?.operationQueue.addOperations([networkingOperation], waitUntilFinished: false)
-                networkingOperation.completionBlock = {
-                    if networkingOperation.isCancelled || networkingOperation.image == nil {
+                let operation = DownloadImageOperation(withURLString: size.source)
+                OperationQueueManager.shared.add(operation)
+                operation.completionBlock = {
+                    if operation.isCancelled || operation.image == nil {
                         observer.on(.next(Images.notFound.image))
                     } else {
-                        observer.on(.next(networkingOperation.image!))
+                        observer.on(.next(operation.image!))
                     }
                     observer.on(.completed)
                 }
