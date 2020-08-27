@@ -4,16 +4,16 @@
 //
 
 import Foundation
+import UIKit
 //
 import RJPSLib_Networking
+import RxSwift
 //
 
 /**
 Use case Protocol for things related with __app generic business__
  */
 
-public typealias GalleryAppGenericBusinessUseCaseProtocolCompletionHandler = (_ result: Result<Bool>) -> ()
-
 public protocol GalleryAppGenericBusinessUseCaseProtocol: class {
-    //func validate(user: String, password: String, completionHandler: @escaping GalleryAppGenericBusinessUseCaseProtocolCompletionHandler)
+    func download(_ request: GalleryAppModel.ImageInfo) -> Observable<UIImage>
 }

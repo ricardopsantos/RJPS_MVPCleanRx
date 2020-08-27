@@ -20,44 +20,6 @@ import Factory
 
 // swiftlint:disable rule_Coding
 
-public class OperationBase2: Operation {
-    private var _executing = false {
-        willSet { willChangeValue(forKey: "isExecuting") }
-        didSet { didChangeValue(forKey: "isExecuting") }
-    }
-    public override var isExecuting: Bool { return _executing }
-    private var _finished = false {
-        willSet { willChangeValue(forKey: "isFinished") }
-        didSet { didChangeValue(forKey: "isFinished") }
-    }
-    public override var isFinished: Bool { return _finished }
-    func executing(_ executing: Bool) { _executing = executing }
-    func finish(_ finished: Bool) { _finished = finished }
-}
-
-public class ImageInfoRequestOperation: OperationBase2 {
-    var result: Result<GalleryAppResponseDto.ImageInfo>?
-    private var block: Observable<Result<GalleryAppResponseDto.ImageInfo>>
-    var disposeBag = DisposeBag()
-    init(block: Observable<Result<GalleryAppResponseDto.ImageInfo>>) {
-      self.block = block
-    }
-    public override func main() {
-        guard isCancelled == false else {
-            finish(true)
-            return
-        }
-        executing(true)
-
-        block.asObservable().bind { (some) in
-            self.result = some
-            self.executing(false)
-            self.finish(true)
-        }.disposed(by: disposeBag)
-
-    }
-}
-
 public class GalleryAppAPIRelatedUseCase: GenericUseCase, GalleryAppAPIRelatedUseCaseProtocol {
 
     public override init() { super.init() }
@@ -66,22 +28,21 @@ public class GalleryAppAPIRelatedUseCase: GenericUseCase, GalleryAppAPIRelatedUs
     public var generic_CacheRepositoryProtocol: SimpleCacheRepositoryProtocol!
     public var generic_LocalStorageRepository: KeyValuesStorageRepositoryProtocol!
 
-    private lazy var operationQueue: OperationQueue = {
+    private lazy var imageInfoQueue: OperationQueue = {
         let queue = OperationQueue()
         queue.maxConcurrentOperationCount = 1
         return queue
     }()
 
     // Will
-    // - Manage the requests qeue
+    // - Manage the requests queue
     // - Call the API
     // - Manage the Cache
     // (Converting Dto entities to Model entities will be done above on the worker)
-    public func imageInfo(_ request: GalleryAppRequests.ImageInfo, cacheStrategy: CacheStrategy) -> Observable<Result<GalleryAppResponseDto.ImageInfo>> {
+    public func imageInfo(_ request: GalleryAppRequests.ImageInfo, cacheStrategy: CacheStrategy) -> Observable<GalleryAppResponseDto.ImageInfo> {
         let cacheKey = "\(#function).\(request)"
 
-        var block: Observable<Result<GalleryAppResponseDto.ImageInfo>> {
-            print("################# REQUEST #################")
+        var block: Observable<GalleryAppResponseDto.ImageInfo> {
             var apiObserver: Observable<GalleryAppResponseDto.ImageInfo> {
                 return Observable<GalleryAppResponseDto.ImageInfo>.create { observer in
                     self.repositoryNetwork.imageInfo(request) { (result) in
@@ -105,77 +66,41 @@ public class GalleryAppAPIRelatedUseCase: GenericUseCase, GalleryAppAPIRelatedUs
                                                      apiObserver: apiObserver.asSingle())
 
             // Handle by cache strategy
-            let apiObserverResult = apiObserver.flatMap { Observable.just(Result.success($0)) }.catchError { Observable.just(Result.failure($0)) }
-            let cacheObserverResult = cacheObserver.flatMap { Observable.just(Result.success($0)) }.catchError { Observable.just(Result.failure($0)) }
 
             switch cacheStrategy {
-            case .noCacheLoad: return apiObserverResult.asObservable()
-            case .cacheElseLoad: return cacheObserverResult.asObservable()
-            case .cacheAndLoad: return Observable.merge(cacheObserverResult, apiObserverResult.asObservable() )
+            case .noCacheLoad: return apiObserver.asObservable()
+            case .cacheElseLoad: return cacheObserver.asObservable()
+            case .cacheAndLoad: return Observable.merge(cacheObserver, apiObserver.asObservable() )
             case .cacheNoLoad: fatalError("Not safe!")
             }
         }
 
 // Strong references. fix latter
-        return Observable<Result<GalleryAppResponseDto.ImageInfo>>.create { observer in
+        return Observable<GalleryAppResponseDto.ImageInfo>.create { observer in
             let networkingOperation = ImageInfoRequestOperation(block: block)
-            self.operationQueue.addOperations([networkingOperation], waitUntilFinished: false)
+            self.imageInfoQueue.addOperations([networkingOperation], waitUntilFinished: false)
             networkingOperation.completionBlock = {
                 if networkingOperation.isCancelled {
                     return
                 }
-                if let result = networkingOperation.result, result != nil {
+                if networkingOperation.result != nil {
                     observer.on(.next(networkingOperation.result!))
                 } else {
                     observer.on(.error(Factory.Errors.with(appCode: .notPredicted)))
                 }
                 observer.on(.completed)
-                print("#############################################")
             }
 
             return Disposables.create()
         }
 
-        /*
-        var apiObserver: Observable<GalleryAppResponseDto.ImageInfo> {
-            return Observable<GalleryAppResponseDto.ImageInfo>.create { observer in
-                self.repositoryNetwork.imageInfo(request) { (result) in
-                    switch result {
-                    case .success(let some) :
-                        observer.on(.next(some.entity))
-                        // Update cache (60m cache)
-                        _ = RJS_DataModel.PersistentSimpleCacheWithTTL.shared.saveObject(some.entity.toDomain, withKey: cacheKey, keyParams: [], lifeSpam: 60)
-                    case .failure(let error): observer.on(.error(error))
-                    }
-                    observer.on(.completed)
-                }
-                return Disposables.create()
-            }
-        }
-
-        // Cache
-        let cacheObserver = genericCacheObserver(GalleryAppResponseDto.ImageInfo.self,
-                                                 cacheKey: cacheKey,
-                                                 keyParams: [],
-                                                 apiObserver: apiObserver.asSingle())
-
-        // Handle by cache strategy
-        let apiObserverResult = apiObserver.flatMap { Observable.just(Result.success($0)) }.catchError { Observable.just(Result.failure($0)) }
-        let cacheObserverResult = cacheObserver.flatMap { Observable.just(Result.success($0)) }.catchError { Observable.just(Result.failure($0)) }
-
-        switch cacheStrategy {
-        case .noCacheLoad: return apiObserverResult.asObservable()
-        case .cacheElseLoad: return cacheObserverResult.asObservable()
-        case .cacheAndLoad: return Observable.merge(cacheObserverResult, apiObserverResult.asObservable() )
-        case .cacheNoLoad: fatalError("Not safe!")
-        }*/
     }
 
     // Will
     // - Call the API
     // - Manage the Cache
     // (Converting Dto entities to Model entities will be done above on the worker)
-    public func search(_ request: GalleryAppRequests.Search, cacheStrategy: CacheStrategy) -> Observable<Result<GalleryAppResponseDto.Search>> {
+    public func search(_ request: GalleryAppRequests.Search, cacheStrategy: CacheStrategy) -> Observable<GalleryAppResponseDto.Search> {
         let cacheKey = "\(#function).\(request)"
 
         // API
@@ -201,15 +126,36 @@ public class GalleryAppAPIRelatedUseCase: GenericUseCase, GalleryAppAPIRelatedUs
                                                  keyParams: [],
                                                  apiObserver: apiObserver.asSingle())
 
-        // Handle by cache strategie
-        let apiObserverResult = apiObserver.flatMap { Observable.just(Result.success($0)) }.catchError { Observable.just(Result.failure($0)) }
-        let cacheObserverResult = cacheObserver.flatMap { Observable.just(Result.success($0)) }.catchError { Observable.just(Result.failure($0)) }
+        // Handle by cache strategy
 
         switch cacheStrategy {
-        case .noCacheLoad: return apiObserverResult.asObservable()
-        case .cacheElseLoad: return cacheObserverResult.asObservable()
-        case .cacheAndLoad: return Observable.merge(cacheObserverResult, apiObserverResult.asObservable() )
+        case .noCacheLoad: return apiObserver.asObservable()
+        case .cacheElseLoad: return cacheObserver.asObservable()
+        case .cacheAndLoad: return Observable.merge(cacheObserver, apiObserver.asObservable() )
         case .cacheNoLoad: fatalError("Not safe!")
         }
+    }
+}
+
+private class ImageInfoRequestOperation: OperationBase {
+    var result: GalleryAppResponseDto.ImageInfo?
+    private var block: Observable<GalleryAppResponseDto.ImageInfo>
+    var disposeBag = DisposeBag()
+    init(block: Observable<GalleryAppResponseDto.ImageInfo>) {
+      self.block = block
+    }
+    public override func main() {
+        guard isCancelled == false else {
+            finish(true)
+            return
+        }
+        executing(true)
+
+        block.asObservable().bind { (some) in
+            self.result = some
+            self.executing(false)
+            self.finish(true)
+        }.disposed(by: disposeBag)
+
     }
 }

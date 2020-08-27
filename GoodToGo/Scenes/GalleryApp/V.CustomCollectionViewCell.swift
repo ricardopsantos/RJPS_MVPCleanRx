@@ -22,6 +22,7 @@ import Extensions
 import PointFreeFunctions
 import UIBase
 import AppResources
+import Domain_GalleryApp
 
 // MARK: - Preview
 /*
@@ -49,6 +50,8 @@ extension V {
 
         static let defaultHeight: CGFloat = screenHeight * 0.3
         static let defaultWidth: CGFloat  = screenWidth * 0.3
+        var worker = GalleryAppResolver.shared.worker
+        var disposeBag = DisposeBag()
 
         static var identifier: String {
             return String(describing: self)
@@ -76,6 +79,9 @@ extension V {
 
             contentView.backgroundColor = cellColor
             self.backgroundColor = cellColor
+
+            #warning("free dispose bag on reuse indentifier")
+
         }
 
         required init?(coder: NSCoder) {
@@ -85,6 +91,15 @@ extension V {
         func setup(viewModel: VM.GalleryAppS1.TableItem) {
             //let image = UIImage(named: viewModel.productImage)
             imgProduct.image = UIImage(named: viewModel.image)
+
+            #warning("strong reference!")
+
+            let request = GalleryAppRequests.ImageInfo(photoId: viewModel.id)
+            self.worker?.imageInfoZip(request, cacheStrategy: .cacheElseLoad).asObservable().subscribe(onNext: { [weak self] (_, image) in
+                DispatchQueue.main.async {
+                    self!.imgProduct.image = image
+                }
+            }).disposed(by: self.disposeBag)
         }
 
     }

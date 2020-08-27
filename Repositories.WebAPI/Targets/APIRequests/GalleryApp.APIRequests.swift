@@ -79,6 +79,7 @@ public extension API.GalleryAppAPIRequest {
         public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.GalleryApp.imageInfo_200 : nil }
 
         init(request: GalleryAppRequests.ImageInfo) throws {
+            print("ImageInfo_REQUEST: \(request)")
             let urlString = Target.imageInfo.endpoint + request.urlEscaped
             guard let url = URL(string: urlString) else {
                 throw APIErrors.invalidURL(url: urlString)

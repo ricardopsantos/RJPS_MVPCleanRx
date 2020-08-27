@@ -16,8 +16,8 @@ Use case Protocol for things related with the Web API. (Its not the API Protocol
 
 public protocol GalleryAppAPIRelatedUseCaseProtocol: class {
 
-    func search(_ request: GalleryAppRequests.Search, cacheStrategy: CacheStrategy) -> Observable<Result<GalleryAppResponseDto.Search>>
+    func search(_ request: GalleryAppRequests.Search, cacheStrategy: CacheStrategy) -> Observable<GalleryAppResponseDto.Search>
 
-    func imageInfo(_ request: GalleryAppRequests.ImageInfo, cacheStrategy: CacheStrategy) -> Observable<Result<GalleryAppResponseDto.ImageInfo>>
+    func imageInfo(_ request: GalleryAppRequests.ImageInfo, cacheStrategy: CacheStrategy) -> Observable<GalleryAppResponseDto.ImageInfo>
 
 }
