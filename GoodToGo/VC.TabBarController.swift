@@ -32,7 +32,7 @@ extension VC {
             // TESTING / DEBUG/ TEMPLATES
             let vcRx = createControllers(tabName: "Rx.Testing", vc: RxTesting())
             let vipTemplate = createControllers(tabName: "VIP.Template", vc: VC.___VARIABLE_sceneName___ViewController(presentationStyle: .modal))
-            let vipDebug    = createControllers(tabName: "Debug", vc: VC.DebugViewController(presentationStyle: .modal))
+            let vipDebug    = createControllers(tabName: "DevScreen", vc: VC.DebugViewController(presentationStyle: .modal))
 
             var viewControllersList: [UIViewController] = []
             if DevTools.FeatureFlag.showScene_gallery.isTrue { viewControllersList.append(vipGalleryApp) }

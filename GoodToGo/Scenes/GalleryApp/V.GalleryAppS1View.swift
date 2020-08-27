@@ -143,6 +143,7 @@ extension V {
             searchBar.backgroundColor = self.backgroundColor
             searchBar.tintColor = self.backgroundColor
             searchBar.barTintColor = self.backgroundColor
+            collectionView.backgroundColor = self.backgroundColor
         }
 
         // Order in View life-cycle : 2
@@ -159,6 +160,7 @@ extension V {
                     self.rxFilter.onNext(self.searchBar.text)
                 })
                 .disposed(by: disposeBag)
+            
             searchBar.rx.textDidEndEditing
                 .subscribe(onNext: { [weak self] (_) in
                     guard let self = self else { return }
@@ -222,15 +224,15 @@ extension V.GalleryAppS1View: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let defaultMargin = Designables.Sizes.Margins.defaultMargin
+        let defaultMargin: CGFloat = V.CustomCollectionViewCell.defaultMargin
         return UIEdgeInsets(top: defaultMargin, left: defaultMargin, bottom: defaultMargin, right: defaultMargin)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return Designables.Sizes.Margins.defaultMargin
+        return V.CustomCollectionViewCell.defaultMargin
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return Designables.Sizes.Margins.defaultMargin
+        return 0//V.CustomCollectionViewCell.defaultMargin
     }
 }

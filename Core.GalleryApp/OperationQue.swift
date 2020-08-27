@@ -4,6 +4,8 @@
 //
 
 import Foundation
+//
+import DevTools
 
 public class OperationQueueManager {
     private init() {
@@ -19,7 +21,9 @@ public class OperationQueueManager {
         guard let operationQueue = operationQueue else {
             return
         }
-        print("Adding operation \(operationQueue.operations.count): \(operation)")
+        if operationQueue.operations.count > 10 {
+            DevTools.Log.warning("Too many operations: \(operationQueue.operations.count)")
+        }
         operationQueue.addOperations([operation], waitUntilFinished: false)
     }
 }

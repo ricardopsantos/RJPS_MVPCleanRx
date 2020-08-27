@@ -172,7 +172,6 @@
 		D774F5A424F6865100D01370 /* D.GalleryAppS1Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F59C24F6865000D01370 /* D.GalleryAppS1Domain.swift */; };
 		D774F5A724F6865100D01370 /* I.GalleryAppS1Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F59F24F6865000D01370 /* I.GalleryAppS1Interactor.swift */; };
 		D774F5A824F6865100D01370 /* P.GalleryAppS1Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F5A024F6865000D01370 /* P.GalleryAppS1Presenter.swift */; };
-		D774F5AA24F6874E00D01370 /* V.GalleryAppS1TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F5A924F6874E00D01370 /* V.GalleryAppS1TableViewCell.swift */; };
 		D774F5AC24F6A4F900D01370 /* W.GalleryAppS1Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774F5AB24F6A4F900D01370 /* W.GalleryAppS1Worker.swift */; };
 		D77824B024784BBF0071776F /* NSLoggerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77824AD24784B850071776F /* NSLoggerSwift.framework */; };
 		D77824B2247900650071776F /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77824B1247900650071776F /* Lottie.framework */; };
@@ -1210,7 +1209,6 @@
 		D774F59C24F6865000D01370 /* D.GalleryAppS1Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D.GalleryAppS1Domain.swift; sourceTree = "<group>"; };
 		D774F59F24F6865000D01370 /* I.GalleryAppS1Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.GalleryAppS1Interactor.swift; sourceTree = "<group>"; };
 		D774F5A024F6865000D01370 /* P.GalleryAppS1Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.GalleryAppS1Presenter.swift; sourceTree = "<group>"; };
-		D774F5A924F6874E00D01370 /* V.GalleryAppS1TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V.GalleryAppS1TableViewCell.swift; path = Auxiliar/V.GalleryAppS1TableViewCell.swift; sourceTree = "<group>"; };
 		D774F5AB24F6A4F900D01370 /* W.GalleryAppS1Worker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W.GalleryAppS1Worker.swift; sourceTree = "<group>"; };
 		D77824A82478488B0071776F /* NSLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NSLogger.framework; path = Carthage/Build/iOS/NSLogger.framework; sourceTree = "<group>"; };
 		D77824AD24784B850071776F /* NSLoggerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NSLoggerSwift.framework; path = Carthage/Build/iOS/NSLoggerSwift.framework; sourceTree = "<group>"; };
@@ -2068,7 +2066,6 @@
 				D774F5A024F6865000D01370 /* P.GalleryAppS1Presenter.swift */,
 				D774F59B24F6865000D01370 /* R.GalleryAppS1Router.swift */,
 				D774F59C24F6865000D01370 /* D.GalleryAppS1Domain.swift */,
-				D774F5A924F6874E00D01370 /* V.GalleryAppS1TableViewCell.swift */,
 				D786EF7024F6F003000F6A2C /* V.CustomCollectionViewCell.swift */,
 			);
 			path = GalleryApp;
@@ -3887,7 +3884,6 @@
 				D7979DB5246D6B370039031C /* P.CartTrackMapPresenter.swift in Sources */,
 				D7B9BF2724AFA90F0093A82D /* V.CategoriesPickerView.swift in Sources */,
 				D7711F68246B340C00B6963A /* I.___FILEBASENAME___Interactor.swift in Sources */,
-				D774F5AA24F6874E00D01370 /* V.GalleryAppS1TableViewCell.swift in Sources */,
 				D7979DC6246DC1960039031C /* VC.DebugViewController.swift in Sources */,
 				D7F2DE362474A718008CE3DA /* I.DataStoreReceiverInteractor.swift in Sources */,
 				9FE1439721AF2F520026BDFC /* typealias.Application.swift in Sources */,

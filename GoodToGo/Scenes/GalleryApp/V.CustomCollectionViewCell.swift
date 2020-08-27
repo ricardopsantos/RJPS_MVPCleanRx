@@ -55,8 +55,9 @@ extension V {
             return floor(finalWidth)
         }
 
-        static let defaultHeight: CGFloat = screenHeight * 0.3
-        static let defaultWidth: CGFloat  = screenWidth * 0.3
+        static let defaultMargin: CGFloat = screenWidth * 0.05
+        static let defaultHeight: CGFloat = screenWidth * 0.4
+        static let defaultWidth: CGFloat  = screenWidth * 0.4
         var worker = GalleryAppResolver.shared.worker
         var disposeBag = DisposeBag()
 
@@ -64,7 +65,7 @@ extension V {
             return String(describing: self)
         }
 
-        private lazy var imgProduct: UIImageView = {
+        private lazy var imageView: UIImageView = {
             UIKitFactory.imageView()
         }()
 
@@ -74,15 +75,15 @@ extension V {
         }
 
         private func setupView() {
-            let cellColor = UIColor.white.withAlphaComponent(0.4)
-            contentView.clipsToBounds = true
-            contentView.layer.cornerRadius = 10
+            let cellColor = UIColor.clear// UIColor.white.withAlphaComponent(0.4)
+            //contentView.clipsToBounds = true
+            //contentView.layer.cornerRadius = 10
             contentView.addShadow()
 
-            contentView.addSubview(imgProduct)
-            imgProduct.autoLayout.edgesToSuperview()
-            imgProduct.contentMode = .scaleAspectFit
-            imgProduct.addShadow()
+            contentView.addSubview(imageView)
+            imageView.autoLayout.edgesToSuperview()
+            imageView.contentMode = .scaleAspectFit
+            imageView.addShadow()
 
             contentView.backgroundColor = cellColor
             self.backgroundColor = cellColor
@@ -93,15 +94,23 @@ extension V {
             fatalError("init(coder:) has not been implemented")
         }
 
+        private func set(image: UIImage) {
+            UIView.transition(with: imageView,
+                              duration: 0.3,
+                              options: .transitionCrossDissolve,
+                              animations: { self.imageView.image = image },
+                              completion: nil)
+        }
+
         func setup(viewModel: VM.GalleryAppS1.TableItem) {
 
-            self.imgProduct.image = Images.notFound.image
+            set(image: Images.notFound.image)
             let request = GalleryAppRequests.ImageInfo(photoId: viewModel.id)
             self.worker?.imageInfoZip(request, cacheStrategy: .cacheElseLoad)
                 .asObservable()
                 .observeOn(MainScheduler.instance)
                 .subscribe(onNext: { [weak self] (_, image) in
-                self?.imgProduct.image = image
+                    self?.set(image: image)
             }).disposed(by: self.disposeBag)
         }
 

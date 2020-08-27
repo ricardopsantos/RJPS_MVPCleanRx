@@ -46,11 +46,15 @@ public class GalleryAppAPIRelatedUseCase: GenericUseCase, GalleryAppAPIRelatedUs
                         case .success(let some) :
                             observer.on(.next(some.entity))
                             APICacheManager.shared.save(some.entity.toDomain, key: cacheKey, params: [], lifeSpam: Self.cacheTTL)
-                        case .failure(let error): observer.on(.error(error))
+                        case .failure(let error):
+                            observer.on(.error(error))
                         }
                         observer.on(.completed)
                     }
                     return Disposables.create()
+                }.catchError { (_) -> Observable<GalleryAppResponseDto.ImageInfo> in
+                    // Sometimes the API fail. Return empty object to terminate the operation
+                    Observable.just(GalleryAppResponseDto.ImageInfo())
                 }
             }
 
@@ -70,7 +74,6 @@ public class GalleryAppAPIRelatedUseCase: GenericUseCase, GalleryAppAPIRelatedUs
             }
         }
 
-// Strong references. fix latter
         return Observable<GalleryAppResponseDto.ImageInfo>.create { observer in
             let operation = ImageInfoRequestOperation(block: block)
             OperationQueueManager.shared.add(operation)

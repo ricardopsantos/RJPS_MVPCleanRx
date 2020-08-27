@@ -96,8 +96,8 @@ extension I.GalleryAppS1Interactor: GalleryAppS1BusinessLogicProtocol {
                 let response = VM.GalleryAppS1.SearchByTag.Response(photos: result.photos.photo)
                 self.presenter?.presentSearchByTag(response: response)
         }, onError: { (error) in
-            DevTools.Log.error(error)
             self.presentError(error: error)
+            self.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
         }, onCompleted: {
             self.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
         }).disposed(by: disposeBag)
