@@ -40,13 +40,13 @@ struct RootAssemblyContainerProtocols {
     //
 
     // CarTrack
-    static let carTrackGenericAppBusiness_UseCase = CarTrackGenericAppBusiness_UseCaseProtocol.self
-    static let carTrackAPI_UseCase                = CarTrackAPIRelated_UseCaseProtocol.self
+    static let carTrackGenericAppBusinessUseCase = CarTrackGenericAppBusinessUseCaseProtocol.self
+    static let carTrackAPIUseCase                = CarTrackAPIRelatedUseCaseProtocol.self
 
     // GalleryApp
-    static let galleryAppGenericAppBusiness_UseCase = GalleryAppGenericBusinessUseCaseProtocol.self
-    static let galleryAppAPI_UseCase                = GalleryAppAPIRelatedUseCaseProtocol.self
-    static let galleryApp_Worker                    = GalleryAppWorkerProtocol.self
+    static let galleryAppGenericAppBusinessUseCase = GalleryAppGenericBusinessUseCaseProtocol.self
+    static let galleryAppAPIUseCase                = GalleryAppAPIRelatedUseCaseProtocol.self
+    static let galleryAppWorker                    = GalleryAppWorkerProtocol.self
 
 }
 
@@ -57,16 +57,16 @@ struct RootAssemblyContainerProtocols {
 public class CarTrackResolver {
     private init() { }
     public static var shared   = CarTrackResolver()
-    public let api             = AppDelegate.shared.container.resolve(AppProtocols.carTrackAPI_UseCase.self)
-    public let genericBusiness = AppDelegate.shared.container.resolve(AppProtocols.carTrackGenericAppBusiness_UseCase.self)
+    public let api             = AppDelegate.shared.container.resolve(AppProtocols.carTrackAPIUseCase.self)
+    public let genericBusiness = AppDelegate.shared.container.resolve(AppProtocols.carTrackGenericAppBusinessUseCase.self)
 }
 
 public class GalleryAppResolver {
     private init() { }
     public static var shared   = GalleryAppResolver()
-    public let api             = AppDelegate.shared.container.resolve(AppProtocols.galleryAppAPI_UseCase.self)
-    public let genericBusiness = AppDelegate.shared.container.resolve(AppProtocols.galleryAppGenericAppBusiness_UseCase.self)
-    public let worker          = AppDelegate.shared.container.resolve(AppProtocols.galleryApp_Worker.self)
+    public let api             = AppDelegate.shared.container.resolve(AppProtocols.galleryAppAPIUseCase.self)
+    public let genericBusiness = AppDelegate.shared.container.resolve(AppProtocols.galleryAppGenericAppBusinessUseCase.self)
+    public let worker          = AppDelegate.shared.container.resolve(AppProtocols.galleryAppWorker.self)
 }
 
 //
@@ -98,7 +98,7 @@ final class RootAssemblyContainer: Assembly {
                                initializer: API.GalleryApp.NetWorkRepository.init).inObjectScope(.container)
 
         // use case
-        container.register(AppProtocols.galleryAppGenericAppBusiness_UseCase) { resolver in
+        container.register(AppProtocols.galleryAppGenericAppBusinessUseCase) { resolver in
             let uc = GalleryAppMicBusinessUseCase()
             uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
@@ -106,7 +106,7 @@ final class RootAssemblyContainer: Assembly {
         }
 
         // use case
-        container.register(AppProtocols.galleryAppAPI_UseCase) { resolver in
+        container.register(AppProtocols.galleryAppAPIUseCase) { resolver in
             let uc = GalleryAppAPIRelatedUseCase()
             uc.repositoryNetwork               = resolver.resolve(AppProtocols.galleryApp_NetWorkRepository)
             uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
@@ -115,10 +115,10 @@ final class RootAssemblyContainer: Assembly {
         }
 
         // worker
-        container.register(AppProtocols.galleryApp_Worker) { resolver in
+        container.register(AppProtocols.galleryAppWorker) { resolver in
             let w = GalleryAppWorker()
-            w.api             = resolver.resolve(AppProtocols.galleryAppAPI_UseCase)
-            w.genericUseCase  = resolver.resolve(AppProtocols.galleryAppGenericAppBusiness_UseCase)
+            w.api             = resolver.resolve(AppProtocols.galleryAppAPIUseCase)
+            w.genericUseCase  = resolver.resolve(AppProtocols.galleryAppGenericAppBusinessUseCase)
             return w
         }
 
@@ -129,15 +129,15 @@ final class RootAssemblyContainer: Assembly {
         container.autoregister(AppProtocols.carTrack_NetWorkRepository,
                                initializer: API.CarTrack.NetWorkRepository.init).inObjectScope(.container)
 
-        container.register(AppProtocols.carTrackAPI_UseCase) { resolver in
-            let uc = CarTrackAPI_UseCase()
+        container.register(AppProtocols.carTrackAPIUseCase) { resolver in
+            let uc = CarTrackAPIUseCase()
             uc.repositoryNetwork               = resolver.resolve(AppProtocols.carTrack_NetWorkRepository)
             uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
             return uc
         }
 
-        container.register(AppProtocols.carTrackGenericAppBusiness_UseCase) { resolver in
+        container.register(AppProtocols.carTrackGenericAppBusinessUseCase) { resolver in
             let uc = Core_CarTrack.CarTrackGenericAppBusinessUseCase()
             uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)

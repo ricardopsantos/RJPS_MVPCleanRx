@@ -33,7 +33,7 @@ extension AssembyContainer {
                 presenter.genericView = viewController 
                 presenter.generic     = presenter
                 #warning("connect if need")
-                //presenter.sample_UseCase = r.resolve(AppProtocols.sample_UseCase)
+                //presenter.sampleUseCase = r.resolve(AppProtocols.sampleUseCase)
                 return presenter
             }
             

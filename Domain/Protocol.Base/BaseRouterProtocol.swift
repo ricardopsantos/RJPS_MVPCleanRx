@@ -15,6 +15,6 @@ import RxCocoa
 // All the ROUTERS must implement this protocol
 ////////////////////////////////////////////
 
-public protocol BaseRouterProtocol: AppUtils_Protocol {
+public protocol BaseRouterProtocol: AppUtilsProtocol {
 
 }

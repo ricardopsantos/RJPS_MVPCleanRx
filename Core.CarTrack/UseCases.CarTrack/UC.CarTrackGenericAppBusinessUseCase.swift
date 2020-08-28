@@ -1,5 +1,5 @@
 //
-//  CarTrackGenericAppBusiness_UseCase.swift
+//  CarTrackGenericAppBusinessUseCase.swift
 //  AppCore
 //
 //  Created by Ricardo Santos on 13/05/2020.
@@ -20,7 +20,7 @@ import Domain_CarTrack
 import Factory
 import Core
 
-public class CarTrackGenericAppBusinessUseCase: GenericUseCase, CarTrackGenericAppBusiness_UseCaseProtocol {
+public class CarTrackGenericAppBusinessUseCase: GenericUseCase, CarTrackGenericAppBusinessUseCaseProtocol {
 
     public override init() { super.init() }
 

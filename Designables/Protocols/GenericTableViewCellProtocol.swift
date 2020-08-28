@@ -14,13 +14,13 @@ import RxCocoa
 import AppConstants
 import PointFreeFunctions
 
-public protocol GenericTableViewCell_Protocol: ReusableCell_Protocol {
+public protocol GenericTableViewCellProtocol: ReusableCell_Protocol {
     func set(title: String)     // Mandatory
     func set(image: UIImage?)
     func set(textColor: UIColor)
 }
 
-public extension GenericTableViewCell_Protocol {
+public extension GenericTableViewCellProtocol {
     func set(image: UIImage?) { }
     func set(textColor: UIColor) { }
 }

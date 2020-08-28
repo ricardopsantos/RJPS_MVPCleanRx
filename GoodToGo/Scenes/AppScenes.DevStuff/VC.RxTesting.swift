@@ -26,7 +26,7 @@ import Factory
 // swiftlint:disable all
 
 extension VC {
-    class RxTesting: BaseViewControllerMVP, AppUtils_Protocol {
+    class RxTesting: BaseViewControllerMVP, AppUtilsProtocol {
         
         let margin: CGFloat = 10
         let btnHeight: CGFloat = 40

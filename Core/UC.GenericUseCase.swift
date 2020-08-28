@@ -11,6 +11,6 @@ import RxSwift
 import RxCocoa
 import Domain
 
-open class GenericUseCase: AppUtils_Protocol {
+open class GenericUseCase: AppUtilsProtocol {
     public init() { }
 }

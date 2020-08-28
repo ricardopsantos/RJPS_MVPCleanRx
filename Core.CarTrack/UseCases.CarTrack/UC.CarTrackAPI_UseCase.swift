@@ -23,7 +23,7 @@ import Factory
 
 // swiftlint:disable rule_Coding
 
-public class CarTrackAPI_UseCase: GenericUseCase, CarTrackAPIRelated_UseCaseProtocol {
+public class CarTrackAPIUseCase: GenericUseCase, CarTrackAPIRelatedUseCaseProtocol {
 
     public override init() { super.init() }
 
@@ -32,7 +32,7 @@ public class CarTrackAPI_UseCase: GenericUseCase, CarTrackAPIRelated_UseCaseProt
     public var generic_LocalStorageRepository: KeyValuesStorageRepositoryProtocol!
 
     public func getUserDetailV3(cacheStrategy: CacheStrategy) -> Observable<Result<[CarTrack.CarTrackUserResponseDtoElement]>> {
-        let cacheKey = "\(CarTrackAPI_UseCase.self).getUserDetail"
+        let cacheKey = "\(CarTrackAPIUseCase.self).getUserDetail"
         let cacheKeyParams: [String] = []
 
         let apiObserver = getUserDetailObserver(cacheKey, cacheKeyParams)
@@ -63,7 +63,7 @@ public class CarTrackAPI_UseCase: GenericUseCase, CarTrackAPIRelated_UseCaseProt
 
     public func getUserDetailV2(cacheStrategy: CacheStrategy) -> Observable<[CarTrack.CarTrackUserResponseDtoElement]> {
 
-        let cacheKey = "\(CarTrackAPI_UseCase.self).getUserDetail"
+        let cacheKey = "\(CarTrackAPIUseCase.self).getUserDetail"
         let cacheKeyParams: [String] = []
         let apiObserver = getUserDetailObserver(cacheKey, cacheKeyParams)
 
@@ -79,7 +79,7 @@ public class CarTrackAPI_UseCase: GenericUseCase, CarTrackAPIRelated_UseCaseProt
         }
     }
 
-    // Rx wrapper around [public func getUserDetail(completionHandler: @escaping CarTrackAPI_UseCaseCompletionHandler)]
+    // Rx wrapper around [public func getUserDetail(completionHandler: @escaping CarTrackAPIUseCaseCompletionHandler)]
     #warning("make it a Single")
     private func getUserDetailObserver(_ cacheKey: String, _ cacheKeyParams: [String]) -> Observable<[CarTrack.CarTrackUserResponseDtoElement]> {
         return Observable<[CarTrack.CarTrackUserResponseDtoElement]>.create { [weak self] observer in
@@ -96,7 +96,7 @@ public class CarTrackAPI_UseCase: GenericUseCase, CarTrackAPIRelated_UseCaseProt
         }
     }
 
-    public func getUserDetailV1(completionHandler: @escaping CarTrackAPI_UseCaseCompletionHandler) {
+    public func getUserDetailV1(completionHandler: @escaping CarTrackAPIUseCaseCompletionHandler) {
         self.repositoryNetwork.userDetails { (result) in
             switch result {
             case .success(let some) : completionHandler(Result.success(some.entity))

@@ -20,7 +20,7 @@ import Extensions
 import DevTools
 import PointFreeFunctions
 
-public protocol DefaultTableViewCellProtocol: GenericTableViewCell_Protocol {
+public protocol DefaultTableViewCellProtocol: GenericTableViewCellProtocol {
     var rxTitle: BehaviorRelay<String> { get set }
     var rxImage: BehaviorRelay<UIImage?> { get set }
     var rxTextColor: BehaviorRelay<UIColor> { get set }

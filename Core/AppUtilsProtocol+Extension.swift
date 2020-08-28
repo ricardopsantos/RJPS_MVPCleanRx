@@ -22,7 +22,7 @@ import PointFreeFunctions
 import Domain
 import Factory
 
-public extension AppUtils_Protocol {
+public extension AppUtilsProtocol {
 
     // swiftlint:disable rule_Coding
     func genericCacheObserverFallible<T: Codable>(_ some: T.Type, cacheKey: String, keyParams: [String]) -> Observable<T> {

@@ -11,7 +11,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-public protocol AppUtils_Protocol: class {
+public protocol AppUtilsProtocol: class {
 
     // If there is internet; execute the code in the block. If not, present a warning
     var existsInternetConnection: Bool { get }

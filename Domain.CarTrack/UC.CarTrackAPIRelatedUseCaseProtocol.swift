@@ -14,12 +14,12 @@ import Domain
 Use case Protocol for things related with the Web API. (Its not the API Protocol)
  */
 
-public typealias CarTrackAPI_UseCaseCompletionHandler = (_ result: Result<[CarTrack.CarTrackUserResponseDtoElement]>) -> Void
+public typealias CarTrackAPIUseCaseCompletionHandler = (_ result: Result<[CarTrack.CarTrackUserResponseDtoElement]>) -> Void
 
-public protocol CarTrackAPIRelated_UseCaseProtocol: class {
+public protocol CarTrackAPIRelatedUseCaseProtocol: class {
 
     /// returns Result<T> with completion handler
-    func getUserDetailV1(completionHandler: @escaping CarTrackAPI_UseCaseCompletionHandler)
+    func getUserDetailV1(completionHandler: @escaping CarTrackAPIUseCaseCompletionHandler)
 
     /// returns a Observer
     func getUserDetailV2(cacheStrategy: CacheStrategy) -> Observable<[CarTrack.CarTrackUserResponseDtoElement]>

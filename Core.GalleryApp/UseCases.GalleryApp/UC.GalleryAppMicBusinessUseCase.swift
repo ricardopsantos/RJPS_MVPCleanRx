@@ -47,7 +47,7 @@ public class GalleryAppMicBusinessUseCase: GenericUseCase, GalleryAppGenericBusi
     }
 }
 
-private class DownloadImageOperation: OperationBase, AppUtils_Protocol {
+private class DownloadImageOperation: OperationBase, AppUtilsProtocol {
     let urlString: String
     var image: UIImage!
     init(withURLString urlString: String) {

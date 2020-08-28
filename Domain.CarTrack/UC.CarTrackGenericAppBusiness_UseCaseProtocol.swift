@@ -14,6 +14,6 @@ Use case Protocol for things related with app generic business
 
 public typealias CarTrackGenericAppBusinessUseCaseCompletionHandler = (_ result: Result<Bool>) -> ()
 
-public protocol CarTrackGenericAppBusiness_UseCaseProtocol: class {
+public protocol CarTrackGenericAppBusinessUseCaseProtocol: class {
     func validate(user: String, password: String, completionHandler: @escaping CarTrackGenericAppBusinessUseCaseCompletionHandler)
 }

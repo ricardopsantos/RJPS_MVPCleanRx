@@ -26,7 +26,7 @@ import Domain
  */
 
 //
-// MARK: - Presenter_Protocol & View_Protocol
+// MARK: - Presenter Protocol & View Protocol
 //
 
 protocol MVPSampleRxView_PresenterProtocol: class {
@@ -85,7 +85,7 @@ extension P.MVPSampleRxView_Presenter: MVPSampleRxView_PresenterProtocol {
         /*return Observable.create { [weak self] observer -> Disposable in
             DevTools.Log.message("Creating observable...")
             guard let self = self else { return Disposables.create() }
-            self.sample_UseCase.operation1(canUseCache: true) { (result) in
+            self.sampleUseCase.operation1(canUseCache: true) { (result) in
                 switch result {
                 case .success(let some): observer.onNext("\(some)")
                 case .failure(let error) : observer.onError(error)
