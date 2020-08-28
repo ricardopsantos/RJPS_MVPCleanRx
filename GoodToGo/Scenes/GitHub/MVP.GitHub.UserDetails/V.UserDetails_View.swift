@@ -119,7 +119,7 @@ extension V {
         }
         
         public override func prepareLayoutCreateHierarchy() {
-            self.view.backgroundColor = AppColors.backgroundColor
+            self.view.backgroundColor = AppColors.background
             topGenericBar.lazyLoad()
             imgAvatar.lazyLoad()
             lblUserName.lazyLoad()

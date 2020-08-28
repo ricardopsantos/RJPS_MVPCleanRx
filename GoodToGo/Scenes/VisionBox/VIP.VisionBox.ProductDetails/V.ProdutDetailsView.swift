@@ -225,7 +225,7 @@ extension V {
         }
 
         override func setupColorsAndStyles() {
-            self.backgroundColor = AppColors.backgroundColor
+            self.backgroundColor = AppColors.background
             collectionView.backgroundColor = .clear
             lblDescriptionTitle.font = AppFonts.Styles.paragraphMedium.rawValue
             lblDescriptionTitle.textColor = UIColor.black

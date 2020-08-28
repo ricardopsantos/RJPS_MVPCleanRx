@@ -51,7 +51,7 @@ extension P {
 extension P.GalleryAppS1Presenter {
 
     //
-    // Do you need to override this? Its allready implemented on a Protocol Extension
+    // Do you need to override this? Its already implemented on a Protocol Extension
     //
     /*
     func presentStatus(response: BaseDisplayLogicModels.Status) {
@@ -76,8 +76,14 @@ extension P.GalleryAppS1Presenter: GalleryAppS1PresentationLogicProtocol {
 
     // Used By Interactor (exclusively)
     func presentScreenInitialState(response: VM.GalleryAppS1.ScreenInitialState.Response) {
-        let title = response.title.uppercased()
-        let viewModel = VM.GalleryAppS1.ScreenInitialState.ViewModel(title: title)
+        let items = response.photos
+            .map { VM.GalleryAppS1.TableItem(enabled: false,
+                                                  image: Images.noInternet.rawValue,
+                                                  title: $0.id,
+                                                  subtitle: $0.id,
+                                                  id: $0.id)
+            }
+        let viewModel = VM.GalleryAppS1.ScreenInitialState.ViewModel(dataSource: items)
         viewController?.displayScreenInitialState(viewModel: viewModel)
     }
 
@@ -92,8 +98,7 @@ extension P.GalleryAppS1Presenter: GalleryAppS1PresentationLogicProtocol {
                                                   id: $0.id)
             }
 
-        let dataSourceTitle = "Records (\(items.count)"
-        let viewModel = VM.GalleryAppS1.SearchByTag.ViewModel(dataSourceTitle: dataSourceTitle, dataSource: items)
+        let viewModel = VM.GalleryAppS1.SearchByTag.ViewModel(searchValue: response.searchValue, dataSource: items)
         viewController?.displaySearchByTag(viewModel: viewModel)
     }
 

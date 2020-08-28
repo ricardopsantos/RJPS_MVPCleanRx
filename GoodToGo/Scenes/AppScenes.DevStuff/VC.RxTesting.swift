@@ -373,7 +373,7 @@ extension VC.RxTesting {
 extension VC.RxTesting {
     
     func aux_prepare() {
-        self.view.backgroundColor = AppColors.backgroundColor
+        self.view.backgroundColor = AppColors.background
         topGenericView.lazyLoad()
         searchBar.lazyLoad()
         btnThrottle.lazyLoad()

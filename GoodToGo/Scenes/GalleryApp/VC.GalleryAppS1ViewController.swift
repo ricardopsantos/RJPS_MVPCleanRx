@@ -60,6 +60,13 @@ extension VC {
            return self.addReachabilityView()
         }()
 
+        private lazy var topGenericView: TopBar = {
+            let some = TopBar()
+            some.injectOn(viewController: self, usingSafeArea: false)
+            some.setTitle("Show me kitties!")
+            return some
+        }()
+
         //
         // MARK: View lifecycle
         //
@@ -81,6 +88,7 @@ extension VC {
             super.viewWillAppear(animated)
             if firstAppearance {
                 interactor?.requestScreenInitialState()
+                topGenericView.lazyLoad()
             }
         }
 
@@ -162,6 +170,6 @@ extension VC.GalleryAppS1ViewController: GalleryAppS1DisplayLogicProtocol {
     }
 
     func displayScreenInitialState(viewModel: VM.GalleryAppS1.ScreenInitialState.ViewModel) {
-        title = viewModel.title
+        genericView.setupWith(screenInitialState: viewModel)
     }
 }

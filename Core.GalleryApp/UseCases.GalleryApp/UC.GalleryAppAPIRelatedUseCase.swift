@@ -104,8 +104,7 @@ public class GalleryAppAPIRelatedUseCase: GenericUseCase, GalleryAppAPIRelatedUs
                     switch result {
                     case .success(let some) :
                         observer.on(.next(some.entity))
-                        // Update cache (60m cache)
-                        _ = RJS_DataModel.PersistentSimpleCacheWithTTL.shared.saveObject(some.entity.toDomain, withKey: cacheKey, keyParams: [], lifeSpam: 60)
+                        APICacheManager.shared.save(some.entity.toDomain, key: cacheKey, params: [], lifeSpam: Self.cacheTTL)
                     case .failure(let error): observer.on(.error(error))
                     }
                     observer.on(.completed)

@@ -141,7 +141,7 @@ extension V {
         }
 
         override func setupColorsAndStyles() {
-            self.backgroundColor = AppColors.backgroundColor
+            self.backgroundColor = AppColors.background
             collectionView.backgroundColor = .clear
             searchBar.backgroundColor = self.backgroundColor
             searchBar.tintColor = self.backgroundColor

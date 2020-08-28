@@ -55,10 +55,8 @@ extension I.GalleryAppS1Interactor: BaseInteractorVIPMandatoryBusinessLogicProto
     /// till the user have all the data loaded on the view. This will improve user experience.
     func requestScreenInitialState() {
         var response: VM.GalleryAppS1.ScreenInitialState.Response!
-        response = VM.GalleryAppS1.ScreenInitialState.Response(title: "")
+        response = VM.GalleryAppS1.ScreenInitialState.Response(photos: [])
         presenter?.presentScreenInitialState(response: response)
-
-        requestSearchByTag(request: VM.GalleryAppS1.SearchByTag.Request(tag: "cat", page: 1))
     }
 
 }
@@ -78,32 +76,42 @@ extension I.GalleryAppS1Interactor: GalleryAppS1BusinessLogicProtocol {
             return
         }
 
-        // Lets turn things like 'cat, Dog', 'cat   dog ', 'Cat ; dog' into ["cat", "dog"]
+        // Lets turn things like 'cat, Dog', 'cat   dog ', 'Cat ; dog', 'Cat and dog' into ["cat", "dog"]
         var escaped = request.tag
         escaped = escaped.replacingOccurrences(of: " ", with: ",")
         escaped = escaped.replacingOccurrences(of: ";", with: ",")
         escaped = escaped.replacingOccurrences(of: "-", with: ",")
+        escaped = escaped.replacingOccurrences(of: " and ", with: ",")
 
         let tags: [String] = escaped.components(separatedBy: ",").map({ $0.trim.lowercased() }).filter({ $0.count > 0 })
 
         guard tags.count > 0 else {
-            let response = VM.GalleryAppS1.SearchByTag.Response(photos: [])
+            let response = VM.GalleryAppS1.SearchByTag.Response(searchValue: request.tag, photos: [])
             presenter.presentSearchByTag(response: response)
             return
         }
+
+        // Turn loading on
         presenter.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
-        let request = GalleryAppRequests.Search(tags: tags, page: request.page)
-        worker!.search(request, cacheStrategy: .cacheElseLoad)
+        let apiRequest = GalleryAppRequests.Search(tags: tags, page: request.page)
+        worker!.search(apiRequest, cacheStrategy: .cacheElseLoad)
             .asObservable()
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] (result) in
                 guard let self = self else { return }
-                let response = VM.GalleryAppS1.SearchByTag.Response(photos: result.photos.photo)
+                let response = VM.GalleryAppS1.SearchByTag.Response(searchValue: request.tag, photos: result.photos.photo)
                 self.presenter?.presentSearchByTag(response: response)
         }, onError: { (error) in
+            // Error?
+            // Show error...
             self.presentError(error: error)
+            // Disable loading
             self.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
+            // Clear search and return empty array
+            let response = VM.GalleryAppS1.SearchByTag.Response(searchValue: "", photos: [])
+            self.presenter?.presentSearchByTag(response: response)
         }, onCompleted: {
+            // Turn loading off
             self.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
         }).disposed(by: disposeBag)
 

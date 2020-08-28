@@ -116,7 +116,7 @@ public extension V {
         }
         
         public override func prepareLayoutCreateHierarchy() {
-            self.view.backgroundColor = AppColors.backgroundColor
+            self.view.backgroundColor = AppColors.background
             topGenericView.lazyLoad()
             searchBar.lazyLoad()
         }

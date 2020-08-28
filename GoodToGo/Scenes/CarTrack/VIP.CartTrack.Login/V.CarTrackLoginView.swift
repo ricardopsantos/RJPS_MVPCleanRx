@@ -150,7 +150,7 @@ extension GoodToGo.V {
         }
 
         override func setupColorsAndStyles() {
-            self.backgroundColor = AppColors.backgroundColor
+            self.backgroundColor = AppColors.background
         }
 
         // This function is called automatically by super BaseGenericView

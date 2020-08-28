@@ -30,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     static var shared: AppDelegate { return UIApplication.shared.delegate as! AppDelegate }
     public var reachabilityService: ReachabilityService? = DevTools.reachabilityService
-    let disposeBag = DisposeBag()
 
     // Where we have all the dependencies
     let container: Container = { return ApplicationAssembly.assembler.resolver as! Container }()

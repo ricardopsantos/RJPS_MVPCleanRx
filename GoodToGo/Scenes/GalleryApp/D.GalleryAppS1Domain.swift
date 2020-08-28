@@ -78,10 +78,11 @@ extension VM {
                 let page: Int
             }
             struct Response { /* Interactor -> Presenter */
+                let searchValue: String
                 let photos: [GalleryAppModel.Search.Photo]
             }
             struct ViewModel { /* Presenter -> ViewController */
-                let dataSourceTitle: String
+                let searchValue: String
                 let dataSource: [VM.GalleryAppS1.TableItem]
             }
         }
@@ -90,10 +91,10 @@ extension VM {
             private init() {}
             struct Request {}
             struct Response {
-                let title: String
+                let photos: [GalleryAppModel.Search.Photo]
             }
             struct ViewModel {
-                let title: String
+                let dataSource: [VM.GalleryAppS1.TableItem]
             }
         }
     }

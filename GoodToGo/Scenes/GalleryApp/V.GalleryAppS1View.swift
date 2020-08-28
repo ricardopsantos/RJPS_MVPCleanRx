@@ -38,7 +38,7 @@ struct GalleryAppS1View_UIViewRepresentable: UIViewRepresentable {
             let item = VM.GalleryAppS1.TableItem(enabled: true, image: Images.noInternet.rawValue, title: some, subtitle: some, id: some)
             dataSource.append(item)
         }
-        let viewModel = VM.GalleryAppS1.SearchByTag.ViewModel(dataSourceTitle: "", dataSource: dataSource)
+        let viewModel = VM.GalleryAppS1.SearchByTag.ViewModel(searchValue: "kittie", dataSource: dataSource)
         view.setupWith(searchByTag: viewModel)
         return view
     }
@@ -75,13 +75,14 @@ extension V {
             UIKitFactory.searchBar(placeholder: Messages.search.localised)
         }()
 
-        private lazy var lblTitle: UILabel = {
-            UIKitFactory.label(style: .value)
+        private lazy var lblNoRecords: UILabel = {
+            UIKitFactory.label(title: Messages.noRecords.localised, style: .value)
         }()
 
         private var collectionViewDataSource: [VM.GalleryAppS1.TableItem] = [] {
             didSet {
-                self.collectionView.reloadData()
+                lblNoRecords.isHidden = collectionViewDataSource.count > 0 ? true : false
+                collectionView.reloadData()
             }
         }
 
@@ -104,25 +105,27 @@ extension V {
         override func prepareLayoutCreateHierarchy() {
             addSubview(searchBar)
             addSubview(collectionView)
+            collectionView.addSubview(lblNoRecords)
         }
 
         // This function is called automatically by super BaseGenericViewVIP
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 2/3 : JUST to setup layout rules zone....
         override func prepareLayoutBySettingAutoLayoutsRules() {
-/*
-            stackViewVLevel1.uiUtils.edgeStackViewToSuperView()
-            scrollView.autoLayout.edgesToSuperview(excluding: .bottom, insets: .zero)
-            scrollView.autoLayout.height(screenHeight)
-*/
+
+            let topBarSize = TopBar.defaultHeight(usingSafeArea: false)
             searchBar.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
             searchBar.autoLayout.widthToSuperview()
-            searchBar.autoLayout.topToSuperview(offset: Designables.Sizes.Margins.defaultMargin, usingSafeArea: true)
+            searchBar.autoLayout.topToSuperview(offset: topBarSize, usingSafeArea: false)
 
             collectionView.autoLayout.topToBottom(of: searchBar, offset: Designables.Sizes.Margins.defaultMargin)
             collectionView.autoLayout.leadingToSuperview()
             collectionView.autoLayout.trailingToSuperview()
             collectionView.autoLayout.bottomToSuperview()
+
+            lblNoRecords.autoLayout.width(screenWidth/2)
+            lblNoRecords.autoLayout.height(screenHeight/5)
+            lblNoRecords.autoLayout.center(in: collectionView)
 
         }
 
@@ -130,14 +133,16 @@ extension V {
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 3/3 : Stuff that is not included in [prepareLayoutCreateHierarchy] and [prepareLayoutBySettingAutoLayoutsRules]
         override func prepareLayoutByFinishingPrepareLayout() {
-            lblTitle.textAlignment = .center
+            lblNoRecords.textAlignment = .center
             collectionView.register(V.CustomCollectionViewCell.self, forCellWithReuseIdentifier: V.CustomCollectionViewCell.identifier)
             collectionView.delegate = self
             collectionView.dataSource = self
         }
 
         override func setupColorsAndStyles() {
-            self.backgroundColor = AppColors.backgroundColor
+            self.backgroundColor = AppColors.background
+            lblNoRecords.font = AppFonts.Styles.headingSmall.rawValue
+            lblNoRecords.textColor = AppColors.primary
             searchBar.backgroundColor = self.backgroundColor
             searchBar.tintColor = self.backgroundColor
             searchBar.barTintColor = self.backgroundColor
@@ -174,25 +179,12 @@ extension V {
         // We can set the view data by : 2 - Custom Setters / Computed Vars         ---> var subTitle: String <---
         // We can set the view data by : 3 - Passing the view model inside the view ---> func setupWith(viewModel: ... <---
 
-        public var subTitle: String {
-            get { return  lblTitle.text ?? "" }
-            set(newValue) {
-                lblTitle.textAnimated = newValue
-            }
-        }
-
-        public var titleStyleType: UILabel.LayoutStyle = .value {
-            didSet {
-                lblTitle.layoutStyle = titleStyleType
-            }
-        }
-
         func setupWith(searchByTag viewModel: VM.GalleryAppS1.SearchByTag.ViewModel) {
             collectionViewDataSource = viewModel.dataSource
         }
 
         func setupWith(screenInitialState viewModel: VM.GalleryAppS1.ScreenInitialState.ViewModel) {
-
+            collectionViewDataSource = viewModel.dataSource
         }
     }
 }
