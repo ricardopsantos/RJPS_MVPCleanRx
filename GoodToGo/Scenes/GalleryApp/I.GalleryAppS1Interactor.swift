@@ -86,6 +86,11 @@ extension I.GalleryAppS1Interactor: GalleryAppS1BusinessLogicProtocol {
 
         let tags: [String] = escaped.components(separatedBy: ",").map({ $0.trim.lowercased() }).filter({ $0.count > 0 })
 
+        guard tags.count > 0 else {
+            let response = VM.GalleryAppS1.SearchByTag.Response(photos: [])
+            presenter.presentSearchByTag(response: response)
+            return
+        }
         presenter.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
         let request = GalleryAppRequests.Search(tags: tags, page: request.page)
         worker!.search(request, cacheStrategy: .cacheElseLoad)

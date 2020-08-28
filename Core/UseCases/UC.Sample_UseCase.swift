@@ -32,7 +32,7 @@ public class Sample_UseCase: GenericUseCase, Sample_UseCaseProtocol {
         let coreDatakey   = "\(cacheKey).lastUpdate"
         let cacheLifeSpam = AppConstants.Cache.serverRequestCacheLifeSpam
 
-        if canUseCache && !cachedValueIsOld(coreDatakey: coreDatakey, maxLifeSpam: cacheLifeSpam) {
+        if canUseCache {
             if let cachedValue =  generic_CacheRepositoryProtocol.get(key: cacheKey) {
                 completionHandler(Result.success(cachedValue as? [String] ?? []))
                 return

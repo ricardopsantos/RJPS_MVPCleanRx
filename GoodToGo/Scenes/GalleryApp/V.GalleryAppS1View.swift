@@ -33,9 +33,12 @@ struct GalleryAppS1View_UIViewRepresentable: UIViewRepresentable {
     func updateUIView(_ uiView: V.GalleryAppS1View, context: Context) { }
     func makeUIView(context: Context) -> V.GalleryAppS1View {
         let view = V.GalleryAppS1View()
-        let item1 = VM.GalleryAppS1.TableItem(enabled: true, image: Images.noInternet.rawValue, title: "title", subtitle: "subtitle", id: "id")
-        let item2 = VM.GalleryAppS1.TableItem(enabled: true, image: Images.noInternet.rawValue, title: "title", subtitle: "subtitle", id: "id")
-        let viewModel = VM.GalleryAppS1.SearchByTag.ViewModel(dataSourceTitle: "", dataSource: [item1, item2])
+        var dataSource: [VM.GalleryAppS1.TableItem] = []
+        ["50270217153", "50271093502", "50271093167", "50274596092", "50273759963", "50274435276"].forEach { (some) in
+            let item = VM.GalleryAppS1.TableItem(enabled: true, image: Images.noInternet.rawValue, title: some, subtitle: some, id: some)
+            dataSource.append(item)
+        }
+        let viewModel = VM.GalleryAppS1.SearchByTag.ViewModel(dataSourceTitle: "", dataSource: dataSource)
         view.setupWith(searchByTag: viewModel)
         return view
     }
@@ -99,12 +102,7 @@ extension V {
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 1/3 : JUST to add stuff to the view....
         override func prepareLayoutCreateHierarchy() {
-            addSubview(scrollView)
-            scrollView.addSubview(stackViewVLevel1)
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(searchBar)
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(lblTitle)
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
+            addSubview(searchBar)
             addSubview(collectionView)
         }
 
@@ -112,11 +110,11 @@ extension V {
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 2/3 : JUST to setup layout rules zone....
         override func prepareLayoutBySettingAutoLayoutsRules() {
-
+/*
             stackViewVLevel1.uiUtils.edgeStackViewToSuperView()
             scrollView.autoLayout.edgesToSuperview(excluding: .bottom, insets: .zero)
             scrollView.autoLayout.height(screenHeight)
-
+*/
             searchBar.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
             searchBar.autoLayout.widthToSuperview()
             searchBar.autoLayout.topToSuperview(offset: Designables.Sizes.Margins.defaultMargin, usingSafeArea: true)

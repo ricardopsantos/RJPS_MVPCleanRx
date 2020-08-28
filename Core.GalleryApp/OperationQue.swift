@@ -11,7 +11,7 @@ public class OperationQueueManager {
     private init() {
         if operationQueue == nil {
             operationQueue = OperationQueue()
-            operationQueue!.maxConcurrentOperationCount = 2
+            operationQueue!.maxConcurrentOperationCount = 5
         }
     }
     private var operationQueue: OperationQueue?

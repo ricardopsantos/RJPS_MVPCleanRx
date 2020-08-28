@@ -74,25 +74,3 @@ private extension GalleryAppWorker {
         }
     }
 }
-
-// MARK: - DownloadImageOperation
-
-private class DownloadImageOperation: OperationBase {
-    let urlString: String
-    var image: UIImage?
-    init(withURLString urlString: String) {
-        self.urlString = urlString
-    }
-    public override func main() {
-        guard isCancelled == false else {
-            finish(true)
-            return
-        }
-        executing(true)
-        RJS_BasicNetworkClient.downloadImageFrom(urlString, caching: .fileSystem) { (image) in
-            self.image = image
-            self.executing(false)
-            self.finish(true)
-        }
-    }
-}

@@ -25,16 +25,15 @@ public class GalleryAppMicBusinessUseCase: GenericUseCase, GalleryAppGenericBusi
     public var generic_LocalStorageRepository: KeyValuesStorageRepositoryProtocol!
 
     public func download(_ request: GalleryAppModel.ImageInfo) -> Observable<UIImage> {
-
         return Observable<UIImage>.create { [weak self] observer in
             if let size = request.sizes.size.filter({ $0.label == "Large Square" }).last {
                 let operation = DownloadImageOperation(withURLString: size.source)
                 OperationQueueManager.shared.add(operation)
                 operation.completionBlock = {
-                    if operation.isCancelled || operation.image == nil {
+                    if operation.isCancelled {
                         observer.on(.next(Images.notFound.image))
                     } else {
-                        observer.on(.next(operation.image!))
+                        observer.on(.next(operation.image))
                     }
                     observer.on(.completed)
                 }
@@ -48,9 +47,9 @@ public class GalleryAppMicBusinessUseCase: GenericUseCase, GalleryAppGenericBusi
     }
 }
 
-private class DownloadImageOperation: OperationBase {
+private class DownloadImageOperation: OperationBase, AppUtils_Protocol {
     let urlString: String
-    var image: UIImage?
+    var image: UIImage!
     init(withURLString urlString: String) {
         self.urlString = urlString
     }
@@ -60,8 +59,9 @@ private class DownloadImageOperation: OperationBase {
             return
         }
         executing(true)
-        RJS_BasicNetworkClient.downloadImageFrom(urlString, caching: .fileSystem) { (image) in
-            self.image = image
+
+        downloadImage(imageURL: urlString, onFail: Images.notFound.image) { (image) in
+            self.image = image!
             self.executing(false)
             self.finish(true)
         }

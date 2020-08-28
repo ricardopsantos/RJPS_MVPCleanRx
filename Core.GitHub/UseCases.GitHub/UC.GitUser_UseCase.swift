@@ -36,7 +36,7 @@ public class GitUser_UseCase: GenericUseCase, GitHubAPIRelated_UseCaseProtocol {
         let coreDatakey   = "\(cacheKey).lastUpdate"
         let cacheLifeSpam = AppConstants.Cache.serverRequestCacheLifeSpam
         
-        if canUseCache && !cachedValueIsOld(coreDatakey: coreDatakey, maxLifeSpam: cacheLifeSpam) {
+        if canUseCache {
             if let cachedValue =  generic_CacheRepositoryProtocol.get(key: cacheKey) as? GitHub.UserResponseDto {
                 completionHandler(Result.success(cachedValue))
                 return
@@ -67,7 +67,7 @@ public class GitUser_UseCase: GenericUseCase, GitHubAPIRelated_UseCaseProtocol {
         let coreDatakey   = "\(cacheKey).lastUpdate"
         let cacheLifeSpam = AppConstants.Cache.serverRequestCacheLifeSpam
         
-        if canUseCache && !cachedValueIsOld(coreDatakey: coreDatakey, maxLifeSpam: cacheLifeSpam) {
+        if canUseCache {
             if let cachedValue =  generic_CacheRepositoryProtocol.get(key: cacheKey) {
                 completionHandler(Result.success(cachedValue as! [GitHub.UserResponseDto]))
                 return

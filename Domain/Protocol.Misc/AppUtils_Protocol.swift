@@ -20,9 +20,6 @@ public protocol AppUtils_Protocol: class {
     
     func downloadImage(imageURL: String, onFail: UIImage?, completion: @escaping (UIImage?) -> Void)
 
-    @available(*, deprecated, message: "Use instead genericCacheObserver")
-    func cachedValueIsOld(coreDatakey: String, maxLifeSpam: Int) -> Bool
-
     // swiftlint:disable rule_Coding
     func genericCacheObserver<T: Codable>(_ some: T.Type, cacheKey: String, keyParams: [String], apiObserver: Single<T>) -> Observable<T>
     func genericCacheObserverFallible<T: Codable>(_ some: T.Type, cacheKey: String, keyParams: [String]) -> Observable<T>

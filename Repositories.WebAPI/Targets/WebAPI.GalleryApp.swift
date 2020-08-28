@@ -19,22 +19,14 @@ public extension API.GalleryApp {
     class NetWorkRepository: GalleryAppNetWorkRepositoryProtocol {
         public init() { }
 
-        static var requestCount = 1 {
-            didSet {
-                print("NetWorkRepository - RequestCount: \(requestCount)")
-            }
-        }
         public func imageInfo(_ request: GalleryAppRequests.ImageInfo, completionHandler: @escaping GalleryAppResponseImageInfoCompletionHandler) {
             do {
-                Self.requestCount += 1
                 let apiRequest: WebAPIRequest_Protocol = try WebAPI.GalleryAppAPIRequest.ImageInfo(request: request)
                 let apiClient: RJS_SimpleNetworkClientProtocol = RJS_SimpleNetworkClient()
                 apiClient.execute(request: apiRequest, completionHandler: { (result: Result<RJS_SimpleNetworkClientResponse<GalleryAppResponseDto.ImageInfo>>) in
-                    Self.requestCount -= 1
                     completionHandler(result)
                 })
              } catch let error {
-                Self.requestCount -= 1
                 completionHandler(Result.failure(error))
              }
         }
