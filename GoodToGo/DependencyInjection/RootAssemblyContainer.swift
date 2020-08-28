@@ -10,13 +10,11 @@ import RJPSLib_Networking
 //
 import Domain
 import Domain_CarTrack
-import Domain_GitHub
 import Domain_GalleryApp
 import Repositories
 import Repositories_WebAPI
 import Core
 import Core_CarTrack
-import Core_GitHub
 import Core_GalleryApp
 
 public typealias AS = AssembyContainer
@@ -34,7 +32,6 @@ struct RootAssemblyContainerProtocols {
     static let networkClient                      = RJS_SimpleNetworkClientProtocol.self
     static let generic_CacheRepository            = SimpleCacheRepositoryProtocol.self
     static let generic_LocalStorageRepository     = KeyValuesStorageRepositoryProtocol.self
-    static let gitUser_NetWorkRepository          = GitUser_NetWorkRepositoryProtocol.self    // Web API: Requests Protocol
     static let carTrack_NetWorkRepository         = CarTrack_NetWorkRepositoryProtocol.self   // Web API: Requests Protocol
     static let galleryApp_NetWorkRepository       = GalleryAppNetWorkRepositoryProtocol.self  // Web API: Requests Protocol
 
@@ -42,13 +39,6 @@ struct RootAssemblyContainerProtocols {
     // Use Cases
     //
 
-    static let someProtocolXXXX_UseCase           = SomeProtocolXXXX_UseCaseProtocol.self
-
-    // Sample
-    static let sample_UseCase                     = Sample_UseCaseProtocol.self
-    static let sampleB_UseCase                    = SampleB_UseCaseProtocol.self
-    static let gitUser_UseCase                    = GitHubAPIRelated_UseCaseProtocol.self
-    
     // CarTrack
     static let carTrackGenericAppBusiness_UseCase = CarTrackGenericAppBusiness_UseCaseProtocol.self
     static let carTrackAPI_UseCase                = CarTrackAPIRelated_UseCaseProtocol.self
@@ -153,45 +143,5 @@ final class RootAssemblyContainer: Assembly {
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
             return uc
         }
-
-        //
-        // Sample (min)
-        //
-
-        container.register(AppProtocols.someProtocolXXXX_UseCase) { resolver in
-            let uc = SomeProtocolXXXX_UseCase()
-            uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
-            uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
-            return uc
-        }
-
-        container.register(AppProtocols.sample_UseCase) { resolver in
-            let uc = Sample_UseCase()
-            uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
-            uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
-            return uc
-        }
-
-        container.register(AppProtocols.sampleB_UseCase) { resolver in
-            let uc = SampleB_UseCase()
-            uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
-            uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
-            return uc
-        }
-
-        //
-        // GitHub
-        //
-
-        container.autoregister(AppProtocols.gitUser_NetWorkRepository,
-                               initializer: API.GitHub.NetWorkRepository.init).inObjectScope(.container)
-
-        container.register(AppProtocols.gitUser_UseCase) { resolver in
-            let uc = GitUser_UseCase()
-            uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
-            uc.repositoryNetwork               = resolver.resolve(AppProtocols.gitUser_NetWorkRepository)
-            return uc
-        }
-
     }
 }

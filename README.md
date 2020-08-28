@@ -36,9 +36,9 @@ This will install/update [Brew](https://brew.sh/), that will be used to install/
 
 The project follows the Domain Driven aproach, and its divided in frameworks acording to business.
 
-About namings, and taking `Core` as example. `Core` is where we have the __base__ implementation of business for the app; and this `Core` is something that could be in every mobile app. But `Core.Bliss` do the same type of  of special business logic applyed to this app alone.  
+About namings, and taking `Core` as example. `Core` is where we have the __base__ implementation of business for the app; and this `Core` is something that could be in every mobile app. But `Core.XXX` do the same type of  of special business logic applyed to this app alone.  
 
-This mean that if we want to take out the `Bliss` logic from the project, we just need to delete `Core.Bliss`, `Domain.Bliss` and the Screens / `UIViewController`'s.
+This mean that if we want to take out the `XXX` logic from the project, we just need to delete `Core.XXX`, `Domain.Bliss` and the Screens / `UIViewController`'s.
 
 ## Project modules dependencies
 

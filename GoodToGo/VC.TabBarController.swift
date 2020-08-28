@@ -24,9 +24,7 @@ extension VC {
             super.viewDidLoad()
 
             // EXAMS
-            let mvpGitUser    = createControllers(tabName: "MVP.GitUser", vc: AppDelegate.shared.container.resolve(V.SearchUser_View.self)!)
             let vipCarTrack   = createControllers(tabName: "VIP.CarTrack", vc: VC.CarTrackLoginViewController(presentationStyle: .modal))
-            let vipVisionBox  = createControllers(tabName: "VIP.VisionBox", vc: VC.CategoriesPickerViewController(presentationStyle: .modal))
             let vipGalleryApp = createControllers(tabName: "VIP.Gallery", vc: VC.GalleryAppS1ViewController(presentationStyle: .modal))
 
             // TESTING / DEBUG/ TEMPLATES
@@ -36,9 +34,7 @@ extension VC {
 
             var viewControllersList: [UIViewController] = []
             if DevTools.FeatureFlag.showScene_gallery.isTrue { viewControllersList.append(vipGalleryApp) }
-            if DevTools.FeatureFlag.showScene_visionBox.isTrue { viewControllersList.append(vipVisionBox) }
             if DevTools.FeatureFlag.showScene_carTrack.isTrue { viewControllersList.append(vipCarTrack) }
-            if DevTools.FeatureFlag.showScene_gitHub.isTrue { viewControllersList.append(mvpGitUser) }
             if DevTools.FeatureFlag.showScene_vipTemplate.isTrue { viewControllersList.append(vipTemplate) }
             if DevTools.FeatureFlag.showScene_rxTests.isTrue { viewControllersList.append(vcRx) }
 

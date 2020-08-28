@@ -53,9 +53,6 @@ extension Presenter {
         weak var view: MVPSampleRxView_ViewProtocol!
         var viewModel: VM.MVPSampleRxView_ViewModel? { didSet { DevTools.Log.appCode(.vmChanged); viewModelChanged() } }
         var router: MVPSampleRxView_RouterProtocol!
-
-        var sample_UseCase: Sample_UseCaseProtocol!
-    
     }
 }
 
@@ -84,7 +81,8 @@ extension P.MVPSampleRxView_Presenter: MVPSampleRxView_PresenterProtocol {
     }
     
     func rxObservable_doAssynTask(user: String, password: String) -> Observable<String> {
-        return Observable.create { [weak self] observer -> Disposable in
+        return Observable.just("Hi")
+        /*return Observable.create { [weak self] observer -> Disposable in
             DevTools.Log.message("Creating observable...")
             guard let self = self else { return Disposables.create() }
             self.sample_UseCase.operation1(canUseCache: true) { (result) in
@@ -95,7 +93,7 @@ extension P.MVPSampleRxView_Presenter: MVPSampleRxView_PresenterProtocol {
             }
             return Disposables.create()
             }//.retry(3)
-            //.retryOnBecomesReachable("", reachabilityService: reachabilityService)
+            //.retryOnBecomesReachable("", reachabilityService: reachabilityService)*/
     }
 }
 

@@ -17,7 +17,6 @@ import AppTheme
 import Designables
 import DevTools
 import Domain
-import Domain_VisionBox
 import Extensions
 import PointFreeFunctions
 import UIBase

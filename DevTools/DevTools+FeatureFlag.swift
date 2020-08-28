@@ -23,8 +23,6 @@ public extension DevTools {
 
         case showScene_rxTests     = "Scene Enabled: RxTests"
         case showScene_carTrack    = "Scene Enabled: Exam.CarTrack"
-        case showScene_gitHub      = "Scene Enabled: Exam.GitHub"
-        case showScene_visionBox   = "Scene Enabled: Exam.VisionBox "
         case showScene_gallery     = "Scene Enabled: Exam.Gallery "
 
         case showScene_vipTemplate = "Scene Enabled: VIP Template"
@@ -42,9 +40,7 @@ public extension DevTools {
 
             case .showScene_rxTests:     return true
             case .showScene_carTrack:    return true
-            case .showScene_gitHub:      return true
             case .showScene_vipTemplate: return true
-            case .showScene_visionBox:   return true
             case .showScene_gallery:     return true
             }
         }
@@ -62,9 +58,7 @@ public extension DevTools {
 
              case .showScene_rxTests:        return true
              case .showScene_carTrack:       return true
-             case .showScene_gitHub:         return true
              case .showScene_vipTemplate:    return true
-             case .showScene_visionBox:      return true
              case .showScene_gallery:        return true
             }
         }
