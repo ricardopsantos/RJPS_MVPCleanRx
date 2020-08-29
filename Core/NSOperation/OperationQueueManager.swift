@@ -19,7 +19,7 @@ public class OperationQueueManager {
     private var operationQueue: OperationQueue?
     public static var shared = OperationQueueManager()
 
-    func add(_ operation: Operation) {
+    public func add(_ operation: Operation) {
         guard let operationQueue = operationQueue else {
             return
         }

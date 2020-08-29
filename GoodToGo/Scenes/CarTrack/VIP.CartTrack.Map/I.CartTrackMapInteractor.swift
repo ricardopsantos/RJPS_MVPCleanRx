@@ -86,16 +86,12 @@ extension I.CartTrackMapInteractor: CartTrackMapBusinessLogicProtocol {
             .asObservable()
             .subscribe(onNext: { [weak self] (result) in
                 guard let self = self else { return }
-                print(result)
-                /*
-                switch result {
-                case .success(let elements):
-                    self.list = elements.map({ $0.toDomain! })
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    self.list = result.compactMap({ $0.toDomain })
                     let response = VM.CartTrackMap.MapData.Response(list: self.list)
                     self.presenter?.presentMapData(response: response)
-                case .failure(let error):
-                    self.presentError(error: error)
-                }*/
+                }
             }, onError: { (error) in
                 DevTools.Log.error(error)
                 self.presentError(error: error)

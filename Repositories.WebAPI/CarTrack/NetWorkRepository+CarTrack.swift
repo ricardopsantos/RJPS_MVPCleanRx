@@ -22,7 +22,7 @@ public extension WebAPI.CarTrack {
 
         public init() { }
 
-        public func getUsers(request: CarTrackRequests.GetUsers, completionHandler: @escaping (_ result: Result<RJS_SimpleNetworkClientResponse<[CarTrackResponseDto.User]>>) -> Void) {
+        public func getUsers(_ request: CarTrackRequests.GetUsers, completionHandler: @escaping (_ result: Result<RJS_SimpleNetworkClientResponse<[CarTrackResponseDto.User]>>) -> Void) {
             do {
                 let apiRequest: WebAPIRequestProtocol = try WebAPI.CarTrackAPIRequest.GetUsers(request: request)
                 let apiClient: RJS_SimpleNetworkClientProtocol = RJS_SimpleNetworkClient()

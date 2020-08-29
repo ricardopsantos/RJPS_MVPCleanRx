@@ -49,7 +49,9 @@ public extension WebAPI.CarTrackAPIRequest {
         public var debugRequest: Bool = DevTools.FeatureFlag.debugRequests.isTrue
         public var urlRequest: URLRequest
         public var responseType: RJS_SimpleNetworkClientResponseType
-        public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.CarTrack.get_200 : nil }
+
+        // service has bad data. use mock value always
+        public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue || true  ? AppConstants.Mocks.CarTrack.get_200 : nil }
 
         init(request: CarTrackRequests.GetUsers) throws {
             let urlString = Target.getUsers.endpoint

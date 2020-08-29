@@ -28,8 +28,8 @@ public class GalleryAppWebAPIUseCase: GenericUseCase, GalleryAppWebAPIUseCasePro
     public override init() { super.init() }
 
     public var networkRepository: GalleryAppNetWorkRepositoryProtocol!
-    public var generic_CacheRepositoryProtocol: SimpleCacheRepositoryProtocol!
-    public var generic_LocalStorageRepository: KeyValuesStorageRepositoryProtocol!
+    public var genericCacheRepositoryProtocol: SimpleCacheRepositoryProtocol!
+    public var genericLocalStorageRepository: KeyValuesStorageRepositoryProtocol!
 
     private static var cacheTTL = 60 * 24 // 24h cache
 
@@ -78,10 +78,10 @@ public class GalleryAppWebAPIUseCase: GenericUseCase, GalleryAppWebAPIUseCasePro
         }
 
         return Observable<GalleryAppResponseDto.ImageInfo>.create { observer in
-            let operation = ImageInfoRequestOperation(block: block)
+            let operation = APIRequestOperation(block: block)
             OperationQueueManager.shared.add(operation)
             operation.completionBlock = {
-                if operation.isCancelled || operation.result == nil {
+                if operation.isCancelled || operation.noResultAvailable {
                     observer.on(.error(Factory.Errors.with(appCode: .notPredicted)))
                 } else {
                     observer.on(.next(operation.result!))
@@ -130,28 +130,5 @@ public class GalleryAppWebAPIUseCase: GenericUseCase, GalleryAppWebAPIUseCasePro
         case .cacheAndLoad: return Observable.merge(cacheObserver, apiObserver.asObservable() )
         case .cacheNoLoad: fatalError("Not safe!")
         }
-    }
-}
-
-private class ImageInfoRequestOperation: OperationBase {
-    var result: GalleryAppResponseDto.ImageInfo?
-    private var block: Observable<GalleryAppResponseDto.ImageInfo>
-    var disposeBag = DisposeBag()
-    init(block: Observable<GalleryAppResponseDto.ImageInfo>) {
-      self.block = block
-    }
-    public override func main() {
-        guard isCancelled == false else {
-            finish(true)
-            return
-        }
-        executing(true)
-
-        block.asObservable().bind { (some) in
-            self.result = some
-            self.executing(false)
-            self.finish(true)
-        }.disposed(by: disposeBag)
-
     }
 }

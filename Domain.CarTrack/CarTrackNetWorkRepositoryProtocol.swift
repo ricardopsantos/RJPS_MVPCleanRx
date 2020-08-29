@@ -16,5 +16,5 @@ Web API Requests Protocol
  */
 
 public protocol CarTrackNetWorkRepositoryProtocol: class {
-    func getUsers(request: CarTrackRequests.GetUsers, completionHandler: @escaping (_ result: Result<RJS_SimpleNetworkClientResponse<[CarTrackResponseDto.User]>>) -> Void)
+    func getUsers(_ request: CarTrackRequests.GetUsers, completionHandler: @escaping (_ result: Result<RJS_SimpleNetworkClientResponse<[CarTrackResponseDto.User]>>) -> Void)
 }

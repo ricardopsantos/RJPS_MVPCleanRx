@@ -23,11 +23,11 @@ public class GalleryAppMiscBusinessUseCase: GenericUseCase, GalleryAppGenericBus
 
     public override init() { super.init() }
 
-    public var generic_CacheRepositoryProtocol: SimpleCacheRepositoryProtocol!
-    public var generic_LocalStorageRepository: KeyValuesStorageRepositoryProtocol!
+    public var genericCacheRepositoryProtocol: SimpleCacheRepositoryProtocol!
+    public var genericLocalStorageRepository: KeyValuesStorageRepositoryProtocol!
 
     public func download(_ request: GalleryAppModel.ImageInfo) -> Observable<UIImage> {
-        return Observable<UIImage>.create { [weak self] observer in
+        return Observable<UIImage>.create { observer in
             if let size = request.sizes.size.filter({ $0.label == "Large Square" }).last {
                 let operation = DownloadImageOperation(withURLString: size.source)
                 OperationQueueManager.shared.add(operation)
