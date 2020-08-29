@@ -6,7 +6,10 @@
 //
 
 import Foundation
+//
 import RxSwift
+//
+import Factory
 
 // swiftlint:disable rule_Coding
 
@@ -16,26 +19,50 @@ public extension UserDefaults {
     }
 }
 
-public class APICacheManager {
-    private init() {}
-    public static let shared = APICacheManager()
+public extension RP {
+    class APICacheManager: APICacheManagerProtocol {
 
-    private var hotCache = NSCache<NSString, GenericKeyValueStorableRecord>()
+        public init() { }
+        
+        private var hotCache = NSCache<NSString, GenericKeyValueStorableRecord>()
 
-    public func save<T: Codable>(_ some: T, key: String, params: [String], lifeSpam: Int = 5) {
-        let kvStorableRecord = GenericKeyValueStorableRecord(some, key: key, params: params, lifeSpam: lifeSpam)
-        hotCacheAdd(kvStorableRecord: kvStorableRecord, withKey: kvStorableRecord.key)
-        coldCacheAdd(kvStorableRecord: kvStorableRecord)
-    }
+        public func save<T: Codable>(_ some: T, key: String, params: [String], lifeSpam: Int = 5) {
+            let kvStorableRecord = GenericKeyValueStorableRecord(some, key: key, params: params, lifeSpam: lifeSpam)
+            hotCacheAdd(kvStorableRecord: kvStorableRecord, withKey: kvStorableRecord.key)
+            coldCacheAdd(kvStorableRecord: kvStorableRecord)
+        }
 
-    // Get Sync
-    public func getSync<T: Codable>(key: String, params: [String], type: T.Type) -> T? {
-        let composedKey = CacheUtils.composedKey(key, params)
-        return cacheGet(composedKey: composedKey, type: type)
+        // Get Sync
+        public func getSync<T: Codable>(key: String, params: [String], type: T.Type) -> T? {
+            let composedKey = CacheUtils.composedKey(key, params)
+            return cacheGet(composedKey: composedKey, type: type)
+        }
+
+        public func genericCacheObserver<T: Codable>(_ some: T.Type, cacheKey: String, keyParams: [String], apiObserver: Single<T>) -> Observable<T> {
+            let cacheObserver = Observable<T>.create { [weak self] observer in
+                if let cached = self?.getSync(key: cacheKey, params: keyParams, type: some) {
+                    if let array = cached as? [Codable], array.count > 0 {
+                        // If the response is an array, we only consider it if the array have elements
+                         observer.on(.next(cached))
+                         observer.on(.completed)
+                     } else {
+                         observer.on(.next(cached))
+                         observer.on(.completed)
+                     }
+                }
+                observer.on(.error(Factory.Errors.with(appCode: .notFound)))
+                observer.on(.completed)
+                return Disposables.create()
+            }.catchError { (_) -> Observable<T> in
+                // No cache. Returning API call...
+                return apiObserver.asObservable()
+            }
+            return cacheObserver
+        }
     }
 }
 
-fileprivate extension APICacheManager {
+fileprivate extension RP.APICacheManager {
     func cacheGet<T: Codable>(composedKey: String, type: T.Type) -> T? {
         // We return first (if available) the hot cache, is faster
         if let hotCached = hotCacheGet(composedKey: composedKey, type: type) {
@@ -49,7 +76,7 @@ fileprivate extension APICacheManager {
 
 // Hot cache (Faster that cold cache) : free when device starts of detects excessive memory pressure
 
-fileprivate extension APICacheManager {
+fileprivate extension RP.APICacheManager {
 
     func hotCacheAdd(kvStorableRecord: GenericKeyValueStorableRecord, withKey: String) {
         objc_sync_enter(hotCache); defer { objc_sync_exit(hotCache) }
@@ -70,7 +97,7 @@ fileprivate extension APICacheManager {
 
 // Cold cache : device stored
 
-private extension APICacheManager {
+private extension RP.APICacheManager {
 
     func coldCacheAdd(kvStorableRecord: GenericKeyValueStorableRecord) {
         UserDefaults.standard.save(kvStorableRecord: kvStorableRecord)

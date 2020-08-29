@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public protocol SimpleCacheRepositoryProtocol {
+public protocol HotCacheRepositoryProtocol {
     func add(object: AnyObject, withKey: String)
     func get(key: String) -> AnyObject?
     func clean(sender: String)

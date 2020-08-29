@@ -28,8 +28,9 @@ public class GalleryAppWebAPIUseCase: GenericUseCase, GalleryAppWebAPIUseCasePro
     public override init() { super.init() }
 
     public var networkRepository: GalleryAppNetWorkRepositoryProtocol!
-    public var genericCacheRepositoryProtocol: SimpleCacheRepositoryProtocol!
+    public var hotCacheRepository: HotCacheRepositoryProtocol!
     public var genericLocalStorageRepository: KeyValuesStorageRepositoryProtocol!
+    public var apiCache: APICacheManagerProtocol!
 
     private static var cacheTTL = 60 * 24 // 24h cache
 
@@ -44,11 +45,11 @@ public class GalleryAppWebAPIUseCase: GenericUseCase, GalleryAppWebAPIUseCasePro
         var block: Observable<GalleryAppResponseDto.ImageInfo> {
             var apiObserver: Observable<GalleryAppResponseDto.ImageInfo> {
                 return Observable<GalleryAppResponseDto.ImageInfo>.create { observer in
-                    self.networkRepository.imageInfo(request) { (result) in
+                    self.networkRepository.imageInfo(request) { [weak self] (result) in
                         switch result {
                         case .success(let some) :
                             observer.on(.next(some.entity))
-                            APICacheManager.shared.save(some.entity.toDomain, key: cacheKey, params: [], lifeSpam: Self.cacheTTL)
+                            self?.apiCache.save(some.entity.toDomain, key: cacheKey, params: [], lifeSpam: Self.cacheTTL)
                         case .failure(let error):
                             observer.on(.error(error))
                         }
@@ -62,10 +63,11 @@ public class GalleryAppWebAPIUseCase: GenericUseCase, GalleryAppWebAPIUseCasePro
             }
 
             // Cache
-            let cacheObserver = genericCacheObserver(GalleryAppResponseDto.ImageInfo.self,
-                                                     cacheKey: cacheKey,
-                                                     keyParams: [],
-                                                     apiObserver: apiObserver.asSingle())
+
+            let cacheObserver = apiCache.genericCacheObserver(GalleryAppResponseDto.ImageInfo.self,
+                                                              cacheKey: cacheKey,
+                                                              keyParams: [],
+                                                              apiObserver: apiObserver.asSingleSafe())
 
             // Handle by cache strategy
 
@@ -103,11 +105,11 @@ public class GalleryAppWebAPIUseCase: GenericUseCase, GalleryAppWebAPIUseCasePro
         // API
         var apiObserver: Observable<GalleryAppResponseDto.Search> {
             return Observable<GalleryAppResponseDto.Search>.create { observer in
-                self.networkRepository.search(request) { (result) in
+                self.networkRepository.search(request) { [weak self] (result) in
                     switch result {
                     case .success(let some) :
                         observer.on(.next(some.entity))
-                        APICacheManager.shared.save(some.entity.toDomain, key: cacheKey, params: [], lifeSpam: Self.cacheTTL)
+                        self?.apiCache.save(some.entity.toDomain, key: cacheKey, params: [], lifeSpam: Self.cacheTTL)
                     case .failure(let error): observer.on(.error(error))
                     }
                     observer.on(.completed)
@@ -117,10 +119,10 @@ public class GalleryAppWebAPIUseCase: GenericUseCase, GalleryAppWebAPIUseCasePro
         }
 
         // Cache
-        let cacheObserver = genericCacheObserver(GalleryAppResponseDto.Search.self,
-                                                 cacheKey: cacheKey,
-                                                 keyParams: [],
-                                                 apiObserver: apiObserver.asSingle())
+        let cacheObserver = apiCache.genericCacheObserver(GalleryAppResponseDto.Search.self,
+                                                          cacheKey: cacheKey,
+                                                          keyParams: [],
+                                                          apiObserver: apiObserver.asSingleSafe())
 
         // Handle by cache strategy
 

@@ -29,8 +29,9 @@ public class CarTrackAPIUseCase: GenericUseCase, CarTrackWebAPIUseCaseProtocol {
     public override init() { super.init() }
 
     public var networkRepository: CarTrackNetWorkRepositoryProtocol!
-    public var genericCacheRepositoryProtocol: SimpleCacheRepositoryProtocol!
+    public var hotCacheRepository: HotCacheRepositoryProtocol!
     public var genericLocalStorageRepository: KeyValuesStorageRepositoryProtocol!
+    public var apiCache: APICacheManagerProtocol!
 
     private static var cacheTTL = 60 * 24 // 24h cache
 
@@ -45,11 +46,11 @@ public class CarTrackAPIUseCase: GenericUseCase, CarTrackWebAPIUseCaseProtocol {
         var block: Observable<[CarTrackResponseDto.User]> {
             var apiObserver: Observable<[CarTrackResponseDto.User]> {
                 return Observable<[CarTrackResponseDto.User]>.create { observer in
-                    self.networkRepository.getUsers(request) { (result) in
+                    self.networkRepository.getUsers(request) { [weak self] (result) in
                         switch result {
                         case .success(let some) :
                             observer.on(.next(some.entity))
-                            APICacheManager.shared.save(some.entity, key: cacheKey, params: [], lifeSpam: Self.cacheTTL)
+                            self?.apiCache.save(some.entity, key: cacheKey, params: [], lifeSpam: Self.cacheTTL)
                         case .failure(let error):
                             observer.on(.error(error))
                         }
@@ -63,10 +64,10 @@ public class CarTrackAPIUseCase: GenericUseCase, CarTrackWebAPIUseCaseProtocol {
             }
 
             // Cache
-            let cacheObserver = genericCacheObserver([CarTrackResponseDto.User].self,
-                                                     cacheKey: cacheKey,
-                                                     keyParams: [],
-                                                     apiObserver: apiObserver.asSingle())
+            let cacheObserver = apiCache.genericCacheObserver([CarTrackResponseDto.User].self,
+                                                              cacheKey: cacheKey,
+                                                              keyParams: [],
+                                                              apiObserver: apiObserver.asSingleSafe())
 
             // Handle by cache strategy
 

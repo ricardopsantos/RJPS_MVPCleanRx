@@ -25,7 +25,7 @@ import Factory
 public extension AppUtilsProtocol {
 
     // swiftlint:disable rule_Coding
-    func genericCacheObserverFallible<T: Codable>(_ some: T.Type, cacheKey: String, keyParams: [String]) -> Observable<T> {
+    /*func genericCacheObserverFallible<T: Codable>(_ some: T.Type, cacheKey: String, keyParams: [String]) -> Observable<T> {
         let cacheObserver = Observable<T>.create { observer in
             if let cached = APICacheManager.shared.getSync(key: cacheKey, params: keyParams, type: some) {
                 if let array = cached as? [Codable], array.count > 0 {
@@ -65,7 +65,7 @@ public extension AppUtilsProtocol {
         }
         return cacheObserver
     }
-
+*/
     // swiftlint:enable rule_Coding
     
     func downloadImage(imageURL: String, onFail: UIImage?=nil, completion: @escaping (UIImage?) -> Void) {

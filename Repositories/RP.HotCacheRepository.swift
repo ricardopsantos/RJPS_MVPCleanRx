@@ -14,7 +14,7 @@ import AVFoundation
 import Domain
 
 public extension RP {
-    class SimpleCacheRepository: SimpleCacheRepositoryProtocol {
+    class HotCacheRepository: HotCacheRepositoryProtocol {
         public init () {}
         public func add(object: AnyObject, withKey: String) {
             RJS_LiveCache.shared.add(object: object, withKey: withKey)

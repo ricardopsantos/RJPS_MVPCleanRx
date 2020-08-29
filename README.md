@@ -18,7 +18,7 @@
 
 The mains intent of this project is:
 
-* To show a implementation of my 2 favorites design patterns: __MVP + Clean (Rx)__ and __MVP + Clean (Rx)__ and how we can use booth at same time and still have a rock solid project. 
+* To show a implementation of my 2 favorits design patterns: __MVP + Clean (Rx)__ and __MVP + Clean (Rx)__ and how we can use booth at same time and still have a rock solid project. 
 
 * Have a quick start project with all that a good project have (logs, webapi, etc), and that usually take some days to configure if we start from scratch. Saying so _Good to Go_ looked like a good name to me.
 
@@ -26,9 +26,15 @@ If you don't agree with something or have a sugestion, just email me, I love to 
 
 # Install
 
-Just download source code and run  `./_script_installPackages.sh`
+## Step 1
+
+Download source code and run  `./_script_installPackages.sh`
 
 This will install/update [Brew](https://brew.sh/), that will be used to install/update [Carthage](https://github.com/Carthage/Carthage)
+
+## Step 2 
+
+Because of dependencies, its possible you need to compile __once__ all the frameworks __one by one__
 
 ## Project structure
 
@@ -44,15 +50,15 @@ This mean that if we want to take out the `XXX` logic from the project, we just 
 
 ![Preview](__Documents__/ReadmeImages/readme_4.png)
 
-* `GoodToGo` : Is the app it self. ViewContollers and SwiftInject related code
-* `AppTheme` : Manage fonts, colors and so so
-* `AppConstants` : Constantes
+* `GoodToGo` : Is the app it self. Scenes, Workers and SwiftInject related code
+* `AppTheme` : Manage fonts, colours and so so
+* `AppConstants` : Constants
 * `Designables` : UI components
 * `Factory` : Factory for objects (for now just `Errors`)
-* `AppResources` : App strings/localizables, images, etc...
-* `UIBase` : Base clases, mainly for `MVP` and `VIP`
+* `AppResources` : App strings/localisables, images, etc...
+* `UIBase` : Base classes, mainly for `MVP` and `VIP`
 * `Domain`, `Core`, `Repositories` : DDD
-* `DevTools` : Logs, feature flags, develper helping tools in general
+* `DevTools` : Logs, feature flags, developer helping tools in general
 * `Extensions` : See [Extensions](https://docs.swift.org/swift-book/LanguageGuide/Extensions.html)
 * `PointFreeFunctions` : Small global var/functions like
 
@@ -128,7 +134,9 @@ So, the `AlertType` will be found on a file name `E.AlertType.swift`
  
 ### VIP, MVP
 
-The _Views_ will start allways by `V.`, _ViewControlles_ by `VC.`, Router by `R.`, _Interactors_ by `I.`, Presenters by `P.` and Domain file by `D.` 
+The _Views_ will start always by `V.`, _ViewControllers_ by `VC.`, Router by `R.`, _Interactors_ by `I.`, Presenters by `P.`,  Domain file by `D.` 
+
+Other files : `W.` for _Workers_ and `UC.` for _UseCases_
 
 ![Preview](__Documents__/ReadmeImages/readme_5.png)
 
