@@ -24,7 +24,7 @@ public class CarTrackGenericAppBusinessUseCase: GenericUseCase, CarTrackGenericA
     public override init() { super.init() }
 
     public var hotCacheRepository: HotCacheRepositoryProtocol!
-    public var genericLocalStorageRepository: KeyValuesStorageRepositoryProtocol!
+    public var coldKeyValuesRepository: KeyValuesStorageRepositoryProtocol!
 
     public func validate(user: String,
                          password: String,

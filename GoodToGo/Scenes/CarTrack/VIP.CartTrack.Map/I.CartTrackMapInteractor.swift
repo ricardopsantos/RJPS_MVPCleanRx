@@ -82,7 +82,7 @@ extension I.CartTrackMapInteractor: CartTrackMapBusinessLogicProtocol {
 
     func requestMapData(request: VM.CartTrackMap.MapData.Request) {
         presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
-        CarTrackResolver.shared.api?.getUsers(request: CarTrackRequests.GetUsers(userName: ""), cacheStrategy: .cacheElseLoad)
+        CarTrackResolver.worker?.getUsers(request: CarTrackRequests.GetUsers(userName: ""), cacheStrategy: .cacheElseLoad)
             .asObservable()
             .subscribe(onNext: { [weak self] (result) in
                 guard let self = self else { return }

@@ -29,7 +29,7 @@ public class GalleryAppWebAPIUseCase: GenericUseCase, GalleryAppWebAPIUseCasePro
 
     public var networkRepository: GalleryAppNetWorkRepositoryProtocol!
     public var hotCacheRepository: HotCacheRepositoryProtocol!
-    public var genericLocalStorageRepository: KeyValuesStorageRepositoryProtocol!
+    public var coldKeyValuesRepository: KeyValuesStorageRepositoryProtocol!
     public var apiCache: APICacheManagerProtocol!
 
     private static var cacheTTL = 60 * 24 // 24h cache

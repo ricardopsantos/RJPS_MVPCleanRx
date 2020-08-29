@@ -30,7 +30,7 @@ public class CarTrackAPIUseCase: GenericUseCase, CarTrackWebAPIUseCaseProtocol {
 
     public var networkRepository: CarTrackNetWorkRepositoryProtocol!
     public var hotCacheRepository: HotCacheRepositoryProtocol!
-    public var genericLocalStorageRepository: KeyValuesStorageRepositoryProtocol!
+    public var coldKeyValuesRepository: KeyValuesStorageRepositoryProtocol!
     public var apiCache: APICacheManagerProtocol!
 
     private static var cacheTTL = 60 * 24 // 24h cache

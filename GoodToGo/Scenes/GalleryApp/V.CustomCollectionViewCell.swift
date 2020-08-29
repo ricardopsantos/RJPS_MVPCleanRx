@@ -59,7 +59,7 @@ extension V {
         static let defaultMargin: CGFloat = screenWidth * 0.05
         static let defaultHeight: CGFloat = screenWidth * 0.4
         static let defaultWidth: CGFloat  = screenWidth * 0.4
-        var worker = GalleryAppResolver.shared.worker
+        var worker = GalleryAppResolver.worker
         var disposeBag = DisposeBag()
 
         static var identifier: String {

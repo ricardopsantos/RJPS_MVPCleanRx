@@ -21,16 +21,22 @@ import Core
 import Domain
 import Domain_GalleryApp
 
+//
+// The worker do the bridge between the Shenes and the UseCases
+//
+
 public protocol GalleryAppWorkerProtocol {
-    var networkRepository: GalleryAppWebAPIUseCaseProtocol! { get set }
+    var webAPIUSeCase: GalleryAppWebAPIUseCaseProtocol! { get set }
     var genericUseCase: GalleryAppGenericBusinessUseCaseProtocol! { get set }
 
     func search(_ request: GalleryAppRequests.Search, cacheStrategy: CacheStrategy) -> Observable<GalleryAppModel.Search>
     func imageInfoZip(_ request: GalleryAppRequests.ImageInfo, cacheStrategy: CacheStrategy) -> Observable<(GalleryAppModel.ImageInfo, UIImage)>
 }
 
+// MARK: - GalleryAppWorker
+
 public class GalleryAppWorker {
-    public var networkRepository: GalleryAppWebAPIUseCaseProtocol!
+    public var webAPIUSeCase: GalleryAppWebAPIUseCaseProtocol!
     public var genericUseCase: GalleryAppGenericBusinessUseCaseProtocol!
 }
 
@@ -40,7 +46,7 @@ extension GalleryAppWorker: GalleryAppWorkerProtocol {
 
     public func search(_ request: GalleryAppRequests.Search, cacheStrategy: CacheStrategy) -> Observable<GalleryAppModel.Search> {
         // Map Dto -> Model
-        return networkRepository.search(request, cacheStrategy: cacheStrategy)
+        return webAPIUSeCase.search(request, cacheStrategy: cacheStrategy)
             .flatMap { (result) -> Observable<GalleryAppModel.Search> in
                 if let domain = result.toDomain {
                     return Observable.just(domain)
@@ -64,7 +70,7 @@ extension GalleryAppWorker: GalleryAppWorkerProtocol {
 private extension GalleryAppWorker {
     func imageInfo(_ request: GalleryAppRequests.ImageInfo, cacheStrategy: CacheStrategy) -> Observable<GalleryAppModel.ImageInfo> {
         // Map Dto -> Model
-        return networkRepository.imageInfo(request, cacheStrategy: cacheStrategy)
+        return webAPIUSeCase.imageInfo(request, cacheStrategy: cacheStrategy)
             .flatMap { (result) -> Observable<GalleryAppModel.ImageInfo> in
             if let domain = result.toDomain {
                 return Observable.just(domain)

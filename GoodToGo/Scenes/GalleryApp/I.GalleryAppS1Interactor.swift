@@ -42,7 +42,6 @@ extension I {
         }
         var presenter: GalleryAppS1PresentationLogicProtocol?
         weak var basePresenter: BasePresenterVIPProtocol? { return presenter }
-        var worker = GalleryAppResolver.shared.worker
     }
 }
 
@@ -71,7 +70,7 @@ extension I.GalleryAppS1Interactor {
 extension I.GalleryAppS1Interactor: GalleryAppS1BusinessLogicProtocol {
 
     func requestSearchByTag(request: VM.GalleryAppS1.SearchByTag.Request) {
-        guard let presenter = presenter, worker != nil else {
+        guard let presenter = presenter, GalleryAppResolver.worker != nil else {
             return
         }
 
@@ -93,7 +92,7 @@ extension I.GalleryAppS1Interactor: GalleryAppS1BusinessLogicProtocol {
         // Turn loading on
         presenter.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
         let apiRequest = GalleryAppRequests.Search(tags: tags, page: request.page)
-        worker!.search(apiRequest, cacheStrategy: .cacheElseLoad)
+        GalleryAppResolver.worker!.search(apiRequest, cacheStrategy: .cacheElseLoad)
             .asObservable()
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] (result) in

@@ -24,7 +24,7 @@ public class GalleryAppMiscBusinessUseCase: GenericUseCase, GalleryAppGenericBus
     public override init() { super.init() }
 
     public var hotCacheRepository: HotCacheRepositoryProtocol!
-    public var genericLocalStorageRepository: KeyValuesStorageRepositoryProtocol!
+    public var coldKeyValuesRepository: KeyValuesStorageRepositoryProtocol!
 
     public func download(_ request: GalleryAppModel.ImageInfo) -> Observable<UIImage> {
         return Observable<UIImage>.create { observer in

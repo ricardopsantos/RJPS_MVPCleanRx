@@ -89,18 +89,19 @@ extension I.CarTrackLoginInteractor: CarTrackLoginBusinessLogicProtocol {
             presenter?.presentLogin(response: response)
         }
         presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true, message: Messages.alert.localised))
-        CarTrackResolver.shared.genericBusiness?.validate(user: username,
-                                                          password: password,
-                                                          completionHandler: { (result) in
-                                                            switch result {
-                                                            case .success(let isValid):
-                                                                if isValid {
-                                                                    routeToNext()
-                                                                } else {
-                                                                    handleError(AppCodes.invalidCredentials.toError)
-                                                                }
-                                                            case .failure(let error): handleError(error)
-                                                            }
+        CarTrackResolver.worker?
+            .validate(user: username,
+                      password: password,
+                      completionHandler: { (result) in
+                        switch result {
+                        case .success(let isValid):
+                            if isValid {
+                                routeToNext()
+                            } else {
+                                handleError(AppCodes.invalidCredentials.toError)
+                            }
+                        case .failure(let error): handleError(error)
+                        }
         })
     }
 
