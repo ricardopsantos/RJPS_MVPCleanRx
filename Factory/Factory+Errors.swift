@@ -1,5 +1,4 @@
 //
-//  FactoryErrors.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 10/05/2020.

@@ -1,5 +1,4 @@
 //
-//  DeepLinksManager.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 24/05/2020.

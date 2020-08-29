@@ -20,10 +20,10 @@ import Extensions
 import DevTools
 import PointFreeFunctions
 
-public protocol DefaultTableViewCellProtocol: GenericTableViewCell_Protocol {
-    var rxBehaviorRelay_title: BehaviorRelay<String> { get set }
-    var rxBehaviorRelay_image: BehaviorRelay<UIImage?> { get set }
-    var rxBehaviorRelay_textColor: BehaviorRelay<UIColor> { get set }
+public protocol DefaultTableViewCellProtocol: GenericTableViewCellProtocol {
+    var rxTitle: BehaviorRelay<String> { get set }
+    var rxImage: BehaviorRelay<UIImage?> { get set }
+    var rxTextColor: BehaviorRelay<UIColor> { get set }
 }
 
 //public extension V {
@@ -35,9 +35,9 @@ open class DefaultTableViewCell: UITableViewCell, DefaultTableViewCellProtocol {
     }
     
     // BehaviorRelay model a State
-    public var rxBehaviorRelay_title     = BehaviorRelay<String>(value: "")
-    public var rxBehaviorRelay_image     = BehaviorRelay<UIImage?>(value: nil)
-    public var rxBehaviorRelay_textColor = BehaviorRelay<UIColor>(value: AppColors.UILabel.lblTextColor)
+    public var rxTitle     = BehaviorRelay<String>(value: "")
+    public var rxImage     = BehaviorRelay<UIImage?>(value: nil)
+    public var rxTextColor = BehaviorRelay<UIColor>(value: AppColors.UILabel.lblTextColor)
 
     open class var cellSize: CGFloat { return Designables.Sizes.TableView.defaultHeightForCell }
     public static func prepare(tableView: UITableView) {
@@ -51,29 +51,26 @@ open class DefaultTableViewCell: UITableViewCell, DefaultTableViewCellProtocol {
 
     // To override
     func prepareLayout() {
-        self.backgroundColor = AppColors.remind
+        self.backgroundColor = AppColors.onPrimary
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        rxBehaviorRelay_title
+        rxTitle
             .asObservable()
-            .log(whereAmI())
             .subscribe(onNext: { [weak self] (some) in
                 self?.lblTitle.label.text = some
             }).disposed(by: disposeBag)
 
-        rxBehaviorRelay_textColor
+        rxTextColor
             .asObservable()
-            .log(whereAmI())
             .subscribe(onNext: { [weak self] (some) in
                 self?.lblTitle.label.textColor = some
             }).disposed(by: disposeBag)
 
-        rxBehaviorRelay_image
+        rxImage
             .asObservable()
-            .log(whereAmI())
             .subscribe(onNext: { [weak self] (some) in
                 self?.imgView.image = some
                 self?.setNeedsLayout()
@@ -122,7 +119,7 @@ open class DefaultTableViewCell: UITableViewCell, DefaultTableViewCellProtocol {
 // Public stuff
 //
 
-extension DefaultTableViewCell {
+public extension DefaultTableViewCell {
     
 }
 
@@ -130,8 +127,8 @@ extension DefaultTableViewCell {
 // MARK: - DefaultTableViewCellProtocol
 //
 
-extension DefaultTableViewCell {
-    public func set(title: String) { rxBehaviorRelay_title.accept(title) }
-    public func set(textColor: UIColor) { rxBehaviorRelay_textColor.accept(textColor) }
-    public func set(image: UIImage?) { rxBehaviorRelay_image.accept(image)  }
+public extension DefaultTableViewCell {
+    func set(title: String) { rxTitle.accept(title) }
+    func set(textColor: UIColor) { rxTextColor.accept(textColor) }
+    func set(image: UIImage?) { rxImage.accept(image)  }
 }

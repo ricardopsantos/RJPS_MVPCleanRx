@@ -1,5 +1,4 @@
 //
-//  P.StylesPresenter.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 14/05/2020.
@@ -47,7 +46,7 @@ extension P {
 extension P.DebugPresenter {
 
     //
-    // Do you need to override this? Its allready implemented on a Protocol Extension
+    // Do you need to override this? Its already implemented on a Protocol Extension
     //
     /*
     func presentStatus(response: BaseDisplayLogicModels.Status) {

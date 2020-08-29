@@ -1,5 +1,4 @@
 //
-//  VC.CarTrackLoginViewController.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 12/05/2020.
@@ -185,11 +184,11 @@ extension VC.CarTrackLoginViewController {
 
 // MARK: Private Misc Stuff
 
-extension VC.CarTrackLoginViewController {
+private extension VC.CarTrackLoginViewController {
 
 }
 
-// MARK: DisplayLogicProtocolProtocol
+// MARK: DisplayLogicProtocol
 
 extension VC.CarTrackLoginViewController: CarTrackLoginDisplayLogicProtocol {
 

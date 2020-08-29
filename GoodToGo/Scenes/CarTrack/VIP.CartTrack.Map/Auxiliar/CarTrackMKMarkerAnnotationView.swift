@@ -1,5 +1,4 @@
 //
-//  CarTrackMKMarkerAnnotationView.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 13/06/2020.

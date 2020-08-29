@@ -21,7 +21,7 @@ import Extensions
 import PointFreeFunctions
 import UIBase
 
-protocol ___VARIABLE_sceneName___TableViewCellProtocol: GenericTableViewCell_Protocol {
+protocol ___VARIABLE_sceneName___TableViewCellProtocol: GenericTableViewCellProtocol {
     //var rxBehaviorRelay_title: BehaviorRelay<String> { get set }
     //var rxBehaviorRelay_image: BehaviorRelay<UIImage?> { get set }
     //func bindWith(viewModel:VM.___VARIABLE_sceneName___.TableItem)

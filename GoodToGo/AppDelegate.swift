@@ -11,6 +11,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import Swinject
+import RJPSLib_Base
 //
 import AppResources
 import UIBase
@@ -19,6 +20,9 @@ import AppConstants
 import Extensions
 import DevTools
 import PointFreeFunctions
+
+import Domain_GalleryApp
+import Domain_CarTrack
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,7 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // Where we have all the dependencies
     let container: Container = { return ApplicationAssembly.assembler.resolver as! Container }()
+    var disposeBag = DisposeBag()
 
+    var acc = 0
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         if CommandLine.arguments.contains(AppConstants.Testing.CommandLineArguments.deleteUserData) {

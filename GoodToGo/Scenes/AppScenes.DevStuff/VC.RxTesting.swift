@@ -26,7 +26,7 @@ import Factory
 // swiftlint:disable all
 
 extension VC {
-    class RxTesting: BaseViewControllerMVP, AppUtils_Protocol {
+    class RxTesting: BaseViewControllerMVP, AppUtilsProtocol {
         
         let margin: CGFloat = 10
         let btnHeight: CGFloat = 40
@@ -373,7 +373,7 @@ extension VC.RxTesting {
 extension VC.RxTesting {
     
     func aux_prepare() {
-        self.view.backgroundColor = AppColors.backgroundColor
+        self.view.backgroundColor = AppColors.background
         topGenericView.lazyLoad()
         searchBar.lazyLoad()
         btnThrottle.lazyLoad()

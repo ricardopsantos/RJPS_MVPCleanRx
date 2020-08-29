@@ -172,7 +172,7 @@ extension VC.___VARIABLE_sceneName___ViewController {
 
 // MARK: Private Misc Stuff
 
-extension VC.___VARIABLE_sceneName___ViewController {
+private extension VC.___VARIABLE_sceneName___ViewController {
     #warning("THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE")
     private func doPrivateStuff() {
         let userId = genericView.subTitle
@@ -181,7 +181,7 @@ extension VC.___VARIABLE_sceneName___ViewController {
     }
 }
 
-// MARK: DisplayLogicProtocolProtocol
+// MARK: DisplayLogicProtocol
 
 extension VC.___VARIABLE_sceneName___ViewController: ___VARIABLE_sceneName___DisplayLogicProtocol {
 

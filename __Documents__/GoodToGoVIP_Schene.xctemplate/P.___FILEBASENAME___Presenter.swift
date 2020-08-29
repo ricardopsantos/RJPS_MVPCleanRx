@@ -51,7 +51,7 @@ extension P {
 extension P.___VARIABLE_sceneName___Presenter {
 
     //
-    // Do you need to override this? Its allready implemented on a Protocol Extension
+    // Do you need to override this? Its already implemented on a Protocol Extension
     //
     /*
     func presentStatus(response: BaseDisplayLogicModels.Status) {

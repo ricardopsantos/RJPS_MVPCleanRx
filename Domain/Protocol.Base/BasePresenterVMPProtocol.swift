@@ -15,7 +15,7 @@ import RxSwift
 // All the PRESENTERS must implement this protocol
 ////////////////////////////////////////////
 
-public protocol BasePresenterVMPProtocol: AppUtils_Protocol {
+public protocol BasePresenterVMPProtocol: AppUtilsProtocol {
     var genericView: BaseViewControllerMVPProtocol? { get }
     
     func view_deinit()

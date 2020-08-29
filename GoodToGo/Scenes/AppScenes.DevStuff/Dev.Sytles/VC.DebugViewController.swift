@@ -1,5 +1,4 @@
 //
-//  VC.StylesViewController.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 14/05/2020.
@@ -57,11 +56,6 @@ extension VC {
         private lazy var topGenericView: TopBar = {
             let some = TopBar()
             some.injectOn(viewController: self, usingSafeArea: false)
-            /*some.addDismissButton()
-            some.rxSignal_viewTapped
-                .asObservable().subscribe(onNext: { (_) in
-                    DevTools.makeToast("Tap!")
-                }).disposed(by: disposeBag)*/
             return some
         }()
 
@@ -159,11 +153,11 @@ extension VC.DebugViewController {
 
 // MARK: Private Misc Stuff
 
-extension VC.DebugViewController {
+private extension VC.DebugViewController {
 
 }
 
-// MARK: DisplayLogicProtocolProtocol
+// MARK: DisplayLogicProtocol
 
 extension VC.DebugViewController: DebugDisplayLogicProtocol {
 

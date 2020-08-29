@@ -35,6 +35,11 @@ extension E {
     }
 }
 
+struct TemplateModel {
+    let id: String
+    let state: String?
+}
+
 // DataStore shared model
 /*
 struct ___VARIABLE_sceneName___DataStoreModelA {

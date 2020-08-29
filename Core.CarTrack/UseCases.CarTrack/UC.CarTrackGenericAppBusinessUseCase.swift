@@ -1,6 +1,5 @@
 //
-//  CarTrackGenericAppBusiness_UseCase.swift
-//  AppCore
+//  GoodToGo
 //
 //  Created by Ricardo Santos on 13/05/2020.
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
@@ -20,16 +19,16 @@ import Domain_CarTrack
 import Factory
 import Core
 
-public class CarTrackGenericAppBusinessUseCase: GenericUseCase, CarTrackGenericAppBusiness_UseCaseProtocol {
+public class CarTrackGenericAppBusinessUseCase: GenericUseCase, CarTrackGenericAppBusinessUseCaseProtocol {
 
     public override init() { super.init() }
 
-    public var generic_CacheRepositoryProtocol: SimpleCacheRepositoryProtocol!
-    public var generic_LocalStorageRepository: KeyValuesStorageRepositoryProtocol!
+    public var hotCacheRepository: HotCacheRepositoryProtocol!
+    public var coldKeyValuesRepository: KeyValuesStorageRepositoryProtocol!
 
     public func validate(user: String,
                          password: String,
-                         completionHandler: @escaping CarTrackGenericAppBusinessUseCaseCompletionHandler) {
+                         completionHandler: @escaping (_ result: Result<Bool>) -> ()) {
         // Simulate some kind of API call
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         DispatchQueue.executeWithDelay(delay: 1) {

@@ -1,6 +1,5 @@
 //
-//  D.BaseVIPDomain.swift
-//  UIBase
+//  GoodToGo
 //
 //  Created by Ricardo Santos on 12/05/2020.
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
@@ -35,28 +34,39 @@ public protocol BasePresenterVIPProtocol: class {
 /// Default implementation....
 public extension BasePresenterVIPProtocol {
     func presentStatus(response: BaseDisplayLogicModels.Status) {
-        let viewModel = response
-        baseViewController?.displayStatus(viewModel: viewModel)
+        DispatchQueue.main.async { [weak self] in
+            let viewModel = response
+            self?.baseViewController?.displayStatus(viewModel: viewModel)
+        }
+
     }
 
     func presentError(response: BaseDisplayLogicModels.Error) {
-        let viewModel = response
-        baseViewController?.displayError(viewModel: viewModel)
+        DispatchQueue.main.async { [weak self] in
+            let viewModel = response
+            self?.baseViewController?.displayError(viewModel: viewModel)
+        }
+
     }
 
     func presentErrorGeneric() {
-        let response = BaseDisplayLogicModels.Error(title: Messages.alert.localised, message: Messages.pleaseTryAgainLater.localised)
-        presentError(response: response)
+        DispatchQueue.main.async { [weak self] in
+            let response = BaseDisplayLogicModels.Error(title: Messages.alert.localised, message: Messages.pleaseTryAgainLater.localised)
+            self?.presentError(response: response)
+        }
     }
 
     func presentLoading(response: BaseDisplayLogicModels.Loading) {
-        if let viewController = baseViewController as? UIViewController {
-            if response.isLoading {
-                viewController.view.rjs.startActivityIndicator()
-            } else {
-                viewController.view.rjs.stopActivityIndicator()
+        DispatchQueue.main.async { [weak self] in
+            if let viewController = self?.baseViewController as? UIViewController {
+                if response.isLoading {
+                    viewController.view.rjs.startActivityIndicator()
+                } else {
+                    viewController.view.rjs.stopActivityIndicator()
+                }
             }
         }
+
     }
 }
 

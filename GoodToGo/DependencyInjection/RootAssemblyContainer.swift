@@ -10,12 +10,12 @@ import RJPSLib_Networking
 //
 import Domain
 import Domain_CarTrack
-import Domain_GitHub
+import Domain_GalleryApp
 import Repositories
 import Repositories_WebAPI
 import Core
 import Core_CarTrack
-import Core_GitHub
+import Core_GalleryApp
 
 public typealias AS = AssembyContainer
 public struct AssembyContainer { private init() {} }
@@ -27,28 +27,28 @@ public struct AssembyContainer { private init() {} }
 struct RootAssemblyContainerProtocols {
 
     //
-    // Repositories
+    // Generic Repositories
     //
-    static let networkClient                      = RJS_SimpleNetworkClientProtocol.self
-    static let generic_CacheRepository            = SimpleCacheRepositoryProtocol.self
-    static let generic_LocalStorageRepository     = KeyValuesStorageRepositoryProtocol.self
-    static let gitUser_NetWorkRepository          = GitUser_NetWorkRepositoryProtocol.self
-    static let carTrack_NetWorkRepository         = CarTrack_NetWorkRepositoryProtocol.self
+    static let networkClient                 = RJS_SimpleNetworkClientProtocol.self
+    static let hotCacheRepository            = HotCacheRepositoryProtocol.self
+    static let coldKeyValuesRepository       = KeyValuesStorageRepositoryProtocol.self
+    static let apiCacheRepository            = APICacheManagerProtocol.self   
 
     //
     // Use Cases
     //
 
-    static let someProtocolXXXX_UseCase           = SomeProtocolXXXX_UseCaseProtocol.self
-
-    // Sample
-    static let sample_UseCase                     = Sample_UseCaseProtocol.self
-    static let sampleB_UseCase                    = SampleB_UseCaseProtocol.self
-    static let gitUser_UseCase                    = GitHubAPIRelated_UseCaseProtocol.self
-    
     // CarTrack
-    static let carTrackGenericAppBusiness_UseCase = CarTrackGenericAppBusiness_UseCaseProtocol.self
-    static let carTrackAPI_UseCase                = CarTrackAPIRelated_UseCaseProtocol.self
+    static let carTrackAppWorker                 = CarTrackWorkerProtocol.self
+    static let carTrackAPIUseCase                = CarTrackWebAPIUseCaseProtocol.self             // UseCase - WebAPI
+    static let carTrackGenericAppBusinessUseCase = CarTrackGenericAppBusinessUseCaseProtocol.self // UseCase - Generic
+    static let carTrack_NetWorkRepository        = CarTrackNetWorkRepositoryProtocol.self         // Repository - WebAPI
+
+    // GalleryApp
+    static let galleryAppWorker                    = GalleryAppWorkerProtocol.self
+    static let galleryAppAPIUseCase                = GalleryAppWebAPIUseCaseProtocol.self           // UseCase - WebAPI
+    static let galleryAppGenericAppBusinessUseCase = GalleryAppGenericBusinessUseCaseProtocol.self  // UseCase - Generic
+    static let galleryApp_NetWorkRepository        = GalleryAppNetWorkRepositoryProtocol.self       // Repository - WebAPI
 
 }
 
@@ -58,9 +58,16 @@ struct RootAssemblyContainerProtocols {
 
 public class CarTrackResolver {
     private init() { }
-    public static var shared   = CarTrackResolver()
-    public let api             = AppDelegate.shared.container.resolve(AppProtocols.carTrackAPI_UseCase.self)
-    public let genericBusiness = AppDelegate.shared.container.resolve(AppProtocols.carTrackGenericAppBusiness_UseCase.self)
+    // public let api            = ApplicationAssembly.assembler.resolver.resolve(AppProtocols.carTrackAPIUseCase.self)
+    //public let genericBusiness = ApplicationAssembly.assembler.resolver.resolve(AppProtocols.carTrackGenericAppBusinessUseCase.self)
+    public static let worker     = ApplicationAssembly.assembler.resolver.resolve(AppProtocols.carTrackAppWorker.self)
+}
+
+public class GalleryAppResolver {
+    private init() { }
+    //public let api             = ApplicationAssembly.assembler.resolver.resolve(AppProtocols.galleryAppAPIUseCase.self)
+    //public let genericBusiness = ApplicationAssembly.assembler.resolver.resolve(AppProtocols.galleryAppGenericAppBusinessUseCase.self)
+    public static let worker     = ApplicationAssembly.assembler.resolver.resolve(AppProtocols.galleryAppWorker.self)
 }
 
 //
@@ -75,75 +82,80 @@ final class RootAssemblyContainer: Assembly {
         // Base app repositories
         //
         
-        container.autoregister(AppProtocols.generic_CacheRepository,
-                               initializer: RP.SimpleCacheRepository.init).inObjectScope(.container)
+        container.autoregister(AppProtocols.hotCacheRepository,
+                               initializer: RP.HotCacheRepository.init).inObjectScope(.container)
         
         container.autoregister(AppProtocols.networkClient,
                                initializer: RJS_SimpleNetworkClient.init).inObjectScope(.container)
         
-        container.autoregister(AppProtocols.generic_LocalStorageRepository,
+        container.autoregister(AppProtocols.coldKeyValuesRepository,
                                initializer: RP.KeyValuesStorageRepository.init).inObjectScope(.container)
+
+        container.autoregister(AppProtocols.apiCacheRepository,
+                               initializer: RP.APICacheManager.init).inObjectScope(.container)
+
+        //
+        // GalleryApp
+        //
+
+        container.autoregister(AppProtocols.galleryApp_NetWorkRepository,
+                               initializer: WebAPI.GalleryApp.NetWorkRepository.init).inObjectScope(.container)
+
+        // worker
+        container.register(AppProtocols.galleryAppWorker) { resolver in
+            let w = GalleryAppWorker()
+            w.webAPIUSeCase  = resolver.resolve(AppProtocols.galleryAppAPIUseCase)
+            w.genericUseCase = resolver.resolve(AppProtocols.galleryAppGenericAppBusinessUseCase)
+            return w
+        }
+
+        // use case
+        container.register(AppProtocols.galleryAppGenericAppBusinessUseCase) { resolver in
+            let uc = GalleryAppMiscBusinessUseCase()
+            uc.coldKeyValuesRepository = resolver.resolve(AppProtocols.coldKeyValuesRepository)
+            uc.hotCacheRepository      = resolver.resolve(AppProtocols.hotCacheRepository)
+            return uc
+        }
+
+        // use case
+        container.register(AppProtocols.galleryAppAPIUseCase) { resolver in
+            let uc = GalleryAppWebAPIUseCase()
+            uc.networkRepository       = resolver.resolve(AppProtocols.galleryApp_NetWorkRepository) // Client WebAPI
+            uc.coldKeyValuesRepository = resolver.resolve(AppProtocols.coldKeyValuesRepository)
+            uc.hotCacheRepository      = resolver.resolve(AppProtocols.hotCacheRepository)
+            uc.apiCache                = resolver.resolve(AppProtocols.apiCacheRepository)
+            return uc
+        }
 
         //
         // CarTrack
         //
 
         container.autoregister(AppProtocols.carTrack_NetWorkRepository,
-                               initializer: API.CarTrack.NetWorkRepository.init).inObjectScope(.container)
+                               initializer: WebAPI.CarTrack.NetWorkRepository.init).inObjectScope(.container)
 
-        container.register(AppProtocols.carTrackAPI_UseCase) { resolver in
-            let uc = CarTrackAPI_UseCase()
-            uc.repositoryNetwork               = resolver.resolve(AppProtocols.carTrack_NetWorkRepository)
-            uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
-            uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
+        // worker
+        container.register(AppProtocols.carTrackAppWorker) { resolver in
+            let w = CarTrackWorker()
+            w.webAPIUSeCase  = resolver.resolve(AppProtocols.carTrackAPIUseCase)
+            w.genericUseCase  = resolver.resolve(AppProtocols.carTrackGenericAppBusinessUseCase)
+            return w
+        }
+
+        container.register(AppProtocols.carTrackAPIUseCase) { resolver in
+            let uc = CarTrackAPIUseCase()
+            uc.networkRepository       = resolver.resolve(AppProtocols.carTrack_NetWorkRepository) 
+            uc.coldKeyValuesRepository = resolver.resolve(AppProtocols.coldKeyValuesRepository)
+            uc.hotCacheRepository      = resolver.resolve(AppProtocols.hotCacheRepository)
+            uc.apiCache                = resolver.resolve(AppProtocols.apiCacheRepository)
             return uc
         }
 
-        container.register(AppProtocols.carTrackGenericAppBusiness_UseCase) { resolver in
+        container.register(AppProtocols.carTrackGenericAppBusinessUseCase) { resolver in
             let uc = Core_CarTrack.CarTrackGenericAppBusinessUseCase()
-            uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
-            uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
+            uc.coldKeyValuesRepository  = resolver.resolve(AppProtocols.coldKeyValuesRepository)
+            uc.hotCacheRepository       = resolver.resolve(AppProtocols.hotCacheRepository)
             return uc
         }
-
-        //
-        // Sample (min)
-        //
-
-        container.register(AppProtocols.someProtocolXXXX_UseCase) { resolver in
-            let uc = SomeProtocolXXXX_UseCase()
-            uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
-            uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
-            return uc
-        }
-
-        container.register(AppProtocols.sample_UseCase) { resolver in
-            let uc = Sample_UseCase()
-            uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
-            uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
-            return uc
-        }
-
-        container.register(AppProtocols.sampleB_UseCase) { resolver in
-            let uc = SampleB_UseCase()
-            uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
-            uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
-            return uc
-        }
-
-        //
-        // GitHub
-        //
-
-        container.autoregister(AppProtocols.gitUser_NetWorkRepository,
-                               initializer: API.GitHub.NetWorkRepository.init).inObjectScope(.container)
-
-        container.register(AppProtocols.gitUser_UseCase) { resolver in
-            let uc = GitUser_UseCase()
-            uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
-            uc.repositoryNetwork               = resolver.resolve(AppProtocols.gitUser_NetWorkRepository)
-            return uc
-        }
-
     }
 }

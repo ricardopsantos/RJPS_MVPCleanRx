@@ -199,6 +199,6 @@ private func writeToLog(identifier: String,
     if isError {
         DevTools.Log.error("[Rx] \(identifier) -> \(event)\(eventText)", function: function, file: file, line: line)
     } else {
-        DevTools.Log.message("[Rx] \(identifier) -> \(event)\(eventText)", function: function, file: file, line: line)
+//        DevTools.Log.message("[Rx] \(identifier) -> \(event)\(eventText)", function: function, file: file, line: line)
     }
 }

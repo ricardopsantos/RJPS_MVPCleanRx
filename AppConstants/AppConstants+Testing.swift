@@ -1,5 +1,4 @@
 //
-//  AppConstants+Testing.swift
 //  AppConstants
 //
 //  Created by Ricardo Santos on 09/05/2020.

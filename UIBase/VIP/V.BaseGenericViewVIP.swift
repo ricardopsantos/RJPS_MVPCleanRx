@@ -1,6 +1,5 @@
 //
-//  BaseGenericView.swift
-//  i9
+//  GoodToGo
 //
 //  Created by Ricardo Santos on 31/01/2020.
 //  Copyright © 2020 Crédito Agrícola. All rights reserved.

@@ -1,5 +1,4 @@
 //
-//  D.CartTrackMapDomain.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 14/05/2020.
@@ -103,11 +102,11 @@ public extension VM {
         public struct MapData {
             public struct Request { } /* ViewController -> Interactor */
             struct Response { /* Interactor -> Presenter */
-                let list: [CarTrack.UserModel]
+                let list: [CarTrackAppModel.User]
             }
             struct ViewModel { /* Presenter -> ViewController */
                 let report: String
-                let list: [CarTrack.UserModel]
+                let list: [CarTrackAppModel.User]
             }
         }
 
@@ -116,11 +115,11 @@ public extension VM {
                 let filter: String
             }
             struct Response { /* Interactor -> Presenter */
-                let list: [CarTrack.UserModel]
+                let list: [CarTrackAppModel.User]
             }
             struct ViewModel { /* Presenter -> ViewController */
                 let report: String
-                let list: [CarTrack.UserModel]
+                let list: [CarTrackAppModel.User]
             }
         }
 

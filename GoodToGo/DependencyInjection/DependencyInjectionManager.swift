@@ -13,16 +13,9 @@ final class ApplicationAssembly {
     
     class var assembler: Assembler {
         let assemblyList: [Assembly] = [
-            RootAssemblyContainer(),
-            AS.SearchUser_AssemblyContainer(),
-            AS.UserDetails_AssemblyContainer(),
-            AS.MVPSampleView_AssemblyContainer(),
-            AS.MVPSampleRxView_AssemblyContainer()
-
-            //AS.BlissQuestionsList_AssemblyContainer(),
-            //AS.BlissRoot_AssemblyContainer(),
-            //AS.BlissDetails_AssemblyContainer()
-
+            RootAssemblyContainer()
+//            AS.MVPSampleView_AssemblyContainer(),
+//            AS.MVPSampleRxView_AssemblyContainer()
         ]
         return Assembler(assemblyList)
     }

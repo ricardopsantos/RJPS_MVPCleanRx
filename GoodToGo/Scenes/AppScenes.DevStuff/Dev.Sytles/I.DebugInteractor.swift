@@ -1,5 +1,4 @@
 //
-//  I.StylesInteractor.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 14/05/2020.

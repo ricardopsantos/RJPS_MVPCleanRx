@@ -8,10 +8,9 @@
 import Foundation
 import UIKit
 import RxSwift
-//import RJPSLib
 import RxCocoa
 import Domain
 
-open class GenericUseCase: AppUtils_Protocol {
+open class GenericUseCase: AppUtilsProtocol {
     public init() { }
 }

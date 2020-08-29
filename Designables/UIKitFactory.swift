@@ -169,7 +169,6 @@ public struct UIKitFactory {
                 .debounce(RxTimeInterval.milliseconds(800), scheduler: MainScheduler.instance)
                 .distinctUntilChanged()
                 .asObservable()
-                .log(whereAmI())
                 .subscribe(onNext: { value in
                     toggle(value)
                 }).disposed(by: disposeBag)

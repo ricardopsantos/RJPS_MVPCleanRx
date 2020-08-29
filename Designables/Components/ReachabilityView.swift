@@ -1,5 +1,4 @@
 //
-//  ReachabilityView.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 16/05/2020.
@@ -81,7 +80,7 @@ open class ReachabilityView: UILabelWithPadding {
         some.label.textColor = AppColors.TopBar.titleColor
         some.label.font      = AppFonts.Styles.caption.rawValue 
         some.textAlignment   = .center
-        some.backgroundColor = AppColors.error
+        some.backgroundColor = AppColors.error.withAlphaComponent(FadeType.regular.rawValue)
         some.alpha           = 0
         some.text            = Messages.noInternet.localised
         some.rjsALayouts.setMargin(0, on: .left)

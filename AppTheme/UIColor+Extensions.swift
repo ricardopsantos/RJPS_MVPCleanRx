@@ -35,7 +35,8 @@ public extension UIColor {
             public static var lblTextColor: UIColor { return UIColor.Pack1.grey_1.color }
         }
 
-        public static var backgroundColor: UIColor { return ColorName.onPrimary.color }
+        public static var background: UIColor { return ColorName.onPrimary.color }
+        public static var onBackground: UIColor { return ColorName.primary.color }
 
         public static var primary: UIColor { return ColorName.primary.color }
         public static var onPrimary: UIColor { return ColorName.onPrimary.color }
