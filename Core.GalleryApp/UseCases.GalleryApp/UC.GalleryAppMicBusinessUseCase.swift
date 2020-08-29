@@ -1,4 +1,6 @@
 //
+//  GoodToGo
+//
 //  Created by Ricardo Santos on 25/08/2020.
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
 //
@@ -17,7 +19,7 @@ import Factory
 import Core
 import AppResources
 
-public class GalleryAppMicBusinessUseCase: GenericUseCase, GalleryAppGenericBusinessUseCaseProtocol {
+public class GalleryAppMiscBusinessUseCase: GenericUseCase, GalleryAppGenericBusinessUseCaseProtocol {
 
     public override init() { super.init() }
 

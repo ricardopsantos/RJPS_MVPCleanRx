@@ -1,4 +1,6 @@
 //
+//  GoodToGo
+//
 //  Created by Ricardo Santos on 26/08/2020.
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
 //
@@ -7,21 +9,16 @@ import Foundation
 
 // Encapsulate API Requests
 public extension GalleryAppRequests {
-    struct Search {
-        public let tags: [String]
-        public let page: Int
+    struct ImageInfo {
+        let photoId: String
 
-        public init(tags: [String], page: Int=1) {
-            self.tags = tags
-            self.page = page
+        public init(photoId: String) {
+            self.photoId = photoId
         }
 
         // Improve this
         public var urlEscaped: String {
-            var result = "&page=\(page)"
-            if tags.count > 0 {
-                result = "\(result)&tags=" + tags.joined(separator: ",")
-            }
+            let result = "&photo_id=\(photoId)"
             return result.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
         }
     }

@@ -1,6 +1,5 @@
 //
-//  Core_GalleryApp.h
-//  Core.GalleryApp
+//  GoodToGo
 //
 //  Created by Ricardo Santos on 25/08/2020.
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.

@@ -1,5 +1,4 @@
 //
-//  I.GalleryAppS1Interactor.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 26/08/2020.

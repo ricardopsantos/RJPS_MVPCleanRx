@@ -1,5 +1,4 @@
 //
-//  R.GalleryAppS1Router.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 26/08/2020.

@@ -1,5 +1,4 @@
 //
-//  VC.GalleryAppS1ViewController.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 26/08/2020.

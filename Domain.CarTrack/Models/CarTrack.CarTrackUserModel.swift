@@ -1,6 +1,5 @@
 //
-//  CarTrack.swift
-//  AppDomain
+//  GoodToGo
 //
 //  Created by Ricardo Santos on 10/05/2020.
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
@@ -10,9 +9,9 @@ import Foundation
 //
 import Domain
 
-public extension CarTrack {
+public extension CarTrackAppModel {
 
-    struct UserModel: ModelEntityProtocol {
+    struct User: ModelEntityProtocol {
         public let id: Int
         public let name, username, email: String
         public let address: AddressModel

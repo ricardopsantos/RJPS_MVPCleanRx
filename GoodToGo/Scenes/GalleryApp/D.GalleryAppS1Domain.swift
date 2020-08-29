@@ -1,5 +1,4 @@
 //
-//  D.GalleryAppS1Domain.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 26/08/2020.

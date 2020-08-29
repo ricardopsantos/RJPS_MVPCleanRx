@@ -1,5 +1,4 @@
 //
-//  I.DataStoreReceiverInteractor.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 20/05/2020.

@@ -1,5 +1,4 @@
 //
-//  P.StylesPresenter.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 14/05/2020.

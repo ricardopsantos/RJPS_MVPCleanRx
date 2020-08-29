@@ -20,7 +20,7 @@ import DevTools
 
 // MARK: - Target
 
-public extension API.GalleryAppAPIRequest {
+public extension WebAPI.GalleryAppAPIRequest {
     enum Target {
         case search
         case imageInfo
@@ -49,10 +49,11 @@ public extension API.GalleryAppAPIRequest {
     }
 }
 
-// MARK: - GetUserInfo
+// MARK: - Search
 
-public extension API.GalleryAppAPIRequest {
-    struct Search: WebAPIRequest_Protocol {
+public extension WebAPI.GalleryAppAPIRequest {
+
+    struct Search: WebAPIRequestProtocol {
         public var returnOnMainTread: Bool
         public var debugRequest: Bool = DevTools.FeatureFlag.debugRequests.isTrue
         public var urlRequest: URLRequest
@@ -71,7 +72,13 @@ public extension API.GalleryAppAPIRequest {
         }
     }
 
-    struct ImageInfo: WebAPIRequest_Protocol {
+}
+
+// MARK: - ImageInfo
+
+public extension WebAPI.GalleryAppAPIRequest {
+
+    struct ImageInfo: WebAPIRequestProtocol {
         public var returnOnMainTread: Bool
         public var debugRequest: Bool = DevTools.FeatureFlag.debugRequests.isTrue
         public var urlRequest: URLRequest

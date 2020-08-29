@@ -1,4 +1,6 @@
 //
+//  GoodToGo
+//
 //  Created by Ricardo Santos on 13/05/2020.
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
 //
@@ -14,17 +16,17 @@ import Domain_CarTrack
 * WE CANT HAVE BUSINESS RULES HERE! THE CLIENT JUST DO THE OPERATION AND LEAVE
 */
 
-public extension API.CarTrack {
+public extension WebAPI.CarTrack {
 
-    class NetWorkRepository: CarTrack_NetWorkRepositoryProtocol {
+    class NetWorkRepository: CarTrackNetWorkRepositoryProtocol {
 
         public init() { }
 
-        public func userDetails(completionHandler: @escaping CarTrack_NetWorkRepositoryCompletionHandler) {
+        public func getUsers(request: CarTrackRequests.GetUsers, completionHandler: @escaping (_ result: Result<RJS_SimpleNetworkClientResponse<[CarTrackResponseDto.User]>>) -> Void) {
             do {
-                let apiRequest: WebAPIRequest_Protocol = try WebAPI.CarTrackAPIRequest.GetUserInfo(userName: "")
+                let apiRequest: WebAPIRequestProtocol = try WebAPI.CarTrackAPIRequest.GetUsers(request: request)
                 let apiClient: RJS_SimpleNetworkClientProtocol = RJS_SimpleNetworkClient()
-                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<RJS_SimpleNetworkClientResponse<[CarTrack.CarTrackUserResponseDtoElement]>>) in
+                apiClient.execute(request: apiRequest, completionHandler: { (result: Result<RJS_SimpleNetworkClientResponse<[CarTrackResponseDto.User]>>) in
                     completionHandler(result)
                 })
             } catch let error {

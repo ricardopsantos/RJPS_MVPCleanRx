@@ -1,4 +1,6 @@
 //
+//  GoodToGo
+//
 //  Created by Ricardo Santos on 25/08/2020.
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
 //
@@ -21,15 +23,16 @@ import Factory
 
 // swiftlint:disable rule_Coding
 
-public class GalleryAppAPIRelatedUseCase: GenericUseCase, GalleryAppAPIRelatedUseCaseProtocol {
+public class GalleryAppWebAPIUseCase: GenericUseCase, GalleryAppWebAPIUseCaseProtocol {
 
     public override init() { super.init() }
 
-    public var repositoryNetwork: GalleryAppNetWorkRepositoryProtocol!
+    public var networkRepository: GalleryAppNetWorkRepositoryProtocol!
     public var generic_CacheRepositoryProtocol: SimpleCacheRepositoryProtocol!
     public var generic_LocalStorageRepository: KeyValuesStorageRepositoryProtocol!
 
     private static var cacheTTL = 60 * 24 // 24h cache
+
     // Will
     // - Manage the requests queue
     // - Call the API
@@ -41,7 +44,7 @@ public class GalleryAppAPIRelatedUseCase: GenericUseCase, GalleryAppAPIRelatedUs
         var block: Observable<GalleryAppResponseDto.ImageInfo> {
             var apiObserver: Observable<GalleryAppResponseDto.ImageInfo> {
                 return Observable<GalleryAppResponseDto.ImageInfo>.create { observer in
-                    self.repositoryNetwork.imageInfo(request) { (result) in
+                    self.networkRepository.imageInfo(request) { (result) in
                         switch result {
                         case .success(let some) :
                             observer.on(.next(some.entity))
@@ -100,7 +103,7 @@ public class GalleryAppAPIRelatedUseCase: GenericUseCase, GalleryAppAPIRelatedUs
         // API
         var apiObserver: Observable<GalleryAppResponseDto.Search> {
             return Observable<GalleryAppResponseDto.Search>.create { observer in
-                self.repositoryNetwork.search(request) { (result) in
+                self.networkRepository.search(request) { (result) in
                     switch result {
                     case .success(let some) :
                         observer.on(.next(some.entity))

@@ -1,6 +1,5 @@
 //
-//  Test_TestCases.swift
-//  Test.TestCases
+//  GoodToGo
 //
 //  Created by Ricardo Santos on 24/05/2020.
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
@@ -47,7 +46,7 @@ class Test_CartTrack: XCTestCase {
 
         waitForExpectations(timeout: TestsShared.shared.waitForExpectationsDefaultTime)
     }
-
+/*
     func test_api_getUserDetailV1() {
         let expectation = self.expectation(description: #function)
         GoodToGo.CarTrackResolver.shared.api?.getUserDetailV1(completionHandler: { (result) in
@@ -72,7 +71,7 @@ class Test_CartTrack: XCTestCase {
             }).disposed(by: disposeBag)
         waitForExpectations(timeout: TestsShared.shared.waitForExpectationsDefaultTime)
     }
-
+*/
     func test_genericBusiness_validateUserAndPassword1() {
         let expectation = self.expectation(description: #function)
         GoodToGo.CarTrackResolver.shared.genericBusiness?.validate(user: "", password: "12345", completionHandler: { (result) in

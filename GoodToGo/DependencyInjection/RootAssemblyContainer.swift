@@ -32,7 +32,7 @@ struct RootAssemblyContainerProtocols {
     static let networkClient                      = RJS_SimpleNetworkClientProtocol.self
     static let generic_CacheRepository            = SimpleCacheRepositoryProtocol.self
     static let generic_LocalStorageRepository     = KeyValuesStorageRepositoryProtocol.self
-    static let carTrack_NetWorkRepository         = CarTrack_NetWorkRepositoryProtocol.self   // Web API: Requests Protocol
+    static let carTrack_NetWorkRepository         = CarTrackNetWorkRepositoryProtocol.self    // Web API: Requests Protocol
     static let galleryApp_NetWorkRepository       = GalleryAppNetWorkRepositoryProtocol.self  // Web API: Requests Protocol
 
     //
@@ -41,11 +41,11 @@ struct RootAssemblyContainerProtocols {
 
     // CarTrack
     static let carTrackGenericAppBusinessUseCase = CarTrackGenericAppBusinessUseCaseProtocol.self
-    static let carTrackAPIUseCase                = CarTrackAPIRelatedUseCaseProtocol.self
+    static let carTrackAPIUseCase                = CarTrackWebAPIUseCaseProtocol.self
 
     // GalleryApp
     static let galleryAppGenericAppBusinessUseCase = GalleryAppGenericBusinessUseCaseProtocol.self
-    static let galleryAppAPIUseCase                = GalleryAppAPIRelatedUseCaseProtocol.self
+    static let galleryAppAPIUseCase                = GalleryAppWebAPIUseCaseProtocol.self
     static let galleryAppWorker                    = GalleryAppWorkerProtocol.self
 
 }
@@ -95,11 +95,11 @@ final class RootAssemblyContainer: Assembly {
         //
 
         container.autoregister(AppProtocols.galleryApp_NetWorkRepository,
-                               initializer: API.GalleryApp.NetWorkRepository.init).inObjectScope(.container)
+                               initializer: WebAPI.GalleryApp.NetWorkRepository.init).inObjectScope(.container)
 
         // use case
         container.register(AppProtocols.galleryAppGenericAppBusinessUseCase) { resolver in
-            let uc = GalleryAppMicBusinessUseCase()
+            let uc = GalleryAppMiscBusinessUseCase()
             uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
             return uc
@@ -107,8 +107,8 @@ final class RootAssemblyContainer: Assembly {
 
         // use case
         container.register(AppProtocols.galleryAppAPIUseCase) { resolver in
-            let uc = GalleryAppAPIRelatedUseCase()
-            uc.repositoryNetwork               = resolver.resolve(AppProtocols.galleryApp_NetWorkRepository)
+            let uc = GalleryAppWebAPIUseCase()
+            uc.networkRepository               = resolver.resolve(AppProtocols.galleryApp_NetWorkRepository)
             uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
             return uc
@@ -117,8 +117,8 @@ final class RootAssemblyContainer: Assembly {
         // worker
         container.register(AppProtocols.galleryAppWorker) { resolver in
             let w = GalleryAppWorker()
-            w.api             = resolver.resolve(AppProtocols.galleryAppAPIUseCase)
-            w.genericUseCase  = resolver.resolve(AppProtocols.galleryAppGenericAppBusinessUseCase)
+            w.networkRepository = resolver.resolve(AppProtocols.galleryAppAPIUseCase)
+            w.genericUseCase    = resolver.resolve(AppProtocols.galleryAppGenericAppBusinessUseCase)
             return w
         }
 
@@ -127,11 +127,11 @@ final class RootAssemblyContainer: Assembly {
         //
 
         container.autoregister(AppProtocols.carTrack_NetWorkRepository,
-                               initializer: API.CarTrack.NetWorkRepository.init).inObjectScope(.container)
+                               initializer: WebAPI.CarTrack.NetWorkRepository.init).inObjectScope(.container)
 
         container.register(AppProtocols.carTrackAPIUseCase) { resolver in
             let uc = CarTrackAPIUseCase()
-            uc.repositoryNetwork               = resolver.resolve(AppProtocols.carTrack_NetWorkRepository)
+            uc.networkRepository               = resolver.resolve(AppProtocols.carTrack_NetWorkRepository)
             uc.generic_LocalStorageRepository  = resolver.resolve(AppProtocols.generic_LocalStorageRepository)
             uc.generic_CacheRepositoryProtocol = resolver.resolve(AppProtocols.generic_CacheRepository)
             return uc

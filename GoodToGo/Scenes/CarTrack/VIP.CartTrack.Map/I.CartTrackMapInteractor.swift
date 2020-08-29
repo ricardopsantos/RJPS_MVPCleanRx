@@ -1,5 +1,4 @@
 //
-//  I.CartTrackMapInteractor.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 14/05/2020.
@@ -39,7 +38,7 @@ extension I {
         var presenter: CartTrackMapPresentationLogicProtocol?
         weak var basePresenter: BasePresenterVIPProtocol? { return presenter }
 
-        var list: [Domain_CarTrack.CarTrack.UserModel] = []
+        var list: [CarTrackAppModel.User] = []
     }
 }
 
@@ -83,12 +82,12 @@ extension I.CartTrackMapInteractor: CartTrackMapBusinessLogicProtocol {
 
     func requestMapData(request: VM.CartTrackMap.MapData.Request) {
         presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
-        CarTrackResolver.shared.api?
-            .getUserDetailV3(cacheStrategy: .cacheAndLoad)
+        CarTrackResolver.shared.api?.getUsers(request: CarTrackRequests.GetUsers(userName: ""), cacheStrategy: .cacheElseLoad)
             .asObservable()
-            .log(whereAmI())
             .subscribe(onNext: { [weak self] (result) in
                 guard let self = self else { return }
+                print(result)
+                /*
                 switch result {
                 case .success(let elements):
                     self.list = elements.map({ $0.toDomain! })
@@ -96,10 +95,11 @@ extension I.CartTrackMapInteractor: CartTrackMapBusinessLogicProtocol {
                     self.presenter?.presentMapData(response: response)
                 case .failure(let error):
                     self.presentError(error: error)
-                }
+                }*/
             }, onError: { (error) in
                 DevTools.Log.error(error)
                 self.presentError(error: error)
+                self.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
             }, onCompleted: {
                 self.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
             }).disposed(by: disposeBag)

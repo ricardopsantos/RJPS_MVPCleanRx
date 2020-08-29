@@ -1,5 +1,4 @@
 //
-//  P.CartTrackMapPresenter.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 14/05/2020.
@@ -53,7 +52,7 @@ extension P.CartTrackMapPresenter {
 
 extension P.CartTrackMapPresenter: CartTrackMapPresentationLogicProtocol {
 
-    private func buildReport(list: [CarTrack.UserModel]) -> String {
+    private func buildReport(list: [CarTrackAppModel.User]) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         formatter.timeStyle = .medium

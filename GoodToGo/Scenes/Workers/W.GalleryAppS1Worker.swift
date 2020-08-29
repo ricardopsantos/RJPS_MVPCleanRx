@@ -22,7 +22,7 @@ import Domain
 import Domain_GalleryApp
 
 public protocol GalleryAppWorkerProtocol {
-    var api: GalleryAppAPIRelatedUseCaseProtocol! { get set }
+    var networkRepository: GalleryAppWebAPIUseCaseProtocol! { get set }
     var genericUseCase: GalleryAppGenericBusinessUseCaseProtocol! { get set }
 
     func search(_ request: GalleryAppRequests.Search, cacheStrategy: CacheStrategy) -> Observable<GalleryAppModel.Search>
@@ -30,7 +30,7 @@ public protocol GalleryAppWorkerProtocol {
 }
 
 public class GalleryAppWorker {
-    public var api: GalleryAppAPIRelatedUseCaseProtocol!
+    public var networkRepository: GalleryAppWebAPIUseCaseProtocol!
     public var genericUseCase: GalleryAppGenericBusinessUseCaseProtocol!
 }
 
@@ -40,7 +40,7 @@ extension GalleryAppWorker: GalleryAppWorkerProtocol {
 
     public func search(_ request: GalleryAppRequests.Search, cacheStrategy: CacheStrategy) -> Observable<GalleryAppModel.Search> {
         // Map Dto -> Model
-        return api.search(request, cacheStrategy: cacheStrategy)
+        return networkRepository.search(request, cacheStrategy: cacheStrategy)
             .flatMap { (result) -> Observable<GalleryAppModel.Search> in
                 if let domain = result.toDomain {
                     return Observable.just(domain)
@@ -64,7 +64,7 @@ extension GalleryAppWorker: GalleryAppWorkerProtocol {
 private extension GalleryAppWorker {
     func imageInfo(_ request: GalleryAppRequests.ImageInfo, cacheStrategy: CacheStrategy) -> Observable<GalleryAppModel.ImageInfo> {
         // Map Dto -> Model
-        return api.imageInfo(request, cacheStrategy: cacheStrategy)
+        return networkRepository.imageInfo(request, cacheStrategy: cacheStrategy)
             .flatMap { (result) -> Observable<GalleryAppModel.ImageInfo> in
             if let domain = result.toDomain {
                 return Observable.just(domain)

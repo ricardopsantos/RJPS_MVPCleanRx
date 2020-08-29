@@ -1,6 +1,5 @@
 //
-//  CarTrack.swift
-//  AppDomain
+//  GoodToGo
 //
 //  Created by Ricardo Santos on 10/05/2020.
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
@@ -11,9 +10,9 @@ import Foundation
 import PointFreeFunctions
 import Domain
 
-public extension CarTrack {
+public extension CarTrackResponseDto {
 
-    struct CarTrackUserResponseDtoElement: ResponseDtoProtocol {
+    struct User: ResponseDtoProtocol {
         public let id: Int
         public let name, username, email: String
         public let address: Address
@@ -35,11 +34,5 @@ public extension CarTrack {
         public struct Company: ResponseDtoProtocol {
             public let name, catchPhrase, bs: String
         }
-    }
-}
-
-public extension CarTrack.CarTrackUserResponseDtoElement {
-    var toDomain: CarTrack.UserModel? {
-        return perfectMapper(inValue: self, outValue: CarTrack.UserModel.self)
     }
 }

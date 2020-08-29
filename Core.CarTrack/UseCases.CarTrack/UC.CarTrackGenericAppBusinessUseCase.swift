@@ -1,6 +1,5 @@
 //
-//  CarTrackGenericAppBusinessUseCase.swift
-//  AppCore
+//  GoodToGo
 //
 //  Created by Ricardo Santos on 13/05/2020.
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
@@ -29,7 +28,7 @@ public class CarTrackGenericAppBusinessUseCase: GenericUseCase, CarTrackGenericA
 
     public func validate(user: String,
                          password: String,
-                         completionHandler: @escaping CarTrackGenericAppBusinessUseCaseCompletionHandler) {
+                         completionHandler: @escaping (_ result: Result<Bool>) -> ()) {
         // Simulate some kind of API call
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         DispatchQueue.executeWithDelay(delay: 1) {

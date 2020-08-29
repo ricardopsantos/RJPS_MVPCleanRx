@@ -1,5 +1,4 @@
 //
-//  V.CartTrackMapView.swift
 //  GoodToGo
 //
 //  Created by Ricardo Santos on 14/05/2020.
@@ -66,7 +65,7 @@ extension GoodToGo.V {
         static var selectedAnnotationsTypeForMap: CartTrackMapViewAnnotationType = .markerAnnotationView
 
         var rxFilter = BehaviorSubject<String?>(value: nil)
-        private var lastModel: [Domain_CarTrack.CarTrack.UserModel] = []
+        private var lastModel: [CarTrackAppModel.User] = []
         // MARK: - UI Elements (Private and lazy by default)
 
         lazy var mapView: MKMapView = {
@@ -146,7 +145,6 @@ extension GoodToGo.V {
             searchBar.rx.text
                 .orEmpty
                 .debounce(.milliseconds(AppConstants.Rx.textFieldsDefaultDebounce), scheduler: MainScheduler.instance)
-                .log(whereAmI())
                 .subscribe(onNext: { [weak self] _ in
                     guard let self = self else { return }
                     self.rxFilter.onNext(self.searchBar.text)
@@ -185,7 +183,7 @@ extension GoodToGo.V {
 
 extension GoodToGo.V.CartTrackMapView {
 
-    private func updateMapWith(list: [CarTrack.UserModel]) {
+    private func updateMapWith(list: [CarTrackAppModel.User]) {
         lastModel = list
         mapView.removeAnnotations()
 
@@ -317,7 +315,7 @@ extension MKMapView {
 
 // MARK: Extension
 
-extension Domain_CarTrack.CarTrack.UserModel {
+extension CarTrackAppModel.User {
 
     var mapTitle: String { return name }
     var mapSubTitle: String { return self.company.name + "\n" + self.email }

@@ -59,21 +59,18 @@ open class DefaultTableViewCell: UITableViewCell, DefaultTableViewCellProtocol {
 
         rxTitle
             .asObservable()
-            .log(whereAmI())
             .subscribe(onNext: { [weak self] (some) in
                 self?.lblTitle.label.text = some
             }).disposed(by: disposeBag)
 
         rxTextColor
             .asObservable()
-            .log(whereAmI())
             .subscribe(onNext: { [weak self] (some) in
                 self?.lblTitle.label.textColor = some
             }).disposed(by: disposeBag)
 
         rxImage
             .asObservable()
-            .log(whereAmI())
             .subscribe(onNext: { [weak self] (some) in
                 self?.imgView.image = some
                 self?.setNeedsLayout()

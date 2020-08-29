@@ -28,7 +28,6 @@ extension VC {
             let vipGalleryApp = createControllers(tabName: "VIP.Gallery", vc: VC.GalleryAppS1ViewController(presentationStyle: .modal))
 
             // TESTING / DEBUG/ TEMPLATES
-            let vcRx = createControllers(tabName: "Rx.Testing", vc: RxTesting())
             let vipTemplate = createControllers(tabName: "VIP.Template", vc: VC.___VARIABLE_sceneName___ViewController(presentationStyle: .modal))
             let vipDebug    = createControllers(tabName: "DevScreen", vc: VC.DebugViewController(presentationStyle: .modal))
 
@@ -36,9 +35,8 @@ extension VC {
             if DevTools.FeatureFlag.showScene_gallery.isTrue { viewControllersList.append(vipGalleryApp) }
             if DevTools.FeatureFlag.showScene_carTrack.isTrue { viewControllersList.append(vipCarTrack) }
             if DevTools.FeatureFlag.showScene_vipTemplate.isTrue { viewControllersList.append(vipTemplate) }
-            if DevTools.FeatureFlag.showScene_rxTests.isTrue { viewControllersList.append(vcRx) }
 
-            viewControllers = viewControllersList + [vipDebug]
+            viewControllers = [vipDebug] + viewControllersList
             
         }
 

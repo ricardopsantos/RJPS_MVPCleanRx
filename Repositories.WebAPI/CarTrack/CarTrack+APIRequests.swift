@@ -15,10 +15,11 @@ import AppConstants
 import PointFreeFunctions
 import Domain
 import DevTools
+import Domain_CarTrack
 
 // MARK: - Target
 
-public extension API.CarTrackAPIRequest {
+public extension WebAPI.CarTrackAPIRequest {
     enum Target {
         case getUsers
 
@@ -42,15 +43,15 @@ public extension API.CarTrackAPIRequest {
 
 // MARK: - GetUserInfo
 
-public extension API.CarTrackAPIRequest {
-    struct GetUserInfo: WebAPIRequest_Protocol {
+public extension WebAPI.CarTrackAPIRequest {
+    struct GetUsers: WebAPIRequestProtocol {
         public var returnOnMainTread: Bool
         public var debugRequest: Bool = DevTools.FeatureFlag.debugRequests.isTrue
         public var urlRequest: URLRequest
         public var responseType: RJS_SimpleNetworkClientResponseType
         public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.CarTrack.get_200 : nil }
 
-        init(userName: String) throws {
+        init(request: CarTrackRequests.GetUsers) throws {
             let urlString = Target.getUsers.endpoint
             guard let url = URL(string: urlString) else {
                 throw APIErrors.invalidURL(url: urlString)
