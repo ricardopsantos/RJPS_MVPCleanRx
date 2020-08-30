@@ -29,9 +29,9 @@ public extension WebAPI.GalleryAppAPIRequest {
             return "https://api.flickr.com/services/rest"
         }
 
-        public var key: String {
-            "DTBfK2jeRNQ3ABo9l+elSOK9hYeMkKhoTt6f9L43aU7iq+Y7rId+k4TSJDIVNZy6LNaL2uHVkyVy2CEC".aesDecrypt()
-        }
+        private var key: String { key2 }
+        private var key1: String { "DTBfK2jeRNQ3ABo9l+elSOK9hYeMkKhoTt6f9L43aU7iq+Y7rId+k4TSJDIVNZy6LNaL2uHVkyVy2CEC".aesDecrypt() }
+        private var key2: String { "D3M89jxFfjqVlom5bytkK44D2rPcV54IaPQE585fEutokj3B49I6QalJjzEateBxPrF4/JWyXsTQYhRd".aesDecrypt() }
 
         public var endpoint: String {
             switch self {

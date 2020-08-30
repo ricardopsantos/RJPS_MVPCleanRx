@@ -23,6 +23,7 @@ import PointFreeFunctions
 
 import Domain_GalleryApp
 import Domain_CarTrack
+import RJPSLib_Networking
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

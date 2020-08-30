@@ -324,28 +324,6 @@ extension AppConstants.Mocks {
                     "isfamily": 0
                   },
                   {
-                    "id": "50265278921",
-                    "owner": "130212312@N06",
-                    "secret": "e4775c99d6",
-                    "server": "65535",
-                    "farm": 66,
-                    "title": "Gettin cold...",
-                    "ispublic": 1,
-                    "isfriend": 0,
-                    "isfamily": 0
-                  },
-                  {
-                    "id": "50265174002",
-                    "owner": "22013974@N06",
-                    "secret": "f121ba319c",
-                    "server": "65535",
-                    "farm": 66,
-                    "title": "Daydreamer... Luna - Norwegian Forest Cat",
-                    "ispublic": 1,
-                    "isfriend": 0,
-                    "isfamily": 0
-                  },
-                  {
                     "id": "50264337398",
                     "owner": "22013974@N06",
                     "secret": "d01107e394",
@@ -797,17 +775,6 @@ extension AppConstants.Mocks {
                     "isfamily": 0
                   },
                   {
-                    "id": "50259947781",
-                    "owner": "147140262@N03",
-                    "secret": "8acdea24d2",
-                    "server": "65535",
-                    "farm": 66,
-                    "title": "\"...what??? Did you say 'no AF'?...\"",
-                    "ispublic": 1,
-                    "isfriend": 0,
-                    "isfamily": 0
-                  },
-                  {
                     "id": "50259106103",
                     "owner": "123905050@N02",
                     "secret": "275819dae5",
@@ -1012,17 +979,6 @@ extension AppConstants.Mocks {
                     "server": "65535",
                     "farm": 66,
                     "title": "Tired Pixel",
-                    "ispublic": 1,
-                    "isfriend": 0,
-                    "isfamily": 0
-                  },
-                  {
-                    "id": "50256159548",
-                    "owner": "147501246@N07",
-                    "secret": "8ee9640f01",
-                    "server": "65535",
-                    "farm": 66,
-                    "title": "Helping Hand.....",
                     "ispublic": 1,
                     "isfriend": 0,
                     "isfamily": 0

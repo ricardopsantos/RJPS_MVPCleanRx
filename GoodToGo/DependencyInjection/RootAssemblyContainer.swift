@@ -137,8 +137,13 @@ final class RootAssemblyContainer: Assembly {
         // CarTrack
         //
 
-        container.autoregister(AppProtocols.carTrack_NetWorkRepository,
-                               initializer: WebAPI.CarTrack.NetWorkRepository.init).inObjectScope(.container)
+        if DevTools.isMockApp {
+            container.autoregister(AppProtocols.carTrack_NetWorkRepository,
+                                   initializer: WebAPI.CarTrack.NetWorkRepositoryMock.init).inObjectScope(.container)
+        } else {
+            container.autoregister(AppProtocols.carTrack_NetWorkRepository,
+                                   initializer: WebAPI.CarTrack.NetWorkRepository.init).inObjectScope(.container)
+        }
 
         // worker
         container.register(AppProtocols.carTrackAppWorker) { resolver in
