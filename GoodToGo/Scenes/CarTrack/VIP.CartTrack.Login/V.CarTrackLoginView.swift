@@ -58,7 +58,8 @@ extension GoodToGo.V {
 
         // MARK: - UI Elements (Private and lazy by default)
 
-        private var animationView: AnimationView? // Lottie view
+        // Lottie view
+        private var animationView: AnimationView!
 
         private lazy var scrollView: UIScrollView = {
             UIKitFactory.scrollView()
@@ -164,12 +165,18 @@ extension GoodToGo.V {
 
         func setupLottie() {
             // https://lottiefiles.com/blog/working-with-lottie/how-to-add-lottie-animation-ios-app-swift
-            animationView = .init(name: "23038-animatonblue")
-            animationView!.contentMode = .scaleAspectFit
-            animationView!.loopMode = .loop
-            animationView!.animationSpeed = 0.5
+            animationView = AnimationView(name: "23038-animatonblue")
+            addSubview(animationView)
+            animationView.autoLayout.width(200)
+            animationView.autoLayout.height(200)
+            animationView.autoLayout.topToBottom(of: btnLogin)
+            animationView.autoLayout.centerXToSuperview()
+            animationView.contentMode = .scaleAspectFit
+            animationView.loopMode = .loop
+            animationView.animationSpeed = 0.5
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(lblErrorMessage)
-            animationView!.play()
+            animationView.play()
+            //DevTools.DebugView.paint(view: animationView)
         }
 
         // MARK: - Custom Getter/Setters

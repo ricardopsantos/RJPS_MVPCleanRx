@@ -1475,8 +1475,8 @@
 		9F36ADE321B1612600FADBB1 /* __Documents__ */ = {
 			isa = PBXGroup;
 			children = (
-				D7F2DE232474A69E008CE3DA /* GoodToGoVIP_Schene.DataPassing */,
 				D7FA21FA247159A5001DD9D5 /* Arquitecture */,
+				D7F2DE232474A69E008CE3DA /* GoodToGoVIP_Schene.DataPassing */,
 				D761FE9A2468304A00BD41A5 /* GoodToGoVIP_Schene.xctemplate */,
 				9F55525522E9A73D009364D1 /* README.md */,
 				D7C218D1247C2B580088377B /* unused.rb */,

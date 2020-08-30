@@ -69,14 +69,12 @@ extension VC {
             super.viewDidLoad()
             if DevTools.onSimulator {
                 DispatchQueue.executeOnce(token: "\(VC.CarTrackLoginViewController.self).info") {
-                    let message = """
-                    Exam: CarTrack
-
-                    Check `__Documents__/exams/CarTrack.Report/README.md` for more details
-
-                    User: \(AppConstants.Misc.sampleEmail)
-                    Password: \(AppConstants.Misc.samplePassword)
-                    """
+                    let mail = AppConstants.Misc.sampleEmail
+                    let pass = AppConstants.Misc.sampleEmail
+                    var message = "Exam: CarTrack" + "\n\n"
+                    message = "\(message)Check `__Documents__/exams/CarTrack.Report/README.md` for more details" + "\n\n"
+                    message = "\(message)User: \(mail)" + "\n"
+                    message = "\(message)Password: \(pass)" + "\n"
                     DevTools.makeToast(message, duration: 10)
                 }
             }
