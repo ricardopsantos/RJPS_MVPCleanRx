@@ -1,28 +1,42 @@
-# VIP Quick Intro
+# Quick Intro
 
-The used partern was VIP, so __everything__ is separated, and so completly testable 
+## Tests 
 
-A single screen has allways 6 files
+The used pattern was VIP, so __everything__ is separated, and so completely testable, also the app handles dependency injection which make it even more testable.
+
+```swift
+if DevTools.isMockApp {
+    container.autoregister(AppProtocols.galleryApp_NetWorkRepository,
+                           initializer: WebAPI.GalleryApp.NetWorkRepositoryMock.init).inObjectScope(.container)
+} else {
+    container.autoregister(AppProtocols.galleryApp_NetWorkRepository,
+                           initializer: WebAPI.GalleryApp.NetWorkRepository.init).inObjectScope(.container)
+}
+```
+
+## VIP 
+
+A single screen has always 6 files
 
 * `View` - View Logic
 	* Only UI
 	* No business
-	* Foward user interation to `ViewController`
-	* Dont know nothing, including `ViewController
+	* Forward user interaction to `ViewController`
+	* Don't know nothing, including `ViewController
 * `UIViewController` - Display Logic
-	* Glues/bridge `View` and `Interator` by observing the `View` and leting the `Interator` know about it
+	* Glues/bridge `View` and `Interator` by observing the `View` and letting the `Interator` know about it
 	* No business
 	* Knows a `Router` if needed
 	* Knows the `Interactor`
 	* Knows `View` and observe `View` to pass events to `Interactor`
 * `Interator` - Business Logic
-	* Can have bussiness rules
+	* Can have business rules
 	* Receive `ViewController` requests and do stuff with it
 	* Knows `Worker` 
 	* Knows `Presenter` 
 	* Takes the `Worker` responses, and forward then to the `Presenter`
 * `Presenter` - Presentation Logic
-	* Reveives a raw object from the `Interactor` and parse it in a way that the View knows how to show it. Example : The `Interactor` can send a `Swift.Date` object to the `Presenter`, and the `Presenter` turns that into a `String` like _Monday, 10 AM_
+	* Receives a raw object from the `Interactor` and parse it in a way that the View knows how to show it. Example : The `Interactor` can send a `Swift.Date` object to the `Presenter`, and the `Presenter` turns that into a `String` like _Monday, 10 AM_
 	* Takes an `Interactor` object, parses it and sent it to the `ViewController` and the `ViewController` sends it to the `View`
 * `Domain` 
 	* The `Domain` file contains all the protocols related with some `Scene` (since all this layers are connected using protocols), and also all the related `ViewModels`
@@ -48,8 +62,8 @@ A single screen has allways 6 files
 * `AppConstants` : Constantes
 * `Designables` : UI components
 * `Factory` : Factory for objects (for now just `Errors`)
-* `AppResources` : App strings/localizables, images, etc...
-* `UIBase` : Base clases, mainly for `MVP` and `VIP`
+* `AppResources` : App strings/localisables, images, etc...
+* `UIBase` : Base classes, mainly for `MVP` and `VIP`
 * `Domain`, `Core`, `Repositories` : DDD
 * `DevTools` : Logs, feature flags, develper helping tools in general
 * `Extensions` : See [Extensions](https://docs.swift.org/swift-book/LanguageGuide/Extensions.html)
@@ -57,23 +71,23 @@ A single screen has allways 6 files
 
 # Used Frameworks
 
-### Used Frameworks (Personal)
+### Used Frameworks (made by me)
 
- * [RJPSLib](https://github.com/ricardopsantos/RJPSLib) - Swift toolbox - extensions, utilities, etc
+ * [RJPSLib](https://github.com/ricardopsantos/RJPSLib) - Swift toolbox - extensions, utilities, simple WebAPI, etc
 
-### Used Frameworks (External)
+### Used Frameworks (open source)
 
- * [TinyConstraints](https://github.com/roberthein/TinyConstraints) - Nothing but sugar. (Auto layouts)
- * [Swinject](https://github.com/Swinject/Swinject) - Dependency injection framework for Swift with iOS/macOS/Linux
+ * [TinyConstraints](https://github.com/roberthein/TinyConstraints) - For auto layouts
+ * [Swinject](https://github.com/Swinject/Swinject) - Dependency injection framework
  * RxSwift, RxCocoa
 
 ### Moya, Alamofire??
 
-The API was super simple, and on those case I rather not to depend on external frameworks if I cand do it easily. By doing so the final app bundle will be smaller, easy to mantain and more controlable; so no external WebAPI frameworks where used
+The API was super simple, and on those case I rather not to depend on external frameworks if I cand do it easily. By doing so the final app bundle will be smaller, easy to maintain and more controllable; so no external WebAPI frameworks where used
 
 ### Images download tools?
 
-For the challange, instead of using tools like [https://github.com/hyperoslo/Imaginary](https://github.com/hyperoslo/Imaginary) for image download, I've done my own with a caching system (uses NSCache) for fast acess, and if it fails, then tries to find the image in file system (iPhone cache folder)
+For the challenge, instead of using tools like [https://github.com/hyperoslo/Imaginary](https://github.com/hyperoslo/Imaginary) for image download, I've done my own with a caching system (uses NSCache) for fast access, and if it fails, then tries to find the image in file system (iPhone cache folder)
 
 ```swift
 public enum ImagesDownloadCachePolicy: Int {
@@ -148,15 +162,15 @@ Language<strike>
 
 ## The fun part...
 
-So, the challange here was __dealing with a huge amout of requests at the same time__ (and iOS apps only deal with 5 or 7 at same time (dont remenber now) 
+So, the challenge here was __dealing with a huge amount of requests at the same time__ (and iOS apps only deal with 5 or 7 at same time (don't remember now) 
 
 ### Step1 : Use cache, not one, but 2.
 
-To many potencial API requests, __and__ images download at same time and we needed to cut that. __I used 2 types of cache for all API requests and image download requests__ and called it _hot_ cache and _cold_ cache
+Too many potential API requests, __and__ images download at same time and we needed to cut that. __I used 2 types of cache for all API requests and image download requests__ and called it _hot_ cache and _cold_ cache
 
 __Hot cache__ uses `NSCache` behind
 
-* Good : Super fast acess
+* Good : Super fast access
 * Bad : Only "lives" while the app is opened and the operating system lets 
 
 __Cold cache__ uses file system behind
@@ -167,16 +181,16 @@ __Cold cache__ uses file system behind
 ---
 
 
-Bellow is how I try do hachieve the best performance
+Bellow is how I try do achieve the best performance
 
 * The requests are cached/stored booth on _hot cache_ and _cold cache_
-* When retriveing from cache, if it exists on _hot cache_ (fast access) we return it, else we retunr from the _cold clache_
+* When retrieving from cache, if it exists on _hot cache_ (fast access) we return it, else we return from the _cold cache_
 
 ![Preview](images/cache1.png)
 
 ### Step 2 : Qeues
 
-Booth API requests, and images download use a `Quee` (the same), in order of we dont break the app while scrolling down and making dozen pararel requests per seconds
+Booth API requests, and images download use a `Queu` (the same), in order of we dont break the app while scrolling down and making dozen pararel requests per seconds
 
 ---
 
@@ -196,7 +210,7 @@ Image details API request queu
 
 The cell receives an image id, and asks the worker for the details and also the image.
 
-Because whe do `disposeBag = DisposeBag()` on `func prepareForReuse` we dont get wring images on the wrong cell while scrolling
+Because we do `disposeBag = DisposeBag()` on `func prepareForReuse` we don't get wrong images on the wrong cell while scrolling
 
 ```swift
 func setup(viewModel: VM.GalleryAppS1.TableItem) {
@@ -215,7 +229,7 @@ func setup(viewModel: VM.GalleryAppS1.TableItem) {
  }
 ```
 
-For the `Worker` to receive and image id, asks the API for the details and then download the image, I used a Rx aproach. Do the API call, take the response and use to donwload the image, and return booth using `ZIP`
+For the `Worker` to receive and image id, asks the API for the details and then download the image, I used a Rx approach. Do the API call, take the response and use to download the image, and return booth using `ZIP`
 
 ```swift
 public func imageInfoZip(_ request: GalleryAppRequests.ImageInfo, cacheStrategy: CacheStrategy) -> Observable<(GalleryAppModel.ImageInfo, UIImage)> {
