@@ -22,8 +22,6 @@ import DevTools
 import PointFreeFunctions
 
 import Domain_GalleryApp
-import Domain_CarTrack
-import RJPSLib_Networking
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -45,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         setup(application: application)
-        self.window?.rootViewController = VC.TabBarController()
+        self.window?.rootViewController = VC.GalleryAppS1ViewController(presentationStyle: .modal)
 
         return true
     }

@@ -39,12 +39,6 @@ struct RootAssemblyContainerProtocols {
     // Use Cases
     //
 
-    // CarTrack
-    static let carTrackAppWorker                 = CarTrackWorkerProtocol.self
-    static let carTrackAPIUseCase                = CarTrackWebAPIUseCaseProtocol.self             // UseCase - WebAPI
-    static let carTrackGenericAppBusinessUseCase = CarTrackGenericAppBusinessUseCaseProtocol.self // UseCase - Generic
-    static let carTrack_NetWorkRepository        = CarTrackNetWorkRepositoryProtocol.self         // Repository - WebAPI
-
     // GalleryApp
     static let galleryAppWorker                    = GalleryAppWorkerProtocol.self
     static let galleryAppAPIUseCase                = GalleryAppWebAPIUseCaseProtocol.self           // UseCase - WebAPI
@@ -56,13 +50,6 @@ struct RootAssemblyContainerProtocols {
 //
 // MARK: - Resolvers
 //
-
-public class CarTrackResolver {
-    private init() { }
-    // public let api            = ApplicationAssembly.assembler.resolver.resolve(AppProtocols.carTrackAPIUseCase.self)
-    //public let genericBusiness = ApplicationAssembly.assembler.resolver.resolve(AppProtocols.carTrackGenericAppBusinessUseCase.self)
-    public static let worker     = ApplicationAssembly.assembler.resolver.resolve(AppProtocols.carTrackAppWorker.self)
-}
 
 public class GalleryAppResolver {
     private init() { }
@@ -133,40 +120,5 @@ final class RootAssemblyContainer: Assembly {
             return uc
         }
 
-        //
-        // CarTrack
-        //
-
-        if DevTools.isMockApp {
-            container.autoregister(AppProtocols.carTrack_NetWorkRepository,
-                                   initializer: WebAPI.CarTrack.NetWorkRepositoryMock.init).inObjectScope(.container)
-        } else {
-            container.autoregister(AppProtocols.carTrack_NetWorkRepository,
-                                   initializer: WebAPI.CarTrack.NetWorkRepository.init).inObjectScope(.container)
-        }
-
-        // worker
-        container.register(AppProtocols.carTrackAppWorker) { resolver in
-            let w = CarTrackWorker()
-            w.webAPIUSeCase  = resolver.resolve(AppProtocols.carTrackAPIUseCase)
-            w.genericUseCase  = resolver.resolve(AppProtocols.carTrackGenericAppBusinessUseCase)
-            return w
-        }
-
-        container.register(AppProtocols.carTrackAPIUseCase) { resolver in
-            let uc = CarTrackAPIUseCase()
-            uc.networkRepository       = resolver.resolve(AppProtocols.carTrack_NetWorkRepository) 
-            uc.coldKeyValuesRepository = resolver.resolve(AppProtocols.coldKeyValuesRepository)
-            uc.hotCacheRepository      = resolver.resolve(AppProtocols.hotCacheRepository)
-            uc.apiCache                = resolver.resolve(AppProtocols.apiCacheRepository)
-            return uc
-        }
-
-        container.register(AppProtocols.carTrackGenericAppBusinessUseCase) { resolver in
-            let uc = Core_CarTrack.CarTrackGenericAppBusinessUseCase()
-            uc.coldKeyValuesRepository  = resolver.resolve(AppProtocols.coldKeyValuesRepository)
-            uc.hotCacheRepository       = resolver.resolve(AppProtocols.hotCacheRepository)
-            return uc
-        }
     }
 }

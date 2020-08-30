@@ -20,11 +20,6 @@ public extension DevTools {
         case nsLogger                  = "If [true] log to console, else to NSLogger"
         case debugRequests             = "If [true] log API requests"
 
-        case showScene_carTrack    = "Scene Enabled: Exam.CarTrack"
-        case showScene_gallery     = "Scene Enabled: Exam.Gallery "
-
-        case showScene_vipTemplate = "Scene Enabled: VIP Template"
-
         // Default value
         public var defaultValue: Bool {
             switch self {
@@ -35,11 +30,6 @@ public extension DevTools {
             case .logDeInitEvent:           return false
             case .nsLogger:                 return false
             case .debugRequests:            return false
-
-            case .showScene_vipTemplate: return true
-
-            case .showScene_carTrack:    return true
-            case .showScene_gallery:     return true
             }
         }
 
@@ -53,10 +43,6 @@ public extension DevTools {
              case .logDeInitEvent:           return true
              case .showDebugStatsViewOnView: return true
              case .debugRequests:            return true
-
-             case .showScene_carTrack:       return true
-             case .showScene_vipTemplate:    return true
-             case .showScene_gallery:        return true
             }
         }
 
