@@ -139,8 +139,18 @@ extension VC {
                 guard let self = self else { return }
                 guard let search = search else { return }
                 guard self.isVisible else { return }
-                let request = VM.GalleryAppS1.SearchByTag.Request(tag: search, page: 1)
+                let request = VM.GalleryAppS1.SearchByTag.Request(tag: search)
                 self.interactor?.requestSearchByTag(request: request)
+            }.disposed(by: disposeBag)
+
+            genericView.rxLoadMore.asObserver().bind { [weak self] (value) in
+                guard let self = self else { return }
+                //guard let search = search else { return }
+                guard self.isVisible else { return }
+                if value ?? false {
+                    let request = VM.GalleryAppS1.LoadMore.Request()
+                    self.interactor?.requestLoadMore(request: request)
+                }
             }.disposed(by: disposeBag)
 
         }
@@ -162,6 +172,10 @@ private extension VC.GalleryAppS1ViewController {
 // MARK: DisplayLogicProtocol
 
 extension VC.GalleryAppS1ViewController: GalleryAppS1DisplayLogicProtocol {
+
+    func displayLoadMore(viewModel: VM.GalleryAppS1.LoadMore.ViewModel) {
+        genericView.setupWith(loadMore: viewModel)
+    }
 
     func displaySearchByTag(viewModel: VM.GalleryAppS1.SearchByTag.ViewModel) {
         // Setting up the view, option 1 : passing the view model

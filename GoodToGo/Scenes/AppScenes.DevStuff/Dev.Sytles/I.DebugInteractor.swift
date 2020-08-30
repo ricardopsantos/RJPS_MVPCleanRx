@@ -57,7 +57,7 @@ extension I.DebugInteractor: BaseInteractorVIPMandatoryBusinessLogicProtocol {
 
 // MARK: Private Stuff
 
-extension I.DebugInteractor {
+private extension I.DebugInteractor {
 
 }
 

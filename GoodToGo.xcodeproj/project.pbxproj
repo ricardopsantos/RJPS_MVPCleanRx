@@ -83,8 +83,6 @@
 		D72923892466BF4700DAD480 /* VC.TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1622BE5DE700042A8C /* VC.TabBarController.swift */; };
 		D729238A2466C16300DAD480 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD387C9223F0CF3001D2F4E /* UIButton+Extensions.swift */; };
 		D729238B2466C16300DAD480 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD387C7223F0CF3001D2F4E /* UILabel+Extensions.swift */; };
-		D729238C2466C16300DAD480 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD387CC223F0CF4001D2F4E /* UIFont+Extensions.swift */; };
-		D729238D2466C67800DAD480 /* AppConstants+UIBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F15CF2722BFA0A300FB402A /* AppConstants+UIBase.swift */; };
 		D72923982466D5BB00DAD480 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1122BE5DE700042A8C /* TopBar.swift */; };
 		D729239E2466D62900DAD480 /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1422BE5DE700042A8C /* BottomBar.swift */; };
 		D729239F2466D62C00DAD480 /* UIKitFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F574EFD22356CA6007DAA58 /* UIKitFactory.swift */; };
@@ -173,7 +171,7 @@
 		D786EF7524F6F5B6000F6A2C /* GalleryAppResponseDto+ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786EF7424F6F5B6000F6A2C /* GalleryAppResponseDto+ImageInfo.swift */; };
 		D786EF7724F6F886000F6A2C /* GalleryAppModel.ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786EF7624F6F886000F6A2C /* GalleryAppModel.ImageInfo.swift */; };
 		D786EF7924F727A7000F6A2C /* OperationBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786EF7824F727A7000F6A2C /* OperationBase.swift */; };
-		D786EF7D24F7EECB000F6A2C /* GenericKeyValueStorableRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786EF7C24F7EECB000F6A2C /* GenericKeyValueStorableRecord.swift */; };
+		D786EF7D24F7EECB000F6A2C /* GenericKeyValueStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786EF7C24F7EECB000F6A2C /* GenericKeyValueStorable.swift */; };
 		D786EF7F24F7EF11000F6A2C /* CacheUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786EF7E24F7EF11000F6A2C /* CacheUtils.swift */; };
 		D786EF8224F7EFEB000F6A2C /* RP.APICacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786EF8024F7EFB6000F6A2C /* RP.APICacheManager.swift */; };
 		D788BD76246892B3007C59D0 /* P.BasePresenterVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788BD75246892B3007C59D0 /* P.BasePresenterVIP.swift */; };
@@ -881,7 +879,6 @@
 		9F103A2E2236C08900C57BC0 /* DependencyInjectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyInjectionManager.swift; sourceTree = "<group>"; };
 		9F103A2F2236C08900C57BC0 /* RootAssemblyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootAssemblyContainer.swift; sourceTree = "<group>"; };
 		9F103A3E2236C1FE00C57BC0 /* SwinjectAutoregistration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwinjectAutoregistration.framework; path = Carthage/Build/iOS/SwinjectAutoregistration.framework; sourceTree = "<group>"; };
-		9F15CF2722BFA0A300FB402A /* AppConstants+UIBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppConstants+UIBase.swift"; sourceTree = "<group>"; };
 		9F15CF2922BFA56E00FB402A /* E.AppMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = E.AppMode.swift; sourceTree = "<group>"; };
 		9F15CF2C22BFA56F00FB402A /* E.AppCodes+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "E.AppCodes+Extension.swift"; sourceTree = "<group>"; };
 		9F288F2720F8089F008A9539 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -932,7 +929,6 @@
 		9FD387C9223F0CF3001D2F4E /* UIButton+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		9FD387CA223F0CF3001D2F4E /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		9FD387CB223F0CF3001D2F4E /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
-		9FD387CC223F0CF4001D2F4E /* UIFont+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		9FD387CD223F0CF4001D2F4E /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		9FE1437021AF1ADC0026BDFC /* AppEnvironments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEnvironments.swift; sourceTree = "<group>"; };
 		9FE1437721AF1ADC0026BDFC /* BaseViewControllerMVP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewControllerMVP.swift; sourceTree = "<group>"; };
@@ -1054,7 +1050,6 @@
 		D77824BD2479C0230071776F /* DDD_Arquitecture.pptx */ = {isa = PBXFileReference; lastKnownFileType = file; path = DDD_Arquitecture.pptx; sourceTree = "<group>"; };
 		D77824BE2479C83F0071776F /* AppConstants.PropertiesList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppConstants.PropertiesList.plist; sourceTree = "<group>"; };
 		D77824C02479C8D00071776F /* AppResources.PropertiesList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppResources.PropertiesList.plist; sourceTree = "<group>"; };
-		D77824F02479F5BD0071776F /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		D7782521247A59D40071776F /* Test.GoodToGo.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test.GoodToGo.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7782523247A59D40071776F /* T.Test_CartTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T.Test_CartTrack.swift; sourceTree = "<group>"; };
 		D7782525247A59D40071776F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1066,7 +1061,7 @@
 		D786EF7624F6F886000F6A2C /* GalleryAppModel.ImageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryAppModel.ImageInfo.swift; sourceTree = "<group>"; };
 		D786EF7824F727A7000F6A2C /* OperationBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationBase.swift; sourceTree = "<group>"; };
 		D786EF7A24F7ECA3000F6A2C /* OperationQueueManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationQueueManager.swift; sourceTree = "<group>"; };
-		D786EF7C24F7EECB000F6A2C /* GenericKeyValueStorableRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericKeyValueStorableRecord.swift; sourceTree = "<group>"; };
+		D786EF7C24F7EECB000F6A2C /* GenericKeyValueStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericKeyValueStorable.swift; sourceTree = "<group>"; };
 		D786EF7E24F7EF11000F6A2C /* CacheUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheUtils.swift; sourceTree = "<group>"; };
 		D786EF8024F7EFB6000F6A2C /* RP.APICacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RP.APICacheManager.swift; sourceTree = "<group>"; };
 		D788BD75246892B3007C59D0 /* P.BasePresenterVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.BasePresenterVIP.swift; sourceTree = "<group>"; };
@@ -1369,7 +1364,6 @@
 				D75A71C224BBA24500CC8463 /* RJPSLib_Base.framework */,
 				D75A71C324BBA24500CC8463 /* RJPSLib_Networking.framework */,
 				D75A71C124BBA24500CC8463 /* RJPSLib_Storage.framework */,
-				D77824F02479F5BD0071776F /* Nimble.framework */,
 				D77824B1247900650071776F /* Lottie.framework */,
 				D77824AD24784B850071776F /* NSLoggerSwift.framework */,
 				D77824A82478488B0071776F /* NSLogger.framework */,
@@ -1616,9 +1610,9 @@
 			isa = PBXGroup;
 			children = (
 				D700A94B24F98ABD0055DEB6 /* WebAPI.GalleryApp.swift */,
+				D774F57F24F5889500D01370 /* WebAPI.GalleryApp+APIRequests.swift */,
 				D774F58124F5898900D01370 /* WebAPI.GalleryApp.NetWorkRepository.swift */,
 				D7D6BC3A24FBC2740096CDDE /* WebAPI.GalleryApp.NetWorkRepositoryMock.swift */,
-				D774F57F24F5889500D01370 /* WebAPI.GalleryApp+APIRequests.swift */,
 			);
 			path = GalleryApp;
 			sourceTree = "<group>";
@@ -1670,7 +1664,6 @@
 				D7AB24B724673F00000142C4 /* README.md */,
 				D7F2DE3824754758008CE3DA /* VCPresentationStyle.swift */,
 				D72922D82466AFC600DAD480 /* typealias.UIBase.swift */,
-				9F15CF2722BFA0A300FB402A /* AppConstants+UIBase.swift */,
 				D729228F2466A04200DAD480 /* UIBase.h */,
 				D72922902466A04200DAD480 /* Info.plist */,
 			);
@@ -1700,7 +1693,6 @@
 				D72923742466BC7E00DAD480 /* typealias.AppTheme.swift */,
 				D7D9E7F72467FEE3005B4313 /* E.LayoutStyle.swift */,
 				9FD387C9223F0CF3001D2F4E /* UIButton+Extensions.swift */,
-				9FD387CC223F0CF4001D2F4E /* UIFont+Extensions.swift */,
 				9FD387C7223F0CF3001D2F4E /* UILabel+Extensions.swift */,
 				9FD387C8223F0CF3001D2F4E /* UIColor+Extensions.swift */,
 				D72922E12466B06300DAD480 /* AppTheme.h */,
@@ -1908,7 +1900,7 @@
 			isa = PBXGroup;
 			children = (
 				D786EF8024F7EFB6000F6A2C /* RP.APICacheManager.swift */,
-				D786EF7C24F7EECB000F6A2C /* GenericKeyValueStorableRecord.swift */,
+				D786EF7C24F7EECB000F6A2C /* GenericKeyValueStorable.swift */,
 				D7E5E14D24FAF13300C37A62 /* APICacheManagerProtocol.swift */,
 				D786EF7E24F7EF11000F6A2C /* CacheUtils.swift */,
 			);
@@ -2135,10 +2127,10 @@
 			isa = PBXGroup;
 			children = (
 				D7D9E7B224677039005B4313 /* README.md */,
+				D7D9E7B324677046005B4313 /* typealias.WebAPI.swift */,
 				D700A95C24FA61CC0055DEB6 /* GalleryApp */,
 				D700A95B24FA61C40055DEB6 /* CarTrack */,
 				D700A95A24FA612E0055DEB6 /* Utils */,
-				D7D9E7B324677046005B4313 /* typealias.WebAPI.swift */,
 				D7D9E7F124679A5E005B4313 /* E.APIErrors.swift */,
 				D7D9E7A224676FE6005B4313 /* API.h */,
 				D7D9E7A324676FE6005B4313 /* Info.plist */,
@@ -3456,7 +3448,6 @@
 				D788BD8F246959F2007C59D0 /* StylableView.swift in Sources */,
 				D741A360246A9CA9000235E0 /* BaseViewControllerMVP+RxExtensions.swift in Sources */,
 				D72922A92466A0B100DAD480 /* BaseViewControllerMVP.swift in Sources */,
-				D729238D2466C67800DAD480 /* AppConstants+UIBase.swift in Sources */,
 				D761FEBC2468358B00BD41A5 /* BaseViewControllerMVP+Keyboard.swift in Sources */,
 				D7F2DE3924754758008CE3DA /* VCPresentationStyle.swift in Sources */,
 				D788BD83246944A9007C59D0 /* VC.BaseGenericViewControllerVIP.swift in Sources */,
@@ -3482,7 +3473,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D729238B2466C16300DAD480 /* UILabel+Extensions.swift in Sources */,
-				D729238C2466C16300DAD480 /* UIFont+Extensions.swift in Sources */,
 				D7AB2445246718A9000142C4 /* typealias.DDD.encaplulate.swift in Sources */,
 				D729238A2466C16300DAD480 /* UIButton+Extensions.swift in Sources */,
 				D72923042466B0E500DAD480 /* UIColor+Extensions.swift in Sources */,
@@ -3631,7 +3621,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D786EF7D24F7EECB000F6A2C /* GenericKeyValueStorableRecord.swift in Sources */,
+				D786EF7D24F7EECB000F6A2C /* GenericKeyValueStorable.swift in Sources */,
 				D786EF7F24F7EF11000F6A2C /* CacheUtils.swift in Sources */,
 				D7D9E7EC24679634005B4313 /* typealias.Repositories.swift in Sources */,
 				D786EF8224F7EFEB000F6A2C /* RP.APICacheManager.swift in Sources */,

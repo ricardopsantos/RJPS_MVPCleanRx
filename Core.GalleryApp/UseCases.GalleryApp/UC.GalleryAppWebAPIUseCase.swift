@@ -21,8 +21,6 @@ import Domain
 import Domain_GalleryApp
 import Factory
 
-// swiftlint:disable rule_Coding
-
 public class GalleryAppWebAPIUseCase: GenericUseCase, GalleryAppWebAPIUseCaseProtocol {
 
     public override init() { super.init() }

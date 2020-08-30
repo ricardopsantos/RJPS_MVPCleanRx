@@ -42,6 +42,9 @@ extension I {
         }
         var presenter: GalleryAppS1PresentationLogicProtocol?
         weak var basePresenter: BasePresenterVIPProtocol? { return presenter }
+        private var currentPage: Int = 1
+        private var currentTag: String = ""
+        private var isLoading = false
     }
 }
 
@@ -61,21 +64,22 @@ extension I.GalleryAppS1Interactor: BaseInteractorVIPMandatoryBusinessLogicProto
 
 // MARK: Private Stuff
 
-extension I.GalleryAppS1Interactor {
-
-}
-
-// MARK: BusinessLogicProtocol
-
-extension I.GalleryAppS1Interactor: GalleryAppS1BusinessLogicProtocol {
-
-    func requestSearchByTag(request: VM.GalleryAppS1.SearchByTag.Request) {
-        guard let presenter = presenter, GalleryAppResolver.worker != nil else {
+private extension I.GalleryAppS1Interactor {
+    func fetch(tag: String,
+               page: Int,
+               showSpinner: Bool,
+               onSuccess: @escaping (String, [GalleryAppModel.Search.Photo]) -> Void,
+               onFail: @escaping (String, [GalleryAppModel.Search.Photo]) -> Void) {
+        guard let presenter = presenter,
+            GalleryAppResolver.worker != nil,
+            !isLoading else {
             return
         }
+        isLoading = true
+        currentPage = page
 
         // Lets turn things like 'cat, Dog', 'cat   dog ', 'Cat ; dog', 'Cat and dog' into ["cat", "dog"]
-        var escaped = request.tag
+        var escaped = tag
         escaped = escaped.replacingOccurrences(of: " ", with: ",")
         escaped = escaped.replacingOccurrences(of: ";", with: ",")
         escaped = escaped.replacingOccurrences(of: "-", with: ",")
@@ -84,40 +88,73 @@ extension I.GalleryAppS1Interactor: GalleryAppS1BusinessLogicProtocol {
         let tags: [String] = escaped.components(separatedBy: ",").map({ $0.trim.lowercased() }).filter({ $0.count > 0 })
 
         guard tags.count > 0 else {
-            let response = VM.GalleryAppS1.SearchByTag.Response(searchValue: request.tag, photos: [])
-            presenter.presentSearchByTag(response: response)
+            isLoading = false
+            onFail(tag, [])
             return
         }
 
-        // Turn loading on
-        presenter.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
-        let apiRequest = GalleryAppRequests.Search(tags: tags, page: request.page)
+        if showSpinner {
+            // Turn loading on
+            presenter.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))
+        }
+        let apiRequest = GalleryAppRequests.Search(tags: tags, page: currentPage)
         GalleryAppResolver.worker!.search(apiRequest, cacheStrategy: .cacheElseLoad)
             .asObservable()
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] (result) in
-                guard let self = self else { return }
-                let response = VM.GalleryAppS1.SearchByTag.Response(searchValue: request.tag, photos: result.photos.photo)
-                self.presenter?.presentSearchByTag(response: response)
-        }, onError: { (error) in
-            // Error?
-            // Show error...
-            self.presentError(error: error)
-            // Disable loading
-            self.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
-            // Clear search and return empty array
-            let response = VM.GalleryAppS1.SearchByTag.Response(searchValue: "", photos: [])
-            self.presenter?.presentSearchByTag(response: response)
-        }, onCompleted: {
+            .subscribe(onNext: { (result) in
+                onSuccess(tag, result.photos.photo)
+        }, onError: { [weak self] (error) in
             // Turn loading off
-            self.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
+            self?.presentError(error: error)
+            onFail("", [])
+            self?.isLoading = false
+        }, onCompleted: { [weak self] in
+            // Turn loading off
+            if showSpinner {
+                self?.presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: false))
+            }
+            self?.isLoading = false
         }).disposed(by: disposeBag)
+    }
+}
 
+// MARK: BusinessLogicProtocol
+
+extension I.GalleryAppS1Interactor: GalleryAppS1BusinessLogicProtocol {
+
+    func requestLoadMore(request: VM.GalleryAppS1.LoadMore.Request) {
+        guard !isLoading else {
+            return
+        }
+        currentPage += 1
+        fetch(tag: currentTag, page: currentPage, showSpinner: false,
+            onSuccess: { [weak self] (_, photos) in
+                let response = VM.GalleryAppS1.LoadMore.Response(photos: photos)
+                self?.presenter?.presentLoadMore(response: response)
+            },
+            onFail: { [weak self] (_, photos) in
+                let response = VM.GalleryAppS1.LoadMore.Response(photos: photos)
+                self?.presenter?.presentLoadMore(response: response)
+        })
+    }
+
+    func requestSearchByTag(request: VM.GalleryAppS1.SearchByTag.Request) {
+        currentPage = 1
+        currentTag = request.tag
+        fetch(tag: currentTag, page: currentPage, showSpinner: true,
+            onSuccess: { [weak self] (tag, photos) in
+                let response = VM.GalleryAppS1.SearchByTag.Response(searchValue: tag, photos: photos)
+                self?.presenter?.presentSearchByTag(response: response)
+            },
+            onFail: { [weak self] (tag, photos) in
+                let response = VM.GalleryAppS1.SearchByTag.Response(searchValue: tag, photos: photos)
+                self?.presenter?.presentSearchByTag(response: response)
+        })
     }
 
 }
 
-// MARK: Utils {
+// MARK: Utils
 
 extension I.GalleryAppS1Interactor {
     func presentError(error: Error) {

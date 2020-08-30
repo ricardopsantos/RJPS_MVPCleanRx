@@ -71,7 +71,7 @@ extension I.___VARIABLE_sceneName___Interactor: BaseInteractorVIPMandatoryBusine
 
 // MARK: Private Stuff
 
-extension I.___VARIABLE_sceneName___Interactor {
+private extension I.___VARIABLE_sceneName___Interactor {
 
 }
 

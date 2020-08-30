@@ -14,7 +14,7 @@ import Factory
 // swiftlint:disable rule_Coding
 
 public extension UserDefaults {
-    func save(kvStorableRecord: GenericKeyValueStorableRecord) {
+    func save(kvStorableRecord: GenericKeyValueStorable) {
         UserDefaults.standard.set(kvStorableRecord.toData, forKey: kvStorableRecord.key)
     }
 }
@@ -24,10 +24,10 @@ public extension RP {
 
         public init() { }
         
-        private var hotCache = NSCache<NSString, GenericKeyValueStorableRecord>()
+        private var hotCache = NSCache<NSString, GenericKeyValueStorable>()
 
         public func save<T: Codable>(_ some: T, key: String, params: [String], lifeSpam: Int = 5) {
-            let kvStorableRecord = GenericKeyValueStorableRecord(some, key: key, params: params, lifeSpam: lifeSpam)
+            let kvStorableRecord = GenericKeyValueStorable(some, key: key, params: params, lifeSpam: lifeSpam)
             hotCacheAdd(kvStorableRecord: kvStorableRecord, withKey: kvStorableRecord.key)
             coldCacheAdd(kvStorableRecord: kvStorableRecord)
         }
@@ -78,7 +78,7 @@ fileprivate extension RP.APICacheManager {
 
 fileprivate extension RP.APICacheManager {
 
-    func hotCacheAdd(kvStorableRecord: GenericKeyValueStorableRecord, withKey: String) {
+    func hotCacheAdd(kvStorableRecord: GenericKeyValueStorable, withKey: String) {
         objc_sync_enter(hotCache); defer { objc_sync_exit(hotCache) }
         hotCache.setObject(kvStorableRecord, forKey: withKey as NSString)
     }
@@ -99,13 +99,13 @@ fileprivate extension RP.APICacheManager {
 
 private extension RP.APICacheManager {
 
-    func coldCacheAdd(kvStorableRecord: GenericKeyValueStorableRecord) {
+    func coldCacheAdd(kvStorableRecord: GenericKeyValueStorable) {
         UserDefaults.standard.save(kvStorableRecord: kvStorableRecord)
     }
 
     func coldCacheGet<T: Codable>(composedKey: String, type: T.Type) -> T? {
         if let cached = UserDefaults.standard.data(forKey: composedKey),
-            let dRes = try? JSONDecoder().decode(GenericKeyValueStorableRecord.self, from: cached),
+            let dRes = try? JSONDecoder().decode(GenericKeyValueStorable.self, from: cached),
             let value = dRes.value,
             let data = value.data(using: .utf8),
             let result = try? JSONDecoder().decode(type, from: data) {

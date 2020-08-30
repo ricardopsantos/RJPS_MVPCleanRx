@@ -30,6 +30,7 @@ protocol GalleryAppS1BusinessLogicProtocol: BaseInteractorVIPMandatoryBusinessLo
     // Naming convention : func request__XXX__(viewModel: VM.GalleryAppS1.__XXX__.Request)
     func requestScreenInitialState()
     func requestSearchByTag(request: VM.GalleryAppS1.SearchByTag.Request)
+    func requestLoadMore(request: VM.GalleryAppS1.LoadMore.Request)
 }
 
 //
@@ -40,6 +41,7 @@ protocol GalleryAppS1PresentationLogicProtocol: BasePresenterVIPProtocol {
     // Naming convention : func present__XXX__(response: VM.GalleryAppS1.__XXX__.Response)
     func presentScreenInitialState(response: VM.GalleryAppS1.ScreenInitialState.Response)
     func presentSearchByTag(response: VM.GalleryAppS1.SearchByTag.Response)
+    func presentLoadMore(response: VM.GalleryAppS1.LoadMore.Response)
 }
 
 //
@@ -50,6 +52,7 @@ protocol GalleryAppS1DisplayLogicProtocol: BaseViewControllerVIPProtocol {
     // Naming convention : func display__XXX__(viewModel: VM.GalleryAppS1.__XXX__.ViewModel)
     func displayScreenInitialState(viewModel: VM.GalleryAppS1.ScreenInitialState.ViewModel)
     func displaySearchByTag(viewModel: VM.GalleryAppS1.SearchByTag.ViewModel)
+    func displayLoadMore(viewModel: VM.GalleryAppS1.LoadMore.ViewModel)
 }
 
 //
@@ -70,11 +73,23 @@ protocol GalleryAppS1RoutingLogicProtocol {
 extension VM {
     enum GalleryAppS1 {
 
+        struct LoadMore {
+            private init() {}
+            struct Request { /* ViewController -> Interactor */
+            }
+            struct Response { /* Interactor -> Presenter */
+                let photos: [GalleryAppModel.Search.Photo]
+            }
+            struct ViewModel { /* Presenter -> ViewController */
+                let dataSource: [VM.GalleryAppS1.TableItem]
+            }
+        }
+
         struct SearchByTag {
             private init() {}
             struct Request { /* ViewController -> Interactor */
                 let tag: String
-                let page: Int
+                //let page: Int
             }
             struct Response { /* Interactor -> Presenter */
                 let searchValue: String

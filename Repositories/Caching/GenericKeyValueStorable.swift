@@ -9,14 +9,14 @@
 
 import Foundation
 
-public class GenericKeyValueStorableRecord: Codable {
+public class GenericKeyValueStorable: Codable {
     public var keyBase: String = ""
     public var key: String = ""         // Computed cache key (with parameters)
     public var keyParams: String = ""   // Only the parameters used on building the key
-    private var object: String = ""      // Value to be stored
+    private var object: String = ""     // Value to be stored
     public var valueType: String = ""
-    public var recordDate: Date = GenericKeyValueStorableRecord.referenceDate
-    public var expireDate: Date = GenericKeyValueStorableRecord.referenceDate
+    public var recordDate: Date = GenericKeyValueStorable.referenceDate
+    public var expireDate: Date = GenericKeyValueStorable.referenceDate
     public var encoding: Int = 1
     public var objectType: String = ""
 
@@ -33,8 +33,8 @@ public class GenericKeyValueStorableRecord: Codable {
         self.keyBase   = keyBase
         self.keyParams = keyParams
         self.object    = value
-        self.recordDate = GenericKeyValueStorableRecord.referenceDate
-        self.expireDate = GenericKeyValueStorableRecord.referenceDate.addingTimeInterval(TimeInterval(timeToLive*60))
+        self.recordDate = GenericKeyValueStorable.referenceDate
+        self.expireDate = GenericKeyValueStorable.referenceDate.addingTimeInterval(TimeInterval(timeToLive*60))
         self.encoding   = encoding.rawValue
         self.valueType  = valueType
         self.objectType = objectType
@@ -70,7 +70,7 @@ public class GenericKeyValueStorableRecord: Codable {
     }
 }
 
-extension GenericKeyValueStorableRecord {
+extension GenericKeyValueStorable {
 
     public convenience init<T: Codable>(_ some: T, key: String, params: [String] = [], lifeSpam: Int = 5) {
         self.init()
@@ -84,8 +84,8 @@ extension GenericKeyValueStorableRecord {
         self.keyBase   = key
         self.keyParams = CacheUtils.parseKeyParams(params)
         self.object     = value
-        self.recordDate = GenericKeyValueStorableRecord.referenceDate
-        self.expireDate = GenericKeyValueStorableRecord.referenceDate.addingTimeInterval(TimeInterval(lifeSpam*60))
+        self.recordDate = GenericKeyValueStorable.referenceDate
+        self.expireDate = GenericKeyValueStorable.referenceDate.addingTimeInterval(TimeInterval(lifeSpam*60))
         self.encoding   = ValueEncoding.data.rawValue
         self.valueType  = valueType
         self.objectType = "\(T.Type.self)"

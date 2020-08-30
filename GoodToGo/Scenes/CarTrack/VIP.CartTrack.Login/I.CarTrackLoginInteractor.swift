@@ -61,8 +61,8 @@ extension I.CarTrackLoginInteractor: BaseInteractorVIPMandatoryBusinessLogicProt
 
 // MARK: Private Stuff
 
-extension I.CarTrackLoginInteractor {
-    private func presentNextButtonState() {
+private extension I.CarTrackLoginInteractor {
+    func presentNextButtonState() {
         guard let password = password, let userName = userName else { return }
         let passwordIsValidInShape = password.count >= 5
         let emailIsValidInShape    = userName.isValidEmail

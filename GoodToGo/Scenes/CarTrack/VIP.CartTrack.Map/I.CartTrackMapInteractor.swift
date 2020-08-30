@@ -57,7 +57,7 @@ extension I.CartTrackMapInteractor: BaseInteractorVIPMandatoryBusinessLogicProto
 
 // MARK: Private Stuff
 
-extension I.CartTrackMapInteractor {
+private extension I.CartTrackMapInteractor {
 
 }
 

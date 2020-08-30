@@ -80,13 +80,19 @@ extension V {
 
         private var collectionViewDataSource: [VM.GalleryAppS1.TableItem] = [] {
             didSet {
-                lblNoRecords.isHidden = collectionViewDataSource.count > 0 ? true : false
+                if collectionViewDataSource.count > 0 {
+                    lblNoRecords.isHidden = true
+                } else {
+                    lblNoRecords.isHidden = false
+                }
+                DevTools.Log.message("Will display \(collectionViewDataSource.count) records")
                 collectionView.reloadData()
             }
         }
 
         // Naming convention: rxTbl[MeaningfulTableName]Items
         var rxFilter = BehaviorSubject<String?>(value: nil)
+        var rxLoadMore = BehaviorSubject<Bool?>(value: nil)
 
         private lazy var collectionView: UICollectionView = {
              let viewLayout = UICollectionViewFlowLayout()
@@ -184,12 +190,26 @@ extension V {
         func setupWith(screenInitialState viewModel: VM.GalleryAppS1.ScreenInitialState.ViewModel) {
             collectionViewDataSource = viewModel.dataSource
         }
+
+        func setupWith(loadMore viewModel: VM.GalleryAppS1.LoadMore.ViewModel) {
+            collectionViewDataSource += viewModel.dataSource
+        }
+
     }
 }
 
 // MARK: - UICollectionViewDataSource
 
 extension V.GalleryAppS1View: UICollectionViewDataSource {
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        if offsetY > contentHeight - scrollView.frame.height * 4 {
+            rxLoadMore.onNext(true)
+        }
+    }
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionViewDataSource.count
     }

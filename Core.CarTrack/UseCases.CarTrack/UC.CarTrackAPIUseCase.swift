@@ -22,8 +22,6 @@ import Core
 import AppResources
 import Repositories
 
-// swiftlint:disable rule_Coding
-
 public class CarTrackAPIUseCase: GenericUseCase, CarTrackWebAPIUseCaseProtocol {
 
     public override init() { super.init() }

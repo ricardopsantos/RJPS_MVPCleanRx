@@ -73,6 +73,18 @@ extension P.GalleryAppS1Presenter {
 
 extension P.GalleryAppS1Presenter: GalleryAppS1PresentationLogicProtocol {
 
+    func presentLoadMore(response: VM.GalleryAppS1.LoadMore.Response) {
+        let items = response.photos
+            .map { VM.GalleryAppS1.TableItem(enabled: false,
+                                                  image: Images.noInternet.rawValue,
+                                                  title: $0.id,
+                                                  subtitle: $0.id,
+                                                  id: $0.id)
+            }
+        let viewModel = VM.GalleryAppS1.LoadMore.ViewModel(dataSource: items)
+        viewController?.displayLoadMore(viewModel: viewModel)
+    }
+
     // Used By Interactor (exclusively)
     func presentScreenInitialState(response: VM.GalleryAppS1.ScreenInitialState.Response) {
         let items = response.photos

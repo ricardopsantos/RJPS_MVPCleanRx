@@ -51,7 +51,6 @@ open class BaseViewControllerMVP: UIViewController, BaseViewControllerMVPProtoco
         DispatchQueue.executeWithDelay(delay: 0.1) { [weak self] in
             guard let self = self else { return }
             self.firstAppearance = false
-            self.addStatsView()
         }
     }
 
@@ -133,20 +132,6 @@ public extension BaseViewControllerMVP {
 // MARK: - Private stuff
 //
 
-extension BaseViewControllerMVP {
+private extension BaseViewControllerMVP {
 
-    private func addStatsView() {
-
-    /*
-         private var stats: Stats?
-         guard DevTools.FeatureFlag.showDebugStatsViewOnView.isTrue else { return }
-        guard self.stats == nil else { return }
-        self.stats = Stats()//frame: CGRect(x: 20, y: 40, width: 100.0, height: 60.0))
-        self.view.addSubview(self.stats!)
-        self.stats?.autoLayout.trailingToSuperview(offset: 20)
-        self.stats?.autoLayout.bottomToSuperview(offset: 40)
-        self.stats?.autoLayout.width(100)
-        self.stats?.addShadow()
-        self.stats?.addCorner(radius: 5)*/
-    }
 }
