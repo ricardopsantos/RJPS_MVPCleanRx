@@ -51,7 +51,7 @@ public extension WebAPI.CarTrackAPIRequest {
         public var responseType: RJS_SimpleNetworkClientResponseType
 
         // service has bad data. use mock value always
-        public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue || true  ? AppConstants.Mocks.CarTrack.get_200 : nil }
+        public var mockedData: String? { return WebAPI.useMock || true  ? AppConstants.Mocks.CarTrack.get_200 : nil }
 
         init(request: CarTrackRequests.GetUsers) throws {
             let urlString = Target.getUsers.endpoint

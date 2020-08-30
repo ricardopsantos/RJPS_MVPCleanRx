@@ -46,3 +46,18 @@ public extension WebAPI.GalleryApp {
         }
     }
 }
+
+public extension WebAPI.GalleryApp {
+
+    class NetWorkRepositoryMock: GalleryAppNetWorkRepositoryProtocol {
+        public init() { }
+
+        public func imageInfo(_ request: GalleryAppRequests.ImageInfo, completionHandler: @escaping GalleryAppResponseImageInfoCompletionHandler) {
+            fatalError("not implemented")
+        }
+
+        public func search(_ request: GalleryAppRequests.Search, completionHandler: @escaping GalleryAppResponseSearchCompletionHandler) {
+            fatalError("not implemented")
+        }
+    }
+}

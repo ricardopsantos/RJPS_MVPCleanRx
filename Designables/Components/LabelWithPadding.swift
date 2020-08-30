@@ -22,6 +22,7 @@ import UIBase
 
 // MARK: - Preview
 
+#if DEBUG
 @available(iOS 13.0.0, *)
 struct UILabelWithPadding_UIViewRepresentable: UIViewRepresentable {
     func updateUIView(_ uiView: UILabelWithPadding, context: Context) { }
@@ -37,6 +38,7 @@ struct UILabelWithPadding_Previews: PreviewProvider {
         UILabelWithPadding_UIViewRepresentable()
     }
 }
+#endif
 
 // MARK: - View
 

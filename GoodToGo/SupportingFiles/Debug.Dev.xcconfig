@@ -7,9 +7,10 @@
 
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
+// https://nshipster.com/xcconfig/
 
 APP_MODE = Debug.Dev
 
-IS_APP_NAME      = AppName_DEV
-IS_APP_VERSION   = 0.1
-IS_APP_BUNDLE_ID = com.app.bundle.id.qa
+IS_APP_NAME      = AppName_Dev
+IS_APP_VERSION   = 1
+IS_APP_BUNDLE_ID = com.app.bundle.id.dev

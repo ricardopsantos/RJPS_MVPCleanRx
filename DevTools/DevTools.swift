@@ -21,28 +21,21 @@ public struct DevTools {
     public static var reachabilityService: ReachabilityService! = try! DefaultReachabilityService()
 
     private static var appMode: String? {
-        return (Bundle.main.infoDictionary?["BuildConfig_AppMode"] as? String)?.replacingOccurrences(of: "\\", with: "")
+        (Bundle.main.infoDictionary?["BuildConfig_AppMode"] as? String)?.replacingOccurrences(of: "\\", with: "")
     }
 
     public static var isProductionApp = appMode == "Debug.Prod"
     public static var isQualityApp    = appMode == "Debug.QA"
     public static var isStagingApp    = appMode == "Debug.Dev"
+    public static var isMockApp       = appMode == "Debug.Mock"
 
     public static var onRealDevice: Bool {
         return !onSimulator
     }
 
-    public static var onSimulator: Bool {
-        RJS_Utils.onSimulator
-    }
-
-    public static var onDebug: Bool {
-        RJS_Utils.onDebug
-    }
-
-    public static var onRelease: Bool {
-        RJS_Utils.onRelease
-    }
+    public static var onSimulator: Bool { RJS_Utils.onSimulator }
+    public static var onDebug: Bool { RJS_Utils.onDebug }
+    public static var onRelease: Bool { RJS_Utils.onRelease }
 
     public static var isQualityReleaseApp: Bool {
         // Should return true, if is a Quality Team app

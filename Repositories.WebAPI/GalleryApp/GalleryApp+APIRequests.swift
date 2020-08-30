@@ -58,7 +58,7 @@ public extension WebAPI.GalleryAppAPIRequest {
         public var debugRequest: Bool = DevTools.FeatureFlag.debugRequests.isTrue
         public var urlRequest: URLRequest
         public var responseType: RJS_SimpleNetworkClientResponseType
-        public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.GalleryApp.search_200 : nil }
+        public var mockedData: String? { return WebAPI.useMock ? AppConstants.Mocks.GalleryApp.search_200 : nil }
 
         init(request: GalleryAppRequests.Search) throws {
             let urlString = Target.search.endpoint + request.urlEscaped
@@ -83,7 +83,7 @@ public extension WebAPI.GalleryAppAPIRequest {
         public var debugRequest: Bool = DevTools.FeatureFlag.debugRequests.isTrue
         public var urlRequest: URLRequest
         public var responseType: RJS_SimpleNetworkClientResponseType
-        public var mockedData: String? { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue ? AppConstants.Mocks.GalleryApp.imageInfo_200 : nil }
+        public var mockedData: String? { return WebAPI.useMock ? AppConstants.Mocks.GalleryApp.imageInfo_200 : nil }
 
         init(request: GalleryAppRequests.ImageInfo) throws {
             let urlString = Target.imageInfo.endpoint + request.urlEscaped

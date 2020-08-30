@@ -18,11 +18,11 @@
 
 The mains intent of this project is:
 
-* To show a implementation of my 2 favorits design patterns: __MVP + Clean (Rx)__ and __MVP + Clean (Rx)__ and how we can use booth at same time and still have a rock solid project. 
+* To show a implementation of my 2 favourites design patterns: __MVP + Clean (Rx)__ and __MVP + Clean (Rx)__ and how we can use booth at same time and still have a rock solid project. 
 
 * Have a quick start project with all that a good project have (logs, webapi, etc), and that usually take some days to configure if we start from scratch. Saying so _Good to Go_ looked like a good name to me.
 
-If you don't agree with something or have a sugestion, just email me, I love to hear opinions and learn from that.
+If you don't agree with something or have a suggestion, just email me, I love to hear opinions and learn from that.
 
 # Install
 
@@ -40,9 +40,9 @@ Because of dependencies, its possible you need to compile __once__ all the frame
 
 ![Preview](__Documents__/ReadmeImages/readme_3.png)
 
-The project follows the Domain Driven aproach, and its divided in frameworks acording to business.
+The project follows the Domain Driven approach, and its divided in frameworks according to business.
 
-About namings, and taking `Core` as example. `Core` is where we have the __base__ implementation of business for the app; and this `Core` is something that could be in every mobile app. But `Core.XXX` do the same type of  of special business logic applyed to this app alone.  
+About naming, and taking `Core` as example. `Core` is where we have the __base__ implementation of business for the app; and this `Core` is something that could be in every mobile app. But `Core.XXX` do the same type of  of special business logic applyed to this app alone.  
 
 This mean that if we want to take out the `XXX` logic from the project, we just need to delete `Core.XXX`, `Domain.Bliss` and the Screens / `UIViewController`'s.
 

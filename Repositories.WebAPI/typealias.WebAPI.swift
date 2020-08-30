@@ -13,4 +13,7 @@ import DevTools
 
 typealias WebAPIRequestProtocol = RJS_SimpleNetworkClientRequestProtocol
 
-public struct WebAPI { private init() {} }
+public struct WebAPI {
+    private init() {}
+    static var useMock: Bool { return DevTools.FeatureFlag.devTeam_useMockedData.isTrue || DevTools.isMockApp }
+}

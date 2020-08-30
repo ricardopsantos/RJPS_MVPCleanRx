@@ -16,6 +16,7 @@ import Repositories_WebAPI
 import Core
 import Core_CarTrack
 import Core_GalleryApp
+import DevTools
 
 public typealias AS = AssembyContainer
 public struct AssembyContainer { private init() {} }
@@ -98,8 +99,13 @@ final class RootAssemblyContainer: Assembly {
         // GalleryApp
         //
 
-        container.autoregister(AppProtocols.galleryApp_NetWorkRepository,
-                               initializer: WebAPI.GalleryApp.NetWorkRepository.init).inObjectScope(.container)
+        if DevTools.isMockApp {
+            container.autoregister(AppProtocols.galleryApp_NetWorkRepository,
+                                   initializer: WebAPI.GalleryApp.NetWorkRepositoryMock.init).inObjectScope(.container)
+        } else {
+            container.autoregister(AppProtocols.galleryApp_NetWorkRepository,
+                                   initializer: WebAPI.GalleryApp.NetWorkRepository.init).inObjectScope(.container)
+        }
 
         // worker
         container.register(AppProtocols.galleryAppWorker) { resolver in

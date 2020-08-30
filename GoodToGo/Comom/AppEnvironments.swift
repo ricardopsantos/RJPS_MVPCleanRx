@@ -18,6 +18,7 @@ struct AppEnvironments {
         case prod
         case qa
         case dev
+        case mock
     }
 
     static var current: AppMode = .dev
@@ -25,6 +26,7 @@ struct AppEnvironments {
     static var isDev: Bool { return current == .dev }
     static var isQA: Bool { return current == .qa }
     static var isProd: Bool { return current == .prod }
+    static var isMock: Bool { return current == .mock }
 
     static func setup() {
 
@@ -43,6 +45,7 @@ struct AppEnvironments {
             case "Debug.QA"   : current = .qa
             case "Debug.Prod" : current = .prod
             case "Release"    : current = .prod
+            case "Mock"       : current = .mock
             default           :
                 block_recover()
             }
