@@ -98,7 +98,6 @@
 		D72923C224670D7500DAD480 /* AppConstants+Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923C124670D7500DAD480 /* AppConstants+Strings.swift */; };
 		D73E05BF2467112500965E96 /* AppResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E05BE2467112500965E96 /* AppResources.swift */; };
 		D741A35B246A85E5000235E0 /* D.BaseDomainVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D741A35A246A85E5000235E0 /* D.BaseDomainVIP.swift */; };
-		D741A360246A9CA9000235E0 /* BaseViewControllerMVP+RxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D741A35F246A9CA9000235E0 /* BaseViewControllerMVP+RxExtensions.swift */; };
 		D755FE7724B20251009BA6BD /* ViewWithRoundShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D755FE7624B20251009BA6BD /* ViewWithRoundShadow.swift */; };
 		D755FE7924B202A0009BA6BD /* ImageViewWithRoundedShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D755FE7824B202A0009BA6BD /* ImageViewWithRoundedShadow.swift */; };
 		D755FE7D24B20550009BA6BD /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D755FE7C24B20550009BA6BD /* AvatarView.swift */; };
@@ -108,7 +107,6 @@
 		D75A71C624BBA24600CC8463 /* RJPSLib_Base.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D75A71C224BBA24500CC8463 /* RJPSLib_Base.framework */; };
 		D75A71C724BBA24600CC8463 /* RJPSLib_Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D75A71C324BBA24500CC8463 /* RJPSLib_Networking.framework */; };
 		D761FEB72468334D00BD41A5 /* E.UIKitViewFactoryElementTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEB62468334D00BD41A5 /* E.UIKitViewFactoryElementTag.swift */; };
-		D761FEBC2468358B00BD41A5 /* BaseViewControllerMVP+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEBB2468358B00BD41A5 /* BaseViewControllerMVP+Keyboard.swift */; };
 		D761FEC22468387E00BD41A5 /* ModelEntityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FEC12468387E00BD41A5 /* ModelEntityProtocol.swift */; };
 		D761FED5246845FD00BD41A5 /* DefaultTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761FED4246845FD00BD41A5 /* DefaultTableViewSection.swift */; };
 		D768AD74246856E800DF295D /* TinyConstraints.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D761FEB82468339F00BD41A5 /* TinyConstraints.framework */; };
@@ -229,7 +227,6 @@
 		D7AB24B12467374A000142C4 /* BasePresenterVMPProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80AC22BFB68D003C4562 /* BasePresenterVMPProtocol.swift */; };
 		D7AB24B324673780000142C4 /* BaseViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AB24B22467377F000142C4 /* BaseViewProtocol.swift */; };
 		D7AB24B4246737A1000142C4 /* AppUtilsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80AF22BFB68D003C4562 /* AppUtilsProtocol.swift */; };
-		D7AB24B82467402A000142C4 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5D1CF122E5DC8700C0AF38 /* BaseRouter.swift */; };
 		D7AB24BB2467424A000142C4 /* BasePresenterMVP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9BED9D22E5C9620018BD4C /* BasePresenterMVP.swift */; };
 		D7AB24C8246743BD000142C4 /* AppCore.h in Headers */ = {isa = PBXBuildFile; fileRef = D7AB24C6246743BD000142C4 /* AppCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D7AB24CB246743BD000142C4 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AB24C4246743BD000142C4 /* Core.framework */; };
@@ -288,7 +285,7 @@
 		D7F2DE342474A718008CE3DA /* R.DataStoreReceiverRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2DE262474A6D4008CE3DA /* R.DataStoreReceiverRouter.swift */; };
 		D7F2DE352474A718008CE3DA /* D.DataStoreReceiverDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2DE272474A6D4008CE3DA /* D.DataStoreReceiverDomain.swift */; };
 		D7F2DE362474A718008CE3DA /* I.DataStoreReceiverInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2DE292474A6D4008CE3DA /* I.DataStoreReceiverInteractor.swift */; };
-		D7F2DE3924754758008CE3DA /* VCPresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2DE3824754758008CE3DA /* VCPresentationStyle.swift */; };
+		D7F2DE3924754758008CE3DA /* VC.PresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2DE3824754758008CE3DA /* VC.PresentationStyle.swift */; };
 		D7FA21F724708B9C001DD9D5 /* ReachabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA21F324706A32001DD9D5 /* ReachabilityView.swift */; };
 		D7FA2207247189B9001DD9D5 /* TokenRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA2206247189B9001DD9D5 /* TokenRefresh.swift */; };
 		D7FC6D2724DC807A00D01B42 /* RJSPLib_AppThemes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FC6D2624DC807A00D01B42 /* RJSPLib_AppThemes.framework */; };
@@ -894,10 +891,8 @@
 		9F58FB1422BE5DE700042A8C /* BottomBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
 		9F58FB1522BE5DE700042A8C /* V.UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V.UserTableViewCell.swift; sourceTree = "<group>"; };
 		9F58FB1622BE5DE700042A8C /* VC.TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VC.TabBarController.swift; sourceTree = "<group>"; };
-		9F5D1CF122E5DC8700C0AF38 /* BaseRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		9F5D1CF322E5E45700C0AF38 /* Rx+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rx+Extensions.swift"; sourceTree = "<group>"; };
 		9F69CB1322BE8544008D305D /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
-		9F6BB2BB22E31D0400829A6F /* MVPClean_Arquitecture.pptx */ = {isa = PBXFileReference; lastKnownFileType = file; path = MVPClean_Arquitecture.pptx; sourceTree = "<group>"; };
 		9F6BB2D822E3673200829A6F /* AppDelegate+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+URL.swift"; sourceTree = "<group>"; };
 		9F6BB2F222E3BEB300829A6F /* Notification+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification+Extensions.swift"; sourceTree = "<group>"; };
 		9F7CE25B22CE279700B1AC31 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
@@ -984,7 +979,6 @@
 		D72923C124670D7500DAD480 /* AppConstants+Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppConstants+Strings.swift"; sourceTree = "<group>"; };
 		D73E05BE2467112500965E96 /* AppResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppResources.swift; sourceTree = "<group>"; };
 		D741A35A246A85E5000235E0 /* D.BaseDomainVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D.BaseDomainVIP.swift; sourceTree = "<group>"; };
-		D741A35F246A9CA9000235E0 /* BaseViewControllerMVP+RxExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseViewControllerMVP+RxExtensions.swift"; sourceTree = "<group>"; };
 		D755FE7624B20251009BA6BD /* ViewWithRoundShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithRoundShadow.swift; sourceTree = "<group>"; };
 		D755FE7824B202A0009BA6BD /* ImageViewWithRoundedShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewWithRoundedShadow.swift; sourceTree = "<group>"; };
 		D755FE7C24B20550009BA6BD /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
@@ -995,7 +989,6 @@
 		D761FEB42468330600BD41A5 /* ProgramaticUIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramaticUIUtils.swift; sourceTree = "<group>"; };
 		D761FEB62468334D00BD41A5 /* E.UIKitViewFactoryElementTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E.UIKitViewFactoryElementTag.swift; sourceTree = "<group>"; };
 		D761FEB82468339F00BD41A5 /* TinyConstraints.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyConstraints.framework; path = Carthage/Build/iOS/TinyConstraints.framework; sourceTree = "<group>"; };
-		D761FEBB2468358B00BD41A5 /* BaseViewControllerMVP+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BaseViewControllerMVP+Keyboard.swift"; sourceTree = "<group>"; };
 		D761FEBD246837CE00BD41A5 /* V.BaseGenericViewVIP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V.BaseGenericViewVIP.swift; sourceTree = "<group>"; };
 		D761FEC12468387E00BD41A5 /* ModelEntityProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEntityProtocol.swift; sourceTree = "<group>"; };
 		D761FECF2468412100BD41A5 /* UIView+Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
@@ -1173,7 +1166,7 @@
 		D7F2DE262474A6D4008CE3DA /* R.DataStoreReceiverRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.DataStoreReceiverRouter.swift; sourceTree = "<group>"; };
 		D7F2DE272474A6D4008CE3DA /* D.DataStoreReceiverDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D.DataStoreReceiverDomain.swift; sourceTree = "<group>"; };
 		D7F2DE292474A6D4008CE3DA /* I.DataStoreReceiverInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.DataStoreReceiverInteractor.swift; sourceTree = "<group>"; };
-		D7F2DE3824754758008CE3DA /* VCPresentationStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCPresentationStyle.swift; sourceTree = "<group>"; };
+		D7F2DE3824754758008CE3DA /* VC.PresentationStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.PresentationStyle.swift; sourceTree = "<group>"; };
 		D7FA21F324706A32001DD9D5 /* ReachabilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityView.swift; sourceTree = "<group>"; };
 		D7FA2206247189B9001DD9D5 /* TokenRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRefresh.swift; sourceTree = "<group>"; };
 		D7FC6D2624DC807A00D01B42 /* RJSPLib_AppThemes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RJSPLib_AppThemes.framework; path = Carthage/Build/iOS/RJSPLib_AppThemes.framework; sourceTree = "<group>"; };
@@ -1662,7 +1655,7 @@
 				D788BD7E246943D0007C59D0 /* VIP */,
 				D788BD7D246943C9007C59D0 /* MVP */,
 				D7AB24B724673F00000142C4 /* README.md */,
-				D7F2DE3824754758008CE3DA /* VCPresentationStyle.swift */,
+				D7F2DE3824754758008CE3DA /* VC.PresentationStyle.swift */,
 				D72922D82466AFC600DAD480 /* typealias.UIBase.swift */,
 				D729228F2466A04200DAD480 /* UIBase.h */,
 				D72922902466A04200DAD480 /* Info.plist */,
@@ -1744,14 +1737,6 @@
 				9FFF80AB22BFB68C003C4562 /* GenericTableViewProtocol.swift */,
 			);
 			path = Protocols;
-			sourceTree = "<group>";
-		};
-		D741A35E246A9C99000235E0 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				D741A35F246A9CA9000235E0 /* BaseViewControllerMVP+RxExtensions.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		D761FE9A2468304A00BD41A5 /* GoodToGoVIP_Schene.xctemplate */ = {
@@ -1910,10 +1895,8 @@
 		D788BD7D246943C9007C59D0 /* MVP */ = {
 			isa = PBXGroup;
 			children = (
-				D741A35E246A9C99000235E0 /* Extensions */,
 				D788BD9624695A8C007C59D0 /* Presenter */,
 				D788BD9524695A85007C59D0 /* ViewController */,
-				D788BD9424695A80007C59D0 /* Router */,
 			);
 			path = MVP;
 			sourceTree = "<group>";
@@ -1931,19 +1914,10 @@
 			path = VIP;
 			sourceTree = "<group>";
 		};
-		D788BD9424695A80007C59D0 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				9F5D1CF122E5DC8700C0AF38 /* BaseRouter.swift */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
 		D788BD9524695A85007C59D0 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				9FE1437721AF1ADC0026BDFC /* BaseViewControllerMVP.swift */,
-				D761FEBB2468358B00BD41A5 /* BaseViewControllerMVP+Keyboard.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2250,7 +2224,6 @@
 			isa = PBXGroup;
 			children = (
 				D7F2DD1B2474485F008CE3DA /* DDD_Reference_2015-03.pdf */,
-				9F6BB2BB22E31D0400829A6F /* MVPClean_Arquitecture.pptx */,
 				D78F27EE246E159C008F7E54 /* VIPClean_Architecture.pptx */,
 				D77824BD2479C0230071776F /* DDD_Arquitecture.pptx */,
 			);
@@ -3439,17 +3412,14 @@
 				D7AB24BB2467424A000142C4 /* BasePresenterMVP.swift in Sources */,
 				D788BD7C246943AB007C59D0 /* I.BaseInteractorVIP.swift in Sources */,
 				D72922D92466AFC600DAD480 /* typealias.UIBase.swift in Sources */,
-				D7AB24B82467402A000142C4 /* BaseRouter.swift in Sources */,
 				D788BD76246892B3007C59D0 /* P.BasePresenterVIP.swift in Sources */,
 				D788BD842469453E007C59D0 /* V.BaseGenericViewVIP.swift in Sources */,
 				D741A35B246A85E5000235E0 /* D.BaseDomainVIP.swift in Sources */,
 				D788BD8124694448007C59D0 /* VC.BaseViewControllerVIP.swift in Sources */,
 				D72922CD2466A36C00DAD480 /* typealias.DDD.encaplulate.swift in Sources */,
 				D788BD8F246959F2007C59D0 /* StylableView.swift in Sources */,
-				D741A360246A9CA9000235E0 /* BaseViewControllerMVP+RxExtensions.swift in Sources */,
 				D72922A92466A0B100DAD480 /* BaseViewControllerMVP.swift in Sources */,
-				D761FEBC2468358B00BD41A5 /* BaseViewControllerMVP+Keyboard.swift in Sources */,
-				D7F2DE3924754758008CE3DA /* VCPresentationStyle.swift in Sources */,
+				D7F2DE3924754758008CE3DA /* VC.PresentationStyle.swift in Sources */,
 				D788BD83246944A9007C59D0 /* VC.BaseGenericViewControllerVIP.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
