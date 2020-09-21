@@ -12,6 +12,8 @@ import RxCocoa
 import RxSwift
 import DevTools
 import PointFreeFunctions
+//
+import Extensions
 
 open class BaseGenericViewControllerVIP<T: StylableView>: BaseViewControllerVIP {
 
@@ -30,8 +32,6 @@ open class BaseGenericViewControllerVIP<T: StylableView>: BaseViewControllerVIP 
         fatalError("Use instead [init(presentationStyle: \(VCPresentationStyle.self)]")
     }
 
-    public var disposeBag = DisposeBag()
-    public var firstAppearance: Bool = true
     public var genericView: T!
 
     open override func loadView() {

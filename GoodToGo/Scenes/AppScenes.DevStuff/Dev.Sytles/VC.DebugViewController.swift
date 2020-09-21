@@ -51,10 +51,8 @@ extension VC {
             DebugDataPassingProtocol &
             DebugRoutingLogicProtocol)?
 
-        let bottomBar = BottomBar()
-
         private lazy var topGenericView: TopBar = {
-            let some = TopBar()
+            let some = TopBar(presentationStyle: .unknown)
             some.injectOn(viewController: self, usingSafeArea: false)
             return some
         }()
@@ -91,7 +89,6 @@ extension VC {
             super.viewWillAppear(animated)
             if firstAppearance {
                 //bottomBar.injectOn(viewController: self, usingSafeArea: false)
-                topGenericView.lazyLoad()
                 interactor?.requestScreenInitialState()
             }
         }

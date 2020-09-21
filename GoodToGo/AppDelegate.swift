@@ -30,14 +30,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    static var shared: AppDelegate { return UIApplication.shared.delegate as! AppDelegate }
     public var reachabilityService: ReachabilityService? = DevTools.reachabilityService
 
     // Where we have all the dependencies
-    let container: Container = { return ApplicationAssembly.assembler.resolver as! Container }()
     var disposeBag = DisposeBag()
 
-    var acc = 0
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         if CommandLine.arguments.contains(AppConstants.Testing.CommandLineArguments.deleteUserData) {
@@ -51,8 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // handle any deeplink
-        DeepLinkManager.shared.checkDeepLinksToHandle()
+        // handle any deep-link
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

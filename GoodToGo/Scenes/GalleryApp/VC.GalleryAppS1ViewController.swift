@@ -60,7 +60,7 @@ extension VC {
         }()
 
         private lazy var topGenericView: TopBar = {
-            let some = TopBar()
+            let some = TopBar(presentationStyle: .unknown)
             some.injectOn(viewController: self, usingSafeArea: false)
             some.setTitle("Show me kitties!")
             return some
@@ -87,7 +87,6 @@ extension VC {
             super.viewWillAppear(animated)
             if firstAppearance {
                 interactor?.requestScreenInitialState()
-                topGenericView.lazyLoad()
             }
         }
 

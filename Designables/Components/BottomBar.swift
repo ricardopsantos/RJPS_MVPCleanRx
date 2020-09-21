@@ -16,12 +16,12 @@ import UIBase
 import AppConstants
 import DevTools
 import PointFreeFunctions
-
+/*
 public protocol BottomBar_Delegate: AnyObject {
     func btnTappedWith(identifier: String)
 }
 
-open class BottomBar: BaseViewControllerMVP {
+open class BottomBar: BaseViewControllerVIP {
     
     deinit {
         DevTools.Log.logDeInit("\(self.className) was killed")
@@ -180,3 +180,4 @@ public extension BottomBar {
 
     }
 }
+*/

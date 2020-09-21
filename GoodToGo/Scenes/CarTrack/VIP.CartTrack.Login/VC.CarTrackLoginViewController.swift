@@ -120,7 +120,7 @@ extension VC {
         }
 
         private lazy var topGenericView: TopBar = {
-            let some = TopBar()
+            let some = TopBar(presentationStyle: .unknown)
             some.injectOn(viewController: self, usingSafeArea: false)
             some.setTitle(Messages.welcome.localised)
             return some
@@ -130,7 +130,6 @@ extension VC {
         override func setupViewIfNeed() {
             // Use it to configure stuff on the genericView, depending on the value external/public variables
             // that are set after we instantiate the view controller, but before if has been presented
-            topGenericView.lazyLoad()
         }
 
         // This function is called automatically by super BaseGenericView

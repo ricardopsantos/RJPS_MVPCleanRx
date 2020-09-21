@@ -248,13 +248,7 @@ public struct UIKitFactory {
     }
     
     public static func topBar(baseController: UIViewController, usingSafeArea: Bool) -> TopBar {
-        let bar = TopBar()
-        bar.injectOn(viewController: baseController, usingSafeArea: usingSafeArea)
-        return bar
-    }
-
-    public static func bottomBar(baseController: UIViewController, usingSafeArea: Bool) -> BottomBar {
-        let bar = BottomBar()
+        let bar = TopBar(presentationStyle: .unknown)
         bar.injectOn(viewController: baseController, usingSafeArea: usingSafeArea)
         return bar
     }

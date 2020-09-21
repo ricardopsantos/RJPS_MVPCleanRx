@@ -36,6 +36,5 @@ typealias WebAPIRequestProtocol  = RJS_SimpleNetworkClientRequestProtocol
 
 typealias AppColors    = UIColor.App
 typealias AppFonts     = RJSPLib_AppThemes.RJS_Fonts
-typealias AppProtocols = RootAssemblyContainerProtocols
 
 // MARK: - DevTools

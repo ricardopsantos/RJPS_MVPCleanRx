@@ -26,7 +26,7 @@ import Factory
 // swiftlint:disable all
 
 extension VC {
-    class RxTesting: BaseViewControllerMVP, AppUtilsProtocol {
+    class RxTesting: BaseViewControllerVIP, AppUtilsProtocol {
         
         let margin: CGFloat = 10
         let btnHeight: CGFloat = 40
@@ -268,11 +268,9 @@ extension VC {
                     .subscribe(
                         onNext: { [weak self] _ in
                             self?.aux_log(message: "[Observable<T>][onNext]", showAlert: true, appendToTable: true)
-                            self?.displayMessage(Messages.ok.localised, type: .success)
                         },
                         onError: { [weak self] error in
                             self?.aux_log(message: "[Observable<T>][onError]", showAlert: true, appendToTable: true)
-                            self?.displayMessage(Messages.pleaseTryAgainLater.localised, type: .error)
                         }
                     )
                     .disposed(by: disposeBag)
@@ -374,7 +372,6 @@ extension VC.RxTesting {
     
     func aux_prepare() {
         self.view.backgroundColor = AppColors.background
-        topGenericView.lazyLoad()
         searchBar.lazyLoad()
         btnThrottle.lazyLoad()
         btnDebounce.lazyLoad()
@@ -392,7 +389,7 @@ extension VC.RxTesting {
             rxBehaviorRelay_tableDataSource.accept(["\(time) : \(message)"] + rxBehaviorRelay_tableDataSource.value)
         }
         if showAlert {
-            displayMessage(message, type: .success)
+            displayStatus(viewModel: BaseDisplayLogicModels.Status(title: message))
         }
     }
 }

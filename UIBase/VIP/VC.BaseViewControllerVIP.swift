@@ -10,13 +10,15 @@ import UIKit
 //
 import RxSwift
 import RJPSLib_Base
-import ToastSwiftFramework
-import RxSwift
 import DevTools
 //
 import AppConstants
+import AppTheme
 
 open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtocol {
+
+    public var disposeBag: DisposeBag = DisposeBag()
+    public var firstAppearance = true
 
     public var presentationStyle: VCPresentationStyle?
     public init(presentationStyle: VCPresentationStyle) {
@@ -41,9 +43,18 @@ open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtoco
 
     open override func loadView() {
         super.loadView()
-        setupColorsAndStyles()
+        doViewLifeCycle()
     }
 
+    open override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        DispatchQueue.executeWithDelay(delay: 0.1) { [weak self] in
+            guard let self = self else { return }
+            self.firstAppearance = false
+        }
+    }
+    
     open func displayStatus(viewModel: BaseDisplayLogicModels.Status) {
         var message = "\(viewModel.title)"
         if !viewModel.message.isEmpty {
@@ -67,21 +78,50 @@ open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtoco
     open func setupColorsAndStyles() {
         DevTools.Log.error(DevTools.Strings.notImplemented)
     }
+
+    open func prepareLayoutCreateHierarchy() {
+        // What should this function be used for? Add stuff to the view zone....
+        // ...
+        // addSubview(scrollView)
+        // scrollView.addSubview(stackViewVLevel1)
+        // ...
+        //
+        DevTools.Log.warning("\(self.className) : \(DevTools.Strings.overrideMe.rawValue)")
+    }
+
+    open func prepareLayoutBySettingAutoLayoutsRules() {
+        // What should this function be used for? Setup layout rules zone....
+        // ...
+        // someView.autoLayout.widthToSuperview()
+        // someView.autoLayout.bottomToSuperview()
+        // ...
+        //
+        DevTools.Log.warning("\(self.className) : \(DevTools.Strings.overrideMe.rawValue)")
+    }
+
+    open func prepareLayoutByFinishingPrepareLayout() {
+        // What should this function be used for? Extra stuff zone (not included in [prepareLayoutCreateHierarchy]
+        // and [prepareLayoutBySettingAutoLayoutsRules]
+        // ...
+        // table.separatorColor = .clear
+        // table.rx.setDelegate(self).disposed(by: disposeBag)
+        // label.textAlignment = .center
+        // ...
+        DevTools.Log.warning("\(self.className) : \(DevTools.Strings.overrideMe.rawValue)")
+    }
 }
 
 private extension BaseViewControllerVIP {
+
+    func doViewLifeCycle() {
+        prepareLayoutCreateHierarchy()           // DONT CHANGE ORDER
+        prepareLayoutBySettingAutoLayoutsRules() // DONT CHANGE ORDER
+        prepareLayoutByFinishingPrepareLayout()  // DONT CHANGE ORDER
+        setupColorsAndStyles()                   // DONT CHANGE ORDER
+    }
+
     func displayMessage(_ message: String, type: AlertType) {
-        var style = ToastStyle()
-        style.cornerRadius = 5
-        style.displayShadow = true
-        style.messageFont = AppFonts.Styles.paragraphSmall.rawValue
-        switch type {
-        case .success: style.backgroundColor = AppColors.success.withAlphaComponent(FadeType.superLight.rawValue)
-        case .warning: style.backgroundColor = AppColors.warning.withAlphaComponent(FadeType.superLight.rawValue)
-        case .error: style.backgroundColor = AppColors.error.withAlphaComponent(FadeType.superLight.rawValue)
-        }
-        style.messageColor = .white
-        DevTools.topViewController()?.view.makeToast(message, duration: 5, position: .top, style: style)
+        MessagesManager().displayMessage(message, type: type)
     }
 
     func setActivityState(_ state: Bool) {

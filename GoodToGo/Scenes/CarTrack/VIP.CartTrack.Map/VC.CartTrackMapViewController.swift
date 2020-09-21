@@ -56,7 +56,7 @@ extension VC {
         //
 
         private lazy var topGenericView: TopBar = {
-            let some = TopBar()
+            let some = TopBar(presentationStyle: .unknown)
             some.injectOn(viewController: self, usingSafeArea: false)
             some.addDismissButton()
             some.rxSignal_btnDismissTapped

@@ -16,7 +16,6 @@ extension VC {
 
     class TabBarController: UITabBarController {
 
-        //let container: Container = { return ApplicationAssembly.assembler.resolver as! Container }()
         override func loadView() {
             super.loadView()
         }

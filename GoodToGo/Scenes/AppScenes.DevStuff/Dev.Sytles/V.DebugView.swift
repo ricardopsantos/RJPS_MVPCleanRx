@@ -149,7 +149,7 @@ extension GoodToGo.V {
 
             AlertType.allCases.forEach { (some) in
                 let button = buttonWithAction(title: "Tap to show \(some) alert") {
-                    BaseViewControllerMVP.shared.displayMessage(randomStringWith(length: randomInt(min: 50, max: 100)), type: some)
+                    self.displayMessage(randomStringWith(length: randomInt(min: 50, max: 100)), type: some)
                 }
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(button)
                 button.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
@@ -333,7 +333,7 @@ extension GoodToGo.V {
             stackViewVLevel1.uiUtils.edgeStackViewToSuperView()
 
             let topBarSize    = TopBar.defaultHeight(usingSafeArea: false)
-            let bottomBarSize = BottomBar.backgroundHeight
+            let bottomBarSize: CGFloat = 0//BottomBar.backgroundHeight
             scrollView.autoLayout.trailingToSuperview()
             scrollView.autoLayout.leftToSuperview()
             scrollView.autoLayout.topToSuperview(offset: topBarSize, usingSafeArea: false)

@@ -17,7 +17,7 @@ import AppConstants
 import DevTools
 import PointFreeFunctions
 
-open class TopBar: BaseViewControllerMVP {
+open class TopBar: BaseViewControllerVIP {
 
     deinit {
         DevTools.Log.logDeInit("\(self.className) was killed")
@@ -76,33 +76,14 @@ open class TopBar: BaseViewControllerMVP {
         super.viewDidLoad()
         view.accessibilityIdentifier = self.genericAccessibilityIdentifier
         self.view.backgroundColor    = TopBar.defaultColor
-    }
-
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if firstAppearance {
-            self.lazyLoad()
-            if lblTitle.text.isEmpty && !baseViewControllerTitle.isEmpty {
-                lblTitle.textAnimated = baseViewControllerTitle
-            }
+        btnBack.lazyLoad()
+        btnClose.lazyLoad()
+        lblTitle.lazyLoad()
+        if lblTitle.text.isEmpty && !baseViewControllerTitle.isEmpty {
+            lblTitle.textAnimated = baseViewControllerTitle
         }
     }
 
-    open override func prepareLayoutCreateHierarchy() {
-
-    }
-
-    open override func prepareLayoutBySettingAutoLayoutsRules() {
-
-    }
-
-    open override func prepareLayoutByFinishingPrepareLayout() {
-
-    }
-
-    override open func setupViewUIRx() {
-
-    }
 }
 
 /**
@@ -118,12 +99,7 @@ extension TopBar {
     public func addBackButton() { enable(btn: btnBack) }
     public func addDismissButton() { enable(btn: btnClose) }
     public func setTitle(_ title: String) { lblTitle.textAnimated = title }
-    public func lazyLoad() {
-        btnBack.lazyLoad()
-        btnClose.lazyLoad()
-        lblTitle.lazyLoad()
-        /* Lazy var auxiliar */
-    }
+
     public var rxSignal_btnDismissTapped: Signal<Void> {
         return btnClose.rx.controlEvent(.touchUpInside).asSignal()
     }

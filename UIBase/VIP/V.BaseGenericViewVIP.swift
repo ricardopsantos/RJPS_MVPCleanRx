@@ -9,9 +9,11 @@ import UIKit
 //
 import RxCocoa
 import RxSwift
-//
 import DevTools
+//
 import PointFreeFunctions
+import AppTheme
+import AppConstants
 
 // MARK: - BaseGenericView
 open class BaseGenericViewVIP: StylableView {
@@ -40,34 +42,34 @@ open class BaseGenericViewVIP: StylableView {
         setupColorsAndStyles()
     }
 
-    // What should this function be used for? Add stuff to the view zone....
-    // ...
-    // addSubview(scrollView)
-    // scrollView.addSubview(stackViewVLevel1)
-    // ...
-    //
     open func prepareLayoutCreateHierarchy() {
+        // What should this function be used for? Add stuff to the view zone....
+        // ...
+        // addSubview(scrollView)
+        // scrollView.addSubview(stackViewVLevel1)
+        // ...
+        //
         DevTools.Log.warning("\(self.className) : \(DevTools.Strings.overrideMe.rawValue)")
     }
 
-    // What should this function be used for? Setup layout rules zone....
-    // ...
-    // someView.autoLayout.widthToSuperview()
-    // someView.autoLayout.bottomToSuperview()
-    // ...
-    //
     open func prepareLayoutBySettingAutoLayoutsRules() {
+        // What should this function be used for? Setup layout rules zone....
+        // ...
+        // someView.autoLayout.widthToSuperview()
+        // someView.autoLayout.bottomToSuperview()
+        // ...
+        //
         DevTools.Log.warning("\(self.className) : \(DevTools.Strings.overrideMe.rawValue)")
     }
 
-    // What should this function be used for? Extra stuff zone (not included in [prepareLayoutCreateHierarchy]
-    // and [prepareLayoutBySettingAutoLayoutsRules]
-    // ...
-    // table.separatorColor = .clear
-    // table.rx.setDelegate(self).disposed(by: disposeBag)
-    // label.textAlignment = .center
-    // ...
     open func prepareLayoutByFinishingPrepareLayout() {
+        // What should this function be used for? Extra stuff zone (not included in [prepareLayoutCreateHierarchy]
+        // and [prepareLayoutBySettingAutoLayoutsRules]
+        // ...
+        // table.separatorColor = .clear
+        // table.rx.setDelegate(self).disposed(by: disposeBag)
+        // label.textAlignment = .center
+        // ...
         DevTools.Log.warning("\(self.className) : \(DevTools.Strings.overrideMe.rawValue)")
     }
 
@@ -77,5 +79,9 @@ open class BaseGenericViewVIP: StylableView {
 
     open func setupViewUIRx() {
         DevTools.Log.warning("\(self.className) : \(DevTools.Strings.overrideMe.rawValue)")
+    }
+
+    open func displayMessage(_ message: String, type: AlertType) {
+        MessagesManager().displayMessage(message, type: type)
     }
 }

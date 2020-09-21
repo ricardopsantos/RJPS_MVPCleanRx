@@ -4,3 +4,5 @@
 #warning("add deeplink support - on progress")
 #warning("Add permissions support with rx")
 #warning("add SQL e paginagion")
+
+#warning("func displayMessage(_ message: String, type: AlertType) is implemented twice")
