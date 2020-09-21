@@ -203,7 +203,7 @@ extension V {
             screenLayout = viewModel.screenLayout
         }
 
-        var screenLayout: E.___VARIABLE_sceneName___View.ScreenLayout = .layoutA {
+        var screenLayout: ___VARIABLE_sceneName___View.ScreenLayout = .layoutA {
             didSet {
                 // show or hide stuff
             }

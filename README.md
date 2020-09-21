@@ -118,20 +118,6 @@ __Thumb rule : The name of the var, should be clear about the type associated.__
 
 ## Files naming
 
-### Enums 
-
-All enum file names start by ` E.`.
-
-```
-public enum AlertType: CaseIterable {
-    case success
-    case warning
-    case error
-}
-```
-
-So, the `AlertType` will be found on a file name `E.AlertType.swift`
- 
 ### VIP, MVP
 
 The _Views_ will start always by `V.`, _ViewControllers_ by `VC.`, Router by `R.`, _Interactors_ by `I.`, Presenters by `P.`,  Domain file by `D.` 

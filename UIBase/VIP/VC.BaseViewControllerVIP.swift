@@ -21,7 +21,7 @@ open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtoco
     }
 
     private init() {
-        fatalError("Use instead [init(presentationStyle: E.ViewControllerPresentedLike)]")
+        fatalError("Use instead [init(presentationStyle: ViewControllerPresentedLike)]")
     }
     
     public required init?(coder aDecoder: NSCoder) {

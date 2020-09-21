@@ -26,12 +26,10 @@ import UIBase
 // MARK: - Enums & Other Models
 //
 
-extension E {
-    struct CartTrackMapView {
-        enum ScreenLayout {
-            case unknown
-            case layoutB
-        }
+struct CartTrackMapView {
+    enum ScreenLayout {
+        case unknown
+        case layoutB
     }
 }
 

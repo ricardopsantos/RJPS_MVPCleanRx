@@ -25,17 +25,15 @@ import UIBase
 // MARK: - Enums & Other Models
 //
 
-extension E {
-    struct CarTrackLoginView {
-        enum ScreenLayout {
-            case enterUserCredentials
-            case enterPassword
-            case allFieldsAreValid
-            case wrongUserCredencial(errorMessage: String)
-            case invalidEmailFormat(errorMessage: String)
-            case invalidPasswordFormat(errorMessage: String)
-            case invalidEmailFormatAndPasswordFormat(passwordErrorMessage: String, emailErrorMessage: String)
-        }
+extension V.CarTrackLoginView {
+    enum ScreenLayout {
+        case enterUserCredentials
+        case enterPassword
+        case allFieldsAreValid
+        case wrongUserCredencial(errorMessage: String)
+        case invalidEmailFormat(errorMessage: String)
+        case invalidPasswordFormat(errorMessage: String)
+        case invalidEmailFormatAndPasswordFormat(passwordErrorMessage: String, emailErrorMessage: String)
     }
 }
 
@@ -147,7 +145,7 @@ extension VM {
                 let invalidCredencials: Bool?
             }
             struct ViewModel {
-                let layout: E.CarTrackLoginView.ScreenLayout
+                let layout: V.CarTrackLoginView.ScreenLayout
             }
         }
 
@@ -173,7 +171,7 @@ extension VM {
                 let title: String
                 let userName: String
                 let password: String
-                let screenLayout: E.CarTrackLoginView.ScreenLayout
+                let screenLayout: V.CarTrackLoginView.ScreenLayout
             }
         }
     }

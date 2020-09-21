@@ -203,7 +203,7 @@ extension GoodToGo.V {
             userCanProceed(viewModel.isEnabled)
         }
 
-        var screenLayout: E.CarTrackLoginView.ScreenLayout = .enterUserCredentials {
+        var screenLayout: CarTrackLoginView.ScreenLayout = .enterUserCredentials {
             didSet {
                 func setErrorMessage(_ message: String, forField: SkyFloatingLabelTextField) {
                     forField.errorMessage = message

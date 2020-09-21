@@ -26,12 +26,10 @@ import UIBase
 // MARK: - Enums & Other Models
 //
 
-extension E {
-    struct ___VARIABLE_sceneName___View {
-        enum ScreenLayout {
-            case layoutA
-            case layoutB
-        }
+extension V.___VARIABLE_sceneName___View {
+    enum ScreenLayout {
+        case layoutA
+        case layoutB
     }
 }
 
@@ -40,16 +38,6 @@ struct TemplateModel {
     let state: String?
 }
 
-// DataStore shared model
-/*
-struct ___VARIABLE_sceneName___DataStoreModelA {
-    let aString: String
-}
-
-struct ___VARIABLE_sceneName___DataStoreModelB {
-    let aString: String
-}
-*/
 //
 // MARK: - Interactor (Business Logic)
 //
@@ -152,7 +140,7 @@ extension VM {
             struct ViewModel {
                 let title: String
                 let subTitle: String
-                let screenLayout: E.___VARIABLE_sceneName___View.ScreenLayout
+                let screenLayout: V.___VARIABLE_sceneName___View.ScreenLayout
             }
         }
     }

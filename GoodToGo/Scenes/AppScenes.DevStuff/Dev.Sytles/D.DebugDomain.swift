@@ -25,13 +25,11 @@ import UIBase
 // MARK: - Enums & Other Models
 //
 
-extension E {
-    struct DebugView {
-        enum ScreenLayout {
-            case unknown
-            case layoutA
-            case layoutB
-        }
+struct DebugView {
+    enum ScreenLayout {
+        case unknown
+        case layoutA
+        case layoutB
     }
 }
 
@@ -146,7 +144,7 @@ extension VM {
             struct ViewModel {
                 let title: String
                 let subTitle: String
-                let screenLayout: E.DebugView.ScreenLayout
+                let screenLayout: DebugView.ScreenLayout
             }
         }
     }

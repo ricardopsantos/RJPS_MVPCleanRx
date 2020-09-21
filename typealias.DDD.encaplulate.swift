@@ -7,10 +7,10 @@
 
 // Common to all Modules
 
-public typealias E = Enums
-public struct Enums { private init() {} }
+//public typealias E = Enums
+//public struct Enums { private init() {} }
 
 // MARK: - Models
 
-public typealias M = Model
-public struct Model { private init() {} }
+//public typealias M = Model
+//public struct Model { private init() {} }

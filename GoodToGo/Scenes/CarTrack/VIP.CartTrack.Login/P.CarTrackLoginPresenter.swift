@@ -78,7 +78,7 @@ extension P.CarTrackLoginPresenter: CarTrackLoginPresentationLogicProtocol {
     func presentScreenInitialState(response: VM.CarTrackLogin.ScreenInitialState.Response) {
         let userName = response.userName
         let password = response.password
-        let screenLayout: E.CarTrackLoginView.ScreenLayout = .enterUserCredentials
+        let screenLayout: V.CarTrackLoginView.ScreenLayout = .enterUserCredentials
         let title = Messages.welcome.localised
         let viewModel = VM.CarTrackLogin.ScreenInitialState.ViewModel(title: title,
                                                                       userName: userName,
@@ -92,7 +92,7 @@ extension P.CarTrackLoginPresenter: CarTrackLoginPresentationLogicProtocol {
 
         let emailIsValid    = response.emailIsValid
         let passwordIsValid = response.passwordIsValid
-        var layout: E.CarTrackLoginView.ScreenLayout = .allFieldsAreValid
+        var layout: V.CarTrackLoginView.ScreenLayout = .allFieldsAreValid
         if emailIsValid && !passwordIsValid {
             //
             // Invalid password
