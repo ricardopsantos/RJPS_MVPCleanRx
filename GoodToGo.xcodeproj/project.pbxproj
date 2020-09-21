@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9F103A0D2236BD1B00C57BC0 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F103A0C2236BD1A00C57BC0 /* Swinject.framework */; };
-		9F103A302236C08900C57BC0 /* ApplicationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F103A2E2236C08900C57BC0 /* ApplicationAssembly.swift */; };
+		9F103A302236C08900C57BC0 /* ApplicationScenesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F103A2E2236C08900C57BC0 /* ApplicationScenesAssembly.swift */; };
 		9F103A332236C08900C57BC0 /* RootAssemblyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F103A2F2236C08900C57BC0 /* RootAssemblyContainer.swift */; };
 		9F103A3F2236C1FE00C57BC0 /* SwinjectAutoregistration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F103A3E2236C1FE00C57BC0 /* SwinjectAutoregistration.framework */; };
 		9F3ED4BC22E618C80020A50A /* VC.RxTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3ED4BB22E618C80020A50A /* VC.RxTesting.swift */; };
@@ -234,6 +234,7 @@
 		D7B361F825196619009B5DAD /* MessagesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B361F425195C30009B5DAD /* MessagesManager.swift */; };
 		D7B361FA25196C73009B5DAD /* GalleryAppAssemblyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B361F925196C73009B5DAD /* GalleryAppAssemblyContainer.swift */; };
 		D7B361FC25196D0B009B5DAD /* CarTrackAssemblyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B361FB25196D0B009B5DAD /* CarTrackAssemblyContainer.swift */; };
+		D7B361FF25197186009B5DAD /* ApplicationCoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B361FE25197186009B5DAD /* ApplicationCoreAssembly.swift */; };
 		D7B514FD246EB3F70008E2E0 /* E.FadeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B514FC246EB3F70008E2E0 /* E.FadeType.swift */; };
 		D7C4CB872494D3990087E999 /* CarTrackMKMarkerAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C4CB862494D3990087E999 /* CarTrackMKMarkerAnnotationView.swift */; };
 		D7C4CB892494D3B20087E999 /* CarTrackMKAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C4CB882494D3B20087E999 /* CarTrackMKAnnotation.swift */; };
@@ -875,7 +876,7 @@
 /* Begin PBXFileReference section */
 		9F02AE5B20F91E7B00AB5942 /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		9F103A0C2236BD1A00C57BC0 /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
-		9F103A2E2236C08900C57BC0 /* ApplicationAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationAssembly.swift; sourceTree = "<group>"; };
+		9F103A2E2236C08900C57BC0 /* ApplicationScenesAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationScenesAssembly.swift; sourceTree = "<group>"; };
 		9F103A2F2236C08900C57BC0 /* RootAssemblyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootAssemblyContainer.swift; sourceTree = "<group>"; };
 		9F103A3E2236C1FE00C57BC0 /* SwinjectAutoregistration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwinjectAutoregistration.framework; path = Carthage/Build/iOS/SwinjectAutoregistration.framework; sourceTree = "<group>"; };
 		9F15CF2922BFA56E00FB402A /* E.AppMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = E.AppMode.swift; sourceTree = "<group>"; };
@@ -1110,6 +1111,7 @@
 		D7B361F425195C30009B5DAD /* MessagesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesManager.swift; sourceTree = "<group>"; };
 		D7B361F925196C73009B5DAD /* GalleryAppAssemblyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryAppAssemblyContainer.swift; sourceTree = "<group>"; };
 		D7B361FB25196D0B009B5DAD /* CarTrackAssemblyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTrackAssemblyContainer.swift; sourceTree = "<group>"; };
+		D7B361FE25197186009B5DAD /* ApplicationCoreAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoreAssembly.swift; sourceTree = "<group>"; };
 		D7B514FC246EB3F70008E2E0 /* E.FadeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = E.FadeType.swift; sourceTree = "<group>"; };
 		D7C218D1247C2B580088377B /* unused.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = unused.rb; sourceTree = SOURCE_ROOT; };
 		D7C4CB862494D3990087E999 /* CarTrackMKMarkerAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTrackMKMarkerAnnotationView.swift; sourceTree = "<group>"; };
@@ -1382,8 +1384,9 @@
 		9F103A2D2236C08900C57BC0 /* DependencyInjection */ = {
 			isa = PBXGroup;
 			children = (
+				9F103A2E2236C08900C57BC0 /* ApplicationScenesAssembly.swift */,
+				D7B361FE25197186009B5DAD /* ApplicationCoreAssembly.swift */,
 				9F103A2F2236C08900C57BC0 /* RootAssemblyContainer.swift */,
-				9F103A2E2236C08900C57BC0 /* ApplicationAssembly.swift */,
 				D7B361F925196C73009B5DAD /* GalleryAppAssemblyContainer.swift */,
 				D7B361FB25196D0B009B5DAD /* CarTrackAssemblyContainer.swift */,
 			);
@@ -3312,6 +3315,7 @@
 				D7711F6C246B340C00B6963A /* VC.___FILEBASENAME___ViewController.swift in Sources */,
 				D7979DB5246D6B370039031C /* P.CartTrackMapPresenter.swift in Sources */,
 				D7711F68246B340C00B6963A /* I.___FILEBASENAME___Interactor.swift in Sources */,
+				D7B361FF25197186009B5DAD /* ApplicationCoreAssembly.swift in Sources */,
 				D7979DC6246DC1960039031C /* VC.DebugViewController.swift in Sources */,
 				D7F2DE362474A718008CE3DA /* I.DataStoreReceiverInteractor.swift in Sources */,
 				9FE1439721AF2F520026BDFC /* typealias.Application.swift in Sources */,
@@ -3324,7 +3328,7 @@
 				D7F2DE332474A718008CE3DA /* VC.DataStoreReceiverViewController.swift in Sources */,
 				D7F2DE342474A718008CE3DA /* R.DataStoreReceiverRouter.swift in Sources */,
 				D7C4CB892494D3B20087E999 /* CarTrackMKAnnotation.swift in Sources */,
-				9F103A302236C08900C57BC0 /* ApplicationAssembly.swift in Sources */,
+				9F103A302236C08900C57BC0 /* ApplicationScenesAssembly.swift in Sources */,
 				9FE143B821AF2F520026BDFC /* AppEnvironments.swift in Sources */,
 				D7979DB2246D6B370039031C /* V.CartTrackMapView.swift in Sources */,
 				D774F5A824F6865100D01370 /* P.GalleryAppS1Presenter.swift in Sources */,

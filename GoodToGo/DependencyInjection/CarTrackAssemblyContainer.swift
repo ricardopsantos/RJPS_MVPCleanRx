@@ -22,7 +22,7 @@ import DevTools
 
 public class CarTrackResolver {
     private init() { }
-    public static let worker = ApplicationAssembly.assembler.resolver.resolve(RootAssemblyContainerProtocols.carTrackAppWorker.self)
+    public static let worker = ApplicationScenesAssembly.assembler.resolver.resolve(RootAssemblyContainerProtocols.carTrackAppWorker.self)
 }
 
 final class CarTrackAssemblyContainer: Assembly {

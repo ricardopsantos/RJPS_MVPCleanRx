@@ -44,7 +44,7 @@ extension AppDelegate {
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
             if let url = userActivity.webpageURL {
-
+                DevTools.Log.message("Universal [\(url)]")
             }
         }
         return true

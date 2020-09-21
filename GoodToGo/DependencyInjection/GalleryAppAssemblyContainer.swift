@@ -22,7 +22,7 @@ import DevTools
 
 public class GalleryAppResolver {
     private init() { }
-    public static let worker = ApplicationAssembly.assembler.resolver.resolve(RootAssemblyContainerProtocols.galleryAppWorker.self)
+    public static let worker = ApplicationScenesAssembly.assembler.resolver.resolve(RootAssemblyContainerProtocols.galleryAppWorker.self)
 }
 
 //

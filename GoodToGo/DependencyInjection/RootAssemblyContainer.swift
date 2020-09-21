@@ -18,6 +18,15 @@ import Core_CarTrack
 import Core_GalleryApp
 import DevTools
 
+// READ! READ! READ! READ! READ! READ! READ! READ! READ!
+// READ! READ! READ! READ! READ! READ! READ! READ! READ!
+//
+// For simplicity sake, the dependencies will be shared amount some target (GoodToGo & UIBase)
+//
+// READ! READ! READ! READ! READ! READ! READ! READ! READ!
+// READ! READ! READ! READ! READ! READ! READ! READ! READ!
+//
+
 //
 // MARK: - Protocols
 //
@@ -56,20 +65,25 @@ struct RootAssemblyContainerProtocols {
     static let galleryAppNetWorkRepository         = GalleryAppNetWorkRepositoryProtocol.self       // Repository - WebAPI
 }
 
+public class RootAssemblyResolver {
+    private init() { }
+    public static let messagesManager = ApplicationScenesAssembly.assembler.resolver.resolve(RootAssemblyContainerProtocols.messagesManager.self)
+}
+
 //
 // MARK: - RootAssemblyContainer
 //
 
-final class RootAssemblyContainer: Assembly {
+final class CoreAssemblyContainer: Assembly {
 
     func assemble(container: Container) {
+
+        container.autoregister(RootAssemblyContainerProtocols.messagesManager,
+                               initializer: MessagesManager.init).inObjectScope(.container)
 
         //
         // Base app repositories
         //
-
-        container.autoregister(RootAssemblyContainerProtocols.messagesManager,
-                               initializer: MessagesManager.init).inObjectScope(.container)
 
         container.autoregister(RootAssemblyContainerProtocols.hotCacheRepository,
                                initializer: RP.HotCacheRepository.init).inObjectScope(.container)

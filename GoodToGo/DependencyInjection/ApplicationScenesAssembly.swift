@@ -9,11 +9,11 @@ import Foundation
 import Swinject
 import SwinjectAutoregistration
 
-final class ApplicationAssembly {
+final class ApplicationScenesAssembly {
     
     class var assembler: Assembler {
         let assemblyList: [Assembly] = [
-            RootAssemblyContainer(),
+            CoreAssemblyContainer(),
             CarTrackAssemblyContainer(),
             GalleryAppAssemblyContainer()
         ]
