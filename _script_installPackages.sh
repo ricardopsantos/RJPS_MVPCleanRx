@@ -31,6 +31,7 @@ displayCompilerInfo() {
 echo "### Brew"
 echo " [1] : Install"
 echo " [2] : Update"
+echo " [3] : Skip"
 echo -n "Option? "
 read option
 case $option in
@@ -43,12 +44,11 @@ esac
 ################################################################################
 
 printf "\n"
-printf "\n"
 
-echo -n "### Carthage"
+echo "### Carthage"
 echo " [1] : Install"
 echo " [2] : Update"
-printf "\n"
+echo " [3] : Skip"
 echo -n "Option? "
 read option
 case $option in
@@ -68,10 +68,11 @@ printf "\n"
 printf "\n"
 
 echo "### Change Compiler?"
-echo "[1] : Xcode current - Version 11.1 (11A1027)"
-echo "[2] : Xcode Version 11.0 (11A420a)"
-echo "[3] : Xcode Version 10.3 (10G8)"
-echo "[4] : Xcode Version 9.4.1 (9F2000)"
+echo " [1] : Xcode current - Version 11.1 (11A1027)"
+echo " [2] : Xcode Version 11.0 (11A420a)"
+echo " [3] : Xcode Version 10.3 (10G8)"
+echo " [4] : Xcode Version 9.4.1 (9F2000)"
+echo " [5] : Skip"
 printf "\n"
 echo -n "Option? "
 read option
@@ -93,7 +94,9 @@ displayCompilerInfo
 printf "\n"
 printf "\n"
 
-echo -n "Perform 'carthage update --platform iOS'? [y]: "
+echo "### Perform 'carthage update --platform iOS'?"
+echo " [y] :Yes"
+echo " [n] :No/Skip"
 printf "\n"
 echo -n "Option: "
 read option

@@ -1,0 +1,11 @@
+framework module RJSPLib_AppThemes {
+  umbrella header "RJSPLib_AppThemes.h"
+
+  export *
+  module * { export * }
+}
+
+module RJSPLib_AppThemes.Swift {
+    header "RJSPLib_AppThemes-Swift.h"
+    requires objc
+}

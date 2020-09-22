@@ -45,7 +45,7 @@ github "fpillet/NSLogger"
 
 # https://github.com/stephencelis/SQLite.swift
 # A type-safe, Swift-language layer over SQLite3.
-#github "stephencelis/SQLite.swift" ~> 0.12.0
+# github "stephencelis/SQLite.swift" ~> 0.12.0
 
 ####################################################################
 # A beautiful and flexible text field control implementation of "Float Label Pattern". Written in Swift.
@@ -84,7 +84,7 @@ github "Swinject/SwinjectAutoregistration"
 ####################################################################
 # https://github.com/ricardopsantos/RJPSLib
 # Guys love tools, this is my Swift toolbox
-#github "ricardopsantos/RJPSLib" "1.1"
+# github "ricardopsantos/RJPSLib" "1.1"
 github "ricardopsantos/RJPSLib" "master"
 
 ####################################################################
@@ -101,7 +101,7 @@ github "CosmicMind/Material"
 ####################################################################
 ####################################################################
 
-# General / Frameworks and Librarys / Add...
+# General / Frameworks and Libraries / Add...
 
 # Then add on build phases run script
 

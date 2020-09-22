@@ -1,7 +1,7 @@
 //
 //  GoodToGo
 //
-//  Created by Ricardo Santos on 31/01/2020.
+//  Created by Ricardo Santos
 //  Copyright © 2020 Crédito Agrícola. All rights reserved.
 //
 import Foundation

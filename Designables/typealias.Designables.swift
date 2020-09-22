@@ -1,7 +1,7 @@
 //
 //  GoodToGo
 //
-//  Created by Ricardo Santos on 09/05/2020.
+//  Created by Ricardo Santos
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
 //
 
@@ -18,5 +18,4 @@ public typealias CustomSearchBar = RJS_Designables_SearchBar
 public typealias AppSizes = Designables.Sizes
 public typealias AppleSizes = Designables.Sizes.Apple
 
-public typealias AppColors = UIColor.App
 public typealias AppFonts  = RJSPLib_AppThemes.RJS_Fonts

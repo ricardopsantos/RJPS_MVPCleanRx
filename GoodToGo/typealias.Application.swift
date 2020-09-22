@@ -22,19 +22,21 @@ import UIBase
 import DevTools
 import Designables
 
+//
 // MARK: - RJPSLib Shortcuts
+//
+// https://github.com/ricardopsantos/RJPSLib
+// Turning the RJPSLib alias into something more readable and related to this app it self
+//
 
-typealias AppInfo                = RJS_AppInfo
-typealias AppCoreDataManager     = RJS_DataModel
-typealias AppSimpleNetworkClient = RJS_SimpleNetworkClient
-typealias AppUtils               = RJS_Utils
-typealias AppUserDefaultsVars    = RJS_UserDefaultsVars
-typealias AppUserDefaults        = RJS_UserDefaults
-typealias WebAPIRequestProtocol  = RJS_SimpleNetworkClientRequestProtocol
+typealias AppInfo                = RJPSLib_Base.RJSLib.AppAndDeviceInfo                         // Utilities for apps and device info. Things like `isSimulator`, `hasNotch`, etc
+typealias AppUtils               = RJPSLib_Base.RJSLib.Utils                                    // Utilities like `onDebug`, `onRelease`, `executeOnce`, etc
+typealias AppCoreDataManager     = RJPSLib_Storage.DataModelEntetie                             // Alias over `public class DataModelEntetie: NSManagedObject`
+typealias AppUserDefaultsVars    = RJPSLib_Storage.RJSLib.Storages.NSUserDefaultsStoredVarUtils // NSUserDefaults utilities for Int Type
+typealias AppUserDefaults        = RJPSLib_Storage.RJSLib.Storages.NSUserDefaults               // NSUserDefaults utilities (save, delete, get, exits, ...)
+typealias WebAPIRequestProtocol  = RJPSLib_Networking.SimpleNetworkClientRequest_Protocol
+typealias AppSimpleNetworkClient = RJPSLib_Networking.RJSLib.SimpleNetworkClient
 
-// MARK: - App Shortcuts
-
-typealias AppColors    = UIColor.App
-typealias AppFonts     = RJSPLib_AppThemes.RJS_Fonts
-
-// MARK: - DevTools
+// Fonts Shortcut: https://github.com/ricardopsantos/RJPSLib/blob/master/RJSPLib.AppThemes/LibCode/UIFont%2BExtensions.swift
+// Font styles utils with a font builder for Bold, Regular and Light, and also pre-built styles like : headingJumbo, headingBold, headingMedium, headingSmall
+typealias AppFonts = RJSPLib_AppThemes.RJS_Fonts

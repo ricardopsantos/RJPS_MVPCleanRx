@@ -1,0 +1,16 @@
+{
+  "commitish" : "v1.9.7",
+  "iOS" : [
+    {
+      "name" : "NSLogger",
+      "hash" : "e3b0b70f614b924ede1c888e731ae39fe29266b250b28b0ff90459a514f169e3",
+      "linking" : "dynamic"
+    },
+    {
+      "hash" : "4726354f3c58f37bad2f8bd8d2bbcb5ae62c7f7c43ed40908344bad405bb4c62",
+      "name" : "NSLoggerSwift",
+      "linking" : "dynamic",
+      "swiftToolchainVersion" : "5.2 (swiftlang-1103.0.32.1 clang-1103.0.32.29)"
+    }
+  ]
+}

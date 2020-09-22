@@ -1,0 +1,4 @@
+framework module RJPSLib_Networking {
+  header "RJPSLib_Networking-Swift.h"
+  requires objc
+}

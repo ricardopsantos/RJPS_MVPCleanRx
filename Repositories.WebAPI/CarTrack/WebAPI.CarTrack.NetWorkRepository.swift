@@ -1,7 +1,7 @@
 //
 //  GoodToGo
 //
-//  Created by Ricardo Santos on 13/05/2020.
+//  Created by Ricardo Santos
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
 //
 

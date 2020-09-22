@@ -14,11 +14,11 @@
 </p>
 
 
-# iOS Architecture design patterns : (MVP or VIP) + Clean + Rx
+# iOS Architecture design patterns :VIP + Clean + Rx
 
 The mains intent of this project is:
 
-* To show a implementation of my 2 favourites design patterns: __MVP + Clean (Rx)__ and __MVP + Clean (Rx)__ and how we can use booth at same time and still have a rock solid project. 
+* To show a implementation of one of my favourites design patterns: __VIO + Clean (Rx)__ and how we can use booth at same time and still have a rock solid project. 
 
 * Have a quick start project with all that a good project have (logs, webapi, etc), and that usually take some days to configure if we start from scratch. Saying so _Good to Go_ looked like a good name to me.
 
@@ -26,29 +26,29 @@ If you don't agree with something or have a suggestion, just email me, I love to
 
 # Install
 
-## Step 1
+### Step 1
 
 Download source code and run  `./_script_installPackages.sh`
 
 This will install/update [Brew](https://brew.sh/), that will be used to install/update [Carthage](https://github.com/Carthage/Carthage)
 
-## Step 2 
+### Step 2 
 
 Because of dependencies, its possible you need to compile __once__ all the frameworks __one by one__
 
 ## Project structure
 
-![Preview](__Documents__/ReadmeImages/readme_3.png)
+![Preview](__Documents__/ReadmeImages/readme_1.png)
 
 The project follows the Domain Driven approach, and its divided in frameworks according to business.
 
 About naming, and taking `Core` as example. `Core` is where we have the __base__ implementation of business for the app; and this `Core` is something that could be in every mobile app. But `Core.XXX` do the same type of  of special business logic applyed to this app alone.  
 
-This mean that if we want to take out the `XXX` logic from the project, we just need to delete `Core.XXX`, `Domain.Bliss` and the Screens / `UIViewController`'s.
+This mean that if we want to take out the `XXX` logic from the project, we just need to take `Core.XXX`, `Domain.XXX` and the related _Scenes_.
 
 ## Project modules dependencies
 
-![Preview](__Documents__/ReadmeImages/readme_4.png)
+![Preview](__Documents__/ReadmeImages/readme_2.png)
 
 * `GoodToGo` : Is the app it self. Scenes, Workers and SwiftInject related code
 * `AppTheme` : Manage fonts, colours and so so
@@ -56,7 +56,7 @@ This mean that if we want to take out the `XXX` logic from the project, we just 
 * `Designables` : UI components
 * `Factory` : Factory for objects (for now just `Errors`)
 * `AppResources` : App strings/localisables, images, etc...
-* `UIBase` : Base classes, mainly for `MVP` and `VIP`
+* `UIBase` : Base classes, mainly for `VIP`
 * `Domain`, `Core`, `Repositories` : DDD
 * `DevTools` : Logs, feature flags, developer helping tools in general
 * `Extensions` : See [Extensions](https://docs.swift.org/swift-book/LanguageGuide/Extensions.html)
@@ -66,6 +66,46 @@ This mean that if we want to take out the `XXX` logic from the project, we just 
  public var screenWidth: CGFloat { return UIScreen.main.bounds.width }
  ```
 
+# VIP - Quick intro
+
+![Preview](__Documents__/ReadmeImages/readme_3.png)
+
+A single screen has always 6 files
+
+* `View` - View Logic
+    * Only UI
+    * No business
+    * Forward user interaction to `ViewController`
+    * Don't know nothing, including `ViewController`
+* `UIViewController` - Display Logic
+    * Glues/bridge `View` and `Interator` by observing the `View` and letting the `Interator` know about it
+    * No business
+    * Knows a `Router` if needed
+    * Knows the `Interactor`
+    * Knows `View` and observe `View` to pass events to `Interactor`
+* `Interator` - Business Logic
+    * Can have business rules
+    * Receive `ViewController` requests and do stuff with it
+    * Knows `Worker` 
+    * Knows `Presenter` 
+    * Takes the `Worker` responses, and forward then to the `Presenter`
+* `Presenter` - Presentation Logic
+    * Receives a raw object from the `Interactor` and parse it in a way that the View knows how to show it. Example : The `Interactor` can send a `Swift.Date` object to the `Presenter`, and the `Presenter` turns that into a `String` like _Monday, 10 AM_
+    * Takes an `Interactor` object, parses it and sent it to the `ViewController` and the `ViewController` sends it to the `View`
+* `Domain` 
+    * The `Domain` file contains all the protocols related with some `Scene` (since all this layers are connected using protocols), and also all the related `ViewModels`
+* `Router` 
+    * Handles screen routing 
+
+* __ Others__    
+    * `Worker` 
+        * If and app could be separated into UI and business, the worker is the glue/bridge
+        * Connects the Interator and the UseCases
+    * `UseCases`
+        * Brain of the app. 
+        * Can connect to `API`, `DataBase` and so on 
+
+More info about VIP architecture [here](https://github.com/ricardopsantos/RJPS_MVPCleanRx/tree/master/__Documents__/Arquitecture)
 
 # Project (implemented) Features
 
@@ -77,13 +117,10 @@ This mean that if we want to take out the `XXX` logic from the project, we just 
 - [x] Cache (on Network API) usage
 - [x] Code style analyser with [Swiftlint](https://github.com/realm/SwiftLint)
 - [x] Dependency injection with [Swinject](https://github.com/Swinject/Swinject)
-- [x] MVP Pattern design sample screens - `GoodToGo/Scenes/MVP.*`
 - [x] VIP Pattern design sample screens - `GoodToGo/Scenes/VIP.*`
 - [x] VIP Custom Xcode Template - `GoodToGoVIP_Schene.xctemplate`
 - [x] UnitTests
 - [x] `SwiftUI` Preview for all `UIViewControllers`
-
-More info about the project and MVP|VIP architecture [here](https://github.com/ricardopsantos/RJPS_MVPCleanRx/tree/master/__Documents__/Arquitecture)
  
 # Used Frameworks
 
@@ -94,7 +131,6 @@ More info about the project and MVP|VIP architecture [here](https://github.com/r
  * RxDataSources, RxSwift, RxGesture, RxCocoa
  * [Toast-Swift](https://github.com/scalessec/Toast-Swift) - A modern, flexible logging tool
  * [SkyFloatingLabelTextField](https://github.com/Skyscanner/SkyFloatingLabelTextField) - A beautiful and flexible text field control implementation of _Float Label Pattern_
- * [Hero](https://github.com/HeroTransitions/Hero) - Elegant transition library for iOS & tvOS
  * [Material](https://github.com/CosmicMind/Material) - A UI/UX framework for creating beautiful applications. http://cosmicmind.com
  * [Motion](https://github.com/CosmicMind/Motion) - A library used to create beautiful animations and transitions for iOS. 
  * [Lottie-ios](https://github.com/airbnb/lottie-ios) - An iOS library to natively render After Effects vector animations
@@ -102,11 +138,11 @@ More info about the project and MVP|VIP architecture [here](https://github.com/r
 
 # Code Guidelines/Conventions
 
-## All is private
+### All is private
 
 Variables, functions, etc are private, unless really need to be public/internal
 
-## Variable naming
+### Variable naming
 
 * All `UIButton`s start by _btn_. Example : _btnLogin_, _btnRegister_
 * All `UILabel`s start by _lbl_. Example _llbName_, _lblPassword_
@@ -116,17 +152,13 @@ Variables, functions, etc are private, unless really need to be public/internal
 
 __Thumb rule : The name of the var, should be clear about the type associated.__
 
-## Files naming
+### Files naming
 
-### VIP, MVP
-
-The _Views_ will start always by `V.`, _ViewControllers_ by `VC.`, Router by `R.`, _Interactors_ by `I.`, Presenters by `P.`,  Domain file by `D.` 
+The _Views_ will start always by `V.`, _ViewControllers_ by `VC.`, _Routers_ by `R.`, _Interactors_ by `I.`, _Presenters_ by `P.`,  _Domain_ file by `D.` 
 
 Other files : `W.` for _Workers_ and `UC.` for _UseCases_
 
-![Preview](__Documents__/ReadmeImages/readme_5.png)
-
-## Others
+### Others
 
 * Hardcoded values are strongly discouraged
 

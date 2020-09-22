@@ -11,9 +11,9 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 import TinyConstraints
-import SkyFloatingLabelTextField
-import Material
-import Motion
+import SkyFloatingLabelTextField   // For UI component SkyFloatingLabelTextField
+import Material                    // For UI component RaisedButton
+import Motion                      // For UI component RaisedButton
 //
 import AppConstants
 import AppTheme
@@ -27,18 +27,18 @@ import AppResources
 public struct UIKitFactory {
     private init() {}
 
+    // https://github.com/CosmicMind/Material#button
     public static func raisedButton(title: String,
                                     pulseColor: UIColor = AppColors.onPrimary,
                                     backgroundColor: UIColor = AppColors.primary) -> UIButton {
         let button = RaisedButton(title: title, titleColor: pulseColor)
-        //button.
         button.pulseColor = pulseColor
         button.backgroundColor = backgroundColor
         button.addShadow()
-        //button.apply(theme: Theme.dark)
         return button
     }
 
+    // https://github.com/Skyscanner/SkyFloatingLabelTextField#usage
     public static func skyFloatingLabelTextField(title: String,
                                                  placeholder: String) -> SkyFloatingLabelTextField {
         let some = SkyFloatingLabelTextField(frame: CGRect(x: 10, y: 10, width: 120, height: 45))

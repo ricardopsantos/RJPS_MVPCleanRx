@@ -1,7 +1,7 @@
 //
 //  GoodToGo
 //
-//  Created by Ricardo Santos on 16/05/2020.
+//  Created by Ricardo Santos
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
 //
 
@@ -16,6 +16,7 @@ import RxCocoa
 import Factory
 import AppResources
 import AppConstants
+import AppTheme
 import DevTools
 
 open class ReachabilityView: UILabelWithPadding {

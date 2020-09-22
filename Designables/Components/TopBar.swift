@@ -16,6 +16,7 @@ import UIBase
 import AppConstants
 import DevTools
 import PointFreeFunctions
+import AppTheme
 
 open class TopBar: BaseViewControllerVIP {
 

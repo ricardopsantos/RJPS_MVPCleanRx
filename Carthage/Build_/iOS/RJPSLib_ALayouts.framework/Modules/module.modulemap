@@ -1,0 +1,4 @@
+framework module RJPSLib_ALayouts {
+  header "RJPSLib_ALayouts-Swift.h"
+  requires objc
+}

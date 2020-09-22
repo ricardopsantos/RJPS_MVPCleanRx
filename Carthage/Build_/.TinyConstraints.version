@@ -1,0 +1,11 @@
+{
+  "commitish" : "4.0.1",
+  "iOS" : [
+    {
+      "hash" : "590efbe1e04b590c626a245524712e795348de26288b9be7d68538ae8c76ddcf",
+      "name" : "TinyConstraints",
+      "linking" : "dynamic",
+      "swiftToolchainVersion" : "5.2 (swiftlang-1103.0.32.1 clang-1103.0.32.29)"
+    }
+  ]
+}
