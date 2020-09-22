@@ -21,15 +21,6 @@ open class BaseGenericViewControllerVIP<T: StylableView>: BaseViewControllerVIP 
         if genericView != nil {
             genericView.removeFromSuperview()
         }
-     }
-
-    required public override init(presentationStyle: VCPresentationStyle) {
-        super.init(presentationStyle: presentationStyle)
-        setup()
-    }
-
-    public required init?(coder aDecoder: NSCoder) {
-        fatalError("Use instead [init(presentationStyle: \(VCPresentationStyle.self)]")
     }
 
     public var genericView: T!

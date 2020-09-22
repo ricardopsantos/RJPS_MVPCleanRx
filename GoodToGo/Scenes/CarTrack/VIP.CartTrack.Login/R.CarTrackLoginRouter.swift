@@ -38,25 +38,9 @@ extension R.CarTrackLoginRouter: CarTrackLoginRoutingLogicProtocol {
     }
 
     func routeToNextScreen() {
-        let target = VC.CartTrackMapViewController(presentationStyle: .modal)
+        let target = VC.CartTrackMapViewController()
         target.modalPresentationStyle = .fullScreen 
         viewController?.present(target, animated: true) { }
-    }
-    
-    func routeToTemplateWithDataStore() {
-        /*func passDataToSomewhere(source: CarTrackLoginDataStoreProtocol, destination: inout CarTrackLoginDataStoreProtocol) {
-            destination.dsSomeKindOfModelA = source.dsSomeKindOfModelA
-            destination.dsSomeKindOfModelB = source.dsSomeKindOfModelB
-        }
-        let destinationVC = VC.CarTrackLoginViewController()
-        if var destinationDS = destinationVC.router?.dsCarTrackLogin {
-            passDataToSomewhere(source: dsCarTrackLogin!, destination: &destinationDS)
-        }
-        viewController?.navigationController?.present(destinationVC, animated: true, completion: nil)*/
-    }
-
-    func routeToTemplateWithParentDataStore() {
-        routeToTemplateWithDataStore()
     }
 
 }

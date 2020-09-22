@@ -23,12 +23,12 @@ extension VC {
             super.viewDidLoad()
 
             // EXAMS
-            let vipCarTrack   = createControllers(tabName: "VIP.CarTrack", vc: VC.CarTrackLoginViewController(presentationStyle: .modal))
-            let vipGalleryApp = createControllers(tabName: "VIP.Gallery", vc: VC.GalleryAppS1ViewController(presentationStyle: .modal))
+            let vipCarTrack   = createControllers(tabName: "VIP.CarTrack", vc: VC.CarTrackLoginViewController())
+            let vipGalleryApp = createControllers(tabName: "VIP.Gallery", vc: VC.GalleryAppS1ViewController())
 
             // TESTING / DEBUG/ TEMPLATES
-            let vipTemplate = createControllers(tabName: "VIP.Template", vc: VC.___VARIABLE_sceneName___ViewController(presentationStyle: .modal))
-            let vipDebug    = createControllers(tabName: "DevScreen", vc: VC.DebugViewController(presentationStyle: .modal))
+            let vipTemplate = createControllers(tabName: "VIP.Template", vc: VC.___VARIABLE_sceneName___ViewController())
+            let vipDebug    = createControllers(tabName: "DevScreen", vc: VC.DebugViewController())
 
             var viewControllersList: [UIViewController] = []
             if DevTools.FeatureFlag.showScene_gallery.isTrue { viewControllersList.append(vipGalleryApp) }

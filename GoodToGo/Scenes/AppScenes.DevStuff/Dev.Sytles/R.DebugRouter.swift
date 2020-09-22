@@ -41,7 +41,7 @@ extension R.DebugRouter: DebugRoutingLogicProtocol {
             destination.dsSomeKindOfModelA = source.dsSomeKindOfModelA
             destination.dsSomeKindOfModelB = source.dsSomeKindOfModelB
         }
-        let destinationVC = VC.DebugViewController(presentationStyle: .modal)
+        let destinationVC = VC.DebugViewController()
         if var destinationDS = destinationVC.router?.dsStyles {
             passDataToSomewhere(source: dsStyles!, destination: &destinationDS)
         }

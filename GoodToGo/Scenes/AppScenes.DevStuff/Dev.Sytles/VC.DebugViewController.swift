@@ -28,7 +28,7 @@ import UIBase
 struct DebugViewController_UIViewControllerRepresentable: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: VC.DebugViewController, context: Context) { }
     func makeUIViewController(context: Context) -> VC.DebugViewController {
-        let vc = VC.DebugViewController(presentationStyle: .modal)
+        let vc = VC.DebugViewController()
         //vc.something(viewModel: dashboardVM)
         return vc
     }
@@ -52,7 +52,7 @@ extension VC {
             DebugRoutingLogicProtocol)?
 
         private lazy var topGenericView: TopBar = {
-            let some = TopBar(presentationStyle: .unknown)
+            let some = TopBar()
             some.injectOn(viewController: self, usingSafeArea: false)
             return some
         }()

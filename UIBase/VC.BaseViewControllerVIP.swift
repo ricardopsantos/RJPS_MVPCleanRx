@@ -22,26 +22,28 @@ open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtoco
     public var disposeBag: DisposeBag = DisposeBag()
     public var firstAppearance = true
 
-    public var presentationStyle: VCPresentationStyle?
+    /*
     public init(presentationStyle: VCPresentationStyle) {
         super.init(nibName: nil, bundle: nil)
         self.presentationStyle = presentationStyle
     }
 
     private init() {
-        fatalError("Use instead [init(presentationStyle: ViewControllerPresentedLike)]")
+        super.init(nibName: nil, bundle: nil)
     }
     
     public required init?(coder aDecoder: NSCoder) {
         fatalError("Use instead [init(presentationStyle: \(VCPresentationStyle.self)]")
     }
 
+     #warning "whats this for?"
+     public static var shared = BaseViewControllerVIP()
+
+ */
     deinit {
         DevTools.Log.logDeInit("\(self.className) was killed")
         NotificationCenter.default.removeObserver(self)
     }
-
-    public static var shared = BaseViewControllerVIP(presentationStyle: .unknown)
 
     open override func loadView() {
         super.loadView()

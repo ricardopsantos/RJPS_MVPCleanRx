@@ -288,7 +288,6 @@
 		D7F2DE342474A718008CE3DA /* R.DataStoreReceiverRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2DE262474A6D4008CE3DA /* R.DataStoreReceiverRouter.swift */; };
 		D7F2DE352474A718008CE3DA /* D.DataStoreReceiverDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2DE272474A6D4008CE3DA /* D.DataStoreReceiverDomain.swift */; };
 		D7F2DE362474A718008CE3DA /* I.DataStoreReceiverInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2DE292474A6D4008CE3DA /* I.DataStoreReceiverInteractor.swift */; };
-		D7F2DE3924754758008CE3DA /* VCPresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2DE3824754758008CE3DA /* VCPresentationStyle.swift */; };
 		D7FA21F724708B9C001DD9D5 /* ReachabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA21F324706A32001DD9D5 /* ReachabilityView.swift */; };
 		D7FA2207247189B9001DD9D5 /* TokenRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA2206247189B9001DD9D5 /* TokenRefresh.swift */; };
 		D7FC6D2724DC807A00D01B42 /* RJSPLib_AppThemes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FC6D2624DC807A00D01B42 /* RJSPLib_AppThemes.framework */; };
@@ -1171,7 +1170,6 @@
 		D7F2DE262474A6D4008CE3DA /* R.DataStoreReceiverRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.DataStoreReceiverRouter.swift; sourceTree = "<group>"; };
 		D7F2DE272474A6D4008CE3DA /* D.DataStoreReceiverDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D.DataStoreReceiverDomain.swift; sourceTree = "<group>"; };
 		D7F2DE292474A6D4008CE3DA /* I.DataStoreReceiverInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.DataStoreReceiverInteractor.swift; sourceTree = "<group>"; };
-		D7F2DE3824754758008CE3DA /* VCPresentationStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCPresentationStyle.swift; sourceTree = "<group>"; };
 		D7FA21F324706A32001DD9D5 /* ReachabilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityView.swift; sourceTree = "<group>"; };
 		D7FA2206247189B9001DD9D5 /* TokenRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRefresh.swift; sourceTree = "<group>"; };
 		D7FC6D2624DC807A00D01B42 /* RJSPLib_AppThemes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RJSPLib_AppThemes.framework; path = Carthage/Build/iOS/RJSPLib_AppThemes.framework; sourceTree = "<group>"; };
@@ -1658,11 +1656,15 @@
 		D729228E2466A04200DAD480 /* UIBase */ = {
 			isa = PBXGroup;
 			children = (
-				D788BD8E246959F2007C59D0 /* StylableView.swift */,
-				D788BD7E246943D0007C59D0 /* VIP */,
 				D7AB24B724673F00000142C4 /* README.md */,
-				D7F2DE3824754758008CE3DA /* VCPresentationStyle.swift */,
 				D72922D82466AFC600DAD480 /* typealias.UIBase.swift */,
+				D788BD8E246959F2007C59D0 /* StylableView.swift */,
+				D761FEBD246837CE00BD41A5 /* V.BaseGenericViewVIP.swift */,
+				D741A35A246A85E5000235E0 /* D.BaseDomainVIP.swift */,
+				D788BD82246944A9007C59D0 /* VC.BaseGenericViewControllerVIP.swift */,
+				D788BD7F24694439007C59D0 /* VC.BaseViewControllerVIP.swift */,
+				D788BD75246892B3007C59D0 /* P.BasePresenterVIP.swift */,
+				D788BD7B246943AB007C59D0 /* I.BaseInteractorVIP.swift */,
 				D729228F2466A04200DAD480 /* UIBase.h */,
 				D72922902466A04200DAD480 /* Info.plist */,
 			);
@@ -1896,19 +1898,6 @@
 				D786EF7E24F7EF11000F6A2C /* CacheUtils.swift */,
 			);
 			path = Caching;
-			sourceTree = "<group>";
-		};
-		D788BD7E246943D0007C59D0 /* VIP */ = {
-			isa = PBXGroup;
-			children = (
-				D761FEBD246837CE00BD41A5 /* V.BaseGenericViewVIP.swift */,
-				D741A35A246A85E5000235E0 /* D.BaseDomainVIP.swift */,
-				D788BD82246944A9007C59D0 /* VC.BaseGenericViewControllerVIP.swift */,
-				D788BD7F24694439007C59D0 /* VC.BaseViewControllerVIP.swift */,
-				D788BD75246892B3007C59D0 /* P.BasePresenterVIP.swift */,
-				D788BD7B246943AB007C59D0 /* I.BaseInteractorVIP.swift */,
-			);
-			path = VIP;
 			sourceTree = "<group>";
 		};
 		D788BDA024698D74007C59D0 /* Factory */ = {
@@ -3417,7 +3406,6 @@
 				D72922CD2466A36C00DAD480 /* typealias.DDD.encaplulate.swift in Sources */,
 				D7B361F225193401009B5DAD /* typealias.VIP.encaplulate.swift in Sources */,
 				D788BD8F246959F2007C59D0 /* StylableView.swift in Sources */,
-				D7F2DE3924754758008CE3DA /* VCPresentationStyle.swift in Sources */,
 				D788BD83246944A9007C59D0 /* VC.BaseGenericViewControllerVIP.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

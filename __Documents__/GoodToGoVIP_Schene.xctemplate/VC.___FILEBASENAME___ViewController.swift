@@ -29,7 +29,7 @@ import UIBase
 struct ___VARIABLE_sceneName___ViewController_UIViewControllerRepresentable: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: VC.___VARIABLE_sceneName___ViewController, context: Context) { }
     func makeUIViewController(context: Context) -> VC.___VARIABLE_sceneName___ViewController {
-        let vc = VC.___VARIABLE_sceneName___ViewController(presentationStyle: .modal)
+        let vc = VC.___VARIABLE_sceneName___ViewController()
         vc.interactor?.requestScreenInitialState()
         return vc
     }

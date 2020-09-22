@@ -28,7 +28,7 @@ import UIBase
 struct CartTrackMapViewController_UIViewControllerRepresentable: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: VC.CartTrackMapViewController, context: Context) { }
     func makeUIViewController(context: Context) -> VC.CartTrackMapViewController {
-        let vc = VC.CartTrackMapViewController(presentationStyle: .modal)
+        let vc = VC.CartTrackMapViewController()
         //vc.something(viewModel: dashboardVM)
         return vc
     }
@@ -56,7 +56,7 @@ extension VC {
         //
 
         private lazy var topGenericView: TopBar = {
-            let some = TopBar(presentationStyle: .unknown)
+            let some = TopBar()
             some.injectOn(viewController: self, usingSafeArea: false)
             some.addDismissButton()
             some.rxSignal_btnDismissTapped

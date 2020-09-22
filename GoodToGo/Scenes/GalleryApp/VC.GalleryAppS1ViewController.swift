@@ -26,7 +26,7 @@ import UIBase
 struct GalleryAppS1ViewController_UIViewControllerRepresentable: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: VC.GalleryAppS1ViewController, context: Context) { }
     func makeUIViewController(context: Context) -> VC.GalleryAppS1ViewController {
-        let vc = VC.GalleryAppS1ViewController(presentationStyle: .modal)
+        let vc = VC.GalleryAppS1ViewController()
         //vc.something(viewModel: dashboardVM)
         return vc
     }
@@ -58,7 +58,7 @@ extension VC {
         }()
 
         private lazy var topGenericView: TopBar = {
-            let some = TopBar(presentationStyle: .unknown)
+            let some = TopBar()
             some.injectOn(viewController: self, usingSafeArea: false)
             some.setTitle("Show me kitties!")
             return some
