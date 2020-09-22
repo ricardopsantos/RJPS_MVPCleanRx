@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9F103A0D2236BD1B00C57BC0 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F103A0C2236BD1A00C57BC0 /* Swinject.framework */; };
-		9F103A302236C08900C57BC0 /* ApplicationScenesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F103A2E2236C08900C57BC0 /* ApplicationScenesAssembly.swift */; };
-		9F103A332236C08900C57BC0 /* RootAssemblyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F103A2F2236C08900C57BC0 /* RootAssemblyContainer.swift */; };
+		9F103A302236C08900C57BC0 /* DIAssemblerScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F103A2E2236C08900C57BC0 /* DIAssemblerScenes.swift */; };
+		9F103A332236C08900C57BC0 /* DIAssemblyContainerCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F103A2F2236C08900C57BC0 /* DIAssemblyContainerCore.swift */; };
 		9F103A3F2236C1FE00C57BC0 /* SwinjectAutoregistration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F103A3E2236C1FE00C57BC0 /* SwinjectAutoregistration.framework */; };
 		9F3ED4BC22E618C80020A50A /* VC.RxTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3ED4BB22E618C80020A50A /* VC.RxTesting.swift */; };
 		9F58FB4022BE5DE700042A8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F58FB1322BE5DE700042A8C /* Main.storyboard */; };
@@ -232,9 +232,9 @@
 		D7B361F225193401009B5DAD /* typealias.VIP.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78F27EF246E718D008F7E54 /* typealias.VIP.encaplulate.swift */; };
 		D7B361F72519660B009B5DAD /* MessagesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B361F425195C30009B5DAD /* MessagesManager.swift */; };
 		D7B361F825196619009B5DAD /* MessagesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B361F425195C30009B5DAD /* MessagesManager.swift */; };
-		D7B361FA25196C73009B5DAD /* GalleryAppAssemblyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B361F925196C73009B5DAD /* GalleryAppAssemblyContainer.swift */; };
-		D7B361FC25196D0B009B5DAD /* CarTrackAssemblyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B361FB25196D0B009B5DAD /* CarTrackAssemblyContainer.swift */; };
-		D7B361FF25197186009B5DAD /* ApplicationCoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B361FE25197186009B5DAD /* ApplicationCoreAssembly.swift */; };
+		D7B361FA25196C73009B5DAD /* DIAssemblyContainerGalleryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B361F925196C73009B5DAD /* DIAssemblyContainerGalleryApp.swift */; };
+		D7B361FC25196D0B009B5DAD /* DIAssemblyContainerCarTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B361FB25196D0B009B5DAD /* DIAssemblyContainerCarTrack.swift */; };
+		D7B361FF25197186009B5DAD /* DIAssemblerCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B361FE25197186009B5DAD /* DIAssemblerCore.swift */; };
 		D7B514FD246EB3F70008E2E0 /* E.FadeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B514FC246EB3F70008E2E0 /* E.FadeType.swift */; };
 		D7C4CB872494D3990087E999 /* CarTrackMKMarkerAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C4CB862494D3990087E999 /* CarTrackMKMarkerAnnotationView.swift */; };
 		D7C4CB892494D3B20087E999 /* CarTrackMKAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C4CB882494D3B20087E999 /* CarTrackMKAnnotation.swift */; };
@@ -876,8 +876,8 @@
 /* Begin PBXFileReference section */
 		9F02AE5B20F91E7B00AB5942 /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		9F103A0C2236BD1A00C57BC0 /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
-		9F103A2E2236C08900C57BC0 /* ApplicationScenesAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationScenesAssembly.swift; sourceTree = "<group>"; };
-		9F103A2F2236C08900C57BC0 /* RootAssemblyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootAssemblyContainer.swift; sourceTree = "<group>"; };
+		9F103A2E2236C08900C57BC0 /* DIAssemblerScenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIAssemblerScenes.swift; sourceTree = "<group>"; };
+		9F103A2F2236C08900C57BC0 /* DIAssemblyContainerCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIAssemblyContainerCore.swift; sourceTree = "<group>"; };
 		9F103A3E2236C1FE00C57BC0 /* SwinjectAutoregistration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwinjectAutoregistration.framework; path = Carthage/Build/iOS/SwinjectAutoregistration.framework; sourceTree = "<group>"; };
 		9F15CF2922BFA56E00FB402A /* E.AppMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = E.AppMode.swift; sourceTree = "<group>"; };
 		9F15CF2C22BFA56F00FB402A /* E.AppCodes+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "E.AppCodes+Extension.swift"; sourceTree = "<group>"; };
@@ -1109,9 +1109,9 @@
 		D7AB24C6246743BD000142C4 /* AppCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppCore.h; sourceTree = "<group>"; };
 		D7AB24C7246743BD000142C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7B361F425195C30009B5DAD /* MessagesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesManager.swift; sourceTree = "<group>"; };
-		D7B361F925196C73009B5DAD /* GalleryAppAssemblyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryAppAssemblyContainer.swift; sourceTree = "<group>"; };
-		D7B361FB25196D0B009B5DAD /* CarTrackAssemblyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTrackAssemblyContainer.swift; sourceTree = "<group>"; };
-		D7B361FE25197186009B5DAD /* ApplicationCoreAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoreAssembly.swift; sourceTree = "<group>"; };
+		D7B361F925196C73009B5DAD /* DIAssemblyContainerGalleryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIAssemblyContainerGalleryApp.swift; sourceTree = "<group>"; };
+		D7B361FB25196D0B009B5DAD /* DIAssemblyContainerCarTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIAssemblyContainerCarTrack.swift; sourceTree = "<group>"; };
+		D7B361FE25197186009B5DAD /* DIAssemblerCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIAssemblerCore.swift; sourceTree = "<group>"; };
 		D7B514FC246EB3F70008E2E0 /* E.FadeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = E.FadeType.swift; sourceTree = "<group>"; };
 		D7C218D1247C2B580088377B /* unused.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = unused.rb; sourceTree = SOURCE_ROOT; };
 		D7C4CB862494D3990087E999 /* CarTrackMKMarkerAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTrackMKMarkerAnnotationView.swift; sourceTree = "<group>"; };
@@ -1384,11 +1384,11 @@
 		9F103A2D2236C08900C57BC0 /* DependencyInjection */ = {
 			isa = PBXGroup;
 			children = (
-				9F103A2E2236C08900C57BC0 /* ApplicationScenesAssembly.swift */,
-				D7B361FE25197186009B5DAD /* ApplicationCoreAssembly.swift */,
-				9F103A2F2236C08900C57BC0 /* RootAssemblyContainer.swift */,
-				D7B361F925196C73009B5DAD /* GalleryAppAssemblyContainer.swift */,
-				D7B361FB25196D0B009B5DAD /* CarTrackAssemblyContainer.swift */,
+				9F103A2E2236C08900C57BC0 /* DIAssemblerScenes.swift */,
+				D7B361FE25197186009B5DAD /* DIAssemblerCore.swift */,
+				9F103A2F2236C08900C57BC0 /* DIAssemblyContainerCore.swift */,
+				D7B361F925196C73009B5DAD /* DIAssemblyContainerGalleryApp.swift */,
+				D7B361FB25196D0B009B5DAD /* DIAssemblyContainerCarTrack.swift */,
 			);
 			path = DependencyInjection;
 			sourceTree = "<group>";
@@ -3315,12 +3315,12 @@
 				D7711F6C246B340C00B6963A /* VC.___FILEBASENAME___ViewController.swift in Sources */,
 				D7979DB5246D6B370039031C /* P.CartTrackMapPresenter.swift in Sources */,
 				D7711F68246B340C00B6963A /* I.___FILEBASENAME___Interactor.swift in Sources */,
-				D7B361FF25197186009B5DAD /* ApplicationCoreAssembly.swift in Sources */,
+				D7B361FF25197186009B5DAD /* DIAssemblerCore.swift in Sources */,
 				D7979DC6246DC1960039031C /* VC.DebugViewController.swift in Sources */,
 				D7F2DE362474A718008CE3DA /* I.DataStoreReceiverInteractor.swift in Sources */,
 				9FE1439721AF2F520026BDFC /* typealias.Application.swift in Sources */,
 				D7979DBA246D6B370039031C /* I.CarTrackLoginInteractor.swift in Sources */,
-				D7B361FC25196D0B009B5DAD /* CarTrackAssemblyContainer.swift in Sources */,
+				D7B361FC25196D0B009B5DAD /* DIAssemblyContainerCarTrack.swift in Sources */,
 				D7F2DE352474A718008CE3DA /* D.DataStoreReceiverDomain.swift in Sources */,
 				D7979DCB246DC1960039031C /* P.DebugPresenter.swift in Sources */,
 				D7711F69246B340C00B6963A /* V.___FILEBASENAME___View.swift in Sources */,
@@ -3328,7 +3328,7 @@
 				D7F2DE332474A718008CE3DA /* VC.DataStoreReceiverViewController.swift in Sources */,
 				D7F2DE342474A718008CE3DA /* R.DataStoreReceiverRouter.swift in Sources */,
 				D7C4CB892494D3B20087E999 /* CarTrackMKAnnotation.swift in Sources */,
-				9F103A302236C08900C57BC0 /* ApplicationScenesAssembly.swift in Sources */,
+				9F103A302236C08900C57BC0 /* DIAssemblerScenes.swift in Sources */,
 				9FE143B821AF2F520026BDFC /* AppEnvironments.swift in Sources */,
 				D7979DB2246D6B370039031C /* V.CartTrackMapView.swift in Sources */,
 				D774F5A824F6865100D01370 /* P.GalleryAppS1Presenter.swift in Sources */,
@@ -3336,7 +3336,7 @@
 				9FE143C021AF2F520026BDFC /* AppDelegate.swift in Sources */,
 				D774F5AC24F6A4F900D01370 /* W.GalleryAppWorker.swift in Sources */,
 				9FACC17B223BDD5B00576498 /* TO_DO.swift in Sources */,
-				D7B361FA25196C73009B5DAD /* GalleryAppAssemblyContainer.swift in Sources */,
+				D7B361FA25196C73009B5DAD /* DIAssemblyContainerGalleryApp.swift in Sources */,
 				D774F5A724F6865100D01370 /* I.GalleryAppS1Interactor.swift in Sources */,
 				D7979DB1246D6B370039031C /* VC.CartTrackMapViewController.swift in Sources */,
 				D7979DB8246D6B370039031C /* D.CarTrackLoginDomain.swift in Sources */,
@@ -3360,7 +3360,7 @@
 				D774F5A324F6865100D01370 /* R.GalleryAppS1Router.swift in Sources */,
 				D7979DB3246D6B370039031C /* R.CartTrackMapRouter.swift in Sources */,
 				D7C4CB872494D3990087E999 /* CarTrackMKMarkerAnnotationView.swift in Sources */,
-				9F103A332236C08900C57BC0 /* RootAssemblyContainer.swift in Sources */,
+				9F103A332236C08900C57BC0 /* DIAssemblyContainerCore.swift in Sources */,
 				D7979DB0246D6B370039031C /* I.CartTrackMapInteractor.swift in Sources */,
 				D7979DB4246D6B370039031C /* D.CartTrackMapDomain.swift in Sources */,
 				D7979DC8246DC1960039031C /* D.DebugDomain.swift in Sources */,

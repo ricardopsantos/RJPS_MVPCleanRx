@@ -9,11 +9,11 @@ import Foundation
 import Swinject
 import SwinjectAutoregistration
 
-final class ApplicationCoreAssembly {
+final class DIAssemblerCore {
 
     class var assembler: Assembler {
         let assemblyList: [Assembly] = [
-            CoreAssemblyContainer()
+            DIAssemblyContainerCore()
         ]
         return Assembler(assemblyList)
     }
