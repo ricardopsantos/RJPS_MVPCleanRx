@@ -78,10 +78,10 @@ open class ReachabilityView: UILabelWithPadding {
         let some             = ReachabilityView()
         viewController.view.addSubview(some)
         some.tag             = tag.rawValue
-        some.label.textColor = AppColors.TopBar.titleColor
+        some.label.textColor = ComponentColor.TopBar.titleColor
         some.label.font      = AppFonts.Styles.caption.rawValue 
         some.textAlignment   = .center
-        some.backgroundColor = AppColors.error.withAlphaComponent(FadeType.regular.rawValue)
+        some.backgroundColor = ComponentColor.error.withAlphaComponent(FadeType.regular.rawValue)
         some.alpha           = 0
         some.text            = Messages.noInternet.localised
         some.rjsALayouts.setMargin(0, on: .left)

@@ -91,9 +91,9 @@ extension GoodToGo.V {
             stackViewVLevel1.uiUtils.addArrangedSeparator()
 
             let sectionSize: CGFloat = 3
-            let sectionSmallSeparatorColor = AppColors.primary.withAlphaComponent(FadeType.superLight.rawValue)
+            let sectionSmallSeparatorColor = ComponentColor.primary.withAlphaComponent(FadeType.superLight.rawValue)
             func buttonWithAction(title: String, block:@escaping () -> Void) -> UIButton {
-                let some = UIKitFactory.raisedButton(title: title, backgroundColor: AppColors.primary)
+                let some = UIKitFactory.raisedButton(title: title, backgroundColor: ComponentColor.primary)
                 some.onTouchUpInside {
                     block()
                 }
@@ -107,7 +107,7 @@ extension GoodToGo.V {
                 label.text = name
                 label.font = AppFonts.Styles.headingSmall.rawValue
                 label.textAlignment = .center
-                label.textColor = AppColors.primary
+                label.textColor = ComponentColor.primary
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(label)
                 stackViewVLevel1.uiUtils.addArrangedSeparator()
             }
@@ -120,7 +120,7 @@ extension GoodToGo.V {
                 return label
             }
 
-            let testBackgroundColors = [UIColor.white, AppColors.primary]
+            let testBackgroundColors = [UIColor.white, ComponentColor.primary]
 
             //
             // FeatureFlag
@@ -217,7 +217,7 @@ extension GoodToGo.V {
             makeSection("FadeType", size: sectionSize)
             FadeType.allCases.forEach { (some) in
                 let view = pureLabel(text: "\(some)")
-                view.backgroundColor = AppColors.primary.withAlphaComponent(some.rawValue)
+                view.backgroundColor = ComponentColor.primary.withAlphaComponent(some.rawValue)
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(view)
                 view.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
                 //stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
@@ -230,12 +230,12 @@ extension GoodToGo.V {
             makeSection("Components", size: sectionSize)
 
             let labelWithPadding = UIKitFactory.labelWithPadding(title: "labelWithPadding", style: .title)
-            labelWithPadding.backgroundColor = AppColors.primary.withAlphaComponent(FadeType.heavy.rawValue)
+            labelWithPadding.backgroundColor = ComponentColor.primary.withAlphaComponent(FadeType.heavy.rawValue)
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(labelWithPadding)
 
             stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
 
-            let raisedButton = UIKitFactory.raisedButton(title: "raisedButton", backgroundColor: AppColors.primary)
+            let raisedButton = UIKitFactory.raisedButton(title: "raisedButton", backgroundColor: ComponentColor.primary)
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(raisedButton)
 
             stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)

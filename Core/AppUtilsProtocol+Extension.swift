@@ -12,6 +12,7 @@ import RJPSLib_Base
 import RJPSLib_Storage
 import RxSwift
 import RxCocoa
+import RJPSLib_Networking
 //
 import Repositories
 import AppResources

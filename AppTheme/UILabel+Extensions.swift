@@ -21,30 +21,30 @@ public extension UILabel {
 
     func apply(style: UILabel.LayoutStyle) {
         let navigationBarTitle = {
-            self.textColor       = AppColors.TopBar.titleColor
+            self.textColor       = ComponentColor.TopBar.titleColor
             self.font            = AppFonts.Styles.headingMedium.rawValue
         }
         let title = {
-            self.textColor       = AppColors.UILabel.lblTextColor
+            self.textColor       = ComponentColor.UILabel.lblTextColor
             self.font            = AppFonts.Styles.paragraphBold.rawValue
         }
         let value = {
-            self.textColor       = AppColors.UILabel.lblTextColor.withAlphaComponent(FadeType.superLight.rawValue)
+            self.textColor       = ComponentColor.UILabel.lblTextColor.withAlphaComponent(FadeType.superLight.rawValue)
             self.font            = AppFonts.Styles.paragraphSmall.rawValue
         }
         let text = {
-            self.textColor       = AppColors.UILabel.lblTextColor
+            self.textColor       = ComponentColor.UILabel.lblTextColor
             self.font            = AppFonts.Styles.caption.rawValue
         }
         let error = {
-            self.textColor       = AppColors.error
+            self.textColor       = ComponentColor.error
             self.font            = AppFonts.Styles.captionSmall.rawValue
         }
 
         #warning("this should be a component, not a style")
         let info = {
-            self.backgroundColor = AppColors.primary.withAlphaComponent(FadeType.regular.rawValue)
-            self.textColor       = AppColors.onPrimary
+            self.backgroundColor = ComponentColor.primary.withAlphaComponent(FadeType.regular.rawValue)
+            self.textColor       = ComponentColor.onPrimary
             self.font            = AppFonts.Styles.captionLarge.rawValue
             self.addShadow()
             self.addCorner(radius: 5)

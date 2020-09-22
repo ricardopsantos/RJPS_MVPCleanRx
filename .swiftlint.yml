@@ -24,9 +24,9 @@ custom_rules:
 
     rule_UIColor_3:
         included: ".*\\.swift"
-        name: "Avoid AppColors.Pack1"
-        regex: 'AppColors.Pack1'
-        message: "Avoid [AppColors.Pack1]. Use [ColorName]"
+        name: "Avoid ComponentColor.Pack1"
+        regex: 'ComponentColor.Pack1'
+        message: "Avoid [ComponentColor.Pack1]. Use [ColorName]"
         severity: warning
 
     rule_UIColor_3:
@@ -38,9 +38,9 @@ custom_rules:
 
     rule_UIColor_4:
         included: ".*\\.swift"
-        name: "Avoid AppColors.Pack2"
-        regex: 'AppColors.Pack2'
-        message: "Avoid [AppColors.Pack2]. Use [ColorName]"
+        name: "Avoid ComponentColor.Pack2"
+        regex: 'ComponentColor.Pack2'
+        message: "Avoid [ComponentColor.Pack2]. Use [ColorName]"
         severity: warning
 
     rule_UIFont_1:

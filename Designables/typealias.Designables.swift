@@ -18,4 +18,6 @@ public typealias CustomSearchBar = RJS_Designables_SearchBar
 public typealias AppSizes = Designables.Sizes
 public typealias AppleSizes = Designables.Sizes.Apple
 
-public typealias AppFonts  = RJSPLib_AppThemes.RJS_Fonts
+// Fonts Shortcut: https://github.com/ricardopsantos/RJPSLib/blob/master/RJSPLib.AppThemes/LibCode/UIFont%2BExtensions.swift
+// Font styles utils with a font builder for Bold, Regular and Light, and also pre-built styles like : headingJumbo, headingBold, headingMedium, headingSmall
+//typealias AppFonts = RJSPLib_AppThemes.RJS_Fonts

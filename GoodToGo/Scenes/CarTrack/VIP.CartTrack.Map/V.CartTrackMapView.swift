@@ -240,7 +240,7 @@ extension GoodToGo.V.CartTrackMapView: MKMapViewDelegate {
                 pinView?.animatesDrop = true
                 pinView?.canShowCallout = true
                 pinView?.isDraggable = true
-                pinView?.pinTintColor = AppColors.primary
+                pinView?.pinTintColor = ComponentColor.primary
                 let rightButton: AnyObject! = UIButton(type: UIButton.ButtonType.detailDisclosure)
                 pinView?.rightCalloutAccessoryView = rightButton as? UIView
             } else {
@@ -258,7 +258,7 @@ extension GoodToGo.V.CartTrackMapView: MKMapViewDelegate {
                 view.canShowCallout = true
                 view.calloutOffset = CGPoint(x: -5, y: 5)
                 view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-                view.tintColor = AppColors.primary
+                view.tintColor = ComponentColor.primary
             }
             return view
         }
@@ -319,7 +319,7 @@ extension CarTrackAppModel.User {
 
     var mapTitle: String { return name }
     var mapSubTitle: String { return self.company.name + "\n" + self.email }
-    var mapColor: UIColor { return self.id % 2 == 0 ? AppColors.error : AppColors.success }
+    var mapColor: UIColor { return self.id % 2 == 0 ? ComponentColor.error : ComponentColor.success }
     var mapGlyphText: String { return mapTitle.first }
     var mapButton: UIButton {
         let size = 30

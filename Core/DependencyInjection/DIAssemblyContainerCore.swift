@@ -11,38 +11,28 @@ import RJPSLib_Networking
 import Domain
 import Repositories
 import Repositories_WebAPI
-import Core
 import DevTools
-
-// READ! READ! READ! READ! READ! READ! READ! READ! READ!
-// READ! READ! READ! READ! READ! READ! READ! READ! READ!
-//
-// For simplicity sake, the dependencies will be shared amount some target (GoodToGo & UIBase)
-//
-// READ! READ! READ! READ! READ! READ! READ! READ! READ!
-// READ! READ! READ! READ! READ! READ! READ! READ! READ!
-//
 
 //
 // MARK: - Protocols
 //
 
-struct RootAssemblyContainerProtocols {
+public struct RootAssemblyContainerProtocols {
 
     //
     // Managers
     //
 
-    static let messagesManager = MessagesManagerProtocol.self
+    public static let messagesManager = MessagesManagerProtocol.self
 
     //
     // Generic Repositories
     //
 
-    static let networkClient                 = RJS_SimpleNetworkClientProtocol.self
-    static let hotCacheRepository            = HotCacheRepositoryProtocol.self
-    static let coldKeyValuesRepository       = KeyValuesStorageRepositoryProtocol.self
-    static let apiCacheRepository            = APICacheManagerProtocol.self   
+    public static let networkClient           = RJS_SimpleNetworkClientProtocol.self
+    public static let hotCacheRepository      = HotCacheRepositoryProtocol.self
+    public static let coldKeyValuesRepository = KeyValuesStorageRepositoryProtocol.self
+    public static let apiCacheRepository      = APICacheManagerProtocol.self
 
 }
 
@@ -52,7 +42,7 @@ struct RootAssemblyContainerProtocols {
 
 public class RootAssemblyResolver {
     private init() { }
-    public static let messagesManager = DIAssemblerScenes.assembler.resolver.resolve(RootAssemblyContainerProtocols.messagesManager.self)
+    public static let messagesManager = DIAssemblerCore.assembler.resolver.resolve(RootAssemblyContainerProtocols.messagesManager.self)
 }
 
 //

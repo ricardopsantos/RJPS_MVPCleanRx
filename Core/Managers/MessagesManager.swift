@@ -9,24 +9,22 @@ import Foundation
 //
 import ToastSwiftFramework
 import DevTools
+import RJSPLib_AppThemes
 //
 import AppConstants
 import AppTheme
-
-public protocol MessagesManagerProtocol: AnyObject {
-    func displayMessage(_ message: String, type: AlertType)
-}
+import Domain
 
 public class MessagesManager: MessagesManagerProtocol {
     public func displayMessage(_ message: String, type: AlertType) {
         var style = ToastStyle()
         style.cornerRadius = 5
         style.displayShadow = true
-        style.messageFont = AppFonts.Styles.paragraphSmall.rawValue
+        style.messageFont = RJS_Fonts.Styles.paragraphSmall.rawValue
         switch type {
-        case .success: style.backgroundColor = AppColors.success.withAlphaComponent(FadeType.superLight.rawValue)
-        case .warning: style.backgroundColor = AppColors.warning.withAlphaComponent(FadeType.superLight.rawValue)
-        case .error: style.backgroundColor = AppColors.error.withAlphaComponent(FadeType.superLight.rawValue)
+        case .success: style.backgroundColor = ComponentColor.success.withAlphaComponent(FadeType.superLight.rawValue)
+        case .warning: style.backgroundColor = ComponentColor.warning.withAlphaComponent(FadeType.superLight.rawValue)
+        case .error: style.backgroundColor = ComponentColor.error.withAlphaComponent(FadeType.superLight.rawValue)
         }
         style.messageColor = .white
         DevTools.topViewController()?.view.makeToast(message, duration: 5, position: .top, style: style)

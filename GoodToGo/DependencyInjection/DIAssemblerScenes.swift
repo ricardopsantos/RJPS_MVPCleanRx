@@ -13,7 +13,6 @@ final class DIAssemblerScenes {
     
     class var assembler: Assembler {
         let assemblyList: [Assembly] = [
-            DIAssemblyContainerCore(),
             DIAssemblyContainerCarTrack(),
             DIAssemblyContainerGalleryApp()
         ]

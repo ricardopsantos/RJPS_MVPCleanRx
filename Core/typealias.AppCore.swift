@@ -1,7 +1,6 @@
 //
 //  GoodToGo
 //
-//  Created by Ricardo Santos
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
 //
 
@@ -12,4 +11,4 @@ import RJPSLib_Networking
 import DevTools
 import Domain
 
-typealias AppSimpleNetworkClient = RJS_BasicNetworkClient
+typealias AppSimpleNetworkClient = RJSLib.BasicNetworkClient // Simple GETs and images download

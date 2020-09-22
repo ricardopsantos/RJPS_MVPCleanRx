@@ -10,10 +10,12 @@ import UIKit
 //
 import RxSwift
 import RJPSLib_Base
-import DevTools
 //
 import AppConstants
 import AppTheme
+import DevTools
+import Core
+import Domain
 
 open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtocol {
 
@@ -121,7 +123,9 @@ private extension BaseViewControllerVIP {
     }
 
     func displayMessage(_ message: String, type: AlertType) {
-        MessagesManager().displayMessage(message, type: type)
+        if let messagesManager = RootAssemblyResolver.messagesManager {
+            messagesManager.displayMessage(message, type: type)
+        }
     }
 
     func setActivityState(_ state: Bool) {

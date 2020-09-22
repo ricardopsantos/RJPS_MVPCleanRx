@@ -14,6 +14,7 @@ import DevTools
 import PointFreeFunctions
 import AppTheme
 import AppConstants
+import Core
 
 // MARK: - BaseGenericView
 open class BaseGenericViewVIP: StylableView {
@@ -82,6 +83,8 @@ open class BaseGenericViewVIP: StylableView {
     }
 
     open func displayMessage(_ message: String, type: AlertType) {
-        MessagesManager().displayMessage(message, type: type)
+        if let messagesManager = RootAssemblyResolver.messagesManager {
+            messagesManager.displayMessage(message, type: type)
+        }
     }
 }

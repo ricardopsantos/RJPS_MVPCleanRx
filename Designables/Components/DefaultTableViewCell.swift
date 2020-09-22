@@ -37,7 +37,7 @@ open class DefaultTableViewCell: UITableViewCell, DefaultTableViewCellProtocol {
     // BehaviorRelay model a State
     public var rxTitle     = BehaviorRelay<String>(value: "")
     public var rxImage     = BehaviorRelay<UIImage?>(value: nil)
-    public var rxTextColor = BehaviorRelay<UIColor>(value: AppColors.UILabel.lblTextColor)
+    public var rxTextColor = BehaviorRelay<UIColor>(value: ComponentColor.UILabel.lblTextColor)
 
     open class var cellSize: CGFloat { return Designables.Sizes.TableView.defaultHeightForCell }
     public static func prepare(tableView: UITableView) {
@@ -51,7 +51,7 @@ open class DefaultTableViewCell: UITableViewCell, DefaultTableViewCellProtocol {
 
     // To override
     func prepareLayout() {
-        self.backgroundColor = AppColors.onPrimary
+        self.backgroundColor = ComponentColor.onPrimary
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

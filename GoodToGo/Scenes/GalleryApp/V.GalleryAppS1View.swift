@@ -143,9 +143,9 @@ extension V {
         }
 
         override func setupColorsAndStyles() {
-            self.backgroundColor = AppColors.background
+            self.backgroundColor = ComponentColor.background
             lblNoRecords.font = AppFonts.Styles.headingSmall.rawValue
-            lblNoRecords.textColor = AppColors.primary
+            lblNoRecords.textColor = ComponentColor.primary
             searchBar.backgroundColor = self.backgroundColor
             searchBar.tintColor = self.backgroundColor
             searchBar.barTintColor = self.backgroundColor

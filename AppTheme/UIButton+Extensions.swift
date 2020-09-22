@@ -53,8 +53,8 @@ private extension UIButton {
     func applyStyleInngage() {
         applySharedProperties()
         self.titleLabel?.font = UIButton.defaultFont
-        self.backgroundColor  = AppColors.UIButton.backgroundColorInnGage
-        self.setTextColorForAllStates(AppColors.UIButton.textColorInnGage)
+        self.backgroundColor  = ComponentColor.UIButton.backgroundColorInnGage
+        self.setTextColorForAllStates(ComponentColor.UIButton.textColorInnGage)
         self.layer.cornerRadius = 10.0
         self.clipsToBounds      = true
     }
@@ -62,8 +62,8 @@ private extension UIButton {
     func applyStyleAccept() {
         applySharedProperties()
         self.titleLabel?.font = UIButton.defaultFont
-        self.backgroundColor  = AppColors.accept
-        self.setTextColorForAllStates(AppColors.UIButton.textColorDefault)
+        self.backgroundColor  = ComponentColor.accept
+        self.setTextColorForAllStates(ComponentColor.UIButton.textColorDefault)
         self.layer.cornerRadius = AppConstants.buttonDefaultSize.height / 2
         self.clipsToBounds      = true
     }
@@ -71,8 +71,8 @@ private extension UIButton {
     func applyStyleReject() {
         applySharedProperties()
         self.titleLabel?.font = UIButton.defaultFont
-        self.backgroundColor  = AppColors.reject
-        self.setTextColorForAllStates(AppColors.UIButton.textColorDefault)
+        self.backgroundColor  = ComponentColor.reject
+        self.setTextColorForAllStates(ComponentColor.UIButton.textColorDefault)
         self.layer.cornerRadius = AppConstants.buttonDefaultSize.height / 2
         self.clipsToBounds      = true
     }
@@ -80,16 +80,16 @@ private extension UIButton {
     func applyStyleRemind() {
         applySharedProperties()
         self.titleLabel?.font = UIButton.defaultFont
-        self.backgroundColor  = AppColors.remind
-        self.setTextColorForAllStates(AppColors.UIButton.textColorDefault)
+        self.backgroundColor  = ComponentColor.remind
+        self.setTextColorForAllStates(ComponentColor.UIButton.textColorDefault)
         self.layer.cornerRadius = AppConstants.buttonDefaultSize.height / 2
         self.clipsToBounds      = true
     }
     func applyStylePrimary() {
         applySharedProperties()
         self.titleLabel?.font = UIButton.defaultFont
-        self.backgroundColor  = AppColors.UIButton.backgroundColorDefault
-        self.setTextColorForAllStates(AppColors.UIButton.textColorDefault)
+        self.backgroundColor  = ComponentColor.UIButton.backgroundColorDefault
+        self.setTextColorForAllStates(ComponentColor.UIButton.textColorDefault)
         self.layer.cornerRadius = AppConstants.buttonDefaultSize.height / 2
         self.clipsToBounds      = true
     }
@@ -98,9 +98,9 @@ private extension UIButton {
         applySharedProperties()
         self.titleLabel?.font = UIButton.defaultFont
         self.backgroundColor  = UIColor.white
-        self.setTextColorForAllStates(AppColors.primary)
+        self.setTextColorForAllStates(ComponentColor.primary)
         self.layer.borderWidth  = 2
-        self.layer.borderColor  = AppColors.primary.cgColor
+        self.layer.borderColor  = ComponentColor.primary.cgColor
         self.layer.cornerRadius = AppConstants.buttonDefaultSize.height / 2
         self.clipsToBounds      = true
     }
@@ -109,11 +109,11 @@ private extension UIButton {
         applySharedProperties()
         self.titleLabel?.font = UIButton.defaultFont
         self.backgroundColor  = UIColor.white
-        self.setTextColorForAllStates(AppColors.error)
+        self.setTextColorForAllStates(ComponentColor.error)
         self.layer.cornerRadius = AppConstants.buttonDefaultSize.height / 2
         self.clipsToBounds      = true
         self.layer.borderWidth  = 2
-        self.layer.borderColor  = AppColors.error.cgColor
+        self.layer.borderColor  = ComponentColor.error.cgColor
     }
 
 }
