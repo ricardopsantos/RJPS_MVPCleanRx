@@ -78,6 +78,13 @@ extension VC {
         // Order in View life-cycle : 4
         override func viewDidLoad() {
             super.viewDidLoad()
+
+            if DevTools.onSimulator {
+                DispatchQueue.executeOnce(token: "\(VC.GalleryAppS1ViewController.self).info") {
+                    let message = "Gallery App" + "\n\n"
+                    DevTools.makeToast(message, duration: 10)
+                }
+            }
         }
 
         // Order in View life-cycle : 6

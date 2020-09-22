@@ -188,7 +188,7 @@ extension GoodToGo.V.CartTrackMapView {
         mapView.removeAnnotations()
 
         guard list.count > 0 else {
-            //BaseViewControllerMVP.shared.displayMessage(Messages.noRecords.localised, type: .warning)
+            self.displayMessage(Messages.noRecords.localised, type: .warning)
             return
         }
 
