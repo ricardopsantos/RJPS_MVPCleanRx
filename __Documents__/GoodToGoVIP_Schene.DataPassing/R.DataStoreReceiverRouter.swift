@@ -36,3 +36,9 @@ extension R {
 // MARK: RoutingLogicProtocol
 
 extension R.DataStoreReceiverRouter: DataStoreReceiverRoutingLogicProtocol { }
+
+// MARK: BaseRouterProtocol
+
+extension R.DataStoreReceiverRouter: BaseRouterProtocol {
+
+}

@@ -37,3 +37,9 @@ extension R.GalleryAppS1Router: GalleryAppS1RoutingLogicProtocol {
         viewController?.dismissMe()
     }
 }
+
+// MARK: BaseRouterProtocol
+
+extension R.GalleryAppS1Router: BaseRouterProtocol {
+
+}

@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+// Future way to handle apps DarkMode (on progress)
+
 public protocol StylableProtocol: class {
 
 }

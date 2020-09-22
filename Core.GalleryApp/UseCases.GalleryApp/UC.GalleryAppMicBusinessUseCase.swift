@@ -49,7 +49,7 @@ public class GalleryAppMiscBusinessUseCase: GenericUseCase, GalleryAppGenericBus
     }
 }
 
-private class DownloadImageOperation: OperationBase, AppUtilsProtocol {
+private class DownloadImageOperation: OperationBase, NetworkingOperationsUtilsProtocol {
     let urlString: String
     var image: UIImage!
     init(withURLString urlString: String) {

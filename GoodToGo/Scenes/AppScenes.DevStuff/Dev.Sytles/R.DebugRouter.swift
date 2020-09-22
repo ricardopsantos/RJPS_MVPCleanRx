@@ -51,5 +51,10 @@ extension R.DebugRouter: DebugRoutingLogicProtocol {
     func routeToTemplateWithParentDataStore() {
         routeToTemplateWithDataStore()
     }
+}
+
+// MARK: BaseRouterProtocol
+
+extension R.DebugRouter: BaseRouterProtocol {
 
 }

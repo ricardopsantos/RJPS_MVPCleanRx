@@ -22,7 +22,6 @@ public extension AppCodes {
         case .notPredicted            : return "Dev : Not predicted"
         case .parsingError            : return "Dev : Parse error"
         case .ignored                 : return "Dev : Ignored"
-        case .vmChanged               : return "Dev : ViewModel changed"
         case .dequeueReusableCellFail : return "Dev : dequeueReusableCellFail"
         case .unknownError            : return "Dev : Unknown error"
         case .referenceLost           : return "Dev : Reference lost"
@@ -45,7 +44,6 @@ public extension AppCodes {
         case .notPredicted            : return Messages.defaultErrorMessage
         case .parsingError            : return Messages.defaultErrorMessage
         case .ignored                 : return Messages.defaultErrorMessage
-        case .vmChanged               : return Messages.defaultErrorMessage
         case .dequeueReusableCellFail : return Messages.defaultErrorMessage
         case .unknownError            : return Messages.defaultErrorMessage
         case .referenceLost           : return Messages.defaultErrorMessage

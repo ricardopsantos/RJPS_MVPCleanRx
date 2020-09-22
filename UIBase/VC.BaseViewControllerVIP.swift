@@ -22,24 +22,6 @@ open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtoco
     public var disposeBag: DisposeBag = DisposeBag()
     public var firstAppearance = true
 
-    /*
-    public init(presentationStyle: VCPresentationStyle) {
-        super.init(nibName: nil, bundle: nil)
-        self.presentationStyle = presentationStyle
-    }
-
-    private init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    public required init?(coder aDecoder: NSCoder) {
-        fatalError("Use instead [init(presentationStyle: \(VCPresentationStyle.self)]")
-    }
-
-     #warning "whats this for?"
-     public static var shared = BaseViewControllerVIP()
-
- */
     deinit {
         DevTools.Log.logDeInit("\(self.className) was killed")
         NotificationCenter.default.removeObserver(self)
@@ -115,24 +97,34 @@ open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtoco
     }
 }
 
+//
+// MARK: - BaseViewProtocol
+//
+
+extension BaseViewControllerVIP: BaseViewProtocol {
+    public func displayMessage(_ message: String, type: AlertType) {
+        if let messagesManager = RootAssemblyResolver.messagesManager {
+            messagesManager.displayMessage(message, type: type)
+        }
+    }
+}
+
+//
+// MARK: - Private
+//
+
 private extension BaseViewControllerVIP {
+
+    func setActivityState(_ state: Bool) {
+        if state {
+            self.view.rjs.startActivityIndicator()
+        } else { self.view.rjs.stopActivityIndicator() }
+    }
 
     func doViewLifeCycle() {
         prepareLayoutCreateHierarchy()           // DONT CHANGE ORDER
         prepareLayoutBySettingAutoLayoutsRules() // DONT CHANGE ORDER
         prepareLayoutByFinishingPrepareLayout()  // DONT CHANGE ORDER
         setupColorsAndStyles()                   // DONT CHANGE ORDER
-    }
-
-    func displayMessage(_ message: String, type: AlertType) {
-        if let messagesManager = RootAssemblyResolver.messagesManager {
-            messagesManager.displayMessage(message, type: type)
-        }
-    }
-
-    func setActivityState(_ state: Bool) {
-        if state {
-            self.view.rjs.startActivityIndicator()
-        } else { self.view.rjs.stopActivityIndicator() }
     }
 }

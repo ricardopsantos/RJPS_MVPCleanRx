@@ -59,3 +59,9 @@ extension R.___VARIABLE_sceneName___Router: ___VARIABLE_sceneName___RoutingLogic
     }
 
 }
+
+// MARK: BaseRouterProtocol
+
+extension R.___VARIABLE_sceneName___Router: BaseRouterProtocol {
+
+}

@@ -7,6 +7,12 @@
 
 import Foundation
 
+// This codes can be translated into
+// 1 - DevTeam messages like `AppCodes.invalidURL.localisedMessageForDevTeam`,
+// 2 - App/view messages like `AppCodes.invalidURL.localisedMessageForView`
+// 3 - Error like `AppCodes.invalidCredentials.toError`
+// and this way have a clean and centralised way to related Errors that we can thow and then turn into App/view messages to present to the user
+
 public enum AppCodes: Int {
     case noInternet = 1000
     case notImplemented
@@ -14,7 +20,6 @@ public enum AppCodes: Int {
     case parsingError
     case ignored
     case invalidURL
-    case vmChanged
     case dequeueReusableCellFail
     case unknownError
     case referenceLost

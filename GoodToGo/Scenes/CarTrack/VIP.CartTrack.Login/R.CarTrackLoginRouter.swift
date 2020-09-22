@@ -42,5 +42,10 @@ extension R.CarTrackLoginRouter: CarTrackLoginRoutingLogicProtocol {
         target.modalPresentationStyle = .fullScreen 
         viewController?.present(target, animated: true) { }
     }
+}
+
+// MARK: BaseRouterProtocol
+
+extension R.CarTrackLoginRouter: BaseRouterProtocol {
 
 }

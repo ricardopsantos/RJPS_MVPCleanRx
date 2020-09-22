@@ -15,6 +15,7 @@ import PointFreeFunctions
 import AppTheme
 import AppConstants
 import Core
+import Domain
 
 // MARK: - BaseGenericView
 open class BaseGenericViewVIP: StylableView {
@@ -81,8 +82,14 @@ open class BaseGenericViewVIP: StylableView {
     open func setupViewUIRx() {
         DevTools.Log.warning("\(self.className) : \(DevTools.Strings.overrideMe.rawValue)")
     }
+}
 
-    open func displayMessage(_ message: String, type: AlertType) {
+//
+// MARK: - BaseViewControllerMVPProtocol
+//
+
+extension BaseGenericViewVIP: BaseViewProtocol {
+    public func displayMessage(_ message: String, type: AlertType) {
         if let messagesManager = RootAssemblyResolver.messagesManager {
             messagesManager.displayMessage(message, type: type)
         }

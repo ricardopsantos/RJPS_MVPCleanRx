@@ -23,7 +23,7 @@ import PointFreeFunctions
 import Domain
 import Factory
 
-public extension AppUtilsProtocol {
+public extension NetworkingOperationsUtilsProtocol {
 
     // swiftlint:enable rule_Coding
     
@@ -33,34 +33,5 @@ public extension AppUtilsProtocol {
     
     var existsInternetConnection: Bool {
         return RJS_Utils.existsInternetConnection
-    }
-    
-    func assertExistsInternetConnection(sender: BaseViewControllerMVPProtocol?,
-                                        message: String=Messages.noInternet.localised,
-                                        block: @escaping () -> Void) {
-
-        if !existsInternetConnection {
-            let title  = Messages.alert.localised
-            let option = Messages.ok.localised
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: option, style: .default, handler: { action in
-                switch action.style {
-                case .default:
-                    sender?.setActivityState(true)
-                    DispatchQueue.executeWithDelay(delay: 1) {
-                        sender?.setActivityState(false)
-                        self.assertExistsInternetConnection(sender: sender, block: block)
-                    }
-                case .cancel: break
-                case .destructive: break
-                @unknown default: break
-                }}))
-            if let sender = sender {
-                (sender as? UIViewController)?.present(alert, animated: true, completion: nil)
-            }
-        } else {
-            block()
-        }
-    }
-    
+    }    
 }

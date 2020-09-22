@@ -6,7 +6,8 @@
 //
 
 import Foundation
+import AppConstants
 
-// swiftlint:disable rule_Coding
-
-public protocol ResponseDtoProtocol: Codable { }
+public protocol BaseViewProtocol: AnyObject {
+    func displayMessage(_ message: String, type: AlertType)
+}

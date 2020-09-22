@@ -38,5 +38,10 @@ extension R.CartTrackMapRouter: CartTrackMapRoutingLogicProtocol {
     func dismissMe() {
         viewController?.dismissMe()
     }
+}
+
+// MARK: BaseRouterProtocol
+
+extension R.CartTrackMapRouter: BaseRouterProtocol {
 
 }
