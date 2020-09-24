@@ -24,14 +24,12 @@ import Domain
 import Factory
 
 public extension NetworkingOperationsUtilsProtocol {
-
-    // swiftlint:enable rule_Coding
     
-    func downloadImage(imageURL: String, onFail: UIImage?=nil, completion: @escaping (UIImage?) -> Void) {
-        AppSimpleNetworkClient.downloadImageFrom(imageURL, caching: .hotOrCold) { (image) in completion(image ?? onFail) }
+    func networkingUtilsDownloadImage(imageURL: String, onFail: UIImage?=nil, completion: @escaping (UIImage?) -> Void) {
+        RJSLib.BasicNetworkClient.downloadImageFrom(imageURL, caching: .hotElseCold) { (image) in completion(image ?? onFail) }
     }
     
-    var existsInternetConnection: Bool {
+    var networkingUtilsExistsInternetConnection: Bool {
         return RJS_Utils.existsInternetConnection
     }    
 }

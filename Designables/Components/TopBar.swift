@@ -68,18 +68,25 @@ open class TopBar: BaseViewControllerVIP {
         return some
     }()
 
-    private func enable(btn: UIButton) {
-        btn.isHidden                 = false
-        btn.isUserInteractionEnabled = true
+    public override func loadView() {
+        super.loadView()
+        view.accessibilityIdentifier = self.genericAccessibilityIdentifier
     }
 
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-        view.accessibilityIdentifier = self.genericAccessibilityIdentifier
-        self.view.backgroundColor    = TopBar.defaultColor
+    open override func prepareLayoutCreateHierarchy() {
+        super.prepareLayoutCreateHierarchy()
         btnBack.lazyLoad()
         btnClose.lazyLoad()
         lblTitle.lazyLoad()
+    }
+
+    open override func prepareLayoutBySettingAutoLayoutsRules() {
+        super.prepareLayoutBySettingAutoLayoutsRules()
+    }
+
+    open override func prepareLayoutByFinishingPrepareLayout() {
+        super.prepareLayoutByFinishingPrepareLayout()
+        self.view.backgroundColor    = TopBar.defaultColor
         if lblTitle.text.isEmpty && !baseViewControllerTitle.isEmpty {
             lblTitle.textAnimated = baseViewControllerTitle
         }
@@ -87,38 +94,36 @@ open class TopBar: BaseViewControllerVIP {
 
 }
 
-/**
- * Public stuff
- */
-extension TopBar {
-    public var height: CGFloat { return TopBar.defaultHeight(usingSafeArea: self.usingSafeArea ) }
-    public static var defaultColor: UIColor { ComponentColor.TopBar.background }
-    public static func defaultHeight(usingSafeArea: Bool) -> CGFloat {
+//
+// MARK: - Public
+//
+
+public extension TopBar {
+    var height: CGFloat { return TopBar.defaultHeight(usingSafeArea: self.usingSafeArea ) }
+    static var defaultColor: UIColor { ComponentColor.TopBar.background }
+    static func defaultHeight(usingSafeArea: Bool) -> CGFloat {
         // [usingSafeArea=false] will make the TopBar go up and use space on the safe area
         return 60 + (!usingSafeArea ? AppleSizes.safeAreaTop : 0)
     }
-    public func addBackButton() { enable(btn: btnBack) }
-    public func addDismissButton() { enable(btn: btnClose) }
-    public func setTitle(_ title: String) { lblTitle.textAnimated = title }
+    func addBackButton() { enable(btn: btnBack) }
+    func addDismissButton() { enable(btn: btnClose) }
+    func setTitle(_ title: String) { lblTitle.textAnimated = title }
 
-    public var rxSignal_btnDismissTapped: Signal<Void> {
+    var rxSignal_btnDismissTapped: Signal<Void> {
         return btnClose.rx.controlEvent(.touchUpInside).asSignal()
     }
     
-    public var rxSignal_btnBackTapped: Signal<Void> {
+    var rxSignal_btnBackTapped: Signal<Void> {
         return btnBack.rx.controlEvent(.touchUpInside).asSignal()
     }
     
-    public var rxSignal_viewTapped: Signal<CGPoint> {
+    var rxSignal_viewTapped: Signal<CGPoint> {
         return lblTitle.rx
             .tapGesture()
             .when(.recognized)
             .map({ $0.location(in: $0.view)})
             .asSignal(onErrorJustReturn: .zero)
     }
-}
-
-public extension TopBar {
 
     // [usingSafeArea=false] will make the TopBar go up and use space on the safe area
     func injectOn(viewController: UIViewController, usingSafeArea: Bool = false) {
@@ -135,5 +140,14 @@ public extension TopBar {
         container.autoLayout.topToSuperview(usingSafeArea: usingSafeArea)
         container.autoLayout.height(TopBar.defaultHeight(usingSafeArea: usingSafeArea))
         self.view.edgesToSuperview()
+    }
+}
+
+// MARK: - Private
+
+private extension TopBar {
+    func enable(btn: UIButton) {
+        btn.isHidden                 = false
+        btn.isUserInteractionEnabled = true
     }
 }

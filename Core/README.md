@@ -1,4 +1,4 @@
 #  AppCore
 
-Implements what defined on `AppDomain`
+Implements what defined on `Domain`
 

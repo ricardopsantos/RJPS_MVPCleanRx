@@ -134,7 +134,7 @@ More info about VIP architecture [here](https://github.com/ricardopsantos/RJPS_M
  * [Material](https://github.com/CosmicMind/Material) - A UI/UX framework for creating beautiful applications. http://cosmicmind.com
  * [Motion](https://github.com/CosmicMind/Motion) - A library used to create beautiful animations and transitions for iOS. 
  * [Lottie-ios](https://github.com/airbnb/lottie-ios) - An iOS library to natively render After Effects vector animations
- * [Pulsator](https://github.com/shu223/Pulsator/) - Pulse animation for iOS
+ * [Pulsator](https://github.com/shu223/Pulsator/) - Pulse animation for iOS (used on `UIView+Extensions.swift`, `func addPulse()` for utility purposes)
 
 # Code Guidelines/Conventions
 

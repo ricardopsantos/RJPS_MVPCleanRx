@@ -1,4 +1,0 @@
-framework module RJPSLib_Storage {
-  header "RJPSLib_Storage-Swift.h"
-  requires objc
-}

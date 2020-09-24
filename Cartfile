@@ -56,6 +56,7 @@ github "Skyscanner/SkyFloatingLabelTextField"
 # Elegant HTTP Networking in Swift
 # https://github.com/Alamofire/Alamofire
 # github "Alamofire/Alamofire"
+github "Alamofire/Alamofire" ~> 5.2
 
 ####################################################################
 # Reactive Programming in Swift

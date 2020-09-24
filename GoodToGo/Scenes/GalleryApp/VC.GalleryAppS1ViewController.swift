@@ -58,10 +58,7 @@ extension VC {
         }()
 
         private lazy var topGenericView: TopBar = {
-            let some = TopBar()
-            some.injectOn(viewController: self, usingSafeArea: false)
-            some.setTitle("Show me kitties!")
-            return some
+            UIKitFactory.topBar(baseController: self, usingSafeArea: false)
         }()
 
         //
@@ -163,6 +160,19 @@ extension VC {
         // This function is called automatically by super BaseGenericView
         override func setupNavigationUIRx() {
             // Add options to navigation bar
+        }
+
+        override func prepareLayoutCreateHierarchy() {
+            super.prepareLayoutCreateHierarchy()
+        }
+
+        override func prepareLayoutBySettingAutoLayoutsRules() {
+            super.prepareLayoutBySettingAutoLayoutsRules()
+        }
+
+        override func prepareLayoutByFinishingPrepareLayout() {
+            super.prepareLayoutByFinishingPrepareLayout()
+            topGenericView.setTitle("Show me kitties!")
         }
     }
 }

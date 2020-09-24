@@ -119,10 +119,9 @@ extension VC {
         }
 
         private lazy var topGenericView: TopBar = {
-            let some = TopBar()
-            some.injectOn(viewController: self, usingSafeArea: false)
-            some.setTitle(Messages.welcome.localised)
-            return some
+            let bar = UIKitFactory.topBar(baseController: self, usingSafeArea: false)
+            bar.setTitle(Messages.welcome.localised)
+            return bar
         }()
 
         // This function is called automatically by super BaseGenericView

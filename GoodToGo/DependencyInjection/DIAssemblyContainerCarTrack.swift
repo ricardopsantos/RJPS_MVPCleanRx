@@ -62,16 +62,16 @@ final class DIAssemblyContainerCarTrack: Assembly {
         container.register(DIAssemblyContainerCartTrackProtocols.carTrackAPIUseCase) { resolver in
             let uc = CarTrackAPIUseCase()
             uc.networkRepository       = resolver.resolve(DIAssemblyContainerCartTrackProtocols.carTrack_NetWorkRepository)
-            uc.coldKeyValuesRepository = resolver.resolve(RootAssemblyContainerProtocols.coldKeyValuesRepository)
-            uc.hotCacheRepository      = resolver.resolve(RootAssemblyContainerProtocols.hotCacheRepository)
-            uc.apiCache                = resolver.resolve(RootAssemblyContainerProtocols.apiCacheRepository)
+            uc.coldKeyValuesRepository = resolver.resolve(DIRootAssemblyContainerProtocols.coldKeyValuesRepository)
+            uc.hotCacheRepository      = resolver.resolve(DIRootAssemblyContainerProtocols.hotCacheRepository)
+            uc.apiCache                = resolver.resolve(DIRootAssemblyContainerProtocols.apiCacheRepository)
             return uc
         }
 
         container.register(DIAssemblyContainerCartTrackProtocols.carTrackGenericAppBusinessUseCase) { resolver in
             let uc = Core_CarTrack.CarTrackGenericAppBusinessUseCase()
-            uc.coldKeyValuesRepository  = resolver.resolve(RootAssemblyContainerProtocols.coldKeyValuesRepository)
-            uc.hotCacheRepository       = resolver.resolve(RootAssemblyContainerProtocols.hotCacheRepository)
+            uc.coldKeyValuesRepository  = resolver.resolve(DIRootAssemblyContainerProtocols.coldKeyValuesRepository)
+            uc.hotCacheRepository       = resolver.resolve(DIRootAssemblyContainerProtocols.hotCacheRepository)
             return uc
         }
     }

@@ -35,4 +35,4 @@ typealias AppCoreDataManager     = RJPSLib_Storage.DataModelEntetie             
 typealias AppUserDefaultsVars    = RJPSLib_Storage.RJSLib.Storages.NSUserDefaultsStoredVarUtils // NSUserDefaults utilities for Int Type
 typealias AppUserDefaults        = RJPSLib_Storage.RJSLib.Storages.NSUserDefaults               // NSUserDefaults utilities (save, delete, get, exits, ...)
 typealias WebAPIRequestProtocol  = RJPSLib_Networking.SimpleNetworkClientRequest_Protocol
-typealias AppSimpleNetworkClient = RJPSLib_Networking.RJSLib.SimpleNetworkClient
+//typealias AppSimpleNetworkClient = RJPSLib_Networking.RJSLib.SimpleNetworkClient

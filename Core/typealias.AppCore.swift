@@ -11,4 +11,4 @@ import RJPSLib_Networking
 import DevTools
 import Domain
 
-typealias AppSimpleNetworkClient = RJSLib.BasicNetworkClient // Simple GETs and images download
+//typealias AppSimpleNetworkClient = RJSLib.BasicNetworkClient // Simple GETs and images download

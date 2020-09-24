@@ -62,7 +62,7 @@ private class DownloadImageOperation: OperationBase, NetworkingOperationsUtilsPr
         }
         executing(true)
 
-        downloadImage(imageURL: urlString, onFail: Images.notFound.image) { (image) in
+        networkingUtilsDownloadImage(imageURL: urlString, onFail: Images.notFound.image) { (image) in
             self.image = image!
             self.executing(false)
             self.finish(true)

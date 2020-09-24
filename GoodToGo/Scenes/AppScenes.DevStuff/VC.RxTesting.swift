@@ -343,8 +343,8 @@ extension VC.RxTesting {
     var rxReturnOnError: UIImage { return Images.noInternet.image }
     var rxObservableAsyncRequest: Observable<UIImage> {
         return Observable.create { [weak self] observer -> Disposable in
-            let adress = Bool.random() ? "https://image.shutterstock.com/image-photo/white-transparent-leaf-on-mirror-260nw-1029171697.jpg" : "lalal"
-            self?.downloadImage(imageURL: adress, completion: { (image) in
+            let address = Bool.random() ? "https://image.shutterstock.com/image-photo/white-transparent-leaf-on-mirror-260nw-1029171697.jpg" : "lalal"
+            self?.networkingUtilsDownloadImage(imageURL: address, completion: { (image) in
                 if image != nil {
                     self?.aux_log(message: "[rxObservableAsyncRequest][onNext]", showAlert: false, appendToTable: true)
                     observer.onNext(image!)
@@ -355,12 +355,7 @@ extension VC.RxTesting {
             })
             return Disposables.create()
             }
-            /* If [retry]==[0], will never work; and ignore everything. If [retry]==[1], will execute ONCE and never retries. Min value : [retry]==[2]
-             If we have [retry] and [retryOnBecomesReachable], will never retry, will allways return var [rxReturnOnError] by [retryOnBecomesReachable] */
             .retry()
-        /* [retryOnBecomesReachable], will actually return [rxReturnOnError] var if we dont have internet connection
-           BUT ALSO, if the requests fails on [observer.onError], the subscriber will receive [rxReturnOnError]
-             on event [onNext]. If we dont have the [retryOnBecomesReachable], the subscriber will receive the error on [onError] */
             .retryOnBecomesReachable(rxReturnOnError, reachabilityService: DevTools.reachabilityService)
     }
 }

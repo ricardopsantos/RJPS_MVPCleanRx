@@ -66,8 +66,8 @@ final class DIAssemblyContainerGalleryApp: Assembly {
         // use case
         container.register(DIAssemblyContainerGalleryAppProtocols.galleryAppGenericAppBusinessUseCase) { resolver in
             let uc = GalleryAppMiscBusinessUseCase()
-            uc.coldKeyValuesRepository = resolver.resolve(RootAssemblyContainerProtocols.coldKeyValuesRepository)
-            uc.hotCacheRepository      = resolver.resolve(RootAssemblyContainerProtocols.hotCacheRepository)
+            uc.coldKeyValuesRepository = resolver.resolve(DIRootAssemblyContainerProtocols.coldKeyValuesRepository)
+            uc.hotCacheRepository      = resolver.resolve(DIRootAssemblyContainerProtocols.hotCacheRepository)
             return uc
         }
 
@@ -75,9 +75,9 @@ final class DIAssemblyContainerGalleryApp: Assembly {
         container.register(DIAssemblyContainerGalleryAppProtocols.galleryAppAPIUseCase) { resolver in
             let uc = GalleryAppWebAPIUseCase()
             uc.networkRepository       = resolver.resolve(DIAssemblyContainerGalleryAppProtocols.galleryAppNetWorkRepository) // Client WebAPI
-            uc.coldKeyValuesRepository = resolver.resolve(RootAssemblyContainerProtocols.coldKeyValuesRepository)
-            uc.hotCacheRepository      = resolver.resolve(RootAssemblyContainerProtocols.hotCacheRepository)
-            uc.apiCache                = resolver.resolve(RootAssemblyContainerProtocols.apiCacheRepository)
+            uc.coldKeyValuesRepository = resolver.resolve(DIRootAssemblyContainerProtocols.coldKeyValuesRepository)
+            uc.hotCacheRepository      = resolver.resolve(DIRootAssemblyContainerProtocols.hotCacheRepository)
+            uc.apiCache                = resolver.resolve(DIRootAssemblyContainerProtocols.apiCacheRepository)
             return uc
         }
     }

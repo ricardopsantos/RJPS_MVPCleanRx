@@ -11,6 +11,15 @@ import RJPSLib_Storage
 //
 import Domain
 
+//
+// READ
+//
+// Dependency resolved @ `DIRootAssemblyResolver.coldKeyValuesRepository.xxx`
+//
+// `RJS_DataModel` is implemented @ RJPSLib_Storage and provides a way to store a value (String) but can with a limited period of
+// time in which that value can be retrieved back. Useful for caching and store temporary data
+//
+
 public extension RP {
     class KeyValuesStorageRepository: KeyValuesStorageRepositoryProtocol {
 

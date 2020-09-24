@@ -16,8 +16,8 @@ import RxSwift
 public protocol NetworkingOperationsUtilsProtocol: class {
 
     // If there is internet; execute the code in the block. If not, present a warning
-    var existsInternetConnection: Bool { get }
+    var networkingUtilsExistsInternetConnection: Bool { get }
 
-    func downloadImage(imageURL: String, onFail: UIImage?, completion: @escaping (UIImage?) -> Void)
+    func networkingUtilsDownloadImage(imageURL: String, onFail: UIImage?, completion: @escaping (UIImage?) -> Void)
 
 }

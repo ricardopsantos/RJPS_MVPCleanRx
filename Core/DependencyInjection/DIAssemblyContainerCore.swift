@@ -17,7 +17,7 @@ import DevTools
 // MARK: - Protocols
 //
 
-public struct RootAssemblyContainerProtocols {
+public struct DIRootAssemblyContainerProtocols {
 
     //
     // Managers
@@ -40,9 +40,11 @@ public struct RootAssemblyContainerProtocols {
 // MARK: - Resolvers
 //
 
-public class RootAssemblyResolver {
+public class DIRootAssemblyResolver {
     private init() { }
-    public static let messagesManager = DIAssemblerCore.assembler.resolver.resolve(RootAssemblyContainerProtocols.messagesManager.self)
+    public static let messagesManager = DIAssemblerCore.assembler.resolver.resolve(DIRootAssemblyContainerProtocols.messagesManager.self)
+    public static let hotCacheRepository = DIAssemblerCore.assembler.resolver.resolve(DIRootAssemblyContainerProtocols.hotCacheRepository.self)
+    public static let coldKeyValuesRepository = DIAssemblerCore.assembler.resolver.resolve(DIRootAssemblyContainerProtocols.coldKeyValuesRepository.self)
 }
 
 //
@@ -53,19 +55,19 @@ final class DIAssemblyContainerCore: Assembly {
 
     func assemble(container: Container) {
 
-        container.autoregister(RootAssemblyContainerProtocols.messagesManager,
+        container.autoregister(DIRootAssemblyContainerProtocols.messagesManager,
                                initializer: MessagesManager.init).inObjectScope(.container)
 
-        container.autoregister(RootAssemblyContainerProtocols.hotCacheRepository,
+        container.autoregister(DIRootAssemblyContainerProtocols.hotCacheRepository,
                                initializer: RP.HotCacheRepository.init).inObjectScope(.container)
 
-        container.autoregister(RootAssemblyContainerProtocols.networkClient,
+        container.autoregister(DIRootAssemblyContainerProtocols.networkClient,
                                initializer: RJS_SimpleNetworkClient.init).inObjectScope(.container)
 
-        container.autoregister(RootAssemblyContainerProtocols.coldKeyValuesRepository,
+        container.autoregister(DIRootAssemblyContainerProtocols.coldKeyValuesRepository,
                                initializer: RP.KeyValuesStorageRepository.init).inObjectScope(.container)
 
-        container.autoregister(RootAssemblyContainerProtocols.apiCacheRepository,
+        container.autoregister(DIRootAssemblyContainerProtocols.apiCacheRepository,
                                initializer: RP.APICacheManager.init).inObjectScope(.container)
 
     }

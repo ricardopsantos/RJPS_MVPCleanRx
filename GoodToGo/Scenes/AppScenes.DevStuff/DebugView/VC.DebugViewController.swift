@@ -25,19 +25,19 @@ import UIBase
 // MARK: - Preview
 
 @available(iOS 13.0.0, *)
-struct CartTrackMapViewController_UIViewControllerRepresentable: UIViewControllerRepresentable {
-    func updateUIViewController(_ uiViewController: VC.CartTrackMapViewController, context: Context) { }
-    func makeUIViewController(context: Context) -> VC.CartTrackMapViewController {
-        let vc = VC.CartTrackMapViewController()
+struct DebugViewController_UIViewControllerRepresentable: UIViewControllerRepresentable {
+    func updateUIViewController(_ uiViewController: VC.DebugViewController, context: Context) { }
+    func makeUIViewController(context: Context) -> VC.DebugViewController {
+        let vc = VC.DebugViewController()
         //vc.something(viewModel: dashboardVM)
         return vc
     }
 }
 
 @available(iOS 13.0.0, *)
-struct CartTrackMapViewController_Preview: PreviewProvider {
+struct DebugViewController_Preview: PreviewProvider {
     static var previews: some SwiftUI.View {
-        return CartTrackMapViewController_UIViewControllerRepresentable()
+        return DebugViewController_UIViewControllerRepresentable()
     }
 }
 
@@ -45,29 +45,14 @@ struct CartTrackMapViewController_Preview: PreviewProvider {
 
 extension VC {
 
-    class CartTrackMapViewController: BaseGenericViewControllerVIP<V.CartTrackMapView> {
-        var interactor: CartTrackMapBusinessLogicProtocol?
-        var router: (CartTrackMapRoutingLogicProtocol &
-            CartTrackMapDataPassingProtocol &
-            CartTrackMapRoutingLogicProtocol)?
-
-        //
-        // MARK: UI Elements
-        //
+    class DebugViewController: BaseGenericViewControllerVIP<V.DebugView> {
+        private var interactor: DebugBusinessLogicProtocol?
+        var router: (DebugRoutingLogicProtocol &
+            DebugDataPassingProtocol &
+            DebugRoutingLogicProtocol)?
 
         private lazy var topGenericView: TopBar = {
-            let bar = UIKitFactory.topBar(baseController: self, usingSafeArea: false)
-            bar.addDismissButton()
-            bar.rxSignal_btnDismissTapped
-                .asObservable()
-                .subscribe(onNext: { (_) in
-                    self.router?.routeToLogin()
-                }).disposed(by: disposeBag)
-            return bar
-        }()
-
-        private lazy var reachabilityView: ReachabilityView = {
-           return self.addReachabilityView()
+            UIKitFactory.topBar(baseController: self, usingSafeArea: false)
         }()
 
         //
@@ -77,21 +62,31 @@ extension VC {
         override func loadView() {
             super.loadView()
             view.accessibilityIdentifier = self.genericAccessibilityIdentifier
-            self.title = "Map"
-            topGenericView.setTitle(self.title!)
+            self.title = "DevScreen"
         }
 
         override func viewDidLoad() {
             super.viewDidLoad()
+            if DevTools.onSimulator {
+                DispatchQueue.executeOnce(token: "\(VC.DebugViewController.self).info") {
+                    let message = """
+                    Debug Screen to help developers to know:
+                        - Installed Feature Flags
+                        - App available fonts
+                        - App available colors
+                        - App available alert styles
+                        - App UI components
+                        - ...
+                    """
+                    DevTools.makeToast(message, duration: 5)
+                }
+            }
         }
 
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             if firstAppearance {
-                reachabilityView.lazyLoad()
                 interactor?.requestScreenInitialState()
-                let request = VM.CartTrackMap.MapData.Request()
-                interactor?.requestMapData(request: request)
             }
         }
 
@@ -115,31 +110,27 @@ extension VC {
         override func setup() {
             // This function is called automatically by super BaseGenericView
             let viewController = self
-            let interactor = I.CartTrackMapInteractor()
-            let presenter  = P.CartTrackMapPresenter()
-            let router     = R.CartTrackMapRouter()
+            let interactor = I.DebugInteractor()
+            let presenter  = P.DebugPresenter()
+            let router     = R.DebugRouter()
             viewController.interactor = interactor
             viewController.router = router
             interactor.presenter  = presenter
             presenter.viewController = viewController
             router.viewController = viewController
+            router.dsStyles = interactor
         }
 
         // This function is called automatically by super BaseGenericView
         override func setupViewIfNeed() {
             // Use it to configure stuff on the genericView, depending on the value external/public variables
             // that are set after we instantiate the view controller, but before if has been presented
+            topGenericView.setTitle("Hi")
         }
 
         // This function is called automatically by super BaseGenericView
         override func setupViewUIRx() {
-            genericView.rxFilter.asObserver().bind { [weak self] (search) in
-                guard let self = self else { return }
-                guard let search = search else { return }
-                guard self.isVisible else { return }
-                let viewModel = VM.CartTrackMap.MapDataFilter.Request(filter: search)
-                self.interactor?.requestMapDataFilter(viewModel: viewModel)
-            }.disposed(by: disposeBag)
+
         }
 
         // This function is called automatically by super BaseGenericView
@@ -151,29 +142,25 @@ extension VC {
 
 // MARK: Public Misc Stuff
 
-extension VC.CartTrackMapViewController {
+extension VC.DebugViewController {
 
 }
 
 // MARK: Private Misc Stuff
 
-private extension VC.CartTrackMapViewController {
+private extension VC.DebugViewController {
 
 }
 
 // MARK: DisplayLogicProtocol
 
-extension VC.CartTrackMapViewController: CartTrackMapDisplayLogicProtocol {
+extension VC.DebugViewController: DebugDisplayLogicProtocol {
 
-    func displayMapDataFilter(viewModel: VM.CartTrackMap.MapDataFilter.ViewModel) {
-        genericView.setupWith(mapDataFilter: viewModel)
+    func displaySomeStuff(viewModel: VM.Debug.SomeStuff.ViewModel) {
+        // Setting up the view, option 1 : passing the view model
     }
 
-    func displayMapData(viewModel: VM.CartTrackMap.MapData.ViewModel) {
-        genericView.setupWith(mapData: viewModel)
-    }
-
-    func displayScreenInitialState(viewModel: VM.CartTrackMap.ScreenInitialState.ViewModel) {
-
+    func displayScreenInitialState(viewModel: VM.Debug.ScreenInitialState.ViewModel) {
+        title = viewModel.title
     }
 }

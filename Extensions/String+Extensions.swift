@@ -9,7 +9,7 @@ import UIKit
 import Foundation
 
 extension String {
-    var capitalized: String {
+    var capitalised: String {
         return prefix(1).uppercased() + self.lowercased().dropFirst()
     }
 }

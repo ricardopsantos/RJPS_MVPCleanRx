@@ -16,7 +16,6 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 import TinyConstraints
-import Pulsator
 //
 import AppConstants
 import AppTheme

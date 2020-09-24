@@ -9,6 +9,9 @@
 
 import Foundation
 
+// The objective of this class is to provide a way of storing (anywhere) some entity that is only available a certain amount of time (till `expireDate`)
+// Its useful for caching of store temporary data
+
 public class GenericKeyValueStorable: Codable {
     public var keyBase: String = ""
     public var key: String = ""         // Computed cache key (with parameters)
@@ -17,7 +20,7 @@ public class GenericKeyValueStorable: Codable {
     public var valueType: String = ""
     public var recordDate: Date = GenericKeyValueStorable.referenceDate
     public var expireDate: Date = GenericKeyValueStorable.referenceDate
-    public var encoding: Int = 1
+    public var encoding: Int = ValueEncoding.base64.rawValue
     public var objectType: String = ""
 
     public convenience init(composedKey: String,
@@ -80,9 +83,9 @@ extension GenericKeyValueStorable {
             value = String(decoding: toStore, as: UTF8.self)
             valueType = "\(String(describing: type(of: some)))"
         }
-        self.key       = CacheUtils.composedKey(key, params)
-        self.keyBase   = key
-        self.keyParams = CacheUtils.parseKeyParams(params)
+        self.key        = CacheUtils.composedKey(key, params)
+        self.keyBase    = key
+        self.keyParams  = CacheUtils.parseKeyParams(params)
         self.object     = value
         self.recordDate = GenericKeyValueStorable.referenceDate
         self.expireDate = GenericKeyValueStorable.referenceDate.addingTimeInterval(TimeInterval(lifeSpam*60))

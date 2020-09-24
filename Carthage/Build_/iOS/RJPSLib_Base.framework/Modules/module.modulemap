@@ -1,4 +1,0 @@
-framework module RJPSLib_Base {
-  header "RJPSLib_Base-Swift.h"
-  requires objc
-}

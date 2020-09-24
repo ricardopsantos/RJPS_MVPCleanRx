@@ -103,7 +103,7 @@ open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtoco
 
 extension BaseViewControllerVIP: BaseViewProtocol {
     public func displayMessage(_ message: String, type: AlertType) {
-        if let messagesManager = RootAssemblyResolver.messagesManager {
+        if let messagesManager = DIRootAssemblyResolver.messagesManager {
             messagesManager.displayMessage(message, type: type)
         }
     }
