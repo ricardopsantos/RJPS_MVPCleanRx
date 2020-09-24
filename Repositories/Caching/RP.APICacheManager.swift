@@ -13,11 +13,16 @@ import Factory
 
 // swiftlint:disable rule_Coding
 
-public extension UserDefaults {
-    func save(kvStorableRecord: GenericKeyValueStorable) {
-        UserDefaults.standard.set(kvStorableRecord.toData, forKey: kvStorableRecord.key)
-    }
-}
+//
+// READ
+//
+// Dependency resolved @ `DIRootAssemblyResolver.apiCacheRepository.xxx`
+//
+// WebAPI cache manager! Class responsible for storing and retrieving the cached web api requests, and so avoid new requests
+// The cached values are stored on 2 places.
+// 1 - Hot cache - Uses NSCache for storage. Fast access but lost on app is closed
+// 2 - Cold cache - Uses NSUserDefaults for storage - Slow access but persistent after app is closed
+// While the cached value is retrieved, the hot cache have priority (faster), and if available is returned, else cold cached value is returned
 
 public extension RP {
     class APICacheManager: APICacheManagerProtocol {
@@ -62,7 +67,7 @@ public extension RP {
     }
 }
 
-fileprivate extension RP.APICacheManager {
+private extension RP.APICacheManager {
     func cacheGet<T: Codable>(composedKey: String, type: T.Type) -> T? {
         // We return first (if available) the hot cache, is faster
         if let hotCached = hotCacheGet(composedKey: composedKey, type: type) {
@@ -74,15 +79,19 @@ fileprivate extension RP.APICacheManager {
     }
 }
 
-// Hot cache (Faster that cold cache) : free when device starts of detects excessive memory pressure
+//
+// Hot cache utils: Faster that cold cache - free when device starts of detects excessive memory pressure
+//
 
-fileprivate extension RP.APICacheManager {
+private extension RP.APICacheManager {
 
+    // Add new record to hot cache (fast access, but lost after app is closed)
     func hotCacheAdd(kvStorableRecord: GenericKeyValueStorable, withKey: String) {
         objc_sync_enter(hotCache); defer { objc_sync_exit(hotCache) }
         hotCache.setObject(kvStorableRecord, forKey: withKey as NSString)
     }
 
+    // Get record from hot cache, if valid (while decoding it)
     func hotCacheGet<T: Codable>(composedKey: String, type: T.Type) -> T? {
         objc_sync_enter(hotCache); defer { objc_sync_exit(hotCache) }
         if let cached = hotCache.object(forKey: composedKey as NSString),
@@ -95,14 +104,17 @@ fileprivate extension RP.APICacheManager {
     }
 }
 
-// Cold cache : device stored
-
+//
+// Cold cache utils - device stored
+//
 private extension RP.APICacheManager {
 
+    // Add new record to cold cache (slow access, but persistent after app is closed)
     func coldCacheAdd(kvStorableRecord: GenericKeyValueStorable) {
         UserDefaults.standard.save(kvStorableRecord: kvStorableRecord)
     }
 
+    // Get record from cold cache, if valid (while decoding it)
     func coldCacheGet<T: Codable>(composedKey: String, type: T.Type) -> T? {
         if let cached = UserDefaults.standard.data(forKey: composedKey),
             let dRes = try? JSONDecoder().decode(GenericKeyValueStorable.self, from: cached),
@@ -112,5 +124,11 @@ private extension RP.APICacheManager {
                 return result
             }
         return nil
+    }
+}
+
+private extension UserDefaults {
+    func save(kvStorableRecord: GenericKeyValueStorable) {
+        UserDefaults.standard.set(kvStorableRecord.toData, forKey: kvStorableRecord.key)
     }
 }

@@ -45,6 +45,7 @@ public class DIRootAssemblyResolver {
     public static let messagesManager = DIAssemblerCore.assembler.resolver.resolve(DIRootAssemblyContainerProtocols.messagesManager.self)
     public static let hotCacheRepository = DIAssemblerCore.assembler.resolver.resolve(DIRootAssemblyContainerProtocols.hotCacheRepository.self)
     public static let coldKeyValuesRepository = DIAssemblerCore.assembler.resolver.resolve(DIRootAssemblyContainerProtocols.coldKeyValuesRepository.self)
+    public static let apiCacheRepository = DIAssemblerCore.assembler.resolver.resolve(DIRootAssemblyContainerProtocols.apiCacheRepository.self)
 }
 
 //
