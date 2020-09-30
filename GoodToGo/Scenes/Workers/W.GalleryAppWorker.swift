@@ -36,8 +36,8 @@ public protocol GalleryAppWorkerProtocol {
 // MARK: - GalleryAppWorker
 
 public class GalleryAppWorker {
-    public var webAPIUSeCase: GalleryAppWebAPIUseCaseProtocol!
-    public var genericUseCase: GalleryAppGenericBusinessUseCaseProtocol!
+    public var webAPIUSeCase: GalleryAppWebAPIUseCaseProtocol!           // resolved at class DIAssemblyContainerGalleryApp
+    public var genericUseCase: GalleryAppGenericBusinessUseCaseProtocol! // resolved at class DIAssemblyContainerGalleryApp
 }
 
 // MARK: - GalleryAppWorkerProtocol

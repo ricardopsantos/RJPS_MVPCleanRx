@@ -20,7 +20,6 @@
 		9FACC17B223BDD5B00576498 /* TO_DO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FACC17A223BDD5B00576498 /* TO_DO.swift */; };
 		9FACC18B223BFB0F00576498 /* AppDelegate+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FACC18A223BFB0F00576498 /* AppDelegate+Setup.swift */; };
 		9FB35E0A22EC611000326092 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB35E0722EC611000326092 /* Localizable.strings */; };
-		9FB8DFCA2233E67100095420 /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
 		9FE1439721AF2F520026BDFC /* typealias.Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE1438821AF2D8B0026BDFC /* typealias.Application.swift */; };
 		9FE143B821AF2F520026BDFC /* AppEnvironments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE1437021AF1ADC0026BDFC /* AppEnvironments.swift */; };
 		9FE143C021AF2F520026BDFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F288F2720F8089F008A9539 /* AppDelegate.swift */; };
@@ -35,15 +34,11 @@
 		D700A95D24FA7FC90055DEB6 /* OperationQueueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786EF7A24F7ECA3000F6A2C /* OperationQueueManager.swift */; };
 		D700A96024FA80BF0055DEB6 /* APIRequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D700A95F24FA80BF0055DEB6 /* APIRequestOperation.swift */; };
 		D724820324C4E38F00FBDD46 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D724820224C4E38F00FBDD46 /* Factory.swift */; };
-		D725A69F246C6302005664CB /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
 		D729225E24669D5000DAD480 /* AppConstants.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7E25A9424669B9B003BBEA0 /* AppConstants.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D729226024669D5400DAD480 /* PointFreeFunctions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7E25A7A246699FC003BBEA0 /* PointFreeFunctions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D729226A24669F3700DAD480 /* Designables.h in Headers */ = {isa = PBXBuildFile; fileRef = D729226824669F3700DAD480 /* Designables.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D729226D24669F3700DAD480 /* Designables.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729226624669F3700DAD480 /* Designables.framework */; };
 		D729226E24669F3700DAD480 /* Designables.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D729226624669F3700DAD480 /* Designables.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D729228424669FFD00DAD480 /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
-		D72922852466A00000DAD480 /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
-		D72922862466A00000DAD480 /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
 		D72922912466A04200DAD480 /* UIBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D729228F2466A04200DAD480 /* UIBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D72922942466A04200DAD480 /* UIBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D729228D2466A04200DAD480 /* UIBase.framework */; };
 		D72922952466A04300DAD480 /* UIBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D729228D2466A04200DAD480 /* UIBase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -51,8 +46,6 @@
 		D72922B62466A0CA00DAD480 /* DevTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72922AF2466A0CA00DAD480 /* DevTools.framework */; };
 		D72922B72466A0CA00DAD480 /* DevTools.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D72922AF2466A0CA00DAD480 /* DevTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D72922C42466A19500DAD480 /* DevTools+AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F346E9322BFB495008A22C4 /* DevTools+AppLogger.swift */; };
-		D72922CD2466A36C00DAD480 /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
-		D72922CE2466A36C00DAD480 /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
 		D72922CF2466A3A300DAD480 /* E.AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9829C8223A611E00ACA6B7 /* E.AlertType.swift */; };
 		D72922D52466A70100DAD480 /* typelias.DevTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72922D42466A70100DAD480 /* typelias.DevTools.swift */; };
 		D72922D72466AD5D00DAD480 /* typealias.AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72922D62466AD5D00DAD480 /* typealias.AppConstants.swift */; };
@@ -93,6 +86,8 @@
 		D72923B82467089700DAD480 /* E.Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923B72467089700DAD480 /* E.Messages.swift */; };
 		D72923C024670D5300DAD480 /* AppConstants+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923BF24670D5300DAD480 /* AppConstants+Testing.swift */; };
 		D72923C224670D7500DAD480 /* AppConstants+Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72923C124670D7500DAD480 /* AppConstants+Strings.swift */; };
+		D73B078D251E049E00DD801B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73B078C251E049E00DD801B /* Alamofire.framework */; };
+		D73B078F251E07DB00DD801B /* AlamofireSamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B078E251E07DB00DD801B /* AlamofireSamples.swift */; };
 		D73E05BF2467112500965E96 /* AppResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E05BE2467112500965E96 /* AppResources.swift */; };
 		D741A35B246A85E5000235E0 /* D.BaseDomainVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D741A35A246A85E5000235E0 /* D.BaseDomainVIP.swift */; };
 		D755FE7724B20251009BA6BD /* ViewWithRoundShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D755FE7624B20251009BA6BD /* ViewWithRoundShadow.swift */; };
@@ -153,9 +148,6 @@
 		D77824BF2479C83F0071776F /* AppConstants.PropertiesList.plist in Resources */ = {isa = PBXBuildFile; fileRef = D77824BE2479C83F0071776F /* AppConstants.PropertiesList.plist */; };
 		D77824C12479C8D00071776F /* AppResources.PropertiesList.plist in Resources */ = {isa = PBXBuildFile; fileRef = D77824C02479C8D00071776F /* AppResources.PropertiesList.plist */; };
 		D7782524247A59D40071776F /* T.Test_CartTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7782523247A59D40071776F /* T.Test_CartTrack.swift */; };
-		D778255A247A5FAC0071776F /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
-		D778255C247A5FAE0071776F /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
-		D778255F247A5FB20071776F /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
 		D7782560247A5FB50071776F /* typealias.VIP.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78F27EF246E718D008F7E54 /* typealias.VIP.encaplulate.swift */; };
 		D778258E247A79D40071776F /* T.TestsShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = D778258D247A79D40071776F /* T.TestsShared.swift */; };
 		D778258F247A85DA0071776F /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC172223BBD8600576498 /* RxCocoa.framework */; };
@@ -210,12 +202,8 @@
 		D7979DCB246DC1960039031C /* P.DebugPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979DC4246DC1960039031C /* P.DebugPresenter.swift */; };
 		D7979DCE246DC46C0039031C /* LabelWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7979DCD246DC46C0039031C /* LabelWithPadding.swift */; };
 		D7AB2443246716C6000142C4 /* V.UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F58FB1522BE5DE700042A8C /* V.UserTableViewCell.swift */; };
-		D7AB2445246718A9000142C4 /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
-		D7AB2446246718AA000142C4 /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
-		D7AB2447246718AA000142C4 /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
 		D7AB245424671CBF000142C4 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AB244D24671CBF000142C4 /* Domain.framework */; };
 		D7AB245524671CBF000142C4 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7AB244D24671CBF000142C4 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D7AB2477246723BA000142C4 /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
 		D7AB247924672405000142C4 /* typealias.Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AB247824672405000142C4 /* typealias.Domain.swift */; };
 		D7AB24A92467366D000142C4 /* HotCacheRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCF332722EF55500074DAB9 /* HotCacheRepositoryProtocol.swift */; };
 		D7AB24AA2467366D000142C4 /* KeyValuesStorageRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9829422239892D00ACA6B7 /* KeyValuesStorageRepositoryProtocol.swift */; };
@@ -247,9 +235,6 @@
 		D7D9E7ED24679697005B4313 /* RP.KeyValuesStorageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8D4AB6223876D700777976 /* RP.KeyValuesStorageRepository.swift */; };
 		D7D9E7EE24679697005B4313 /* RP.HotCacheRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCF332522EF552E0074DAB9 /* RP.HotCacheRepository.swift */; };
 		D7D9E7F224679A5E005B4313 /* E.APIErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E7F124679A5E005B4313 /* E.APIErrors.swift */; };
-		D7D9E7F32467FB98005B4313 /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
-		D7D9E7F42467FB99005B4313 /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
-		D7D9E7F52467FB9A005B4313 /* typealias.DDD.encaplulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */; };
 		D7D9E7F82467FEE3005B4313 /* E.LayoutStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E7F72467FEE3005B4313 /* E.LayoutStyle.swift */; };
 		D7D9E7FA2467FFBA005B4313 /* E.AppCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E7F92467FFBA005B4313 /* E.AppCodes.swift */; };
 		D7D9E80224681046005B4313 /* WebAPI.CarTrack+APIRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9E80124681046005B4313 /* WebAPI.CarTrack+APIRequests.swift */; };
@@ -908,7 +893,6 @@
 		9FACC18A223BFB0F00576498 /* AppDelegate+Setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Setup.swift"; sourceTree = "<group>"; };
 		9FB35E0822EC611000326092 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9FB35E0922EC611000326092 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = typealias.DDD.encaplulate.swift; sourceTree = "<group>"; };
 		9FB9F97622E520DB00D64FD2 /* Debug.QA.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.QA.xcconfig; sourceTree = "<group>"; };
 		9FBF4B0722BEBC3B00E0D1AB /* RJPSLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RJPSLib.framework; path = Carthage/Build/iOS/RJPSLib.framework; sourceTree = "<group>"; };
 		9FCF331E22EF18A90074DAB9 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
@@ -970,6 +954,8 @@
 		D72923B72467089700DAD480 /* E.Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E.Messages.swift; sourceTree = "<group>"; };
 		D72923BF24670D5300DAD480 /* AppConstants+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppConstants+Testing.swift"; sourceTree = "<group>"; };
 		D72923C124670D7500DAD480 /* AppConstants+Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppConstants+Strings.swift"; sourceTree = "<group>"; };
+		D73B078C251E049E00DD801B /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		D73B078E251E07DB00DD801B /* AlamofireSamples.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireSamples.swift; sourceTree = "<group>"; };
 		D73E05BE2467112500965E96 /* AppResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppResources.swift; sourceTree = "<group>"; };
 		D741A35A246A85E5000235E0 /* D.BaseDomainVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D.BaseDomainVIP.swift; sourceTree = "<group>"; };
 		D755FE7624B20251009BA6BD /* ViewWithRoundShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithRoundShadow.swift; sourceTree = "<group>"; };
@@ -1176,41 +1162,42 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D72922E62466B06300DAD480 /* AppTheme.framework in Frameworks */,
+				D72923452466B78300DAD480 /* AppResources.framework in Frameworks */,
+				D7E25AAA24669D1A003BBEA0 /* AppConstants.framework in Frameworks */,
+				D7AB24CB246743BD000142C4 /* Core.framework in Frameworks */,
+				D729226D24669F3700DAD480 /* Designables.framework in Frameworks */,
+				D7AB245424671CBF000142C4 /* Domain.framework in Frameworks */,
+				D774F54124F57D1B00D01370 /* Domain_GalleryApp.framework in Frameworks */,
+				D7F2DDAD24746C0F008CE3DA /* Core_CarTrack.framework in Frameworks */,
+				D774F52E24F57D0C00D01370 /* Core_GalleryApp.framework in Frameworks */,
+				D7F2DD862474587C008CE3DA /* Domain_CarTrack.framework in Frameworks */,
+				D72922B62466A0CA00DAD480 /* DevTools.framework in Frameworks */,
+				D72923172466B35300DAD480 /* Extensions.framework in Frameworks */,
+				D788BDA624698D74007C59D0 /* Factory.framework in Frameworks */,
+				D7E25AA724669D13003BBEA0 /* PointFreeFunctions.framework in Frameworks */,
+				D7D9E7DA2467958F005B4313 /* Repositories.framework in Frameworks */,
+				D7D9E7A724676FE6005B4313 /* Repositories_WebAPI.framework in Frameworks */,
+				D72922942466A04200DAD480 /* UIBase.framework in Frameworks */,
+				D73B078D251E049E00DD801B /* Alamofire.framework in Frameworks */,
+				D7FC6D2724DC807A00D01B42 /* RJSPLib_AppThemes.framework in Frameworks */,
 				D75A71C424BBA24600CC8463 /* RJPSLib_ALayouts.framework in Frameworks */,
 				D75A71C524BBA24600CC8463 /* RJPSLib_Storage.framework in Frameworks */,
 				D75A71C624BBA24600CC8463 /* RJPSLib_Base.framework in Frameworks */,
 				D75A71C724BBA24600CC8463 /* RJPSLib_Networking.framework in Frameworks */,
 				D77824B2247900650071776F /* Lottie.framework in Frameworks */,
 				D77824B024784BBF0071776F /* NSLoggerSwift.framework in Frameworks */,
-				D7E25AAA24669D1A003BBEA0 /* AppConstants.framework in Frameworks */,
-				D7FC6D2724DC807A00D01B42 /* RJSPLib_AppThemes.framework in Frameworks */,
 				9F69CB1422BE8544008D305D /* AVKit.framework in Frameworks */,
-				D72922E62466B06300DAD480 /* AppTheme.framework in Frameworks */,
-				D7F2DD862474587C008CE3DA /* Domain_CarTrack.framework in Frameworks */,
-				D7F2DDAD24746C0F008CE3DA /* Core_CarTrack.framework in Frameworks */,
-				D7D9E7A724676FE6005B4313 /* Repositories_WebAPI.framework in Frameworks */,
-				D72923452466B78300DAD480 /* AppResources.framework in Frameworks */,
-				D7AB24CB246743BD000142C4 /* Core.framework in Frameworks */,
-				D7AB245424671CBF000142C4 /* Domain.framework in Frameworks */,
 				D768AD76246856F800DF295D /* ToastSwiftFramework.framework in Frameworks */,
-				D72922B62466A0CA00DAD480 /* DevTools.framework in Frameworks */,
 				D768AD74246856E800DF295D /* TinyConstraints.framework in Frameworks */,
 				D7979D3E246C870C0039031C /* Material.framework in Frameworks */,
-				D72923172466B35300DAD480 /* Extensions.framework in Frameworks */,
-				D729226D24669F3700DAD480 /* Designables.framework in Frameworks */,
 				9F9BEDA022E5CC4F0018BD4C /* RxGesture.framework in Frameworks */,
-				D788BDA624698D74007C59D0 /* Factory.framework in Frameworks */,
-				D7E25AA724669D13003BBEA0 /* PointFreeFunctions.framework in Frameworks */,
 				9FACC173223BBD8600576498 /* RxCocoa.framework in Frameworks */,
 				9FACC177223BBFC700576498 /* RxSwift.framework in Frameworks */,
-				D774F54124F57D1B00D01370 /* Domain_GalleryApp.framework in Frameworks */,
-				D7D9E7DA2467958F005B4313 /* Repositories.framework in Frameworks */,
 				9F103A0D2236BD1B00C57BC0 /* Swinject.framework in Frameworks */,
 				D7979D41246C87230039031C /* Motion.framework in Frameworks */,
 				9F103A3F2236C1FE00C57BC0 /* SwinjectAutoregistration.framework in Frameworks */,
-				D72922942466A04200DAD480 /* UIBase.framework in Frameworks */,
 				D7FCAC2024685B7A00DBECA2 /* RxDataSources.framework in Frameworks */,
-				D774F52E24F57D0C00D01370 /* Core_GalleryApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1348,6 +1335,7 @@
 		4546C3C321B570CD00127A20 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D73B078C251E049E00DD801B /* Alamofire.framework */,
 				D7FC6D2624DC807A00D01B42 /* RJSPLib_AppThemes.framework */,
 				D75A71C024BBA24500CC8463 /* RJPSLib_ALayouts.framework */,
 				D75A71C224BBA24500CC8463 /* RJPSLib_Base.framework */,
@@ -1387,7 +1375,6 @@
 			isa = PBXGroup;
 			children = (
 				9FACC17A223BDD5B00576498 /* TO_DO.swift */,
-				9FB8DFC92233E67100095420 /* typealias.DDD.encaplulate.swift */,
 				D78F27EF246E718D008F7E54 /* typealias.VIP.encaplulate.swift */,
 				9F36ADE321B1612600FADBB1 /* __Documents__ */,
 				9F288F2620F8089F008A9539 /* GoodToGo */,
@@ -1571,6 +1558,7 @@
 		D700A95A24FA612E0055DEB6 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D73B078E251E07DB00DD801B /* AlamofireSamples.swift */,
 				D7FA2206247189B9001DD9D5 /* TokenRefresh.swift */,
 			);
 			path = Utils;
@@ -3078,6 +3066,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RJPSLib_ALayouts.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RJPSLib_Base.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RJSPLib_AppThemes.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -3326,7 +3315,6 @@
 				D7979DB6246D6B370039031C /* VC.CarTrackLoginViewController.swift in Sources */,
 				D774F5A224F6865100D01370 /* VC.GalleryAppS1ViewController.swift in Sources */,
 				D7979DB7246D6B370039031C /* V.CarTrackLoginView.swift in Sources */,
-				9FB8DFCA2233E67100095420 /* typealias.DDD.encaplulate.swift in Sources */,
 				D7979DC5246DC1960039031C /* V.DebugView.swift in Sources */,
 				D774F5A324F6865100D01370 /* R.GalleryAppS1Router.swift in Sources */,
 				D7979DB3246D6B370039031C /* R.CartTrackMapRouter.swift in Sources */,
@@ -3345,7 +3333,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D729228424669FFD00DAD480 /* typealias.DDD.encaplulate.swift in Sources */,
 				D72923A32466DB8E00DAD480 /* GenericTableViewCellProtocol.swift in Sources */,
 				D72923982466D5BB00DAD480 /* TopBar.swift in Sources */,
 				D755FE7724B20251009BA6BD /* ViewWithRoundShadow.swift in Sources */,
@@ -3376,7 +3363,6 @@
 				D788BD842469453E007C59D0 /* V.BaseGenericViewVIP.swift in Sources */,
 				D741A35B246A85E5000235E0 /* D.BaseDomainVIP.swift in Sources */,
 				D788BD8124694448007C59D0 /* VC.BaseViewControllerVIP.swift in Sources */,
-				D72922CD2466A36C00DAD480 /* typealias.DDD.encaplulate.swift in Sources */,
 				D7B361F225193401009B5DAD /* typealias.VIP.encaplulate.swift in Sources */,
 				D788BD8F246959F2007C59D0 /* StylableView.swift in Sources */,
 				D788BD83246944A9007C59D0 /* VC.BaseGenericViewControllerVIP.swift in Sources */,
@@ -3388,7 +3374,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D729230A2466B22B00DAD480 /* RxReachabilityService.swift in Sources */,
-				D72922CE2466A36C00DAD480 /* typealias.DDD.encaplulate.swift in Sources */,
 				D72922C42466A19500DAD480 /* DevTools+AppLogger.swift in Sources */,
 				D72923AA2466EA4100DAD480 /* DevTools.swift in Sources */,
 				D72923A82466EA0100DAD480 /* DevTools+FeatureFlag.swift in Sources */,
@@ -3402,7 +3387,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D729238B2466C16300DAD480 /* UILabel+Extensions.swift in Sources */,
-				D7AB2445246718A9000142C4 /* typealias.DDD.encaplulate.swift in Sources */,
 				D729238A2466C16300DAD480 /* UIButton+Extensions.swift in Sources */,
 				D72923042466B0E500DAD480 /* UIColor+Extensions.swift in Sources */,
 				D7D9E7F82467FEE3005B4313 /* E.LayoutStyle.swift in Sources */,
@@ -3418,7 +3402,6 @@
 				D7FCAC292468753500DBECA2 /* UIView+Autolayout.swift in Sources */,
 				D7711F85246B6B4F00B6963A /* UIView+ExtentionUI.swift in Sources */,
 				D72923342466B3FA00DAD480 /* UITextField+Extensions.swift in Sources */,
-				D7AB2446246718AA000142C4 /* typealias.DDD.encaplulate.swift in Sources */,
 				D72923382466B42000DAD480 /* UIViewController+Extensions.swift in Sources */,
 				D7CA2B42246B1A790071DAF8 /* Rx+Extensions.swift in Sources */,
 				D72923372466B41B00DAD480 /* UIView+Extensions.swift in Sources */,
@@ -3437,7 +3420,6 @@
 				D72923672466B84100DAD480 /* typealias.AppResources.swift in Sources */,
 				D73E05BF2467112500965E96 /* AppResources.swift in Sources */,
 				D72923B82467089700DAD480 /* E.Messages.swift in Sources */,
-				D7AB2447246718AA000142C4 /* typealias.DDD.encaplulate.swift in Sources */,
 				D72923732466BB8600DAD480 /* AppResources+Private.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3477,7 +3459,6 @@
 			files = (
 				D778258E247A79D40071776F /* T.TestsShared.swift in Sources */,
 				D774F58C24F5AB7900D01370 /* T.Test_GalleryApp.swift in Sources */,
-				D778255F247A5FB20071776F /* typealias.DDD.encaplulate.swift in Sources */,
 				D7782524247A59D40071776F /* T.Test_CartTrack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3486,7 +3467,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D725A69F246C6302005664CB /* typealias.DDD.encaplulate.swift in Sources */,
 				D788BDB324698DFA007C59D0 /* Factory+Errors.swift in Sources */,
 				D724820324C4E38F00FBDD46 /* Factory.swift in Sources */,
 			);
@@ -3501,7 +3481,6 @@
 				D7D9E7FA2467FFBA005B4313 /* E.AppCodes.swift in Sources */,
 				D7AB247924672405000142C4 /* typealias.Domain.swift in Sources */,
 				D7AB24AA2467366D000142C4 /* KeyValuesStorageRepositoryProtocol.swift in Sources */,
-				D7AB2477246723BA000142C4 /* typealias.DDD.encaplulate.swift in Sources */,
 				D7AB24B02467374A000142C4 /* BaseRouterProtocol.swift in Sources */,
 				D761FEC22468387E00BD41A5 /* ModelEntityProtocol.swift in Sources */,
 				D7E4FCF7251A2A5900D6B121 /* MessagesManagerProtocol.swift in Sources */,
@@ -3523,7 +3502,6 @@
 				D700A96024FA80BF0055DEB6 /* APIRequestOperation.swift in Sources */,
 				D786EF7924F727A7000F6A2C /* OperationBase.swift in Sources */,
 				D7E4FCF8251A2B0200D6B121 /* MessagesManager.swift in Sources */,
-				D7D9E7F32467FB98005B4313 /* typealias.DDD.encaplulate.swift in Sources */,
 				D7E4FCF5251A2A1800D6B121 /* DIAssemblyContainerCore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3534,7 +3512,7 @@
 			files = (
 				D7979D44246C9DD00039031C /* WebAPI.CarTrack.NetWorkRepository.swift in Sources */,
 				D774F58224F5898900D01370 /* WebAPI.GalleryApp.NetWorkRepository.swift in Sources */,
-				D7D9E7F42467FB99005B4313 /* typealias.DDD.encaplulate.swift in Sources */,
+				D73B078F251E07DB00DD801B /* AlamofireSamples.swift in Sources */,
 				D7FA2207247189B9001DD9D5 /* TokenRefresh.swift in Sources */,
 				D7D9E80224681046005B4313 /* WebAPI.CarTrack+APIRequests.swift in Sources */,
 				D700A94C24F98ABD0055DEB6 /* WebAPI.GalleryApp.swift in Sources */,
@@ -3557,7 +3535,6 @@
 				D786EF8224F7EFEB000F6A2C /* RP.APICacheManager.swift in Sources */,
 				D7D9E7ED24679697005B4313 /* RP.KeyValuesStorageRepository.swift in Sources */,
 				D7E5E14E24FAF13300C37A62 /* APICacheManagerProtocol.swift in Sources */,
-				D7D9E7F52467FB9A005B4313 /* typealias.DDD.encaplulate.swift in Sources */,
 				D7D9E7EE24679697005B4313 /* RP.HotCacheRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3566,7 +3543,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D72922852466A00000DAD480 /* typealias.DDD.encaplulate.swift in Sources */,
 				D7E25A8E24669B02003BBEA0 /* PointFreeFunctions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3577,7 +3553,6 @@
 			files = (
 				D72922CF2466A3A300DAD480 /* E.AlertType.swift in Sources */,
 				D7B514FD246EB3F70008E2E0 /* E.FadeType.swift in Sources */,
-				D72922862466A00000DAD480 /* typealias.DDD.encaplulate.swift in Sources */,
 				D774F58424F58C3200D01370 /* AppConstants+Mock+GalleryApp.swift in Sources */,
 				D72923C024670D5300DAD480 /* AppConstants+Testing.swift in Sources */,
 				D72923A02466D91700DAD480 /* AppConstants+Mocks.swift in Sources */,
@@ -3602,7 +3577,6 @@
 				D700A95024F9A2470055DEB6 /* CarTrackResponseDto.swift in Sources */,
 				D7F2DD9C24745F56008CE3DA /* CarTrack.CarTrackUserModel.swift in Sources */,
 				D700A95224F9A30C0055DEB6 /* CarTrackAppModel.swift in Sources */,
-				D778255C247A5FAE0071776F /* typealias.DDD.encaplulate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3612,7 +3586,6 @@
 			files = (
 				D7F2DDC424746F1B008CE3DA /* UC.CarTrackAPIUseCase.swift in Sources */,
 				D700A95524FA5E880055DEB6 /* Mappers+CartTrack.swift in Sources */,
-				D778255A247A5FAC0071776F /* typealias.DDD.encaplulate.swift in Sources */,
 				D7F2DDC524746F1B008CE3DA /* UC.CarTrackGenericAppBusinessUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

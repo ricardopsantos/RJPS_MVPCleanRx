@@ -10,8 +10,6 @@ import Foundation
 //
 import RxSwift
 import RxCocoa
-import Swinject
-import RJPSLib_Base
 //
 import AppResources
 import UIBase
@@ -21,6 +19,7 @@ import Extensions
 import DevTools
 import PointFreeFunctions
 
+import Repositories_WebAPI
 import Domain_GalleryApp
 import Domain_CarTrack
 import RJPSLib_Networking
@@ -28,6 +27,9 @@ import RJPSLib_Networking
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    struct RemoteRoom {
+
+    }
     var window: UIWindow?
 
     public var reachabilityService: ReachabilityService? = DevTools.reachabilityService
@@ -43,6 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         setup(application: application)
         self.window?.rootViewController = VC.TabBarController()
+
+        AlamofireTesting.doTests()
 
         return true
     }

@@ -25,10 +25,10 @@ public class GalleryAppWebAPIUseCase: GenericUseCase, GalleryAppWebAPIUseCasePro
 
     public override init() { super.init() }
 
-    public var networkRepository: GalleryAppNetWorkRepositoryProtocol!
-    public var hotCacheRepository: HotCacheRepositoryProtocol!
-    public var coldKeyValuesRepository: KeyValuesStorageRepositoryProtocol!
-    public var apiCache: APICacheManagerProtocol!
+    public var networkRepository: GalleryAppNetWorkRepositoryProtocol!      // resolved at class DIAssemblyContainerGalleryApp
+    public var hotCacheRepository: HotCacheRepositoryProtocol!              // resolved at class DIAssemblyContainerGalleryApp
+    public var coldKeyValuesRepository: KeyValuesStorageRepositoryProtocol! // resolved at class DIAssemblyContainerGalleryApp
+    public var apiCache: APICacheManagerProtocol!                           // resolved at class DIAssemblyContainerGalleryApp
 
     private static var cacheTTL = 60 * 24 // 24h cache
 
