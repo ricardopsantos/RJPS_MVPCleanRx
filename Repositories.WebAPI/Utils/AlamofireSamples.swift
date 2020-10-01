@@ -5,6 +5,7 @@
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
 //
 
+/*
 import Foundation
 //
 import Alamofire
@@ -111,3 +112,4 @@ enum SampleAlamofireAPIRequestable: URLRequestConvertible {
         return try URLEncoding.default.encode(request, with: parameters)
     }
 }
+*/

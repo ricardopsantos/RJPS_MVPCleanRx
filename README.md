@@ -28,7 +28,7 @@ If you don't agree with something or have a suggestion, just email me, I love to
 
 ### Step 1
 
-Download source code and run  `./_script_installPackages.sh`
+Download source code and run  `./_setup.sh`
 
 This will install/update [Brew](https://brew.sh/), that will be used to install/update [Carthage](https://github.com/Carthage/Carthage)
 

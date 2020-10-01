@@ -7,9 +7,6 @@
 
 import UIKit
 //
-import RxSwift
-import RxCocoa
-//import RJPSLib
 
 extension AppConstants.Mocks {
 

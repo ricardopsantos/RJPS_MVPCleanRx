@@ -6,11 +6,6 @@
 //
 
 import UIKit
-//
-import RxSwift
-import RxCocoa
-//import RJPSLib
-
 // swiftlint:disable file_length type_body_length
 
 extension AppConstants.Mocks {
