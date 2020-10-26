@@ -39,8 +39,6 @@ public struct AppConstants {
         public static let servicesDefaultDebounce   = 250
         
         public static let textFieldsDefaultDebounce = 1000
-        //static let textFieldsDefaultThrottle = 10
-
     }
 
     public struct Cache {

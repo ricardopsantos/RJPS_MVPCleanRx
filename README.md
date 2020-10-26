@@ -1,9 +1,9 @@
 <p align="center">
    <a href="https://developer.apple.com/swift/">
-      <img src="https://img.shields.io/badge/Swift-5.1-orange.svg?style=flat" alt="Swift 5.1">
+      <img src="https://img.shields.io/badge/Swift-5.2-orange.svg?style=flat" alt="Swift 5.2">
    </a>
     <a href="https://developer.apple.com/swift/">
-      <img src="https://img.shields.io/badge/Xcode-11.4-blue.svg" alt="Swift 5.1">
+      <img src="https://img.shields.io/badge/Xcode-12.0.1-blue.svg" alt="Xcode 12.0.1">
    </a>
    <a href="">
       <img src="https://img.shields.io/cocoapods/p/ValidatedPropertyKit.svg?style=flat" alt="Platform">
@@ -18,7 +18,7 @@
 
 The mains intent of this project is:
 
-* To show a implementation of one of my favourites design patterns: __VIO + Clean (Rx)__ and how we can use booth at same time and still have a rock solid project. 
+* To show a implementation of one of my favourites design patterns: __VIP + Clean (Rx)__ and how we can use booth at same time and still have a rock solid project. 
 
 * Have a quick start project with all that a good project have (logs, webapi, etc), and that usually take some days to configure if we start from scratch. Saying so _Good to Go_ looked like a good name to me.
 
@@ -36,13 +36,21 @@ This will install/update [Brew](https://brew.sh/), that will be used to install/
 
 Because of dependencies, its possible you need to compile __once__ all the frameworks __one by one__
 
+### Could not save file?
+
+If theres a error on Carthage build __Could not save file__
+
+run on terminal `open $TMPDIR/TemporaryItems` and delete folder content
+
+[Carthage/issues/3056](https://github.com/Carthage/Carthage/issues/3056)
+ 
 ## Project structure
 
 ![Preview](__Documents__/ReadmeImages/readme_1.png)
 
 The project follows the Domain Driven approach, and its divided in frameworks according to business.
 
-About naming, and taking `Core` as example. `Core` is where we have the __base__ implementation of business for the app; and this `Core` is something that could be in every mobile app. But `Core.XXX` do the same type of  of special business logic applyed to this app alone.  
+About naming, and taking `Core` as example. `Core` is where we have the __base__ implementation of business for the app; and this `Core` is something that could be in every mobile app. But `Core.XXX` do the same type of  of special business logic applied to this app alone.  
 
 This mean that if we want to take out the `XXX` logic from the project, we just need to take `Core.XXX`, `Domain.XXX` and the related _Scenes_.
 
@@ -109,7 +117,7 @@ More info about VIP architecture [here](https://github.com/ricardopsantos/RJPS_M
 
 # Project (implemented) Features
 
-- [x] Localizable resources
+- [x] Localisable resources
 - [x] Remote logs with [NSLogger](https://github.com/fpillet/NSLogger)
 - [x] [RJPSLib](https://github.com/ricardopsantos/RJPSLib) to manage logs, caching, network client, generic extensions...
 - [x] RxSwift & RxCocoa usage
@@ -128,13 +136,14 @@ More info about VIP architecture [here](https://github.com/ricardopsantos/RJPS_M
  * [TinyConstraints](https://github.com/roberthein/TinyConstraints) - Nothing but sugar.
  * [Swinject](https://github.com/Swinject/Swinject) - Dependency injection framework for Swift with iOS/macOS/Linux
  * [NSLogger](https://github.com/fpillet/NSLogger) - A modern, flexible logging tool
- * RxDataSources, RxSwift, RxGesture, RxCocoa
+ * RxSwift, RxCocoa
  * [Toast-Swift](https://github.com/scalessec/Toast-Swift) - A modern, flexible logging tool
  * [SkyFloatingLabelTextField](https://github.com/Skyscanner/SkyFloatingLabelTextField) - A beautiful and flexible text field control implementation of _Float Label Pattern_
  * [Material](https://github.com/CosmicMind/Material) - A UI/UX framework for creating beautiful applications. http://cosmicmind.com
  * [Motion](https://github.com/CosmicMind/Motion) - A library used to create beautiful animations and transitions for iOS. 
  * [Lottie-ios](https://github.com/airbnb/lottie-ios) - An iOS library to natively render After Effects vector animations
  * [Pulsator](https://github.com/shu223/Pulsator/) - Pulse animation for iOS (used on `UIView+Extensions.swift`, `func addPulse()` for utility purposes)
+ * [Firebase](https://firebase.google.com/docs/remote-config) - For remote config
 
 # Code Guidelines/Conventions
 
@@ -164,7 +173,7 @@ Other files : `W.` for _Workers_ and `UC.` for _UseCases_
 
 # License
 
-[Unlicense](http://unlicense.org)
+[Unlicensed](http://unlicense.org)
 
 What is the Unlicensed?
-The Unlicense is a template for disclaiming copyright monopoly interest in software you've written; in other words, it is a template for dedicating your software to the public domain. It combines a copyright waiver patterned after the very successful public domain SQLite project with the no-warranty statement from the widely-used MIT/X11 license.
+The Unlicensed is a template for disclaiming copyright monopoly interest in software you've written; in other words, it is a template for dedicating your software to the public domain. It combines a copyright waiver patterned after the very successful public domain SQLite project with the no-warranty statement from the widely-used MIT/X11 license.

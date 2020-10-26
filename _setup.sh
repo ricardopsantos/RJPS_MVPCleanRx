@@ -11,8 +11,22 @@ displayCompilerInfo() {
 	eval xcode-select --print-path
 }
 
+carthageClean() {
+	echo 'Carthage clean'
+	rm -rf Carthage/Build
+	rm -rf Carthage/Checkouts
+	#rm -rf ~/Library/Caches/org.carthage.CarthageKit
+}
+
 carthageBuild() {
-    carthage build --no-use-binaries --platform iOS
+
+	printf "\n"
+	printf "\n"
+	echo 'Carthage Xcode 11 build'
+	
+	carthageClean
+
+    carthage update --platform iOS
 }
 
 #
@@ -20,6 +34,14 @@ carthageBuild() {
 #
 
 carthageBuildXcode12() {
+
+	printf "\n"
+	printf "\n"
+
+	echo 'Carthage Xcode 12 build'
+	
+	carthageClean
+	
     set -euo pipefail
 
     xcconfig=$(mktemp /tmp/static.xcconfig.XXXXXX)
@@ -39,7 +61,17 @@ carthageBuildXcode12() {
 
     echo $xcconfig
 
-    carthage build "$@" --no-use-binaries --platform iOS
+	# Will do code Checkout inside Carthage/Checking folder and build code  
+	# intro Carthage/Build folder
+    carthage update "$@" --platform iOS # --verbose
+
+    #carthage build "$@" --platform iOS # --verbose # Firebase
+
+
+
+    # carthage update --platform iOS --no-use-binaries
+    # carthage build --platform iOS --cache-builds --no-use-binaries --verbose
+
 }
 
 ################################################################################
@@ -85,18 +117,18 @@ printf "\n"
 
 echo "### Change Compiler?"
 echo " [1] : Xcode current"
-echo " [2] : Xcode Version 11.4"
-echo " [3] : Xcode Version 10.3"
-echo " [4] : Xcode Version 9.4.1"
-echo " [5] : Skip"
+echo " [2] : Xcode Version 12.0.1"
+echo " [3] : Xcode Version 11.4"
+echo " [4] : Xcode Version 10.3"
+echo " [6] : Skip"
 printf "\n"
 echo -n "Option? "
 read option
 case $option in
     [1] ) sudo xcode-select --switch "/Applications/Xcode.app/Contents/Developer" ;;
-    [2] ) sudo xcode-select --switch "/Applications/Xcode_11.4.app/Contents/Developer" ;;
-    [3] ) sudo xcode-select --switch "/Applications/Xcode_10.3.app/Contents/Developer" ;;
-    [4] ) sudo xcode-select --switch "/Applications/Xcode_9.4.1.app/Contents/Developer" ;;
+    [2] ) sudo xcode-select --switch "/Applications/Xcode_12.0.1.app/Contents/Developer" ;;
+    [3] ) sudo xcode-select --switch "/Applications/Xcode_11.4.app/Contents/Developer" ;;
+    [4] ) sudo xcode-select --switch "/Applications/Xcode_10.3.app/Contents/Developer" ;;
    *) echo "Ignored...."
 ;;
 esac
@@ -110,17 +142,16 @@ displayCompilerInfo
 printf "\n"
 printf "\n"
 
-# carthage update --platform iOS --no-use-binaries
-# carthage build --platform iOS --cache-builds --no-use-binaries --verbose
-
-echo "### Perform 'carthage update --platform iOS'?"
-echo " [y] :Yes"
-echo " [n] :No/Skip"
+echo "### Perform carthage build?"
+echo " [1] : Build for <= Xcode 11"
+echo " [2] : Build for >= Xcode 12"
+echo " [3] :No/Skip"
 printf "\n"
 echo -n "Option: "
 read option
 case $option in
-    [y] ) carthageBuildXcode12 ;;
+    [1] ) carthageBuild ;;
+    [2] ) carthageBuildXcode12 ;;
    *) echo "Ignored...."
 ;;
 esac

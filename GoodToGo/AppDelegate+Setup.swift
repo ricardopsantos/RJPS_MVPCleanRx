@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import RJPSLib_Base
 import NSLoggerSwift
+//import Firebase
 //
 import AppConstants
 import PointFreeFunctions
@@ -20,6 +21,7 @@ extension AppDelegate {
     func setup(application: UIApplication) {
         DevTools.Log.enabled = DevTools.FeatureFlag.appLogsEnabled.isTrue
         AppEnvironments.setup()
+  //      FirebaseApp.configure()
         DevTools.Log.message("RJPSLib Version : \(RJSLib.version)\nNumber of logins : \(AppUserDefaultsVars.incrementIntWithKey(AppConstants.Dev.numberOfLogins))")
     }
 }

@@ -11,11 +11,25 @@
 # brew install carthage
 # brew upgrade carthage
 
+####################################################################
+# Clear
+# rm carthage.xcconfig
+# rm -rf ~/Library/Caches/org.carthage.CarthageKit
+#
+
 ###
 ### MORE LIBRARIES HERE :
 ###  https://github.com/Wolg/awesome-swift
 ###  https://github.com/vsouza/awesome-ios
 ###  https://github.com/duemunk/awesome-swiftui
+
+####################################################################
+# FireBase
+# https://firebaseopensource.com/projects/firebase/firebase-ios-sdk/carthage/
+# https://medium.com/flawless-app-stories/how-to-implement-dynamic-loader-with-lottie-and-firebase-f6f145c59786
+
+#binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAnalyticsBinary.json"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseRemoteConfigBinary.json"
 
 ####################################################################
 # Reactive Programming in Swift
@@ -59,13 +73,13 @@ github "scalessec/Toast-Swift" ~> 5.0.1
 
 # Dependency injection framework for Swift with iOS/macOS/Linux
 # https://github.com/Swinject/Swinject
-#github "Swinject/Swinject"
-#github "Swinject/SwinjectAutoregistration"
+github "Swinject/Swinject"
+github "Swinject/SwinjectAutoregistration"
 
 ####################################################################
 # A UI/UX framework for creating beautiful applications. http://cosmicmind.com
 # https://github.com/CosmicMind/Material
-#github "CosmicMind/Material"
+github "CosmicMind/Material"
 
 ####################################################################
 # https://github.com/ricardopsantos/RJPSLib
@@ -73,7 +87,14 @@ github "scalessec/Toast-Swift" ~> 5.0.1
 # github "ricardopsantos/RJPSLib" "1.1"
 github "ricardopsantos/RJPSLib" "master"
 
-########################################################################################################################################
+####################################################################
+# Elegant HTTP Networking in Swift
+# https://github.com/Alamofire/Alamofire
+github "Alamofire/Alamofire"
+#github "Alamofire/Alamofire" ~> 5.3.0
+
+######################################################################################################################################
+######################################################################################################################################
 
 ####################################################################
 # A Matcher Framework for Swift and Objective-C
@@ -89,12 +110,6 @@ github "ricardopsantos/RJPSLib" "master"
 # https://github.com/stephencelis/SQLite.swift
 # A type-safe, Swift-language layer over SQLite3.
 ##github "stephencelis/SQLite.swift" ~> 0.12.0
-
-####################################################################
-# Elegant HTTP Networking in Swift
-# https://github.com/Alamofire/Alamofire
-##github "Alamofire/Alamofire"
-##github "Alamofire/Alamofire" ~> 5.2
 
 ####################################################################
 # Realm is a mobile database: a replacement for Core Data & SQLite https://realm.io
