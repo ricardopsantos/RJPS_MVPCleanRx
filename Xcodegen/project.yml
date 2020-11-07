@@ -1,0 +1,164 @@
+
+
+#
+# DOCS
+#
+# https://github.com/yonaskolb/XcodeGen/blob/master/Docs/ProjectSpec.md
+
+#
+# SAMPLES
+#
+# https://gist.github.com/d-date/44510c5b4b3baf820033453bfeb235c3
+# https://github.com/yonaskolb/XcodeGen/blob/master/Docs/Examples.md
+#
+
+####################### PROJECT #######################
+####################### PROJECT #######################  
+####################### PROJECT #######################
+
+name: GoodToGo_V2
+
+options:
+  bundleIdPrefix: com.GoodToGo
+  xcodeVersion: '12.0.1'
+  deploymentTarget: '12.0'
+  groupSortPosition: top
+  generateEmptyDirectories: true
+  findCarthageFrameworks: false
+  minimumXcodeGenVersion: '2.18.0'
+
+####################### AUXILIAR FOLDERS #######################
+####################### AUXILIAR FOLDERS #######################  
+####################### AUXILIAR FOLDERS #######################
+
+#fileGroups:
+#  - ./__Documents__
+
+####################### CONFIGS #######################
+####################### CONFIGS #######################  
+####################### CONFIGS #######################
+
+configs:
+  Debug: debug
+  Release: release
+  
+####################### SETTINGS #######################
+####################### SETTINGS #######################  
+####################### SETTINGS #######################
+
+settings:
+  base:
+    IPHONEOS_DEPLOYMENT_TARGET: 12.0
+    ENABLE_BITCODE: NO
+    SWIFT_VERSION: 5.2
+  configs:
+    Release: 
+      ENABLE_BITCODE: YES
+     
+targetTemplates:
+  Framework:
+    type: framework
+    platform: iOS
+    deploymentTarget: 11.0
+    settings:
+      base:
+        MARKETING_VERSION: 1.0
+    
+####################### TARGETS #######################
+####################### TARGETS #######################  
+####################### TARGETS #######################
+       
+targets:
+        
+## Base App
+
+  GoodToGo:
+    type: application
+    platform: iOS
+    deploymentTarget: 12.0
+    settings:
+      base:
+        MARKETING_VERSION: 1.0
+    sources:
+       - path: ../GoodToGo_Temp
+    #dependencies:
+    #  - target: RJSLibUFBase
+    #    link: true
+    postCompileScripts:
+      - script: |
+                if which swiftlint >/dev/null; then
+                   swiftlint
+                else
+                   echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
+                fi
+        name: Run SwiftLint
+   
+       
+## RJSLib
+  
+  Domain:
+    templates: 
+      - Framework
+    sources: 
+      - path: ../Domain
+    dependencies:
+      - carthage: RxSwift
+      - carthage: RxCocoa
+      
+  AppResources:
+    templates: 
+      - Framework
+    sources: 
+      - path: ../AppResources
+    dependencies:
+      - target: DevTools
+        link: false
+      - carthage: RJSLibUFBase
+      
+  UIBase:
+    templates: 
+      - Framework
+    sources: 
+      - path: ../UIBase
+    dependencies:
+      - carthage: RxSwift
+      - carthage: RxCocoa
+      - target: AppResources
+        link: false
+
+  PointFreeFunctions:
+    templates: 
+      - Framework
+    sources: 
+      - path: ../PointFreeFunctions
+    dependencies:
+      - carthage: RJSLibUFStorage
+      
+  AppConstants:
+    templates: 
+      - Framework
+    sources: 
+      - path: ../AppConstants
+    dependencies:
+      - carthage: RJSLibUFBase
+         
+  DevTools:
+    templates: 
+      - Framework
+    sources: 
+      - path: ../DevTools
+    dependencies:
+      - carthage: RJSLibUFStorage
+
+        
+  #RJSLibUFAppThemes:
+  #  templates: 
+  #    - Framework
+  #  sources: 
+  #    - path: ../AppThemes
+  #  dependencies:
+  #    - target: RJSLibUFBase
+  #      link: false
+        
+
+

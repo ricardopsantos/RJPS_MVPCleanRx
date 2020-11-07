@@ -10,7 +10,6 @@ import Foundation
 import RJSLibUFBase
 //
 import DevTools
-import Domain
 //
 
 public extension DevTools.Log {

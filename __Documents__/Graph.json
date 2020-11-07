@@ -1,0 +1,111 @@
+{
+  "targets" : {
+    "RJSLibUFBase" : {
+      "sources" : [
+        {
+          "path" : "..\/Base"
+        }
+      ],
+      "templates" : [
+        "Framework"
+      ]
+    },
+    "RJSLibUFAppThemes" : {
+      "sources" : [
+        {
+          "path" : "..\/AppThemes"
+        }
+      ],
+      "dependencies" : [
+        {
+          "link" : false,
+          "target" : "RJSLibUFBase"
+        }
+      ],
+      "templates" : [
+        "Framework"
+      ]
+    },
+    "SampleApp" : {
+      "sources" : [
+        {
+          "path" : "..\/SampleApp"
+        }
+      ],
+      "settings" : {
+        "base" : {
+          "MARKETING_VERSION" : 1
+        }
+      },
+      "deploymentTarget" : 10,
+      "postCompileScripts" : [
+        {
+          "name" : "Run SwiftLint",
+          "script" : "if which swiftlint >\/dev\/null; then\n   swiftlint\nelse\n   echo \"warning: SwiftLint not installed, download from https:\/\/github.com\/realm\/SwiftLint\"\nfi\n"
+        }
+      ],
+      "dependencies" : [
+        {
+          "target" : "RJSLibUFBase",
+          "link" : true
+        },
+        {
+          "target" : "RJSLibUFAppThemes",
+          "link" : true
+        },
+        {
+          "link" : true,
+          "target" : "RJSLibUFNetworking"
+        },
+        {
+          "link" : true,
+          "target" : "RJSLibUFALayouts"
+        },
+        {
+          "target" : "RJSLibUFStorage",
+          "link" : true
+        }
+      ],
+      "type" : "application",
+      "platform" : "iOS"
+    }
+  },
+  "targetTemplates" : {
+    "Framework" : {
+      "deploymentTarget" : 10,
+      "type" : "framework",
+      "settings" : {
+        "base" : {
+          "MARKETING_VERSION" : 1
+        }
+      },
+      "platform" : "iOS"
+    }
+  },
+  "name" : "GoodToGo_V2",
+  "configs" : {
+    "Release" : "release",
+    "Debug" : "debug"
+  },
+  "options" : {
+    "findCarthageFrameworks" : false,
+    "groupSortPosition" : "top",
+    "minimumXcodeGenVersion" : "2.18.0",
+    "bundleIdPrefix" : "com.rjps.libuf",
+    "xcodeVersion" : "12.0.1",
+    "generateEmptyDirectories" : true,
+    "deploymentTarget" : "10.0"
+  },
+  "settings" : {
+    "configs" : {
+      "Release" : {
+        "ENABLE_BITCODE" : true
+      }
+    },
+    "base" : {
+      "IPHONEOS_DEPLOYMENT_TARGET" : 10,
+      "SWIFT_VERSION" : 5.2000000000000002,
+      "ENABLE_BITCODE" : false
+    }
+  }
+}
