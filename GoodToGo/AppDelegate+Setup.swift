@@ -9,7 +9,7 @@ import UIKit
 //
 import RxSwift
 import RxCocoa
-import RJPSLib_Base
+import RJSLibUFBase
 import NSLoggerSwift
 //import Firebase
 //

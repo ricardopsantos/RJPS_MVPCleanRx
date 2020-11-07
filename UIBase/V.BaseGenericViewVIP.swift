@@ -14,7 +14,7 @@ import DevTools
 import PointFreeFunctions
 import AppTheme
 import AppConstants
-import Core
+import Core // Because of DIRootAssemblyResolver
 import Domain
 
 // MARK: - BaseGenericView

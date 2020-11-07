@@ -4,7 +4,7 @@
 
 # Edit File        : open -a Xcode Cartfile
 # Update (iPhone)  : carthage update --platform iOS
-# Update (RJPSLib) : carthage update RJPSLib --platform iOS --no-use-binaries
+# Update (RJPSLib) : carthage update RJSLibUF --platform iOS --no-use-binaries
 # Open compiled    : open Carthage
 
 # brew update
@@ -28,8 +28,7 @@
 # https://firebaseopensource.com/projects/firebase/firebase-ios-sdk/carthage/
 # https://medium.com/flawless-app-stories/how-to-implement-dynamic-loader-with-lottie-and-firebase-f6f145c59786
 
-#binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAnalyticsBinary.json"
-binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseRemoteConfigBinary.json"
+#binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseRemoteConfigBinary.json"
 
 ####################################################################
 # Reactive Programming in Swift
@@ -37,7 +36,6 @@ binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseRemoteConfigBinar
 github "ReactiveX/RxSwift"
 github "RxSwiftCommunity/RxGesture"
 github "RxSwiftCommunity/RxDataSources"
-##github "RxSwiftCommunity/RxDataSources" ~> 4.0
 
 ####################################################################
 # https://github.com/shu223/Pulsator/
@@ -82,19 +80,18 @@ github "Swinject/SwinjectAutoregistration"
 github "CosmicMind/Material"
 
 ####################################################################
-# https://github.com/ricardopsantos/RJPSLib
+# https://github.com/ricardopsantos/RJPSLibSF
 # Guys love tools, this is my Swift toolbox
-# github "ricardopsantos/RJPSLib" "1.1"
-github "ricardopsantos/RJPSLib" "master"
+# github "ricardopsantos/RJSLibUF" "1.0"
+github "ricardopsantos/RJSLibUF" "master"
 
 ####################################################################
 # Elegant HTTP Networking in Swift
 # https://github.com/Alamofire/Alamofire
 github "Alamofire/Alamofire"
-#github "Alamofire/Alamofire" ~> 5.3.0
 
-######################################################################################################################################
-######################################################################################################################################
+##############################################################################################################################
+##############################################################################################################################
 
 ####################################################################
 # A Matcher Framework for Swift and Objective-C

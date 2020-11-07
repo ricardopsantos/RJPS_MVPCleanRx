@@ -6,7 +6,7 @@
 //
 
 import Swinject
-import RJPSLib_Networking
+import RJSLibUFNetworking
 //
 import Domain
 import Domain_GalleryApp

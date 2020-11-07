@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 //
-import RJPSLib_Base
+import RJSLibUFBase
 import NSLoggerSwift
 //
 import AppConstants

@@ -10,8 +10,8 @@ import UIKit
 //
 import RxSwift
 import RxCocoa
-import RJPSLib_Networking
-import RJPSLib_Storage
+import RJSLibUFNetworking
+import RJSLibUFStorage
 import Repositories
 //
 import AppConstants

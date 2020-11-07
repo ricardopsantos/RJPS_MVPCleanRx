@@ -11,8 +11,8 @@ import UIKit
 import Foundation
 //
 import AppResources
-import RJPSLib_Base
-import RJSPLib_AppThemes
+import RJSLibUFBase
+import RJSLibUFAppThemes
 
 public typealias CustomSearchBar = RJSLib.Designables.SearchBar // PreBuilt custom search bar
 public typealias AppSizes = Designables.Sizes

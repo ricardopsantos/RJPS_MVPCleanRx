@@ -13,7 +13,7 @@ import AppConstants
 import DevTools
 import Extensions
 import PointFreeFunctions
-import RJPSLib_Networking
+import RJSLibUFNetworking
 import Factory
 //
 import AppResources

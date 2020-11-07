@@ -15,7 +15,6 @@ carthageClean() {
 	echo 'Carthage clean'
 	rm -rf Carthage/Build
 	rm -rf Carthage/Checkouts
-	#rm -rf ~/Library/Caches/org.carthage.CarthageKit
 }
 
 carthageBuild() {
@@ -63,10 +62,10 @@ carthageBuildXcode12() {
 
 	# Will do code Checkout inside Carthage/Checking folder and build code  
 	# intro Carthage/Build folder
-    carthage update "$@" --platform iOS # --verbose
+    #carthage update "$@" --platform iOS # --verbose
+    carthage update --platform iOS #"$@" --platform iOS --verbose
 
     #carthage build "$@" --platform iOS # --verbose # Firebase
-
 
 
     # carthage update --platform iOS --no-use-binaries
@@ -85,7 +84,7 @@ read option
 case $option in
     [1] ) /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" ;;
     [2] ) eval brew update ;;
-   *) echo "Brew options ignored...."
+   *) echo "Ignored...."
 ;;
 esac
 
@@ -96,13 +95,30 @@ printf "\n"
 echo "### Carthage"
 echo " [1] : Install"
 echo " [2] : Upgrade"
-echo " [3] : Skip"
+echo " [3] : No/Skip"
 echo -n "Option? "
 read option
 case $option in
     [1] ) brew install carthage ;;
     [2] ) brew upgrade carthage ;;
-   *) echo "Carthage options ignored...."
+   *) echo "Ignored...."
+;;
+esac
+
+################################################################################
+
+printf "\n"
+
+echo "### Xcodegen"
+echo " [1] : Install"
+echo " [2] : Upgrade"
+echo " [3] : No/Skip"
+echo -n "Option? "
+read option
+case $option in
+    [1] ) brew install xcodegen ;;
+    [2] ) brew upgrade xcodegen ;;
+   *) echo "Ignored...."
 ;;
 esac
 
@@ -120,7 +136,7 @@ echo " [1] : Xcode current"
 echo " [2] : Xcode Version 12.0.1"
 echo " [3] : Xcode Version 11.4"
 echo " [4] : Xcode Version 10.3"
-echo " [6] : Skip"
+echo " [6] : No/Skip"
 printf "\n"
 echo -n "Option? "
 read option
@@ -145,7 +161,7 @@ printf "\n"
 echo "### Perform carthage build?"
 echo " [1] : Build for <= Xcode 11"
 echo " [2] : Build for >= Xcode 12"
-echo " [3] :No/Skip"
+echo " [3] : No/Skip"
 printf "\n"
 echo -n "Option: "
 read option
@@ -160,6 +176,21 @@ esac
 
 printf "\n"
 printf "\n"
+
+echo "### Perform Xcodegen?"
+echo " [1] : Yes"
+echo " [2] : No/Skip"
+echo -n "Option? "
+read option
+case $option in
+    [1] ) xcodegen -s ./XcodeGen/project.yml -p ./ ;;
+   *) echo "Ignored...."
+;;
+esac
+
+cd XcodeGen
+xcodegen dump --type graphviz --file ../__Documents__/Graph.viz
+xcodegen dump --type json --file ../__Documents__/Graph.json
 
 echo " ╔═══════════════════════╗"
 echo " ║ Done! You're all set! ║"

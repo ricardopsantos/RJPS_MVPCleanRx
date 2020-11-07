@@ -8,11 +8,11 @@
 import UIKit
 import Foundation
 //
-import RJPSLib_Base
-import RJPSLib_Storage
+import RJSLibUFBase
+import RJSLibUFStorage
 import RxSwift
 import RxCocoa
-import RJPSLib_Networking
+import RJSLibUFNetworking
 //
 import Repositories
 import AppResources
