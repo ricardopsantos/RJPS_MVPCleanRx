@@ -1,0 +1,61 @@
+digraph {
+
+  GoodToGo [shape=box]
+
+  subgraph cluster_1 {
+       UIGalleryApp;
+       CoreGalleryApp;
+       DomainGalleryApp;
+  }
+    
+  subgraph cluster_2 {
+       UICarTrack;
+       CoreCarTrack;
+       DomainCarTrack;
+  }
+  
+  //AppResources -> DevTools [style=dashed]
+  //AppTheme -> AppConstants [style=dashed]
+  //AppTheme -> Extensions [style=dashed]
+  //AppTheme -> AppResources [style=dashed]
+  //AppTheme -> AppConstants [style=dashed]
+  //AppTheme -> DevTools [style=dashed]
+  Core -> Domain [style=dashed]
+  //Core -> AppTheme [style=dashed]
+  Core -> Repositories [style=dashed]
+  Core -> RepositoriesWebAPI [style=dashed]
+  CoreCarTrack -> Core [style=dashed]
+  CoreGalleryApp -> Core [style=dashed]
+  //Designables -> UIBase [style=dashed]
+  //DevTools -> PointFreeFunctions [style=dashed]
+  //DevTools -> AppConstants [style=dashed]
+  //Domain -> AppConstants [style=dashed]
+  //Extensions -> DevTools [style=dashed]
+  GoodToGo -> UIBase [style=dashed]
+  //GoodToGo -> DevTools [style=dashed]
+  GoodToGo -> UICarTrack [style=dashed]
+  GoodToGo -> UIGalleryApp [style=dashed]
+  Repositories -> Domain [style=dashed]
+  Repositories -> Factory [style=dashed]
+  //UIBase -> AppResources [style=dashed]
+  //UIBase -> AppTheme [style=dashed]
+  UICarTrack -> Domain [style=dashed]
+  //UICarTrack -> Designables [style=dashed]
+  UICarTrack -> UIBase [style=dashed]
+  //UICarTrack -> AppConstants [style=dashed]
+  //UICarTrack -> AppTheme [style=dashed]
+  //UICarTrack -> Extensions [style=dashed]
+  //UICarTrack -> DevTools [style=dashed]
+  UICarTrack -> DomainCarTrack [style=dashed]
+  UICarTrack -> CoreCarTrack [style=dashed]
+  UIGalleryApp -> Domain [style=dashed]
+  //UIGalleryApp -> Designables [style=dashed]
+  UIGalleryApp -> UIBase [style=dashed]
+  //UIGalleryApp -> AppConstants [style=dashed]
+  //UIGalleryApp -> AppTheme [style=dashed]
+  //UIGalleryApp -> Extensions [style=dashed]
+  //UIGalleryApp -> DevTools [style=dashed]
+  UIGalleryApp -> DomainGalleryApp [style=dashed]
+  UIGalleryApp -> CoreGalleryApp [style=dashed]
+}
+

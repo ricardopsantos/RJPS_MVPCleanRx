@@ -19,10 +19,10 @@ import Extensions
 import DevTools
 import PointFreeFunctions
 
-import Repositories_WebAPI
-import Domain_GalleryApp
-import Domain_CarTrack
-import RJPSLib_Networking
+import RepositoriesWebAPI
+import DomainGalleryApp
+import DomainCarTrack
+import RJSLibUFNetworking
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

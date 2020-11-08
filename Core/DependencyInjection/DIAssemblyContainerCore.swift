@@ -6,11 +6,11 @@
 //
 
 import Swinject
-import RJPSLib_Networking
+import RJSLibUFNetworking
 //
 import Domain
 import Repositories
-import Repositories_WebAPI
+import RepositoriesWebAPI
 import DevTools
 
 //

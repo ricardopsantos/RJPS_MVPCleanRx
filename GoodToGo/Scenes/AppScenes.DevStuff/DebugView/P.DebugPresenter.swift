@@ -81,30 +81,7 @@ extension P.DebugPresenter: DebugPresentationLogicProtocol {
 
     // Used By Interactor (exclusively)
     func presentSomeStuff(response: VM.Debug.SomeStuff.Response) {
-        // Presenter will transform response object in something that the View can process/read
-        let subTitle = response.subTitle.uppercased()
-        let someListA = response.listA
-            .map { VM.Debug.TableItem(enabled: true,
-                                                  image: Images.noInternet.rawValue,
-                                                  title: $0.id ?? "N.A.",
-                                                  subtitle: $0.state?.uppercased() ?? "N.A.",
-                                                  cellType: .cellType1)
-            }
-        let someListB = response.listB
-            .map { VM.Debug.TableItem(enabled: true,
-                                                         image: Images.noInternet.rawValue,
-                                                  title: $0.id ?? "N.A.",
-                                                  subtitle: $0.state?.uppercased() ?? "N.A.",
-                                                  cellType: .cellType2)
-            }
-        let sum = someListA.count + someListB.count
-        let viewModel = VM.Debug.SomeStuff.ViewModel(subTitle: subTitle,
-                                                                             someValue: "\(sum)",
-            someListSectionATitle: "\(someListA.count) A elements",
-            someListSectionBTitle: "\(someListB.count) B elements",
-            someListSectionAElements: someListA,
-            someListSectionBElements: someListB)
-        viewController?.displaySomeStuff(viewModel: viewModel)
+        
     }
 
 }

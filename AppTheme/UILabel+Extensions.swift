@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 //
-import RJSPLib_AppThemes
+import RJSLibUFAppThemes
 //
 import AppConstants
 
@@ -46,8 +46,9 @@ public extension UILabel {
             self.backgroundColor = ComponentColor.primary.withAlphaComponent(FadeType.regular.rawValue)
             self.textColor       = ComponentColor.onPrimary
             self.font            = AppFonts.Styles.captionLarge.rawValue
-            self.addShadow()
-            self.addCorner(radius: 5)
+            #warning("fix! brook on xcodegen conversion")
+           // self.addShadow()
+           // self.addCorner(radius: 5)
         }
         switch style {
         case .notApplied         : _ = 1
@@ -60,20 +61,3 @@ public extension UILabel {
         }
     }
 }
-
-//
-// Private
-//
-/*
-extension UILabel {
-    
-    private func fadeTransition(_ duration: CFTimeInterval=0.5) {
-        let animation = CATransition()
-        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        animation.type           = .fade
-        animation.duration       = duration
-        layer.add(animation, forKey: CATransitionType.fade.rawValue)
-    }
-    
-}
-*/

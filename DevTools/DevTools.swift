@@ -9,10 +9,11 @@ import Foundation
 import UIKit
 //
 import ToastSwiftFramework
-import RJPSLib_Base
-import PointFreeFunctions
 import RxCocoa
 import RxSwift
+//
+import RJSLibUFBase
+import PointFreeFunctions
 
 public struct DevTools {
     private init() { }

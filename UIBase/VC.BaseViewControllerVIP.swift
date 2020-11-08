@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 //
 import RxSwift
-import RJPSLib_Base
+import RJSLibUFBase
 //
 import AppConstants
 import AppTheme

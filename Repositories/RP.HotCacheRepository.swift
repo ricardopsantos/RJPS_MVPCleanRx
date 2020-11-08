@@ -7,7 +7,7 @@
 
 import Foundation
 //
-import RJPSLib_Storage
+import RJSLibUFStorage
 //
 import UIKit
 import AVFoundation
@@ -26,7 +26,7 @@ public extension RP {
     class HotCacheRepository: HotCacheRepositoryProtocol {
         public init () {}
 
-        private var cacheHandler = RJSLib.Storages.CacheLive.shared
+        private var cacheHandler = RJS_LiveCache.shared
 
         public func add(object: AnyObject, withKey: String) {
             cacheHandler.add(object: object, withKey: withKey)

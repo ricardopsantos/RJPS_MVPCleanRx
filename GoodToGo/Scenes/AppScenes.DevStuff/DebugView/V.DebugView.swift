@@ -62,7 +62,7 @@ struct DebugView_Previews: PreviewProvider {
 
 // MARK: - View
 
-extension GoodToGo.V {
+extension V {
     class DebugView: BaseGenericViewVIP {
 
         deinit {
@@ -363,6 +363,6 @@ extension GoodToGo.V {
 
 // MARK: - Events capture
 
-extension GoodToGo.V.DebugView {
+extension V.DebugView {
 
 }
