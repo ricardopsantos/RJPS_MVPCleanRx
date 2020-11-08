@@ -20,7 +20,7 @@ import Domain
 import Extensions
 import PointFreeFunctions
 import UIBase
-import Domain_GalleryApp
+import DomainGalleryApp
 
 //
 // MARK: - Interactor (Business Logic)

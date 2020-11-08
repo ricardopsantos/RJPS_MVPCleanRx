@@ -8,7 +8,7 @@
 import Foundation
 import MapKit
 //
-import Domain_CarTrack
+import DomainCarTrack
 
 class CarTrackMKAnnotation: NSObject, MKAnnotation {
 

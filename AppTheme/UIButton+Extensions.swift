@@ -46,8 +46,8 @@ public extension UIButton {
 private extension UIButton {
 
     func applySharedProperties() {
-        self.setState(enabled: true)
-        self.addShadow(shadowType: .regular)
+        setState(enabled: true)
+        addShadow(shadowType: .regular)
     }
 
     func applyStyleInngage() {

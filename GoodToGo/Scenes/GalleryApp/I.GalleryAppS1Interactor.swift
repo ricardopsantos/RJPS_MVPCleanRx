@@ -20,7 +20,7 @@ import PointFreeFunctions
 import UIBase
 import AppResources
 import Factory
-import Domain_GalleryApp
+import DomainGalleryApp
 
 //
 // Interactor will fetch the Domain objects, and return that response

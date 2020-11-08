@@ -10,7 +10,7 @@ import RJSLibUFNetworking
 //
 import Domain
 import Repositories
-import Repositories_WebAPI
+import RepositoriesWebAPI
 import DevTools
 
 //

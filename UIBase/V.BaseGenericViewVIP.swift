@@ -9,8 +9,8 @@ import UIKit
 //
 import RxCocoa
 import RxSwift
-import DevTools
 //
+import DevTools
 import PointFreeFunctions
 import AppTheme
 import AppConstants

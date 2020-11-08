@@ -9,11 +9,11 @@ import Swinject
 import RJSLibUFNetworking
 //
 import Domain
-import Domain_GalleryApp
+import DomainGalleryApp
 import Repositories
-import Repositories_WebAPI
+import RepositoriesWebAPI
 import Core
-import Core_GalleryApp
+import CoreGalleryApp
 import DevTools
 
 //

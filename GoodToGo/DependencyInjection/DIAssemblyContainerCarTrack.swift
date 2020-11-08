@@ -9,11 +9,11 @@ import Swinject
 import RJSLibUFNetworking
 //
 import Domain
-import Domain_CarTrack
+import DomainCarTrack
 import Repositories
-import Repositories_WebAPI
+import RepositoriesWebAPI
 import Core
-import Core_CarTrack
+import CoreCarTrack
 import DevTools
 
 //
@@ -69,7 +69,7 @@ final class DIAssemblyContainerCarTrack: Assembly {
         }
 
         container.register(DIAssemblyContainerCartTrackProtocols.carTrackGenericAppBusinessUseCase) { resolver in
-            let uc = Core_CarTrack.CarTrackGenericAppBusinessUseCase()
+            let uc = CarTrackGenericAppBusinessUseCase()
             uc.coldKeyValuesRepository  = resolver.resolve(DIRootAssemblyContainerProtocols.coldKeyValuesRepository)
             uc.hotCacheRepository       = resolver.resolve(DIRootAssemblyContainerProtocols.hotCacheRepository)
             return uc
