@@ -28,7 +28,7 @@ If you don't agree with something or have a suggestion, just email me, I love to
 
 ### Step 1
 
-Download source code and run  `./_setup.sh`
+Download source code and run  `./makeProject.sh`
 
 This will install/update [Brew](https://brew.sh/), that will be used to install/update [Carthage](https://github.com/Carthage/Carthage)
 
@@ -46,7 +46,7 @@ run on terminal `open $TMPDIR/TemporaryItems` and delete folder content
  
 ## Project structure
 
-![Preview](__Documents__/ReadmeImages/readme_1.png)
+![Preview](Documents/ReadmeImages/readme_1.png)
 
 The project follows the Domain Driven approach, and its divided in frameworks according to business.
 
@@ -56,7 +56,9 @@ This mean that if we want to take out the `XXX` logic from the project, we just 
 
 ## Project modules dependencies
 
-![Preview](__Documents__/ReadmeImages/readme_2.png)
+![Preview](Documents/ReadmeImages/readme_4.png)
+
+![Preview](Documents/ReadmeImages/readme_2.png)
 
 * `GoodToGo` : Is the app it self. Scenes, Workers and SwiftInject related code
 * `AppTheme` : Manage fonts, colours and so so

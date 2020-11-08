@@ -7,13 +7,10 @@
 
 import UIKit
 //
-import Swinject
-//
-import Domain
+import UIBase
 import DevTools
 import UICarTrack
 import UIGalleryApp
-import UIBase
 
 extension VC {
 
@@ -25,9 +22,8 @@ extension VC {
         override func viewDidLoad() {
             super.viewDidLoad()
 
-            // EXAMS
-            let vipCarTrack   = createControllers(tabName: "VIP.CarTrack", vc: UICarTrackEntryPoint.instance())
-            let vipGalleryApp = createControllers(tabName: "VIP.Gallery", vc: UIGalleryAppEntryPoint.instance())
+            let vipCarTrackApp = createControllers(tabName: "VIP.CarTrack", vc: UICarTrackEntryPoint.instance())
+            let vipGalleryApp  = createControllers(tabName: "VIP.Gallery", vc: UIGalleryAppEntryPoint.instance())
 
             // TESTING / DEBUG/ TEMPLATES
             let vipTemplate = createControllers(tabName: "VIP.Template", vc: VC.___VARIABLE_sceneName___ViewController())
@@ -35,7 +31,7 @@ extension VC {
 
             var viewControllersList: [UIViewController] = []
             if DevTools.FeatureFlag.showScene_gallery.isTrue { viewControllersList.append(vipGalleryApp) }
-            if DevTools.FeatureFlag.showScene_carTrack.isTrue { viewControllersList.append(vipCarTrack) }
+            if DevTools.FeatureFlag.showScene_carTrack.isTrue { viewControllersList.append(vipCarTrackApp) }
             if DevTools.FeatureFlag.showScene_vipTemplate.isTrue { viewControllersList.append(vipTemplate) }
 
             viewControllers = [vipDebug] + viewControllersList

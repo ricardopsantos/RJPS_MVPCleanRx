@@ -104,7 +104,8 @@ targetTemplates:
        
 targets:
   
-## Base App
+## Base App ## Base App ## Base App ## Base App ## Base App 
+
 
   GoodToGo:
     type: application
@@ -131,34 +132,15 @@ targets:
       - carthage: TinyConstraints
       - carthage: Material
       - carthage: Motion
-      - target: UICarTrack
-        link: true
-      - target: Domain
-        link: true
-      - target: Designables
-        link: true
       - target: UIBase
-        link: true
-      - target: AppConstants
-        link: true
-      - target: AppTheme
-        link: true
-      - target: Extensions
-        link: true
+        link: false
       - target: DevTools
-        link: true
-      - target: PointFreeFunctions
-        link: true    
-      - target: RepositoriesWebAPI
-        link: true   
-      - target: DomainGalleryApp
-        link: true   
-      - target: DomainCarTrack
-        link: true      
-      - target: CoreGalleryApp
-        link: true   
-      - target: CoreCarTrack
-        link: true          
+        link: false
+      - target: UICarTrack
+        link: false
+      - target: UIGalleryApp
+        link: false
+        
     postCompileScripts:
       - script: |
                 if which swiftlint >/dev/null; then
@@ -168,7 +150,7 @@ targets:
                 fi
         name: Run SwiftLint
    
-## Specific App Related
+## Specific App Related ## Specific App Related ## Specific App Related ## Specific App Related
    
   UICarTrack:
     templates: 
@@ -222,7 +204,7 @@ targets:
       - target: Core
         link: false   
       
-## Generic App Related
+## Generic App Related ## Generic App Related ## Generic App Related ## Generic App Related
   
   Factory:
     templates: 
