@@ -9,19 +9,8 @@ import UIKit
 import Foundation
 //
 import RJSLibUFBase
-import RJSLibUFStorage
-import RxSwift
-import RxCocoa
-import RJSLibUFNetworking
 //
-import Repositories
-import AppResources
-import AppConstants
-import Extensions
-import DevTools
-import PointFreeFunctions
 import Domain
-import Factory
 
 public extension NetworkingOperationsUtilsProtocol {
     

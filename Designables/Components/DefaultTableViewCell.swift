@@ -13,7 +13,6 @@ import RxSwift
 import RxCocoa
 //
 import AppResources
-import UIBase
 import AppTheme
 import AppConstants
 import Extensions

@@ -23,7 +23,7 @@ import Extensions
 import PointFreeFunctions
 import UIBase
 import AppResources
-import Domain_GalleryApp
+import DomainGalleryApp
 
 // MARK: - View
 

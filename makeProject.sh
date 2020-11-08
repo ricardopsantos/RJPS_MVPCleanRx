@@ -2,6 +2,12 @@
 
 clear
 
+xcodegen -s ./XcodeGen/project.yml -p ./ 
+
+open GoodToGo_V2.xcodeproj
+
+exit 
+
 displayCompilerInfo() {
 	printf "\n"
 	printf "\n"
@@ -177,20 +183,24 @@ esac
 printf "\n"
 printf "\n"
 
-echo "### Perform Xcodegen?"
-echo " [1] : Yes"
-echo " [2] : No/Skip"
-echo -n "Option? "
-read option
-case $option in
-    [1] ) xcodegen -s ./XcodeGen/project.yml -p ./ ;;
-   *) echo "Ignored...."
-;;
-esac
+#echo "### Perform Xcodegen?"
+#echo " [1] : Yes"
+#echo " [2] : No/Skip"
+#echo -n "Option? "
+#read option
+#case $option in
+#    [1] ) xcodegen -s ./XcodeGen/project.yml -p ./ ;;
+#   *) echo "Ignored...."
+#;;
+#esac
 
-cd XcodeGen
-xcodegen dump --type graphviz --file ../__Documents__/Graph.viz
-xcodegen dump --type json --file ../__Documents__/Graph.json
+xcodegen -s ./XcodeGen/project.yml -p ./ 
+
+#open GoodToGo_V2.xcodeproj
+
+#cd XcodeGen
+#xcodegen dump --type graphviz --file ../__Documents__/Graph.viz
+#xcodegen dump --type json --file ../__Documents__/Graph.json
 
 echo " ╔═══════════════════════╗"
 echo " ║ Done! You're all set! ║"

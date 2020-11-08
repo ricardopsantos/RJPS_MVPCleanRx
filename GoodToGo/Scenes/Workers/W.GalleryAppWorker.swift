@@ -19,7 +19,7 @@ import Factory
 import AppResources
 import Core
 import Domain
-import Domain_GalleryApp
+import DomainGalleryApp
 
 //
 // The worker do the bridge between the Shenes and the UseCases
