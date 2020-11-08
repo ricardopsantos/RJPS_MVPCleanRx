@@ -16,7 +16,7 @@
 ####################### PROJECT #######################  
 ####################### PROJECT #######################
 
-name: GoodToGo_V2
+name: GoodToGo
 
 options:
   bundleIdPrefix: com.GoodToGo
@@ -31,8 +31,8 @@ options:
 ####################### AUXILIAR FOLDERS #######################  
 ####################### AUXILIAR FOLDERS #######################
 
-#fileGroups:
-#  - ./__Documents__
+fileGroups:
+  - ../Documents
 
 ####################### CONFIGS #######################
 ####################### CONFIGS #######################  
@@ -188,6 +188,8 @@ targets:
       - carthage: RJSLibUFStorage
       - target: Domain
         link: false
+      - target: Factory
+        link: false
       
   RepositoriesWebAPI:
     templates: 
@@ -255,6 +257,8 @@ targets:
       - carthage: RxCocoa
       - carthage: TinyConstraints
       - carthage: Pulsator
+      - target: DevTools
+        link: false
       
   AppResources:
     templates: 
@@ -296,6 +300,14 @@ targets:
       - carthage: RJSLibUFAppThemes
       - target: AppConstants
         link: false
+      - target: Extensions
+        link: false
+      - target: AppResources
+        link: false 
+      - target: AppConstants
+        link: false        
+      - target: DevTools
+        link: false          
        
   AppConstants:
     templates: 

@@ -7,7 +7,6 @@
 
 import Foundation
 //
-import PointFreeFunctions
 import Domain
 
 public extension CarTrackResponseDto {

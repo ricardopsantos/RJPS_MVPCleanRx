@@ -153,6 +153,7 @@
 		7D085503C19A5438F4EBAF5C /* RepositoriesWebAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32C38EA85F85D48F03071673 /* RepositoriesWebAPI.framework */; };
 		7D1959EF1ED3C8043E15C738 /* HotCacheRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156E5754F5D1E7404BF0EC8A /* HotCacheRepositoryProtocol.swift */; };
 		7D4D3955A94DFE09EEB0A7BE /* Extensions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 98A8C42A20422615E963153D /* Extensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7E605D1525950913529D3AF9 /* TO_DO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4A3A9E22A3B362E7B9D433 /* TO_DO.swift */; };
 		7F41EB97BFBACAF515EE9A2C /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 448FB4C341ABEFA3503B1786 /* Swinject.framework */; };
 		7FDC5D649F812C0FBCB5A97E /* CarTrack.CarTrackUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC620A2EC44BB2ED25A6FE7 /* CarTrack.CarTrackUserModel.swift */; };
 		808C396C169CEE6060B484E9 /* AppResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F5A1BCA92BA8A7EA7FD25C /* AppResources.swift */; };
@@ -798,6 +799,7 @@
 		E98F10821105439D4FEDED20 /* V.CartTrackMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V.CartTrackMapView.swift; sourceTree = "<group>"; };
 		E995E949C3A033E3B7061252 /* DevTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevTools.swift; sourceTree = "<group>"; };
 		EB33F08AB96164E962903898 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxDataSources.framework; sourceTree = "<group>"; };
+		EB4A3A9E22A3B362E7B9D433 /* TO_DO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TO_DO.swift; sourceTree = "<group>"; };
 		EB88C03F474DA9B1206DAEE5 /* UC.CarTrackGenericAppBusinessUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UC.CarTrackGenericAppBusinessUseCaseProtocol.swift; sourceTree = "<group>"; };
 		EB94097FFE793035C648F6DE /* AppLogger+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppLogger+Extensions.swift"; sourceTree = "<group>"; };
 		EBBD1875DA7C7054184AD413 /* PointFreeFunctions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PointFreeFunctions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1043,6 +1045,7 @@
 				139DDD9568193FB474BB97F7 /* AppDelegate.swift */,
 				4A48764469BB153B786EA385 /* AppDelegate+Setup.swift */,
 				BF8F70CB2D6A87C4C3870081 /* AppDelegate+URL.swift */,
+				EB4A3A9E22A3B362E7B9D433 /* TO_DO.swift */,
 				84AC2C3B23EA8CD5E33E00B6 /* typealias.swift */,
 				FF943069DE225E31E2F9738F /* VC.TabBarController.swift */,
 			);
@@ -2685,6 +2688,7 @@
 				6EDB38F31B9CF694DF3F8B80 /* R.DebugRouter.swift in Sources */,
 				8858D041B6D97022FB75B3ED /* R.GalleryAppS1Router.swift in Sources */,
 				6FB361ACDFDF8CE5F6C02579 /* R.___FILEBASENAME___Router.swift in Sources */,
+				7E605D1525950913529D3AF9 /* TO_DO.swift in Sources */,
 				1BA375851063D150D0741C9C /* V.CarTrackLoginView.swift in Sources */,
 				ACECED9114D5BC27F817E18F /* V.CartTrackMapView.swift in Sources */,
 				C669D8773305EA4DB97732BC /* V.CustomCollectionViewCell.swift in Sources */,

@@ -8,8 +8,6 @@
 import Foundation
 import UIKit
 //
-import DevTools
-//
 import Domain
 
 public extension GalleryAppResponseDto {
