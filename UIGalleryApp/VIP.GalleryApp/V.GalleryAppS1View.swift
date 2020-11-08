@@ -51,7 +51,7 @@ struct GalleryAppS1View_Previews: PreviewProvider {
 // MARK: - View
 
 extension V {
-    class GalleryAppS1View: BaseGenericViewVIP {
+    public class GalleryAppS1View: BaseGenericViewVIP {
 
         deinit {
             DevTools.Log.logDeInit("\(self.className) was killed")
@@ -105,7 +105,7 @@ extension V {
         // This function is called automatically by super BaseGenericViewVIP
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 1/3 : JUST to add stuff to the view....
-        override func prepareLayoutCreateHierarchy() {
+        public override func prepareLayoutCreateHierarchy() {
             addSubview(searchBar)
             addSubview(collectionView)
             collectionView.addSubview(lblNoRecords)
@@ -114,7 +114,7 @@ extension V {
         // This function is called automatically by super BaseGenericViewVIP
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 2/3 : JUST to setup layout rules zone....
-        override func prepareLayoutBySettingAutoLayoutsRules() {
+        public override func prepareLayoutBySettingAutoLayoutsRules() {
 
             let topBarSize = TopBar.defaultHeight(usingSafeArea: false)
             searchBar.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
@@ -135,14 +135,14 @@ extension V {
         // This function is called automatically by super BaseGenericViewVIP
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 3/3 : Stuff that is not included in [prepareLayoutCreateHierarchy] and [prepareLayoutBySettingAutoLayoutsRules]
-        override func prepareLayoutByFinishingPrepareLayout() {
+        public override func prepareLayoutByFinishingPrepareLayout() {
             lblNoRecords.textAlignment = .center
             collectionView.register(V.CustomCollectionViewCell.self, forCellWithReuseIdentifier: V.CustomCollectionViewCell.identifier)
             collectionView.delegate = self
             collectionView.dataSource = self
         }
 
-        override func setupColorsAndStyles() {
+        public override func setupColorsAndStyles() {
             self.backgroundColor = ComponentColor.background
             lblNoRecords.font = AppFonts.Styles.headingSmall.rawValue
             lblNoRecords.textColor = ComponentColor.primary
@@ -154,7 +154,7 @@ extension V {
 
         // Order in View life-cycle : 2
         // This function is called automatically by super BaseGenericView
-        override func setupViewUIRx() {
+        public override func setupViewUIRx() {
 
             searchBar.rx.text
                 .orEmpty
@@ -200,7 +200,7 @@ extension V {
 
 extension V.GalleryAppS1View: UICollectionViewDataSource {
 
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         if offsetY > contentHeight - scrollView.frame.height * 4 {
@@ -208,11 +208,11 @@ extension V.GalleryAppS1View: UICollectionViewDataSource {
         }
     }
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionViewDataSource.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let identifier = V.CustomCollectionViewCell.identifier
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? V.CustomCollectionViewCell {
             cell.setup(viewModel: collectionViewDataSource[indexPath.row])
@@ -225,20 +225,20 @@ extension V.GalleryAppS1View: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension V.GalleryAppS1View: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: V.CustomCollectionViewCell.defaultWidth, height: V.CustomCollectionViewCell.defaultHeight)
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let defaultMargin: CGFloat = V.CustomCollectionViewCell.defaultMargin
         return UIEdgeInsets(top: defaultMargin, left: defaultMargin, bottom: defaultMargin, right: defaultMargin)
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return V.CustomCollectionViewCell.defaultMargin
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0//V.CustomCollectionViewCell.defaultMargin
     }
 }

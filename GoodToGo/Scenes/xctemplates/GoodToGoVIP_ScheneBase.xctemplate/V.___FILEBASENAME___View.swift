@@ -45,7 +45,7 @@ struct ___VARIABLE_sceneName___View_Previews: PreviewProvider {
 // MARK: - View
 
 extension V {
-    class ___VARIABLE_sceneName___View: BaseGenericViewVIP {
+    public class ___VARIABLE_sceneName___View: BaseGenericViewVIP {
 
         deinit {
             DevTools.Log.logDeInit("\(self.className) was killed")
@@ -87,7 +87,7 @@ extension V {
         // This function is called automatically by super BaseGenericViewVIP
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 1/3 : JUST to add stuff to the view....
-        override func prepareLayoutCreateHierarchy() {
+        public override func prepareLayoutCreateHierarchy() {
             addSubview(scrollView)
             scrollView.addSubview(stackViewVLevel1)
             stackViewVLevel1.uiUtils.addArrangedSeparator()
@@ -102,7 +102,7 @@ extension V {
         // This function is called automatically by super BaseGenericViewVIP
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 2/3 : JUST to setup layout rules zone....
-        override func prepareLayoutBySettingAutoLayoutsRules() {
+        public override func prepareLayoutBySettingAutoLayoutsRules() {
             let defaultMargin = Designables.Sizes.Margins.defaultMargin
 
             stackViewVLevel1.uiUtils.edgeStackViewToSuperView()
@@ -126,7 +126,7 @@ extension V {
         // This function is called automatically by super BaseGenericViewVIP
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 3/3 : Stuff that is not included in [prepareLayoutCreateHierarchy] and [prepareLayoutBySettingAutoLayoutsRules]
-        override func prepareLayoutByFinishingPrepareLayout() {
+        public override func prepareLayoutByFinishingPrepareLayout() {
             V.___VARIABLE_sceneName___TableViewCell.prepare(tableView: tableView)
             tableView.estimatedRowHeight = Designables.Sizes.TableView.defaultHeightForCell
             tableView.rowHeight = UITableView.automaticDimension
@@ -135,12 +135,12 @@ extension V {
             lblTitle.textAlignment = .center
         }
 
-        override func setupColorsAndStyles() {
+        public override func setupColorsAndStyles() {
             self.backgroundColor = ComponentColor.background
         }
 
         // This function is called automatically by super BaseGenericView
-        override func setupViewUIRx() {
+        public override func setupViewUIRx() {
             let dataSource = RxTableViewSectionedAnimatedDataSource<Section>(
                 configureCell: { _, tableView, indexPath, item in
                     let row = indexPath.row
@@ -215,7 +215,7 @@ extension V {
 
 extension V.___VARIABLE_sceneName___View: UITableViewDelegate {
 
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionView = DefaultTableViewSection(frame: .zero)
         if let sectionItem = try? rxTableItems.value() {
             guard sectionItem.count > section else { return nil }

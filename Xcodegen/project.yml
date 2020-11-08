@@ -195,7 +195,18 @@ targets:
     dependencies:
       - target: Core
         link: false  
-        
+
+  UIGalleryApp:
+    templates:
+      - UIFramework
+    sources:
+      - path: ../UIGalleryApp
+    dependencies:
+      - target: DomainGalleryApp
+        link: false
+      - target: CoreGalleryApp
+        link: false
+
   DomainGalleryApp:
     templates: 
       - Framework

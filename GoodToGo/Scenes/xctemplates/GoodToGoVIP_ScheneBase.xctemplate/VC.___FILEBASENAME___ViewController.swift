@@ -46,7 +46,7 @@ struct ___VARIABLE_sceneName___ViewController_Preview: PreviewProvider {
 
 extension VC {
 
-    class ___VARIABLE_sceneName___ViewController: BaseGenericViewControllerVIP<V.___VARIABLE_sceneName___View> {
+    public class ___VARIABLE_sceneName___ViewController: BaseGenericViewControllerVIP<V.___VARIABLE_sceneName___View> {
 
         deinit {
             DevTools.Log.logDeInit("\(self.className) was killed")
@@ -66,13 +66,13 @@ extension VC {
         // MARK: View lifecycle
         //
 
-        override func loadView() {
+        public override func loadView() {
             super.loadView()
             view.accessibilityIdentifier = self.genericAccessibilityIdentifier
             reachabilityView.load()
         }
 
-        override func viewDidLoad() {
+        public override func viewDidLoad() {
             super.viewDidLoad()
             if DevTools.onSimulator {
                 DispatchQueue.executeOnce(token: "\(VC.___VARIABLE_sceneName___ViewController.self).info") {
@@ -84,7 +84,7 @@ extension VC {
             }
         }
 
-        override func viewWillAppear(_ animated: Bool) {
+        public override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             if firstAppearance {
                 interactor?.requestScreenInitialState()
@@ -93,7 +93,7 @@ extension VC {
             }
         }
 
-        override func viewDidAppear(_ animated: Bool) {
+        public override func viewDidAppear(_ animated: Bool) {
             super.viewDidAppear(animated)
         }
 
@@ -110,7 +110,7 @@ extension VC {
         // MARK: Mandatory methods
         //
 
-        override func setup() {
+        public override func setup() {
             // This function is called automatically by super BaseGenericView
             let viewController = self
             let interactor = I.___VARIABLE_sceneName___Interactor()
@@ -125,13 +125,13 @@ extension VC {
         }
 
         // This function is called automatically by super BaseGenericView
-        override func setupViewIfNeed() {
+        public override func setupViewIfNeed() {
             // Use it to configure stuff on the genericView, depending on the value external/public variables
             // that are set after we instantiate the view controller, but before if has been presented
         }
 
         // This function is called automatically by super BaseGenericView
-        override func setupViewUIRx() {
+        public override func setupViewUIRx() {
 
             genericView
                 .rxModelSelected
@@ -158,7 +158,7 @@ extension VC {
         }
 
         // This function is called automatically by super BaseGenericView
-        override func setupNavigationUIRx() {
+        public override func setupNavigationUIRx() {
             // Add options to navigation bar
         }
     }

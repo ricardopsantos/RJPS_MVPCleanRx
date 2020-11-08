@@ -121,8 +121,8 @@ extension VM {
                 let userId: String
             }
             struct Response { /* Interactor -> Presenter */
-                let listA: [TemplateModel]
-                let listB: [TemplateModel]
+                //let listA: [TemplateModel]
+                //let listB: [TemplateModel]
                 let subTitle: String
             }
             struct ViewModel { /* Presenter -> ViewController */

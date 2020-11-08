@@ -43,7 +43,7 @@ struct GalleryAppS1ViewController_Preview: PreviewProvider {
 
 extension VC {
 
-    class GalleryAppS1ViewController: BaseGenericViewControllerVIP<V.GalleryAppS1View> {
+    public class GalleryAppS1ViewController: BaseGenericViewControllerVIP<V.GalleryAppS1View> {
 
         deinit {
             DevTools.Log.logDeInit("\(self.className) was killed")
@@ -66,14 +66,14 @@ extension VC {
         //
 
         // Order in View life-cycle : 2
-        override func loadView() {
+        public override func loadView() {
             super.loadView()
             view.accessibilityIdentifier = self.genericAccessibilityIdentifier
             reachabilityView.load()
         }
 
         // Order in View life-cycle : 4
-        override func viewDidLoad() {
+        public override func viewDidLoad() {
             super.viewDidLoad()
 
             if DevTools.onSimulator {
@@ -85,7 +85,7 @@ extension VC {
         }
 
         // Order in View life-cycle : 6
-        override func viewWillAppear(_ animated: Bool) {
+        public override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             if firstAppearance {
                 interactor?.requestScreenInitialState()
@@ -93,7 +93,7 @@ extension VC {
         }
 
         // Order in View life-cycle : 9
-        override func viewDidAppear(_ animated: Bool) {
+        public override func viewDidAppear(_ animated: Bool) {
             super.viewDidAppear(animated)
         }
 
@@ -112,7 +112,7 @@ extension VC {
         //
 
         // Order in View life-cycle : 1
-        override func setup() {
+        public override func setup() {
             // This function is called automatically by super BaseGenericView
             let viewController = self
             let interactor = I.GalleryAppS1Interactor()
@@ -127,14 +127,14 @@ extension VC {
 
         // Order in View life-cycle : 5
         // This function is called automatically by super BaseGenericView
-        override func setupViewIfNeed() {
+        public override func setupViewIfNeed() {
             // Use it to configure stuff on the genericView, depending on the value external/public variables
             // that are set after we instantiate the view controller, but before if has been presented
         }
 
         // Order in View life-cycle : 3
         // This function is called automatically by super BaseGenericView
-        override func setupViewUIRx() {
+        public override func setupViewUIRx() {
 
             genericView.rxFilter.asObserver().bind { [weak self] (search) in
                 guard let self = self else { return }
@@ -158,19 +158,19 @@ extension VC {
 
         // Order in View life-cycle : 7
         // This function is called automatically by super BaseGenericView
-        override func setupNavigationUIRx() {
+        public override func setupNavigationUIRx() {
             // Add options to navigation bar
         }
 
-        override func prepareLayoutCreateHierarchy() {
+        public override func prepareLayoutCreateHierarchy() {
             super.prepareLayoutCreateHierarchy()
         }
 
-        override func prepareLayoutBySettingAutoLayoutsRules() {
+        public override func prepareLayoutBySettingAutoLayoutsRules() {
             super.prepareLayoutBySettingAutoLayoutsRules()
         }
 
-        override func prepareLayoutByFinishingPrepareLayout() {
+        public override func prepareLayoutByFinishingPrepareLayout() {
             super.prepareLayoutByFinishingPrepareLayout()
             topGenericView.setTitle("Show me kitties!")
         }

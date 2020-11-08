@@ -37,25 +37,25 @@ extension P.DataStoreReceiverPresenter: DataStoreReceiverPresentationLogicProtoc
 // MARK: - View
 
 extension V {
-    class DataStoreReceiverView: BaseGenericViewVIP { }
+    public class DataStoreReceiverView: BaseGenericViewVIP { }
 }
 
 // MARK: - ViewController
 
 extension VC {
 
-    class DataStoreReceiverViewController: BaseGenericViewControllerVIP<V.DataStoreReceiverView> {
+    public class DataStoreReceiverViewController: BaseGenericViewControllerVIP<V.DataStoreReceiverView> {
         private var interactor: DataStoreReceiverBusinessLogicProtocol?
         var router: (DataStoreReceiverRoutingLogicProtocol
             & DataStoreReceiverDataPassingProtocol // <<-- DS Sample : Take notice
         )?
 
-        override func viewWillAppear(_ animated: Bool) {
+        public override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             if firstAppearance { interactor?.requestScreenInitialState() }
         }
 
-        override func setup() {
+        public override func setup() {
             // This function is called automatically by super BaseGenericView
             let viewController = self
             let interactor = I.DataStoreReceiverInteractor()
