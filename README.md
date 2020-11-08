@@ -1,6 +1,6 @@
 <p align="center">
    <a href="https://developer.apple.com/swift/">
-      <img src="https://img.shields.io/badge/Swift-5.2-orange.svg?style=flat" alt="Swift 5.2">
+      <img src="https://img.shields.io/badge/Swift-5.3-orange.svg?style=flat" alt="Swift 5.3">
    </a>
     <a href="https://developer.apple.com/swift/">
       <img src="https://img.shields.io/badge/Xcode-12.0.1-blue.svg" alt="Xcode 12.0.1">
@@ -117,10 +117,11 @@ More info about VIP architecture [here](https://github.com/ricardopsantos/RJPS_M
 
 # Project (implemented) Features
 
+- [x] [Xcodegen](https://github.com/yonaskolb/XcodeGen) configurated
 - [x] Localisable resources
 - [x] Remote logs with [NSLogger](https://github.com/fpillet/NSLogger)
 - [x] [RJPSLib](https://github.com/ricardopsantos/RJPSLib) to manage logs, caching, network client, generic extensions...
-- [x] RxSwift & RxCocoa usage
+- [x] FRP with RxSwift & RxCocoa
 - [x] [.xcconfig](https://nshipster.com/xcconfig/) usage
 - [x] Cache (on Network API) usage
 - [x] Code style analyser with [Swiftlint](https://github.com/realm/SwiftLint)

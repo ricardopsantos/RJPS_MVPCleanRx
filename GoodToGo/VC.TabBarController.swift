@@ -11,6 +11,8 @@ import Swinject
 //
 import Domain
 import DevTools
+import UICarTrack
+import UIBase
 
 extension VC {
 
@@ -23,7 +25,7 @@ extension VC {
             super.viewDidLoad()
 
             // EXAMS
-            let vipCarTrack   = createControllers(tabName: "VIP.CarTrack", vc: VC.CarTrackLoginViewController())
+            let vipCarTrack   = createControllers(tabName: "VIP.CarTrack", vc: UICarTrackEntryPoint.instance())
             let vipGalleryApp = createControllers(tabName: "VIP.Gallery", vc: VC.GalleryAppS1ViewController())
 
             // TESTING / DEBUG/ TEMPLATES

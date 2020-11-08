@@ -9,11 +9,10 @@ import Foundation
 import Swinject
 import SwinjectAutoregistration
 
-final class DIAssemblerScenes {
-    
+final class DIAssemblerScenesCarTrack {
     class var assembler: Assembler {
         let assemblyList: [Assembly] = [
-            DIAssemblyContainerGalleryApp()
+            DIAssemblyContainerCarTrack()
         ]
         return Assembler(assemblyList)
     }

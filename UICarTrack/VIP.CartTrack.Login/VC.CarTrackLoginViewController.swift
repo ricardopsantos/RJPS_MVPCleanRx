@@ -46,7 +46,7 @@ struct CarTrackLoginViewController_Preview: PreviewProvider {
 
 extension VC {
 
-    class CarTrackLoginViewController: BaseGenericViewControllerVIP<V.CarTrackLoginView> {
+    public class CarTrackLoginViewController: BaseGenericViewControllerVIP<V.CarTrackLoginView> {
         private var interactor: CarTrackLoginBusinessLogicProtocol?
         var router: (CarTrackLoginRoutingLogicProtocol &
             CarTrackLoginDataPassingProtocol &
@@ -60,12 +60,12 @@ extension VC {
         // MARK: View lifecycle
         //
 
-        override func loadView() {
+        public override func loadView() {
             super.loadView()
             self.title = Messages.login.localised
         }
 
-        override func viewDidLoad() {
+        public override func viewDidLoad() {
             super.viewDidLoad()
             if DevTools.onSimulator {
                 DispatchQueue.executeOnce(token: "\(VC.CarTrackLoginViewController.self).info") {
@@ -79,14 +79,14 @@ extension VC {
             }
         }
 
-        override func viewWillAppear(_ animated: Bool) {
+        public override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             if firstAppearance {
                 interactor?.requestScreenInitialState()
             }
         }
 
-        override func viewDidAppear(_ animated: Bool) {
+        public override func viewDidAppear(_ animated: Bool) {
             super.viewDidAppear(animated)
             reachabilityView.lazyLoad()
         }
@@ -104,7 +104,7 @@ extension VC {
         // MARK: Mandatory methods
         //
 
-        override func setup() {
+        public override func setup() {
             // This function is called automatically by super BaseGenericView
             let viewController = self
             let interactor = I.CarTrackLoginInteractor()
@@ -125,13 +125,13 @@ extension VC {
         }()
 
         // This function is called automatically by super BaseGenericView
-        override func setupViewIfNeed() {
+        public override func setupViewIfNeed() {
             // Use it to configure stuff on the genericView, depending on the value external/public variables
             // that are set after we instantiate the view controller, but before if has been presented
         }
 
         // This function is called automatically by super BaseGenericView
-        override func setupViewUIRx() {
+        public override func setupViewUIRx() {
 
             //
             // User and password
@@ -165,7 +165,7 @@ extension VC {
         }
 
         // This function is called automatically by super BaseGenericView
-        override func setupNavigationUIRx() {
+        public override func setupNavigationUIRx() {
             // Add options to navigation bar
         }
     }

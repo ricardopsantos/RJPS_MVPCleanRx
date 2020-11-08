@@ -8,10 +8,10 @@
 #import <Foundation/Foundation.h>
 
 //! Project version number for AppCore_CarTrack.
-FOUNDATION_EXPORT double AppCore_CarTrackVersionNumber;
+FOUNDATION_EXPORT double AppCoreCarTrackVersionNumber;
 
 //! Project version string for AppCore_CarTrack.
-FOUNDATION_EXPORT const unsigned char AppCore_CarTrackVersionString[];
+FOUNDATION_EXPORT const unsigned char AppCoreCarTrackVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <AppCore_CarTrack/PublicHeader.h>
 

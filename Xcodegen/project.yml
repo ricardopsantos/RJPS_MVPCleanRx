@@ -59,6 +59,7 @@ settings:
       ENABLE_BITCODE: YES
      
 targetTemplates:
+
   Framework:
     type: framework
     platform: iOS
@@ -66,7 +67,37 @@ targetTemplates:
     settings:
       base:
         MARKETING_VERSION: 1.0
-    
+  
+  UIFramework:
+    type: framework
+    platform: iOS
+    deploymentTarget: 11.0
+    settings:
+      base:
+        MARKETING_VERSION: 1.0
+    dependencies:
+      - carthage: RxRelay
+      - carthage: RxSwift
+      - carthage: RxCocoa
+      - carthage: Differentiator
+      - carthage: RxDataSources
+      - target: Domain
+        link: false
+      - target: Designables
+        link: false
+      - target: UIBase
+        link: false
+      - target: AppConstants
+        link: false
+      - target: AppTheme
+        link: false
+      - target: Extensions
+        link: false
+      - target: DevTools
+        link: false
+      - target: DevTools
+        link: false
+            
 ####################### TARGETS #######################
 ####################### TARGETS #######################  
 ####################### TARGETS #######################
@@ -100,6 +131,8 @@ targets:
       - carthage: TinyConstraints
       - carthage: Material
       - carthage: Motion
+      - target: UICarTrack
+        link: true
       - target: Domain
         link: true
       - target: Designables
@@ -109,8 +142,6 @@ targets:
       - target: AppConstants
         link: true
       - target: AppTheme
-        link: true
-      - target: AppConstants
         link: true
       - target: Extensions
         link: true
@@ -139,18 +170,23 @@ targets:
    
 ## Specific App Related
    
+  UICarTrack:
+    templates: 
+      - UIFramework
+    sources: 
+      - path: ../UICarTrack
+    dependencies:
+      - target: DomainCarTrack
+        link: false
+      - target: CoreCarTrack
+        link: false
+              
   DomainCarTrack:
     templates: 
       - Framework
     sources: 
       - path: ../DomainCarTrack
      
-  DomainGalleryApp:
-    templates: 
-      - Framework
-    sources: 
-      - path: ../DomainGalleryApp   
-      
   CoreCarTrack:
     templates: 
       - Framework
@@ -158,8 +194,14 @@ targets:
       - path: ../CoreCarTrack
     dependencies:
       - target: Core
-        link: false   
-     
+        link: false  
+        
+  DomainGalleryApp:
+    templates: 
+      - Framework
+    sources: 
+      - path: ../DomainGalleryApp   
+       
   CoreGalleryApp:
     templates: 
       - Framework

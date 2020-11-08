@@ -9,11 +9,8 @@ import Foundation
 import UIKit
 //
 import AppConstants
-import AppTheme
 import DevTools
 import Extensions
-import Designables
-import UIBase
 import PointFreeFunctions
 
 // MARK: - GoodToGoProgramaticUIUtilsCompatible
@@ -65,11 +62,11 @@ public extension GoodToGoProgramaticUIUtils where GoodToGoBase: UIScrollView {
         return contentView
     }
 
-    func addStackView(_ statckView: UIStackView) {
+    func addStackView(_ stackView: UIStackView) {
         let target = self.base
         let contentView = target.uiUtils.addContentView()
-        contentView.addSubview(statckView)
-        statckView.uiUtils.edgeStackViewToSuperView()
+        contentView.addSubview(stackView)
+        stackView.uiUtils.edgeStackViewToSuperView()
     }
 }
 
@@ -96,8 +93,6 @@ public extension GoodToGoProgramaticUIUtils where GoodToGoBase: UIStackView {
         separator.backgroundColor = color
         if tag != nil {
             separator.tag = tag!
-        } else {
-            separator.tag = UIKitViewFactoryElementTag.stackViewSpace.rawValue
         }
         target.addArrangedSubview(separator)
         var finalValue = value

@@ -48,8 +48,8 @@ struct CarTrackLoginView_Previews: PreviewProvider {
 
 // MARK: - View
 
-extension GoodToGo.V {
-    class CarTrackLoginView: BaseGenericViewVIP {
+extension V {
+    public class CarTrackLoginView: BaseGenericViewVIP {
 
         deinit {
             DevTools.Log.logDeInit("\(self.className) was killed")
@@ -102,7 +102,7 @@ extension GoodToGo.V {
         // This function is called automatically by super BaseGenericViewVIP
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 1/3 : JUST to add stuff to the view....
-        override func prepareLayoutCreateHierarchy() {
+        public override func prepareLayoutCreateHierarchy() {
             addSubview(scrollView)
             scrollView.addSubview(stackViewVLevel1)
             stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: screenHeight/5)
@@ -118,7 +118,7 @@ extension GoodToGo.V {
         // This function is called automatically by super BaseGenericViewVIP
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 2/3 : JUST to setup layout rules zone....
-        override func prepareLayoutBySettingAutoLayoutsRules() {
+        public override func prepareLayoutBySettingAutoLayoutsRules() {
 
             let margin = AppSizes.Margins.defaultMargin
             stackViewVLevel1.uiUtils.edgeStackViewToSuperView()
@@ -142,19 +142,19 @@ extension GoodToGo.V {
         // This function is called automatically by super BaseGenericViewVIP
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 3/3 : Stuff that is not included in [prepareLayoutCreateHierarchy] and [prepareLayoutBySettingAutoLayoutsRules]
-        override func prepareLayoutByFinishingPrepareLayout() {
+        public override func prepareLayoutByFinishingPrepareLayout() {
             self.subViewsOf(types: [.label], recursive: true).forEach { (some) in
                 (some as? UILabel)?.textAlignment = .center
             }
             setupLottie()
         }
 
-        override func setupColorsAndStyles() {
+        public override func setupColorsAndStyles() {
             self.backgroundColor = ComponentColor.background
         }
 
         // This function is called automatically by super BaseGenericView
-        override func setupViewUIRx() {
+        public override func setupViewUIRx() {
 
         }
 
@@ -181,11 +181,11 @@ extension GoodToGo.V {
 
         // MARK: - Custom Getter/Setters
 
-        func setupWith(screenState viewModel: GoodToGo.VM.CarTrackLogin.ScreenState.ViewModel) {
+        func setupWith(screenState viewModel: VM.CarTrackLogin.ScreenState.ViewModel) {
             screenLayout = viewModel.layout
         }
 
-        func setupWith(screenInitialState viewModel: GoodToGo.VM.CarTrackLogin.ScreenInitialState.ViewModel) {
+        func setupWith(screenInitialState viewModel: VM.CarTrackLogin.ScreenInitialState.ViewModel) {
             lblTitle.textAnimated = viewModel.title
             txtUserName.text = viewModel.userName
             txtPassword.text = viewModel.password
@@ -199,7 +199,7 @@ extension GoodToGo.V {
                 btnLogin.disable()
             }
         }
-        func setupWith(nextButtonState viewModel: GoodToGo.VM.CarTrackLogin.NextButtonState.ViewModel) {
+        func setupWith(nextButtonState viewModel: VM.CarTrackLogin.NextButtonState.ViewModel) {
             userCanProceed(viewModel.isEnabled)
         }
 
@@ -242,7 +242,7 @@ extension GoodToGo.V {
 
 // MARK: - Events capture
 
-extension GoodToGo.V.CarTrackLoginView {
+extension V.CarTrackLoginView {
     var rxBtnLoginTap: Observable<Void> { btnLogin.rx.tapSmart(disposeBag) }
     var rxTxtPassword: Reactive<SkyFloatingLabelTextField> { txtPassword.rx }
     var rxTxtUsername: Reactive<SkyFloatingLabelTextField> { txtUserName.rx }

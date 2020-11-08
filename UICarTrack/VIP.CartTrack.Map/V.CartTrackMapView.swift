@@ -48,7 +48,7 @@ struct CartTrackMapView_Previews: PreviewProvider {
 
 // MARK: - View
 
-extension GoodToGo.V {
+extension V {
     class CartTrackMapView: BaseGenericViewVIP {
 
         deinit {
@@ -160,17 +160,17 @@ extension GoodToGo.V {
 
         // MARK: - Custom Getter/Setters
 
-        func setupWith(mapData viewModel: GoodToGo.VM.CartTrackMap.MapData.ViewModel) {
+        func setupWith(mapData viewModel: VM.CartTrackMap.MapData.ViewModel) {
             lblInfo.textAnimated = viewModel.report
             updateMapWith(list: viewModel.list)
         }
 
-        func setupWith(screenInitialState viewModel: GoodToGo.VM.CartTrackMap.ScreenInitialState.ViewModel) {
+        func setupWith(screenInitialState viewModel: VM.CartTrackMap.ScreenInitialState.ViewModel) {
             //subTitle = viewModel.subTitle
             //screenLayout = viewModel.screenLayout
         }
 
-        func setupWith(mapDataFilter viewModel: GoodToGo.VM.CartTrackMap.MapDataFilter.ViewModel) {
+        func setupWith(mapDataFilter viewModel: VM.CartTrackMap.MapDataFilter.ViewModel) {
             lblInfo.textAnimated = viewModel.report
             updateMapWith(list: viewModel.list)
         }
@@ -180,7 +180,7 @@ extension GoodToGo.V {
 
 // MARK: - Private
 
-extension GoodToGo.V.CartTrackMapView {
+extension V.CartTrackMapView {
 
     private func updateMapWith(list: [CarTrackAppModel.User]) {
         lastModel = list
@@ -191,7 +191,7 @@ extension GoodToGo.V.CartTrackMapView {
             return
         }
 
-        if GoodToGo.V.CartTrackMapView.selectedAnnotationsTypeForMap == .pinAnnotationView {
+        if V.CartTrackMapView.selectedAnnotationsTypeForMap == .pinAnnotationView {
             let mkPointAnnotationList: [MKPointAnnotation] = list.map {
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = $0.mapLocation
@@ -218,7 +218,7 @@ extension GoodToGo.V.CartTrackMapView {
 
 // MARK: - MKMapViewDelegate
 
-extension GoodToGo.V.CartTrackMapView: MKMapViewDelegate {
+extension V.CartTrackMapView: MKMapViewDelegate {
 
     // Called when the region displayed by the map view is about to change
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
@@ -232,7 +232,7 @@ extension GoodToGo.V.CartTrackMapView: MKMapViewDelegate {
 
         let reuseIdentifier = MKMapViewDefaultAnnotationViewReuseIdentifier
 
-        if GoodToGo.V.CartTrackMapView.selectedAnnotationsTypeForMap == .pinAnnotationView {
+        if V.CartTrackMapView.selectedAnnotationsTypeForMap == .pinAnnotationView {
             var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier) as? MKPinAnnotationView
             if pinView == nil {
                 pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
@@ -246,7 +246,7 @@ extension GoodToGo.V.CartTrackMapView: MKMapViewDelegate {
                 pinView?.annotation = annotation
             }
             return pinView
-        } else if GoodToGo.V.CartTrackMapView.selectedAnnotationsTypeForMap == .markerAnnotationView {
+        } else if V.CartTrackMapView.selectedAnnotationsTypeForMap == .markerAnnotationView {
             guard let annotation = annotation as? CarTrackMKAnnotation else { return nil }
             var view: CarTrackMKMarkerAnnotationView
             if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier) as? CarTrackMKMarkerAnnotationView {
@@ -285,7 +285,7 @@ extension GoodToGo.V.CartTrackMapView: MKMapViewDelegate {
 
 // MARK: - Events capture
 
-extension GoodToGo.V.CartTrackMapView {
+extension V.CartTrackMapView {
 
 }
 

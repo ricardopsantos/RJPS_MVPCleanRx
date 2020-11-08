@@ -2,15 +2,12 @@
 
 clear
 
-xcodegen -s ./XcodeGen/project.yml -p ./ 
-
-open GoodToGo.xcodeproj
-
-cd XcodeGen
-xcodegen dump --type graphviz --file ../Documents/Graph.viz
-xcodegen dump --type json --file ../Documents/Graph.json
-
-exit 
+#xcodegen -s ./XcodeGen/project.yml -p ./ 
+#open GoodToGo.xcodeproj
+#cd XcodeGen
+#xcodegen dump --type graphviz --file ../Documents/Graph.viz
+#xcodegen dump --type json --file ../Documents/Graph.json
+#exit 
 
 displayCompilerInfo() {
 	printf "\n"
@@ -146,7 +143,7 @@ echo " [1] : Xcode current"
 echo " [2] : Xcode Version 12.0.1"
 echo " [3] : Xcode Version 11.4"
 echo " [4] : Xcode Version 10.3"
-echo " [6] : No/Skip"
+echo " [5] : No/Skip"
 printf "\n"
 echo -n "Option? "
 read option
@@ -187,24 +184,21 @@ esac
 printf "\n"
 printf "\n"
 
-#echo "### Perform Xcodegen?"
-#echo " [1] : Yes"
-#echo " [2] : No/Skip"
-#echo -n "Option? "
-#read option
-#case $option in
-#    [1] ) xcodegen -s ./XcodeGen/project.yml -p ./ ;;
-#   *) echo "Ignored...."
-#;;
-#esac
+echo "### Perform Xcodegen?"
+echo " [1] : Yes"
+echo " [2] : No/Skip"
+echo -n "Option? "
+read option
+case $option in
+    [1] ) xcodegen -s ./XcodeGen/project.yml -p ./ ;;
+   *) echo "Ignored...."
+;;
+esac
 
-xcodegen -s ./XcodeGen/project.yml -p ./ 
-
-#open GoodToGo_V2.xcodeproj
-
-#cd XcodeGen
-#xcodegen dump --type graphviz --file ../__Documents__/Graph.viz
-#xcodegen dump --type json --file ../__Documents__/Graph.json
+open GoodToGo.xcodeproj
+cd XcodeGen
+xcodegen dump --type graphviz --file ../Documents/Graph.viz
+xcodegen dump --type json --file ../Documents/Graph.json
 
 echo " ╔═══════════════════════╗"
 echo " ║ Done! You're all set! ║"

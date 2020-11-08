@@ -34,4 +34,5 @@ typealias AppUtils               = RJS_Utils                                    
 typealias AppUserDefaultsVars    = RJS_UserDefaultsVars // NSUserDefaults utilities for Int Type
 typealias AppUserDefaults        = RJS_UserDefaults               // NSUserDefaults utilities (save, delete, get, exits, ...)
 typealias WebAPIRequestProtocol  = RJS_SimpleNetworkClientRequestProtocol
-//typealias AppSimpleNetworkClient = RJPSLib_Networking.RJSLib.SimpleNetworkClient
+
+public typealias CacheStrategy = RJS_CacheStrategy

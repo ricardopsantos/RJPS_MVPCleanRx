@@ -8,6 +8,7 @@
 import UIKit
 //
 import Designables
+import UIBase
 
 //
 // MARK: - UserTableViewCell

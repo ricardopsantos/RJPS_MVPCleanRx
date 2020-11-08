@@ -109,7 +109,7 @@ protocol CarTrackLoginDataStoreProtocol {
 
 // Other Models
 
-extension VM {
+public extension VM {
     enum CarTrackLogin {
 
         struct NextButtonState {

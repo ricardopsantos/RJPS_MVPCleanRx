@@ -33,7 +33,7 @@ struct DIAssemblyContainerCartTrackProtocols {
 
 public class CarTrackResolver {
     private init() { }
-    public static let worker = DIAssemblerScenes.assembler.resolver.resolve(DIAssemblyContainerCartTrackProtocols.carTrackAppWorker.self)
+    public static let worker = DIAssemblerScenesCarTrack.assembler.resolver.resolve(DIAssemblyContainerCartTrackProtocols.carTrackAppWorker.self)
 }
 
 //

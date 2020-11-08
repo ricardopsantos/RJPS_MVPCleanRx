@@ -8,10 +8,10 @@
 #import <Foundation/Foundation.h>
 
 //! Project version number for Core_GalleryApp.
-FOUNDATION_EXPORT double Core_GalleryAppVersionNumber;
+FOUNDATION_EXPORT double CoreGalleryAppVersionNumber;
 
 //! Project version string for Core_GalleryApp.
-FOUNDATION_EXPORT const unsigned char Core_GalleryAppVersionString[];
+FOUNDATION_EXPORT const unsigned char CoreGalleryAppVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <Core_GalleryApp/PublicHeader.h>
 
