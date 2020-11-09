@@ -10,7 +10,7 @@ import RJSLibUFNetworking
 //
 import BaseDomain
 import BaseRepositories
-import RepositoriesWebAPI
+import BaseRepositoryWebAPI
 import DevTools
 
 //
@@ -18,22 +18,11 @@ import DevTools
 //
 
 public struct DIRootAssemblyContainerProtocols {
-
-    //
-    // Managers
-    //
-
-    public static let messagesManager = MessagesManagerProtocol.self
-
-    //
-    // Generic Repositories
-    //
-
+    public static let messagesManager         = MessagesManagerProtocol.self
     public static let networkClient           = RJS_SimpleNetworkClientProtocol.self
     public static let hotCacheRepository      = HotCacheRepositoryProtocol.self
     public static let coldKeyValuesRepository = KeyValuesStorageRepositoryProtocol.self
     public static let apiCacheRepository      = APICacheManagerProtocol.self
-
 }
 
 //
@@ -42,10 +31,10 @@ public struct DIRootAssemblyContainerProtocols {
 
 public class DIRootAssemblyResolver {
     private init() { }
-    public static let messagesManager = DIAssemblerCore.assembler.resolver.resolve(DIRootAssemblyContainerProtocols.messagesManager.self)
-    public static let hotCacheRepository = DIAssemblerCore.assembler.resolver.resolve(DIRootAssemblyContainerProtocols.hotCacheRepository.self)
+    public static let messagesManager         = DIAssemblerCore.assembler.resolver.resolve(DIRootAssemblyContainerProtocols.messagesManager.self)
+    public static let hotCacheRepository      = DIAssemblerCore.assembler.resolver.resolve(DIRootAssemblyContainerProtocols.hotCacheRepository.self)
     public static let coldKeyValuesRepository = DIAssemblerCore.assembler.resolver.resolve(DIRootAssemblyContainerProtocols.coldKeyValuesRepository.self)
-    public static let apiCacheRepository = DIAssemblerCore.assembler.resolver.resolve(DIRootAssemblyContainerProtocols.apiCacheRepository.self)
+    public static let apiCacheRepository      = DIAssemblerCore.assembler.resolver.resolve(DIRootAssemblyContainerProtocols.apiCacheRepository.self)
 }
 
 //

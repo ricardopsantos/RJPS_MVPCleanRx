@@ -10,11 +10,8 @@ import Swinject
 import SwinjectAutoregistration
 
 final class DIAssemblerCore {
-
     class var assembler: Assembler {
-        let assemblyList: [Assembly] = [
-            DIAssemblyContainerCore()
-        ]
+        let assemblyList: [Assembly] = [DIAssemblyContainerCore()]
         return Assembler(assemblyList)
     }
 }

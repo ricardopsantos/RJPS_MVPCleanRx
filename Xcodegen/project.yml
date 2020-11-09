@@ -95,8 +95,6 @@ targetTemplates:
         link: false
       - target: DevTools
         link: false
-      - target: DevTools
-        link: false
             
 ####################### TARGETS #######################
 ####################### TARGETS #######################  
@@ -161,6 +159,8 @@ targets:
         link: false
       - target: CoreCarTrack
         link: false
+      - target: RepositoryWebAPICartrack
+        link: false
               
   DomainCarTrack:
     templates: 
@@ -169,7 +169,9 @@ targets:
       - path: ../DomainCarTrack
     dependencies:
       - carthage: RJSLibUFNetworking
-     
+      - target: BaseDomain
+        link: false
+      
   CoreCarTrack:
     templates: 
       - Framework
@@ -179,17 +181,59 @@ targets:
       - target: BaseCore
         link: false  
 
+  RepositoryWebAPICartrack:
+    templates: 
+      - Framework
+    sources: 
+      - path: ../RepositoryWebAPICartrack  
+    dependencies:
+      - carthage: RJSLibUFNetworking
+      - target: BaseRepositoryWebAPI
+        link: false  
+      - target: BaseConstants
+        link: false  
+      - target: DevTools
+        link: false   
+      - target: DomainGalleryApp
+        link: false   
+        
+## Specific App Related ## Specific App Related ## Specific App Related ## Specific App Related
+
   UIGalleryApp:
     templates:
       - UIFramework
     sources:
       - path: ../UIGalleryApp
     dependencies:
+      - carthage: Swinject
+      - carthage: RJSLibUFNetworking
       - target: DomainGalleryApp
         link: false
       - target: CoreGalleryApp
         link: false
-
+      - target: RepositoryWebAPIGalleryApp
+        link: false
+      - target: DevTools
+        link: false
+      - target: BaseCore
+        link: false  
+        
+  RepositoryWebAPIGalleryApp:
+    templates: 
+      - Framework
+    sources: 
+      - path: ../RepositoryWebAPIGalleryApp  
+    dependencies:
+      - carthage: RJSLibUFNetworking
+      - target: BaseRepositoryWebAPI
+        link: false  
+      - target: BaseConstants
+        link: false  
+      - target: DevTools
+        link: false   
+      - target: DomainGalleryApp
+        link: false   
+               
   DomainGalleryApp:
     templates: 
       - Framework
@@ -197,6 +241,8 @@ targets:
       - path: ../DomainGalleryApp   
     dependencies:
       - carthage: RJSLibUFNetworking
+      - target: BaseDomain
+        link: false
        
   CoreGalleryApp:
     templates: 
@@ -205,7 +251,7 @@ targets:
       - path: ../CoreGalleryApp  
     dependencies:
       - target: BaseCore
-        link: false   
+        link: false    
       
 ## Generic App Related ## Generic App Related ## Generic App Related ## Generic App Related
   
@@ -214,6 +260,14 @@ targets:
       - Framework
     sources: 
       - path: ../Factory
+    dependencies:
+      - carthage: RxSwift
+      - carthage: RxCocoa
+      - carthage: RJSLibUFStorage
+      - target: BaseDomain
+        link: false
+      - target: AppResources
+        link: false
       
   BaseRepositories:
     templates: 
@@ -229,14 +283,16 @@ targets:
       - target: Factory
         link: false
       
-  RepositoriesWebAPI:
+  BaseRepositoryWebAPI:
     templates: 
       - Framework
     sources: 
-      - path: ../RepositoriesWebAPI
+      - path: ../BaseRepositoryWebAPI
     dependencies:
       - carthage: RxSwift
       - carthage: RxCocoa    
+      - target: DevTools
+        link: false  
        
   BaseCore:
     templates: 
@@ -252,8 +308,6 @@ targets:
       - target: AppTheme
         link: false
       - target: BaseRepositories
-        link: false
-      - target: RepositoriesWebAPI
         link: false
        
   BaseDomain:
@@ -319,6 +373,8 @@ targets:
       - target: AppResources
         link: false
       - target: AppTheme
+        link: false
+      - target: BaseCore
         link: false
         
   PointFreeFunctions:

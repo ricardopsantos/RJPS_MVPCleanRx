@@ -5,10 +5,6 @@
 //  Copyright ©  Ricardo P Santos. All rights reserved.
 //
 
-import UIKit
-//
-import RxSwift
-import RxCocoa
 import RJSLibUFNetworking
 //
 import BaseConstants
@@ -16,6 +12,7 @@ import PointFreeFunctions
 import BaseDomain
 import DevTools
 import DomainCarTrack
+import BaseRepositoryWebAPI
 
 // MARK: - Target
 

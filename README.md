@@ -32,10 +32,6 @@ Download source code and run  `./makeProject.sh`
 
 This will install/update [Brew](https://brew.sh/), that will be used to install/update [Carthage](https://github.com/Carthage/Carthage)
 
-### Step 2 
-
-Because of dependencies, its possible you need to compile __once__ all the frameworks __one by one__
-
 ### Could not save file?
 
 If theres a error on Carthage build __Could not save file__

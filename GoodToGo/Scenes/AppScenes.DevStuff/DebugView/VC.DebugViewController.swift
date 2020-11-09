@@ -125,7 +125,7 @@ extension VC {
         override func setupViewIfNeed() {
             // Use it to configure stuff on the genericView, depending on the value external/public variables
             // that are set after we instantiate the view controller, but before if has been presented
-            topGenericView.setTitle("Hi")
+            topGenericView.setTitle("DevScreen")
         }
 
         // This function is called automatically by super BaseGenericView

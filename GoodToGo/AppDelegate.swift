@@ -19,7 +19,7 @@ import Extensions
 import DevTools
 import PointFreeFunctions
 
-import RepositoriesWebAPI
+import BaseRepositoryWebAPI
 import DomainGalleryApp
 import DomainCarTrack
 import RJSLibUFNetworking

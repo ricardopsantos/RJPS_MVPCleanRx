@@ -75,7 +75,6 @@ extension VC {
         // Order in View life-cycle : 4
         public override func viewDidLoad() {
             super.viewDidLoad()
-
             if DevTools.onSimulator {
                 DispatchQueue.executeOnce(token: "\(VC.GalleryAppS1ViewController.self).info") {
                     let message = "Gallery App" + "\n\n"
@@ -89,6 +88,7 @@ extension VC {
             super.viewWillAppear(animated)
             if firstAppearance {
                 interactor?.requestScreenInitialState()
+                topGenericView.setTitle("Show me kitties!")
             }
         }
 
@@ -172,7 +172,6 @@ extension VC {
 
         public override func prepareLayoutByFinishingPrepareLayout() {
             super.prepareLayoutByFinishingPrepareLayout()
-            topGenericView.setTitle("Show me kitties!")
         }
     }
 }
