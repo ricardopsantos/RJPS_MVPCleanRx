@@ -10,7 +10,7 @@ import Foundation
 import RJSLibUFNetworking
 import RxSwift
 //
-import Domain
+import BaseDomain
 
 /**
 Use case Protocol for things related with the Web API. (Its not the API Protocol)

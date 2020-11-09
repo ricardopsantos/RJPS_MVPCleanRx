@@ -11,11 +11,11 @@ import UIKit
 import RxSwift
 import RJSLibUFBase
 //
-import AppConstants
+import BaseConstants
 import AppTheme
 import DevTools
-import Core
-import Domain
+import BaseCore
+import BaseDomain
 
 open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtocol {
 

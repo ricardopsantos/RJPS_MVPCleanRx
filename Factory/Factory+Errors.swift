@@ -7,7 +7,7 @@
 
 import Foundation
 //
-import Domain
+import BaseDomain
 import AppResources
 
 public extension Factory {

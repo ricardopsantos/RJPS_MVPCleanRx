@@ -10,7 +10,7 @@ import Foundation
 import RJSLibUFBase
 //
 import DevTools
-import Domain
+import BaseDomain
 
 public extension DevTools.Log {
     static func appCode(_ appCode: AppCodes, function: String = #function, file: String = #file, line: Int = #line) {

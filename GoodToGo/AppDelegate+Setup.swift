@@ -13,7 +13,7 @@ import RJSLibUFBase
 import NSLoggerSwift
 //import Firebase
 //
-import AppConstants
+import BaseConstants
 import PointFreeFunctions
 import DevTools
 

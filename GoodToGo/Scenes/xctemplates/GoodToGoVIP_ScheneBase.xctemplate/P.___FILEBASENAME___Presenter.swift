@@ -12,15 +12,13 @@ import RxCocoa
 import RxSwift
 import TinyConstraints
 //
-import AppConstants
+import BaseConstants
 import AppTheme
-import Designables
 import DevTools
-import Domain
+import BaseDomain
 import Extensions
-import PointFreeFunctions
 import AppResources
-import UIBase
+import BaseUI
 
 //
 // After the interactor produces some results, it passes the response to the presenter.

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 //
-import AppConstants
+import BaseConstants
 
 public struct Designables {
     public struct Sizes {

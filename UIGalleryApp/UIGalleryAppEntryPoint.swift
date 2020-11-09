@@ -7,7 +7,7 @@
 
 import Foundation
 //
-import UIBase
+import BaseUI
 
 public struct UIGalleryAppEntryPoint {
     public static func instance() -> VC.GalleryAppS1ViewController {

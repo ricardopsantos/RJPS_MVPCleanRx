@@ -81,13 +81,13 @@ targetTemplates:
       - carthage: RxCocoa
       - carthage: Differentiator
       - carthage: RxDataSources
-      - target: Domain
+      - target: BaseDomain
         link: false
       - target: Designables
         link: false
-      - target: UIBase
+      - target: BaseUI
         link: false
-      - target: AppConstants
+      - target: BaseConstants
         link: false
       - target: AppTheme
         link: false
@@ -105,7 +105,6 @@ targetTemplates:
 targets:
   
 ## Base App ## Base App ## Base App ## Base App ## Base App 
-
 
   GoodToGo:
     type: application
@@ -132,7 +131,7 @@ targets:
       - carthage: TinyConstraints
       - carthage: Material
       - carthage: Motion
-      - target: UIBase
+      - target: BaseUI
         link: false
       - target: DevTools
         link: false
@@ -168,6 +167,8 @@ targets:
       - Framework
     sources: 
       - path: ../DomainCarTrack
+    dependencies:
+      - carthage: RJSLibUFNetworking
      
   CoreCarTrack:
     templates: 
@@ -175,7 +176,7 @@ targets:
     sources: 
       - path: ../CoreCarTrack
     dependencies:
-      - target: Core
+      - target: BaseCore
         link: false  
 
   UIGalleryApp:
@@ -194,6 +195,8 @@ targets:
       - Framework
     sources: 
       - path: ../DomainGalleryApp   
+    dependencies:
+      - carthage: RJSLibUFNetworking
        
   CoreGalleryApp:
     templates: 
@@ -201,7 +204,7 @@ targets:
     sources: 
       - path: ../CoreGalleryApp  
     dependencies:
-      - target: Core
+      - target: BaseCore
         link: false   
       
 ## Generic App Related ## Generic App Related ## Generic App Related ## Generic App Related
@@ -212,16 +215,16 @@ targets:
     sources: 
       - path: ../Factory
       
-  Repositories:
+  BaseRepositories:
     templates: 
       - Framework
     sources: 
-      - path: ../Repositories
+      - path: ../BaseRepositories
     dependencies:
       - carthage: RxSwift
       - carthage: RxCocoa
       - carthage: RJSLibUFStorage
-      - target: Domain
+      - target: BaseDomain
         link: false
       - target: Factory
         link: false
@@ -235,33 +238,33 @@ targets:
       - carthage: RxSwift
       - carthage: RxCocoa    
        
-  Core:
+  BaseCore:
     templates: 
       - Framework
     sources: 
-      - path: ../Core
+      - path: ../BaseCore
     dependencies:
       - carthage: Swinject
       - carthage: SwinjectAutoregistration
       - carthage: RJSLibUFNetworking
-      - target: Domain
+      - target: BaseDomain
         link: false
       - target: AppTheme
         link: false
-      - target: Repositories
+      - target: BaseRepositories
         link: false
       - target: RepositoriesWebAPI
         link: false
        
-  Domain:
+  BaseDomain:
     templates: 
       - Framework
     sources: 
-      - path: ../Domain
+      - path: ../BaseDomain
     dependencies:
       - carthage: RxSwift
       - carthage: RxCocoa
-      - target: AppConstants
+      - target: BaseConstants
         link: false
          
   Designables:
@@ -279,7 +282,7 @@ targets:
       - carthage: TinyConstraints
       - carthage: Material
       - carthage: Motion
-      - target: UIBase
+      - target: BaseUI
         link: false
       
   Extensions:
@@ -305,11 +308,11 @@ targets:
         link: false
       - carthage: RJSLibUFBase
       
-  UIBase:
+  BaseUI:
     templates: 
       - Framework
     sources: 
-      - path: ../UIBase
+      - path: ../BaseUI
     dependencies:
       - carthage: RxSwift
       - carthage: RxCocoa
@@ -333,22 +336,20 @@ targets:
       - path: ../AppTheme 
     dependencies:
       - carthage: RJSLibUFAppThemes
-      - target: AppConstants
+      - target: BaseConstants
         link: false
       - target: Extensions
         link: false
       - target: AppResources
-        link: false 
-      - target: AppConstants
-        link: false        
+        link: false
       - target: DevTools
         link: false          
        
-  AppConstants:
+  BaseConstants:
     templates: 
       - Framework
     sources: 
-      - path: ../AppConstants
+      - path: ../BaseConstants
     dependencies:
       - carthage: RJSLibUFBase
          
@@ -365,6 +366,6 @@ targets:
       - carthage: NSLoggerSwift
       - target: PointFreeFunctions
         link: false
-      - target: AppConstants
+      - target: BaseConstants
         link: false
 

@@ -13,14 +13,14 @@ import RxDataSources
 import TinyConstraints
 import RJSLibUFBase
 //
-import AppConstants
+import BaseConstants
 import AppTheme
 import Designables
 import DevTools
-import Domain
+import BaseDomain
 import Extensions
 import PointFreeFunctions
-import UIBase
+import BaseUI
 import AppResources
 
 // MARK: - Preview

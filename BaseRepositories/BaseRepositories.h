@@ -8,10 +8,10 @@
 #import <Foundation/Foundation.h>
 
 //! Project version number for Repositories.
-FOUNDATION_EXPORT double RepositoriesVersionNumber;
+FOUNDATION_EXPORT double BaseRepositoriesVersionNumber;
 
 //! Project version string for Repositories.
-FOUNDATION_EXPORT const unsigned char RepositoriesVersionString[];
+FOUNDATION_EXPORT const unsigned char BaseRepositoriesVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <Repositories/PublicHeader.h>
 

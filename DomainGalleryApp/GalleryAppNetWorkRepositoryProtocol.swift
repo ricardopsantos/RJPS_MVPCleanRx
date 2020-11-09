@@ -9,11 +9,6 @@ import Foundation
 import UIKit
 //
 import RJSLibUFNetworking
-//
-
-/**
-__Web API__ Requests Protocol
- */
 
 public typealias GalleryAppResponseSearchCompletionHandler = (_ result: Result<RJS_SimpleNetworkClientResponse<GalleryAppResponseDto.Search>>) -> Void
 public typealias GalleryAppResponseImageInfoCompletionHandler = (_ result: Result<RJS_SimpleNetworkClientResponse<GalleryAppResponseDto.ImageInfo>>) -> Void

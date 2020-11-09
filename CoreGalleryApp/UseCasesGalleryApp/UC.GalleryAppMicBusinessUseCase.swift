@@ -11,12 +11,12 @@ import UIKit
 import RJSLibUFNetworking
 import RxSwift
 //
-import AppConstants
+import BaseConstants
 import PointFreeFunctions
-import Domain
+import BaseDomain
 import DomainGalleryApp
 import Factory
-import Core
+import BaseCore
 import AppResources
 
 public class GalleryAppMiscBusinessUseCase: GenericUseCase, GalleryAppGenericBusinessUseCaseProtocol {

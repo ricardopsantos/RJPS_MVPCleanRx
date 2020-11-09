@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 //
-import Domain
+import BaseDomain
 
 // swiftlint:disable redundant_string_enum_value
 

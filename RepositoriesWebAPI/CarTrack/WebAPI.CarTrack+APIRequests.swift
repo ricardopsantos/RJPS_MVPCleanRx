@@ -11,9 +11,9 @@ import RxSwift
 import RxCocoa
 import RJSLibUFNetworking
 //
-import AppConstants
+import BaseConstants
 import PointFreeFunctions
-import Domain
+import BaseDomain
 import DevTools
 import DomainCarTrack
 

@@ -8,10 +8,10 @@
 #import <Foundation/Foundation.h>
 
 //! Project version number for AppCore.
-FOUNDATION_EXPORT double AppCoreVersionNumber;
+FOUNDATION_EXPORT double BaseCoreVersionNumber;
 
 //! Project version string for AppCore.
-FOUNDATION_EXPORT const unsigned char AppCoreVersionString[];
+FOUNDATION_EXPORT const unsigned char BaseCoreVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <AppCore/PublicHeader.h>
 

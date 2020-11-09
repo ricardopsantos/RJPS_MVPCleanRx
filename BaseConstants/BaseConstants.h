@@ -8,10 +8,10 @@
 #import <Foundation/Foundation.h>
 
 //! Project version number for AppConstants.
-FOUNDATION_EXPORT double AppConstantsVersionNumber;
+FOUNDATION_EXPORT double BaseConstantsVersionNumber;
 
 //! Project version string for AppConstants.
-FOUNDATION_EXPORT const unsigned char AppConstantsVersionString[];
+FOUNDATION_EXPORT const unsigned char BaseConstantsVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <AppConstants/PublicHeader.h>
 

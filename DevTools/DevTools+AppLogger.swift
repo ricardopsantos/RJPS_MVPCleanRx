@@ -11,7 +11,7 @@ import UIKit
 import RJSLibUFBase
 import NSLoggerSwift
 //
-import AppConstants
+import BaseConstants
 import PointFreeFunctions
 
 public extension DevTools {

@@ -10,7 +10,7 @@ import Foundation
 //
 import RJSLibUFBase
 //
-import Domain
+import BaseDomain
 
 public extension NetworkingOperationsUtilsProtocol {
     

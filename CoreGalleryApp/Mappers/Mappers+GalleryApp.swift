@@ -8,7 +8,7 @@
 import Foundation
 //
 import PointFreeFunctions
-import Core
+import BaseCore
 //
 import DomainGalleryApp
 

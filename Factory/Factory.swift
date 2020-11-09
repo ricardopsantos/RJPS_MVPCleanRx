@@ -6,9 +6,6 @@
 //
 
 import Foundation
-//
-import Domain
-import AppResources
 
 public struct Factory {
     private init() {}

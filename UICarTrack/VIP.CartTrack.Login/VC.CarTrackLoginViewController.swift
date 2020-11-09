@@ -13,15 +13,15 @@ import RxSwift
 import TinyConstraints
 import Material
 //
-import AppConstants
+import BaseConstants
 import AppTheme
 import Designables
 import DevTools
-import Domain
+import BaseDomain
 import Extensions
 import PointFreeFunctions
 import AppResources
-import UIBase
+import BaseUI
 
 // MARK: - Preview
 

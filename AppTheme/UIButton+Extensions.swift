@@ -9,7 +9,7 @@ import UIKit
 import Foundation
 //
 import AppResources
-import AppConstants
+import BaseConstants
 import DevTools
 import PointFreeFunctions
 import Extensions

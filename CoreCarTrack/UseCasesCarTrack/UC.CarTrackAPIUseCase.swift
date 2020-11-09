@@ -13,14 +13,14 @@ import RxCocoa
 import RJSLibUFNetworking
 import RJSLibUFStorage
 //
-import AppConstants
+import BaseConstants
 import PointFreeFunctions
-import Domain
+import BaseDomain
 import DomainCarTrack
 import Factory
-import Core
+import BaseCore
 import AppResources
-import Repositories
+import BaseRepositories
 
 public class CarTrackAPIUseCase: GenericUseCase, CarTrackWebAPIUseCaseProtocol {
 

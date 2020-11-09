@@ -7,7 +7,7 @@
 
 import Foundation
 //
-import AppConstants
+import BaseConstants
 
 public protocol BaseViewProtocol: AnyObject {
     func displayMessage(_ message: String, type: AlertType)

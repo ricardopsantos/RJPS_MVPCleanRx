@@ -15,13 +15,13 @@ import SkyFloatingLabelTextField   // For UI component SkyFloatingLabelTextField
 import Material                    // For UI component RaisedButton
 import Motion                      // For UI component RaisedButton
 //
-import AppConstants
+import BaseConstants
 import AppTheme
 import DevTools
-import Domain
+import BaseDomain
 import Extensions
 import PointFreeFunctions
-import UIBase
+import BaseUI
 import AppResources
 
 public struct UIKitFactory {
