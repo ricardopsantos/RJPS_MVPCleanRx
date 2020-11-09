@@ -101,7 +101,7 @@ A single screen has always 6 files
 * `Router` 
     * Handles screen routing 
 
-* __ Others__    
+* __Others__    
     * `Worker` 
         * If and app could be separated into UI and business, the worker is the glue/bridge
         * Connects the Interator and the UseCases
