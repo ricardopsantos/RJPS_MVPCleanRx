@@ -28,6 +28,7 @@ open class BaseGenericViewControllerVIP<T: StylableView>: BaseViewControllerVIP 
     open override func loadView() {
         super.loadView()
         // Setup Generic View
+        setup()
         genericView = T()
         view.addSubview(genericView)
         genericView.autoLayout.edgesToSuperview()

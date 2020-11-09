@@ -8,13 +8,13 @@
 import Swinject
 import RJSLibUFNetworking
 //
+import DevTools
+import BaseCore
 import BaseDomain
 import DomainGalleryApp
-import BaseRepositories
-import RepositoriesWebAPI
-import BaseCore
+import BaseRepositoryWebAPI
 import CoreGalleryApp
-import DevTools
+import RepositoryWebAPIGalleryApp
 
 //
 // MARK: - Protocols references sugar
@@ -33,7 +33,7 @@ struct DIAssemblyContainerGalleryAppProtocols {
 
 public class GalleryAppResolver {
     private init() { }
-    public static let worker = DIAssemblerScenes.assembler.resolver.resolve(DIAssemblyContainerGalleryAppProtocols.galleryAppWorker.self)
+    public static let worker = DIAssemblerScenesGalleryApp.assembler.resolver.resolve(DIAssemblyContainerGalleryAppProtocols.galleryAppWorker.self)
 }
 
 //
@@ -64,10 +64,10 @@ final class DIAssemblyContainerGalleryApp: Assembly {
         }
 
         // use case
-        container.register(DIAssemblyContainerGalleryAppProtocols.galleryAppGenericAppBusinessUseCase) { resolver in
+        container.register(DIAssemblyContainerGalleryAppProtocols.galleryAppGenericAppBusinessUseCase) { _ in
             let uc = GalleryAppMiscBusinessUseCase()
-            uc.coldKeyValuesRepository = resolver.resolve(DIRootAssemblyContainerProtocols.coldKeyValuesRepository)
-            uc.hotCacheRepository      = resolver.resolve(DIRootAssemblyContainerProtocols.hotCacheRepository)
+            uc.coldKeyValuesRepository = DIRootAssemblyResolver.coldKeyValuesRepository
+            uc.hotCacheRepository      = DIRootAssemblyResolver.hotCacheRepository
             return uc
         }
 
@@ -75,9 +75,9 @@ final class DIAssemblyContainerGalleryApp: Assembly {
         container.register(DIAssemblyContainerGalleryAppProtocols.galleryAppAPIUseCase) { resolver in
             let uc = GalleryAppWebAPIUseCase()
             uc.networkRepository       = resolver.resolve(DIAssemblyContainerGalleryAppProtocols.galleryAppNetWorkRepository) // Client WebAPI
-            uc.coldKeyValuesRepository = resolver.resolve(DIRootAssemblyContainerProtocols.coldKeyValuesRepository)
-            uc.hotCacheRepository      = resolver.resolve(DIRootAssemblyContainerProtocols.hotCacheRepository)
-            uc.apiCache                = resolver.resolve(DIRootAssemblyContainerProtocols.apiCacheRepository)
+            uc.coldKeyValuesRepository = DIRootAssemblyResolver.coldKeyValuesRepository
+            uc.hotCacheRepository      = DIRootAssemblyResolver.hotCacheRepository
+            uc.apiCache                = DIRootAssemblyResolver.apiCacheRepository
             return uc
         }
     }

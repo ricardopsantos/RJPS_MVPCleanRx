@@ -11,10 +11,11 @@ import RJSLibUFNetworking
 import BaseDomain
 import DomainCarTrack
 import BaseRepositories
-import RepositoriesWebAPI
+import BaseRepositoryWebAPI
 import BaseCore
-import CoreCarTrack
 import DevTools
+import CoreCarTrack
+import RepositoryWebAPICartrack
 
 //
 // MARK: - Protocols references sugar
@@ -62,16 +63,16 @@ final class DIAssemblyContainerCarTrack: Assembly {
         container.register(DIAssemblyContainerCartTrackProtocols.carTrackAPIUseCase) { resolver in
             let uc = CarTrackAPIUseCase()
             uc.networkRepository       = resolver.resolve(DIAssemblyContainerCartTrackProtocols.carTrack_NetWorkRepository)
-            uc.coldKeyValuesRepository = resolver.resolve(DIRootAssemblyContainerProtocols.coldKeyValuesRepository)
-            uc.hotCacheRepository      = resolver.resolve(DIRootAssemblyContainerProtocols.hotCacheRepository)
-            uc.apiCache                = resolver.resolve(DIRootAssemblyContainerProtocols.apiCacheRepository)
+            uc.coldKeyValuesRepository = DIRootAssemblyResolver.coldKeyValuesRepository
+            uc.hotCacheRepository      = DIRootAssemblyResolver.hotCacheRepository
+            uc.apiCache                = DIRootAssemblyResolver.apiCacheRepository
             return uc
         }
 
-        container.register(DIAssemblyContainerCartTrackProtocols.carTrackGenericAppBusinessUseCase) { resolver in
+        container.register(DIAssemblyContainerCartTrackProtocols.carTrackGenericAppBusinessUseCase) { _ in
             let uc = CarTrackGenericAppBusinessUseCase()
-            uc.coldKeyValuesRepository  = resolver.resolve(DIRootAssemblyContainerProtocols.coldKeyValuesRepository)
-            uc.hotCacheRepository       = resolver.resolve(DIRootAssemblyContainerProtocols.hotCacheRepository)
+            uc.hotCacheRepository      = DIRootAssemblyResolver.hotCacheRepository
+            uc.hotCacheRepository      = DIRootAssemblyResolver.hotCacheRepository
             return uc
         }
     }

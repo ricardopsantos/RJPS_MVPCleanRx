@@ -10,11 +10,8 @@ import Swinject
 import SwinjectAutoregistration
 
 final class DIAssemblerScenesGalleryApp {
-    
     class var assembler: Assembler {
-        let assemblyList: [Assembly] = [
-            DIAssemblyContainerGalleryApp()
-        ]
+        let assemblyList: [Assembly] = [DIAssemblyContainerGalleryApp()]
         return Assembler(assemblyList)
     }
 }

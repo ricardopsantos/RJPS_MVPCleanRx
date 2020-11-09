@@ -115,7 +115,7 @@ public class GalleryAppWebAPIUseCase: GenericUseCase, GalleryAppWebAPIUseCasePro
                 return Disposables.create()
             }
         }
-
+        
         // Cache
         let cacheObserver = apiCache.genericCacheObserver(GalleryAppResponseDto.Search.self,
                                                           cacheKey: cacheKey,

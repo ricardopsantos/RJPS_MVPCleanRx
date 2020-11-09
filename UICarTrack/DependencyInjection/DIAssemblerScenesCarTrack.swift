@@ -11,9 +11,7 @@ import SwinjectAutoregistration
 
 final class DIAssemblerScenesCarTrack {
     class var assembler: Assembler {
-        let assemblyList: [Assembly] = [
-            DIAssemblyContainerCarTrack()
-        ]
+        let assemblyList: [Assembly] = [DIAssemblyContainerCarTrack()]
         return Assembler(assemblyList)
     }
 }
