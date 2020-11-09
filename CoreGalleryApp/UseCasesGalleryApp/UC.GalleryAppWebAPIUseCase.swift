@@ -12,12 +12,12 @@ import RxSwift
 import RxCocoa
 import RJSLibUFNetworking
 import RJSLibUFStorage
-import Repositories
 //
-import AppConstants
+import BaseRepositories
+import BaseConstants
 import PointFreeFunctions
-import Core
-import Domain
+import BaseCore
+import BaseDomain
 import DomainGalleryApp
 import Factory
 

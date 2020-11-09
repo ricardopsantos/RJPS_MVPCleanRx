@@ -13,9 +13,9 @@ import RxSwift
 import DevTools
 import PointFreeFunctions
 import AppTheme
-import AppConstants
-import Core // Because of DIRootAssemblyResolver
-import Domain
+import BaseConstants
+import BaseCore // Because of DIRootAssemblyResolver
+import BaseDomain
 
 // MARK: - BaseGenericView
 open class BaseGenericViewVIP: StylableView {

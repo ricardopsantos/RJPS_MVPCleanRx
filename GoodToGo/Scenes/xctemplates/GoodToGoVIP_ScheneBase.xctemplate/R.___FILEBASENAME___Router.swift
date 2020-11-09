@@ -12,14 +12,12 @@ import Foundation
 import RxCocoa
 import RxSwift
 //
-import AppConstants
-import AppTheme
-import Designables
+import BaseConstants
 import DevTools
-import Domain
+import BaseDomain
 import Extensions
 import PointFreeFunctions
-import UIBase
+import BaseUI
 
 extension R {
     class ___VARIABLE_sceneName___Router: ___VARIABLE_sceneName___DataPassingProtocol {

@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 //
-import AppConstants
+import BaseConstants
 import PointFreeFunctions
 import DevTools
 

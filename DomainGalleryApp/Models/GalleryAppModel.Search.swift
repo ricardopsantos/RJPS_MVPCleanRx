@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 //
-import Domain
+import BaseDomain
 
 public extension GalleryAppModel {
     struct Search: ModelEntityProtocol {

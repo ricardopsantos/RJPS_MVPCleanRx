@@ -58,16 +58,14 @@ This mean that if we want to take out the `XXX` logic from the project, we just 
 
 ![Preview](Documents/ReadmeImages/readme_4.png)
 
-![Preview](Documents/ReadmeImages/readme_2.png)
-
 * `GoodToGo` : Is the app it self. Scenes, Workers and SwiftInject related code
 * `AppTheme` : Manage fonts, colours and so so
-* `AppConstants` : Constants
+* `BaseConstants` : Constants
 * `Designables` : UI components
 * `Factory` : Factory for objects (for now just `Errors`)
 * `AppResources` : App strings/localisables, images, etc...
-* `UIBase` : Base classes, mainly for `VIP`
-* `Domain`, `Core`, `Repositories` : DDD
+* `BaseUI` : Base classes, mainly for `VIP`
+* `BaseDomain`, `Core`, `Repositories` : DDD
 * `DevTools` : Logs, feature flags, developer helping tools in general
 * `Extensions` : See [Extensions](https://docs.swift.org/swift-book/LanguageGuide/Extensions.html)
 * `PointFreeFunctions` : Small global var/functions like

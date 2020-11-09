@@ -12,15 +12,15 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 //
-import AppConstants
+import BaseConstants
 import AppTheme
 import Designables
 import DevTools
-import Domain
+import BaseDomain
 import DomainCarTrack
 import Extensions
 import PointFreeFunctions
-import UIBase
+import BaseUI
 
 //
 // MARK: - Enums & Other Models

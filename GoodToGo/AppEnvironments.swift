@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 //
-import AppConstants
-import Domain
+import BaseConstants
+import BaseDomain
 import DevTools
 
 struct AppEnvironments {

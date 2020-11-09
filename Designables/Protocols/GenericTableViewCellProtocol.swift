@@ -11,7 +11,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 //
-import AppConstants
+import BaseConstants
 import PointFreeFunctions
 
 public protocol GenericTableViewCellProtocol: ReusableCell_Protocol {

@@ -12,9 +12,9 @@ import RxSwift
 import RxCocoa
 //
 import AppResources
-import UIBase
+import BaseUI
 import AppTheme
-import AppConstants
+import BaseConstants
 import Extensions
 import DevTools
 import PointFreeFunctions

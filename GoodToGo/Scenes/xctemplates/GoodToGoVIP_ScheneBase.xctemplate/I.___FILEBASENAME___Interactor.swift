@@ -13,16 +13,14 @@ import RxCocoa
 import RxSwift
 import TinyConstraints
 //
-import AppConstants
-import AppTheme
-import Designables
+import AppResources
+import BaseConstants
 import DevTools
-import Domain
+import BaseDomain
 import Extensions
 import PointFreeFunctions
-import UIBase
-import AppResources
 import Factory
+import BaseUI
 
 //
 // Interactor will fetch the Domain objects, (from DataManager or WebAPI) and return that response

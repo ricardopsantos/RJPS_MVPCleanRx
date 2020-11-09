@@ -10,7 +10,7 @@ import Foundation
 //
 import RJSLibUFAppThemes
 //
-import AppConstants
+import BaseConstants
 
 public extension UILabel {
     

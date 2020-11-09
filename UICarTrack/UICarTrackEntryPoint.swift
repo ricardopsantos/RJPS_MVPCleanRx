@@ -7,7 +7,7 @@
 
 import Foundation
 //
-import UIBase
+import BaseUI
 
 public struct UICarTrackEntryPoint {
     public static func instance() -> VC.CarTrackLoginViewController {

@@ -7,7 +7,7 @@
 
 import Foundation
 //
-import Domain
+import BaseDomain
 
 public extension CarTrackResponseDto {
 

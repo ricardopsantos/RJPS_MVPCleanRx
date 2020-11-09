@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 //
-import Domain
+import BaseDomain
 
 open class GenericUseCase: NetworkingOperationsUtilsProtocol {
     public init() { }

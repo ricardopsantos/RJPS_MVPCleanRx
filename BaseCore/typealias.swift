@@ -9,4 +9,4 @@ import Foundation
 import RJSLibUFNetworking
 //
 import DevTools
-import Domain
+import BaseDomain

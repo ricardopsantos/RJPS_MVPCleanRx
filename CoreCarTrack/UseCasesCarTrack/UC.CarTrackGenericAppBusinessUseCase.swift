@@ -12,12 +12,12 @@ import RxSwift
 import RxCocoa
 import RJSLibUFNetworking
 //
-import AppConstants
+import BaseConstants
 import PointFreeFunctions
-import Domain
-import DomainCarTrack
+import BaseDomain
 import Factory
-import Core
+import BaseCore
+import DomainCarTrack
 
 public class CarTrackGenericAppBusinessUseCase: GenericUseCase, CarTrackGenericAppBusinessUseCaseProtocol {
 

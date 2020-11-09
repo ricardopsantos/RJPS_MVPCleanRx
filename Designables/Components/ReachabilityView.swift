@@ -15,7 +15,7 @@ import RxCocoa
 //
 import Factory
 import AppResources
-import AppConstants
+import BaseConstants
 import AppTheme
 import DevTools
 

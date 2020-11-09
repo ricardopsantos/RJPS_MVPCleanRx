@@ -12,8 +12,8 @@ import RxSwift
 import RxCocoa
 import RxGesture
 //
-import UIBase
-import AppConstants
+import BaseUI
+import BaseConstants
 import DevTools
 import PointFreeFunctions
 import AppTheme

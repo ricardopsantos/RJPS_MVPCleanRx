@@ -10,7 +10,7 @@ import Foundation
 import RJSLibUFNetworking
 //
 import DevTools
-import AppConstants
+import BaseConstants
 import DomainGalleryApp
 
 /**

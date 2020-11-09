@@ -8,8 +8,8 @@
 import Swinject
 import RJSLibUFNetworking
 //
-import Domain
-import Repositories
+import BaseDomain
+import BaseRepositories
 import RepositoriesWebAPI
 import DevTools
 

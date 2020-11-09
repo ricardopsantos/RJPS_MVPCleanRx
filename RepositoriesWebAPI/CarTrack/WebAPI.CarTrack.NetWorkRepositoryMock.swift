@@ -11,7 +11,7 @@ import RJSLibUFNetworking
 //
 import DevTools
 import DomainCarTrack
-import AppConstants
+import BaseConstants
 
 /**
 * WE CANT HAVE BUSINESS RULES HERE! THE CLIENT JUST DO THE OPERATION AND LEAVE

@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-import AppConstants
+import BaseConstants
 
 public extension Designables {
     struct Constants {

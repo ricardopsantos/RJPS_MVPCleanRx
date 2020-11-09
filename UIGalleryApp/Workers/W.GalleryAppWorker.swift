@@ -9,16 +9,16 @@ import SwiftUI
 //
 import RxSwift
 import RxCocoa
-import AppConstants
+import RJSLibUFNetworking
+//
+import BaseConstants
 import DevTools
 import Extensions
 import PointFreeFunctions
-import RJSLibUFNetworking
 import Factory
-//
 import AppResources
-import Core
-import Domain
+import BaseCore
+import BaseDomain
 import DomainGalleryApp
 
 //

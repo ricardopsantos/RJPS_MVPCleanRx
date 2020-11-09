@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 //
-import Domain
+import BaseDomain
 
 public extension GalleryAppResponseDto {
     struct Search: ResponseDtoProtocol {

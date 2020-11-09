@@ -14,7 +14,7 @@ import RxCocoa
 //
 import AppResources
 import AppTheme
-import AppConstants
+import BaseConstants
 import Extensions
 import DevTools
 import PointFreeFunctions

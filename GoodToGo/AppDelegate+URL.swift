@@ -8,7 +8,7 @@
 import UIKit
 //
 import DevTools
-import Domain
+import BaseDomain
 
 extension AppDelegate {
     

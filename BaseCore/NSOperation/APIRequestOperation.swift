@@ -7,8 +7,9 @@
 
 import Foundation
 //
-import Domain
 import RxSwift
+//
+import BaseDomain
 
 public class APIRequestOperation<T: ResponseDtoProtocol>: OperationBase {
 
