@@ -9,7 +9,7 @@ import Foundation
 import Swinject
 import SwinjectAutoregistration
 
-final class DIAssemblerScenes {
+final class DIAssemblerScenesGalleryApp {
     
     class var assembler: Assembler {
         let assemblyList: [Assembly] = [
