@@ -23,8 +23,8 @@ public class CarTrackGenericAppBusinessUseCase: GenericUseCase, CarTrackGenericA
 
     public override init() { super.init() }
 
-    public var hotCacheRepository: HotCacheRepositoryProtocol!
-    public var coldKeyValuesRepository: KeyValuesStorageRepositoryProtocol!
+    public var hotCacheRepository: HotCacheRepositoryProtocol!              // resolved at class DIAssemblyContainerCarTrack
+    public var coldKeyValuesRepository: KeyValuesStorageRepositoryProtocol! // resolved at class DIAssemblyContainerCarTrack
 
     public func validate(user: String,
                          password: String,
