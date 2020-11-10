@@ -26,10 +26,10 @@ public class CarTrackAPIUseCase: GenericUseCase, CarTrackWebAPIUseCaseProtocol {
 
     public override init() { super.init() }
 
-    public var networkRepository: CarTrackNetWorkRepositoryProtocol!
-    public var hotCacheRepository: HotCacheRepositoryProtocol!
-    public var coldKeyValuesRepository: KeyValuesStorageRepositoryProtocol!
-    public var apiCache: APICacheManagerProtocol!
+    public var networkRepository: CarTrackNetWorkRepositoryProtocol!        // resolved at class DIAssemblyContainerCarTrack
+    public var hotCacheRepository: HotCacheRepositoryProtocol!              // resolved at class DIAssemblyContainerCarTrack
+    public var coldKeyValuesRepository: KeyValuesStorageRepositoryProtocol! // resolved at class DIAssemblyContainerCarTrack
+    public var apiCache: APICacheManagerProtocol!                           // resolved at class DIAssemblyContainerCarTrack
 
     private static var cacheTTL = 60 * 24 // 24h cache
 

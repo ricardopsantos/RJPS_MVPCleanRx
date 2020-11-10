@@ -410,13 +410,6 @@
 			remoteGlobalIDString = 8403B0851939F91230FA7CAF;
 			remoteInfo = DevTools;
 		};
-		45AA937A331B6B97F302CA4F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A992BEEB29090028FF257A8F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E5B7A31F6BDFFC4724831CA7;
-			remoteInfo = DomainGalleryApp;
-		};
 		48F0F84CF46FDD84A15D9060 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A992BEEB29090028FF257A8F /* Project object */;
@@ -662,6 +655,13 @@
 			remoteGlobalIDString = 0BEAB12B7375047DBCCB5B34;
 			remoteInfo = BaseConstants;
 		};
+		E4FD1A9972955275CC4EE6FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A992BEEB29090028FF257A8F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EB50D641EE35B84B1F14A495;
+			remoteInfo = DomainCarTrack;
+		};
 		EE47D353B922CEEC0A47038F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A992BEEB29090028FF257A8F /* Project object */;
@@ -748,9 +748,9 @@
 		0119FF89C14A5C5AB1F5323D /* Designables.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Designables.h; sourceTree = "<group>"; };
 		0158E89B5F262E582DD1E7DF /* Designables.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Designables.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		02789717ECB5BA329AC601ED /* DevTools+AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DevTools+AppLogger.swift"; sourceTree = "<group>"; };
+		03FE4D526AA140BA4DD7D962 /* G2G.graph.simplified.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = G2G.graph.simplified.png; sourceTree = "<group>"; };
 		042AE8EE45C4B6C47151BD54 /* Graph.viz */ = {isa = PBXFileReference; path = Graph.viz; sourceTree = "<group>"; };
 		04915C03F10785B019D4D401 /* DevTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevTools.swift; sourceTree = "<group>"; };
-		05FCEC7684885D5816B90860 /* readme_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = readme_4.png; sourceTree = "<group>"; };
 		06A785580B64DE58AF943C49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		08954AA8E905715D796F0370 /* unused.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = unused.rb; sourceTree = "<group>"; };
 		0AFEAA27747FC41C86E6B51B /* ModelEntityProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEntityProtocol.swift; sourceTree = "<group>"; };
@@ -801,6 +801,7 @@
 		2B2725A740C643E68D1983CE /* CoreCarTrack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreCarTrack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B6B29BC320C5BF56F015A80 /* AppDelegate+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+URL.swift"; sourceTree = "<group>"; };
 		2B7D7850645FB5F0B604D2D0 /* BaseRepositories.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BaseRepositories.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BB4C2E087A766501D98FF17 /* project.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = project.png; sourceTree = "<group>"; };
 		2C4D1488B32F8525CFD5988A /* DIAssemblyContainerGalleryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIAssemblyContainerGalleryApp.swift; sourceTree = "<group>"; };
 		2CFC5B15AB83DF704775B095 /* UIView+Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
 		2CFC9753AE48E3FFC8453E4F /* BaseUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BaseUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -823,7 +824,6 @@
 		39CBC4AD95E61229B7AE02F4 /* CarTrackNetWorkRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTrackNetWorkRepositoryProtocol.swift; sourceTree = "<group>"; };
 		39D0888BC1E3405D56876DF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3AC88C2288FA362127F9F16A /* ProgramaticUIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramaticUIUtils.swift; sourceTree = "<group>"; };
-		3AEE4ACDE2866C76D2D1408F /* readme_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = readme_1.png; sourceTree = "<group>"; };
 		3B5921ACD6203616CA6F5FB1 /* I.DataStoreReceiverInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.DataStoreReceiverInteractor.swift; sourceTree = "<group>"; };
 		3C5C36F1DDC245D7C10DBB62 /* W.CarTrackWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W.CarTrackWorker.swift; sourceTree = "<group>"; };
 		3DB23E6E0152CB9CD41CCD0F /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
@@ -864,7 +864,6 @@
 		576EC9D6F66340C379E06058 /* I.DebugInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.DebugInteractor.swift; sourceTree = "<group>"; };
 		5A42D02833948A9CB0856CF9 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxRelay.framework; sourceTree = "<group>"; };
 		5BE45BCAAA23728F9CBD4F8A /* NSLoggerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NSLoggerSwift.framework; sourceTree = "<group>"; };
-		5C2285C9A77E53FC0B9B25BD /* GraphVIP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GraphVIP.png; sourceTree = "<group>"; };
 		5CAAC250256AE99FDB1E3BA6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5CAB65C6B2ACADB6A59FD0E4 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxDataSources.framework; sourceTree = "<group>"; };
 		5D994DB8899E679F6C1EFC62 /* Debug.Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.Dev.xcconfig; sourceTree = "<group>"; };
@@ -894,6 +893,7 @@
 		70F7B86E5D4BBFE4CED5D641 /* UC.GalleryAppWebAPIUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UC.GalleryAppWebAPIUseCaseProtocol.swift; sourceTree = "<group>"; };
 		71B8D1608111D5EC6DE4596B /* UC.GalleryAppWebAPIUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UC.GalleryAppWebAPIUseCase.swift; sourceTree = "<group>"; };
 		7267B342715E23B5ECB3E7FA /* GenericTableViewCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableViewCellProtocol.swift; sourceTree = "<group>"; };
+		72D7FAF4C8242936F4887CAB /* VIP.graph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VIP.graph.png; sourceTree = "<group>"; };
 		737645A562FD9AD98D32E568 /* BaseRepositories.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseRepositories.h; sourceTree = "<group>"; };
 		7383CC5F755B27078DC7E275 /* R.CarTrackLoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.CarTrackLoginRouter.swift; sourceTree = "<group>"; };
 		758165DE35C99312B9211544 /* V.GalleryAppS1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V.GalleryAppS1View.swift; sourceTree = "<group>"; };
@@ -912,6 +912,7 @@
 		7BAF34FEECF3E0BBD9AB78C4 /* V.BaseGenericViewVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V.BaseGenericViewVIP.swift; sourceTree = "<group>"; };
 		7C4490E386B799FFE86F1C29 /* RxGesture.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxGesture.framework; sourceTree = "<group>"; };
 		7CAF79DC8DEFCC95C19ED3F9 /* E.AppCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E.AppCodes.swift; sourceTree = "<group>"; };
+		7DF5594CBB7014D5560E4A73 /* install.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = install.png; sourceTree = "<group>"; };
 		83964F1FF68CF3B1C2055D6E /* BaseRepositoryWebAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BaseRepositoryWebAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BE870D11D18FC4CDF3A392 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		84C157934E2834B2A0603E68 /* KeyValuesStorageRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValuesStorageRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -932,7 +933,6 @@
 		8FE74F087D33CE37FA45B053 /* I.___FILEBASENAME___Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "I.___FILEBASENAME___Interactor.swift"; sourceTree = "<group>"; };
 		8FF6FC4822DD3B39E78A131E /* V.CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V.CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		90A739C38139CDB46ABCB86D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		9100F6D599B2766E585F80E5 /* readme_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = readme_3.png; sourceTree = "<group>"; };
 		91C843A43BC04AAD3C46A427 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		921B9B724A143A5D77951407 /* UIGalleryApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIGalleryApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9295300A0FB20401D2B1086C /* AppUtilsProtocol+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppUtilsProtocol+Extension.swift"; sourceTree = "<group>"; };
@@ -963,6 +963,7 @@
 		A5A796764907D5F4E28805E3 /* VC.CarTrackLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.CarTrackLoginViewController.swift; sourceTree = "<group>"; };
 		A63B6AD4E4B4FC674A5FC777 /* BaseUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseUI.h; sourceTree = "<group>"; };
 		A8D23C09D3504E00C726A6D6 /* UIKitFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitFactory.swift; sourceTree = "<group>"; };
+		A8E4F847D506ED1EDD791CA6 /* G2G.graph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = G2G.graph.png; sourceTree = "<group>"; };
 		A910A7B6B5BFF211B72AD17C /* E.AppCodes+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "E.AppCodes+Extensions.swift"; sourceTree = "<group>"; };
 		A96C0F720F36124D36F82368 /* DDD_Reference_2015-03.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "DDD_Reference_2015-03.pdf"; sourceTree = "<group>"; };
 		A97FCB047563F89B744B32FE /* BaseConstants.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BaseConstants.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1022,6 +1023,7 @@
 		DA75E3450CDB7005CFA69757 /* RxReachabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxReachabilityService.swift; sourceTree = "<group>"; };
 		DAE38C8F03D47BFA51E1832F /* AppResources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppResources.h; sourceTree = "<group>"; };
 		DE2F6C671A3D6E31816193E3 /* VC.RxTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.RxTesting.swift; sourceTree = "<group>"; };
+		E0233AA7F1128620257BE40F /* VIP.project.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VIP.project.png; sourceTree = "<group>"; };
 		E37AE2C9F27CE208B9F752D6 /* V.CarTrackLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V.CarTrackLoginView.swift; sourceTree = "<group>"; };
 		E38E0C65A888946D30110EDE /* typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = typealias.swift; sourceTree = "<group>"; };
 		E5024839F4189D4AA55BC5C2 /* CarTrackRequests+GetUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarTrackRequests+GetUsers.swift"; sourceTree = "<group>"; };
@@ -1290,6 +1292,19 @@
 			path = DependencyInjection;
 			sourceTree = "<group>";
 		};
+		0223F482F4D02FF7F2ED2BD6 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				A8E4F847D506ED1EDD791CA6 /* G2G.graph.png */,
+				03FE4D526AA140BA4DD7D962 /* G2G.graph.simplified.png */,
+				7DF5594CBB7014D5560E4A73 /* install.png */,
+				2BB4C2E087A766501D98FF17 /* project.png */,
+				72D7FAF4C8242936F4887CAB /* VIP.graph.png */,
+				E0233AA7F1128620257BE40F /* VIP.project.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		07F4DD23B9E67447B4180D53 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1493,16 +1508,6 @@
 				BC6A59F3121ABFF2A045DE18 /* Mappers+GalleryApp.swift */,
 			);
 			path = Mappers;
-			sourceTree = "<group>";
-		};
-		48A1C0388B2C15D922782A22 /* ReadmeImages */ = {
-			isa = PBXGroup;
-			children = (
-				3AEE4ACDE2866C76D2D1408F /* readme_1.png */,
-				9100F6D599B2766E585F80E5 /* readme_3.png */,
-				05FCEC7684885D5816B90860 /* readme_4.png */,
-			);
-			path = ReadmeImages;
 			sourceTree = "<group>";
 		};
 		4D7CE5FEEEB084AA120C1014 /* Protocols.Repositories */ = {
@@ -2108,13 +2113,12 @@
 			isa = PBXGroup;
 			children = (
 				598A37968F889F169AF93F57 /* Arquitecture */,
-				48A1C0388B2C15D922782A22 /* ReadmeImages */,
+				0223F482F4D02FF7F2ED2BD6 /* images */,
 				6301ACEDFC78A48DF0A00F39 /* Scripts */,
 				699901C818BC5509E0102F3F /* Dev.README.md */,
 				1AAACDE76B299C35A1372AB8 /* Graph.json */,
 				042AE8EE45C4B6C47151BD54 /* Graph.viz */,
 				7794D183406ACEE4C40B14D4 /* GraphSimplified.viz */,
-				5C2285C9A77E53FC0B9B25BD /* GraphVIP.png */,
 				875CAED2A29625D5CA1DB859 /* GraphVIP.viz */,
 			);
 			path = Documents;
@@ -2602,7 +2606,7 @@
 				3E7E1EFFD14CD5BB670C1E80 /* PBXTargetDependency */,
 				FED88EC487DF0334DFE0A3A0 /* PBXTargetDependency */,
 				20C124BBB298ADC5DF1581A2 /* PBXTargetDependency */,
-				9ADF1F57BD8B91D731909136 /* PBXTargetDependency */,
+				29C1626D9CF407445C064943 /* PBXTargetDependency */,
 			);
 			name = RepositoryWebAPICartrack;
 			productName = RepositoryWebAPICartrack;
@@ -3423,6 +3427,11 @@
 			target = 0BEAB12B7375047DBCCB5B34 /* BaseConstants */;
 			targetProxy = EEA4DB94C2300CF9393B6C5C /* PBXContainerItemProxy */;
 		};
+		29C1626D9CF407445C064943 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EB50D641EE35B84B1F14A495 /* DomainCarTrack */;
+			targetProxy = E4FD1A9972955275CC4EE6FB /* PBXContainerItemProxy */;
+		};
 		2ECF016DE8D2360499F1CDA9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 532EB791C045D29FE19BAD29 /* BaseDomain */;
@@ -3537,11 +3546,6 @@
 			isa = PBXTargetDependency;
 			target = 532EB791C045D29FE19BAD29 /* BaseDomain */;
 			targetProxy = 6E7F16F512F27BD8896C7C16 /* PBXContainerItemProxy */;
-		};
-		9ADF1F57BD8B91D731909136 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E5B7A31F6BDFFC4724831CA7 /* DomainGalleryApp */;
-			targetProxy = 45AA937A331B6B97F302CA4F /* PBXContainerItemProxy */;
 		};
 		9AE0C759A858451F9202546C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

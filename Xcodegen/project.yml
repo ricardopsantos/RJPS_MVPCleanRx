@@ -194,8 +194,8 @@ targets:
         link: false  
       - target: DevTools
         link: false
-    - target: DomainCartrack
-      link: false
+      - target: DomainCarTrack
+        link: false
 
 ## Specific App Related ## Specific App Related ## Specific App Related ## Specific App Related
 
