@@ -193,10 +193,10 @@ targets:
       - target: BaseConstants
         link: false  
       - target: DevTools
-        link: false   
-      - target: DomainGalleryApp
-        link: false   
-        
+        link: false
+    - target: DomainCartrack
+      link: false
+
 ## Specific App Related ## Specific App Related ## Specific App Related ## Specific App Related
 
   UIGalleryApp:

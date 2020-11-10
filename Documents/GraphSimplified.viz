@@ -1,275 +1,55 @@
-
-// https://dreampuf.github.io/GraphvizOnline
-
 digraph {
     
-  subgraph cluster_API {
-       label = "APIServices";
+  subgraph cluster_1 {
+       label = "App 1: CarTrack";
        style=filled;
        color=lightgrey;
-       rank=same;
-       APIServiceContent;
-       APIServiceAnalytic;
-       APIServiceAddressBook;
-       APIServiceAccount;
-       APIServiceGoalsV2;
-       APIServiceNotification;
-       APIServiceProfile;
-       APIServiceReferenceData;
-       APIServiceTimeline;
+       
+       RepositoryWebAPICartrack;
+       UICarTrack;
+       CoreCarTrack;
+       RepositoryWebAPICartrack;
+       DomainCarTrack
   }
   
-    subgraph cluster_Module {
-       label = "Module";
+  subgraph cluster_2 {
+       label = "App 2: GalleryApp";
        style=filled;
        color=lightgrey;
-       ModuleContent;
-       ModuleAnalytic;
-       ModuleAddressBook;
-       ModuleAccount;
-       ModuleGoalsV2;
-       ModuleNotification;
-       ModuleProfile;
-       ModuleReferenceData;
-       ModuleTimeline
+       
+       RepositoryWebAPIGalleryApp;
+       UIGalleryApp;
+       CoreGalleryApp;
+       RepositoryWebAPIGalleryApp;
+       DomainGalleryApp
   }
   
-  //subgraph cluster_Domain {
-//    BaseDomain;
- //   Domain;
- // }
+  GoodToGo -> BaseUI [style=dashed]
+  GoodToGo -> UICarTrack [style=dashed]
+  GoodToGo -> UIGalleryApp [style=dashed]
   
-  subgraph cluster_DomainX {
-       label = "Domain";
-       style=filled;
-       color=lightgrey;
-       DomainAccount;
-       DomainAddressBook;
-       DomainAnalytic;
-       DomainCommonObjects;
-       DomainContent;
-       DomainGoalsV2;
-       DomainNotification;
-       DomainProfile;
-       DomainReferenceData;
-       DomainTimeline;
-       DomainTimelineObjects
-  }
-  
-  API [shape=box]
-  API -> APIServiceAccount [style=dashed]
-  API -> APIServiceAddressBook [style=dashed]
-  API -> APIServiceAnalytic [style=dashed]
-  API -> APIServiceContent [style=dashed]
-  API -> APIServiceGoalsV2 [style=dashed]
-  API -> APIServiceNotification [style=dashed]
-  API -> APIServiceProfile [style=dashed]
-  API -> APIServiceReferenceData [style=dashed]
-  API -> APIServiceTimeline [style=dashed]
-  //API -> BaseAPIObjects [style=dashed]
-  //APIServiceAccount -> BaseAPIObjects [style=dashed]
-  //APIServiceAddressBook -> BaseAPIObjects [style=dashed]
-  //APIServiceAnalytic -> BaseAPIObjects [style=dashed]
-  //APIServiceContent -> BaseAPIObjects [style=dashed]
-  //APIServiceGoalsV2 -> BaseAPIObjects [style=dashed]
-  //APIServiceNotification -> BaseAPIObjects [style=dashed]
-  //APIServiceProfile -> BaseAPIObjects [style=dashed]
-  //APIServiceReferenceData -> BaseAPIObjects [style=dashed]
-  //APIServiceTimeline -> BaseAPIObjects [style=dashed]
-  //AppAuthorizationChallenges -> BaseAPIObjects [style=dashed]
-  //AppBase -> AppTheme [style=dashed]
-  //AppBase -> Domain [style=dashed]
-  //AppBase -> MapperError [style=dashed]
-  //AppTheme -> Resources [style=dashed]
-  BaseDomain -> Repository [style=dashed]
-  //ContactsDaemon -> APIServiceAddressBook [style=dashed]
-  //ContactsDaemon -> DomainAddressBook [style=dashed]
-  //ContactsDaemon -> DomainCommonObjects [style=dashed]
-  //DataManager -> API [style=dashed]
-  //DataManager -> APIServiceNotification [style=dashed]
-  //DataManager -> BaseDomain [style=dashed]
-  //DataManager -> Domain [style=dashed]
-  //DataManager -> DomainAddressBook [style=dashed]
-  //DataManager -> DomainCommonObjects [style=dashed]
-  //DataManager -> DomainTimelineObjects [style=dashed]
-  //DataManager -> MapperAddressBook [style=dashed]
-  //DataManager -> MapperError [style=dashed]
-  //DataManager -> Mappers [style=dashed]
-  //DataManager -> MapperTimeline [style=dashed]
-  //DataManager -> Storage [style=dashed]
-  //Designables -> API [style=dashed]
-  //Designables -> AppTheme [style=dashed]
-  //Designables -> Domain [style=dashed]
-  //Designables -> DomainAddressBook [style=dashed]
-  //Designables -> DomainAnalytic [style=dashed]
-  //Designables -> DomainProfile [style=dashed]
-  //Designables -> UIBase [style=dashed]
-  Domain -> BaseDomain [style=dashed]
-  Domain -> DomainAddressBook [style=dashed]
-  Domain -> DomainCommonObjects [style=dashed]
-  Domain -> DomainTimeline [style=dashed]
-  Domain -> DomainTimelineObjects [style=dashed]
-  DomainAccount -> BaseDomain [style=dashed]
-  DomainAccount -> DomainCommonObjects [style=dashed]
-  DomainAddressBook -> BaseDomain [style=dashed]
-  DomainAddressBook -> DomainCommonObjects [style=dashed]
-  DomainAnalytic -> BaseDomain [style=dashed]
-  DomainAnalytic -> DomainCommonObjects [style=dashed]
-  DomainAnalytic -> DomainTimelineObjects [style=dashed]
-  DomainCommonObjects -> BaseDomain [style=dashed]
-  DomainContent -> BaseDomain [style=dashed]
-  DomainContent -> DomainCommonObjects [style=dashed]
-  DomainGoalsV2 -> BaseDomain [style=dashed]
-  DomainGoalsV2 -> DomainCommonObjects [style=dashed]
-  DomainGoalsV2 -> DomainTimelineObjects [style=dashed]
-  //DomainGoalsV2 -> MapperTimeline [style=dashed]
-  DomainNotification -> BaseDomain [style=dashed]
-  DomainProfile -> BaseDomain [style=dashed]
-  DomainProfile -> DomainCommonObjects [style=dashed]
-  DomainReferenceData -> BaseDomain [style=dashed]
-  DomainReferenceData -> DomainCommonObjects [style=dashed]
-  DomainTimeline -> BaseDomain [style=dashed]
-  DomainTimeline -> DomainCommonObjects [style=dashed]
-  DomainTimeline -> DomainTimelineObjects [style=dashed]
-  DomainTimelineObjects -> BaseDomain [style=dashed]
-  DomainTimelineObjects -> DomainCommonObjects [style=dashed]
-  //MapperAddressBook -> APIServiceAddressBook [style=dashed]
-  //MapperAddressBook -> BaseAPIObjects [style=dashed]
-  //MapperAddressBook -> BaseDomain [style=dashed]
-  //MapperAddressBook -> DomainCommonObjects [style=dashed]
-  //MapperError -> BaseAPIObjects [style=dashed]
-  //MapperError -> BaseDomain [style=dashed]
-  //MapperError -> DomainCommonObjects [style=dashed]
-  //MapperTimeline -> BaseAPIObjects [style=dashed]
-  //MapperTimeline -> BaseDomain [style=dashed]
-  //MapperTimeline -> DomainCommonObjects [style=dashed]
-  //MapperTimeline -> DomainTimelineObjects [style=dashed]
-  //Mappers -> API [style=dashed]
-  //Mappers -> APIServiceContent [style=dashed]
-  //Mappers -> APIServiceNotification [style=dashed]
-  //Mappers -> BaseDomain [style=dashed]
-  //Mappers -> Domain [style=dashed]
-  //Mappers -> DomainAddressBook [style=dashed]
-  //Mappers -> DomainCommonObjects [style=dashed]
-  //Mappers -> DomainTimelineObjects [style=dashed]
-  //Mappers -> MapperTimeline [style=dashed]
-  //Mappers -> Storage [style=dashed]
-  //ModuleAccount -> AppBase [style=dashed]
-  ModuleAccount -> APIServiceAccount [style=dashed]
-  ModuleAccount -> BaseDomain [style=dashed]
-  ModuleAccount -> DomainAccount [style=dashed]
-  ModuleAccount -> Repository [style=dashed]
-  ModuleAddressBook -> APIServiceAddressBook [style=dashed]
-  ModuleAddressBook -> BaseDomain [style=dashed]
-  ModuleAddressBook -> DomainAddressBook [style=dashed]
-  //ModuleAddressBook -> MapperAddressBook [style=dashed]
-  ModuleAddressBook -> Repository [style=dashed]
-  ModuleAnalytic -> APIServiceAnalytic [style=dashed]
-  //ModuleAnalytic -> AppBase [style=dashed]
-  //ModuleAnalytic -> BaseAPIObjects [style=dashed]
-  ModuleAnalytic -> BaseDomain [style=dashed]
-  ModuleAnalytic -> DomainAnalytic [style=dashed]
-  ModuleAnalytic -> DomainCommonObjects [style=dashed]
-  ModuleAnalytic -> DomainTimelineObjects [style=dashed]
-  //ModuleAnalytic -> MapperTimeline [style=dashed]
-  ModuleContent -> APIServiceContent [style=dashed]
-  //ModuleContent -> BaseAPIObjects [style=dashed]
-  ModuleContent -> BaseDomain [style=dashed]
-  ModuleContent -> DomainContent [style=dashed]
-  ModuleGoalsV2 -> APIServiceGoalsV2 [style=dashed]
-  ModuleGoalsV2 -> BaseDomain [style=dashed]
-  ModuleGoalsV2 -> DomainCommonObjects [style=dashed]
-  ModuleGoalsV2 -> DomainGoalsV2 [style=dashed]
-  ModuleGoalsV2 -> DomainTimelineObjects [style=dashed]
-  //ModuleGoalsV2 -> MapperTimeline [style=dashed]
-  ModuleGoalsV2 -> Repository [style=dashed]
-  ModuleNotification -> APIServiceNotification [style=dashed]
-  ModuleNotification -> BaseDomain [style=dashed]
-  ModuleNotification -> DomainNotification [style=dashed]
-  ModuleNotification -> Repository [style=dashed]
-  ModuleProfile -> APIServiceProfile [style=dashed]
-  ModuleProfile -> BaseDomain [style=dashed]
-  ModuleProfile -> DomainCommonObjects [style=dashed]
-  ModuleProfile -> DomainProfile [style=dashed]
-  //ModuleProfile -> MapperAddressBook [style=dashed]
-  //ModuleProfile -> MapperError [style=dashed]
-  ModuleProfile -> Repository [style=dashed]
-  ModuleReferenceData -> APIServiceReferenceData [style=dashed]
-  //ModuleReferenceData -> BaseAPIObjects [style=dashed]
-  ModuleReferenceData -> BaseDomain [style=dashed]
-  ModuleReferenceData -> DomainReferenceData [style=dashed]
-  //ModuleTimeline -> AppBase [style=dashed]
-  ModuleTimeline -> APIServiceTimeline [style=dashed]
-  //ModuleTimeline -> BaseAPIObjects [style=dashed]
-  ModuleTimeline -> BaseDomain [style=dashed]
-  ModuleTimeline -> DomainCommonObjects [style=dashed]
-  ModuleTimeline -> DomainTimeline [style=dashed]
-  ModuleTimeline -> DomainTimelineObjects [style=dashed]
-  //ModuleTimeline -> MapperTimeline [style=dashed]
-  //NotificationService -> AppExtension [style=dashed]
-  //UIBase -> AppTheme [style=dashed]
-  //UIBase -> Domain [style=dashed]
-  //UIBase -> Resources [style=dashed]
-  //Validators -> Domain [style=dashed]
-  
-  /*
-  i9 -> GenerateLocalizables [style=dashed]
-  i9 -> SwiftLint [style=dashed]
-  i9 -> API [style=dashed]
-  i9 -> APIService__AppLogicPart__ [style=dashed]
-  i9 -> APIServiceAccount [style=dashed]
-  i9 -> APIServiceAddressBook [style=dashed]
-  i9 -> APIServiceAnalytic [style=dashed]
-  i9 -> APIServiceContent [style=dashed]
-  i9 -> APIServiceGoalsV2 [style=dashed]
-  i9 -> APIServiceNotification [style=dashed]
-  i9 -> APIServiceProfile [style=dashed]
-  i9 -> APIServiceReferenceData [style=dashed]
-  i9 -> APIServiceTimeline [style=dashed]
-  i9 -> AppAuthorizationChallenges [style=dashed]
-  i9 -> AppBase [style=dashed]
-  i9 -> AppConstants [style=dashed]
-  i9 -> AppExtension [style=dashed]
-  i9 -> AppTheme [style=dashed]
-  i9 -> BaseAPIObjects [style=dashed]
-  i9 -> BaseDomain [style=dashed]
-  i9 -> ContactsDaemon [style=dashed]
-  i9 -> DataManager [style=dashed]
-  i9 -> Designables [style=dashed]
-  i9 -> Domain [style=dashed]
-  i9 -> DomainAccount [style=dashed]
-  i9 -> DomainAddressBook [style=dashed]
-  i9 -> DomainAnalytic [style=dashed]
-  i9 -> DomainCommonObjects [style=dashed]
-  i9 -> DomainContent [style=dashed]
-  i9 -> DomainGoalsV2 [style=dashed]
-  i9 -> DomainNotification [style=dashed]
-  i9 -> DomainProfile [style=dashed]
-  i9 -> DomainReferenceData [style=dashed]
-  i9 -> DomainTimeline [style=dashed]
-  i9 -> DomainTimelineObjects [style=dashed]
-  i9 -> IDnowSDK [style=dashed]
-  i9 -> Managers [style=dashed]
-  i9 -> MapperAddressBook [style=dashed]
-  i9 -> MapperError [style=dashed]
-  i9 -> Mappers [style=dashed]
-  i9 -> MapperTimeline [style=dashed]
-  i9 -> MBWayRx [style=dashed]
-  i9 -> Module__AppLogicPart__ [style=dashed]
-  i9 -> ModuleAccount [style=dashed]
-  i9 -> ModuleAddressBook [style=dashed]
-  i9 -> ModuleAnalytic [style=dashed]
-  i9 -> ModuleContent [style=dashed]
-  i9 -> ModuleGoalsV2 [style=dashed]
-  i9 -> ModuleNotification [style=dashed]
-  i9 -> ModuleProfile [style=dashed]
-  i9 -> ModuleReferenceData [style=dashed]
-  i9 -> ModuleTimeline [style=dashed]
-  i9 -> Repository [style=dashed]
-  i9 -> Resources [style=dashed]
-  i9 -> Storage [style=dashed]
-  i9 -> UIBase [style=dashed]
-  i9 -> Validators [style=dashed]
-  i9 -> NotificationService [style=dashed]
-  */
+  BaseCore -> BaseDomain [style=dashed]
+  BaseCore -> BaseRepositories [style=dashed]
+  BaseRepositories -> BaseDomain [style=dashed]
+
+  CoreCarTrack -> BaseCore [style=dashed]
+  CoreGalleryApp -> BaseCore [style=dashed]
+  DomainCarTrack -> BaseDomain [style=dashed]
+  DomainGalleryApp -> BaseDomain [style=dashed]
+
+  RepositoryWebAPICartrack -> BaseRepositoryWebAPI [style=dashed]
+  RepositoryWebAPICartrack -> DomainCarTrack [style=dashed]
+  RepositoryWebAPIGalleryApp -> BaseRepositoryWebAPI [style=dashed]
+  RepositoryWebAPIGalleryApp -> DomainGalleryApp [style=dashed]
+  UICarTrack -> BaseDomain [style=dashed]
+  UICarTrack -> BaseUI [style=dashed]
+  UICarTrack -> DomainCarTrack [style=dashed]
+  UICarTrack -> CoreCarTrack [style=dashed]
+  UICarTrack -> RepositoryWebAPICartrack [style=dashed]
+  UIGalleryApp -> BaseDomain [style=dashed]
+  UIGalleryApp -> BaseUI [style=dashed]
+  UIGalleryApp -> DomainGalleryApp [style=dashed]
+  UIGalleryApp -> CoreGalleryApp [style=dashed]
+  UIGalleryApp -> RepositoryWebAPIGalleryApp [style=dashed]
+  UIGalleryApp -> BaseCore [style=dashed]
 }

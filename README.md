@@ -26,23 +26,23 @@ If you don't agree with something or have a suggestion, just email me, I love to
 
 # Install
 
-### Step 1
-
 Download source code and run  `./makeProject.sh`
 
 This will install/update [Brew](https://brew.sh/), that will be used to install/update [Carthage](https://github.com/Carthage/Carthage)
 
+Also, on last step, can regenerated the project using [XcodeGen](https://github.com/yonaskolb/XcodeGen)
+
+![Preview](Documents/images/install.png)
+
 ### Could not save file?
 
-If theres a error on Carthage build __Could not save file__
-
-run on terminal `open $TMPDIR/TemporaryItems` and delete folder content
+If theres a error while building Carthag : _Could not save file_ - run on terminal `open $TMPDIR/TemporaryItems` and delete folder content
 
 [Carthage/issues/3056](https://github.com/Carthage/Carthage/issues/3056)
  
 ## Project structure
 
-![Preview](Documents/ReadmeImages/readme_1.png)
+![Preview](Documents/images/project.png)
 
 The project follows the Domain Driven approach, and its divided in frameworks according to business.
 
@@ -52,7 +52,9 @@ This mean that if we want to take out the `XXX` logic from the project, we just 
 
 ## Project modules dependencies
 
-![Preview](Documents/ReadmeImages/readme_4.png)
+Bellow is a simplied dependencies graph 
+
+![Preview](Documents/images/G2G.graph.simplified.png)
 
 * `GoodToGo` : Is the app it self. Scenes, Workers and SwiftInject related code
 * `AppTheme` : Manage fonts, colours and so so
@@ -72,9 +74,9 @@ This mean that if we want to take out the `XXX` logic from the project, we just 
 
 # VIP - Quick intro
 
-![Preview](__Documents__/ReadmeImages/readme_3.png)
+A single screen has always 6 files as we can see on the image below
 
-A single screen has always 6 files
+![Preview](Documents/images/VIP.project.png)
 
 * `View` - View Logic
     * Only UI
@@ -109,7 +111,13 @@ A single screen has always 6 files
         * Brain of the app. 
         * Can connect to `API`, `DataBase` and so on 
 
-More info about VIP architecture [here](https://github.com/ricardopsantos/RJPS_MVPCleanRx/tree/master/__Documents__/Arquitecture)
+![Preview](Documents/images/G2G.graph.simplified.png)
+
+Looking the image above, about the project dependencies, if we zoom in `UICarTrack` and `UIGalleryApp`, we will end up with the diagram of the image below
+
+![Preview](Documents/images/VIP.graph.png)
+
+More info about VIP architecture [here](https://github.com/ricardopsantos/RJPS_MVPCleanRx/tree/master/documents/Arquitecture)
 
 # Project (implemented) Features
 
