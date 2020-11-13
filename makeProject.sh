@@ -114,20 +114,20 @@ esac
 
 ################################################################################
 
-printf "\n"
+#printf "\n"
 
-echo "### Xcodegen"
-echo " [1] : Install"
-echo " [2] : Upgrade"
-echo " [3] : No/Skip"
-echo -n "Option? "
-read option
-case $option in
-    [1] ) brew install xcodegen ;;
-    [2] ) brew upgrade xcodegen ;;
-   *) echo "Ignored...."
-;;
-esac
+#echo "### Xcodegen"
+#echo " [1] : Install"
+#echo " [2] : Upgrade"
+#echo " [3] : No/Skip"
+#echo -n "Option? "
+#read option
+#case $option in
+#    [1] ) brew install xcodegen ;;
+#    [2] ) brew upgrade xcodegen ;;
+#   *) echo "Ignored...."
+#;;
+#esac
 
 ################################################################################
 
@@ -181,24 +181,24 @@ esac
 
 ################################################################################
 
-printf "\n"
-printf "\n"
+#printf "\n"
+#printf "\n"
 
-echo "### Perform Xcodegen?"
-echo " [1] : Yes"
-echo " [2] : No/Skip"
-echo -n "Option? "
-read option
-case $option in
-    [1] ) xcodegen -s ./XcodeGen/project.yml -p ./ ;;
-   *) echo "Ignored...."
-;;
-esac
+#echo "### Perform Xcodegen?"
+#echo " [1] : Yes"
+#echo " [2] : No/Skip"
+#echo -n "Option? "
+#read option
+#case $option in
+#    [1] ) xcodegen -s ./XcodeGen/project.yml -p ./ ;;
+#   *) echo "Ignored...."
+#;;
+#esac
 
-open GoodToGo.xcodeproj
-cd XcodeGen
-xcodegen dump --type graphviz --file ../Documents/Graph.viz
-xcodegen dump --type json --file ../Documents/Graph.json
+#open GoodToGo.xcodeproj
+#cd XcodeGen
+#xcodegen dump --type graphviz --file ../Documents/Graph.viz
+#xcodegen dump --type json --file ../Documents/Graph.json
 
 echo " ╔═══════════════════════╗"
 echo " ║ Done! You're all set! ║"
