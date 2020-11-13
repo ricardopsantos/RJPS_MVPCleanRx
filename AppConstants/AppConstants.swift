@@ -7,7 +7,7 @@
 
 import UIKit
 //
-import RJPSLib_Base
+import RJSLibUFBase
 
 public struct AppConstants {
     private init() {}

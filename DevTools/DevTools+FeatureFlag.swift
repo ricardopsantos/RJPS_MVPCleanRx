@@ -7,7 +7,7 @@
 
 import Foundation
 //
-import RJPSLib_Storage
+import RJSLibUFStorage
 
 public extension DevTools {
     enum FeatureFlag: String, CaseIterable {
@@ -57,8 +57,8 @@ public extension DevTools {
                 return defaultValue
             }
 
-            if RJSLib.Storages.NSUserDefaults.existsWith(key: flagName.rawValue) {
-                if let value = RJSLib.Storages.NSUserDefaults.getWith(key: flagName.rawValue) {
+            if RJS_UserDefaults.existsWith(key: flagName.rawValue) {
+                if let value = RJS_UserDefaults.getWith(key: flagName.rawValue) {
                     return "\(value)" == "\(true)"
                 }
             }
@@ -67,7 +67,7 @@ public extension DevTools {
         }
 
         public static func setFlag(_ flagName: FeatureFlag, value: Bool) {
-            RJSLib.Storages.NSUserDefaults.save("\(value)" as AnyObject, key: flagName.rawValue)
+            RJS_UserDefaults.save("\(value)" as AnyObject, key: flagName.rawValue)
         }
     }
 }

@@ -1,0 +1,11 @@
+{
+  "commitish" : "3.1.8",
+  "iOS" : [
+    {
+      "hash" : "e79304de746d3ea11509b38b91a7b837a6854e04d418a096dbabcda39f01f626",
+      "name" : "Material",
+      "linking" : "dynamic",
+      "swiftToolchainVersion" : "5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)"
+    }
+  ]
+}

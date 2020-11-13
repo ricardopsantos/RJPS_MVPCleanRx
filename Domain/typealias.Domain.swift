@@ -7,8 +7,8 @@
 
 import Foundation
 import DevTools
-import RJPSLib_Storage
+import RJSLibUFStorage
 
 // MARK: - DevTools
 
-public typealias CacheStrategy = RJSLib.Storages.CachePersistant.CacheStrategy
+public typealias CacheStrategy = RJSLibUFStorage.CachePersistant.CacheStrategy

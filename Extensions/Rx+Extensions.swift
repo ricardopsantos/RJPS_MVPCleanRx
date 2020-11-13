@@ -8,8 +8,6 @@
 import UIKit
 import Foundation
 //
-import Pulsator
-//
 import RxSwift
 import RxCocoa
 import DevTools
