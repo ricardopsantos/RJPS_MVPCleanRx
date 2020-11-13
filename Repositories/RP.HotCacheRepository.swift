@@ -7,7 +7,7 @@
 
 import Foundation
 //
-import RJPSLib_Storage
+import RJSLibUFStorage
 //
 import UIKit
 import AVFoundation

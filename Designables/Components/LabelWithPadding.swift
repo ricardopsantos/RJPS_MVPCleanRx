@@ -12,7 +12,7 @@ import SwiftUI
 import RxCocoa
 import RxSwift
 import TinyConstraints
-import RJPSLib_ALayouts
+import RJSLibUFALayouts
 //
 import AppConstants
 import AppTheme

@@ -6,15 +6,13 @@
 //
 
 import Swinject
-import RJPSLib_Networking
+import RJSLibUFNetworking
 //
 import Domain
-import Domain_CarTrack
 import Domain_GalleryApp
 import Repositories
 import Repositories_WebAPI
 import Core
-import Core_CarTrack
 import Core_GalleryApp
 import DevTools
 

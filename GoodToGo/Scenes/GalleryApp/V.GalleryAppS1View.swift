@@ -13,7 +13,7 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 import TinyConstraints
-import RJPSLib_Base
+import RJSLibUFBase
 //
 import AppConstants
 import AppTheme

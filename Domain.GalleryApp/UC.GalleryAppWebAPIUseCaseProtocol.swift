@@ -7,7 +7,7 @@
 
 import Foundation
 //
-import RJPSLib_Networking
+import RJSLibUFNetworking
 import RxSwift
 //
 import Domain

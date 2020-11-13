@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 //
-import RJPSLib_Base
-import RJPSLib_ALayouts
+import RJSLibUFBase
+import RJSLibUFALayouts
 import RxSwift
 import RxCocoa
 //

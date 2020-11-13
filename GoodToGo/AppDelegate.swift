@@ -11,7 +11,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import Swinject
-import RJPSLib_Base
+import RJSLibUFBase
 //
 import AppResources
 import UIBase

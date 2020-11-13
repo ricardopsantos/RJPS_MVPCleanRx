@@ -10,10 +10,10 @@
 import UIKit
 import Foundation
 //
-import RJPSLib_Base
-import RJPSLib_Storage
-import RJPSLib_Networking
-import RJSPLib_AppThemes
+import RJSLibUFBase
+import RJSLibUFStorage
+import RJSLibUFNetworking
+import RJSLibUFAppThemes
 //
 import AppConstants
 import AppTheme
@@ -35,7 +35,7 @@ typealias WebAPIRequestProtocol  = RJS_SimpleNetworkClientRequestProtocol
 // MARK: - App Shortcuts
 
 typealias AppColors    = UIColor.App
-typealias AppFonts     = RJSPLib_AppThemes.RJS_Fonts
+typealias AppFonts     = RJSLibUFAppThemes.RJS_Fonts
 typealias AppProtocols = RootAssemblyContainerProtocols
 
 // MARK: - DevTools

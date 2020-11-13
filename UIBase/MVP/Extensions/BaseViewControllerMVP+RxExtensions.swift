@@ -9,7 +9,7 @@ import Foundation
 //
 import RxCocoa
 import RxSwift
-import RJPSLib_Base
+import RJSLibUFBase
 
 public extension Reactive where Base: BaseViewControllerMVP {
 

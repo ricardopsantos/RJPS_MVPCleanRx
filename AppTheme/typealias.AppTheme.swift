@@ -10,7 +10,7 @@
 import UIKit
 import Foundation
 //
-import RJSPLib_AppThemes
+import RJSLibUFAppThemes
 //
 import Extensions
 
@@ -19,5 +19,5 @@ public struct AppTheme {
 }
 
 public typealias AppColors = UIColor.App
-public typealias AppFonts  = RJSPLib_AppThemes.RJS_Fonts
-public typealias ColorName = RJSPLib_AppThemes.RJS_ColorName
+public typealias AppFonts  = RJSLibUFAppThemes.RJS_Fonts
+public typealias ColorName = RJSLibUFAppThemes.RJS_ColorName

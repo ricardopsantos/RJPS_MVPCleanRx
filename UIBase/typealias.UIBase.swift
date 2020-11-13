@@ -10,10 +10,10 @@
 import UIKit
 import Foundation
 //
-import RJSPLib_AppThemes
+import RJSLibUFAppThemes
 //
 import DevTools
 import AppResources
 
 public typealias AppColors = UIColor.App
-public typealias AppFonts  = RJSPLib_AppThemes.RJS_Fonts
+public typealias AppFonts  = RJSLibUFAppThemes.RJS_Fonts

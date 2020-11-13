@@ -156,7 +156,7 @@
 		D778258E247A79D40071776F /* T.TestsShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = D778258D247A79D40071776F /* T.TestsShared.swift */; };
 		D778258F247A85DA0071776F /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC172223BBD8600576498 /* RxCocoa.framework */; };
 		D7782590247A86460071776F /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FACC176223BBFC600576498 /* RxSwift.framework */; };
-		D786AE492473CC0400636935 /* UIViewContoller+ExtensionsAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786AE482473CC0400636935 /* UIViewContoller+ExtensionsAlerts.swift */; };
+		D786AE492473CC0400636935 /* UIViewr+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786AE482473CC0400636935 /* UIViewr+Extensions.swift */; };
 		D786EF7124F6F003000F6A2C /* V.CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786EF7024F6F003000F6A2C /* V.CustomCollectionViewCell.swift */; };
 		D786EF7324F6F43E000F6A2C /* GalleryAppRequests+ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786EF7224F6F43E000F6A2C /* GalleryAppRequests+ImageInfo.swift */; };
 		D786EF7524F6F5B6000F6A2C /* GalleryAppResponseDto+ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786EF7424F6F5B6000F6A2C /* GalleryAppResponseDto+ImageInfo.swift */; };
@@ -906,7 +906,7 @@
 		D7782521247A59D40071776F /* Test.GoodToGo.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test.GoodToGo.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7782525247A59D40071776F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D778258D247A79D40071776F /* T.TestsShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T.TestsShared.swift; sourceTree = "<group>"; };
-		D786AE482473CC0400636935 /* UIViewContoller+ExtensionsAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewContoller+ExtensionsAlerts.swift"; sourceTree = "<group>"; };
+		D786AE482473CC0400636935 /* UIViewr+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewr+Extensions.swift"; sourceTree = "<group>"; };
 		D786EF7024F6F003000F6A2C /* V.CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V.CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		D786EF7224F6F43E000F6A2C /* GalleryAppRequests+ImageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GalleryAppRequests+ImageInfo.swift"; sourceTree = "<group>"; };
 		D786EF7424F6F5B6000F6A2C /* GalleryAppResponseDto+ImageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GalleryAppResponseDto+ImageInfo.swift"; sourceTree = "<group>"; };
@@ -1462,7 +1462,7 @@
 				9F5D1CF322E5E45700C0AF38 /* Rx+Extensions.swift */,
 				D761FECF2468412100BD41A5 /* UIView+Autolayout.swift */,
 				9FD387CA223F0CF3001D2F4E /* UIViewController+Extensions.swift */,
-				D786AE482473CC0400636935 /* UIViewContoller+ExtensionsAlerts.swift */,
+				D786AE482473CC0400636935 /* UIViewr+Extensions.swift */,
 				9FD387CB223F0CF3001D2F4E /* String+Extensions.swift */,
 				9F6BB2F222E3BEB300829A6F /* Notification+Extensions.swift */,
 				9FE1438A21AF2EBD0026BDFC /* UITextField+Extensions.swift */,
@@ -2697,11 +2697,11 @@
 				"$(SRCROOT)/Carthage/Build/iOS/NSLoggerSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Lottie.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Pulsator.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RJPSLib_Storage.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RJPSLib_Networking.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RJPSLib_ALayouts.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RJPSLib_Base.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RJSPLib_AppThemes.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RJSLibUFStorage.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RJSLibUFNetworking.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RJSLibUFALayouts.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RJSLibUFBase.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RJSLibUFAppThemes.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -3028,7 +3028,7 @@
 				D7FCAC292468753500DBECA2 /* UIView+Autolayout.swift in Sources */,
 				D7711F85246B6B4F00B6963A /* UIView+ExtentionUI.swift in Sources */,
 				D72923342466B3FA00DAD480 /* UITextField+Extensions.swift in Sources */,
-				D786AE492473CC0400636935 /* UIViewContoller+ExtensionsAlerts.swift in Sources */,
+				D786AE492473CC0400636935 /* UIViewr+Extensions.swift in Sources */,
 				D7AB2446246718AA000142C4 /* typealias.DDD.encaplulate.swift in Sources */,
 				D72923382466B42000DAD480 /* UIViewController+Extensions.swift in Sources */,
 				D7CA2B42246B1A790071DAF8 /* Rx+Extensions.swift in Sources */,

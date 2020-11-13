@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 //
-import RJPSLib_Networking
+import RJSLibUFNetworking
 import RxSwift
 //
 import AppConstants

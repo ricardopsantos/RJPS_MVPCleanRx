@@ -11,6 +11,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxGesture
+import RJSLibUFBase
 //
 import UIBase
 import AppConstants

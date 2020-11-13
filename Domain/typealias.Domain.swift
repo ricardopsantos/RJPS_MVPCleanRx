@@ -11,4 +11,4 @@ import RJSLibUFStorage
 
 // MARK: - DevTools
 
-public typealias CacheStrategy = RJSLibUFStorage.CachePersistant.CacheStrategy
+public typealias CacheStrategy = RJS_CacheStrategy

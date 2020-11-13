@@ -61,7 +61,6 @@ extension Reactive where Base == UIButton {
     public func tapSmart(_ disposeBag: DisposeBag, _ timeout: TimeInterval = 1) -> Observable<Void> {
         return tap
             .do(onNext: { [base] _ in
-                base.addPulse()
                 base.isUserInteractionEnabled = false
                 Observable<Void>
                     .just(())
