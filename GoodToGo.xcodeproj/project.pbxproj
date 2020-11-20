@@ -96,7 +96,6 @@
 		4A9CAB10D332935811923332 /* P.CarTrackLoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9323B11A197F0E94539F4EBE /* P.CarTrackLoginPresenter.swift */; };
 		4C3AECC2AA8EAC013A2ABD40 /* E.APIErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A2F80D5195CE9448F3B61F /* E.APIErrors.swift */; };
 		4E6B369AC1B85D3AE846CAAC /* RJSLibUFALayouts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231F30CF7A18645BA36A2F71 /* RJSLibUFALayouts.framework */; };
-		4F813034CD3F261742770A7F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24BA8D1F366774298E825EA2 /* GoogleService-Info.plist */; };
 		5021EFB7B393248FBAB63068 /* WebAPI.GalleryApp+APIRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D4901AA1F20AFB182DDD44 /* WebAPI.GalleryApp+APIRequests.swift */; };
 		506569537894E65C4BC3FE4A /* CarTrackRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CCEA65B456F9548DF4C635 /* CarTrackRequests.swift */; };
 		5105416BD638709E85352195 /* RepositoryWebAPIGalleryApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BF01632186B1F290AE3FC64 /* RepositoryWebAPIGalleryApp.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -790,7 +789,6 @@
 		236AF5DF8FDE87B8F30F11CA /* BaseDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BaseDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		23DC6F4C16C379F38632FC30 /* VC.DataStoreReceiverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.DataStoreReceiverViewController.swift; sourceTree = "<group>"; };
 		243A526BC78C8F686D4C438A /* I.CartTrackMapInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.CartTrackMapInteractor.swift; sourceTree = "<group>"; };
-		24BA8D1F366774298E825EA2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		257EF18A7D2D316758490326 /* UC.CarTrackAPIUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UC.CarTrackAPIUseCase.swift; sourceTree = "<group>"; };
 		2822E89CFC5E792EC0ACFE64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2826DEE92A26932A25945180 /* AppResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppResources.swift; sourceTree = "<group>"; };
@@ -2102,7 +2100,6 @@
 				1BEDA08B75AD1D8DCD90B06C /* Debug.Mock.xcconfig */,
 				8CEB21C55AC04A93DC78717D /* Debug.Prod.xcconfig */,
 				32AF670C4776B531621B9293 /* Debug.QA.xcconfig */,
-				24BA8D1F366774298E825EA2 /* GoogleService-Info.plist */,
 				8A705FC7A6D0F6401C8CABF0 /* Info.plist */,
 				60CFF3D294F2C2B830D4884F /* Release.xcconfig */,
 			);
@@ -2885,7 +2882,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FCBEAE7DFE51EF62AE18652 /* Assets.xcassets in Resources */,
-				4F813034CD3F261742770A7F /* GoogleService-Info.plist in Resources */,
 				48E181256EE8F18AD33E7CA1 /* LaunchScreen.storyboard in Resources */,
 				7428A9015F4B160D6BB8655B /* Localizable.strings in Resources */,
 				80496AE7546D3919C6B1AC79 /* Main.storyboard in Resources */,
