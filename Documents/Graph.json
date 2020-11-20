@@ -1,9 +1,109 @@
 {
+  "configs" : {
+    "Debug.Mock" : "debug",
+    "Debug.Prod" : "debug",
+    "Debug.QA" : "debug",
+    "Release" : "release",
+    "Debug.Dev" : "debug"
+  },
+  "settings" : {
+    "base" : {
+      "IPHONEOS_DEPLOYMENT_TARGET" : 12,
+      "ENABLE_BITCODE" : false,
+      "SWIFT_VERSION" : 5.2000000000000002
+    },
+    "configs" : {
+      "Release" : {
+        "ENABLE_BITCODE" : true
+      }
+    }
+  },
   "name" : "GoodToGo",
+  "targetTemplates" : {
+    "UIFramework" : {
+      "deploymentTarget" : 11,
+      "dependencies" : [
+        {
+          "carthage" : "RxRelay"
+        },
+        {
+          "carthage" : "RxSwift"
+        },
+        {
+          "carthage" : "RxCocoa"
+        },
+        {
+          "carthage" : "Differentiator"
+        },
+        {
+          "carthage" : "RxDataSources"
+        },
+        {
+          "target" : "BaseDomain",
+          "link" : false
+        },
+        {
+          "target" : "Designables",
+          "link" : false
+        },
+        {
+          "target" : "BaseUI",
+          "link" : false
+        },
+        {
+          "target" : "BaseConstants",
+          "link" : false
+        },
+        {
+          "link" : false,
+          "target" : "AppTheme"
+        },
+        {
+          "link" : false,
+          "target" : "Extensions"
+        },
+        {
+          "link" : false,
+          "target" : "DevTools"
+        }
+      ],
+      "settings" : {
+        "base" : {
+          "MARKETING_VERSION" : 1
+        }
+      },
+      "type" : "framework",
+      "platform" : "iOS"
+    },
+    "Framework" : {
+      "type" : "framework",
+      "platform" : "iOS",
+      "settings" : {
+        "base" : {
+          "MARKETING_VERSION" : 1
+        }
+      },
+      "deploymentTarget" : 11
+    }
+  },
+  "options" : {
+    "findCarthageFrameworks" : false,
+    "groupSortPosition" : "top",
+    "bundleIdPrefix" : "com.GoodToGo",
+    "xcodeVersion" : "12.0.1",
+    "deploymentTarget" : "12.0",
+    "minimumXcodeGenVersion" : "2.18.0",
+    "generateEmptyDirectories" : true
+  },
   "targets" : {
-    "BaseUI" : {
+    "BaseRepositories" : {
       "templates" : [
         "Framework"
+      ],
+      "sources" : [
+        {
+          "path" : "..\/BaseRepositories"
+        }
       ],
       "dependencies" : [
         {
@@ -13,11 +113,40 @@
           "carthage" : "RxCocoa"
         },
         {
-          "link" : false,
-          "target" : "AppResources"
+          "carthage" : "RJSLibUFStorage"
         },
         {
-          "target" : "AppTheme",
+          "target" : "BaseDomain",
+          "link" : false
+        },
+        {
+          "target" : "Factory",
+          "link" : false
+        }
+      ]
+    },
+    "UIGalleryApp" : {
+      "dependencies" : [
+        {
+          "carthage" : "Swinject"
+        },
+        {
+          "carthage" : "RJSLibUFNetworking"
+        },
+        {
+          "target" : "DomainGalleryApp",
+          "link" : false
+        },
+        {
+          "target" : "CoreGalleryApp",
+          "link" : false
+        },
+        {
+          "target" : "RepositoryWebAPIGalleryApp",
+          "link" : false
+        },
+        {
+          "target" : "DevTools",
           "link" : false
         },
         {
@@ -25,86 +154,58 @@
           "link" : false
         }
       ],
-      "sources" : [
-        {
-          "path" : "..\/BaseUI"
-        }
-      ]
-    },
-    "AppTheme" : {
       "templates" : [
-        "Framework"
+        "UIFramework"
       ],
       "sources" : [
         {
-          "path" : "..\/AppTheme"
+          "path" : "..\/UIGalleryApp"
         }
+      ]
+    },
+    "AppResources" : {
+      "sources" : [
+        {
+          "path" : "..\/AppResources"
+        }
+      ],
+      "templates" : [
+        "Framework"
       ],
       "dependencies" : [
         {
-          "carthage" : "RJSLibUFAppThemes"
-        },
-        {
-          "target" : "BaseConstants",
+          "target" : "DevTools",
           "link" : false
         },
         {
-          "target" : "Extensions",
-          "link" : false
-        },
-        {
-          "link" : false,
-          "target" : "AppResources"
-        },
-        {
-          "link" : false,
-          "target" : "DevTools"
+          "carthage" : "RJSLibUFBase"
         }
       ]
     },
-    "DevTools" : {
+    "CoreGalleryApp" : {
       "sources" : [
         {
-          "path" : "..\/DevTools"
+          "path" : "..\/CoreGalleryApp"
         }
+      ],
+      "templates" : [
+        "Framework"
       ],
       "dependencies" : [
         {
-          "carthage" : "RxCocoa"
-        },
-        {
-          "carthage" : "RxSwift"
-        },
-        {
-          "carthage" : "RJSLibUFStorage"
-        },
-        {
-          "carthage" : "ToastSwiftFramework"
-        },
-        {
-          "carthage" : "NSLoggerSwift"
-        },
-        {
-          "target" : "PointFreeFunctions",
-          "link" : false
-        },
-        {
           "link" : false,
-          "target" : "BaseConstants"
+          "target" : "BaseCore"
         }
-      ],
-      "templates" : [
-        "Framework"
       ]
     },
-    "DomainCarTrack" : {
-      "templates" : [
-        "Framework"
-      ],
+    "DomainGalleryApp" : {
       "sources" : [
         {
-          "path" : "..\/DomainCarTrack"
+          "path" : "..\/DomainGalleryApp"
         }
+      ],
+      "templates" : [
+        "Framework"
       ],
       "dependencies" : [
         {
@@ -116,30 +217,260 @@
         }
       ]
     },
-    "PointFreeFunctions" : {
+    "RepositoryWebAPICartrack" : {
+      "dependencies" : [
+        {
+          "carthage" : "RJSLibUFNetworking"
+        },
+        {
+          "link" : false,
+          "target" : "BaseRepositoryWebAPI"
+        },
+        {
+          "link" : false,
+          "target" : "BaseConstants"
+        },
+        {
+          "target" : "DevTools",
+          "link" : false
+        },
+        {
+          "target" : "DomainCarTrack",
+          "link" : false
+        }
+      ],
       "templates" : [
         "Framework"
       ],
       "sources" : [
         {
-          "path" : "..\/PointFreeFunctions"
+          "path" : "..\/RepositoryWebAPICartrack"
+        }
+      ]
+    },
+    "DomainCarTrack" : {
+      "sources" : [
+        {
+          "path" : "..\/DomainCarTrack"
+        }
+      ],
+      "templates" : [
+        "Framework"
+      ],
+      "dependencies" : [
+        {
+          "carthage" : "RJSLibUFNetworking"
+        },
+        {
+          "link" : false,
+          "target" : "BaseDomain"
+        }
+      ]
+    },
+    "BaseUI" : {
+      "sources" : [
+        {
+          "path" : "..\/BaseUI"
         }
       ],
       "dependencies" : [
         {
+          "carthage" : "RxSwift"
+        },
+        {
+          "carthage" : "RxCocoa"
+        },
+        {
+          "link" : false,
+          "target" : "AppResources"
+        },
+        {
+          "link" : false,
+          "target" : "AppTheme"
+        },
+        {
+          "link" : false,
+          "target" : "BaseCore"
+        }
+      ],
+      "templates" : [
+        "Framework"
+      ]
+    },
+    "Factory" : {
+      "sources" : [
+        {
+          "path" : "..\/Factory"
+        }
+      ],
+      "dependencies" : [
+        {
+          "carthage" : "RxSwift"
+        },
+        {
+          "carthage" : "RxCocoa"
+        },
+        {
           "carthage" : "RJSLibUFStorage"
+        },
+        {
+          "target" : "BaseDomain",
+          "link" : false
+        },
+        {
+          "target" : "AppResources",
+          "link" : false
+        }
+      ],
+      "templates" : [
+        "Framework"
+      ]
+    },
+    "BaseCore" : {
+      "templates" : [
+        "Framework"
+      ],
+      "dependencies" : [
+        {
+          "carthage" : "Swinject"
+        },
+        {
+          "carthage" : "SwinjectAutoregistration"
+        },
+        {
+          "carthage" : "RJSLibUFNetworking"
+        },
+        {
+          "link" : false,
+          "target" : "BaseDomain"
+        },
+        {
+          "link" : false,
+          "target" : "AppTheme"
+        },
+        {
+          "target" : "BaseRepositories",
+          "link" : false
+        }
+      ],
+      "sources" : [
+        {
+          "path" : "..\/BaseCore"
         }
       ]
     },
-    "Designables" : {
+    "UICarTrack" : {
+      "sources" : [
+        {
+          "path" : "..\/UICarTrack"
+        }
+      ],
+      "templates" : [
+        "UIFramework"
+      ],
+      "dependencies" : [
+        {
+          "target" : "DomainCarTrack",
+          "link" : false
+        },
+        {
+          "link" : false,
+          "target" : "CoreCarTrack"
+        },
+        {
+          "link" : false,
+          "target" : "RepositoryWebAPICartrack"
+        }
+      ]
+    },
+    "BaseDomain" : {
+      "dependencies" : [
+        {
+          "carthage" : "RxSwift"
+        },
+        {
+          "carthage" : "RxCocoa"
+        },
+        {
+          "target" : "BaseConstants",
+          "link" : false
+        }
+      ],
+      "sources" : [
+        {
+          "path" : "..\/BaseDomain"
+        }
+      ],
+      "templates" : [
+        "Framework"
+      ]
+    },
+    "BaseRepositoryWebAPI" : {
       "templates" : [
         "Framework"
       ],
       "sources" : [
         {
-          "path" : "..\/Designables"
+          "path" : "..\/BaseRepositoryWebAPI"
         }
       ],
+      "dependencies" : [
+        {
+          "carthage" : "RxSwift"
+        },
+        {
+          "carthage" : "RxCocoa"
+        },
+        {
+          "target" : "DevTools",
+          "link" : false
+        }
+      ]
+    },
+    "BaseConstants" : {
+      "sources" : [
+        {
+          "path" : "..\/BaseConstants"
+        }
+      ],
+      "templates" : [
+        "Framework"
+      ],
+      "dependencies" : [
+        {
+          "carthage" : "RJSLibUFBase"
+        }
+      ]
+    },
+    "Extensions" : {
+      "sources" : [
+        {
+          "path" : "..\/Extensions"
+        }
+      ],
+      "dependencies" : [
+        {
+          "carthage" : "RxSwift"
+        },
+        {
+          "carthage" : "RxCocoa"
+        },
+        {
+          "carthage" : "TinyConstraints"
+        },
+        {
+          "carthage" : "Pulsator"
+        },
+        {
+          "link" : false,
+          "target" : "DevTools"
+        }
+      ],
+      "templates" : [
+        "Framework"
+      ]
+    },
+    "Designables" : {
       "dependencies" : [
         {
           "carthage" : "RxSwift"
@@ -172,86 +503,39 @@
           "target" : "BaseUI",
           "link" : false
         }
-      ]
-    },
-    "UIGalleryApp" : {
+      ],
+      "templates" : [
+        "Framework"
+      ],
       "sources" : [
         {
-          "path" : "..\/UIGalleryApp"
+          "path" : "..\/Designables"
+        }
+      ]
+    },
+    "CoreCarTrack" : {
+      "dependencies" : [
+        {
+          "target" : "BaseCore",
+          "link" : false
+        }
+      ],
+      "sources" : [
+        {
+          "path" : "..\/CoreCarTrack"
         }
       ],
       "templates" : [
-        "UIFramework"
-      ],
-      "dependencies" : [
-        {
-          "carthage" : "Swinject"
-        },
-        {
-          "carthage" : "RJSLibUFNetworking"
-        },
-        {
-          "target" : "DomainGalleryApp",
-          "link" : false
-        },
-        {
-          "target" : "CoreGalleryApp",
-          "link" : false
-        },
-        {
-          "target" : "RepositoryWebAPIGalleryApp",
-          "link" : false
-        },
-        {
-          "link" : false,
-          "target" : "DevTools"
-        },
-        {
-          "link" : false,
-          "target" : "BaseCore"
-        }
+        "Framework"
       ]
     },
-    "Factory" : {
-      "sources" : [
-        {
-          "path" : "..\/Factory"
-        }
-      ],
+    "AppTheme" : {
       "templates" : [
         "Framework"
       ],
       "dependencies" : [
         {
-          "carthage" : "RxSwift"
-        },
-        {
-          "carthage" : "RxCocoa"
-        },
-        {
-          "carthage" : "RJSLibUFStorage"
-        },
-        {
-          "target" : "BaseDomain",
-          "link" : false
-        },
-        {
-          "link" : false,
-          "target" : "AppResources"
-        }
-      ]
-    },
-    "RepositoryWebAPICartrack" : {
-      "templates" : [
-        "Framework"
-      ],
-      "dependencies" : [
-        {
-          "carthage" : "RJSLibUFNetworking"
-        },
-        {
-          "link" : false,
-          "target" : "BaseRepositoryWebAPI"
+          "carthage" : "RJSLibUFAppThemes"
         },
         {
           "link" : false,
@@ -259,109 +543,41 @@
         },
         {
           "link" : false,
+          "target" : "Extensions"
+        },
+        {
+          "link" : false,
+          "target" : "AppResources"
+        },
+        {
+          "link" : false,
           "target" : "DevTools"
-        },
-        {
-          "link" : false,
-          "target" : "DomainCarTrack"
         }
       ],
       "sources" : [
         {
-          "path" : "..\/RepositoryWebAPICartrack"
-        }
-      ]
-    },
-    "Extensions" : {
-      "sources" : [
-        {
-          "path" : "..\/Extensions"
-        }
-      ],
-      "templates" : [
-        "Framework"
-      ],
-      "dependencies" : [
-        {
-          "carthage" : "RxSwift"
-        },
-        {
-          "carthage" : "RxCocoa"
-        },
-        {
-          "carthage" : "TinyConstraints"
-        },
-        {
-          "carthage" : "Pulsator"
-        },
-        {
-          "target" : "DevTools",
-          "link" : false
-        }
-      ]
-    },
-    "UICarTrack" : {
-      "sources" : [
-        {
-          "path" : "..\/UICarTrack"
-        }
-      ],
-      "dependencies" : [
-        {
-          "link" : false,
-          "target" : "DomainCarTrack"
-        },
-        {
-          "link" : false,
-          "target" : "CoreCarTrack"
-        },
-        {
-          "link" : false,
-          "target" : "RepositoryWebAPICartrack"
-        }
-      ],
-      "templates" : [
-        "UIFramework"
-      ]
-    },
-    "BaseCore" : {
-      "templates" : [
-        "Framework"
-      ],
-      "dependencies" : [
-        {
-          "carthage" : "Swinject"
-        },
-        {
-          "carthage" : "SwinjectAutoregistration"
-        },
-        {
-          "carthage" : "RJSLibUFNetworking"
-        },
-        {
-          "link" : false,
-          "target" : "BaseDomain"
-        },
-        {
-          "link" : false,
-          "target" : "AppTheme"
-        },
-        {
-          "link" : false,
-          "target" : "BaseRepositories"
-        }
-      ],
-      "sources" : [
-        {
-          "path" : "..\/BaseCore"
+          "path" : "..\/AppTheme"
         }
       ]
     },
     "GoodToGo" : {
+      "settings" : {
+        "base" : {
+          "MARKETING_VERSION" : 1
+        }
+      },
+      "deploymentTarget" : 12,
+      "sources" : [
+        {
+          "path" : "..\/GoodToGo"
+        }
+      ],
+      "platform" : "iOS",
+      "type" : "application",
       "postCompileScripts" : [
         {
-          "name" : "Run SwiftLint",
-          "script" : "if which swiftlint >\/dev\/null; then\n   swiftlint\nelse\n   echo \"warning: SwiftLint not installed, download from https:\/\/github.com\/realm\/SwiftLint\"\nfi\n"
+          "script" : "if which swiftlint >\/dev\/null; then\n   swiftlint\nelse\n   echo \"warning: SwiftLint not installed, download from https:\/\/github.com\/realm\/SwiftLint\"\nfi\n",
+          "name" : "Run SwiftLint"
         }
       ],
       "dependencies" : [
@@ -411,12 +627,12 @@
           "carthage" : "Motion"
         },
         {
-          "link" : false,
-          "target" : "BaseUI"
+          "target" : "BaseUI",
+          "link" : false
         },
         {
-          "target" : "DevTools",
-          "link" : false
+          "link" : false,
+          "target" : "DevTools"
         },
         {
           "target" : "UICarTrack",
@@ -426,305 +642,89 @@
           "target" : "UIGalleryApp",
           "link" : false
         }
+      ]
+    },
+    "PointFreeFunctions" : {
+      "dependencies" : [
+        {
+          "carthage" : "RJSLibUFStorage"
+        }
+      ],
+      "templates" : [
+        "Framework"
       ],
       "sources" : [
         {
-          "path" : "..\/GoodToGo"
+          "path" : "..\/PointFreeFunctions"
         }
-      ],
-      "settings" : {
-        "base" : {
-          "MARKETING_VERSION" : 1
-        }
-      },
-      "deploymentTarget" : 12,
-      "type" : "application",
-      "platform" : "iOS"
+      ]
     },
-    "BaseRepositories" : {
+    "DevTools" : {
       "dependencies" : [
         {
-          "carthage" : "RxSwift"
+          "carthage" : "RxCocoa"
         },
         {
-          "carthage" : "RxCocoa"
+          "carthage" : "RxSwift"
         },
         {
           "carthage" : "RJSLibUFStorage"
         },
         {
-          "link" : false,
-          "target" : "BaseDomain"
+          "carthage" : "ToastSwiftFramework"
         },
         {
-          "target" : "Factory",
+          "carthage" : "NSLoggerSwift"
+        },
+        {
+          "link" : false,
+          "target" : "PointFreeFunctions"
+        },
+        {
+          "target" : "BaseConstants",
           "link" : false
         }
       ],
-      "sources" : [
-        {
-          "path" : "..\/BaseRepositories"
-        }
-      ],
       "templates" : [
         "Framework"
+      ],
+      "sources" : [
+        {
+          "path" : "..\/DevTools"
+        }
       ]
     },
     "RepositoryWebAPIGalleryApp" : {
-      "templates" : [
-        "Framework"
-      ],
       "sources" : [
         {
           "path" : "..\/RepositoryWebAPIGalleryApp"
         }
+      ],
+      "templates" : [
+        "Framework"
       ],
       "dependencies" : [
         {
           "carthage" : "RJSLibUFNetworking"
         },
         {
-          "target" : "BaseRepositoryWebAPI",
-          "link" : false
+          "link" : false,
+          "target" : "BaseRepositoryWebAPI"
         },
         {
           "link" : false,
           "target" : "BaseConstants"
         },
         {
-          "link" : false,
-          "target" : "DevTools"
+          "target" : "DevTools",
+          "link" : false
         },
         {
           "link" : false,
           "target" : "DomainGalleryApp"
         }
       ]
-    },
-    "BaseDomain" : {
-      "sources" : [
-        {
-          "path" : "..\/BaseDomain"
-        }
-      ],
-      "templates" : [
-        "Framework"
-      ],
-      "dependencies" : [
-        {
-          "carthage" : "RxSwift"
-        },
-        {
-          "carthage" : "RxCocoa"
-        },
-        {
-          "link" : false,
-          "target" : "BaseConstants"
-        }
-      ]
-    },
-    "BaseRepositoryWebAPI" : {
-      "templates" : [
-        "Framework"
-      ],
-      "dependencies" : [
-        {
-          "carthage" : "RxSwift"
-        },
-        {
-          "carthage" : "RxCocoa"
-        },
-        {
-          "link" : false,
-          "target" : "DevTools"
-        }
-      ],
-      "sources" : [
-        {
-          "path" : "..\/BaseRepositoryWebAPI"
-        }
-      ]
-    },
-    "CoreGalleryApp" : {
-      "sources" : [
-        {
-          "path" : "..\/CoreGalleryApp"
-        }
-      ],
-      "dependencies" : [
-        {
-          "link" : false,
-          "target" : "BaseCore"
-        }
-      ],
-      "templates" : [
-        "Framework"
-      ]
-    },
-    "DomainGalleryApp" : {
-      "sources" : [
-        {
-          "path" : "..\/DomainGalleryApp"
-        }
-      ],
-      "templates" : [
-        "Framework"
-      ],
-      "dependencies" : [
-        {
-          "carthage" : "RJSLibUFNetworking"
-        },
-        {
-          "target" : "BaseDomain",
-          "link" : false
-        }
-      ]
-    },
-    "AppResources" : {
-      "sources" : [
-        {
-          "path" : "..\/AppResources"
-        }
-      ],
-      "templates" : [
-        "Framework"
-      ],
-      "dependencies" : [
-        {
-          "link" : false,
-          "target" : "DevTools"
-        },
-        {
-          "carthage" : "RJSLibUFBase"
-        }
-      ]
-    },
-    "CoreCarTrack" : {
-      "sources" : [
-        {
-          "path" : "..\/CoreCarTrack"
-        }
-      ],
-      "templates" : [
-        "Framework"
-      ],
-      "dependencies" : [
-        {
-          "target" : "BaseCore",
-          "link" : false
-        }
-      ]
-    },
-    "BaseConstants" : {
-      "templates" : [
-        "Framework"
-      ],
-      "dependencies" : [
-        {
-          "carthage" : "RJSLibUFBase"
-        }
-      ],
-      "sources" : [
-        {
-          "path" : "..\/BaseConstants"
-        }
-      ]
     }
-  },
-  "options" : {
-    "minimumXcodeGenVersion" : "2.18.0",
-    "bundleIdPrefix" : "com.GoodToGo",
-    "groupSortPosition" : "top",
-    "xcodeVersion" : "12.0.1",
-    "generateEmptyDirectories" : true,
-    "findCarthageFrameworks" : false,
-    "deploymentTarget" : "12.0"
-  },
-  "targetTemplates" : {
-    "UIFramework" : {
-      "platform" : "iOS",
-      "type" : "framework",
-      "deploymentTarget" : 11,
-      "settings" : {
-        "base" : {
-          "MARKETING_VERSION" : 1
-        }
-      },
-      "dependencies" : [
-        {
-          "carthage" : "RxRelay"
-        },
-        {
-          "carthage" : "RxSwift"
-        },
-        {
-          "carthage" : "RxCocoa"
-        },
-        {
-          "carthage" : "Differentiator"
-        },
-        {
-          "carthage" : "RxDataSources"
-        },
-        {
-          "link" : false,
-          "target" : "BaseDomain"
-        },
-        {
-          "target" : "Designables",
-          "link" : false
-        },
-        {
-          "link" : false,
-          "target" : "BaseUI"
-        },
-        {
-          "target" : "BaseConstants",
-          "link" : false
-        },
-        {
-          "target" : "AppTheme",
-          "link" : false
-        },
-        {
-          "target" : "Extensions",
-          "link" : false
-        },
-        {
-          "target" : "DevTools",
-          "link" : false
-        }
-      ]
-    },
-    "Framework" : {
-      "settings" : {
-        "base" : {
-          "MARKETING_VERSION" : 1
-        }
-      },
-      "platform" : "iOS",
-      "type" : "framework",
-      "deploymentTarget" : 11
-    }
-  },
-  "settings" : {
-    "base" : {
-      "IPHONEOS_DEPLOYMENT_TARGET" : 12,
-      "ENABLE_BITCODE" : false,
-      "SWIFT_VERSION" : 5.2000000000000002
-    },
-    "configs" : {
-      "Release" : {
-        "ENABLE_BITCODE" : true
-      }
-    }
-  },
-  "configs" : {
-    "Debug.Prod" : "debug",
-    "Release" : "release",
-    "Debug.Mock" : "debug",
-    "Debug.Dev" : "debug",
-    "Debug.QA" : "debug"
   },
   "fileGroups" : [
     "..\/Documents"
