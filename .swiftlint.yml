@@ -159,7 +159,7 @@ nesting:
         warning: 3
 
 type_name:
-    max_length: 60
+    max_length: 80
     allowed_symbols: "_"
     excluded:
         - iPhone
@@ -183,7 +183,7 @@ type_name:
         - M
 
 identifier_name:
-    max_length: 60
+    max_length: 80
     excluded:
         - iPhone
         - id
