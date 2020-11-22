@@ -19,6 +19,7 @@
 name: GoodToGo
 
 options:
+
   bundleIdPrefix: com.GoodToGo
   xcodeVersion: '12.0.1'
   deploymentTarget: '12.0'
@@ -39,21 +40,68 @@ fileGroups:
 ####################### CONFIGS #######################
 
 configs:
+
   Debug.Mock: debug
   Debug.Dev: debug
   Debug.QA: debug
   Debug.Prod: debug
   Release: release
-  
+
+####################### SPM #######################
+####################### SPM #######################  
+####################### SPM #######################
+
+packages:
+
+  RJSLibUF:
+    url: https://github.com/ricardopsantos/RJSLibUF
+    branch: master
+    #minVersion: 1.0.0, maxVersion: 2.0.0
+
+# Pulse animation for iOS
+  Pulsator:
+    url: https://github.com/shu223/Pulsator
+    branch: master
+    
+# An iOS library to natively render After Effects vector animations http://airbnb.io/lottie/
+#  Lottie:
+#    url: https://github.com/airbnb/lottie-ios
+#    branch: master
+
+# A beautiful and flexible text field control implementation of "Float Label Pattern". Written in Swift.
+  SkyFloatingLabelTextField:
+    url: https://github.com/Skyscanner/SkyFloatingLabelTextField
+    branch: master
+
+# A modern, flexible logging tool
+#  NSLogger:
+#    url: https://github.com/fpillet/NSLogger
+#    branch: master
+#    from: "1.9.7"
+    
+# Nothing but sugar.
+#  TinyConstraints:
+#    url: https://github.com/roberthein/TinyConstraints
+#    from: "4.0.1"
+    
+# A Swift extension that adds toast notifications to the UIView object class.
+  Toast:
+    url: https://github.com/scalessec/Toast-Swift
+    branch: master
+#    from: "5.0.1"
+    #github "scalessec/Toast-Swift" ~> 5.0.1
+
 ####################### SETTINGS #######################
 ####################### SETTINGS #######################  
 ####################### SETTINGS #######################
 
 settings:
+
   base:
     IPHONEOS_DEPLOYMENT_TARGET: 12.0
     ENABLE_BITCODE: NO
     SWIFT_VERSION: 5.2
+    
   configs:
     Release: 
       ENABLE_BITCODE: YES
@@ -111,6 +159,19 @@ targets:
     settings:
       base:
         MARKETING_VERSION: 1.0
+      configs:
+        Debug.Dev: 
+          CUSTOM_BUILD_SETTING: my_value_1
+        Debug.QA:
+          CUSTOM_BUILD_SETTING: my_value_2
+        Debug.Prod:
+          CUSTOM_BUILD_SETTING: my_value_3
+        Debug.Mock:
+          CUSTOM_BUILD_SETTING: my_value_5
+        debug:
+          CUSTOM_BUILD_SETTING: my_value_6
+        release:
+          CUSTOM_BUILD_SETTING: my_value_7
     sources:
        - path: ../GoodToGo
     dependencies:
@@ -121,14 +182,14 @@ targets:
       - carthage: RxDataSources
       - carthage: Swinject
       - carthage: SwinjectAutoregistration
-      - carthage: RJSLibUFBase
-      - carthage: RJSLibUFStorage
-      - carthage: RJSLibUFNetworking
-      - carthage: Lottie
-      - carthage: SkyFloatingLabelTextField
-      - carthage: TinyConstraints
       - carthage: Material
       - carthage: Motion
+      - carthage: TinyConstraints
+      - carthage: Lottie
+      - package: RJSLibUF
+        product: RJSLibUFBase
+        product: RJSLibUFStorage
+        product: RJSLibUFNetworking        
       - target: BaseUI
         link: false
       - target: DevTools
@@ -168,7 +229,8 @@ targets:
     sources: 
       - path: ../DomainCarTrack
     dependencies:
-      - carthage: RJSLibUFNetworking
+      - package: RJSLibUF
+        product: RJSLibUFNetworking  
       - target: BaseDomain
         link: false
       
@@ -187,7 +249,8 @@ targets:
     sources: 
       - path: ../RepositoryWebAPICartrack  
     dependencies:
-      - carthage: RJSLibUFNetworking
+      - package: RJSLibUF
+        product: RJSLibUFNetworking  
       - target: BaseRepositoryWebAPI
         link: false  
       - target: BaseConstants
@@ -206,7 +269,8 @@ targets:
       - path: ../UIGalleryApp
     dependencies:
       - carthage: Swinject
-      - carthage: RJSLibUFNetworking
+      - package: RJSLibUF
+        product: RJSLibUFNetworking  
       - target: DomainGalleryApp
         link: false
       - target: CoreGalleryApp
@@ -224,7 +288,8 @@ targets:
     sources: 
       - path: ../RepositoryWebAPIGalleryApp  
     dependencies:
-      - carthage: RJSLibUFNetworking
+      - package: RJSLibUF
+        product: RJSLibUFNetworking  
       - target: BaseRepositoryWebAPI
         link: false  
       - target: BaseConstants
@@ -240,7 +305,8 @@ targets:
     sources: 
       - path: ../DomainGalleryApp   
     dependencies:
-      - carthage: RJSLibUFNetworking
+      - package: RJSLibUF
+        product: RJSLibUFNetworking  
       - target: BaseDomain
         link: false
        
@@ -263,7 +329,8 @@ targets:
     dependencies:
       - carthage: RxSwift
       - carthage: RxCocoa
-      - carthage: RJSLibUFStorage
+      - package: RJSLibUF
+        product: RJSLibUFStorage
       - target: BaseDomain
         link: false
       - target: AppResources
@@ -277,7 +344,8 @@ targets:
     dependencies:
       - carthage: RxSwift
       - carthage: RxCocoa
-      - carthage: RJSLibUFStorage
+      - package: RJSLibUF
+        product: RJSLibUFStorage
       - target: BaseDomain
         link: false
       - target: Factory
@@ -302,7 +370,8 @@ targets:
     dependencies:
       - carthage: Swinject
       - carthage: SwinjectAutoregistration
-      - carthage: RJSLibUFNetworking
+      - package: RJSLibUF
+        product: RJSLibUFNetworking  
       - target: BaseDomain
         link: false
       - target: AppTheme
@@ -318,6 +387,8 @@ targets:
     dependencies:
       - carthage: RxSwift
       - carthage: RxCocoa
+      - package: RJSLibUF
+        product: RJSLibUFStorage  
       - target: BaseConstants
         link: false
          
@@ -330,12 +401,13 @@ targets:
       - carthage: RxSwift
       - carthage: RxCocoa
       - carthage: RxGesture
-      - carthage: RJSLibUFBase
-      - carthage: RJSLibUFALayouts
-      - carthage: SkyFloatingLabelTextField
       - carthage: TinyConstraints
       - carthage: Material
       - carthage: Motion
+      - package: SkyFloatingLabelTextField
+      - package: RJSLibUF
+        product: RJSLibUFBase
+        product: RJSLibUFALayouts 
       - target: BaseUI
         link: false
       
@@ -348,7 +420,7 @@ targets:
       - carthage: RxSwift
       - carthage: RxCocoa
       - carthage: TinyConstraints
-      - carthage: Pulsator
+      - package: Pulsator
       - target: DevTools
         link: false
       
@@ -360,7 +432,8 @@ targets:
     dependencies:
       - target: DevTools
         link: false
-      - carthage: RJSLibUFBase
+      - package: RJSLibUF
+        product: RJSLibUFBase
       
   BaseUI:
     templates: 
@@ -370,6 +443,9 @@ targets:
     dependencies:
       - carthage: RxSwift
       - carthage: RxCocoa
+      - package: RJSLibUF
+        product: RJSLibUFBase
+        product: RJSLibUFAppThemes
       - target: AppResources
         link: false
       - target: AppTheme
@@ -383,15 +459,19 @@ targets:
     sources: 
       - path: ../PointFreeFunctions
     dependencies:
-      - carthage: RJSLibUFStorage
-   
+#      - carthage: RJSLibUFStorage
+      - package: RJSLibUF
+        product: RJSLibUFStorage
+           
   AppTheme:
     templates: 
       - Framework
     sources: 
       - path: ../AppTheme 
     dependencies:
-      - carthage: RJSLibUFAppThemes
+#      - carthage: RJSLibUFAppThemes
+      - package: RJSLibUF
+        product: RJSLibUFAppThemes
       - target: BaseConstants
         link: false
       - target: Extensions
@@ -407,7 +487,9 @@ targets:
     sources: 
       - path: ../BaseConstants
     dependencies:
-      - carthage: RJSLibUFBase
+#      - carthage: RJSLibUFBase
+      - package: RJSLibUF
+        product: RJSLibUFBase
          
   DevTools:
     templates: 
@@ -417,9 +499,10 @@ targets:
     dependencies:
       - carthage: RxCocoa
       - carthage: RxSwift
-      - carthage: RJSLibUFStorage
-      - carthage: ToastSwiftFramework
-      - carthage: NSLoggerSwift
+      - package: Toast
+      - carthage: NSLogger
+      - package: RJSLibUF
+        product: RJSLibUFStorage
       - target: PointFreeFunctions
         link: false
       - target: BaseConstants
