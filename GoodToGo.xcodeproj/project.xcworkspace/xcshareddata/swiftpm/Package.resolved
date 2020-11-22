@@ -1,0 +1,43 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Pulsator",
+        "repositoryURL": "https://github.com/shu223/Pulsator",
+        "state": {
+          "branch": "master",
+          "revision": "144e160aa9ff75de5ab88a91d8a2767942d97836",
+          "version": null
+        }
+      },
+      {
+        "package": "RJPSLibUF",
+        "repositoryURL": "https://github.com/ricardopsantos/RJSLibUF",
+        "state": {
+          "branch": "master",
+          "revision": "822c43298b065858b1b3209df1e830d80683b3cf",
+          "version": null
+        }
+      },
+      {
+        "package": "SkyFloatingLabelTextField",
+        "repositoryURL": "https://github.com/Skyscanner/SkyFloatingLabelTextField",
+        "state": {
+          "branch": "master",
+          "revision": "f2f81ddccc503b90b16ba050ceb130be7cc1e7b1",
+          "version": null
+        }
+      },
+      {
+        "package": "Toast",
+        "repositoryURL": "https://github.com/scalessec/Toast-Swift",
+        "state": {
+          "branch": "master",
+          "revision": "0c9493eeacb102cc614da385cfaaf475379f4ab4",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
