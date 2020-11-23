@@ -18,15 +18,15 @@ import BaseDomain
 //
 // Dependency resolved @ `DIRootAssemblyResolver.hotCacheRepository.xxx`
 //
-// This class make usage on RJSLib.Storages.CacheLive, implemented on RJPSLib_Storage, and that
-// contains storage utils (add, get, clean) using NSCache (lost on device restart)
+// This class make usage on RJSLibUFStorage that contains storage
+// utils (add, get, clean) using NSCache (lost on device restart)
 //
 
 public extension RP {
     class HotCacheRepository: HotCacheRepositoryProtocol {
         public init () {}
 
-        private var cacheHandler = RJS_LiveCache.shared
+        private var cacheHandler = RJS_HotCache.shared
 
         public func add(object: AnyObject, withKey: String) {
             cacheHandler.add(object: object, withKey: withKey)

@@ -33,7 +33,6 @@ import BaseUI
 
 extension I {
     class ___VARIABLE_sceneName___Interactor: BaseInteractorVIP, ___VARIABLE_sceneName___DataStoreProtocol {
-
         deinit {
             DevTools.Log.logDeInit("\(___VARIABLE_sceneName___Interactor.self) was killed")
             NotificationCenter.default.removeObserver(self)
@@ -42,8 +41,8 @@ extension I {
         weak var basePresenter: BasePresenterVIPProtocol? { return presenter }
 
         // DataStoreProtocol Protocol vars...
-        var dsSomeKindOfModelAThatWillBePassedToOtherRouter: SomeRandomModelA?
-        var dsSomeKindOfModelBThatWillBePassedToOtherRouter: SomeRandomModelB?
+        var dsSomeRandomModelA: SomeRandomModelA?
+        var dsSomeRandomModelB: SomeRandomModelB?
     }
 }
 
@@ -60,8 +59,8 @@ extension I.___VARIABLE_sceneName___Interactor: BaseInteractorVIPMandatoryBusine
 
         // Update DataStore // <<-- DS Sample : Take notice
         // When passing Data from the Scene Router to other one, this will be the value that will be passed
-        dsSomeKindOfModelAThatWillBePassedToOtherRouter = SomeRandomModelA(s1: "A: \(Date())")
-        dsSomeKindOfModelBThatWillBePassedToOtherRouter = SomeRandomModelB(s2: "B: \(Date())")
+        dsSomeRandomModelA = SomeRandomModelA(s1: "A: \(Date())")
+        dsSomeRandomModelB = SomeRandomModelB(s1: "B: \(Date())")
 
     }
 
@@ -77,7 +76,10 @@ private extension I.___VARIABLE_sceneName___Interactor {
 
 extension I.___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___BusinessLogicProtocol {
 
-    #warning("THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE")
+    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
+    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
+    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
+    
     func requestSomething(request: VM.___VARIABLE_sceneName___.Something.Request) {
 
         presenter?.presentLoading(response: BaseDisplayLogicModels.Loading(isLoading: true))

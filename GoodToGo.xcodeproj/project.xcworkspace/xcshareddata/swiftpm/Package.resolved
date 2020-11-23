@@ -2,6 +2,24 @@
   "object": {
     "pins": [
       {
+        "package": "Alamofire",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire",
+        "state": {
+          "branch": "master",
+          "revision": "9e0328127dfb801cefe8ac53a13c0c90a7770448",
+          "version": null
+        }
+      },
+      {
+        "package": "Lottie",
+        "repositoryURL": "https://github.com/airbnb/lottie-ios",
+        "state": {
+          "branch": "master",
+          "revision": "11d518841365b85b0dca7f7a55174d12911f05a0",
+          "version": null
+        }
+      },
+      {
         "package": "Pulsator",
         "repositoryURL": "https://github.com/shu223/Pulsator",
         "state": {

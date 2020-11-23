@@ -9,13 +9,14 @@ import UIKit
 import Foundation
 //
 import RJSLibUFBase
+import RJSLibUFNetworking
 //
 import BaseDomain
 
 public extension NetworkingOperationsUtilsProtocol {
     
     func networkingUtilsDownloadImage(imageURL: String, onFail: UIImage?=nil, completion: @escaping (UIImage?) -> Void) {
-        RJSLib.BasicNetworkClient.downloadImageFrom(imageURL, caching: .hotElseCold) { (image) in completion(image ?? onFail) }
+        RJS_BasicNetworkClient.downloadImageFrom(imageURL, caching: .hotElseCold) { (image) in completion(image ?? onFail) }
     }
     
     var networkingUtilsExistsInternetConnection: Bool {

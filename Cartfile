@@ -55,12 +55,12 @@ github "RxSwiftCommunity/RxDataSources"
 ####################################################################
 # https://github.com/fpillet/NSLogger
 # A modern, flexible logging tool
-#github "fpillet/NSLogger"
+github "fpillet/NSLogger"
 
 ####################################################################
 # Nothing but sugar.
 # https://github.com/roberthein/TinyConstraints
-#github "roberthein/TinyConstraints"
+github "roberthein/TinyConstraints"
 
 ####################################################################
 # A Swift extension that adds toast notifications to the UIView object class.
@@ -83,12 +83,12 @@ github "CosmicMind/Material"
 # https://github.com/ricardopsantos/RJPSLibSF
 # Guys love tools, this is my Swift toolbox
 # github "ricardopsantos/RJSLibUF" "1.0"
-github "ricardopsantos/RJSLibUF" "master"
+#github "ricardopsantos/RJSLibUF" "master"
 
 ####################################################################
 # Elegant HTTP Networking in Swift
 # https://github.com/Alamofire/Alamofire
-github "Alamofire/Alamofire"
+#github "Alamofire/Alamofire"
 
 ##############################################################################################################################
 ##############################################################################################################################

@@ -63,14 +63,19 @@ packages:
     url: https://github.com/shu223/Pulsator
     branch: master
     
-# An iOS library to natively render After Effects vector animations http://airbnb.io/lottie/
-#  Lottie:
-#    url: https://github.com/airbnb/lottie-ios
-#    branch: master
-
 # A beautiful and flexible text field control implementation of "Float Label Pattern". Written in Swift.
   SkyFloatingLabelTextField:
     url: https://github.com/Skyscanner/SkyFloatingLabelTextField
+    branch: master
+    
+# A Swift extension that adds toast notifications to the UIView object class.
+  Toast:
+    url: https://github.com/scalessec/Toast-Swift
+    branch: master
+
+# Alamofire is an HTTP networking library written in Swift.
+  Alamofire:
+    url: https://github.com/Alamofire/Alamofire
     branch: master
 
 # A modern, flexible logging tool
@@ -83,13 +88,13 @@ packages:
 #  TinyConstraints:
 #    url: https://github.com/roberthein/TinyConstraints
 #    from: "4.0.1"
-    
-# A Swift extension that adds toast notifications to the UIView object class.
-  Toast:
-    url: https://github.com/scalessec/Toast-Swift
+
+
+# An iOS library to natively render After Effects vector animations http://airbnb.io/lottie/
+  Lottie:
+    url: https://github.com/airbnb/lottie-ios
     branch: master
-#    from: "5.0.1"
-    #github "scalessec/Toast-Swift" ~> 5.0.1
+
 
 ####################### SETTINGS #######################
 ####################### SETTINGS #######################  
@@ -129,6 +134,11 @@ targetTemplates:
       - carthage: RxCocoa
       - carthage: Differentiator
       - carthage: RxDataSources
+      - carthage: Material
+      - carthage: Motion
+      - carthage: TinyConstraints
+      - package: Lottie
+        product: Lottie
       - target: BaseDomain
         link: false
       - target: Designables
@@ -175,17 +185,8 @@ targets:
     sources:
        - path: ../GoodToGo
     dependencies:
-      - carthage: RxRelay
-      - carthage: RxSwift
-      - carthage: RxCocoa
-      - carthage: Differentiator
-      - carthage: RxDataSources
       - carthage: Swinject
       - carthage: SwinjectAutoregistration
-      - carthage: Material
-      - carthage: Motion
-      - carthage: TinyConstraints
-      - carthage: Lottie
       - package: RJSLibUF
         product: RJSLibUFBase
         product: RJSLibUFStorage
@@ -358,7 +359,8 @@ targets:
       - path: ../BaseRepositoryWebAPI
     dependencies:
       - carthage: RxSwift
-      - carthage: RxCocoa    
+      - carthage: RxCocoa   
+      - package: Alamofire 
       - target: DevTools
         link: false  
        
@@ -459,7 +461,6 @@ targets:
     sources: 
       - path: ../PointFreeFunctions
     dependencies:
-#      - carthage: RJSLibUFStorage
       - package: RJSLibUF
         product: RJSLibUFStorage
            
@@ -469,7 +470,6 @@ targets:
     sources: 
       - path: ../AppTheme 
     dependencies:
-#      - carthage: RJSLibUFAppThemes
       - package: RJSLibUF
         product: RJSLibUFAppThemes
       - target: BaseConstants
@@ -487,7 +487,6 @@ targets:
     sources: 
       - path: ../BaseConstants
     dependencies:
-#      - carthage: RJSLibUFBase
       - package: RJSLibUF
         product: RJSLibUFBase
          
@@ -499,8 +498,9 @@ targets:
     dependencies:
       - carthage: RxCocoa
       - carthage: RxSwift
-      - package: Toast
       - carthage: NSLogger
+      - package: Toast
+        product: Toast
       - package: RJSLibUF
         product: RJSLibUFStorage
       - target: PointFreeFunctions
