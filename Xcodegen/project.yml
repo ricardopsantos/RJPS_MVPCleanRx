@@ -361,6 +361,7 @@ targets:
       - carthage: RxSwift
       - carthage: RxCocoa   
       - package: Alamofire 
+        product: Alamofire
       - target: DevTools
         link: false  
        
@@ -407,6 +408,7 @@ targets:
       - carthage: Material
       - carthage: Motion
       - package: SkyFloatingLabelTextField
+        product: SkyFloatingLabelTextField
       - package: RJSLibUF
         product: RJSLibUFBase
         product: RJSLibUFALayouts 
