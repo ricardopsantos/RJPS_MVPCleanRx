@@ -20,6 +20,24 @@
         }
       },
       {
+        "package": "Material",
+        "repositoryURL": "https://github.com/CosmicMind/Material",
+        "state": {
+          "branch": "master",
+          "revision": "059ed9c336d24b5f6383bec0346ae7c314724120",
+          "version": null
+        }
+      },
+      {
+        "package": "Motion",
+        "repositoryURL": "https://github.com/CosmicMind/Motion",
+        "state": {
+          "branch": "master",
+          "revision": "808ac0cf1b67c5e4163ee867dd6c056836fcbc58",
+          "version": null
+        }
+      },
+      {
         "package": "Pulsator",
         "repositoryURL": "https://github.com/shu223/Pulsator",
         "state": {
@@ -43,6 +61,24 @@
         "state": {
           "branch": "master",
           "revision": "f2f81ddccc503b90b16ba050ceb130be7cc1e7b1",
+          "version": null
+        }
+      },
+      {
+        "package": "Swinject",
+        "repositoryURL": "https://github.com/Swinject/Swinject",
+        "state": {
+          "branch": "master",
+          "revision": "405935d51acdb9db6f920e6099328a92fb420a4b",
+          "version": null
+        }
+      },
+      {
+        "package": "SwinjectAutoregistration",
+        "repositoryURL": "https://github.com/Swinject/SwinjectAutoregistration",
+        "state": {
+          "branch": "master",
+          "revision": "4cffcc1435c0cb4298dc9abaaadf7dba8cc8a464",
           "version": null
         }
       },
