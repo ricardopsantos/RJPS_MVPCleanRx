@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 //
-import Toast
-import RxCocoa
 import RxSwift
+import RxCocoa
+import Toast
 //
 import RJSLibUFBase
 import PointFreeFunctions

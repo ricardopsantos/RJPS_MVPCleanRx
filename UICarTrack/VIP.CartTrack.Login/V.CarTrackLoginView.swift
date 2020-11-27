@@ -26,7 +26,9 @@ import Extensions
 import PointFreeFunctions
 import BaseUI
 import AppResources
+#if Lottie
 import Lottie
+#endif
 
 // MARK: - Preview
 
@@ -57,9 +59,6 @@ extension V {
         }
 
         // MARK: - UI Elements (Private and lazy by default)
-
-        // Lottie view
-        private var animationView: AnimationView!
 
         private lazy var scrollView: UIScrollView = {
             UIKitFactory.scrollView()
@@ -164,8 +163,9 @@ extension V {
         }
 
         func setupLottie() {
+            #if Lottie
             // https://lottiefiles.com/blog/working-with-lottie/how-to-add-lottie-animation-ios-app-swift
-            animationView = AnimationView(name: "23038-animatonblue")
+            var animationView = AnimationView(name: "23038-animatonblue")
             addSubview(animationView)
             animationView.autoLayout.width(200)
             animationView.autoLayout.height(200)
@@ -176,7 +176,7 @@ extension V {
             animationView.animationSpeed = 0.5
             stackViewVLevel1.uiUtils.safeAddArrangedSubview(lblErrorMessage)
             animationView.play()
-            //DevTools.DebugView.paint(view: animationView)
+            #endif
         }
 
         // MARK: - Custom Getter/Setters

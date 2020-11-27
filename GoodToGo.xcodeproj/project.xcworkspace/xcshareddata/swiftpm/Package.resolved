@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "Hero",
+        "repositoryURL": "https://github.com/HeroTransitions/Hero",
+        "state": {
+          "branch": "master",
+          "revision": "ae951b89f23485de8a7b95aaa5cead7f78ab1df0",
+          "version": null
+        }
+      },
+      {
         "package": "Lottie",
         "repositoryURL": "https://github.com/airbnb/lottie-ios",
         "state": {
@@ -79,6 +88,15 @@
         "state": {
           "branch": "master",
           "revision": "4cffcc1435c0cb4298dc9abaaadf7dba8cc8a464",
+          "version": null
+        }
+      },
+      {
+        "package": "TinyConstraints",
+        "repositoryURL": "https://github.com/roberthein/TinyConstraints",
+        "state": {
+          "branch": "master",
+          "revision": "d7bd59531c1e5155cb64167235dc75bf5a37ebe6",
           "version": null
         }
       },
