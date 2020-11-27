@@ -28,7 +28,7 @@ extension R {
         weak var viewController: VC.___VARIABLE_sceneName___ViewController?
 
         // DataPassingProtocol Protocol vars...
-        var dsSource: ___VARIABLE_sceneName___DataStoreProtocol? { didSet { DevTools.Log.message("DataStore changed") } }
+        var dataStore: ___VARIABLE_sceneName___DataStoreProtocol?
      }
 }
 
@@ -40,14 +40,14 @@ extension R.___VARIABLE_sceneName___Router: ___VARIABLE_sceneName___RoutingLogic
     }
 
     func routeSomewhereWithDataStore() {
-        func passDataToSomewhere(source: ___VARIABLE_sceneName___DataStoreProtocol,
-                                 destination: inout DataStoreReceiverDataStoreProtocol) { // <<-- DS Sample : Take notice
-            destination.dsSomeKindOfModelAToBeSettedByOtherRouter = source.dsSomeKindOfModelAThatWillBePassedToOtherRouter
-            //destination.dsSomeKindOfModelBToBeSettedByOtherRouter = source.dsSomeKindOfModelBThatWillBePassedToOtherRouter
+        func passData(source: ___VARIABLE_sceneName___DataStoreProtocol,
+                      destination: inout ___VARIABLE_sceneName___DataStoreProtocol) {
+            destination.dsSomeRandomModelA = source.dsSomeRandomModelA
+            destination.dsSomeRandomModelB = source.dsSomeRandomModelB
         }
-        let destinationVC = VC.DataStoreReceiverViewController()    // <<-- DS Sample : Take notice
-        if var destinationDS = destinationVC.router?.dsToBeSetted { // <<-- DS Sample : Take notice
-            passDataToSomewhere(source: dsSource!, destination: &destinationDS)
+        let destinationVC = VC.___VARIABLE_sceneName___ViewController()
+        if var destinationDS = destinationVC.router?.dataStore { 
+            passData(source: dataStore!, destination: &destinationDS)
         }
         viewController?.present(destinationVC, animated: true, completion: nil)
     }

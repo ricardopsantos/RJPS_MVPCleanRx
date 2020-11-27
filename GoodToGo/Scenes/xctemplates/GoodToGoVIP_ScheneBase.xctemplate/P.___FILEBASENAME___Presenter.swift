@@ -89,14 +89,14 @@ extension P.___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___Presentat
         let someListA = response.listA
             .map { VM.___VARIABLE_sceneName___.TableItem(enabled: true,
                                                   image: Images.noInternet.rawValue,
-                                                  title: $0.id ?? "N.A.",
+                                                  title: $0.id,
                                                   subtitle: $0.state?.uppercased() ?? "N.A.",
                                                   cellType: .cellType1)
             }
         let someListB = response.listB
             .map { VM.___VARIABLE_sceneName___.TableItem(enabled: true,
                                                          image: Images.noInternet.rawValue,
-                                                  title: $0.id ?? "N.A.",
+                                                  title: $0.id,
                                                   subtitle: $0.state?.uppercased() ?? "N.A.",
                                                   cellType: .cellType2)
             }

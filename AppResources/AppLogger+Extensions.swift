@@ -15,7 +15,7 @@ import BaseDomain
 public extension DevTools.Log {
     static func appCode(_ appCode: AppCodes, function: String = #function, file: String = #file, line: Int = #line) {
         guard enabled else { return }
-        // RJSLib.Logger is a simple logger that handles verbose, warning and errors
-        RJSLib.Logger.message(appCode.localisedMessageForDevTeam, function: function, file: file, line: line)
+        // RJS_Logs is a simple logger that handles verbose, warning and errors
+        RJS_Logs.message(appCode.localisedMessageForDevTeam, function: function, file: file, line: line)
     }
 }

@@ -31,6 +31,12 @@ extension V.___VARIABLE_sceneName___View {
     }
 }
 
+struct SomeRandomModelA {
+    let s1: String
+}
+struct SomeRandomModelB {
+    let s1: String
+}
 struct TemplateModel {
     let id: String
     let state: String?
@@ -80,19 +86,15 @@ protocol ___VARIABLE_sceneName___RoutingLogicProtocol {
 // MARK: - DataStore
 //
 
-// DataStore : Data Passing Protocol - a protocol that contains the data that needs to be passed to the destination controller.
 protocol ___VARIABLE_sceneName___DataPassingProtocol {
-
-    // DataStore
-    var dsSource: ___VARIABLE_sceneName___DataStoreProtocol? { get }
+    // DataPassing refers to DataStore
+    var dataStore: ___VARIABLE_sceneName___DataStoreProtocol? { get }
 }
 
 // DataStore : Implemented by the Interactor, and the Router
 protocol ___VARIABLE_sceneName___DataStoreProtocol {
-    // must have a reference like [var dataStore: ___VARIABLE_sceneName___DataStoreProtocol?]
-    var dsSomeKindOfModelAThatWillBePassedToOtherRouter: SomeRandomModelA? { get set }
-    var dsSomeKindOfModelBThatWillBePassedToOtherRouter: SomeRandomModelB? { get set }
-
+    var dsSomeRandomModelA: SomeRandomModelA? { get set }
+    var dsSomeRandomModelB: SomeRandomModelB? { get set }
 }
 
 //

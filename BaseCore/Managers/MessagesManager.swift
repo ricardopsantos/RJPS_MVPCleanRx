@@ -7,7 +7,7 @@
 
 import Foundation
 //
-import ToastSwiftFramework
+import Toast
 import DevTools
 import RJSLibUFAppThemes
 //
@@ -18,7 +18,7 @@ import BaseDomain
 //
 // READ
 //
-// Simple way to display messages for the user (using ToastSwiftFramework)
+// Simple way to display messages for the user (using Toast)
 // The messages have 3 types (success, warning, error) depending on the severity
 // Dependency resolved @ `DIRootAssemblyResolver.messagesManager.xxx`
 //

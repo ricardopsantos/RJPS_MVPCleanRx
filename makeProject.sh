@@ -158,7 +158,19 @@ esac
 
 ################################################################################
 
-displayCompilerInfo
+printf "\n"
+printf "\n"
+
+echo "### Clean DerivedData?"
+echo " [1] : Yes"
+echo " [2] : No/Skip"
+echo -n "Option? "
+read option
+case $option in
+    [1] ) rm -rf ~/Library/Developer/Xcode/DerivedData/* ;;
+   *) echo "Ignored...."
+;;
+esac
 
 ################################################################################
 
@@ -195,10 +207,19 @@ case $option in
 ;;
 esac
 
+################################################################################
+
+echo "Opening project...."
 open GoodToGo.xcodeproj
+
+################################################################################
+
+echo "Generating graphviz...."
 cd XcodeGen
 xcodegen dump --type graphviz --file ../Documents/Graph.viz
 xcodegen dump --type json --file ../Documents/Graph.json
+
+################################################################################
 
 echo " ╔═══════════════════════╗"
 echo " ║ Done! You're all set! ║"

@@ -121,7 +121,7 @@ extension VC {
             interactor.presenter     = presenter
             presenter.viewController = viewController
             router.viewController    = viewController
-            router.dsSource          = interactor
+            router.dataStore         = interactor
         }
 
         // This function is called automatically by super BaseGenericView
@@ -173,7 +173,9 @@ extension VC.___VARIABLE_sceneName___ViewController {
 // MARK: Private Misc Stuff
 
 private extension VC.___VARIABLE_sceneName___ViewController {
-    #warning("THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE")
+    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
+    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
+    // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
     private func doPrivateStuff() {
         let userId = genericView.subTitle
         let request = VM.___VARIABLE_sceneName___.Something.Request(userId: userId)

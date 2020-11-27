@@ -9,7 +9,10 @@ import Foundation
 import UIKit
 //
 import RJSLibUFBase
+#if NSLogger
 import NSLoggerSwift
+#endif
+
 //
 import BaseConstants
 import PointFreeFunctions
@@ -23,7 +26,9 @@ public extension DevTools {
             // https://github.com/fpillet/NSLogger#using-nslogger-on-a-shared-network
             guard DevTools.FeatureFlag.nsLogger.isTrue else { return }
             guard DevTools.Log.enabled else { return }
+            #if NSLogger
             LoggerSetupBonjourForBuildUser()
+            #endif
             /*
             // If you don't want to disable OS_ACTIVITY_MODE for your scheme because you need that logs.
             // https://github.com/fpillet/NSLogger#set-up-logger-options
@@ -44,7 +49,9 @@ public extension DevTools {
             DevTools.Log.count += 1
             if DevTools.FeatureFlag.nsLogger.isTrue {
                 let messageFinal = "[\(DevTools.Log.count)] [app_message]\n\(message)\n\n@\(whereAmIDynamic(function: "\(function)", file: "\(file)", line: line, short: true))"
+                #if NSLogger
                 Logger.shared.log(.app, .noise, messageFinal, file, line, function)
+                #endif
             } else {
                 RJS_Logs.message(message, function: function, file: file, line: line)
             }
@@ -55,7 +62,9 @@ public extension DevTools {
             DevTools.Log.count += 1
             if DevTools.FeatureFlag.nsLogger.isTrue {
                 let messageFinal = "[\(DevTools.Log.count)] [app_warning]\n\(message)\n\n@\(whereAmIDynamic(function: "\(function)", file: "\(file)", line: line, short: true))"
+                #if NSLogger
                 Logger.shared.log(.app, .warning, messageFinal, file, line, function)
+                #endif
             } else {
                 RJS_Logs.warning(message, function: function, file: file, line: line)
             }
@@ -67,7 +76,9 @@ public extension DevTools {
             DevTools.makeToast("\(message!)", isError: true, function: function, file: file, line: line)
             if DevTools.FeatureFlag.nsLogger.isTrue {
                 let messageFinal = "[\(DevTools.Log.count)] [app_error]\n\(message!)\n\n@\(whereAmIDynamic(function: "\(function)", file: "\(file)", line: line, short: true))"
+                #if NSLogger
                 Logger.shared.log(.app, .error, messageFinal, file, line, function)
+                #endif
             } else {
                 RJS_Logs.error(message, function: function, file: file, line: line)
             }

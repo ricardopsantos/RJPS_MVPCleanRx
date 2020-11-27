@@ -5,7 +5,7 @@
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
 //
 
-//swiftlint:disable rule_UIColor_1 rule_UIFont_1
+//swiftlint:disable rule_RJSLib
 
 import UIKit
 import Foundation

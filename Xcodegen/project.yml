@@ -33,6 +33,7 @@ options:
 ####################### AUXILIAR FOLDERS #######################
 
 fileGroups:
+
   - ../Documents
 
 ####################### CONFIGS #######################
@@ -51,6 +52,11 @@ configs:
 ####################### SPM #######################  
 ####################### SPM #######################
 
+## MORE LIBRARIES HERE :
+##  https://github.com/Wolg/awesome-swift
+##  https://github.com/vsouza/awesome-ios
+##  https://github.com/duemunk/awesome-swiftui
+
 packages:
 
   RJSLibUF:
@@ -63,33 +69,51 @@ packages:
     url: https://github.com/shu223/Pulsator
     branch: master
     
-# An iOS library to natively render After Effects vector animations http://airbnb.io/lottie/
-#  Lottie:
-#    url: https://github.com/airbnb/lottie-ios
-#    branch: master
-
 # A beautiful and flexible text field control implementation of "Float Label Pattern". Written in Swift.
   SkyFloatingLabelTextField:
     url: https://github.com/Skyscanner/SkyFloatingLabelTextField
     branch: master
-
-# A modern, flexible logging tool
-#  NSLogger:
-#    url: https://github.com/fpillet/NSLogger
-#    branch: master
-#    from: "1.9.7"
-    
-# Nothing but sugar.
-#  TinyConstraints:
-#    url: https://github.com/roberthein/TinyConstraints
-#    from: "4.0.1"
     
 # A Swift extension that adds toast notifications to the UIView object class.
   Toast:
     url: https://github.com/scalessec/Toast-Swift
     branch: master
-#    from: "5.0.1"
-    #github "scalessec/Toast-Swift" ~> 5.0.1
+
+# Alamofire is an HTTP networking library written in Swift.
+  Alamofire:
+    url: https://github.com/Alamofire/Alamofire
+    branch: master
+
+# Swinject is a lightweight dependency injection framework for Swift.
+  Swinject:
+    url: https://github.com/Swinject/Swinject
+    branch: master
+  SwinjectAutoregistration:
+    url: https://github.com/Swinject/SwinjectAutoregistration
+    branch: master
+
+# UI/UX framework for creating beautiful applications
+  Material:
+    url: https://github.com/CosmicMind/Material
+    branch: master
+  Motion:
+    url: https://github.com/CosmicMind/Motion
+    branch: master
+   
+# Hero is a library for building iOS view controller transitions   
+  Hero:
+    url: https://github.com/HeroTransitions/Hero
+    branch: master
+   
+# Nothing but sugar.
+  TinyConstraints:
+    url: https://github.com/roberthein/TinyConstraints
+    branch: master
+    
+# An iOS library to natively render After Effects vector animations http://airbnb.io/lottie/
+  Lottie:
+    url: https://github.com/airbnb/lottie-ios
+    branch: master
 
 ####################### SETTINGS #######################
 ####################### SETTINGS #######################  
@@ -105,7 +129,12 @@ settings:
   configs:
     Release: 
       ENABLE_BITCODE: YES
-     
+   
+   
+####################### TEMPLATES #######################
+####################### TEMPLATES #######################  
+####################### TEMPLATES #######################
+  
 targetTemplates:
 
   Framework:
@@ -115,7 +144,7 @@ targetTemplates:
     settings:
       base:
         MARKETING_VERSION: 1.0
-  
+
   UIFramework:
     type: framework
     platform: iOS
@@ -123,26 +152,6 @@ targetTemplates:
     settings:
       base:
         MARKETING_VERSION: 1.0
-    dependencies:
-      - carthage: RxRelay
-      - carthage: RxSwift
-      - carthage: RxCocoa
-      - carthage: Differentiator
-      - carthage: RxDataSources
-      - target: BaseDomain
-        link: false
-      - target: Designables
-        link: false
-      - target: BaseUI
-        link: false
-      - target: BaseConstants
-        link: false
-      - target: AppTheme
-        link: false
-      - target: Extensions
-        link: false
-      - target: DevTools
-        link: false
             
 ####################### TARGETS #######################
 ####################### TARGETS #######################  
@@ -150,7 +159,9 @@ targetTemplates:
        
 targets:
   
-## Base App ## Base App ## Base App ## Base App ## Base App 
+## Main Target ## Main Target ## Main Target ## Main Target ## Main Target ## Main Target 
+## Main Target ## Main Target ## Main Target ## Main Target ## Main Target ## Main Target 
+## Main Target ## Main Target ## Main Target ## Main Target ## Main Target ## Main Target 
 
   GoodToGo:
     type: application
@@ -180,24 +191,46 @@ targets:
       - carthage: RxCocoa
       - carthage: Differentiator
       - carthage: RxDataSources
-      - carthage: Swinject
-      - carthage: SwinjectAutoregistration
-      - carthage: Material
-      - carthage: Motion
-      - carthage: TinyConstraints
-      - carthage: Lottie
+      - carthage: RxGesture
+      - package: Material
+        product: Material
+        link: true
+      - package: Motion
+        product: Motion
+        link: true
+      - package: TinyConstraints
+        product: TinyConstraints
+        link: true  
+      - package: Hero
+        product: Hero
+        link: true            
+      - package: Swinject
+        product: Swinject
+        link: true 
+      - package: SwinjectAutoregistration
+        product: SwinjectAutoregistration
+        link: true 
+      - package: Alamofire
+        product: Alamofire
+        link: true 
+      - package: Toast
+        product: Toast
+        link: true 
+      - package: SkyFloatingLabelTextField
+        product: SkyFloatingLabelTextField
+        link: true 
+      - package: Pulsator
+        product: Pulsator
+        link: true 
       - package: RJSLibUF
         product: RJSLibUFBase
         product: RJSLibUFStorage
-        product: RJSLibUFNetworking        
-      - target: BaseUI
-        link: false
-      - target: DevTools
-        link: false
+        product: RJSLibUFNetworking
+    
       - target: UICarTrack
-        link: false
+        link: true
       - target: UIGalleryApp
-        link: false
+        link: true
         
     postCompileScripts:
       - script: |
@@ -209,13 +242,36 @@ targets:
         name: Run SwiftLint
    
 ## Specific App Related ## Specific App Related ## Specific App Related ## Specific App Related
-   
+## Specific App Related ## Specific App Related ## Specific App Related ## Specific App Related
+## Specific App Related ## Specific App Related ## Specific App Related ## Specific App Related
+
   UICarTrack:
     templates: 
       - UIFramework
     sources: 
       - path: ../UICarTrack
     dependencies:
+      - carthage: RxRelay
+      - carthage: RxSwift
+      - carthage: RxCocoa
+      - carthage: Differentiator
+      - carthage: RxDataSources
+      - package: Material
+        product: Material
+        link: false
+      - package: Motion
+        product: Motion
+        link: false
+      - package: TinyConstraints
+        product: TinyConstraints
+        link: false
+      - package: Swinject
+        product: Swinject
+        link: false
+      - package: SwinjectAutoregistration
+        product: SwinjectAutoregistration
+        link: false
+        
       - target: DomainCarTrack
         link: false
       - target: CoreCarTrack
@@ -231,6 +287,7 @@ targets:
     dependencies:
       - package: RJSLibUF
         product: RJSLibUFNetworking  
+        link: false
       - target: BaseDomain
         link: false
       
@@ -240,6 +297,8 @@ targets:
     sources: 
       - path: ../CoreCarTrack
     dependencies:
+      - carthage: RxSwift
+      - carthage: RxCocoa
       - target: BaseCore
         link: false  
 
@@ -250,7 +309,8 @@ targets:
       - path: ../RepositoryWebAPICartrack  
     dependencies:
       - package: RJSLibUF
-        product: RJSLibUFNetworking  
+        product: RJSLibUFNetworking 
+        link: true 
       - target: BaseRepositoryWebAPI
         link: false  
       - target: BaseConstants
@@ -261,6 +321,8 @@ targets:
         link: false
 
 ## Specific App Related ## Specific App Related ## Specific App Related ## Specific App Related
+## Specific App Related ## Specific App Related ## Specific App Related ## Specific App Related
+## Specific App Related ## Specific App Related ## Specific App Related ## Specific App Related
 
   UIGalleryApp:
     templates:
@@ -268,9 +330,32 @@ targets:
     sources:
       - path: ../UIGalleryApp
     dependencies:
-      - carthage: Swinject
+      - carthage: RxRelay
+      - carthage: RxSwift
+      - carthage: RxCocoa
+      - carthage: Differentiator
+      - carthage: RxDataSources
+#      - package: Material
+#        product: Material
+#        link: false
+#      - package: Motion
+#        product: Motion
+#        link: false
+#      - package: TinyConstraints
+#        product: TinyConstraints
+#        link: false
+
+#        link: false
+#      - package: Swinject
+#        product: Swinject
+#        link: false
+#      - package: SwinjectAutoregistration
+#        product: SwinjectAutoregistration
+#        link: false
+        
       - package: RJSLibUF
         product: RJSLibUFNetworking  
+        link: false
       - target: DomainGalleryApp
         link: false
       - target: CoreGalleryApp
@@ -281,6 +366,8 @@ targets:
         link: false
       - target: BaseCore
         link: false  
+      - target: Designables
+        link: false
         
   RepositoryWebAPIGalleryApp:
     templates: 
@@ -290,6 +377,7 @@ targets:
     dependencies:
       - package: RJSLibUF
         product: RJSLibUFNetworking  
+        link: true
       - target: BaseRepositoryWebAPI
         link: false  
       - target: BaseConstants
@@ -306,9 +394,10 @@ targets:
       - path: ../DomainGalleryApp   
     dependencies:
       - package: RJSLibUF
-        product: RJSLibUFNetworking  
+        product: RJSLibUFNetworking
+        link: false  
       - target: BaseDomain
-        link: false
+        link: false  
        
   CoreGalleryApp:
     templates: 
@@ -316,69 +405,119 @@ targets:
     sources: 
       - path: ../CoreGalleryApp  
     dependencies:
+      - carthage: RxSwift
+      - carthage: RxCocoa
       - target: BaseCore
+        link: false 
+      - target: DomainGalleryApp
         link: false    
       
 ## Generic App Related ## Generic App Related ## Generic App Related ## Generic App Related
   
-  Factory:
-    templates: 
-      - Framework
-    sources: 
-      - path: ../Factory
-    dependencies:
-      - carthage: RxSwift
-      - carthage: RxCocoa
-      - package: RJSLibUF
-        product: RJSLibUFStorage
-      - target: BaseDomain
-        link: false
-      - target: AppResources
-        link: false
-      
-  BaseRepositories:
-    templates: 
-      - Framework
-    sources: 
-      - path: ../BaseRepositories
-    dependencies:
-      - carthage: RxSwift
-      - carthage: RxCocoa
-      - package: RJSLibUF
-        product: RJSLibUFStorage
-      - target: BaseDomain
-        link: false
-      - target: Factory
-        link: false
-      
   BaseRepositoryWebAPI:
     templates: 
       - Framework
     sources: 
       - path: ../BaseRepositoryWebAPI
-    dependencies:
-      - carthage: RxSwift
-      - carthage: RxCocoa    
+    dependencies: 
+      - package: Alamofire 
+        product: Alamofire
+        link: true
       - target: DevTools
         link: false  
-       
+         
+  Designables:
+    templates: 
+      - Framework
+    sources: 
+      - path: ../Designables
+    dependencies:
+      - package: TinyConstraints
+        product: TinyConstraints
+        link: true
+      - package: Material
+        product: Material
+        link: true
+      - package: Motion
+        product: Motion
+        link: true
+      - package: SkyFloatingLabelTextField
+        product: SkyFloatingLabelTextField
+        link: true
+      - package: RJSLibUF
+        product: RJSLibUFBase
+        product: RJSLibUFALayouts 
+        link: true
+      - target: BaseUI
+        link: false
+                  
+  BaseUI:
+    templates: 
+      - Framework
+    sources: 
+      - path: ../BaseUI
+    dependencies:
+      - package: RJSLibUF
+        product: RJSLibUFBase
+        product: RJSLibUFAppThemes
+        link: true
+      - target: AppResources
+        link: false
+      - target: AppTheme
+        link: false
+      - target: BaseCore
+        link: false
+ 
   BaseCore:
     templates: 
       - Framework
     sources: 
       - path: ../BaseCore
     dependencies:
-      - carthage: Swinject
-      - carthage: SwinjectAutoregistration
+      - package: Swinject
+        product: Swinject
+        link: true
+      - package: SwinjectAutoregistration
+        product: SwinjectAutoregistration
+        link: true
       - package: RJSLibUF
         product: RJSLibUFNetworking  
+        link: true
       - target: BaseDomain
         link: false
       - target: AppTheme
         link: false
       - target: BaseRepositories
         link: false
-       
+
+  BaseRepositories:
+    templates: 
+      - Framework
+    sources: 
+      - path: ../BaseRepositories
+    dependencies:
+      - package: RJSLibUF
+        product: RJSLibUFStorage
+        link: false
+      - target: BaseDomain
+        link: false
+      - target: Factory
+        link: false
+                      
+  Factory:
+    templates: 
+      - Framework
+    sources: 
+      - path: ../Factory
+    dependencies:
+      - package: RJSLibUF
+        product: RJSLibUFStorage
+        link: false
+      - target: BaseDomain
+        link: false
+      - target: AppResources
+        link: false
+         
   BaseDomain:
     templates: 
       - Framework
@@ -389,89 +528,19 @@ targets:
       - carthage: RxCocoa
       - package: RJSLibUF
         product: RJSLibUFStorage  
+        link: false
       - target: BaseConstants
         link: false
-         
-  Designables:
-    templates: 
-      - Framework
-    sources: 
-      - path: ../Designables
-    dependencies:
-      - carthage: RxSwift
-      - carthage: RxCocoa
-      - carthage: RxGesture
-      - carthage: TinyConstraints
-      - carthage: Material
-      - carthage: Motion
-      - package: SkyFloatingLabelTextField
-      - package: RJSLibUF
-        product: RJSLibUFBase
-        product: RJSLibUFALayouts 
-      - target: BaseUI
-        link: false
-      
-  Extensions:
-    templates: 
-      - Framework
-    sources: 
-      - path: ../Extensions
-    dependencies:
-      - carthage: RxSwift
-      - carthage: RxCocoa
-      - carthage: TinyConstraints
-      - package: Pulsator
-      - target: DevTools
-        link: false
-      
-  AppResources:
-    templates: 
-      - Framework
-    sources: 
-      - path: ../AppResources
-    dependencies:
-      - target: DevTools
-        link: false
-      - package: RJSLibUF
-        product: RJSLibUFBase
-      
-  BaseUI:
-    templates: 
-      - Framework
-    sources: 
-      - path: ../BaseUI
-    dependencies:
-      - carthage: RxSwift
-      - carthage: RxCocoa
-      - package: RJSLibUF
-        product: RJSLibUFBase
-        product: RJSLibUFAppThemes
-      - target: AppResources
-        link: false
-      - target: AppTheme
-        link: false
-      - target: BaseCore
-        link: false
-        
-  PointFreeFunctions:
-    templates: 
-      - Framework
-    sources: 
-      - path: ../PointFreeFunctions
-    dependencies:
-#      - carthage: RJSLibUFStorage
-      - package: RJSLibUF
-        product: RJSLibUFStorage
-           
+                                                  
   AppTheme:
     templates: 
       - Framework
     sources: 
       - path: ../AppTheme 
     dependencies:
-#      - carthage: RJSLibUFAppThemes
       - package: RJSLibUF
         product: RJSLibUFAppThemes
+        link: true        
       - target: BaseConstants
         link: false
       - target: Extensions
@@ -480,31 +549,67 @@ targets:
         link: false
       - target: DevTools
         link: false          
-       
-  BaseConstants:
+ 
+  Extensions:
     templates: 
       - Framework
     sources: 
-      - path: ../BaseConstants
+      - path: ../Extensions
     dependencies:
-#      - carthage: RJSLibUFBase
-      - package: RJSLibUF
-        product: RJSLibUFBase
-         
+      - package: Pulsator
+        product: Pulsator
+        link: true
+      - package: TinyConstraints
+        product: TinyConstraints
+        link: true   
+      - target: DevTools
+        link: false
+ 
+  AppResources:
+    templates: 
+      - Framework
+    sources: 
+      - path: ../AppResources
+    dependencies:
+      - target: DevTools
+        link: false
+                              
   DevTools:
     templates: 
       - Framework
     sources: 
       - path: ../DevTools
     dependencies:
-      - carthage: RxCocoa
       - carthage: RxSwift
+      - carthage: RxCocoa
       - package: Toast
-      - carthage: NSLogger
+        product: Toast
+        link: true
       - package: RJSLibUF
         product: RJSLibUFStorage
+        product: RJSLibUFBase
+        link: false
       - target: PointFreeFunctions
         link: false
       - target: BaseConstants
         link: false
-
+        
+  BaseConstants:
+    templates: 
+      - Framework
+    sources: 
+      - path: ../BaseConstants
+    dependencies:
+      - package: RJSLibUF
+        product: RJSLibUFBase
+        link: true
+        
+  PointFreeFunctions:
+    templates: 
+      - Framework
+    sources: 
+      - path: ../PointFreeFunctions
+    dependencies:
+      - package: RJSLibUF
+        product: RJSLibUFStorage
+        link: true

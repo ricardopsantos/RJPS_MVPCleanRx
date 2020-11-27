@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 //
-import ToastSwiftFramework
-import RxCocoa
 import RxSwift
+import RxCocoa
+import Toast
 //
 import RJSLibUFBase
 import PointFreeFunctions
@@ -107,8 +107,8 @@ public extension DevTools {
             // swiftlint:disable no_print
             print("⛔⛔⛔⛔⛔ assert ⛔⛔⛔⛔⛔")
             print("⛔⛔⛔⛔⛔ assert ⛔⛔⛔⛔⛔")
-            // swiftlint:enable no_print
             print(messageFinal)
+            // swiftlint:enable no_print
             if forceFix {
                 fatalError("\nThis need to be fixed now!\n")
             }

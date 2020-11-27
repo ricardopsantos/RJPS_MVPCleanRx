@@ -46,8 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setup(application: application)
         self.window?.rootViewController = VC.TabBarController()
 
-        //AlamofireTesting.doTests()
-
         return true
     }
 

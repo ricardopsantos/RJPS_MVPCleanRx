@@ -2,6 +2,51 @@
   "object": {
     "pins": [
       {
+        "package": "Alamofire",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire",
+        "state": {
+          "branch": "master",
+          "revision": "9e0328127dfb801cefe8ac53a13c0c90a7770448",
+          "version": null
+        }
+      },
+      {
+        "package": "Hero",
+        "repositoryURL": "https://github.com/HeroTransitions/Hero",
+        "state": {
+          "branch": "master",
+          "revision": "ae951b89f23485de8a7b95aaa5cead7f78ab1df0",
+          "version": null
+        }
+      },
+      {
+        "package": "Lottie",
+        "repositoryURL": "https://github.com/airbnb/lottie-ios",
+        "state": {
+          "branch": "master",
+          "revision": "11d518841365b85b0dca7f7a55174d12911f05a0",
+          "version": null
+        }
+      },
+      {
+        "package": "Material",
+        "repositoryURL": "https://github.com/CosmicMind/Material",
+        "state": {
+          "branch": "master",
+          "revision": "059ed9c336d24b5f6383bec0346ae7c314724120",
+          "version": null
+        }
+      },
+      {
+        "package": "Motion",
+        "repositoryURL": "https://github.com/CosmicMind/Motion",
+        "state": {
+          "branch": "master",
+          "revision": "808ac0cf1b67c5e4163ee867dd6c056836fcbc58",
+          "version": null
+        }
+      },
+      {
         "package": "Pulsator",
         "repositoryURL": "https://github.com/shu223/Pulsator",
         "state": {
@@ -25,6 +70,33 @@
         "state": {
           "branch": "master",
           "revision": "f2f81ddccc503b90b16ba050ceb130be7cc1e7b1",
+          "version": null
+        }
+      },
+      {
+        "package": "Swinject",
+        "repositoryURL": "https://github.com/Swinject/Swinject",
+        "state": {
+          "branch": "master",
+          "revision": "405935d51acdb9db6f920e6099328a92fb420a4b",
+          "version": null
+        }
+      },
+      {
+        "package": "SwinjectAutoregistration",
+        "repositoryURL": "https://github.com/Swinject/SwinjectAutoregistration",
+        "state": {
+          "branch": "master",
+          "revision": "4cffcc1435c0cb4298dc9abaaadf7dba8cc8a464",
+          "version": null
+        }
+      },
+      {
+        "package": "TinyConstraints",
+        "repositoryURL": "https://github.com/roberthein/TinyConstraints",
+        "state": {
+          "branch": "master",
+          "revision": "d7bd59531c1e5155cb64167235dc75bf5a37ebe6",
           "version": null
         }
       },

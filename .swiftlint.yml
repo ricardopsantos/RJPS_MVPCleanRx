@@ -8,40 +8,12 @@ excluded:
 
 custom_rules:
 
-    rule_UIColor_1:
+    rule_RJSLib:
         included: ".*\\.swift"
-        name: "Avoid UIColor.App"
-        regex: 'UIColor.App.'
-        message: "Don't use [UIColor.App]. Use [typealias AppColors = UIColor.App]"
+        name: "Forbiden RJSLib."
+        regex: 'RJSLib[.]'
+        message: "Don't use [RJSLib.]. Use associated typealias [RJS_xxxx]"
         severity: error
-
-    rule_UIColor_2:
-        included: ".*\\.swift"
-        name: "Avoid UIColor.Pack1"
-        regex: 'UIColor.Pack1'
-        message: "Avoid [UIColor.Pack1]. Use [ColorName]"
-        severity: warning
-
-    rule_UIColor_3:
-        included: ".*\\.swift"
-        name: "Avoid ComponentColor.Pack1"
-        regex: 'ComponentColor.Pack1'
-        message: "Avoid [ComponentColor.Pack1]. Use [ColorName]"
-        severity: warning
-
-    rule_UIColor_3:
-        included: ".*\\.swift"
-        name: "Avoid UIColor.Pack2"
-        regex: 'UIColor.Pack2'
-        message: "Avoid [UIColor.Pack2]. Use [ColorName]"
-        severity: error
-
-    rule_UIColor_4:
-        included: ".*\\.swift"
-        name: "Avoid ComponentColor.Pack2"
-        regex: 'ComponentColor.Pack2'
-        message: "Avoid [ComponentColor.Pack2]. Use [ColorName]"
-        severity: warning
 
     rule_UIFont_1:
         included: ".*\\.swift"
