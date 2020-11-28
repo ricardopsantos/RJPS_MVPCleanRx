@@ -88,6 +88,8 @@ extension VC {
             if firstAppearance {
                 interactor?.requestScreenInitialState()
             }
+
+            self.present(DesignablesPreviewVC(), animated: true, completion: nil)
         }
 
         override func viewDidAppear(_ animated: Bool) {

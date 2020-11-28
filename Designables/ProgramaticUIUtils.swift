@@ -79,6 +79,7 @@ public extension UIStackView {
 
     enum LayoutOptions {
         case horizontalCentered
+        case none
     }
 
     func edgeStackViewToSuperView() {
@@ -121,11 +122,11 @@ public extension UIStackView {
         view.layoutIfNeeded()
     }
 
-    func addSubview(_ view: UIView, options: UIStackView.LayoutOptions? = nil) {
+    func addSubviewSmart(_ someView: UIView, options: LayoutOptions? = nil) {
 
-        func safeAddSubview(_ view: UIView, at: UIStackView) {
+        func add(_ view: UIView, on: UIStackView) {
             if view.superview == nil {
-                at.addArrangedSubview(view)
+                on.addArrangedSubview(view)
                 view.setNeedsLayout()
                 view.layoutIfNeeded()
             }
@@ -134,31 +135,45 @@ public extension UIStackView {
         if options == .horizontalCentered {
             let horizontalSV = UIStackView()
             horizontalSV.axis = .horizontal
-            horizontalSV.distribution = .fill
-            horizontalSV.distribution = .fillEqually
-            horizontalSV.distribution = .fillProportionally
             horizontalSV.distribution = .equalCentering
             horizontalSV.alignment = .center
+            horizontalSV.layoutMargins = self.layoutMargins
             let viewL = UIView()
             let viewR = UIView()
-            let views = [viewL, view, viewR]
+            let views = [viewL, someView, viewR]
             views.forEach { (some) in
-                safeAddSubview(some, at: horizontalSV)
+                add(some, on: horizontalSV)
             }
-            safeAddSubview(horizontalSV, at: self)
-            horizontalSV.edgesToSuperview()
-            horizontalSV.width(to: self)
+            add(horizontalSV, on: self)
+            //horizontalSV.edgesToSuperview()
+            //let layoutMargins = self.layoutMargins
+            //print(layoutMargins)
+            horizontalSV.autoLayout.width(to: self)
+            //horizontalSV.trailingToSuperview()
         } else {
-            safeAddSubview(view, at: self)
+            add(someView, on: self)
         }
 
+    }
+
+    #warning("finish")
+    func addSection(_ name: String) {
+       /* addSeparator()
+        addSeparator(withSize: 1, color: UIColor.lightGray)
+        let label = UILabel()
+        label.text = name
+        label.font = AppFonts.Styles.paragraphMedium.rawValue
+        label.textAlignment = .center
+        label.textColor = UIColor.lightGray
+        self.addSubviewSmart(label)
+        self.addSeparator()*/
     }
 }
 
 public extension GoodToGoProgramaticUIUtils where GoodToGoBase: UIStackView {
     func edgeStackViewToSuperView() { self.base.edgeStackViewToSuperView() }
     func safeRemove(_ view: UIView) { self.base.safeRemove(view) }
-    func addSubview(_ view: UIView, options: UIStackView.LayoutOptions? = nil) { self.base.addSubview(view, options: .horizontalCentered) }
+    func addSubviewSmart(_ view: UIView, options: UIStackView.LayoutOptions? = nil) { self.base.addSubviewSmart(view, options: options) }
     @discardableResult
     func addSeparator(withSize value: CGFloat=0, color: UIColor = .clear, tag: Int? = nil) -> UIView {
         return self.base.addASeparator(withSize: value, color: color, tag: tag)

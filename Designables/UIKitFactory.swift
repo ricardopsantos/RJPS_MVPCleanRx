@@ -157,13 +157,13 @@ public struct UIKitFactory {
         let uiSwitch = UISwitch()
         label.numberOfLines = 0
         label.apply(style: .value)
-        label.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .horizontal)
+        label.setContentHuggingPriority(.defaultLow, for: .horizontal)
         label.text = caption
         uiSwitch.tintColor = ComponentColor.primary
         uiSwitch.isOn = defaultValue
-        uiSwitch.setContentHuggingPriority(UILayoutPriority.required, for: .horizontal)
-        stackView.addArrangedSubview(label)
-        stackView.addArrangedSubview(uiSwitch)
+        uiSwitch.setContentHuggingPriority(.required, for: .horizontal)
+        stackView.uiUtils.addSubviewSmart(label)
+        stackView.uiUtils.addSubviewSmart(uiSwitch)
         stackView.tag =  UIKitViewFactoryElementTag.searchBar.rawValue
         if let disposeBag = disposeBag, let toggle = toggle {
             uiSwitch.rx

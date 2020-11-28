@@ -91,11 +91,11 @@ extension V {
             addSubview(scrollView)
             scrollView.addSubview(stackViewVLevel1)
             stackViewVLevel1.uiUtils.addSeparator()
-            stackViewVLevel1.uiUtils.addSubview(lblTitle)
+            stackViewVLevel1.uiUtils.addSubviewSmart(lblTitle)
             stackViewVLevel1.uiUtils.addSeparator()
-            stackViewVLevel1.uiUtils.addSubview(btnSample1)
+            stackViewVLevel1.uiUtils.addSubviewSmart(btnSample1)
             stackViewVLevel1.uiUtils.addSeparator()
-            stackViewVLevel1.uiUtils.addSubview(btnSample2)
+            stackViewVLevel1.uiUtils.addSubviewSmart(btnSample2)
             addSubview(tableView)
         }
 
