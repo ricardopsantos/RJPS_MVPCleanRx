@@ -8,10 +8,13 @@
 import Foundation
 import UIKit
 //
+import TinyConstraints
+//
 import BaseConstants
 import DevTools
 import Extensions
 import PointFreeFunctions
+import AppTheme
 
 // MARK: - GoodToGoProgramaticUIUtilsCompatible
 
@@ -77,11 +80,6 @@ public extension GoodToGoProgramaticUIUtils where GoodToGoBase: UIScrollView {
 
 public extension UIStackView {
 
-    enum LayoutOptions {
-        case horizontalCentered
-        case none
-    }
-
     func edgeStackViewToSuperView() {
         guard self.superview != nil else {
             DevTools.Log.error("\(Self.self) - edgeStackViewToSuperView : No super view for [\(self)]")
@@ -91,9 +89,22 @@ public extension UIStackView {
         self.autoLayout.width(to: superview!) // NEEDS THIS!
     }
 
+    func addSection(title: String, font: AppFonts.Styles = .paragraphMedium) {
+        addSeparator()
+        addSeparator(withSize: 1, color: UIColor.lightGray)
+        let label = UILabel()
+        label.text = title
+        label.font = font.rawValue
+        label.textAlignment = .center
+        label.textColor = UIColor.lightGray
+        addSubviewSmart(label)
+        addSeparator()
+    }
+
     // If value=0, will use as separator size will (look) be twice the current
     // stack view separator (trust me)
-    func addASeparator(withSize value: CGFloat=0, color: UIColor = .clear, tag: Int? = nil) -> UIView {
+    @discardableResult
+    func addSeparator(withSize value: CGFloat=0, color: UIColor = .clear, tag: Int? = nil) -> UIView {
         let separator = UIView()
         separator.backgroundColor = color
         if tag != nil {
@@ -122,61 +133,46 @@ public extension UIStackView {
         view.layoutIfNeeded()
     }
 
-    func addSubviewSmart(_ someView: UIView, options: LayoutOptions? = nil) {
-
-        func add(_ view: UIView, on: UIStackView) {
-            if view.superview == nil {
-                on.addArrangedSubview(view)
-                view.setNeedsLayout()
-                view.layoutIfNeeded()
-            }
+    // Given some vertical stack view, will add a new view centred on the horizontal axe
+    func addSubviewCentered(_ view: UIView) {
+        let baseViewHasVerticalAxis = self.axis == .vertical
+        let horizontalSV = UIStackView()
+        horizontalSV.axis = baseViewHasVerticalAxis ? .horizontal : .vertical
+        horizontalSV.distribution = .equalCentering
+        horizontalSV.alignment = .center
+        let viewL = UIView()
+        let viewR = UIView()
+        let views = [viewL, view, viewR]
+        views.forEach { (some) in
+            horizontalSV.addSubviewSmart(some)
         }
-
-        if options == .horizontalCentered {
-            let horizontalSV = UIStackView()
-            horizontalSV.axis = .horizontal
-            horizontalSV.distribution = .equalCentering
-            horizontalSV.alignment = .center
-            horizontalSV.layoutMargins = self.layoutMargins
-            let viewL = UIView()
-            let viewR = UIView()
-            let views = [viewL, someView, viewR]
-            views.forEach { (some) in
-                add(some, on: horizontalSV)
-            }
-            add(horizontalSV, on: self)
-            //horizontalSV.edgesToSuperview()
-            //let layoutMargins = self.layoutMargins
-            //print(layoutMargins)
-            horizontalSV.autoLayout.width(to: self)
-            //horizontalSV.trailingToSuperview()
-        } else {
-            add(someView, on: self)
-        }
-
+        self.addSubviewSmart(horizontalSV)
+        let excludedEdges: TinyConstraints.LayoutEdge = baseViewHasVerticalAxis ? .init([.top, .bottom]) : .init([.leading, .trailing])
+        horizontalSV.autoLayout.edgesToSuperview(excluding: excludedEdges)
     }
 
-    #warning("finish")
-    func addSection(_ name: String) {
-       /* addSeparator()
-        addSeparator(withSize: 1, color: UIColor.lightGray)
-        let label = UILabel()
-        label.text = name
-        label.font = AppFonts.Styles.paragraphMedium.rawValue
-        label.textAlignment = .center
-        label.textColor = UIColor.lightGray
-        self.addSubviewSmart(label)
-        self.addSeparator()*/
+    func addSubviewSmart(_ someView: UIView) {
+        self.add(someView)
+    }
+
+    private func add(_ view: UIView) {
+        if view.superview == nil {
+            self.addArrangedSubview(view)
+            view.setNeedsLayout()
+            view.layoutIfNeeded()
+        }
     }
 }
 
 public extension GoodToGoProgramaticUIUtils where GoodToGoBase: UIStackView {
+    func addSubviewSmart(_ view: UIView) { self.base.addSubviewSmart(view) }
+    func addSubviewCentered(_ view: UIView) { self.base.addSubviewCentered(view) }
+    func addSection(title: String, font: AppFonts.Styles = .paragraphMedium) { self.base.addSection(title: title, font: font) }
     func edgeStackViewToSuperView() { self.base.edgeStackViewToSuperView() }
     func safeRemove(_ view: UIView) { self.base.safeRemove(view) }
-    func addSubviewSmart(_ view: UIView, options: UIStackView.LayoutOptions? = nil) { self.base.addSubviewSmart(view, options: options) }
     @discardableResult
     func addSeparator(withSize value: CGFloat=0, color: UIColor = .clear, tag: Int? = nil) -> UIView {
-        return self.base.addASeparator(withSize: value, color: color, tag: tag)
+        return self.base.addSeparator(withSize: value, color: color, tag: tag)
     }
 }
 
