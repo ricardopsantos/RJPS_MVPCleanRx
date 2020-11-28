@@ -117,11 +117,11 @@ open class UILabelWithPadding: UIView {
     }
     public convenience init(padding: UIEdgeInsets?, text: String="") {
         self.init(frame: .zero)
-        self.text = text
         if padding != nil {
             self._padding = padding!
         }
         applyPadding()
+        self.text = text
     }
 
     open override func layoutSubviews() {

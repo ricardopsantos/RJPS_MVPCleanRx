@@ -46,15 +46,15 @@ class DesignablesPreviewVC: UIViewController {
     }()
 
     private func makeSection(_ name: String) {
-        stackViewVLevel1.uiUtils.addArrangedSeparator()
-        stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: UIColor.lightGray)
+        stackViewVLevel1.uiUtils.addSeparator()
+        stackViewVLevel1.uiUtils.addSeparator(withSize: 1, color: UIColor.lightGray)
         let label = UILabel()
         label.text = name
         label.font = AppFonts.Styles.paragraphMedium.rawValue
         label.textAlignment = .center
         label.textColor = UIColor.lightGray
-        stackViewVLevel1.uiUtils.safeAddArrangedSubview(label)
-        stackViewVLevel1.uiUtils.addArrangedSeparator()
+        stackViewVLevel1.uiUtils.addSubview(label)
+        stackViewVLevel1.uiUtils.addSeparator()
     }
 
     override func viewDidLoad() {
@@ -68,8 +68,9 @@ class DesignablesPreviewVC: UIViewController {
         scrollView.autoLayout.topToSuperview(offset: 0, usingSafeArea: false)
         scrollView.autoLayout.height(screenHeight)
         //stackViewVLevel1.uiUtils.edgeStackViewToSuperView()
-        stackViewVLevel1.uiUtils.addArrangedSeparator()
+        stackViewVLevel1.uiUtils.addSeparator()
 
+        /*
         makeSection("Labels")
         let labelWithPadding = UIKitFactory.labelWithPadding(title: "Label with padding", style: .title)
         labelWithPadding.backgroundColor = ComponentColor.primary.withAlphaComponent(FadeType.heavy.rawValue)
@@ -93,13 +94,14 @@ class DesignablesPreviewVC: UIViewController {
         stackViewVLevel1.uiUtils.safeAddArrangedSubview(avatarView)
         avatarView.autoLayout.width(50)
         avatarView.autoLayout.height(50)
-
+*/
         let imageViewWithRoundedShadow = ImageViewWithRoundedShadow()
         imageViewWithRoundedShadow.image = UIImage(named: "notFound")
-        stackViewVLevel1.uiUtils.addSubViewCenteredInVerticalUIStackView(imageViewWithRoundedShadow)
+        stackViewVLevel1.uiUtils.addSubview(imageViewWithRoundedShadow, options: .horizontalCentered)
         imageViewWithRoundedShadow.autoLayout.width(50)
         imageViewWithRoundedShadow.autoLayout.height(50)
 
+        DevTools.DebugView.paint(view: self.view)
         /*
         let animationView = AnimationView(name: "23038-animatonblue")
         view.addSubview(animationView)

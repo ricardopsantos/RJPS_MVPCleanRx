@@ -36,6 +36,7 @@ extension UIView: GoodToGoProgramaticUIUtilsCompatible { }
 // MARK: - UIScrollView Utils
 
 public extension UIScrollView {
+
     func edgeScrollViewToSuperView() {
         self.edgesToSuperview()
         if #available(iOS 11.0, *) {
@@ -75,6 +76,11 @@ public extension GoodToGoProgramaticUIUtils where GoodToGoBase: UIScrollView {
 // MARK: - StackView Utils
 
 public extension UIStackView {
+
+    enum LayoutOptions {
+        case horizontalCentered
+    }
+
     func edgeStackViewToSuperView() {
         guard self.superview != nil else {
             DevTools.Log.error("\(Self.self) - edgeStackViewToSuperView : No super view for [\(self)]")
@@ -86,7 +92,7 @@ public extension UIStackView {
 
     // If value=0, will use as separator size will (look) be twice the current
     // stack view separator (trust me)
-    func addArrangedSeparator(withSize value: CGFloat=0, color: UIColor = .clear, tag: Int? = nil) -> UIView {
+    func addASeparator(withSize value: CGFloat=0, color: UIColor = .clear, tag: Int? = nil) -> UIView {
         let separator = UIView()
         separator.backgroundColor = color
         if tag != nil {
@@ -115,39 +121,48 @@ public extension UIStackView {
         view.layoutIfNeeded()
     }
 
-    func safeAddArrangedSubview(_ view: UIView) -> Bool {
-        let viewExists = view.superview != nil
-        if !viewExists {
-            self.addArrangedSubview(view)
-            view.setNeedsLayout()
-            view.layoutIfNeeded()
-        }
-        return !viewExists
-    }
+    func addSubview(_ view: UIView, options: UIStackView.LayoutOptions? = nil) {
 
-    func safeAddArrangedSubviews(_ views: [UIView]) {
-        views.forEach { (some) in
-            _ = safeAddArrangedSubview(some)
+        func safeAddSubview(_ view: UIView, at: UIStackView) {
+            if view.superview == nil {
+                at.addArrangedSubview(view)
+                view.setNeedsLayout()
+                view.layoutIfNeeded()
+            }
         }
-    }
 
-    func addSubViewCenteredInVerticalUIStackView(_ view: UIView) {
-        let views = [UIView(), view, UIView()]
-        views.forEach { (some) in
-            _ = safeAddArrangedSubview(some)
+        if options == .horizontalCentered {
+            let horizontalSV = UIStackView()
+            horizontalSV.axis = .horizontal
+            horizontalSV.distribution = .fill
+            horizontalSV.distribution = .fillEqually
+            horizontalSV.distribution = .fillProportionally
+            horizontalSV.distribution = .equalCentering
+            horizontalSV.alignment = .center
+            let viewL = UIView()
+            let viewR = UIView()
+            let views = [viewL, view, viewR]
+            views.forEach { (some) in
+                safeAddSubview(some, at: horizontalSV)
+            }
+            safeAddSubview(horizontalSV, at: self)
+            horizontalSV.edgesToSuperview()
+            horizontalSV.width(to: self)
+        } else {
+            safeAddSubview(view, at: self)
         }
+
     }
 }
 
 public extension GoodToGoProgramaticUIUtils where GoodToGoBase: UIStackView {
-    func addArrangedSeparator(withSize value: CGFloat=0, color: UIColor = .clear, tag: Int? = nil) -> UIView {
-        return self.base.addArrangedSeparator(withSize: value, color: color, tag: tag)
-    }
-    func safeAddArrangedSubview(_ view: UIView) -> Bool { return self.base.safeAddArrangedSubview(view) }
     func edgeStackViewToSuperView() { self.base.edgeStackViewToSuperView() }
     func safeRemove(_ view: UIView) { self.base.safeRemove(view) }
-    func safeAddArrangedSubviews(_ views: [UIView]) { self.base.safeAddArrangedSubviews(views) }
-    func addSubViewCenteredInVerticalUIStackView(_ view: UIView) { self.base.addSubViewCenteredInVerticalUIStackView(view) }
+    func addSubview(_ view: UIView, options: UIStackView.LayoutOptions? = nil) { self.base.addSubview(view, options: .horizontalCentered) }
+    @discardableResult
+    func addSeparator(withSize value: CGFloat=0, color: UIColor = .clear, tag: Int? = nil) -> UIView {
+        return self.base.addASeparator(withSize: value, color: color, tag: tag)
+    }
 }
 
 public extension GoodToGoProgramaticUIUtils where GoodToGoBase: UIImageView {

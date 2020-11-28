@@ -47,17 +47,12 @@ extension String {
 @available(iOS 13.0.0, *)
 struct DebugView_UIViewRepresentable: UIViewRepresentable {
     func updateUIView(_ uiView: V.DebugView, context: Context) { }
-    func makeUIView(context: Context) -> V.DebugView {
-        let some = V.DebugView()
-        return some
-    }
+    func makeUIView(context: Context) -> V.DebugView { V.DebugView() }
 }
 
 @available(iOS 13.0.0, *)
 struct DebugView_Previews: PreviewProvider {
-    static var previews: some SwiftUI.View {
-        DebugView_UIViewRepresentable()
-    }
+    static var previews: some SwiftUI.View { DebugView_UIViewRepresentable() }
 }
 
 // MARK: - View
@@ -77,7 +72,8 @@ extension V {
         }()
 
         private lazy var stackViewVLevel1: UIStackView = {
-            UIKitFactory.stackView(axis: .vertical)        }()
+            UIKitFactory.stackView(axis: .vertical)
+        }()
 
         // MARK: - Mandatory
 
@@ -87,7 +83,7 @@ extension V {
         override func prepareLayoutCreateHierarchy() {
             addSubview(scrollView)
             scrollView.addSubview(stackViewVLevel1)
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
+            stackViewVLevel1.uiUtils.addSeparator()
 
             let sectionSize: CGFloat = 3
             let sectionSmallSeparatorColor = ComponentColor.primary.withAlphaComponent(FadeType.superLight.rawValue)
@@ -100,15 +96,15 @@ extension V {
             }
 
             func makeSection(_ name: String, size: CGFloat) {
-                stackViewVLevel1.uiUtils.addArrangedSeparator()
-                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: size, color: UIColor.lightGray)
+                stackViewVLevel1.uiUtils.addSeparator()
+                stackViewVLevel1.uiUtils.addSeparator(withSize: size, color: UIColor.lightGray)
                 let label = UILabel()
                 label.text = name
                 label.font = AppFonts.Styles.headingSmall.rawValue
                 label.textAlignment = .center
                 label.textColor = ComponentColor.primary
-                stackViewVLevel1.uiUtils.safeAddArrangedSubview(label)
-                stackViewVLevel1.uiUtils.addArrangedSeparator()
+                stackViewVLevel1.uiUtils.addSubview(label)
+                stackViewVLevel1.uiUtils.addSeparator()
             }
 
             func pureLabel(text: String) -> UILabel {
@@ -136,8 +132,8 @@ extension V {
             }
             let ffViews: [UIView] = DevTools.FeatureFlag.allCases.filter({ $0.isVisible }).map { makeFeatureView($0) }
             ffViews.forEach { (ffView) in
-                stackViewVLevel1.uiUtils.safeAddArrangedSubview(ffView)
-                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
+                stackViewVLevel1.uiUtils.addSubview(ffView)
+                stackViewVLevel1.uiUtils.addSeparator(withSize: 1, color: sectionSmallSeparatorColor)
             }
 
             //
@@ -150,7 +146,7 @@ extension V {
                 let button = buttonWithAction(title: "Tap to show \(some) alert") {
                     self.displayMessage(randomStringWith(length: randomInt(min: 50, max: 100)), type: some)
                 }
-                stackViewVLevel1.uiUtils.safeAddArrangedSubview(button)
+                stackViewVLevel1.uiUtils.addSubview(button)
                 button.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
             }
 
@@ -166,14 +162,14 @@ extension V {
                     some.backgroundColor = backgroundColor.withAlphaComponent(FadeType.superHeavy.rawValue)
                     some.textAlignment = .center
                     some.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
-                    stackViewVLevel1.uiUtils.safeAddArrangedSubview(some)
+                    stackViewVLevel1.uiUtils.addSubview(some)
                 }
                 let some = UIKitFactory.label(title: "\(some)", style: some)
                 some.backgroundColor = some.textColor.inverse.withAlphaComponent(FadeType.superHeavy.rawValue)
                 some.textAlignment = .center
                 some.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
-                stackViewVLevel1.uiUtils.safeAddArrangedSubview(some)
-                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
+                stackViewVLevel1.uiUtils.addSubview(some)
+                stackViewVLevel1.uiUtils.addSeparator(withSize: 1, color: sectionSmallSeparatorColor)
             }
 
             //
@@ -184,7 +180,7 @@ extension V {
             
             UIButton.LayoutStyle.allCases.forEach { (some) in
                 let btn = UIKitFactory.button(title: "\(some)", style: some)
-                stackViewVLevel1.uiUtils.safeAddArrangedSubview(btn)
+                stackViewVLevel1.uiUtils.addSubview(btn)
                 btn.rx.tapSmart(disposeBag).asObservable().subscribe { (_) in
                     print("tap")
                 }.disposed(by: disposeBag)
@@ -204,9 +200,9 @@ extension V {
                     view.textAlignment = .center
                     view.addShadow(shadowType: some)
                     view.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
-                    stackViewVLevel1.uiUtils.safeAddArrangedSubview(view)
+                    stackViewVLevel1.uiUtils.addSubview(view)
                 }
-                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
+                stackViewVLevel1.uiUtils.addSeparator(withSize: 1, color: sectionSmallSeparatorColor)
             }
 
             //
@@ -217,7 +213,7 @@ extension V {
             FadeType.allCases.forEach { (some) in
                 let view = pureLabel(text: "\(some)")
                 view.backgroundColor = ComponentColor.primary.withAlphaComponent(some.rawValue)
-                stackViewVLevel1.uiUtils.safeAddArrangedSubview(view)
+                stackViewVLevel1.uiUtils.addSubview(view)
                 view.autoLayout.height(Designables.Sizes.Button.defaultSize.height)
                 //stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
             }
@@ -228,24 +224,33 @@ extension V {
 
             makeSection("Components", size: sectionSize)
 
+            DevTools.Log.error("Fix lottie!")
+            /*let lottieView = LottieView()
+            let lottieViewContainer = UIView()
+            lottieView.setupViewIn(view: self)
+            stackViewVLevel1.uiUtils.safeAddArrangedSubview(lottieViewContainer)
+            lottieViewContainer.autoLayout.height(100)
+            lottieView.play()
+            stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)*/
+
             let labelWithPadding = UIKitFactory.labelWithPadding(title: "labelWithPadding", style: .title)
             labelWithPadding.backgroundColor = ComponentColor.primary.withAlphaComponent(FadeType.heavy.rawValue)
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(labelWithPadding)
+            stackViewVLevel1.uiUtils.addSubview(labelWithPadding)
 
-            stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
+            stackViewVLevel1.uiUtils.addSeparator(withSize: 1, color: sectionSmallSeparatorColor)
 
             let raisedButton = UIKitFactory.raisedButton(title: "raisedButton", backgroundColor: ComponentColor.primary)
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(raisedButton)
+            stackViewVLevel1.uiUtils.addSubview(raisedButton)
 
-            stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
+            stackViewVLevel1.uiUtils.addSeparator(withSize: 1, color: sectionSmallSeparatorColor)
 
-            let skyFloatingLabelTextField = UIKitFactory.skyFloatingLabelTextField(title: "skyFloatingLabelTextField",
+            let skyFloatingLabelTextField = UIKitFactory.skyFloatingTextField(title: "skyFloatingLabelTextField",
                                                                                    placeholder: "Your skyFloatingLabelTextField")
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(skyFloatingLabelTextField)
+            stackViewVLevel1.uiUtils.addSubview(skyFloatingLabelTextField)
 
-            stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
+            stackViewVLevel1.uiUtils.addSeparator(withSize: 1, color: sectionSmallSeparatorColor)
 
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
+            stackViewVLevel1.uiUtils.addSeparator()
 
             //
             // AppFonts.Alternative
@@ -264,9 +269,9 @@ extension V {
                 some2.text = "\(font.rawValue.fontName) \(font.rawValue.pointSize)"
                 some2.font = AppFonts.Styles.caption.rawValue
                 some2.textAlignment = .center
-                stackViewVLevel1.uiUtils.safeAddArrangedSubview(some1)
-                stackViewVLevel1.uiUtils.safeAddArrangedSubview(some2)
-                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
+                stackViewVLevel1.uiUtils.addSubview(some1)
+                stackViewVLevel1.uiUtils.addSubview(some2)
+                stackViewVLevel1.uiUtils.addSeparator(withSize: 1, color: sectionSmallSeparatorColor)
             }
 
             //
@@ -282,8 +287,8 @@ extension V {
                 view.backgroundColor = some.color
                 view.textAlignment = .center
                 view.addCorner(radius: 1)
-                stackViewVLevel1.uiUtils.safeAddArrangedSubview(view)
-                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
+                stackViewVLevel1.uiUtils.addSubview(view)
+                stackViewVLevel1.uiUtils.addSeparator(withSize: 1, color: sectionSmallSeparatorColor)
             }
 
             //
@@ -299,11 +304,11 @@ extension V {
                 view.backgroundColor = some.color
                 view.textAlignment = .center
                 view.addCorner(radius: 1)
-                stackViewVLevel1.uiUtils.safeAddArrangedSubview(view)
-                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
+                stackViewVLevel1.uiUtils.addSubview(view)
+                stackViewVLevel1.uiUtils.addSeparator(withSize: 1, color: sectionSmallSeparatorColor)
             }
 
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
+            stackViewVLevel1.uiUtils.addSeparator()
 
             //
             // UIColor.Pack3 / ColorName
@@ -318,11 +323,11 @@ extension V {
                 view.backgroundColor = some.color
                 view.textAlignment = .center
                 view.addCorner(radius: 1)
-                stackViewVLevel1.uiUtils.safeAddArrangedSubview(view)
-                stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
+                stackViewVLevel1.uiUtils.addSubview(view)
+                stackViewVLevel1.uiUtils.addSeparator(withSize: 1, color: sectionSmallSeparatorColor)
             }
 
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
+            stackViewVLevel1.uiUtils.addSeparator()
         }
 
         // This function is called automatically by super BaseGenericViewVIP

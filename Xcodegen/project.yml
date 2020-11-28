@@ -278,6 +278,10 @@ targets:
         link: false
       - target: RepositoryWebAPICartrack
         link: false
+      - target: Designables
+        link: false   
+       
+       
               
   DomainCarTrack:
     templates: 
@@ -291,6 +295,8 @@ targets:
       - target: BaseDomain
         link: false
       
+      
+      
   CoreCarTrack:
     templates: 
       - Framework
@@ -301,6 +307,8 @@ targets:
       - carthage: RxCocoa
       - target: BaseCore
         link: false  
+
+
 
   RepositoryWebAPICartrack:
     templates: 
@@ -320,9 +328,13 @@ targets:
       - target: DomainCarTrack
         link: false
 
+
+
 ## Specific App Related ## Specific App Related ## Specific App Related ## Specific App Related
 ## Specific App Related ## Specific App Related ## Specific App Related ## Specific App Related
 ## Specific App Related ## Specific App Related ## Specific App Related ## Specific App Related
+
+
 
   UIGalleryApp:
     templates:
@@ -335,23 +347,6 @@ targets:
       - carthage: RxCocoa
       - carthage: Differentiator
       - carthage: RxDataSources
-#      - package: Material
-#        product: Material
-#        link: false
-#      - package: Motion
-#        product: Motion
-#        link: false
-#      - package: TinyConstraints
-#        product: TinyConstraints
-#        link: false
-
-#        link: false
-#      - package: Swinject
-#        product: Swinject
-#        link: false
-#      - package: SwinjectAutoregistration
-#        product: SwinjectAutoregistration
-#        link: false
         
       - package: RJSLibUF
         product: RJSLibUFNetworking  
@@ -368,6 +363,8 @@ targets:
         link: false  
       - target: Designables
         link: false
+ 
+ 
         
   RepositoryWebAPIGalleryApp:
     templates: 
@@ -387,6 +384,8 @@ targets:
       - target: DomainGalleryApp
         link: false   
                
+               
+               
   DomainGalleryApp:
     templates: 
       - Framework
@@ -398,6 +397,8 @@ targets:
         link: false  
       - target: BaseDomain
         link: false  
+       
+       
        
   CoreGalleryApp:
     templates: 
@@ -412,8 +413,14 @@ targets:
       - target: DomainGalleryApp
         link: false    
       
+      
+      
 ## Generic App Related ## Generic App Related ## Generic App Related ## Generic App Related
-  
+## Generic App Related ## Generic App Related ## Generic App Related ## Generic App Related
+## Generic App Related ## Generic App Related ## Generic App Related ## Generic App Related
+
+
+
   BaseRepositoryWebAPI:
     templates: 
       - Framework
@@ -425,6 +432,8 @@ targets:
         link: true
       - target: DevTools
         link: false  
+         
+         
          
   Designables:
     templates: 
@@ -441,6 +450,9 @@ targets:
       - package: Motion
         product: Motion
         link: true
+      - package: Lottie
+        product: Lottie
+        link: true
       - package: SkyFloatingLabelTextField
         product: SkyFloatingLabelTextField
         link: true
@@ -450,6 +462,8 @@ targets:
         link: true
       - target: BaseUI
         link: false
+         
+         
                   
   BaseUI:
     templates: 
@@ -467,6 +481,8 @@ targets:
         link: false
       - target: BaseCore
         link: false
+ 
+ 
  
   BaseCore:
     templates: 
@@ -490,6 +506,8 @@ targets:
       - target: BaseRepositories
         link: false
 
+
+
   BaseRepositories:
     templates: 
       - Framework
@@ -503,6 +521,8 @@ targets:
         link: false
       - target: Factory
         link: false
+            
+            
                       
   Factory:
     templates: 
@@ -518,6 +538,8 @@ targets:
       - target: AppResources
         link: false
          
+         
+         
   BaseDomain:
     templates: 
       - Framework
@@ -531,6 +553,8 @@ targets:
         link: false
       - target: BaseConstants
         link: false
+         
+         
                                                   
   AppTheme:
     templates: 
@@ -550,6 +574,8 @@ targets:
       - target: DevTools
         link: false          
  
+ 
+ 
   Extensions:
     templates: 
       - Framework
@@ -565,6 +591,8 @@ targets:
       - target: DevTools
         link: false
  
+ 
+ 
   AppResources:
     templates: 
       - Framework
@@ -573,6 +601,8 @@ targets:
     dependencies:
       - target: DevTools
         link: false
+       
+       
                               
   DevTools:
     templates: 
@@ -593,6 +623,8 @@ targets:
         link: false
       - target: BaseConstants
         link: false
+     
+     
         
   BaseConstants:
     templates: 
@@ -603,6 +635,8 @@ targets:
       - package: RJSLibUF
         product: RJSLibUFBase
         link: true
+       
+       
         
   PointFreeFunctions:
     templates: 

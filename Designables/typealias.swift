@@ -17,3 +17,5 @@ import RJSLibUFAppThemes
 public typealias CustomSearchBar = RJSLib.Designables.SearchBar // PreBuilt custom search bar
 public typealias AppSizes = Designables.Sizes
 public typealias AppleSizes = Designables.Sizes.Apple
+
+public typealias DesignablesFactory = UIKitFactory

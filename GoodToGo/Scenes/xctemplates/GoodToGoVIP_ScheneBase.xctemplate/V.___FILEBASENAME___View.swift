@@ -90,12 +90,12 @@ extension V {
         public override func prepareLayoutCreateHierarchy() {
             addSubview(scrollView)
             scrollView.addSubview(stackViewVLevel1)
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(lblTitle)
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(btnSample1)
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(btnSample2)
+            stackViewVLevel1.uiUtils.addSeparator()
+            stackViewVLevel1.uiUtils.addSubview(lblTitle)
+            stackViewVLevel1.uiUtils.addSeparator()
+            stackViewVLevel1.uiUtils.addSubview(btnSample1)
+            stackViewVLevel1.uiUtils.addSeparator()
+            stackViewVLevel1.uiUtils.addSubview(btnSample2)
             addSubview(tableView)
         }
 

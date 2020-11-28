@@ -26,9 +26,6 @@ import Extensions
 import PointFreeFunctions
 import BaseUI
 import AppResources
-#if Lottie
-import Lottie
-#endif
 
 // MARK: - Preview
 
@@ -82,7 +79,7 @@ extension V {
         }()
 
         private lazy var txtPassword: SkyFloatingLabelTextField = {
-            let some = UIKitFactory.skyFloatingLabelTextField(title: Messages.password.localised,
+            let some = UIKitFactory.skyFloatingTextField(title: Messages.password.localised,
                                                               placeholder: "Your \(Messages.password.localised)")
             some.isSecureTextEntry = true
             some.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -90,7 +87,7 @@ extension V {
         }()
 
         private lazy var txtUserName: SkyFloatingLabelTextField = {
-            let some = UIKitFactory.skyFloatingLabelTextField(title: Messages.email.localised,
+            let some = UIKitFactory.skyFloatingTextField(title: Messages.email.localised,
                                                               placeholder: "Your \(Messages.email.localised)")
             some.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
             return some
@@ -104,13 +101,13 @@ extension V {
         public override func prepareLayoutCreateHierarchy() {
             addSubview(scrollView)
             scrollView.addSubview(stackViewVLevel1)
-            stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: screenHeight/5)
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(txtUserName)
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(txtPassword)
-            stackViewVLevel1.uiUtils.addArrangedSeparator()
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(lblErrorMessage)
+            stackViewVLevel1.uiUtils.addSeparator(withSize: screenHeight/5)
+            stackViewVLevel1.uiUtils.addSubview(txtUserName)
+            stackViewVLevel1.uiUtils.addSeparator()
+            stackViewVLevel1.uiUtils.addSeparator()
+            stackViewVLevel1.uiUtils.addSubview(txtPassword)
+            stackViewVLevel1.uiUtils.addSeparator()
+            stackViewVLevel1.uiUtils.addSubview(lblErrorMessage)
             addSubview(btnLogin)
         }
 
@@ -145,7 +142,6 @@ extension V {
             self.subViewsOf(types: [.label], recursive: true).forEach { (some) in
                 (some as? UILabel)?.textAlignment = .center
             }
-            setupLottie()
         }
 
         public override func setupColorsAndStyles() {
@@ -160,23 +156,6 @@ extension V {
         // This will notify us when something has changed on the textfield
         @objc func textFieldDidChange(_ textfield: UITextField) {
 
-        }
-
-        func setupLottie() {
-            #if Lottie
-            // https://lottiefiles.com/blog/working-with-lottie/how-to-add-lottie-animation-ios-app-swift
-            var animationView = AnimationView(name: "23038-animatonblue")
-            addSubview(animationView)
-            animationView.autoLayout.width(200)
-            animationView.autoLayout.height(200)
-            animationView.autoLayout.topToBottom(of: btnLogin)
-            animationView.autoLayout.centerXToSuperview()
-            animationView.contentMode = .scaleAspectFit
-            animationView.loopMode = .loop
-            animationView.animationSpeed = 0.5
-            stackViewVLevel1.uiUtils.safeAddArrangedSubview(lblErrorMessage)
-            animationView.play()
-            #endif
         }
 
         // MARK: - Custom Getter/Setters

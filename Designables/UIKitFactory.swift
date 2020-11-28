@@ -24,6 +24,8 @@ import PointFreeFunctions
 import BaseUI
 import AppResources
 
+#warning("passar a desinable factory")
+
 public struct UIKitFactory {
     private init() {}
 
@@ -39,7 +41,7 @@ public struct UIKitFactory {
     }
 
     // https://github.com/Skyscanner/SkyFloatingLabelTextField#usage
-    public static func skyFloatingLabelTextField(title: String,
+    public static func skyFloatingTextField(title: String,
                                                  placeholder: String) -> SkyFloatingLabelTextField {
         let some = SkyFloatingLabelTextField(frame: CGRect(x: 10, y: 10, width: 120, height: 45))
         some.placeholder = placeholder
@@ -88,6 +90,7 @@ public struct UIKitFactory {
         some.tag =  UIKitViewFactoryElementTag.label.rawValue
         some.addShadow()
         some.layoutStyle = style
+        some.text = title
         return some
     }
 

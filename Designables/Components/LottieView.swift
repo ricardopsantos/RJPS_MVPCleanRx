@@ -8,49 +8,54 @@
 import Foundation
 import UIKit
 //
+import Lottie
+//
 import AppResources
 
 #warning("Put on UIKitFactory")
 
-open class AvatarView: UIView {
+open class LottieView: UIView {
+
+    let animationView = AnimationView(name: "23038-animatonblue")
 
     public struct ViewModel {
-        public let image: UIImage?
         public let imageName: String?
 
-        public init(image: UIImage? = nil, imageName: String? = nil) {
-            self.image = image
+        public init(imageName: String?) {
             self.imageName = imageName
         }
     }
-    public static let defaultSize: CGFloat = Designables.Sizes.AvatarView.defaultSize.width
-
-    private lazy var imgAvatar: UIImageView = {
-        UIKitFactory.imageView(image: Images.notFound.image)
-    }()
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        setupView()
     }
 
-    private func setupView() {
-        addSubview(imgAvatar)
-        imgAvatar.edgesToSuperview()
-        imgAvatar.addCorner(radius: Self.defaultSize / 2.0)
+    public func setupViewIn(view: UIView) {
+        // https://lottiefiles.com/blog/working-with-lottie/how-to-add-lottie-animation-ios-app-swift
+        view.addSubview(self)
+        self.addSubview(animationView)
+        self.edgesToSuperview()
+        animationView.autoLayout.edgesToSuperview()
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        animationView.animationSpeed = 0.5
+    }
+
+    public func play() {
+        animationView.play()
     }
 
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func setup(viewModel: AvatarView.ViewModel) {
-        if let image = viewModel.image {
+    public func setup(viewModel: LottieView.ViewModel) {
+       /* if let image = viewModel.image {
             imgAvatar.image = image
         } else if let imageName = viewModel.imageName, let image = UIImage(named: imageName) {
             imgAvatar.image = image
         } else {
             imgAvatar.image = Images.notFound.image
-        }
+        }*/
     }
 }
