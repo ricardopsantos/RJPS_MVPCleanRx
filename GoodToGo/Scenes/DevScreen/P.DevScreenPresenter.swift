@@ -32,8 +32,8 @@ import BaseUI
 //
 
 extension P {
-    class DebugPresenter: BasePresenterVIP {
-        weak var viewController: (DebugDisplayLogicProtocol)?
+    class DevScreenPresenter: BasePresenterVIP {
+        weak var viewController: (DevScreenDisplayLogicProtocol)?
 
         override weak var baseViewController: BaseViewControllerVIPProtocol? {
             return viewController
@@ -43,7 +43,7 @@ extension P {
 
 // MARK: PresentationLogicProtocol
 
-extension P.DebugPresenter {
+extension P.DevScreenPresenter {
 
     //
     // Do you need to override this? Its already implemented on a Protocol Extension
@@ -67,20 +67,20 @@ extension P.DebugPresenter {
 
 // MARK: PresentationLogicProtocol
 
-extension P.DebugPresenter: DebugPresentationLogicProtocol {
+extension P.DevScreenPresenter: DevScreenPresentationLogicProtocol {
 
     // Used By Interactor (exclusively)
-    func presentScreenInitialState(response: VM.Debug.ScreenInitialState.Response) {
+    func presentScreenInitialState(response: VM.DevScreen.ScreenInitialState.Response) {
         let title = response.title.uppercased()
         let subTitle = response.subTitle.lowercased()
-        let viewModel = VM.Debug.ScreenInitialState.ViewModel(title: title,
+        let viewModel = VM.DevScreen.ScreenInitialState.ViewModel(title: title,
                                                                                  subTitle: subTitle,
                                                                                  screenLayout: .layoutA)
         viewController?.displayScreenInitialState(viewModel: viewModel)
     }
 
     // Used By Interactor (exclusively)
-    func presentSomeStuff(response: VM.Debug.SomeStuff.Response) {
+    func presentSomeStuff(response: VM.DevScreen.SomeStuff.Response) {
         
     }
 

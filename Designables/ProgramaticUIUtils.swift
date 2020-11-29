@@ -89,15 +89,15 @@ public extension UIStackView {
         self.autoLayout.width(to: superview!) // NEEDS THIS!
     }
 
-    func addSection(title: String, font: AppFonts.Styles = .paragraphMedium) {
+    func addSection(title: String, font: AppFonts.Styles = .paragraphMedium, color: ColorName = .primary, barSize: CGFloat = 1) {
         addSeparator()
-        addSeparator(withSize: 1, color: UIColor.lightGray)
+        addSeparator(withSize: barSize, color: color.rawValue)
         let label = UILabel()
         label.text = title
         label.font = font.rawValue
         label.textAlignment = .center
-        label.textColor = UIColor.lightGray
-        addSubviewSmart(label)
+        label.textColor = color.rawValue
+        addSub(view: label)
         addSeparator()
     }
 
@@ -134,7 +134,7 @@ public extension UIStackView {
     }
 
     // Given some vertical stack view, will add a new view centred on the horizontal axe
-    func addSubviewCentered(_ view: UIView) {
+    func addSub(centeredView: UIView) {
         let baseViewHasVerticalAxis = self.axis == .vertical
         let horizontalSV = UIStackView()
         horizontalSV.axis = baseViewHasVerticalAxis ? .horizontal : .vertical
@@ -142,17 +142,17 @@ public extension UIStackView {
         horizontalSV.alignment = .center
         let viewL = UIView()
         let viewR = UIView()
-        let views = [viewL, view, viewR]
+        let views = [viewL, centeredView, viewR]
         views.forEach { (some) in
-            horizontalSV.addSubviewSmart(some)
+            horizontalSV.addSub(view: some)
         }
-        self.addSubviewSmart(horizontalSV)
+        self.addSub(view: horizontalSV)
         let excludedEdges: TinyConstraints.LayoutEdge = baseViewHasVerticalAxis ? .init([.top, .bottom]) : .init([.leading, .trailing])
         horizontalSV.autoLayout.edgesToSuperview(excluding: excludedEdges)
     }
 
-    func addSubviewSmart(_ someView: UIView) {
-        self.add(someView)
+    func addSub(view: UIView) {
+        self.add(view)
     }
 
     private func add(_ view: UIView) {
@@ -165,14 +165,16 @@ public extension UIStackView {
 }
 
 public extension GoodToGoProgramaticUIUtils where GoodToGoBase: UIStackView {
-    func addSubviewSmart(_ view: UIView) { self.base.addSubviewSmart(view) }
-    func addSubviewCentered(_ view: UIView) { self.base.addSubviewCentered(view) }
-    func addSection(title: String, font: AppFonts.Styles = .paragraphMedium) { self.base.addSection(title: title, font: font) }
+    func addSub(view: UIView) { self.base.addSub(view: view) }
+    func addSub(centeredView: UIView) { self.base.addSub(centeredView: centeredView) }
     func edgeStackViewToSuperView() { self.base.edgeStackViewToSuperView() }
     func safeRemove(_ view: UIView) { self.base.safeRemove(view) }
     @discardableResult
     func addSeparator(withSize value: CGFloat=0, color: UIColor = .clear, tag: Int? = nil) -> UIView {
         return self.base.addSeparator(withSize: value, color: color, tag: tag)
+    }
+    func addSection(title: String, font: AppFonts.Styles = .paragraphMedium, color: ColorName = .primary, barSize: CGFloat = 1) {
+        return base.addSection(title: title, font: font, color: color, barSize: barSize)
     }
 }
 
@@ -196,6 +198,18 @@ public extension GoodToGoProgramaticUIUtils where GoodToGoBase: UIImageView {
 
 public extension GoodToGoProgramaticUIUtils where GoodToGoBase: UIView {
 
+    func addAndSetup(scrollView: UIScrollView, stackViewV: UIStackView, hasTopBar: Bool) {
+        self.base.addSubview(scrollView)
+        scrollView.addSubview(stackViewV)
+        stackViewV.uiUtils.edgeStackViewToSuperView()
+        let topBarSize: CGFloat = hasTopBar ? TopBar.defaultHeight(usingSafeArea: false) : 0
+        let bottomBarSize: CGFloat = 0//BottomBar.backgroundHeight
+        scrollView.autoLayout.trailingToSuperview()
+        scrollView.autoLayout.leftToSuperview()
+        scrollView.autoLayout.topToSuperview(offset: topBarSize, usingSafeArea: false)
+        scrollView.autoLayout.height(screenHeight - topBarSize  - bottomBarSize)
+    }
+    
     func marginToSuperVerticalStackView(trailing: CGFloat, leading: CGFloat) {
         self.base.autoLayout.marginToSuperVerticalStackView(trailing: trailing, leading: leading)
     }

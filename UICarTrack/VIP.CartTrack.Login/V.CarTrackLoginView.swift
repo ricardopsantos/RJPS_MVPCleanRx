@@ -102,12 +102,12 @@ extension V {
             addSubview(scrollView)
             scrollView.addSubview(stackViewVLevel1)
             stackViewVLevel1.uiUtils.addSeparator(withSize: screenHeight/5)
-            stackViewVLevel1.uiUtils.addSubviewSmart(txtUserName)
+            stackViewVLevel1.uiUtils.addSub(view: txtUserName)
             stackViewVLevel1.uiUtils.addSeparator()
             stackViewVLevel1.uiUtils.addSeparator()
-            stackViewVLevel1.uiUtils.addSubviewSmart(txtPassword)
+            stackViewVLevel1.uiUtils.addSub(view: txtPassword)
             stackViewVLevel1.uiUtils.addSeparator()
-            stackViewVLevel1.uiUtils.addSubviewSmart(lblErrorMessage)
+            stackViewVLevel1.uiUtils.addSub(view: lblErrorMessage)
             addSubview(btnLogin)
         }
 

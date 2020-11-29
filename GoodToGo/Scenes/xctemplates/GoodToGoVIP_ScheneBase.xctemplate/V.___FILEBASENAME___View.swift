@@ -28,7 +28,7 @@ import PointFreeFunctions
 // MARK: - Preview
 
 @available(iOS 13.0.0, *)
-struct ___VARIABLE_sceneName___View_UIViewRepresentable: UIViewRepresentable {
+struct ___VARIABLE_sceneName___UIViewRepresentable: UIViewRepresentable {
     func updateUIView(_ uiView: V.___VARIABLE_sceneName___View, context: Context) { }
     func makeUIView(context: Context) -> V.___VARIABLE_sceneName___View {
         return V.___VARIABLE_sceneName___View()
@@ -36,9 +36,9 @@ struct ___VARIABLE_sceneName___View_UIViewRepresentable: UIViewRepresentable {
 }
 
 @available(iOS 13.0.0, *)
-struct ___VARIABLE_sceneName___View_Previews: PreviewProvider {
+struct ___VARIABLE_sceneName___Previews: PreviewProvider {
     static var previews: some SwiftUI.View {
-        ___VARIABLE_sceneName___View_UIViewRepresentable()
+        ___VARIABLE_sceneName___UIViewRepresentable()
     }
 }
 
@@ -91,11 +91,11 @@ extension V {
             addSubview(scrollView)
             scrollView.addSubview(stackViewVLevel1)
             stackViewVLevel1.uiUtils.addSeparator()
-            stackViewVLevel1.uiUtils.addSubviewSmart(lblTitle)
+            stackViewVLevel1.uiUtils.addSub(view: lblTitle)
             stackViewVLevel1.uiUtils.addSeparator()
-            stackViewVLevel1.uiUtils.addSubviewSmart(btnSample1)
+            stackViewVLevel1.uiUtils.addSub(view: btnSample1)
             stackViewVLevel1.uiUtils.addSeparator()
-            stackViewVLevel1.uiUtils.addSubviewSmart(btnSample2)
+            stackViewVLevel1.uiUtils.addSub(view: btnSample2)
             addSubview(tableView)
         }
 

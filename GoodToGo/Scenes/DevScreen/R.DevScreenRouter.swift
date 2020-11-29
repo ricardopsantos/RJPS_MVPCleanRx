@@ -21,29 +21,29 @@ import PointFreeFunctions
 import BaseUI
 
 extension R {
-    class DebugRouter: DebugDataPassingProtocol {
-        weak var viewController: VC.DebugViewController?
+    class DevScreenRouter: DevScreenDataPassingProtocol {
+        weak var viewController: VC.DevScreenViewController?
 
         // DataPassingProtocol Protocol vars...
-        var dsStyles: DebugDataStoreProtocol? { didSet { DevTools.Log.message("DataStore changed") } }
+        var dataStore: DevScreenDataStoreProtocol? { didSet { DevTools.Log.message("DataStore changed") } }
      }
 }
 
 // MARK: RoutingLogicProtocol
 
-extension R.DebugRouter: DebugRoutingLogicProtocol {
+extension R.DevScreenRouter: DevScreenRoutingLogicProtocol {
     func dismissMe() {
         viewController?.dismissMe()
     }
 
     func routeToTemplateWithDataStore() {
-        func passDataToSomewhere(source: DebugDataStoreProtocol, destination: inout DebugDataStoreProtocol) {
+        func passDataToSomewhere(source: DevScreenDataStoreProtocol, destination: inout DevScreenDataStoreProtocol) {
             destination.dsSomeKindOfModelA = source.dsSomeKindOfModelA
             destination.dsSomeKindOfModelB = source.dsSomeKindOfModelB
         }
-        let destinationVC = VC.DebugViewController()
-        if var destinationDS = destinationVC.router?.dsStyles {
-            passDataToSomewhere(source: dsStyles!, destination: &destinationDS)
+        let destinationVC = VC.DevScreenViewController()
+        if var destinationDS = destinationVC.router?.dataStore {
+            passDataToSomewhere(source: dataStore!, destination: &destinationDS)
         }
         viewController?.navigationController?.present(destinationVC, animated: true, completion: nil)
     }
@@ -55,6 +55,6 @@ extension R.DebugRouter: DebugRoutingLogicProtocol {
 
 // MARK: BaseRouterProtocol
 
-extension R.DebugRouter: BaseRouterProtocol {
+extension R.DevScreenRouter: BaseRouterProtocol {
 
 }

@@ -25,19 +25,19 @@ import BaseUI
 // MARK: - Preview
 
 @available(iOS 13.0.0, *)
-struct DebugViewController_UIViewControllerRepresentable: UIViewControllerRepresentable {
-    func updateUIViewController(_ uiViewController: VC.DebugViewController, context: Context) { }
-    func makeUIViewController(context: Context) -> VC.DebugViewController {
-        let vc = VC.DebugViewController()
+struct DevScreenViewController_UIViewControllerRepresentable: UIViewControllerRepresentable {
+    func updateUIViewController(_ uiViewController: VC.DevScreenViewController, context: Context) { }
+    func makeUIViewController(context: Context) -> VC.DevScreenViewController {
+        let vc = VC.DevScreenViewController()
         //vc.something(viewModel: dashboardVM)
         return vc
     }
 }
 
 @available(iOS 13.0.0, *)
-struct DebugViewController_Preview: PreviewProvider {
+struct DevScreenViewController_Preview: PreviewProvider {
     static var previews: some SwiftUI.View {
-        return DebugViewController_UIViewControllerRepresentable()
+        return DevScreenViewController_UIViewControllerRepresentable()
     }
 }
 
@@ -45,11 +45,11 @@ struct DebugViewController_Preview: PreviewProvider {
 
 extension VC {
 
-    class DebugViewController: BaseGenericViewControllerVIP<V.DebugView> {
-        private var interactor: DebugBusinessLogicProtocol?
-        var router: (DebugRoutingLogicProtocol &
-            DebugDataPassingProtocol &
-            DebugRoutingLogicProtocol)?
+    class DevScreenViewController: BaseGenericViewControllerVIP<V.DevScreenView> {
+        private var interactor: DevScreenBusinessLogicProtocol?
+        var router: (DevScreenRoutingLogicProtocol &
+            DevScreenDataPassingProtocol &
+            DevScreenRoutingLogicProtocol)?
 
         private lazy var topGenericView: TopBar = {
             UIKitFactory.topBar(baseController: self, usingSafeArea: false)
@@ -68,7 +68,7 @@ extension VC {
         override func viewDidLoad() {
             super.viewDidLoad()
             if DevTools.onSimulator {
-                DispatchQueue.executeOnce(token: "\(VC.DebugViewController.self).info") {
+                DispatchQueue.executeOnce(token: "\(VC.DevScreenViewController.self).info") {
                     let message = """
                     Debug Screen to help developers to know:
                         - Installed Feature Flags
@@ -88,8 +88,6 @@ extension VC {
             if firstAppearance {
                 interactor?.requestScreenInitialState()
             }
-
-            self.present(DesignablesPreviewVC(), animated: true, completion: nil)
         }
 
         override func viewDidAppear(_ animated: Bool) {
@@ -112,15 +110,15 @@ extension VC {
         override func setup() {
             // This function is called automatically by super BaseGenericView
             let viewController = self
-            let interactor = I.DebugInteractor()
-            let presenter  = P.DebugPresenter()
-            let router     = R.DebugRouter()
+            let interactor = I.DevScreenInteractor()
+            let presenter  = P.DevScreenPresenter()
+            let router     = R.DevScreenRouter()
             viewController.interactor = interactor
             viewController.router = router
             interactor.presenter  = presenter
             presenter.viewController = viewController
             router.viewController = viewController
-            router.dsStyles = interactor
+            router.dataStore = interactor
         }
 
         // This function is called automatically by super BaseGenericView
@@ -144,25 +142,25 @@ extension VC {
 
 // MARK: Public Misc Stuff
 
-extension VC.DebugViewController {
+extension VC.DevScreenViewController {
 
 }
 
 // MARK: Private Misc Stuff
 
-private extension VC.DebugViewController {
+private extension VC.DevScreenViewController {
 
 }
 
 // MARK: DisplayLogicProtocol
 
-extension VC.DebugViewController: DebugDisplayLogicProtocol {
+extension VC.DevScreenViewController: DevScreenDisplayLogicProtocol {
 
-    func displaySomeStuff(viewModel: VM.Debug.SomeStuff.ViewModel) {
+    func displaySomeStuff(viewModel: VM.DevScreen.SomeStuff.ViewModel) {
         // Setting up the view, option 1 : passing the view model
     }
 
-    func displayScreenInitialState(viewModel: VM.Debug.ScreenInitialState.ViewModel) {
+    func displayScreenInitialState(viewModel: VM.DevScreen.ScreenInitialState.ViewModel) {
         title = viewModel.title
     }
 }

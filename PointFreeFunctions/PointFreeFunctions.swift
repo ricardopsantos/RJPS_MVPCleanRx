@@ -24,9 +24,8 @@ public func saveWith(key: String,
 public func getWith(key: String) -> String? {
     if let obj = RJS_StorableKeyValue.with(key: key) {
         return obj.value
-    } else {
-        return nil
     }
+    return nil
 }
 
 public func saveContext() {

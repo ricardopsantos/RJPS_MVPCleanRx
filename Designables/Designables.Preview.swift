@@ -48,94 +48,51 @@ public class DesignablesPreviewVC: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.addSubview(scrollView)
-        //scrollView.addSubview(stackViewVLevel1)
-        scrollView.uiUtils.addStackView(stackViewVLevel1)
-        scrollView.autoLayout.trailingToSuperview()
-        scrollView.autoLayout.leftToSuperview()
-        scrollView.autoLayout.topToSuperview(offset: 0, usingSafeArea: false)
-        scrollView.autoLayout.height(screenHeight)
+        view.uiUtils.addAndSetup(scrollView: scrollView, stackViewV: stackViewVLevel1, hasTopBar: false)
 
-        stackViewVLevel1.uiUtils.addSeparator()
+        view.backgroundColor = ColorName.background.color
 
         stackViewVLevel1.uiUtils.addSection(title: "Labels")
         let labelWithPadding = UIKitFactory.labelWithPadding(title: "Label with padding", style: .title)
         labelWithPadding.backgroundColor = ComponentColor.primary.withAlphaComponent(FadeType.heavy.rawValue)
-        stackViewVLevel1.uiUtils.addSubviewSmart(labelWithPadding)
+        labelWithPadding.height(30)
+        stackViewVLevel1.uiUtils.addSub(view: labelWithPadding)
 
         stackViewVLevel1.uiUtils.addSection(title: "Switch")
         let switchWithCaption = UIKitFactory.switchWithCaption(caption: "Switch With Caption")
-        stackViewVLevel1.uiUtils.addSubviewSmart(switchWithCaption)
+        stackViewVLevel1.uiUtils.addSub(view: switchWithCaption)
 
         stackViewVLevel1.uiUtils.addSection(title: "Buttons")
         let raisedButton = UIKitFactory.raisedButton(title: "Raised Button", backgroundColor: ComponentColor.primary)
-        stackViewVLevel1.uiUtils.addSubviewSmart(raisedButton)
+        stackViewVLevel1.uiUtils.addSub(view: raisedButton)
 
         stackViewVLevel1.uiUtils.addSection(title: "SkyFloatingTextField")
         let skyFloatingLabelTextField = UIKitFactory.skyFloatingTextField(title: "title", placeholder: "placeholder")
-        stackViewVLevel1.uiUtils.addSubviewSmart(skyFloatingLabelTextField)
+        stackViewVLevel1.uiUtils.addSub(view: skyFloatingLabelTextField)
 
         stackViewVLevel1.uiUtils.addSection(title: "Images")
         let avatarView = AvatarView()
         avatarView.setup(viewModel: AvatarView.ViewModel(imageName: "avatar.1"))
-        stackViewVLevel1.uiUtils.addSubviewCentered(avatarView)
+        stackViewVLevel1.uiUtils.addSub(centeredView: avatarView)
         avatarView.autoLayout.width(50)
         avatarView.autoLayout.height(50)
 
         let imageViewWithRoundedShadow = ImageViewWithRoundedShadow()
         imageViewWithRoundedShadow.image = UIImage(named: "notFound")
-        stackViewVLevel1.uiUtils.addSubviewCentered(imageViewWithRoundedShadow)
-        imageViewWithRoundedShadow.autoLayout.width(200)
+        stackViewVLevel1.uiUtils.addSub(centeredView: imageViewWithRoundedShadow)
+        imageViewWithRoundedShadow.autoLayout.width(100)
         imageViewWithRoundedShadow.autoLayout.height(100)
 
-        stackViewVLevel1.uiUtils.addSubviewSmart(UIView())
-
-        //DevTools.DebugView.paint(view: self.view)
-        /*
         let animationView = AnimationView(name: "23038-animatonblue")
-        view.addSubview(animationView)
-        animationView.autoLayout.topToBottom(of: imageViewWithRoundedShadow, offset: offset)
-        animationView.autoLayout.leadingToSuperview(offset: offset)
-        animationView.autoLayout.trailingToSuperview(offset: offset)
+        stackViewVLevel1.uiUtils.addSub(centeredView: animationView)
         animationView.autoLayout.height(200)
+        animationView.autoLayout.width(200)
         animationView.contentMode = .scaleAspectFit
         animationView.loopMode = .loop
         animationView.animationSpeed = 0.5
         animationView.play()
-*/
-    }
-}
 
-class DesignablesPreviewView: UIView {
-    public init() {
-        super.init(frame: .zero)
-        setupView()
-    }
+        //DevTools.DebugView.paint(view: self.view)
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupView()
-    }
-
-    public required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupView()
-    }
-
-    func setupView() {
-/*
-        stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
-
-        let raisedButton = UIKitFactory.raisedButton(title: "raisedButton", backgroundColor: ComponentColor.primary)
-        stackViewVLevel1.uiUtils.safeAddArrangedSubview(raisedButton)
-
-        stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
-
-        let skyFloatingLabelTextField = UIKitFactory.skyFloatingLabelTextField(title: "skyFloatingLabelTextField",
-                                                                               placeholder: "Your skyFloatingLabelTextField")
-        stackViewVLevel1.uiUtils.safeAddArrangedSubview(skyFloatingLabelTextField)
-
-        stackViewVLevel1.uiUtils.addArrangedSeparator(withSize: 1, color: sectionSmallSeparatorColor)
- */
     }
 }

@@ -25,7 +25,7 @@ import BaseUI
 // MARK: - Enums & Other Models
 //
 
-struct DebugView {
+struct DebugScreen {
     enum ScreenLayout {
         case unknown
         case layoutA
@@ -37,30 +37,30 @@ struct DebugView {
 // MARK: - Interactor (Business Logic)
 //
 
-protocol DebugBusinessLogicProtocol: BaseInteractorVIPMandatoryBusinessLogicProtocol {
+protocol DevScreenBusinessLogicProtocol: BaseInteractorVIPMandatoryBusinessLogicProtocol {
     // Naming convention : func request__XXX__(viewModel: VM.Styles.__XXX__.Request)
     func requestScreenInitialState()
-    func requestSomeStuff(request: VM.Debug.SomeStuff.Request)
+    func requestSomeStuff(request: VM.DevScreen.SomeStuff.Request)
 }
 
 //
 // MARK: - Presenter (Presentation Logic)
 //
 
-protocol DebugPresentationLogicProtocol: BasePresenterVIPProtocol {
+protocol DevScreenPresentationLogicProtocol: BasePresenterVIPProtocol {
     // Naming convention : func present__XXX__(response: VM.Styles.__XXX__.Response)
-    func presentScreenInitialState(response: VM.Debug.ScreenInitialState.Response)
-    func presentSomeStuff(response: VM.Debug.SomeStuff.Response)
+    func presentScreenInitialState(response: VM.DevScreen.ScreenInitialState.Response)
+    func presentSomeStuff(response: VM.DevScreen.SomeStuff.Response)
 }
 
 //
 // MARK: - ViewController (Display Logic)
 //
 
-protocol DebugDisplayLogicProtocol: BaseViewControllerVIPProtocol {
+protocol DevScreenDisplayLogicProtocol: BaseViewControllerVIPProtocol {
     // Naming convention : func display__XXX__(viewModel: VM.Styles.__XXX__.ViewModel)
-    func displayScreenInitialState(viewModel: VM.Debug.ScreenInitialState.ViewModel)
-    func displaySomeStuff(viewModel: VM.Debug.SomeStuff.ViewModel)
+    func displayScreenInitialState(viewModel: VM.DevScreen.ScreenInitialState.ViewModel)
+    func displaySomeStuff(viewModel: VM.DevScreen.SomeStuff.ViewModel)
 }
 
 //
@@ -68,7 +68,7 @@ protocol DebugDisplayLogicProtocol: BaseViewControllerVIPProtocol {
 //
 
 // Routing Logic Protocol - all the methods used for routing are kept under this protocol.
-protocol DebugRoutingLogicProtocol {
+protocol DevScreenRoutingLogicProtocol {
     // Naming convention : func routeTo__XXX__MaybeSomeExtraInfo()
     func routeToTemplateWithParentDataStore()
     func routeToTemplateWithDataStore()
@@ -79,17 +79,17 @@ protocol DebugRoutingLogicProtocol {
 //
 
 // DataStore : Data Passing Protocol - a protocol that contains the data that needs to be passed to the destination controller.
-protocol DebugDataPassingProtocol {
+protocol DevScreenDataPassingProtocol {
 
     // DataStore
-    var dsStyles: DebugDataStoreProtocol? { get }
+    var dataStore: DevScreenDataStoreProtocol? { get }
 }
 
 // DataStore : Implemented by the Interactor, and the Router
-protocol DebugDataStoreProtocol {
+protocol DevScreenDataStoreProtocol {
     // must have a reference like [var dataStore: StylesDataStoreProtocol?]
-    var dsSomeKindOfModelA: DebugDataStoreModelA? { get set }
-    var dsSomeKindOfModelB: DebugDataStoreModelB? { get set }
+    var dsSomeKindOfModelA: DevScreenDataStoreModelA? { get set }
+    var dsSomeKindOfModelB: DevScreenDataStoreModelB? { get set }
 
 }
 
@@ -99,18 +99,18 @@ protocol DebugDataStoreProtocol {
 
 // DataStore
 
-struct DebugDataStoreModelA {
+struct DevScreenDataStoreModelA {
     let aString: String
 }
 
-struct DebugDataStoreModelB {
+struct DevScreenDataStoreModelB {
     let aString: String
 }
 
 // Other Models
 
 extension VM {
-    enum Debug {
+    enum DevScreen {
         enum CellType {
             case cellType1
             case cellType2
@@ -130,8 +130,8 @@ extension VM {
                 let someValue: String
                 let someListSectionATitle: String
                 let someListSectionBTitle: String
-                let someListSectionAElements: [VM.Debug.TableItem]
-                let someListSectionBElements: [VM.Debug.TableItem]
+                let someListSectionAElements: [VM.DevScreen.TableItem]
+                let someListSectionBElements: [VM.DevScreen.TableItem]
             }
         }
 
@@ -144,29 +144,29 @@ extension VM {
             struct ViewModel {
                 let title: String
                 let subTitle: String
-                let screenLayout: DebugView.ScreenLayout
+                let screenLayout: DebugScreen.ScreenLayout
             }
         }
     }
 }
 
-extension VM.Debug {
+extension VM.DevScreen {
     struct TableItem: IdentifiableType, Hashable {
 
-        public typealias Identity = VM.Debug.CellType
-        public var identity: VM.Debug.CellType { return cellType }
+        public typealias Identity = VM.DevScreen.CellType
+        public var identity: VM.DevScreen.CellType { return cellType }
 
         let enabled: Bool
         let image: String
         let title: String
         let subtitle: String
-        let cellType: VM.Debug.CellType
+        let cellType: VM.DevScreen.CellType
 
         init(enabled: Bool,
              image: String,
              title: String,
              subtitle: String,
-             cellType: VM.Debug.CellType) {
+             cellType: VM.DevScreen.CellType) {
             self.enabled = enabled
             self.image = image
             self.title = title

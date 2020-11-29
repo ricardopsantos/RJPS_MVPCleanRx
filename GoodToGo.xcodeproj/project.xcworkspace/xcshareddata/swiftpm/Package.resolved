@@ -59,9 +59,9 @@
         "package": "RJPSLibUF",
         "repositoryURL": "https://github.com/ricardopsantos/RJSLibUF",
         "state": {
-          "branch": "master",
-          "revision": "822c43298b065858b1b3209df1e830d80683b3cf",
-          "version": null
+          "branch": null,
+          "revision": "db480edeb37d4fa3d35e9afd678872dc5c38c639",
+          "version": "1.2.0"
         }
       },
       {

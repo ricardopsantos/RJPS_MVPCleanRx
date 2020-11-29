@@ -9,6 +9,8 @@ import UIKit
 //
 import BaseUI
 import DevTools
+import Designables
+
 import UICarTrack
 import UIGalleryApp
 
@@ -27,14 +29,15 @@ extension VC {
 
             // TESTING / DEBUG/ TEMPLATES
             let vipTemplate = createControllers(tabName: "VIP.Template", vc: VC.___VARIABLE_sceneName___ViewController())
-            let vipDebug    = createControllers(tabName: "DevScreen", vc: VC.DebugViewController())
+            let devScreen = createControllers(tabName: "DevScreen", vc: VC.DevScreenViewController())
+            let designablesScreen = createControllers(tabName: "Designables", vc: DesignablesPreviewVC())
 
             var viewControllersList: [UIViewController] = []
             if DevTools.FeatureFlag.showScene_gallery.isTrue { viewControllersList.append(vipGalleryApp) }
             if DevTools.FeatureFlag.showScene_carTrack.isTrue { viewControllersList.append(vipCarTrackApp) }
             if DevTools.FeatureFlag.showScene_vipTemplate.isTrue { viewControllersList.append(vipTemplate) }
 
-            viewControllers = [vipDebug] + viewControllersList
+            viewControllers = [devScreen, designablesScreen] + viewControllersList
             
         }
 

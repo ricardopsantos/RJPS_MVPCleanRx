@@ -162,8 +162,8 @@ public struct UIKitFactory {
         uiSwitch.tintColor = ComponentColor.primary
         uiSwitch.isOn = defaultValue
         uiSwitch.setContentHuggingPriority(.required, for: .horizontal)
-        stackView.uiUtils.addSubviewSmart(label)
-        stackView.uiUtils.addSubviewSmart(uiSwitch)
+        stackView.uiUtils.addSub(view: label)
+        stackView.uiUtils.addSub(view: uiSwitch)
         stackView.tag =  UIKitViewFactoryElementTag.searchBar.rawValue
         if let disposeBag = disposeBag, let toggle = toggle {
             uiSwitch.rx

@@ -32,20 +32,20 @@ import AppResources
 //
 
 extension I {
-    class DebugInteractor: BaseInteractorVIP, DebugDataStoreProtocol {
+    class DevScreenInteractor: BaseInteractorVIP, DevScreenDataStoreProtocol {
 
-        var presenter: DebugPresentationLogicProtocol?
+        var presenter: DevScreenPresentationLogicProtocol?
         weak var basePresenter: BasePresenterVIPProtocol? { return presenter }
 
         // DataStoreProtocol Protocol vars...
-        var dsSomeKindOfModelA: DebugDataStoreModelA?
-        var dsSomeKindOfModelB: DebugDataStoreModelB?
+        var dsSomeKindOfModelA: DevScreenDataStoreModelA?
+        var dsSomeKindOfModelB: DevScreenDataStoreModelB?
     }
 }
 
 // MARK: Interator Mandatory BusinessLogicProtocol
 
-extension I.DebugInteractor: BaseInteractorVIPMandatoryBusinessLogicProtocol {
+extension I.DevScreenInteractor: BaseInteractorVIPMandatoryBusinessLogicProtocol {
 
     /// When the screen is loaded, this function is responsible to bind the View with some (temporary or final) data
     /// till the user have all the data loaded on the view. This will improve user experience.
@@ -57,18 +57,18 @@ extension I.DebugInteractor: BaseInteractorVIPMandatoryBusinessLogicProtocol {
 
 // MARK: Private Stuff
 
-private extension I.DebugInteractor {
+private extension I.DevScreenInteractor {
 
 }
 
 // MARK: BusinessLogicProtocol
 
-extension I.DebugInteractor: DebugBusinessLogicProtocol {
+extension I.DevScreenInteractor: DevScreenBusinessLogicProtocol {
 
     // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
     // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
     // THIS FUNCTION IS JUST FOR DEMONSTRATION PURPOSES. DELETE AFTER USING TEMPLATE
-    func requestSomeStuff(request: VM.Debug.SomeStuff.Request) {
+    func requestSomeStuff(request: VM.DevScreen.SomeStuff.Request) {
 
     }
 

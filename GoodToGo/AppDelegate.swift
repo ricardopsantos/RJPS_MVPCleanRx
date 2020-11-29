@@ -10,6 +10,7 @@ import Foundation
 //
 import RxSwift
 import RxCocoa
+import RJSLibUFStorage
 //
 import AppResources
 import BaseUI
@@ -19,23 +20,12 @@ import Extensions
 import DevTools
 import PointFreeFunctions
 
-import BaseRepositoryWebAPI
-import DomainGalleryApp
-import DomainCarTrack
-import RJSLibUFNetworking
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    struct RemoteRoom {
-
-    }
     var window: UIWindow?
 
     public var reachabilityService: ReachabilityService? = DevTools.reachabilityService
-
-    // Where we have all the dependencies
-    var disposeBag = DisposeBag()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
@@ -54,6 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        saveContext()
+        RJS_DataModelManager.saveContext()
     }
 }
