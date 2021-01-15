@@ -62,7 +62,7 @@ packages:
   RJSLibUF:
     url: https://github.com/ricardopsantos/RJSLibUF
     #branch: master
-    from: 1.2.0
+    from: 1.2.2
 
 # Pulse animation for iOS
   Pulsator:
@@ -228,7 +228,9 @@ targets:
         product: RJSLibUFBase
         product: RJSLibUFStorage
         product: RJSLibUFNetworking
-    
+        link: true 
+       #embed: true 
+
       - target: UICarTrack
         link: true
       - target: UIGalleryApp
@@ -246,6 +248,8 @@ targets:
 ## Specific App Related ## Specific App Related ## Specific App Related ## Specific App Related
 ## Specific App Related ## Specific App Related ## Specific App Related ## Specific App Related
 ## Specific App Related ## Specific App Related ## Specific App Related ## Specific App Related
+
+
 
   UICarTrack:
     templates: 
