@@ -27,7 +27,7 @@ public typealias ColorName = RJS_ColorPack3
 // ComponentColor encapsulate a way to relate a UIComponents or Actions ALLWAYS with the same `ColorName`
 // Have things like ComponentColor.TopBar.background or ComponentColor.TopBar.titleColor that related with UI elements
 // but have things like ComponentColor.accept, ComponentColor.remind, that are related with types of actions
-public typealias ComponentColor = UIColor.App
+public typealias ComponentColor = RJS_AppBrand1
 
 // Fonts Shortcut: https://github.com/ricardopsantos/RJPSLib/blob/master/RJSPLib.AppThemes/LibCode/UIFont%2BExtensions.swift
 // Font styles utils with a font builder for Bold, Regular and Light, and also pre-built styles like : headingJumbo, headingBold, headingMedium, headingSmall

@@ -8,10 +8,11 @@
 import Foundation
 //
 import RxSwift
+import RJSLibUFBase
 //
 import BaseDomain
 
-public class APIRequestOperation<T: ResponseDtoProtocol>: OperationBase {
+public class APIRequestOperation<T: ResponseDtoProtocol>: RJS_OperationBase {
 
     private var block: Observable<T>?
     private var blockList: Observable<[T]>?
