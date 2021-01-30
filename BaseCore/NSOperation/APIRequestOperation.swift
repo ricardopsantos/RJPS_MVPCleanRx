@@ -12,7 +12,23 @@ import RJSLibUFBase
 //
 import BaseDomain
 
-public class APIRequestOperation<T: ResponseDtoProtocol>: RJS_OperationBase {
+// Must be open in order to be heritaded
+open class OperationBase: Operation {
+    private var _executing = false {
+        willSet { willChangeValue(forKey: "isExecuting") }
+        didSet { didChangeValue(forKey: "isExecuting") }
+    }
+    public override var isExecuting: Bool { return _executing }
+    private var _finished = false {
+        willSet { willChangeValue(forKey: "isFinished") }
+        didSet { didChangeValue(forKey: "isFinished") }
+    }
+    public override var isFinished: Bool { return _finished }
+    public func executing(_ executing: Bool) { _executing = executing }
+    public func finish(_ finished: Bool) { _finished = finished }
+}
+
+public class APIRequestOperation<T: ResponseDtoProtocol>: OperationBase {
 
     private var block: Observable<T>?
     private var blockList: Observable<[T]>?

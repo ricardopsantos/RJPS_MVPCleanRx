@@ -196,17 +196,9 @@ esac
 printf "\n"
 printf "\n"
 
-echo "### Perform Xcodegen?"
-echo " [1] : Yes"
-echo " [2] : No/Skip"
-echo -n "Option? "
-read option
-case $option in
-    [1] ) xcodegen -s ./XcodeGen/GoodToGo_VIPCleanRx.yml -p ./ ;;
-   *) echo "Ignored...."
-;;
-esac
-
+echo "Perfoming XcodeGen...."
+xcodegen -s ./XcodeGen/GoodToGo_VIPCleanRx.yml 
+     
 ################################################################################
 
 echo "Opening project...."

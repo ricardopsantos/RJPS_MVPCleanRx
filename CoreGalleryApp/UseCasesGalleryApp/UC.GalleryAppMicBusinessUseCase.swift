@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 //
 import RJSLibUFNetworking
+import RJSLibUFBase
 import RxSwift
 //
 import BaseConstants
@@ -30,7 +31,7 @@ public class GalleryAppMiscBusinessUseCase: GenericUseCase, GalleryAppGenericBus
         return Observable<UIImage>.create { observer in
             if let size = request.sizes.size.filter({ $0.label == "Large Square" }).last {
                 let operation = DownloadImageOperation(withURLString: size.source)
-                OperationQueueManager.shared.add(operation)
+                RJS_OperationQueueManager.shared.add(operation)
                 operation.completionBlock = {
                     if operation.isCancelled {
                         observer.on(.next(Images.notFound.image))

@@ -1132,7 +1132,8 @@
 				901B5A232CC62329E99111D2 /* GraphSimplified.viz */,
 				9E5DD53A3AF463B5C038EDE3 /* GraphVIP.viz */,
 			);
-			path = Documents;
+			name = Documents;
+			path = ../Documents;
 			sourceTree = "<group>";
 		};
 		1215416551153AACFAE444FB /* GoodToGoVIP_ScheneBase.xctemplate */ = {
@@ -1199,7 +1200,8 @@
 				D2122D5AB505AD8E137EB6F9 /* UIView+Extensions.swift */,
 				91244139F6F8E8D73B680712 /* UIViewController+Extensions.swift */,
 			);
-			path = Extensions;
+			name = Extensions;
+			path = ../Extensions;
 			sourceTree = "<group>";
 		};
 		20F0E58F26AA393F38F15ABA /* Managers */ = {
@@ -1223,7 +1225,8 @@
 				5DE7BEFA7F8EC8365E066F19 /* README.md */,
 				8D8C99B90E50BFD58C1C0E72 /* typealias.swift */,
 			);
-			path = BaseConstants;
+			name = BaseConstants;
+			path = ../BaseConstants;
 			sourceTree = "<group>";
 		};
 		351649A5C6B11EB74EA3A869 /* Localizable */ = {
@@ -1245,7 +1248,8 @@
 				2C9839E5AC069C79EBB08EEC /* UIGalleryApp.h */,
 				861549B97E424F12130B9306 /* UIGalleryAppEntryPoint.swift */,
 			);
-			path = UIGalleryApp;
+			name = UIGalleryApp;
+			path = ../UIGalleryApp;
 			sourceTree = "<group>";
 		};
 		37A1F0CCCFAF0D380981E04E /* Frameworks */ = {
@@ -1305,7 +1309,8 @@
 				5349B4EFB0902F094C18A986 /* TO_DO.swift */,
 				430F681D3686AEC317FE425B /* typealias.swift */,
 			);
-			path = GoodToGo;
+			name = GoodToGo;
+			path = ../GoodToGo;
 			sourceTree = "<group>";
 		};
 		4573FD1A2A160978920A148D /* VIP.CartTrack.Map */ = {
@@ -1397,7 +1402,8 @@
 				0BF486555906E9CF5551AF02 /* VC.BaseGenericViewControllerVIP.swift */,
 				76E5937D421A78CD2E0CB014 /* VC.BaseViewControllerVIP.swift */,
 			);
-			path = BaseUI;
+			name = BaseUI;
+			path = ../BaseUI;
 			sourceTree = "<group>";
 		};
 		4AE060B4BEA1EB1DADE0F14D /* BaseCore */ = {
@@ -1414,7 +1420,8 @@
 				B5706AB7011784D0194DF710 /* typealias.swift */,
 				12381DC2ED98F424261A734B /* UC.GenericUseCase.swift */,
 			);
-			path = BaseCore;
+			name = BaseCore;
+			path = ../BaseCore;
 			sourceTree = "<group>";
 		};
 		4AE788F327B72C8C5F356D55 /* UICarTrack */ = {
@@ -1429,7 +1436,8 @@
 				098AEBDCEA9975FCF09496B6 /* UICarTrack.h */,
 				042BAF41F6BDA03825FF2311 /* UICarTrackEntryPoint.swift */,
 			);
-			path = UICarTrack;
+			name = UICarTrack;
+			path = ../UICarTrack;
 			sourceTree = "<group>";
 		};
 		4DF30D6F3FCADAB832858F0D /* ResponseDto */ = {
@@ -1511,7 +1519,8 @@
 				31C15A95CB73738D5037F9E4 /* README.md */,
 				4E4C3CF66555808A13F41861 /* typealias.swift */,
 			);
-			path = BaseDomain;
+			name = BaseDomain;
+			path = ../BaseDomain;
 			sourceTree = "<group>";
 		};
 		59B19B679987883BC8C86112 /* Carthage */ = {
@@ -1546,7 +1555,8 @@
 				3D035586DD2FE9BA0215D688 /* Factory+Errors.swift */,
 				2DEF0FF7A1F2A09403599D1D /* Info.plist */,
 			);
-			path = Factory;
+			name = Factory;
+			path = ../Factory;
 			sourceTree = "<group>";
 		};
 		72B6F66C93C01E78CAE86092 /* Models */ = {
@@ -1566,7 +1576,8 @@
 				34210C2A944AB7861C646C60 /* CoreGalleryApp.h */,
 				524E8B37A12C7D35E2BA7BE6 /* Info.plist */,
 			);
-			path = CoreGalleryApp;
+			name = CoreGalleryApp;
+			path = ../CoreGalleryApp;
 			sourceTree = "<group>";
 		};
 		81073A30FDAE480FCFBD3912 /* BaseRepositoryWebAPI */ = {
@@ -1579,7 +1590,8 @@
 				656941BEEB781651ACB46A51 /* README.md */,
 				14216041DE19778DB9662E31 /* typealias.swift */,
 			);
-			path = BaseRepositoryWebAPI;
+			name = BaseRepositoryWebAPI;
+			path = ../BaseRepositoryWebAPI;
 			sourceTree = "<group>";
 		};
 		81FDB468BBA902334DEEEAA0 /* Auxiliar */ = {
@@ -1626,7 +1638,8 @@
 				22108E5E58A5D180AB8930A9 /* README.md */,
 				3D1D477C4AC2E2C70D1714C1 /* typealias.swift */,
 			);
-			path = AppResources;
+			name = AppResources;
+			path = ../AppResources;
 			sourceTree = "<group>";
 		};
 		8D4769C094A30D10985C90CC /* Requests */ = {
@@ -1674,7 +1687,8 @@
 				4B7DC4D992F15158511B4463 /* Info.plist */,
 				43C7132E1237BF0CF5EDB517 /* UC.CarTrackGenericAppBusinessUseCaseProtocol.swift */,
 			);
-			path = DomainCarTrack;
+			name = DomainCarTrack;
+			path = ../DomainCarTrack;
 			sourceTree = "<group>";
 		};
 		A0C20E736364B61DB0258098 /* images */ = {
@@ -1701,7 +1715,8 @@
 				D61602393A413ED4755F6917 /* WebAPI.GalleryApp.swift */,
 				541D78A59F14BDD402A91815 /* WebAPI.GalleryApp+APIRequests.swift */,
 			);
-			path = RepositoryWebAPIGalleryApp;
+			name = RepositoryWebAPIGalleryApp;
+			path = ../RepositoryWebAPIGalleryApp;
 			sourceTree = "<group>";
 		};
 		A7ED579F2D30B327850EEDD7 /* Caching */ = {
@@ -1738,7 +1753,8 @@
 				2549B81F4FC638523ACB6246 /* typealias.swift */,
 				2D2D8A208A50ED7F95F969D1 /* UIKitFactory.swift */,
 			);
-			path = Designables;
+			name = Designables;
+			path = ../Designables;
 			sourceTree = "<group>";
 		};
 		BEF7E0B5BA78D42867D712E7 /* AppMocks */ = {
@@ -1771,7 +1787,8 @@
 				6E04598D7467909987A500E7 /* WebAPI.CarTrack.swift */,
 				13A8738239B3DC71EA14200F /* WebAPI.CarTrack+APIRequests.swift */,
 			);
-			path = RepositoryWebAPICartrack;
+			name = RepositoryWebAPICartrack;
+			path = ../RepositoryWebAPICartrack;
 			sourceTree = "<group>";
 		};
 		C37DB3E8B29622C4E11AD916 /* DebugView */ = {
@@ -1833,7 +1850,8 @@
 				9A8E0C5B0678C62CDAC71503 /* README.md */,
 				68CB158B0C7AE7B901466EE3 /* typealias.swift */,
 			);
-			path = AppTheme;
+			name = AppTheme;
+			path = ../AppTheme;
 			sourceTree = "<group>";
 		};
 		D0A7A55395D9F6BA85D3F6F2 /* Workers */ = {
@@ -1855,7 +1873,8 @@
 				B0894CC2A512A44DA090422A /* RP.KeyValuesStorageRepository.swift */,
 				FE9C816E60F2AFD02F2ABDAF /* typealias.swift */,
 			);
-			path = BaseRepositories;
+			name = BaseRepositories;
+			path = ../BaseRepositories;
 			sourceTree = "<group>";
 		};
 		D50959EDD7D461E5986B6CC7 /* Requests */ = {
@@ -1888,7 +1907,8 @@
 				4E8CD8E60597F52159F0B5D9 /* UC.GalleryAppGenericBusinessUseCaseProtocol.swift */,
 				A6F0597D1B1AF8A444CB4812 /* UC.GalleryAppWebAPIUseCaseProtocol.swift */,
 			);
-			path = DomainGalleryApp;
+			name = DomainGalleryApp;
+			path = ../DomainGalleryApp;
 			sourceTree = "<group>";
 		};
 		E22B763BE887C86612894039 /* Mappers */ = {
@@ -1922,7 +1942,8 @@
 				D2E0B7132A6286502B32F7C9 /* RxReachabilityService.swift */,
 				2769C9B97F5EFC9882E87E20 /* typelias.swift */,
 			);
-			path = DevTools;
+			name = DevTools;
+			path = ../DevTools;
 			sourceTree = "<group>";
 		};
 		F01EB4A956FC95234EE38E11 /* CoreCarTrack */ = {
@@ -1933,7 +1954,8 @@
 				AB78365960E18546EA5563B4 /* CoreCarTrack.h */,
 				2C8A1C5A6151E3798431716D /* Info.plist */,
 			);
-			path = CoreCarTrack;
+			name = CoreCarTrack;
+			path = ../CoreCarTrack;
 			sourceTree = "<group>";
 		};
 		F3E7D4EDFDB89C0EFBC003D6 /* Auxiliar */ = {
@@ -1951,7 +1973,8 @@
 				85A775B522B970CE3FF5B870 /* PointFreeFunctions.h */,
 				0D4224DDE2391855ACD41F15 /* PointFreeFunctions.swift */,
 			);
-			path = PointFreeFunctions;
+			name = PointFreeFunctions;
+			path = ../PointFreeFunctions;
 			sourceTree = "<group>";
 		};
 		F93A0A1C2109BDDF6691E161 /* xctemplates */ = {
@@ -3204,7 +3227,7 @@
 		};
 		3C630B69EE0E27A5C80B99E4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = "TEMP_712EE32B-C6ED-4F7B-8BA5-7DFFACBA5EFA" /* RJSLibUFStorage */;
+			productRef = "TEMP_ACA282FB-4779-434C-831B-3707019C7D45" /* RJSLibUFStorage */;
 		};
 		3D39F4EF85E8525C3F7FC918 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3228,7 +3251,7 @@
 		};
 		609891BAE36C59301A7FFFDA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = "TEMP_0B142B21-EF0A-483E-828D-A95B230E243F" /* Motion */;
+			productRef = "TEMP_A60CD0C8-1B04-4D3D-9958-9FAE41C51965" /* Motion */;
 		};
 		618B3C7FCBF4FEC0623B9290 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3247,7 +3270,7 @@
 		};
 		70D445A7C1CF92449129B6EC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = "TEMP_4269E70F-A6A2-4442-8095-EB74FD07B5BB" /* RJSLibUFBase */;
+			productRef = "TEMP_E558058C-D039-44C9-9330-219CF21F319F" /* RJSLibUFBase */;
 		};
 		73D717C42A9D0EA5311C952B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3276,7 +3299,7 @@
 		};
 		8539D3B88E3CFCD83F2C4F2D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = "TEMP_A986028F-2C73-4F2F-BE13-0DB37155CF19" /* RJSLibUFNetworking */;
+			productRef = "TEMP_55FD86B7-30E8-4685-AAED-E1042A02EF2A" /* RJSLibUFNetworking */;
 		};
 		8756DF2BB3526E4ACDBB06C4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3285,7 +3308,7 @@
 		};
 		90CEB7AF4A32A3379AA11A54 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = "TEMP_EDB5D6BD-412D-4A73-8A8B-4017B8A26FE2" /* RJSLibUFStorage */;
+			productRef = "TEMP_0615AD9F-44DC-45D6-BAE2-3060057D8BF8" /* RJSLibUFStorage */;
 		};
 		91ECA36F6B02C4F8C0538A61 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3304,15 +3327,15 @@
 		};
 		A27632EDA7BA5E97E2588A7D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = "TEMP_387442B4-52C0-4CAE-8575-66297593F2A7" /* SwinjectAutoregistration */;
+			productRef = "TEMP_B7B96275-5DBF-4167-A07D-3496831D5A01" /* SwinjectAutoregistration */;
 		};
 		A3B199005E63A49F9250DA3D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = "TEMP_43CEBA68-8A71-4F94-B0A1-0139B7421059" /* RJSLibUFStorage */;
+			productRef = "TEMP_C114CD13-1E6E-4C7C-97E9-C36497AD5B5B" /* RJSLibUFStorage */;
 		};
 		A49F08A24FEA492683274BAF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = "TEMP_7D18E405-DA96-4CEE-8633-53C0A7EDA1D2" /* Material */;
+			productRef = "TEMP_A37BCD13-D9AA-4E6B-BD15-EA9E87CF5EC5" /* Material */;
 		};
 		A505079630C86D39CCF92C88 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3321,7 +3344,7 @@
 		};
 		A77B50AC079C11C526EA5D24 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = "TEMP_7FCEB1BA-C30A-4621-B33F-D99FDE728391" /* TinyConstraints */;
+			productRef = "TEMP_1FEB045F-3B84-42A7-9192-473BBA2BD995" /* TinyConstraints */;
 		};
 		AC41A55D434511B140AB19DC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3335,7 +3358,7 @@
 		};
 		BC5556AD7889303C383B595E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = "TEMP_E977978F-2FE3-4465-9E4B-D8B90A6712B7" /* RJSLibUFNetworking */;
+			productRef = "TEMP_216CC099-169C-4735-BFAB-E792FC2F8FF1" /* RJSLibUFNetworking */;
 		};
 		BD29A49E69E7B5F6D276501E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3394,7 +3417,7 @@
 		};
 		D3AD76175CE0D6630B9273AA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = "TEMP_A251D78E-34E3-49C5-9443-F60CB806EBE0" /* RJSLibUFNetworking */;
+			productRef = "TEMP_CD60725D-CB68-4736-8318-279F145AAACD" /* RJSLibUFNetworking */;
 		};
 		DE4A3D55A65477D9EC5D27F8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3428,7 +3451,7 @@
 		};
 		F7C2B241B98302B53CE3F5D5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = "TEMP_0CE84222-95B8-471A-8CAA-6235867C45E2" /* Swinject */;
+			productRef = "TEMP_254E52C1-B3C5-457B-9252-2E1C08A5B533" /* Swinject */;
 		};
 		F7D5E40F89E8AE69049840B0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3476,7 +3499,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseRepositories/Info.plist;
+				INFOPLIST_FILE = ../BaseRepositories/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3505,7 +3528,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Extensions/Info.plist;
+				INFOPLIST_FILE = ../Extensions/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3534,7 +3557,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = UIGalleryApp/Info.plist;
+				INFOPLIST_FILE = ../UIGalleryApp/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3559,7 +3582,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = PointFreeFunctions/Info.plist;
+				INFOPLIST_FILE = ../PointFreeFunctions/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3588,7 +3611,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = CoreCarTrack/Info.plist;
+				INFOPLIST_FILE = ../CoreCarTrack/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3617,7 +3640,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = UICarTrack/Info.plist;
+				INFOPLIST_FILE = ../UICarTrack/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3646,7 +3669,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = RepositoryWebAPIGalleryApp/Info.plist;
+				INFOPLIST_FILE = ../RepositoryWebAPIGalleryApp/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3675,7 +3698,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = UICarTrack/Info.plist;
+				INFOPLIST_FILE = ../UICarTrack/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3704,7 +3727,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Designables/Info.plist;
+				INFOPLIST_FILE = ../Designables/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3733,7 +3756,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseRepositoryWebAPI/Info.plist;
+				INFOPLIST_FILE = ../BaseRepositoryWebAPI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3758,7 +3781,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = BaseConstants/Info.plist;
+				INFOPLIST_FILE = ../BaseConstants/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3787,7 +3810,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseCore/Info.plist;
+				INFOPLIST_FILE = ../BaseCore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3816,7 +3839,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = UICarTrack/Info.plist;
+				INFOPLIST_FILE = ../UICarTrack/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3845,7 +3868,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Factory/Info.plist;
+				INFOPLIST_FILE = ../Factory/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3874,7 +3897,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = UICarTrack/Info.plist;
+				INFOPLIST_FILE = ../UICarTrack/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3903,7 +3926,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = DomainGalleryApp/Info.plist;
+				INFOPLIST_FILE = ../DomainGalleryApp/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3932,7 +3955,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = UIGalleryApp/Info.plist;
+				INFOPLIST_FILE = ../UIGalleryApp/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3961,7 +3984,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = DevTools/Info.plist;
+				INFOPLIST_FILE = ../DevTools/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3990,7 +4013,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseUI/Info.plist;
+				INFOPLIST_FILE = ../BaseUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4019,7 +4042,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = RepositoryWebAPICartrack/Info.plist;
+				INFOPLIST_FILE = ../RepositoryWebAPICartrack/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4048,7 +4071,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = AppResources/Info.plist;
+				INFOPLIST_FILE = ../AppResources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4141,7 +4164,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = AppResources/Info.plist;
+				INFOPLIST_FILE = ../AppResources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4170,7 +4193,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = CoreGalleryApp/Info.plist;
+				INFOPLIST_FILE = ../CoreGalleryApp/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4199,7 +4222,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = UIGalleryApp/Info.plist;
+				INFOPLIST_FILE = ../UIGalleryApp/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4228,7 +4251,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Factory/Info.plist;
+				INFOPLIST_FILE = ../Factory/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4257,7 +4280,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Extensions/Info.plist;
+				INFOPLIST_FILE = ../Extensions/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4350,7 +4373,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseRepositoryWebAPI/Info.plist;
+				INFOPLIST_FILE = ../BaseRepositoryWebAPI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4379,7 +4402,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = DomainCarTrack/Info.plist;
+				INFOPLIST_FILE = ../DomainCarTrack/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4408,7 +4431,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = RepositoryWebAPICartrack/Info.plist;
+				INFOPLIST_FILE = ../RepositoryWebAPICartrack/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4437,7 +4460,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = CoreGalleryApp/Info.plist;
+				INFOPLIST_FILE = ../CoreGalleryApp/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4466,7 +4489,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseCore/Info.plist;
+				INFOPLIST_FILE = ../BaseCore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4548,7 +4571,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = BaseConstants/Info.plist;
+				INFOPLIST_FILE = ../BaseConstants/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4577,7 +4600,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = CoreGalleryApp/Info.plist;
+				INFOPLIST_FILE = ../CoreGalleryApp/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4606,7 +4629,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Designables/Info.plist;
+				INFOPLIST_FILE = ../Designables/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4635,7 +4658,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Factory/Info.plist;
+				INFOPLIST_FILE = ../Factory/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4664,7 +4687,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Factory/Info.plist;
+				INFOPLIST_FILE = ../Factory/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4693,7 +4716,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseCore/Info.plist;
+				INFOPLIST_FILE = ../BaseCore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4722,7 +4745,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = RepositoryWebAPIGalleryApp/Info.plist;
+				INFOPLIST_FILE = ../RepositoryWebAPIGalleryApp/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4751,7 +4774,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseCore/Info.plist;
+				INFOPLIST_FILE = ../BaseCore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4780,7 +4803,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = DevTools/Info.plist;
+				INFOPLIST_FILE = ../DevTools/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4809,7 +4832,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = CoreCarTrack/Info.plist;
+				INFOPLIST_FILE = ../CoreCarTrack/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4838,7 +4861,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseRepositories/Info.plist;
+				INFOPLIST_FILE = ../BaseRepositories/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4867,7 +4890,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Factory/Info.plist;
+				INFOPLIST_FILE = ../Factory/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4896,7 +4919,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseDomain/Info.plist;
+				INFOPLIST_FILE = ../BaseDomain/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4925,7 +4948,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseRepositories/Info.plist;
+				INFOPLIST_FILE = ../BaseRepositories/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4954,7 +4977,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Designables/Info.plist;
+				INFOPLIST_FILE = ../Designables/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4979,7 +5002,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = PointFreeFunctions/Info.plist;
+				INFOPLIST_FILE = ../PointFreeFunctions/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5008,7 +5031,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = UIGalleryApp/Info.plist;
+				INFOPLIST_FILE = ../UIGalleryApp/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5037,7 +5060,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = CoreGalleryApp/Info.plist;
+				INFOPLIST_FILE = ../CoreGalleryApp/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5066,7 +5089,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseRepositoryWebAPI/Info.plist;
+				INFOPLIST_FILE = ../BaseRepositoryWebAPI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5095,7 +5118,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseRepositories/Info.plist;
+				INFOPLIST_FILE = ../BaseRepositories/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5124,7 +5147,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = UICarTrack/Info.plist;
+				INFOPLIST_FILE = ../UICarTrack/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5153,7 +5176,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = DomainGalleryApp/Info.plist;
+				INFOPLIST_FILE = ../DomainGalleryApp/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5182,7 +5205,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = DomainGalleryApp/Info.plist;
+				INFOPLIST_FILE = ../DomainGalleryApp/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5211,7 +5234,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = CoreCarTrack/Info.plist;
+				INFOPLIST_FILE = ../CoreCarTrack/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5240,7 +5263,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = DomainGalleryApp/Info.plist;
+				INFOPLIST_FILE = ../DomainGalleryApp/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5333,7 +5356,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Designables/Info.plist;
+				INFOPLIST_FILE = ../Designables/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5426,7 +5449,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = AppResources/Info.plist;
+				INFOPLIST_FILE = ../AppResources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5455,7 +5478,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = RepositoryWebAPIGalleryApp/Info.plist;
+				INFOPLIST_FILE = ../RepositoryWebAPIGalleryApp/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5484,7 +5507,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = CoreGalleryApp/Info.plist;
+				INFOPLIST_FILE = ../CoreGalleryApp/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5513,7 +5536,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = DevTools/Info.plist;
+				INFOPLIST_FILE = ../DevTools/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5542,7 +5565,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseUI/Info.plist;
+				INFOPLIST_FILE = ../BaseUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5571,7 +5594,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseRepositoryWebAPI/Info.plist;
+				INFOPLIST_FILE = ../BaseRepositoryWebAPI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5600,7 +5623,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Extensions/Info.plist;
+				INFOPLIST_FILE = ../Extensions/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5629,7 +5652,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = AppResources/Info.plist;
+				INFOPLIST_FILE = ../AppResources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5658,7 +5681,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = AppTheme/Info.plist;
+				INFOPLIST_FILE = ../AppTheme/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5683,7 +5706,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = PointFreeFunctions/Info.plist;
+				INFOPLIST_FILE = ../PointFreeFunctions/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5712,7 +5735,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseRepositoryWebAPI/Info.plist;
+				INFOPLIST_FILE = ../BaseRepositoryWebAPI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5737,7 +5760,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = BaseConstants/Info.plist;
+				INFOPLIST_FILE = ../BaseConstants/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5766,7 +5789,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = RepositoryWebAPICartrack/Info.plist;
+				INFOPLIST_FILE = ../RepositoryWebAPICartrack/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5795,7 +5818,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = DevTools/Info.plist;
+				INFOPLIST_FILE = ../DevTools/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5816,12 +5839,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CUSTOM_BUILD_SETTING = my_value_5;
+				CUSTOM_BUILD_SETTING = my_value_6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = GoodToGo/SupportingFiles/Info.plist;
+				INFOPLIST_FILE = ../GoodToGo/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5847,7 +5870,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = UIGalleryApp/Info.plist;
+				INFOPLIST_FILE = ../UIGalleryApp/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5876,7 +5899,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = AppTheme/Info.plist;
+				INFOPLIST_FILE = ../AppTheme/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5905,7 +5928,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = RepositoryWebAPICartrack/Info.plist;
+				INFOPLIST_FILE = ../RepositoryWebAPICartrack/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5934,7 +5957,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseUI/Info.plist;
+				INFOPLIST_FILE = ../BaseUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5959,7 +5982,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = BaseConstants/Info.plist;
+				INFOPLIST_FILE = ../BaseConstants/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5988,7 +6011,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = CoreCarTrack/Info.plist;
+				INFOPLIST_FILE = ../CoreCarTrack/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6017,7 +6040,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = DomainCarTrack/Info.plist;
+				INFOPLIST_FILE = ../DomainCarTrack/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6046,7 +6069,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = RepositoryWebAPIGalleryApp/Info.plist;
+				INFOPLIST_FILE = ../RepositoryWebAPIGalleryApp/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6075,7 +6098,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = RepositoryWebAPICartrack/Info.plist;
+				INFOPLIST_FILE = ../RepositoryWebAPICartrack/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6104,7 +6127,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseCore/Info.plist;
+				INFOPLIST_FILE = ../BaseCore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6133,7 +6156,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseRepositories/Info.plist;
+				INFOPLIST_FILE = ../BaseRepositories/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6159,7 +6182,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = GoodToGo/SupportingFiles/Info.plist;
+				INFOPLIST_FILE = ../GoodToGo/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6185,7 +6208,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = CoreCarTrack/Info.plist;
+				INFOPLIST_FILE = ../CoreCarTrack/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6214,7 +6237,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseUI/Info.plist;
+				INFOPLIST_FILE = ../BaseUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6243,7 +6266,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = AppResources/Info.plist;
+				INFOPLIST_FILE = ../AppResources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6272,7 +6295,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = AppTheme/Info.plist;
+				INFOPLIST_FILE = ../AppTheme/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6298,7 +6321,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = GoodToGo/SupportingFiles/Info.plist;
+				INFOPLIST_FILE = ../GoodToGo/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6324,7 +6347,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = DomainCarTrack/Info.plist;
+				INFOPLIST_FILE = ../DomainCarTrack/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6353,7 +6376,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = AppTheme/Info.plist;
+				INFOPLIST_FILE = ../AppTheme/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6382,7 +6405,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseDomain/Info.plist;
+				INFOPLIST_FILE = ../BaseDomain/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6411,7 +6434,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = DomainCarTrack/Info.plist;
+				INFOPLIST_FILE = ../DomainCarTrack/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6440,7 +6463,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = RepositoryWebAPIGalleryApp/Info.plist;
+				INFOPLIST_FILE = ../RepositoryWebAPIGalleryApp/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6461,12 +6484,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CUSTOM_BUILD_SETTING = my_value_6;
+				CUSTOM_BUILD_SETTING = my_value_3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = GoodToGo/SupportingFiles/Info.plist;
+				INFOPLIST_FILE = ../GoodToGo/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6492,7 +6515,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Extensions/Info.plist;
+				INFOPLIST_FILE = ../Extensions/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6521,7 +6544,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = DomainCarTrack/Info.plist;
+				INFOPLIST_FILE = ../DomainCarTrack/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6550,7 +6573,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Extensions/Info.plist;
+				INFOPLIST_FILE = ../Extensions/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6579,7 +6602,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseDomain/Info.plist;
+				INFOPLIST_FILE = ../BaseDomain/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6608,7 +6631,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = AppTheme/Info.plist;
+				INFOPLIST_FILE = ../AppTheme/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6637,7 +6660,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseDomain/Info.plist;
+				INFOPLIST_FILE = ../BaseDomain/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6666,7 +6689,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = DomainGalleryApp/Info.plist;
+				INFOPLIST_FILE = ../DomainGalleryApp/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6691,7 +6714,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = PointFreeFunctions/Info.plist;
+				INFOPLIST_FILE = ../PointFreeFunctions/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6716,7 +6739,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = PointFreeFunctions/Info.plist;
+				INFOPLIST_FILE = ../PointFreeFunctions/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6745,7 +6768,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Designables/Info.plist;
+				INFOPLIST_FILE = ../Designables/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6774,7 +6797,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = DevTools/Info.plist;
+				INFOPLIST_FILE = ../DevTools/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6803,7 +6826,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseUI/Info.plist;
+				INFOPLIST_FILE = ../BaseUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6828,7 +6851,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = BaseConstants/Info.plist;
+				INFOPLIST_FILE = ../BaseConstants/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6857,7 +6880,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = BaseDomain/Info.plist;
+				INFOPLIST_FILE = ../BaseDomain/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6883,7 +6906,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = GoodToGo/SupportingFiles/Info.plist;
+				INFOPLIST_FILE = ../GoodToGo/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7183,7 +7206,7 @@
 			repositoryURL = "https://github.com/ricardopsantos/RJSLibUF";
 			requirement = {
 				kind = revision;
-				revision = e080425880a122e52d93c990bae71fe0f4c99d84;
+				revision = 71912bcc27fff048eb85ea8f83252cfbd4aca852;
 			};
 		};
 		24BFD0DDA2F31045C9DEA293 /* XCRemoteSwiftPackageReference "Motion" */ = {
@@ -7432,65 +7455,65 @@
 			package = 9026829975E42CC1A1A037B5 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		"TEMP_0B142B21-EF0A-483E-828D-A95B230E243F" /* Motion */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 24BFD0DDA2F31045C9DEA293 /* XCRemoteSwiftPackageReference "Motion" */;
-			productName = Motion;
-		};
-		"TEMP_0CE84222-95B8-471A-8CAA-6235867C45E2" /* Swinject */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 98184069796F2EF7320C9BE9 /* XCRemoteSwiftPackageReference "Swinject" */;
-			productName = Swinject;
-		};
-		"TEMP_387442B4-52C0-4CAE-8575-66297593F2A7" /* SwinjectAutoregistration */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 821E5BE1D7AA2837BE9DF566 /* XCRemoteSwiftPackageReference "SwinjectAutoregistration" */;
-			productName = SwinjectAutoregistration;
-		};
-		"TEMP_4269E70F-A6A2-4442-8095-EB74FD07B5BB" /* RJSLibUFBase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 01D0D5EF5E6BB6DCE7FB2990 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
-			productName = RJSLibUFBase;
-		};
-		"TEMP_43CEBA68-8A71-4F94-B0A1-0139B7421059" /* RJSLibUFStorage */ = {
+		"TEMP_0615AD9F-44DC-45D6-BAE2-3060057D8BF8" /* RJSLibUFStorage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 01D0D5EF5E6BB6DCE7FB2990 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
 			productName = RJSLibUFStorage;
 		};
-		"TEMP_712EE32B-C6ED-4F7B-8BA5-7DFFACBA5EFA" /* RJSLibUFStorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 01D0D5EF5E6BB6DCE7FB2990 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
-			productName = RJSLibUFStorage;
-		};
-		"TEMP_7D18E405-DA96-4CEE-8633-53C0A7EDA1D2" /* Material */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F35621226A3B077B5AF30EB9 /* XCRemoteSwiftPackageReference "Material" */;
-			productName = Material;
-		};
-		"TEMP_7FCEB1BA-C30A-4621-B33F-D99FDE728391" /* TinyConstraints */ = {
+		"TEMP_1FEB045F-3B84-42A7-9192-473BBA2BD995" /* TinyConstraints */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6E7AC0EE26DDC6C5437565BA /* XCRemoteSwiftPackageReference "TinyConstraints" */;
 			productName = TinyConstraints;
 		};
-		"TEMP_A251D78E-34E3-49C5-9443-F60CB806EBE0" /* RJSLibUFNetworking */ = {
+		"TEMP_216CC099-169C-4735-BFAB-E792FC2F8FF1" /* RJSLibUFNetworking */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 01D0D5EF5E6BB6DCE7FB2990 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
 			productName = RJSLibUFNetworking;
 		};
-		"TEMP_A986028F-2C73-4F2F-BE13-0DB37155CF19" /* RJSLibUFNetworking */ = {
+		"TEMP_254E52C1-B3C5-457B-9252-2E1C08A5B533" /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98184069796F2EF7320C9BE9 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+		"TEMP_55FD86B7-30E8-4685-AAED-E1042A02EF2A" /* RJSLibUFNetworking */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 01D0D5EF5E6BB6DCE7FB2990 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
 			productName = RJSLibUFNetworking;
 		};
-		"TEMP_E977978F-2FE3-4465-9E4B-D8B90A6712B7" /* RJSLibUFNetworking */ = {
+		"TEMP_A37BCD13-D9AA-4E6B-BD15-EA9E87CF5EC5" /* Material */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 01D0D5EF5E6BB6DCE7FB2990 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
-			productName = RJSLibUFNetworking;
+			package = F35621226A3B077B5AF30EB9 /* XCRemoteSwiftPackageReference "Material" */;
+			productName = Material;
 		};
-		"TEMP_EDB5D6BD-412D-4A73-8A8B-4017B8A26FE2" /* RJSLibUFStorage */ = {
+		"TEMP_A60CD0C8-1B04-4D3D-9958-9FAE41C51965" /* Motion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 24BFD0DDA2F31045C9DEA293 /* XCRemoteSwiftPackageReference "Motion" */;
+			productName = Motion;
+		};
+		"TEMP_ACA282FB-4779-434C-831B-3707019C7D45" /* RJSLibUFStorage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 01D0D5EF5E6BB6DCE7FB2990 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
 			productName = RJSLibUFStorage;
+		};
+		"TEMP_B7B96275-5DBF-4167-A07D-3496831D5A01" /* SwinjectAutoregistration */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 821E5BE1D7AA2837BE9DF566 /* XCRemoteSwiftPackageReference "SwinjectAutoregistration" */;
+			productName = SwinjectAutoregistration;
+		};
+		"TEMP_C114CD13-1E6E-4C7C-97E9-C36497AD5B5B" /* RJSLibUFStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01D0D5EF5E6BB6DCE7FB2990 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
+			productName = RJSLibUFStorage;
+		};
+		"TEMP_CD60725D-CB68-4736-8318-279F145AAACD" /* RJSLibUFNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01D0D5EF5E6BB6DCE7FB2990 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
+			productName = RJSLibUFNetworking;
+		};
+		"TEMP_E558058C-D039-44C9-9330-219CF21F319F" /* RJSLibUFBase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01D0D5EF5E6BB6DCE7FB2990 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
+			productName = RJSLibUFBase;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -63,7 +63,7 @@ packages:
     url: https://github.com/ricardopsantos/RJSLibUF
     #branch: master
     #minVersion: 1.0.0, maxVersion: 2.0.0
-    revision: e177c3110fae41d4c6483ac4f9b657535e048c19
+    revision: 71912bcc27fff048eb85ea8f83252cfbd4aca852 # 2.0.0
     
 # Pulse animation for iOS
   Pulsator:

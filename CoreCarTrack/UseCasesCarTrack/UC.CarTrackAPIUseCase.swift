@@ -10,6 +10,7 @@ import UIKit
 //
 import RxSwift
 import RxCocoa
+import RJSLibUFBase
 import RJSLibUFNetworking
 import RJSLibUFStorage
 //
@@ -79,7 +80,7 @@ public class CarTrackAPIUseCase: GenericUseCase, CarTrackWebAPIUseCaseProtocol {
 
         return Observable<[CarTrackResponseDto.User]>.create { observer in
             let operation = APIRequestOperation(blockList: block)
-            OperationQueueManager.shared.add(operation)
+            RJS_OperationQueueManager.shared.add(operation)
             operation.completionBlock = {
                 if operation.isCancelled || operation.noResultAvailable {
                     observer.on(.error(Factory.Errors.with(appCode: .notPredicted)))
