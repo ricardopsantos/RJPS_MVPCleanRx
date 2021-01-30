@@ -14,6 +14,8 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 import TinyConstraints
+import RJSLibUFBase
+import RJSLibUFAppThemes
 //
 import BaseConstants
 import AppTheme
@@ -185,7 +187,7 @@ extension V {
             }
         }
 
-        public var titleStyleType: UILabel.LayoutStyle = .value {
+        public var titleStyleType: RJS_LabelStyle = .value {
             didSet {
                 lblTitle.layoutStyle = titleStyleType
             }

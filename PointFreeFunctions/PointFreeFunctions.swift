@@ -12,9 +12,6 @@ import UIKit
 //
 import RJSLibUFStorage
 
-public var screenWidth: CGFloat { return UIScreen.main.bounds.width }
-public var screenHeight: CGFloat { return UIScreen.main.bounds.height }
-
 public func saveWith(key: String,
                      value: String,
                      expireDate: Date?=nil) {

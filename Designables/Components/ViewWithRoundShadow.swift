@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+//
+import RJSLibUFAppThemes
 
 open class ViewWithRoundShadow: UIView {
 
@@ -15,7 +17,7 @@ open class ViewWithRoundShadow: UIView {
     // fillColor : the color applied to the shadowLayer, rather than the view's backgroundColor
     static var cornerRadius: CGFloat = 5
     private var _fillColor: UIColor = UIColor.clear
-    private var _shadowColor: CGColor = UIView.Shadows.shadowColor.cgColor
+    private var _shadowColor: CGColor = UIView.defaultShadowColor.cgColor
     private var _shadowLayer: CAShapeLayer!
     private var _shadowOpacity: Float = 1
     private var _shadowRadius: CGFloat = 4
@@ -35,9 +37,9 @@ open class ViewWithRoundShadow: UIView {
             _shadowLayer = CAShapeLayer()
             _shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: Self.cornerRadius).cgPath
             //_shadowLayer.fillColor = _fillColor.cgColor
-            _shadowLayer.shadowColor = _shadowColor
-            _shadowLayer.shadowPath = _shadowLayer.path
-            _shadowLayer.shadowOffset = UIView.Shadows.offset
+            _shadowLayer.shadowColor   = _shadowColor
+            _shadowLayer.shadowPath    = _shadowLayer.path
+            _shadowLayer.shadowOffset  = UIView.defaultShadowOffset
             _shadowLayer.shadowOpacity = _shadowOpacity
             _shadowLayer.shadowRadius  = _shadowRadius
             layer.insertSublayer(_shadowLayer, at: 0)

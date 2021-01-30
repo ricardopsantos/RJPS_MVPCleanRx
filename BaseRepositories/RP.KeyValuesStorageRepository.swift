@@ -26,35 +26,35 @@ public extension RP {
         public init () {}
 
         @discardableResult public func save(key: String, value: String, expireDate: Date?) -> Bool {
-            return RJS_DataModel.StorableKeyValue.save(key: key, value: value, expireDate: expireDate)
+            return RJS_DataModelEntity.StorableKeyValue.save(key: key, value: value, expireDate: expireDate)
         }
 
         public func existsWith(key: String) -> Bool {
-            return RJS_DataModel.StorableKeyValue.existsWith(key: key)
+            return RJS_DataModelEntity.StorableKeyValue.existsWith(key: key)
         }
 
-        public func with(prefix: String) -> RJS_DataModel? {
-            return RJS_DataModel.StorableKeyValue.with(keyPrefix: prefix)
+        public func with(prefix: String) -> RJS_DataModelEntity? {
+            return RJS_DataModelEntity.StorableKeyValue.with(keyPrefix: prefix)
         }
 
-        public func with(key: String) -> RJS_DataModel? {
-            return RJS_DataModel.StorableKeyValue.with(key: key)
+        public func with(key: String) -> RJS_DataModelEntity? {
+            return RJS_DataModelEntity.StorableKeyValue.with(key: key)
         }
 
         public func allKeys() -> [String] {
-            return RJS_DataModel.StorableKeyValue.allKeys()
+            return RJS_DataModelEntity.StorableKeyValue.allKeys()
         }
 
-        public func allRecords() -> [RJS_DataModel] {
-            return RJS_DataModel.StorableKeyValue.allRecords()
+        public func allRecords() -> [RJS_DataModelEntity] {
+            return RJS_DataModelEntity.StorableKeyValue.allRecords()
         }
 
         @discardableResult public func deleteAll() -> Bool {
-            return RJS_DataModel.StorableKeyValue.clean()
+            return RJS_DataModelEntity.StorableKeyValue.clean()
         }
 
         @discardableResult public func deleteWith(key: String) -> Bool {
-            return RJS_DataModel.StorableKeyValue.deleteWith(key: key)
+            return RJS_DataModelEntity.StorableKeyValue.deleteWith(key: key)
         }
     }
 }

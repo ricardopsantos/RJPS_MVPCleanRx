@@ -15,6 +15,8 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 import TinyConstraints
+import RJSLibUFBase
+import RJSLibUFAppThemes
 //
 import BaseConstants
 import AppTheme
@@ -160,7 +162,7 @@ extension V {
 
             makeSection("UILabel.LayoutStyle", size: sectionSize)
 
-            UILabel.LayoutStyle.allCases.forEach { (some) in
+            RJS_LabelStyle.allCases.forEach { (some) in
                 testBackgroundColors.forEach { (backgroundColor) in
                     let some = UIKitFactory.label(title: "\(some)", style: some)
                     some.backgroundColor = backgroundColor.withAlphaComponent(FadeType.superHeavy.rawValue)
@@ -182,7 +184,7 @@ extension V {
 
             makeSection("UIButton.LayoutStyle", size: sectionSize)
             
-            UIButton.LayoutStyle.allCases.forEach { (some) in
+            RJS_ButtontStyle.allCases.forEach { (some) in
                 let btn = UIKitFactory.button(title: "\(some)", style: some)
                 stackViewVLevel1.uiUtils.safeAddArrangedSubview(btn)
                 btn.rx.tapSmart(disposeBag).asObservable().subscribe { (_) in

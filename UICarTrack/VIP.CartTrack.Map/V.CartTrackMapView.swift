@@ -16,6 +16,8 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 import TinyConstraints
+import RJSLibUFBase
+import RJSLibUFAppThemes
 //
 import BaseConstants
 import AppTheme
@@ -76,7 +78,7 @@ extension V {
         }()
 
         private lazy var lblInfo: UILabelWithPadding = {
-            return UIKitFactory.labelWithPadding(style: .info)
+            return UIKitFactory.labelWithPadding(style: .text)
         }()
 
         private lazy var viewFeatureFlag: UIView = {

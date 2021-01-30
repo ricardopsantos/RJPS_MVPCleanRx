@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+#warning("delete")
+/*
 public extension UIButton {
     enum LayoutStyle: CaseIterable {
         case notApplied
@@ -31,4 +33,4 @@ public extension UILabel {
         case info
         case error
     }
-}
+}*/

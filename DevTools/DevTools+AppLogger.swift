@@ -53,7 +53,7 @@ public extension DevTools {
                 Logger.shared.log(.app, .noise, messageFinal, file, line, function)
                 #endif
             } else {
-                RJS_Logs.message(message, function: function, file: file, line: line)
+                RJS_Logs.info(message, function: function, file: file, line: line)
             }
         }
 
@@ -66,7 +66,7 @@ public extension DevTools {
                 Logger.shared.log(.app, .warning, messageFinal, file, line, function)
                 #endif
             } else {
-                RJS_Logs.warning(message, function: function, file: file, line: line)
+                RJS_Logs.info(message, function: function, file: file, line: line)
             }
         }
 
@@ -80,7 +80,7 @@ public extension DevTools {
                 Logger.shared.log(.app, .error, messageFinal, file, line, function)
                 #endif
             } else {
-                RJS_Logs.error(message, function: function, file: file, line: line)
+                RJS_Logs.error(message, tag: .client, function: function, file: file, line: line)
             }
         }
     }

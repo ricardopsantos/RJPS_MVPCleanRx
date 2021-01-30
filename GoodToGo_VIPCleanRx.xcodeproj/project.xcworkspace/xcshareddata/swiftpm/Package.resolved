@@ -6,7 +6,7 @@
         "repositoryURL": "https://github.com/Alamofire/Alamofire",
         "state": {
           "branch": "master",
-          "revision": "9e0328127dfb801cefe8ac53a13c0c90a7770448",
+          "revision": "eaf6e622dd41b07b251d8f01752eab31bc811493",
           "version": null
         }
       },
@@ -56,11 +56,11 @@
         }
       },
       {
-        "package": "RJPSLibUF",
+        "package": "rjps-lib-uf",
         "repositoryURL": "https://github.com/ricardopsantos/RJSLibUF",
         "state": {
-          "branch": "master",
-          "revision": "822c43298b065858b1b3209df1e830d80683b3cf",
+          "branch": null,
+          "revision": "73ede61128f31f1ed8ed6c84e5ae9f8482acd306",
           "version": null
         }
       },
@@ -69,7 +69,7 @@
         "repositoryURL": "https://github.com/Skyscanner/SkyFloatingLabelTextField",
         "state": {
           "branch": "master",
-          "revision": "f2f81ddccc503b90b16ba050ceb130be7cc1e7b1",
+          "revision": "a0750ebbc7311f3b3debf99c5e59338e854afa59",
           "version": null
         }
       },

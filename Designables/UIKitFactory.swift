@@ -14,6 +14,7 @@ import TinyConstraints
 import SkyFloatingLabelTextField   // For UI component SkyFloatingLabelTextField
 import Material                    // For UI component RaisedButton
 import Motion                      // For UI component RaisedButton
+import RJSLibUFAppThemes
 //
 import BaseConstants
 import AppTheme
@@ -62,7 +63,7 @@ public struct UIKitFactory {
 
     public static func button(baseView: UIView? = nil,
                               title: String = "",
-                              style: UIButton.LayoutStyle) -> UIButton {
+                              style: RJS_ButtontStyle) -> UIButton {
         let some = UIButton()
         some.tag =  UIKitViewFactoryElementTag.button.rawValue
         some.setTitleForAllStates(title)
@@ -82,7 +83,7 @@ public struct UIKitFactory {
 
     public static func labelWithPadding(padding: UIEdgeInsets? = nil,
                                         title: String = "",
-                                        style: UILabel.LayoutStyle) -> UILabelWithPadding {
+                                        style: RJS_LabelStyle) -> UILabelWithPadding {
         let some = UILabelWithPadding(padding: padding, text: title)
         some.numberOfLines = 0
         some.tag =  UIKitViewFactoryElementTag.label.rawValue
@@ -93,7 +94,7 @@ public struct UIKitFactory {
 
     public static func label(baseView: UIView? = nil,
                              title: String = "",
-                             style: UILabel.LayoutStyle) -> UILabel {
+                             style: RJS_LabelStyle) -> UILabel {
         let some = UILabel()
         some.text = title
         some.numberOfLines = 0

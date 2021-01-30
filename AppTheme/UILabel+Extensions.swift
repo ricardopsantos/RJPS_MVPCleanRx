@@ -11,7 +11,8 @@ import Foundation
 import RJSLibUFAppThemes
 //
 import BaseConstants
-
+#warning("delete")
+/*
 public extension UILabel {
     
     var layoutStyle: UILabel.LayoutStyle {
@@ -61,3 +62,4 @@ public extension UILabel {
         }
     }
 }
+*/

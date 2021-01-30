@@ -29,10 +29,9 @@ import Designables
 // Turning the RJPSLib alias into something more readable and related to this app it self
 //
 
-typealias AppInfo                = RJS_AppInfo                        // Utilities for apps and device info. Things like `isSimulator`, `hasNotch`, etc
-typealias AppUtils               = RJS_Utils                                    // Utilities like `onDebug`, `onRelease`, `executeOnce`, etc
-typealias AppUserDefaultsVars    = RJS_UserDefaultsVars // NSUserDefaults utilities for Int Type
-typealias AppUserDefaults        = RJS_UserDefaults               // NSUserDefaults utilities (save, delete, get, exits, ...)
+typealias AppInfo                = RJS_AppInfo         // Utilities for apps and device info. Things like `isSimulator`, `hasNotch`, etc
+typealias AppUtils               = RJS_Utils           // Utilities like `onDebug`, `onRelease`, `executeOnce`, etc
+typealias AppUserDefaults        = RJS_UserDefaults    // NSUserDefaults utilities (save, delete, get, exits, ...)
 typealias WebAPIRequestProtocol  = RJS_SimpleNetworkClientRequestProtocol
 
 public typealias CacheStrategy = RJS_CacheStrategy

@@ -32,7 +32,7 @@ public extension WebAPI.CarTrackAPIRequest {
 
         public var httpMethod: String {
             switch self {
-            case .getUsers: return RJS_SimpleNetworkClient.HttpMethod.get.rawValue
+            case .getUsers: return RJS_HttpMethod.get.rawValue
             }
         }
     }
@@ -45,7 +45,7 @@ public extension WebAPI.CarTrackAPIRequest {
         public var returnOnMainTread: Bool
         public var debugRequest: Bool = DevTools.FeatureFlag.debugRequests.isTrue
         public var urlRequest: URLRequest
-        public var responseType: RJS_SimpleNetworkClientResponseType
+        public var responseType: RJS_NetworkClientResponseFormat
 
         // service has bad data. use mock value always
         public var mockedData: String? { return WebAPI.useMock || true  ? AppConstants.Mocks.CarTrack.get_200 : nil }

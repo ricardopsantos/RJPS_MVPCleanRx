@@ -25,9 +25,7 @@ public extension WebAPI.GalleryAppAPIRequest {
             return "https://api.flickr.com/services/rest"
         }
 
-        private var key: String { key2 }
-        private var key1: String { "DTBfK2jeRNQ3ABo9l+elSOK9hYeMkKhoTt6f9L43aU7iq+Y7rId+k4TSJDIVNZy6LNaL2uHVkyVy2CEC".aesDecrypt() }
-        private var key2: String { "D3M89jxFfjqVlom5bytkK44D2rPcV54IaPQE585fEutokj3B49I6QalJjzEateBxPrF4/JWyXsTQYhRd".aesDecrypt() }
+        private var key: String { ProcessInfo.processInfo.environment["FLICK_KEY"] ?? "not_found" }
 
         public var endpoint: String {
             switch self {
@@ -38,8 +36,8 @@ public extension WebAPI.GalleryAppAPIRequest {
 
         public var httpMethod: String {
             switch self {
-            case .search: return RJS_SimpleNetworkClient.HttpMethod.get.rawValue
-            case .imageInfo: return RJS_SimpleNetworkClient.HttpMethod.get.rawValue
+            case .search: return RJS_HttpMethod.get.rawValue
+            case .imageInfo: return RJS_HttpMethod.get.rawValue
             }
         }
     }
@@ -53,7 +51,7 @@ public extension WebAPI.GalleryAppAPIRequest {
         public var returnOnMainTread: Bool
         public var debugRequest: Bool = DevTools.FeatureFlag.debugRequests.isTrue
         public var urlRequest: URLRequest
-        public var responseType: RJS_SimpleNetworkClientResponseType
+        public var responseType: RJS_NetworkClientResponseFormat
         public var mockedData: String? { return WebAPI.useMock ? AppConstants.Mocks.GalleryApp.search_200 : nil }
 
         init(request: GalleryAppRequests.Search) throws {
@@ -78,7 +76,7 @@ public extension WebAPI.GalleryAppAPIRequest {
         public var returnOnMainTread: Bool
         public var debugRequest: Bool = DevTools.FeatureFlag.debugRequests.isTrue
         public var urlRequest: URLRequest
-        public var responseType: RJS_SimpleNetworkClientResponseType
+        public var responseType: RJS_NetworkClientResponseFormat
         public var mockedData: String? { return WebAPI.useMock ? AppConstants.Mocks.GalleryApp.imageInfo_200 : nil }
 
         init(request: GalleryAppRequests.ImageInfo) throws {

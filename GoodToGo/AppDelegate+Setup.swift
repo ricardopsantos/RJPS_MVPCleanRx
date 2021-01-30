@@ -19,6 +19,5 @@ extension AppDelegate {
     func setup(application: UIApplication) {
         DevTools.Log.enabled = DevTools.FeatureFlag.appLogsEnabled.isTrue
         AppEnvironments.setup()
-        DevTools.Log.message("Number of logins : \(AppUserDefaultsVars.incrementIntWithKey(AppConstants.Dev.numberOfLogins))")
     }
 }

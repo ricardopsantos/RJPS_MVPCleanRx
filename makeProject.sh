@@ -202,7 +202,7 @@ echo " [2] : No/Skip"
 echo -n "Option? "
 read option
 case $option in
-    [1] ) xcodegen -s ./XcodeGen/project.yml -p ./ ;;
+    [1] ) xcodegen -s ./XcodeGen/GoodToGo_VIPCleanRx.yml -p ./ ;;
    *) echo "Ignored...."
 ;;
 esac
@@ -210,14 +210,13 @@ esac
 ################################################################################
 
 echo "Opening project...."
-open GoodToGo.xcodeproj
+open GoodToGo_VIPCleanRx.xcodeproj
 
 ################################################################################
 
 echo "Generating graphviz...."
-cd XcodeGen
-xcodegen dump --type graphviz --file ../Documents/Graph.viz
-xcodegen dump --type json --file ../Documents/Graph.json
+xcodegen dump --spec ./XcodeGen/GoodToGo_VIPCleanRx.yml --type graphviz --file ./Documents/Graph.viz
+xcodegen dump --spec ./XcodeGen/GoodToGo_VIPCleanRx.yml --type json     --file ./Documents/Graph.json
 
 ################################################################################
 

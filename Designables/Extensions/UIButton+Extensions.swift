@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+#warning("delete")
 public extension UIButton {
     func disable() {
         self.isUserInteractionEnabled = false

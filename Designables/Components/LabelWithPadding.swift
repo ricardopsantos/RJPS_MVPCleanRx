@@ -13,6 +13,7 @@ import RxCocoa
 import RxSwift
 import TinyConstraints
 import RJSLibUFALayouts
+import RJSLibUFAppThemes
 //
 import BaseConstants
 import AppTheme
@@ -65,7 +66,7 @@ open class UILabelWithPadding: UIView {
         label.backgroundColor = .clear
     }
     
-    var layoutStyle: UILabel.LayoutStyle {
+    var layoutStyle: RJS_LabelStyle {
         set {
             label.layoutStyle = newValue
             unifyColors()
@@ -73,7 +74,7 @@ open class UILabelWithPadding: UIView {
         get { return .notApplied }
     }
     
-    public func apply(style: UILabel.LayoutStyle) {
+    public func apply(style: RJS_LabelStyle) {
         layoutStyle = style
         unifyColors()
     }

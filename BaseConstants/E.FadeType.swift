@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+#warning("delete")
+/*
 public typealias ShadowType = FilterStrength
 public typealias FadeType = FilterStrength
 
@@ -27,3 +29,4 @@ public extension FadeType {
         return heavyRegular
     }
 }
+*/

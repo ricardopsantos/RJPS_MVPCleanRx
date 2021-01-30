@@ -26,7 +26,7 @@
 ####################################################################
 # Reactive Programming in Swift
 # https://github.com/ReactiveX/RxSwift
-github "ReactiveX/RxSwift" 
+github "ReactiveX/RxSwift" == 5.1.1
 github "RxSwiftCommunity/RxGesture" 
 github "RxSwiftCommunity/RxDataSources" 
 

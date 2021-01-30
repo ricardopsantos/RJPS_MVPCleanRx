@@ -8,6 +8,7 @@
 import UIKit
 import Foundation
 
+#warning("delete")
 extension String {
     var capitalised: String {
         return prefix(1).uppercased() + self.lowercased().dropFirst()

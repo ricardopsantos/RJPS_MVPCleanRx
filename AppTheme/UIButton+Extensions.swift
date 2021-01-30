@@ -13,7 +13,8 @@ import BaseConstants
 import DevTools
 import PointFreeFunctions
 import Extensions
-
+#warning("delete")
+/*
 public extension UIButton {
 
     // Cant be o Designables because the Designables allready import AppTheme
@@ -117,3 +118,4 @@ private extension UIButton {
     }
 
 }
+*/
