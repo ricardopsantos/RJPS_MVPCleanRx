@@ -1,17 +1,3 @@
-
-
-#
-# DOCS
-#
-# https://github.com/yonaskolb/XcodeGen/blob/master/Docs/ProjectSpec.md
-
-#
-# SAMPLES
-#
-# https://gist.github.com/d-date/44510c5b4b3baf820033453bfeb235c3
-# https://github.com/yonaskolb/XcodeGen/blob/master/Docs/Examples.md
-#
-
 ####################### PROJECT #######################
 ####################### PROJECT #######################  
 ####################### PROJECT #######################
@@ -51,11 +37,6 @@ configs:
 ####################### SPM #######################
 ####################### SPM #######################  
 ####################### SPM #######################
-
-## MORE LIBRARIES HERE :
-##  https://github.com/Wolg/awesome-swift
-##  https://github.com/vsouza/awesome-ios
-##  https://github.com/duemunk/awesome-swiftui
 
 packages:
 
